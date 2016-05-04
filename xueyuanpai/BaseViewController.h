@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BaseNavView.h"
 @interface BaseViewController : UIViewController
+
+{
+    BaseNavView * _nav;
+    UIView *contentView;
+    
+    
+}
+-(float)setNaveBarHeight;
+-(UIView*)createContentView;
+
+- (void)theTabBarHidden:(BOOL)hidden;   // 隐藏或显示 tabBar
+
+
 
 @end

@@ -8,6 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BaseTabBarView : UIView
+@protocol BaseTabBarDelegate <NSObject>
 
+-(void)tabBarSelected:(NSInteger)index;
+
+@end
+
+@interface BaseTabBarView : UIView
+{
+    NSInteger selIndex;
+    UIView * tipView;
+}
+@property(nonatomic,assign)id<BaseTabBarDelegate> delegate;
+
+@property(nonatomic,strong)NSArray * titleArr;
+@property(nonatomic,strong)NSArray * imgArr;
+@property(nonatomic,strong)NSArray * imgSelArr;
+
+-(void)setContentView;
+-(void)setSelected:(NSInteger)index;
 @end

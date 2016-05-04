@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor redColor];
+    [_nav setTitle:@"创业中心"];
 }
 
 - (void)didReceiveMemoryWarning {

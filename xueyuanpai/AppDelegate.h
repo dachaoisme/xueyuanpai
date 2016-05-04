@@ -13,6 +13,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) BaseTabBarViewController *mainTabBar;
 @property (strong, nonatomic) UINavigationController *navBar;
+@property (strong, nonatomic) UINavigationController *navController;
 
 @end
 

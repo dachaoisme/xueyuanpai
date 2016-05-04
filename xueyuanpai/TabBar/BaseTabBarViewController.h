@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTabBarView.h"
+@interface BaseTabBarViewController : UITabBarController<BaseTabBarDelegate>
 
-@interface BaseTabBarViewController : UITabBarController
+-(void)tabBarShow;
+-(void)tabBarHiddenToBottom:(BOOL)toBottom;
+-(void)tabBarSelected:(NSInteger)index;
+-(void)beatyImgShow;
+
+@property(nonatomic,assign)BOOL isLoaded;
+@property(nonatomic,strong)BaseTabBarView *baseTabBarView;
+
+
 
 @end

@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583D65C81CDA793A00830BBE /* BaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65C61CDA793A00830BBE /* BaseTabBarViewController.m */; };
+		583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CA1CDA7B2800830BBE /* BaseTabBarView.m */; };
+		583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CC1CDA7C8200830BBE /* UIFactory.m */; };
+		583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CF1CDA7D4B00830BBE /* ResLoader.m */; };
+		583D65D41CDA824200830BBE /* BaseNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65D31CDA824200830BBE /* BaseNavView.m */; };
 		58F67BA41CD9863400D55BE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA31CD9863400D55BE0 /* main.m */; };
 		58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA61CD9863400D55BE0 /* AppDelegate.m */; };
 		58F67BAF1CD9863400D55BE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F67BAE1CD9863400D55BE0 /* Assets.xcassets */; };
 		58F67BBD1CD9863400D55BE0 /* xueyuanpaiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BBC1CD9863400D55BE0 /* xueyuanpaiTests.m */; };
 		58F67BC81CD9863400D55BE0 /* xueyuanpaiUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BC71CD9863400D55BE0 /* xueyuanpaiUITests.m */; };
-		58F67BF91CD990A200D55BE0 /* BaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BD61CD990A200D55BE0 /* BaseTabBarViewController.m */; };
 		58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BD81CD990A200D55BE0 /* BaseViewController.m */; };
 		58F67BFB1CD990A200D55BE0 /* BusinessCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BDC1CD990A200D55BE0 /* BusinessCenterViewController.m */; };
 		58F67BFC1CD990A200D55BE0 /* ExpressCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BE81CD990A200D55BE0 /* ExpressCenterViewController.m */; };
@@ -59,6 +63,16 @@
 /* Begin PBXFileReference section */
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		583D65C61CDA793A00830BBE /* BaseTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarViewController.m; sourceTree = "<group>"; };
+		583D65C71CDA793A00830BBE /* BaseTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarViewController.h; sourceTree = "<group>"; };
+		583D65C91CDA7B2800830BBE /* BaseTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarView.h; sourceTree = "<group>"; };
+		583D65CA1CDA7B2800830BBE /* BaseTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarView.m; sourceTree = "<group>"; };
+		583D65CC1CDA7C8200830BBE /* UIFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFactory.m; sourceTree = "<group>"; };
+		583D65CD1CDA7C8200830BBE /* UIFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFactory.h; sourceTree = "<group>"; };
+		583D65CF1CDA7D4B00830BBE /* ResLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResLoader.m; sourceTree = "<group>"; };
+		583D65D01CDA7D4B00830BBE /* ResLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResLoader.h; sourceTree = "<group>"; };
+		583D65D21CDA824200830BBE /* BaseNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavView.h; sourceTree = "<group>"; };
+		583D65D31CDA824200830BBE /* BaseNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavView.m; sourceTree = "<group>"; };
 		58F67B9F1CD9863400D55BE0 /* xueyuanpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xueyuanpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F67BA31CD9863400D55BE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58F67BA51CD9863400D55BE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -71,8 +85,6 @@
 		58F67BC31CD9863400D55BE0 /* xueyuanpaiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = xueyuanpaiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F67BC71CD9863400D55BE0 /* xueyuanpaiUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = xueyuanpaiUITests.m; sourceTree = "<group>"; };
 		58F67BC91CD9863400D55BE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58F67BD51CD990A200D55BE0 /* BaseTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarViewController.h; sourceTree = "<group>"; };
-		58F67BD61CD990A200D55BE0 /* BaseTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarViewController.m; sourceTree = "<group>"; };
 		58F67BD71CD990A200D55BE0 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		58F67BD81CD990A200D55BE0 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		58F67BDB1CD990A200D55BE0 /* BusinessCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterViewController.h; sourceTree = "<group>"; };
@@ -164,6 +176,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		583D65C51CDA78F700830BBE /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				583D65C71CDA793A00830BBE /* BaseTabBarViewController.h */,
+				583D65C61CDA793A00830BBE /* BaseTabBarViewController.m */,
+				583D65C91CDA7B2800830BBE /* BaseTabBarView.h */,
+				583D65CA1CDA7B2800830BBE /* BaseTabBarView.m */,
+				583D65D21CDA824200830BBE /* BaseNavView.h */,
+				583D65D31CDA824200830BBE /* BaseNavView.m */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		58F67B961CD9863400D55BE0 = {
 			isa = PBXGroup;
 			children = (
@@ -191,14 +216,13 @@
 			children = (
 				58F67BA51CD9863400D55BE0 /* AppDelegate.h */,
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
-				58F67BD51CD990A200D55BE0 /* BaseTabBarViewController.h */,
-				58F67BD61CD990A200D55BE0 /* BaseTabBarViewController.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
 				58F67BD81CD990A200D55BE0 /* BaseViewController.m */,
+				58F67BDF1CD990A200D55BE0 /* Config */,
+				583D65C51CDA78F700830BBE /* TabBar */,
 				58F67C071CD9CF9500D55BE0 /* ThirdPart */,
 				58F67C011CD9A38000D55BE0 /* Utils */,
 				58F67BD91CD990A200D55BE0 /* BusinessCenter */,
-				58F67BDF1CD990A200D55BE0 /* Config */,
 				58F67BE51CD990A200D55BE0 /* ExpressCenter */,
 				58F67BEB1CD990A200D55BE0 /* Index */,
 				58F67BF11CD990A200D55BE0 /* NetWorkManager */,
@@ -366,6 +390,10 @@
 			children = (
 				58F67C021CD9A39200D55BE0 /* CommonUtils.h */,
 				58F67C031CD9A39200D55BE0 /* CommonUtils.m */,
+				583D65CD1CDA7C8200830BBE /* UIFactory.h */,
+				583D65CC1CDA7C8200830BBE /* UIFactory.m */,
+				583D65CF1CDA7D4B00830BBE /* ResLoader.m */,
+				583D65D01CDA7D4B00830BBE /* ResLoader.h */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -632,6 +660,8 @@
 			files = (
 				58F67C301CD9CF9500D55BE0 /* MJRefreshGifHeader.m in Sources */,
 				58F67BFB1CD990A200D55BE0 /* BusinessCenterViewController.m in Sources */,
+				583D65D41CDA824200830BBE /* BaseNavView.m in Sources */,
+				583D65C81CDA793A00830BBE /* BaseTabBarViewController.m in Sources */,
 				58F67C001CD990A200D55BE0 /* HttpServer.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
@@ -649,12 +679,14 @@
 				58F67C2F1CD9CF9500D55BE0 /* MJRefreshGifFooter.m in Sources */,
 				58F67C2D1CD9CF9500D55BE0 /* MJRefreshConst.m in Sources */,
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
-				58F67BF91CD990A200D55BE0 /* BaseTabBarViewController.m in Sources */,
 				58F67C321CD9CF9500D55BE0 /* MJRefreshLegendFooter.m in Sources */,
 				58F67C331CD9CF9500D55BE0 /* MJRefreshLegendHeader.m in Sources */,
 				58F67C041CD9A39200D55BE0 /* CommonUtils.m in Sources */,
+				583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */,
 				58F67BFD1CD990A200D55BE0 /* IndexViewController.m in Sources */,
 				58F67C2E1CD9CF9500D55BE0 /* MJRefreshFooter.m in Sources */,
+				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
+				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

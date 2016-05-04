@@ -21,10 +21,89 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor greenColor];
     
+    IndexViewController *IndexVC = [[IndexViewController alloc] init];// 美图
+    UINavigationController * IndexNavVC=[[UINavigationController alloc] initWithRootViewController:IndexVC];
+    IndexNavVC.navigationBarHidden=YES;
     
+    BusinessCenterViewController *BusinessCenterVC = [[BusinessCenterViewController alloc] init];
+    UINavigationController * BusinessCenterNavVC=[[UINavigationController alloc] initWithRootViewController:BusinessCenterVC];
+    BusinessCenterNavVC.navigationBarHidden = YES;
+    
+    ExpressCenterViewController *ExpressCenterVC = [[ExpressCenterViewController alloc] init];
+    UINavigationController *ExpressCenterNavVC = [[UINavigationController alloc] initWithRootViewController:ExpressCenterVC];
+    ExpressCenterNavVC.navigationBarHidden = YES;
+    
+    
+
+    [self setViewControllers:[NSArray arrayWithObjects:
+                              IndexNavVC,
+                              BusinessCenterNavVC,
+                              ExpressCenterVC,
+                              nil]];
+    
+    
+    
+    _baseTabBarView=[[BaseTabBarView alloc] init];
+    _baseTabBarView.frame=CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49);
+    _baseTabBarView.delegate=self;
+    _baseTabBarView.titleArr=[[NSArray alloc] initWithObjects:
+                       @"首页",
+                       @"创业中心",
+                       @"我的快递",
+                       nil];
+    _baseTabBarView.imgArr=[[NSArray alloc] initWithObjects:
+                     @"tabbar_unselect_home",
+                     @"tabbar_unselect_destination",
+                     @"tabbar_unselect_travel",
+                     nil];
+    _baseTabBarView.imgSelArr=[[NSArray alloc] initWithObjects:
+                        @"tabbar_select_home",
+                        @"tabbar_select_destination",
+                        @"tabbar_select_travel",
+                        nil];
+    
+    [self.view addSubview:_baseTabBarView];
+    [_baseTabBarView setContentView];
+    [_baseTabBarView setSelected:0];
     
 }
+-(void)stateBarHidden
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+-(void)tabBarShow
+{
+    _baseTabBarView.hidden=NO;
+    if (_baseTabBarView.frame.origin.x!=0 || _baseTabBarView.frame.origin.y!=self.view.bounds.size.height-49) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height-49, SCREEN_WIDTH, 49);
+        }];
+    }
+}
+-(void)tabBarHiddenToBottom:(BOOL)toBottom
+{
+    if (_baseTabBarView.frame.origin.x==0 && _baseTabBarView.frame.origin.y==self.view.bounds.size.height-49) {
+        [UIView animateWithDuration:0.3 animations:^{
+            if (toBottom) {
+                _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 49);
+            }else
+                _baseTabBarView.frame=CGRectMake(-SCREEN_WIDTH, self.view.bounds.size.height-49, SCREEN_WIDTH, 49);
+        }completion:^(BOOL finished){
+            if (finished) {
+                _baseTabBarView.hidden=YES;
+            }
+        }];
+    }
+}
 
+-(void)tabBarSelected:(NSInteger)index
+{
+
+    self.selectedIndex=index;
+    [_baseTabBarView setSelected:index];
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    app.navController=(UINavigationController*)self.selectedViewController;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

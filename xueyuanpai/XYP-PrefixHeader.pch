@@ -16,4 +16,10 @@
 #import "AppDelegate.h"
 #import "EnumDefine.h"
 #import "ConfigDefine.h"
+#import "CommonUtils.h"
+
+#import "UIFactory.h"
+#import "ResLoader.h"
+
+#import "NotificationDefine.h"
 #endif /* XYP_PrefixHeader_pch */
