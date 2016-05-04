@@ -8,6 +8,7 @@
 
 #import "CommonUtils.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "UIView+Toast.h"
 @implementation CommonUtils
 
 +(BOOL)checkIsNum:(NSString *)str{
@@ -91,11 +92,11 @@
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [app.navBar.view addSubview:child];
 }
-
-+(NSInteger)getNetWorkStatus
-{
-    return [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
-}
+#pragma mark - 先注释掉
+//+(NSInteger)getNetWorkStatus
+//{
+//    return [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
+//}
 
 + (UIColor*)colorWithHex:(NSString *)hexValue alpha:(CGFloat)alphaValue
 {
@@ -476,12 +477,12 @@
     }
     return state;
 }
-
-+(void)setRootViewControllerInLoginVC:(BOOL)isLogin
-{
-    AppDelegate * appDelegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
-    [appDelegate setRootViewController:isLogin];
-}
+#pragma mark - 暂时先注释掉
+//+(void)setRootViewControllerInLoginVC:(BOOL)isLogin
+//{
+//    AppDelegate * appDelegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
+//    [appDelegate setRootViewController:isLogin];
+//}
 
 +(void)showToastWithStr:(NSString *)toastStr
 {
