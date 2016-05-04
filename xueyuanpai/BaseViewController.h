@@ -1,15 +1,13 @@
 //
-//  ViewController.h
+//  BaseViewController.h
 //  xueyuanpai
 //
-//  Created by lidachao on 16/5/4.
+//  Created by lidachao on 16/5/3.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface BaseViewController : UIViewController
 
 @end
-

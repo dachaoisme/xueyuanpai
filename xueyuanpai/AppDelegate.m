@@ -17,13 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    NSLog(@"好人");
-    NSLog(@"好人");
-    NSLog(@"好人");
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
     
-    NSLog(@"好人");
-    NSLog(@"好人");
-    NSLog(@"好人");
+    BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
+    _mainTabBar=mainVC;
+    _window.rootViewController=mainVC;
+    
+    [_window makeKeyAndVisible];
     return YES;
 }
 
