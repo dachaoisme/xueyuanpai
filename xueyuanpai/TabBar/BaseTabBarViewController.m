@@ -7,7 +7,9 @@
 //
 
 #import "BaseTabBarViewController.h"
-
+#import "BusinessCenterViewController.h"
+#import "ExpressCenterViewController.h"
+#import "IndexViewController.h"
 @interface BaseTabBarViewController ()
 
 @end
@@ -18,6 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor greenColor];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
