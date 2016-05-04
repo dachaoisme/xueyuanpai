@@ -356,4 +356,21 @@
  *  @return 返回字符串200.3 、200  0.3
  */
 +(NSString *)notRounding:(float)price afterPoint:(int)position;
+
+/**
+ *  @brief  根据文件名校验文件是否存在
+ *
+ *  @param  price 数字
+ *
+ *  @return
+ */
++(BOOL)checkFileExistByName:(NSString *)name;
+/**
+ *  @brief  获取文件在沙河中的路径
+ *
+ *  @param  price 数字
+ *
+ *  @return
+ */
++(NSString *) dataFilePathWithName:(NSString *)name;
 @end

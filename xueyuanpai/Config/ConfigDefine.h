@@ -88,6 +88,12 @@
 
 #define CONTENT_HEIGHT_2 (SCREEN_HEIGHT-NAV_TOP_HEIGHT)
 
+#define LLColorHex(hex) [CommonUtils colorWithHex:hex]
+#define LLColorLine     LLColorHex(@"d1d1d1")// 目前使用的线的颜色（中间的分割线）
+#define F_PX_TO_PT(px) px/3.0
+#define PX_TO_PT(px) px*SCREEN_WIDTH/1242.0
+#define LLColorBg       LLColorHex(@"f3f3f3")// 页面背景的颜色
+
 ///产品团散-->>景区端是1团0散。但是王凯说咱们App的是0团1散。故按照王凯的来
 #define GOLBAL_GROUP_OR_NOT @"0"
 

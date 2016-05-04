@@ -115,4 +115,25 @@
     return view;
     
 }
+
++(UIImageView *)imageViewWithMode:(int)mode image:(NSString *)image{
+    UIImageView *iv = [[UIImageView alloc] init];
+    iv.translatesAutoresizingMaskIntoConstraints=NO;
+    if(mode != -1)[iv setContentMode:mode];
+    if(image)[iv setImage:[ResLoader loadImage:image]];
+    return iv;
+}
+//autoLayout
++(UILabel *)label:(float)size color:(NSString *)color align:(int)align{
+    UILabel *lab = [[UILabel alloc] init];
+    [lab setBackgroundColor:[UIColor clearColor]];
+    [lab setFont:[UIFont systemFontOfSize:F_PX_TO_PT(size)]];
+    if (color) {
+        [lab setTextColor:[CommonUtils colorWithHex:color]];
+    }
+    [lab setNumberOfLines:0];
+    lab.translatesAutoresizingMaskIntoConstraints=NO;
+    if (align > 0)[lab setTextAlignment:align];
+    return lab;
+}
 @end

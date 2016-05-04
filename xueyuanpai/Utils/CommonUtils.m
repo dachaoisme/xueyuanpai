@@ -9,6 +9,7 @@
 #import "CommonUtils.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "UIView+Toast.h"
+#import "sys/xattr.h"
 @implementation CommonUtils
 
 +(BOOL)checkIsNum:(NSString *)str{
@@ -666,6 +667,33 @@
     roundedOunces = [ouncesDecimal decimalNumberByRoundingAccordingToBehavior:roundingBehavior];
     
     return [NSString stringWithFormat:@"%@",roundedOunces];
+}
+
++(BOOL)checkFileExistByName:(NSString *)name{
+    return [[NSFileManager defaultManager] fileExistsAtPath:[CommonUtils dataFilePathWithName:name]];
+}
++(NSString *) dataFilePathWithName:(NSString *)name {
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDir = [documentPaths objectAtIndex:0];
+    //在Documents下面再包一个文件夹，便于删除图片缓存 @libin
+    BOOL isDir;
+    NSString *imageDir = [NSString stringWithFormat:@"%@/%@",documentsDir,@"lezyo_image"];
+    BOOL existed = ([[NSFileManager defaultManager] fileExistsAtPath:imageDir isDirectory:&isDir] && isDir);
+    if (!existed) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:imageDir withIntermediateDirectories:YES
+                                                   attributes:nil error:nil];
+        
+    }
+    [self addSkipBackupAttributeToPath:imageDir];
+    //原来只以documentDir作为目录，现在以lezyo_image作为目录
+    NSString *fpath = [[NSString alloc] initWithFormat:@"%@",[imageDir stringByAppendingPathComponent:name]];
+    return fpath;
+}
+
+#pragma mark - 存储到icloud里面的内容均不需要存储到icloud内
++ (void)addSkipBackupAttributeToPath:(NSString*)path {
+    u_int8_t b = 1;
+    setxattr([path fileSystemRepresentation], "com.apple.MobileBackup", &b, 1, 0, 0);
 }
 @end
 

@@ -150,5 +150,20 @@
  *  @return
  */
 +(UILabel *)normalLabel:(CGRect)frame size:(float)size color:(UIColor *)color align:(int)align backColor:(UIColor*)backColor;
-
+/**
+ *  @brief 返回一个正常的UIImageView
+ *
+ *  @param
+ *
+ *  @return
+ */
++(UIImageView *)imageViewWithMode:(int)mode image:(NSString *)image;
+/**
+ *  @brief 返回一个正常的UILabel
+ *
+ *  @param
+ *
+ *  @return
+ */
++(UILabel *)label:(float)size color:(NSString *)color align:(int)align;
 @end
