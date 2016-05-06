@@ -1,24 +1,25 @@
 //
-//  BusinessCenterViewController.m
+//  MineViewController.m
 //  xueyuanpai
 //
-//  Created by lidachao on 16/5/3.
+//  Created by lidachao on 16/5/5.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessCenterViewController.h"
+#import "MineViewController.h"
 
-@interface BusinessCenterViewController ()
+@interface MineViewController ()
 
 @end
 
-@implementation BusinessCenterViewController
+@implementation MineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    [self setTitle:@"创业中心"];
+    //[self setUserDefineLeftReturnBtn];
+    [self setTitle:@"我的"];
+    [self createLeftBackNavBtn];
 }
 
 - (void)didReceiveMemoryWarning {

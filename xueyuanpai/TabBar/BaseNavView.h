@@ -27,11 +27,20 @@
     
     UIButton * broadcastBtn;//私信按钮
     UIButton * chatBtn;//广播按钮
+    
+    UIButton * userDefinedLeftBtn;//自定义的左侧的按钮，如首页的“我的按”钮
 }
 @property(nonatomic,strong)UIButton * backBtn;
 @property(nonatomic,strong)UIButton * rightBtn;
 @property(nonatomic,strong)id<BaseNavViewDelegate>delegate;
+#pragma mark - 新添加
+//自定义左侧按钮事件
+-(void)setUserDefinedLeftBtnWithTitle:(NSString *)title withTarget:(id)target selected:(SEL)selected;
+-(void)setUserDefinedLeftBtnWithImage:(NSString *)imageName withTarget:(id)target selected:(SEL)selected;
+-(void)setUserDefineLeftReturnBtn;
 
+
+#pragma mark - 原来有的
 -(id)initWithTitle:(NSString *)title background:(NSString*)bgImage;
 -(id)initWithTitle:(NSString *)title color:(NSString *)color;
 

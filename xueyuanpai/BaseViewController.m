@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    /*
     self.view.backgroundColor = LLColorBg;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -47,6 +48,7 @@
     }
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[contentView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(contentView)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-(%f)-[contentView]|",navHt] options:0 metrics:nil views:NSDictionaryOfVariableBindings(contentView)]];
+     */
 }
 -(UIView*)createContentView //创建背景视图
 {
@@ -98,6 +100,108 @@
         
     }
 }
+
+#pragma mark - 新添加
+#pragma mark - 左侧返回按钮
+- (void)createLeftBackNavBtn
+{
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    [button setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+    [button setTitle:@"返回" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(doNavEventBack:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(20, 0, 65, 44);
+    
+//    UILabel *la = [[UILabel alloc] initWithFrame:CGRectMake(12, 7, 35, 30)];
+//    la.text = @"返回";
+//    la.textColor = [UIColor whiteColor];
+//    la.font = [UIFont systemFontOfSize:15];
+//    [button addSubview:la];
+    
+    UIBarButtonItem * menuButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = menuButton;
+}
+- (void)doNavEventBack:(id)sender
+{
+    NSArray * arr = self.navigationController.childViewControllers;
+    if (arr && [arr count] > 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
+#pragma mark - 左侧自定义按钮
+-(void)creatLeftNavWithTitle:(NSString *)title
+{
+    UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    userDefineLeftBtn.frame = CGRectMake(0, 0, 60, 40);
+    [userDefineLeftBtn setTitle:title forState:UIControlStateNormal];
+    [userDefineLeftBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [userDefineLeftBtn addTarget:self action:@selector(leftItemActionWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftItem1 = [[UIBarButtonItem alloc] initWithCustomView:userDefineLeftBtn];
+    self.navigationItem.leftBarButtonItem = leftItem1;
+    
+}
+-(void)creatLeftNavWithImageName:(NSString *)imageName
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    imageView.image        = [UIImage imageNamed:imageName];
+    imageView.contentMode  = UIViewContentModeScaleToFill;
+    
+    UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    userDefineLeftBtn.frame = CGRectMake(0, 0, 60, 40);
+    [userDefineLeftBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [userDefineLeftBtn addTarget:self action:@selector(leftItemActionWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [userDefineLeftBtn addSubview:imageView];
+    
+    UIBarButtonItem *leftItem1 = [[UIBarButtonItem alloc] initWithCustomView:userDefineLeftBtn];
+    self.navigationItem.leftBarButtonItem = leftItem1;
+    
+}
+-(void)leftItemActionWithBtn:(UIButton *)sender
+{
+    
+}
+
+#pragma mark - 右侧自定义按钮
+-(void)creatRightNavWithImageName:(NSString *)imageName
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    imageView.image        = [UIImage imageNamed:imageName];
+    imageView.contentMode  = UIViewContentModeScaleToFill;
+    
+    UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    userDefineLeftBtn.frame     = CGRectMake(-10, 0, 60, 40);
+    [userDefineLeftBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [userDefineLeftBtn addTarget:self action:@selector(rightItemActionWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [userDefineLeftBtn addSubview:imageView];
+    
+    UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc] initWithCustomView:userDefineLeftBtn];
+    //    UIBarButtonItem *rightItem2 = [[UIBarButtonItem alloc] initWithCustomView:self.message];
+    //NSArray *arr = @[rightItem1,rightItem2];
+    self.navigationItem.rightBarButtonItem = rightItem1;
+    
+}
+
+-(void)creatRightNavWithTitle:(NSString *)title
+{
+    UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    userDefineLeftBtn.frame     = CGRectMake(-10, 0, 60, 40);
+    [userDefineLeftBtn setTitle:title forState:UIControlStateNormal];
+    [userDefineLeftBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [userDefineLeftBtn addTarget:self action:@selector(rightItemActionWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:userDefineLeftBtn];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    
+}
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    
+}
+
 
 
 /*

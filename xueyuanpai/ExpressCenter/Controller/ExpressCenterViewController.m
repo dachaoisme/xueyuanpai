@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [_nav setTitle:@"我的快递"];
+    [self setTitle:@"我的快递"];
 }
 
 - (void)didReceiveMemoryWarning {

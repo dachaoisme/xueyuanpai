@@ -7,7 +7,7 @@
 //
 
 #import "IndexViewController.h"
-
+#import "MineViewController.h"
 @interface IndexViewController ()
 
 @end
@@ -17,7 +17,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [_nav setTitle:@"首页"];
+    self.navigationController.navigationBar.backgroundColor = [UIColor redColor];
+    [self setTitle:@"首页"];
+    [self creatLeftNavWithImageName:@"v_uc_act"];
+    [self creatRightNavWithImageName:@"v_uc_act"];
+    
+}
+-(void)leftItemActionWithBtn:(UIButton *)sender
+{
+    //弹出我的界面
+    MineViewController * mineVC = [[MineViewController alloc]init];
+    [self.navigationController pushViewController:mineVC animated:YES];
+}
+
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    //收件箱界面
+    [CommonUtils showToastWithStr:@"收件箱"];
 }
 
 - (void)didReceiveMemoryWarning {

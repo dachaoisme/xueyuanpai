@@ -21,27 +21,20 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor greenColor];
     
-    IndexViewController *IndexVC = [[IndexViewController alloc] init];// 美图
+    IndexViewController *IndexVC = [[IndexViewController alloc] init];
     UINavigationController * IndexNavVC=[[UINavigationController alloc] initWithRootViewController:IndexVC];
-    IndexNavVC.navigationBarHidden=YES;
     
     BusinessCenterViewController *BusinessCenterVC = [[BusinessCenterViewController alloc] init];
     UINavigationController * BusinessCenterNavVC=[[UINavigationController alloc] initWithRootViewController:BusinessCenterVC];
-    BusinessCenterNavVC.navigationBarHidden = YES;
     
     ExpressCenterViewController *ExpressCenterVC = [[ExpressCenterViewController alloc] init];
     UINavigationController *ExpressCenterNavVC = [[UINavigationController alloc] initWithRootViewController:ExpressCenterVC];
-    ExpressCenterNavVC.navigationBarHidden = YES;
     
-    
-
     [self setViewControllers:[NSArray arrayWithObjects:
                               IndexNavVC,
                               BusinessCenterNavVC,
-                              ExpressCenterVC,
+                              ExpressCenterNavVC,
                               nil]];
-    
-    
     
     _baseTabBarView=[[BaseTabBarView alloc] init];
     _baseTabBarView.frame=CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49);

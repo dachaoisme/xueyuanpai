@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5829986E1CDB29E7004A05FB /* Default-375w-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5829986A1CDB29E7004A05FB /* Default-375w-667h@2x.png */; };
+		5829986F1CDB29E7004A05FB /* Default-414w-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5829986B1CDB29E7004A05FB /* Default-414w-736h@3x.png */; };
+		582998701CDB29E7004A05FB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5829986C1CDB29E7004A05FB /* Default-568h@2x.png */; };
+		582998711CDB29E7004A05FB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5829986D1CDB29E7004A05FB /* Default@2x.png */; };
+		582998731CDB2D66004A05FB /* v_uc_act.png in Resources */ = {isa = PBXBuildFile; fileRef = 582998721CDB2D66004A05FB /* v_uc_act.png */; };
+		5829987A1CDB4486004A05FB /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582998791CDB4486004A05FB /* MineViewController.m */; };
 		583D65C81CDA793A00830BBE /* BaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65C61CDA793A00830BBE /* BaseTabBarViewController.m */; };
 		583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CA1CDA7B2800830BBE /* BaseTabBarView.m */; };
 		583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CC1CDA7C8200830BBE /* UIFactory.m */; };
@@ -63,6 +69,13 @@
 /* Begin PBXFileReference section */
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5829986A1CDB29E7004A05FB /* Default-375w-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-375w-667h@2x.png"; sourceTree = "<group>"; };
+		5829986B1CDB29E7004A05FB /* Default-414w-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-414w-736h@3x.png"; sourceTree = "<group>"; };
+		5829986C1CDB29E7004A05FB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5829986D1CDB29E7004A05FB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		582998721CDB2D66004A05FB /* v_uc_act.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v_uc_act.png; sourceTree = "<group>"; };
+		582998781CDB4486004A05FB /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		582998791CDB4486004A05FB /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		583D65C61CDA793A00830BBE /* BaseTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarViewController.m; sourceTree = "<group>"; };
 		583D65C71CDA793A00830BBE /* BaseTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarViewController.h; sourceTree = "<group>"; };
 		583D65C91CDA7B2800830BBE /* BaseTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTabBarView.h; sourceTree = "<group>"; };
@@ -176,6 +189,82 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		582998691CDB29CF004A05FB /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				582998721CDB2D66004A05FB /* v_uc_act.png */,
+				5829986A1CDB29E7004A05FB /* Default-375w-667h@2x.png */,
+				5829986B1CDB29E7004A05FB /* Default-414w-736h@3x.png */,
+				5829986C1CDB29E7004A05FB /* Default-568h@2x.png */,
+				5829986D1CDB29E7004A05FB /* Default@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		582998741CDB43E4004A05FB /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				582998751CDB4413004A05FB /* Controller */,
+				582998761CDB4413004A05FB /* View */,
+				582998771CDB4413004A05FB /* Model */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		582998751CDB4413004A05FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				582998781CDB4486004A05FB /* MineViewController.h */,
+				582998791CDB4486004A05FB /* MineViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		582998761CDB4413004A05FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		582998771CDB4413004A05FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5829987B1CDC3DBE004A05FB /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				5829987C1CDC3DCC004A05FB /* Controller */,
+				5829987D1CDC3DCC004A05FB /* View */,
+				5829987E1CDC3DCC004A05FB /* Model */,
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
+		5829987C1CDC3DCC004A05FB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5829987D1CDC3DCC004A05FB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5829987E1CDC3DCC004A05FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		583D65C51CDA78F700830BBE /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +307,9 @@
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
 				58F67BD81CD990A200D55BE0 /* BaseViewController.m */,
+				5829987B1CDC3DBE004A05FB /* Inbox */,
+				582998741CDB43E4004A05FB /* Mine */,
+				582998691CDB29CF004A05FB /* Resource */,
 				58F67BDF1CD990A200D55BE0 /* Config */,
 				583D65C51CDA78F700830BBE /* TabBar */,
 				58F67C071CD9CF9500D55BE0 /* ThirdPart */,
@@ -584,8 +676,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				582998711CDB29E7004A05FB /* Default@2x.png in Resources */,
 				58F67C2B1CD9CF9500D55BE0 /* MJRefresh.bundle in Resources */,
+				582998731CDB2D66004A05FB /* v_uc_act.png in Resources */,
+				5829986F1CDB29E7004A05FB /* Default-414w-736h@3x.png in Resources */,
 				58F67BAF1CD9863400D55BE0 /* Assets.xcassets in Resources */,
+				582998701CDB29E7004A05FB /* Default-568h@2x.png in Resources */,
+				5829986E1CDB29E7004A05FB /* Default-375w-667h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -685,6 +782,7 @@
 				583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */,
 				58F67BFD1CD990A200D55BE0 /* IndexViewController.m in Sources */,
 				58F67C2E1CD9CF9500D55BE0 /* MJRefreshFooter.m in Sources */,
+				5829987A1CDB4486004A05FB /* MineViewController.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
 			);
@@ -761,7 +859,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -801,7 +899,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -598,6 +598,48 @@
         }
     }
 }
+#pragma mark - 新添加
+
+-(void)setUserDefinedLeftBtnWithImage:(NSString *)imageName withTarget:(id)target selected:(SEL)selected
+{
+    UIImage * image=[UIImage imageNamed:imageName];
+    UIImageView *iv = [UIFactory imageViewWithMode:-1 image:imageName];
+    [self addSubview:iv];
+    
+    userDefinedLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [userDefinedLeftBtn addTarget:target action:selected forControlEvents:UIControlEventTouchUpInside];
+    userDefinedLeftBtn.translatesAutoresizingMaskIntoConstraints=NO;
+    [self addSubview:userDefinedLeftBtn];
+    
+    NSDictionary * views=NSDictionaryOfVariableBindings(iv,userDefinedLeftBtn);
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"|-16-[iv(%f)]",image.size.width/3] options:0 metrics:nil views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[userDefinedLeftBtn(70)]" options:0 metrics:nil views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:[iv(%f)]",image.size.height/3] options:0 metrics:nil views:views]];
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:iv attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:titLab attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[userDefinedLeftBtn]|" options:0 metrics:nil views:views]];
+}
+-(void)setUserDefinedLeftBtnWithTitle:(NSString *)title withTarget:(id)target selected:(SEL)selected;
+{
+    userDefinedLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [userDefinedLeftBtn setTitle:title forState:UIControlStateNormal];
+    [userDefinedLeftBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [userDefinedLeftBtn setFrame:CGRectMake(16, 0, 64, 44)];
+    [userDefinedLeftBtn addTarget:target action:selected forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:userDefinedLeftBtn];
+    
+}
+
+-(void)setUserDefineLeftReturnBtn
+{
+    UIButton * button = [UIFactory button:nil sel:nil titleColor:@"" title:@"返回" fontSize:17 frame:CGRectMake(16, 0, 64, 44)];
+    [button addTarget:self action:@selector(onBackBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+}
+-(void)onBackBtnClicked:(id)sender{
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [app.navController popViewControllerAnimated:YES];
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
