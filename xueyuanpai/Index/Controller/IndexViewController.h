@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface IndexViewController : BaseViewController
+@interface IndexViewController : BaseViewController<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @end

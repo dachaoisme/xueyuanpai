@@ -20,6 +20,6 @@
 
 #import "UIFactory.h"
 #import "ResLoader.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "NotificationDefine.h"
 #endif /* XYP_PrefixHeader_pch */

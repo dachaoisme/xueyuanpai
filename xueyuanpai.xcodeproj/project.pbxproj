@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581ABF1E1CE0DAEA00B933D7 /* IndexCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ABF1D1CE0DAEA00B933D7 /* IndexCollectionReusableView.m */; };
 		5829986E1CDB29E7004A05FB /* Default-375w-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5829986A1CDB29E7004A05FB /* Default-375w-667h@2x.png */; };
 		5829986F1CDB29E7004A05FB /* Default-414w-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5829986B1CDB29E7004A05FB /* Default-414w-736h@3x.png */; };
 		582998701CDB29E7004A05FB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5829986C1CDB29E7004A05FB /* Default-568h@2x.png */; };
@@ -18,6 +19,8 @@
 		583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CC1CDA7C8200830BBE /* UIFactory.m */; };
 		583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CF1CDA7D4B00830BBE /* ResLoader.m */; };
 		583D65D41CDA824200830BBE /* BaseNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65D31CDA824200830BBE /* BaseNavView.m */; };
+		58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B7982A1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m */; };
+		58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BA78D41CDCE191000C71D3 /* IndexScrollView.m */; };
 		58F67BA41CD9863400D55BE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA31CD9863400D55BE0 /* main.m */; };
 		58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA61CD9863400D55BE0 /* AppDelegate.m */; };
 		58F67BAF1CD9863400D55BE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F67BAE1CD9863400D55BE0 /* Assets.xcassets */; };
@@ -69,6 +72,8 @@
 /* Begin PBXFileReference section */
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		581ABF1C1CE0DAEA00B933D7 /* IndexCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexCollectionReusableView.h; sourceTree = "<group>"; };
+		581ABF1D1CE0DAEA00B933D7 /* IndexCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexCollectionReusableView.m; sourceTree = "<group>"; };
 		5829986A1CDB29E7004A05FB /* Default-375w-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-375w-667h@2x.png"; sourceTree = "<group>"; };
 		5829986B1CDB29E7004A05FB /* Default-414w-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-414w-736h@3x.png"; sourceTree = "<group>"; };
 		5829986C1CDB29E7004A05FB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -86,6 +91,10 @@
 		583D65D01CDA7D4B00830BBE /* ResLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResLoader.h; sourceTree = "<group>"; };
 		583D65D21CDA824200830BBE /* BaseNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavView.h; sourceTree = "<group>"; };
 		583D65D31CDA824200830BBE /* BaseNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavView.m; sourceTree = "<group>"; };
+		58B798291CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexIntegralMallCollectionReusableView.h; sourceTree = "<group>"; };
+		58B7982A1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexIntegralMallCollectionReusableView.m; sourceTree = "<group>"; };
+		58BA78D31CDCE191000C71D3 /* IndexScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexScrollView.h; sourceTree = "<group>"; };
+		58BA78D41CDCE191000C71D3 /* IndexScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexScrollView.m; sourceTree = "<group>"; };
 		58F67B9F1CD9863400D55BE0 /* xueyuanpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xueyuanpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F67BA31CD9863400D55BE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58F67BA51CD9863400D55BE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -459,6 +468,12 @@
 		58F67BF01CD990A200D55BE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				58BA78D31CDCE191000C71D3 /* IndexScrollView.h */,
+				58BA78D41CDCE191000C71D3 /* IndexScrollView.m */,
+				581ABF1C1CE0DAEA00B933D7 /* IndexCollectionReusableView.h */,
+				581ABF1D1CE0DAEA00B933D7 /* IndexCollectionReusableView.m */,
+				58B798291CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.h */,
+				58B7982A1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -765,9 +780,11 @@
 				58F67BFC1CD990A200D55BE0 /* ExpressCenterViewController.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
 				58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */,
+				581ABF1E1CE0DAEA00B933D7 /* IndexCollectionReusableView.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
+				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
 				58F67C341CD9CF9500D55BE0 /* UIScrollView+MJExtension.m in Sources */,
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
@@ -783,6 +800,7 @@
 				58F67BFD1CD990A200D55BE0 /* IndexViewController.m in Sources */,
 				58F67C2E1CD9CF9500D55BE0 /* MJRefreshFooter.m in Sources */,
 				5829987A1CDB4486004A05FB /* MineViewController.m in Sources */,
+				58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
 			);
