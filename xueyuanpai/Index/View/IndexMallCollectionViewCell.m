@@ -23,25 +23,24 @@
 
 -(void)setContentView
 {
-    UIImageView * mallImageView = [UIFactory imageView:CGRectMake(0, 0, 40, 40) viewMode:UIViewContentModeScaleAspectFill image:nil];
-    mallImageView.backgroundColor = [UIColor greenColor];
+    UIImageView * mallImageView = [UIFactory imageView:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-40) viewMode:UIViewContentModeScaleAspectFill image:nil];
     [self addSubview:mallImageView];
     self.mallImageView = mallImageView;
     
-    UILabel * mallTitileLable = [UIFactory label:14 color:@"999999" align:NSTextAlignmentCenter];
-    mallTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallImageView.frame), CGRectGetWidth(mallImageView.frame), 15) ;
+    UILabel * mallTitileLable = [UIFactory label:12*3 color:@"999999" align:NSTextAlignmentLeft];
+    mallTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallImageView.frame), CGRectGetWidth(mallImageView.frame), 20) ;
     [self addSubview:mallTitileLable];
     self.mallTitileLable = mallTitileLable;
     
-    UILabel * mallIntegralTitileLable = [UIFactory label:14 color:@"999999" align:NSTextAlignmentCenter];
-    mallIntegralTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallTitileLable.frame), CGRectGetWidth(mallTitileLable.frame), 15) ;
+    UILabel * mallIntegralTitileLable = [UIFactory label:12*3 color:@"999999" align:NSTextAlignmentLeft];
+    mallIntegralTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallTitileLable.frame), CGRectGetWidth(mallTitileLable.frame), 20) ;
     [self addSubview:mallIntegralTitileLable];
     self.mallIntegralTitileLable = mallIntegralTitileLable;
     
 }
 -(void)setContentViewWithModel:(IndexMallModel *)model
 {
-    [self.mallImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexMallThumbUrl]]];
+    [self.mallImageView sd_setImageWithURL:[NSURL URLWithString:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg"]];//[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexMallThumbUrl]]];
     self.mallTitileLable.text = model.indexMallTitle;
     self.mallIntegralTitileLable.text = [NSString stringWithFormat:@"%@积分",model.indexMallPoints];
 }

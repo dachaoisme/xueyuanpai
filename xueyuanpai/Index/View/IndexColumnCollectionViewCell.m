@@ -22,12 +22,11 @@
 }
 -(void)setContentView
 {
-    UIImageView * columnImageView = [UIFactory imageView:CGRectMake(0, 0, 40, 40) viewMode:UIViewContentModeScaleAspectFill image:nil];
-    columnImageView.backgroundColor = [UIColor redColor];
+    UIImageView * columnImageView = [UIFactory imageView:CGRectMake(0, 0, 45, 45) viewMode:UIViewContentModeScaleAspectFill image:nil];
     [self addSubview:columnImageView];
     self.columnImageView = columnImageView;
     
-    UILabel * columnTitileLable = [UIFactory label:14 color:@"999999" align:NSTextAlignmentCenter];
+    UILabel * columnTitileLable = [UIFactory label:10*3 color:@"999999" align:NSTextAlignmentCenter];
     columnTitileLable.frame = CGRectMake(0, CGRectGetMaxY(columnImageView.frame), CGRectGetWidth(columnImageView.frame), 15) ;
     [self addSubview:columnTitileLable];
     self.columnTitileLable = columnTitileLable;

@@ -49,8 +49,7 @@
     [self createCollectionView];
     
     [self requestBannerData];
-    [self requestColumnsData];
-    [self requestMallData];
+    //[self requestColumnsData];
 }
 -(void)createCollectionView
 {
@@ -98,8 +97,8 @@
             [CommonUtils showToastWithStr:model.responseMsg];
         }
         
-        [theCollectionView reloadData];
-        
+        //[theCollectionView reloadData];
+        [self requestColumnsData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
@@ -111,6 +110,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]getColumnsOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeCoModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
         if (model.responseCode == ResponseCodeSuccess) {
             
             for (NSDictionary * dic in model.responseCommonModel.responseDataList ) {
@@ -122,8 +122,8 @@
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
-        
-        [theCollectionView reloadData];
+        [self requestMallData];
+        //[theCollectionView reloadData];
         
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
