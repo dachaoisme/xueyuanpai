@@ -373,4 +373,13 @@
  *  @return
  */
 +(NSString *) dataFilePathWithName:(NSString *)name;
+
+/**
+ *  @brief  传入url需要拼接的部分
+ *
+ *  @param
+ *
+ *  @return   添加上基本的url
+ */
++(NSString *)getEffectiveUrlWithUrl:(NSString *)url;
 @end

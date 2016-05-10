@@ -21,6 +21,31 @@ typedef NS_ENUM(NSInteger, ReturnCode){
     SignMistake               = 10008
 };
 
+typedef NS_ENUM(NSInteger, BannerLinkToType){
+    BannerLinkToWebView              = 0, //0 url地址
+    BannerLinkToNewStudentStrategy   = 1, //1 大学生新生攻略
+    BannerLinkToPoineeringClassroom  = 2, //2 创业课程
+    BannerLinkToPoineeringTrain      = 3, //3 创业实训课程
+    
+};
+
+//跳转到
+typedef NS_ENUM(NSInteger, ResponseCode){
+    
+    ResponseCodeSuccess  = 1,
+    ResponseCodeFail     = 0,
+    
+};
+
+
+typedef NS_ENUM(NSInteger, BannerType){
+    
+    BannerTypeOfIndex        = 1,
+    BannerTypeOfIntegral     = 2,
+    BannerTypeOfSchoolInvite = 3,
+    
+};
+
 
 
 

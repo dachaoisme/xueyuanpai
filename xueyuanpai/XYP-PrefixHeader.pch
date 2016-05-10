@@ -18,8 +18,20 @@
 #import "ConfigDefine.h"
 #import "CommonUtils.h"
 
+//网络相关
+#import "NetworkConfigue.h"
+#import "HttpCommonModel.h"
+#import "HttpClient.h"
+#import "HttpServer.h"
+
+//工具相关
 #import "UIFactory.h"
 #import "ResLoader.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "NotificationDefine.h"
+#import "NSDictionary+SafeExpectations.h"
+
+//第三方相关
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <AFNetworking/AFNetworking.h>
+#import "MBProgressHUD.h"
 #endif /* XYP_PrefixHeader_pch */

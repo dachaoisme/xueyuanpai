@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IndexColumnsModel.h"
 @interface IndexColumnCollectionViewCell : UICollectionViewCell
 
+@property(nonatomic,strong)UIImageView * columnImageView;
+@property(nonatomic,strong)UILabel     * columnTitileLable;
+
+-(void)setContentViewWithModel:(IndexColumnsModel *)model;
 @end

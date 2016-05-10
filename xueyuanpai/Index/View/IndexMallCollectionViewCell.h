@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IndexMallModel.h"
 @interface IndexMallCollectionViewCell : UICollectionViewCell
+
+@property(nonatomic,strong)UIImageView * mallImageView;
+@property(nonatomic,strong)UILabel     * mallTitileLable;
+@property(nonatomic,strong)UILabel     * mallIntegralTitileLable;
+
+-(void)setContentViewWithModel:(IndexMallModel *)model;
 
 @end

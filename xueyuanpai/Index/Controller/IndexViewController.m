@@ -8,13 +8,28 @@
 
 #import "IndexViewController.h"
 #import "MineViewController.h"
+
 #import "IndexCollectionReusableView.h"
 #import "IndexIntegralMallCollectionReusableView.h"
+#import "IndexColumnCollectionViewCell.h"
+#import "IndexMallCollectionViewCell.h"
+
+#import "IndexBannerModel.h"
+#import "IndexColumnsModel.h"
+#import "IndexMallModel.h"
+
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
     UICollectionView * theCollectionView;
     
+    NSMutableArray * bannerItemArray;
+    NSMutableArray * bannerImageArray;
+    NSMutableArray * columnItemArray;
+    NSMutableArray * mallItemArray;
+    
+    NSMutableArray * bigDataArray;
+
 }
 @end
 
@@ -26,8 +41,16 @@
     [self setTitle:@"首页"];
     [self creatLeftNavWithImageName:@"v_uc_act"];
     [self creatRightNavWithImageName:@"v_uc_act"];
-    
+    bigDataArray     = [NSMutableArray array];
+    bannerItemArray  = [NSMutableArray array];
+    bannerImageArray = [NSMutableArray array];
+    columnItemArray  = [NSMutableArray array];
+    mallItemArray    = [NSMutableArray array];
     [self createCollectionView];
+    
+    [self requestBannerData];
+    [self requestColumnsData];
+    [self requestMallData];
 }
 -(void)createCollectionView
 {
@@ -45,18 +68,104 @@
     theCollectionView.delegate=self;
     theCollectionView.dataSource=self;
     //注册item类型 这里使用系统的类型
-    [theCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellid"];
+    [theCollectionView registerClass:[IndexColumnCollectionViewCell class] forCellWithReuseIdentifier:@"cellColumnId"];
+    [theCollectionView registerClass:[IndexMallCollectionViewCell class] forCellWithReuseIdentifier:@"cellMallId"];
     [self.view addSubview:theCollectionView];
 
-     [theCollectionView registerClass:[IndexCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    [theCollectionView registerClass:[IndexCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     [theCollectionView registerClass:[IndexIntegralMallCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView2"];
 }
-
+//首页轮播图
+-(void)requestBannerData
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:@"1" forKey:@"page"];
+    [dic setObject:@"10" forKey:@"size"];
+    [dic setObject:@"1" forKey:@"type"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]getBannerOfIndexWithParams:dic withSuccessBlock:^(HttpResponseCodeCoModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            for (NSDictionary * dic in model.responseCommonModel.responseDataList ) {
+                
+                IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
+                [bannerItemArray addObject:model];
+                [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl]];
+            }
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        [theCollectionView reloadData];
+        
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+//首页栏目分类
+-(void)requestColumnsData
+{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]getColumnsOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeCoModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            for (NSDictionary * dic in model.responseCommonModel.responseDataList ) {
+                
+                IndexColumnsModel * model = [[IndexColumnsModel alloc]initWithDic:dic];
+                [columnItemArray addObject:model];
+            }
+            [bigDataArray addObject:columnItemArray];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        [theCollectionView reloadData];
+        
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+//首页积分商品
+-(void)requestMallData
+{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]getMallOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeCoModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            for (NSDictionary * dic in model.responseCommonModel.responseDataList ) {
+                
+                IndexMallModel * model = [[IndexMallModel alloc]initWithDic:dic];
+                [mallItemArray addObject:model];
+            }
+            [bigDataArray addObject:mallItemArray];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        [theCollectionView reloadData];
+        
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section==0) {
-        return CGSizeMake(320, 150);
+        if (bannerItemArray.count==0) {
+        
+            return CGSizeMake(320, 0);
+        }else{
+            return CGSizeMake(320, 150);
+        }
     }else{
         return CGSizeMake(320, 50);
     }
@@ -64,21 +173,14 @@
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     
-        NSArray *imageArray = @[
-                                @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg",
-                                @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2016158/avalanche.jpg",
-                                @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg",
-                                @"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1833469/porter.jpg",
-                                ];
     
-
     //此处是headerView
     if (kind == UICollectionElementKindSectionHeader) {
         if (indexPath.section == 0) {
             IndexCollectionReusableView *headReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
             
             headReusableView.delegate = self;
-            headReusableView.imageArray = imageArray;
+            headReusableView.imageArray = bannerImageArray;
             return headReusableView;
         }else{
             IndexIntegralMallCollectionReusableView *headReusableView2 = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView2" forIndexPath:indexPath];
@@ -89,8 +191,6 @@
     }else{
         return nil;
     }
-    
-    
 }
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -113,24 +213,26 @@
 }
 //返回分区个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return 2;
+    return bigDataArray.count;
 }
 //返回每个分区的item个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if (section==0) {
-        return 4;
-    }else{
-        return 10;
-    }
+    return [[bigDataArray objectAtIndex:section] count];
 }
 //返回每个item
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    id obj = [[bigDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if ([obj isKindOfClass:[IndexColumnsModel class]]) {
+        IndexColumnCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellColumnId" forIndexPath:indexPath];
+        [cell setContentViewWithModel:obj];
+        return cell;
+    }else{
+        IndexMallCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellMallId" forIndexPath:indexPath];
+        [cell setContentViewWithModel:obj];
+        return cell;
+    }
+//    UICollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
     
-    UICollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
-    
-    cell.backgroundColor = [UIColor redColor];//[UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
-    
-    return cell;
 }
 
 #pragma mark - 点击banner图
