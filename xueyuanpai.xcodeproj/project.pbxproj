@@ -43,6 +43,10 @@
 		58A9449F1CE277C600DAD398 /* signup_student@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944881CE277C600DAD398 /* signup_student@3x.png */; };
 		58A944A01CE277C600DAD398 /* signup_teacher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944891CE277C600DAD398 /* signup_teacher@2x.png */; };
 		58A944A11CE277C600DAD398 /* signup_teacher@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A9448A1CE277C600DAD398 /* signup_teacher@3x.png */; };
+		58A944AB1CE27A5300DAD398 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A944AA1CE27A5300DAD398 /* RegisterViewController.m */; };
+		58A944B41CE32A9500DAD398 /* forgetPassword@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944B21CE32A9500DAD398 /* forgetPassword@2x.png */; };
+		58A944B51CE32A9500DAD398 /* forgetPassword@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944B31CE32A9500DAD398 /* forgetPassword@3x.png */; };
+		58A944B71CE32BA600DAD398 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A944B61CE32BA600DAD398 /* LoginViewController.m */; };
 		58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B7982A1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m */; };
 		58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BA78D41CDCE191000C71D3 /* IndexScrollView.m */; };
 		58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AA91CE208440036D105 /* IndexColumnsModel.m */; };
@@ -145,6 +149,12 @@
 		58A944881CE277C600DAD398 /* signup_student@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup_student@3x.png"; sourceTree = "<group>"; };
 		58A944891CE277C600DAD398 /* signup_teacher@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup_teacher@2x.png"; sourceTree = "<group>"; };
 		58A9448A1CE277C600DAD398 /* signup_teacher@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signup_teacher@3x.png"; sourceTree = "<group>"; };
+		58A944A61CE279B400DAD398 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		58A944A91CE27A5300DAD398 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		58A944AA1CE27A5300DAD398 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		58A944B21CE32A9500DAD398 /* forgetPassword@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forgetPassword@2x.png"; sourceTree = "<group>"; };
+		58A944B31CE32A9500DAD398 /* forgetPassword@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forgetPassword@3x.png"; sourceTree = "<group>"; };
+		58A944B61CE32BA600DAD398 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		58B798291CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexIntegralMallCollectionReusableView.h; sourceTree = "<group>"; };
 		58B7982A1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexIntegralMallCollectionReusableView.m; sourceTree = "<group>"; };
 		58BA78D31CDCE191000C71D3 /* IndexScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexScrollView.h; sourceTree = "<group>"; };
@@ -355,6 +365,8 @@
 		58A944731CE277C600DAD398 /* account */ = {
 			isa = PBXGroup;
 			children = (
+				58A944B21CE32A9500DAD398 /* forgetPassword@2x.png */,
+				58A944B31CE32A9500DAD398 /* forgetPassword@3x.png */,
 				58A944741CE277C600DAD398 /* avatar@2x.png */,
 				58A944751CE277C600DAD398 /* avatar@3x.png */,
 				58A944761CE277C600DAD398 /* avatar_change@2x.png */,
@@ -380,6 +392,41 @@
 				58A9448A1CE277C600DAD398 /* signup_teacher@3x.png */,
 			);
 			path = account;
+			sourceTree = "<group>";
+		};
+		58A944A21CE2796700DAD398 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				58A944A31CE2797500DAD398 /* Controller */,
+				58A944A41CE2797500DAD398 /* View */,
+				58A944A51CE2797500DAD398 /* Model */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		58A944A31CE2797500DAD398 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				58A944A61CE279B400DAD398 /* LoginViewController.h */,
+				58A944B61CE32BA600DAD398 /* LoginViewController.m */,
+				58A944A91CE27A5300DAD398 /* RegisterViewController.h */,
+				58A944AA1CE27A5300DAD398 /* RegisterViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		58A944A41CE2797500DAD398 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58A944A51CE2797500DAD398 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		58F67B961CD9863400D55BE0 = {
@@ -411,6 +458,7 @@
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
 				58F67BD81CD990A200D55BE0 /* BaseViewController.m */,
+				58A944A21CE2796700DAD398 /* Account */,
 				5829987B1CDC3DBE004A05FB /* Inbox */,
 				582998741CDB43E4004A05FB /* Mine */,
 				58F67BE51CD990A200D55BE0 /* ExpressCenter */,
@@ -806,10 +854,12 @@
 				58A944991CE277C600DAD398 /* login_phone@3x.png in Resources */,
 				582998711CDB29E7004A05FB /* Default@2x.png in Resources */,
 				58A9449C1CE277C600DAD398 /* nav_icon_back@2x.png in Resources */,
+				58A944B41CE32A9500DAD398 /* forgetPassword@2x.png in Resources */,
 				58A944901CE277C600DAD398 /* avatar_upload@3x.png in Resources */,
 				58A9449E1CE277C600DAD398 /* signup_student@2x.png in Resources */,
 				58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */,
 				58A9448B1CE277C600DAD398 /* avatar@2x.png in Resources */,
+				58A944B51CE32A9500DAD398 /* forgetPassword@3x.png in Resources */,
 				58F67C2B1CD9CF9500D55BE0 /* MJRefresh.bundle in Resources */,
 				58A944981CE277C600DAD398 /* login_phone@2x.png in Resources */,
 				58A9448C1CE277C600DAD398 /* avatar@3x.png in Resources */,
@@ -919,10 +969,12 @@
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
+				58A944B71CE32BA600DAD398 /* LoginViewController.m in Sources */,
 				58F67C341CD9CF9500D55BE0 /* UIScrollView+MJExtension.m in Sources */,
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
 				58F67BFF1CD990A200D55BE0 /* HttpModel.m in Sources */,
 				58F67C351CD9CF9500D55BE0 /* UIScrollView+MJRefresh.m in Sources */,
+				58A944AB1CE27A5300DAD398 /* RegisterViewController.m in Sources */,
 				58F67C2F1CD9CF9500D55BE0 /* MJRefreshGifFooter.m in Sources */,
 				58F67C2D1CD9CF9500D55BE0 /* MJRefreshConst.m in Sources */,
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
@@ -1070,6 +1122,7 @@
 				INFOPLIST_FILE = xueyuanpai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = xueyuanpai.xueyuanpai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

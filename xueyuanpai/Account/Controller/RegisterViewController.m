@@ -1,36 +1,22 @@
 //
-//  BusinessCenterViewController.m
+//  RegisterViewController.m
 //  xueyuanpai
 //
-//  Created by lidachao on 16/5/3.
+//  Created by lidachao on 16/5/11.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessCenterViewController.h"
+#import "RegisterViewController.h"
 
-@interface BusinessCenterViewController ()
+@interface RegisterViewController ()
 
 @end
 
-@implementation BusinessCenterViewController
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self theTabBarHidden:NO];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [self theTabBarHidden:YES];
-}
+@implementation RegisterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    [self setTitle:@"创业中心"];
+    [self setTitle:@"注册学院派"];
 }
 
 - (void)didReceiveMemoryWarning {

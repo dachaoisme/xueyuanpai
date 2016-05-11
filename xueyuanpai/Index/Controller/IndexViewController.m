@@ -18,6 +18,7 @@
 #import "IndexColumnsModel.h"
 #import "IndexMallModel.h"
 
+#import "LoginViewController.h"
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -35,6 +36,17 @@
 
 @implementation IndexViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self theTabBarHidden:NO];
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self theTabBarHidden:YES];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -255,8 +267,18 @@
 #pragma mark - 收件箱
 -(void)rightItemActionWithBtn:(UIButton *)sender
 {
-    //收件箱界面
-    [CommonUtils showToastWithStr:@"收件箱"];
+    
+    BOOL yesLogin = NO;
+    //需要先判断是否已经登陆
+    if (yesLogin) {
+        //收件箱界面
+        [CommonUtils showToastWithStr:@"收件箱"];
+    }else{
+        //进入登陆注册页面
+        
+        LoginViewController * loginVC = [[LoginViewController alloc]init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
