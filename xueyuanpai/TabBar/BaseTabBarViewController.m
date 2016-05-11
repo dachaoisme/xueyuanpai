@@ -19,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
     self.tabBar.hidden = YES;
     IndexViewController *IndexVC = [[IndexViewController alloc] init];
     UINavigationController * IndexNavVC=[[UINavigationController alloc] initWithRootViewController:IndexVC];

@@ -7,8 +7,9 @@
 //
 
 #import "LoginViewController.h"
-
-@interface LoginViewController ()
+#import "RegisterViewController.h"
+#import "RegisterRoleView.h"
+@interface LoginViewController ()<RegisterRoleViewDelegate>
 {
     UITextField *phoneTextField;
     UITextField *passwordTextField;
@@ -17,6 +18,7 @@
     UIButton    *loginBtn;
     UIButton    *registerBtn;
     UIButton    *justToLook;
+    RegisterRoleView * registerRoleAlertView;
 }
 @end
 
@@ -33,7 +35,7 @@
     self.navigationController.navigationBarHidden = YES;
 }
 
--(void)viewDidDisappear:(BOOL)animated
+-(void)viewWillDisappear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = NO;
 }
@@ -215,6 +217,27 @@
 -(void)registerAccount:(UIButton *)sender
 {
     [CommonUtils showToastWithStr:@"注册"];
+    
+    
+    if (registerRoleAlertView) {
+        registerRoleAlertView = nil;
+    }
+    registerRoleAlertView = [[RegisterRoleView alloc]initWithFrame:CGRectMake(35, self.view.center.y-75, SCREEN_WIDTH-35*2, 150) withSuperView:self.view];
+    registerRoleAlertView.delegate = self;
+    registerRoleAlertView.clipsToBounds = YES;
+    registerRoleAlertView.layer.cornerRadius = 10.0;
+    registerRoleAlertView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:registerRoleAlertView];
+    
+}
+-(void)registerRoleWithType:(RegisterRoleType)registerRoleType
+{
+    
+    RegisterViewController * registerVC = [[RegisterViewController alloc]init];
+    registerVC.registerRoleType = registerRoleType;
+    [self.navigationController pushViewController:registerVC animated:YES];
+    [registerRoleAlertView removeFromSuperview];
+    registerRoleAlertView = nil;
 }
 #pragma mark - 随便看看
 -(void)justToLook:(UIButton *)sender

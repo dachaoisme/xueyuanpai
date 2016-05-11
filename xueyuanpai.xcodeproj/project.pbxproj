@@ -47,6 +47,7 @@
 		58A944B41CE32A9500DAD398 /* forgetPassword@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944B21CE32A9500DAD398 /* forgetPassword@2x.png */; };
 		58A944B51CE32A9500DAD398 /* forgetPassword@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944B31CE32A9500DAD398 /* forgetPassword@3x.png */; };
 		58A944B71CE32BA600DAD398 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A944B61CE32BA600DAD398 /* LoginViewController.m */; };
+		58A944C01CE3360B00DAD398 /* RegisterRoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A944BF1CE3360B00DAD398 /* RegisterRoleView.m */; };
 		58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B7982A1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m */; };
 		58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BA78D41CDCE191000C71D3 /* IndexScrollView.m */; };
 		58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AA91CE208440036D105 /* IndexColumnsModel.m */; };
@@ -155,6 +156,8 @@
 		58A944B21CE32A9500DAD398 /* forgetPassword@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forgetPassword@2x.png"; sourceTree = "<group>"; };
 		58A944B31CE32A9500DAD398 /* forgetPassword@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forgetPassword@3x.png"; sourceTree = "<group>"; };
 		58A944B61CE32BA600DAD398 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		58A944BE1CE3360B00DAD398 /* RegisterRoleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRoleView.h; sourceTree = "<group>"; };
+		58A944BF1CE3360B00DAD398 /* RegisterRoleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRoleView.m; sourceTree = "<group>"; };
 		58B798291CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexIntegralMallCollectionReusableView.h; sourceTree = "<group>"; };
 		58B7982A1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexIntegralMallCollectionReusableView.m; sourceTree = "<group>"; };
 		58BA78D31CDCE191000C71D3 /* IndexScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexScrollView.h; sourceTree = "<group>"; };
@@ -418,6 +421,8 @@
 		58A944A41CE2797500DAD398 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				58A944BE1CE3360B00DAD398 /* RegisterRoleView.h */,
+				58A944BF1CE3360B00DAD398 /* RegisterRoleView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -991,6 +996,7 @@
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
 				58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */,
+				58A944C01CE3360B00DAD398 /* RegisterRoleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

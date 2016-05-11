@@ -46,7 +46,12 @@ typedef NS_ENUM(NSInteger, BannerType){
     
 };
 
-
+typedef NS_ENUM(NSInteger, RegisterRoleType){
+    
+    RegisterRoleOfStudent      = 1,
+    RegisterRoleTypeTeacher    = 2,
+    
+};
 
 
 #endif /* EnumDefine_h */
