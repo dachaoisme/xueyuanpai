@@ -23,7 +23,7 @@
     return instance;
 }
 
--(void)getWithMethod:(NSString *)methond withParams:(NSDictionary *)dic withSuccess:(XYPCommonBlock)successBlock withFailBlock:(XYPHttpErrorBlock)failBlock
+-(void)getWithMethod:(NSString *)methond withParams:(NSDictionary *)dic withSuccess:(XYPBaseBlock)successBlock withFailBlock:(XYPHttpErrorBlock)failBlock
 {
     //url
     NSMutableString *tempUrl =[NSMutableString stringWithString:baseApiUrl];// baseUrl ;
@@ -50,7 +50,7 @@
     //3.请求
     [manager GET:tempUrl parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         //NSLog(@"GET --> %@, %@", responseObject, [NSThread currentThread]); //自动返回主线程
-        HttpResponseCodeCoModel * model = [[HttpResponseCodeCoModel alloc]initWithDic:responseObject];
+        HttpResponseCodeModel * model = [[HttpResponseCodeModel alloc]initWithDic:responseObject];
         
         successBlock(model);
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {

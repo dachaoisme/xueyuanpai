@@ -1,36 +1,23 @@
+
 //
-//  BusinessCenterViewController.m
+//  AddTeacherViewController.m
 //  xueyuanpai
 //
-//  Created by lidachao on 16/5/3.
+//  Created by lidachao on 16/5/12.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessCenterViewController.h"
+#import "AddTeacherViewController.h"
 
-@interface BusinessCenterViewController ()
+@interface AddTeacherViewController ()
 
 @end
 
-@implementation BusinessCenterViewController
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self theTabBarHidden:NO];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-}
+@implementation AddTeacherViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    [self setTitle:@"创业中心"];
 }
 
 - (void)didReceiveMemoryWarning {

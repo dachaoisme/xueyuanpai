@@ -33,6 +33,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = YES;
+    [self theTabBarHidden:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -62,7 +63,7 @@
     phoneTextField.tag = 1;
     phoneTextField.delegate = self;
     phoneTextField.textAlignment = NSTextAlignmentLeft;
-    phoneTextField.borderStyle = UITextBorderStyleRoundedRect;
+    phoneTextField.borderStyle = UITextBorderStyleLine;
     phoneTextField.placeholder = @"请输入手机号";
     phoneTextField.adjustsFontSizeToFitWidth = YES;
     phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -76,7 +77,7 @@
     passwordTextField.tag = 2;
     passwordTextField.delegate = self;
     passwordTextField.textAlignment = NSTextAlignmentLeft;
-    passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
+    passwordTextField.borderStyle = UITextBorderStyleLine;
     passwordTextField.placeholder = @"请输入密码";
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     passwordTextField.adjustsFontSizeToFitWidth = YES;

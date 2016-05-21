@@ -8,7 +8,7 @@
 
 #import "HttpCommonModel.h"
 
-@implementation HttpResponseCodeCoModel
+@implementation HttpResponseCodeModel
 
 -(id)initWithDic:(NSDictionary *)dic
 {
@@ -17,7 +17,7 @@
         
         self.responseCode           =[[dic stringForKey:@"stat"] integerValue];
         self.responseMsg            = [dic stringForKey:@"msg"];
-        self.responseCommonModel    = [[HttpCommonModel alloc] initWithDic:[dic dictionaryForKey:@"data"]];
+        self.responseCommonDic      = [dic dictionaryForKey:@"data"];
     }
     
     return self;
@@ -26,7 +26,8 @@
 
 @end
 
-@implementation HttpCommonModel
+
+@implementation HttpResponsePageModel
 
 -(id)initWithDic:(NSDictionary *)dic
 {
@@ -35,7 +36,6 @@
         self.responseCurrentPage    = [dic stringForKey:@"page"];
         self.responsePageTotalCount = [dic stringForKey:@"cnt"];
         self.responsePageLength     = [dic stringForKey:@"len"];
-        self.responseDataList       = [dic arrayForKey:@"lists"];
     }
     
     return self;

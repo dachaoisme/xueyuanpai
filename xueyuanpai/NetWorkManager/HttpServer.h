@@ -8,10 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+
 //请求失败的时候的block
 typedef void(^XYPHttpErrorBlock)(NSError *error);
-//常规的数据返回
-typedef void(^XYPCommonBlock)(HttpResponseCodeCoModel *model);
+//最基本数据model
+typedef void(^XYPBaseBlock)(HttpResponseCodeModel *model);
+///page数据mode
+typedef void(^XYPPagesBlock)(HttpResponsePageModel *pageModel);
+typedef void(^XYPNoneListBlock)(HttpResponseCodeModel *responseModel ,NSDictionary *listDic);
+//类似首页轮播图、分栏列表以及积分商城
+typedef void(^XYPCommonListBlock)(HttpResponseCodeModel *responseModel ,HttpResponsePageModel *pageModel,NSDictionary *ListDic);
+
 
 @interface HttpServer : NSObject
 
@@ -32,6 +39,6 @@ typedef void(^XYPCommonBlock)(HttpResponseCodeCoModel *model);
  *
  *  @return
  */
--(void)getWithMethod:(NSString *)methond withParams:(NSDictionary *)dic withSuccess:(XYPCommonBlock)successBlock withFailBlock:(XYPHttpErrorBlock)failBlock;
+-(void)getWithMethod:(NSString *)methond withParams:(NSDictionary *)dic withSuccess:(XYPBaseBlock)successBlock withFailBlock:(XYPHttpErrorBlock)failBlock;
 
 @end

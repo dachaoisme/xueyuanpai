@@ -14,10 +14,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+//配置相关
 #import "EnumDefine.h"
 #import "ConfigDefine.h"
 #import "CommonUtils.h"
-
+//用户相关
+#import "UserAccountManager.h"
 //网络相关
 #import "NetworkConfigue.h"
 #import "HttpCommonModel.h"
@@ -29,6 +31,7 @@
 #import "ResLoader.h"
 #import "NotificationDefine.h"
 #import "NSDictionary+SafeExpectations.h"
+#import "UserDefaultsDataDeal.h"
 
 //第三方相关
 #import <SDWebImage/UIImageView+WebCache.h>

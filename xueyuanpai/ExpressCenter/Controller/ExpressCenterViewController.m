@@ -23,7 +23,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self theTabBarHidden:YES];
+    
 }
 
 - (void)viewDidLoad {

@@ -1,36 +1,22 @@
 //
-//  BusinessCenterViewController.m
+//  AddStudentInfoViewController.m
 //  xueyuanpai
 //
-//  Created by lidachao on 16/5/3.
+//  Created by lidachao on 16/5/12.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessCenterViewController.h"
+#import "AddStudentInfoViewController.h"
 
-@interface BusinessCenterViewController ()
+@interface AddStudentInfoViewController ()
 
 @end
 
-@implementation BusinessCenterViewController
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self theTabBarHidden:NO];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
-}
+@implementation AddStudentInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    [self setTitle:@"创业中心"];
 }
 
 - (void)didReceiveMemoryWarning {

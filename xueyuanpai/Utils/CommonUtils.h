@@ -16,8 +16,16 @@
  *
  *  @return
  */
-+(BOOL)checkIsNum:(NSString *)str;
 
++(BOOL)checkIsNum:(NSString *)str;
+/**
+ *  @brief  验证手机号是否有效
+ *
+ *  @param
+ *
+ *  @return   bool
+ */
++(BOOL)checkPhoneNumIsAvailableWithPhoneNumString:(NSString *)phoneNum;
 /**
  *  @brief  正则表达式验证字符串是否由字母组成
  *
@@ -382,4 +390,5 @@
  *  @return   添加上基本的url
  */
 +(NSString *)getEffectiveUrlWithUrl:(NSString *)url;
+
 @end

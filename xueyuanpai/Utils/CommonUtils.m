@@ -20,7 +20,14 @@
     BOOL res = [regExPredicate evaluateWithObject:str];
     return res;
 }
-
++(BOOL)checkPhoneNumIsAvailableWithPhoneNumString:(NSString *)phoneNum
+{
+    
+    NSString *phoneRegex = @"1[3|5|7|8|][0-9]{9}";
+    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    return [phoneTest evaluateWithObject:phoneNum];
+    
+}
 +(BOOL)checkIsWorld:(NSString *)str{
     NSString *num = @"^[a-z]+$";//@"^[A-Za-z]+$";
     

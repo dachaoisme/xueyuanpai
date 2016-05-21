@@ -45,7 +45,7 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self theTabBarHidden:YES];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,44 +95,48 @@
     [dic setObject:@"1" forKey:@"type"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[HttpClient sharedInstance]getBannerOfIndexWithParams:dic withSuccessBlock:^(HttpResponseCodeCoModel *model) {
+    
+    [[HttpClient sharedInstance]getBannerOfIndexWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
+        
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if (model.responseCode == ResponseCodeSuccess) {
+        if (responseModel.responseCode == ResponseCodeSuccess) {
             
-            for (NSDictionary * dic in model.responseCommonModel.responseDataList ) {
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
                 
                 IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
                 [bannerItemArray addObject:model];
                 [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl]];
             }
         }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
         
         //[theCollectionView reloadData];
         [self requestColumnsData];
+        
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
+    
 }
 //首页栏目分类
 -(void)requestColumnsData
 {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[HttpClient sharedInstance]getColumnsOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeCoModel *model) {
+    [[HttpClient sharedInstance]getColumnsOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
-        if (model.responseCode == ResponseCodeSuccess) {
+        if (responseModel.responseCode == ResponseCodeSuccess) {
             
-            for (NSDictionary * dic in model.responseCommonModel.responseDataList ) {
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
                 
                 IndexColumnsModel * model = [[IndexColumnsModel alloc]initWithDic:dic];
                 [columnItemArray addObject:model];
             }
             [bigDataArray addObject:columnItemArray];
         }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
         [self requestMallData];
         //[theCollectionView reloadData];
@@ -147,18 +151,19 @@
 {
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[HttpClient sharedInstance]getMallOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeCoModel *model) {
+    [[HttpClient sharedInstance]getMallOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
+        
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if (model.responseCode == ResponseCodeSuccess) {
+        if (responseModel.responseCode == ResponseCodeSuccess) {
             
-            for (NSDictionary * dic in model.responseCommonModel.responseDataList ) {
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"]) {
                 
                 IndexMallModel * model = [[IndexMallModel alloc]initWithDic:dic];
                 [mallItemArray addObject:model];
             }
             [bigDataArray addObject:mallItemArray];
         }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
         
         [theCollectionView reloadData];
