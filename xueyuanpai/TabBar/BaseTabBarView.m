@@ -113,7 +113,7 @@
                 UIImageView * icon=(UIImageView*)[self viewWithTag:i+200];
                 icon.image=[UIImage imageNamed:[_imgArr objectAtIndex:i]];
                 UILabel * lab=(UILabel*)[self viewWithTag:10+i];
-                lab.textColor=[CommonUtils colorWithHex:@"5a5e60"];
+                lab.textColor=[CommonUtils colorWithHex:@"c2c3c4"];
             }
         }
     }
@@ -121,7 +121,7 @@
     UIImageView * icon=(UIImageView*)[self viewWithTag:index+200];
     icon.image=[UIImage imageNamed:[_imgSelArr objectAtIndex:selIndex]];
     UILabel * lab=(UILabel*)[self viewWithTag:10+selIndex];
-    lab.textColor=[CommonUtils colorWithHex:@"ff4861"];
+    lab.textColor=[CommonUtils colorWithHex:@"00beaf"];
 }
 -(void)setTipState
 {

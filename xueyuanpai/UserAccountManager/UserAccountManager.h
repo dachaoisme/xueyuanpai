@@ -16,12 +16,58 @@
 @property (nonatomic, strong) NSString *phoneNum;
 //用户密码
 @property (nonatomic, strong) NSString *password;
+///是否是登陆状态
+@property (nonatomic, assign) BOOL yesIsLogin;
+
 
 + (instancetype)sharedInstance;
 
+/**
+ *  @brief  保存登陆信息
+ *
+ *  @param
+ *
+ *  @return
+ */
 -(void)saveUserAccountWithUserId:(NSString *)userId withPhoneNum:(NSString *)phoneNum withPassword:(NSString *)password;
+/**
+ *  @brief  获取用户信息，并更新属性的值
+ *
+ *  @param
+ *
+ *  @return
+ */
 -(NSDictionary *)getUserInfo;
+/**
+ *  @brief  获取用户id
+ *
+ *  @param
+ *
+ *  @return
+ */
 -(NSString *)getUserId;
+/**
+ *  @brief  获取手机号
+ *
+ *  @param
+ *
+ *  @return
+ */
 -(NSString *)getUserPhoneNum;
+/**
+ *  @brief  获取密码
+ *
+ *  @param
+ *
+ *  @return
+ */
 -(NSString *)getUserPassWord;
+/**
+ *  @brief  退出登录
+ *
+ *  @param
+ *
+ *  @return
+ */
+-(void)exitLogin;
 @end

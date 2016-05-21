@@ -44,14 +44,14 @@
                        @"我的快递",
                        nil];
     _baseTabBarView.imgArr=[[NSArray alloc] initWithObjects:
-                     @"tabbar_unselect_home",
-                     @"tabbar_unselect_destination",
-                     @"tabbar_unselect_travel",
+                     @"tab_icon_home",
+                     @"tab_icon_creativity",
+                     @"tab_icon_package",
                      nil];
     _baseTabBarView.imgSelArr=[[NSArray alloc] initWithObjects:
-                        @"tabbar_select_home",
-                        @"tabbar_select_destination",
-                        @"tabbar_select_travel",
+                        @"tab_icon_home_hl",
+                        @"tab_icon_creativity",
+                        @"tab_icon_package_hl",
                         nil];
     
     [self.view addSubview:_baseTabBarView];
