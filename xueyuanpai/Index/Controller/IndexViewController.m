@@ -19,6 +19,8 @@
 #import "IndexMallModel.h"
 
 #import "LoginViewController.h"
+
+#import "UniversityAssnViewController.h"
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -251,7 +253,25 @@
 //    UICollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
     
 }
-
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    id obj = [[bigDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if ([obj isKindOfClass:[IndexColumnsModel class]]) {
+        if (indexPath.row==0) {
+            //大学社团
+            UniversityAssnViewController  *universityAssnVC = [[UniversityAssnViewController alloc]init];
+            [self.navigationController pushViewController:universityAssnVC animated:YES];
+        }else if (indexPath.row==1){
+            //时间银行
+        }else if (indexPath.row==2){
+            //跳蚤市场
+        }else{
+            //时间银行
+        }
+    }else{
+        
+    }
+}
 #pragma mark - 点击banner图
 -(void)selectedImageIndex:(NSInteger)index
 {

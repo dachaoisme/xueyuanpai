@@ -22,6 +22,7 @@
 		583D65D41CDA824200830BBE /* BaseNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65D31CDA824200830BBE /* BaseNavView.m */; };
 		5849FDC41CE47D6E0039AFC2 /* UserAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849FDC31CE47D6E0039AFC2 /* UserAccountManager.m */; };
 		5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849FDC61CE47F790039AFC2 /* UserDefaultsDataDeal.m */; };
+		5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5874A3661CF03B5700CE9FC9 /* UniversityAssnViewController.m */; };
 		58A9448B1CE277C600DAD398 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944741CE277C600DAD398 /* avatar@2x.png */; };
 		58A9448C1CE277C600DAD398 /* avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944751CE277C600DAD398 /* avatar@3x.png */; };
 		58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944761CE277C600DAD398 /* avatar_change@2x.png */; };
@@ -135,6 +136,8 @@
 		5849FDC31CE47D6E0039AFC2 /* UserAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountManager.m; sourceTree = "<group>"; };
 		5849FDC51CE47F790039AFC2 /* UserDefaultsDataDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsDataDeal.h; sourceTree = "<group>"; };
 		5849FDC61CE47F790039AFC2 /* UserDefaultsDataDeal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsDataDeal.m; sourceTree = "<group>"; };
+		5874A3651CF03B5700CE9FC9 /* UniversityAssnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniversityAssnViewController.h; sourceTree = "<group>"; };
+		5874A3661CF03B5700CE9FC9 /* UniversityAssnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniversityAssnViewController.m; sourceTree = "<group>"; };
 		58A944741CE277C600DAD398 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		58A944751CE277C600DAD398 /* avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@3x.png"; sourceTree = "<group>"; };
 		58A944761CE277C600DAD398 /* avatar_change@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar_change@2x.png"; sourceTree = "<group>"; };
@@ -386,6 +389,39 @@
 			path = UserAccountManager;
 			sourceTree = "<group>";
 		};
+		5874A35B1CF03AF200CE9FC9 /* UniversityAssn */ = {
+			isa = PBXGroup;
+			children = (
+				5874A35C1CF03AF200CE9FC9 /* Controller */,
+				5874A35D1CF03AF200CE9FC9 /* Model */,
+				5874A35E1CF03AF200CE9FC9 /* View */,
+			);
+			path = UniversityAssn;
+			sourceTree = "<group>";
+		};
+		5874A35C1CF03AF200CE9FC9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5874A3651CF03B5700CE9FC9 /* UniversityAssnViewController.h */,
+				5874A3661CF03B5700CE9FC9 /* UniversityAssnViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5874A35D1CF03AF200CE9FC9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5874A35E1CF03AF200CE9FC9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		58A944731CE277C600DAD398 /* account */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +524,7 @@
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
 				58F67BD81CD990A200D55BE0 /* BaseViewController.m */,
+				5874A35B1CF03AF200CE9FC9 /* UniversityAssn */,
 				5849FDBE1CE4705D0039AFC2 /* UserAccountManager */,
 				58A944A21CE2796700DAD398 /* Account */,
 				5829987B1CDC3DBE004A05FB /* Inbox */,
@@ -994,6 +1031,7 @@
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				58F67BFC1CD990A200D55BE0 /* ExpressCenterViewController.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
+				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
 				58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */,
 				58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */,
