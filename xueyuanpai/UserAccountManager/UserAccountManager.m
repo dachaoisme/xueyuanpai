@@ -43,6 +43,14 @@
 {
     NSString * userInfoKey = @"userInfo";
     NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
+    self.userId =[dic objectForKey:@"phoneNum"];
+    self.phoneNum = [dic objectForKey:@"phoneNum"];
+    self.password = [dic objectForKey:@"password"];
+    if (self.userId && self.userId.length>0) {
+        self.yesIsLogin = YES;
+    }else{
+        self.yesIsLogin = NO;
+    }
     return dic;
 }
 
@@ -70,4 +78,10 @@
     return userId;
 }
 
+-(void)exitLogin
+{
+    NSString * userInfoKey = @"userInfo";
+    [UserDefaultsDataDeal deleteKey:userInfoKey];
+    self.yesIsLogin = NO;
+}
 @end

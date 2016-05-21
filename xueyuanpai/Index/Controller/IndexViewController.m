@@ -53,8 +53,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTitle:@"首页"];
-    [self creatLeftNavWithImageName:@"v_uc_act"];
-    [self creatRightNavWithImageName:@"v_uc_act"];
+    [self creatLeftNavWithImageName:@"nav_icon_profile"];
+    [self creatRightNavWithImageName:@"nav_icon_msg"];
     bigDataArray     = [NSMutableArray array];
     bannerItemArray  = [NSMutableArray array];
     bannerImageArray = [NSMutableArray array];

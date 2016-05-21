@@ -142,6 +142,10 @@
 }
 -(void)submitAndRegister:(UIButton *)sender
 {
+    
+    AddStudentInfoViewController * studentInfoVC = [[AddStudentInfoViewController alloc]init];
+    [self.navigationController pushViewController:studentInfoVC animated:YES];
+    return;
     [CommonUtils showToastWithStr:@"提交并注册"];
     
     /*
