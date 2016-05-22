@@ -69,4 +69,37 @@
  */
 
 - (void)registerAndSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+
+#pragma mark - 大学社团
+#pragma mark - 1.热门活动
+/**
+ *  @brief  热门活动数据列表显示
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getHotActivityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+
+#pragma mark - 2.明星社团
+/**
+ *  @brief  明星社团数据列表显示
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getStartCommunityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+#pragma mark - 3.社团纳新
+/**
+ *  @brief  社团纳新数据列表显示
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getCommunityNewDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
 @end

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class HotActivityModel;
 @interface StarCommunityTableViewCell : UITableViewCell
+
+- (void)bindModel:(HotActivityModel *)model;
 
 @end

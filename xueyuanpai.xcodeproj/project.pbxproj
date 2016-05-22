@@ -139,6 +139,9 @@
 		DD4127841CF0552F00227066 /* shetuan_icon_time@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127541CF0552F00227066 /* shetuan_icon_time@3x.png */; };
 		DD4127871CF0561900227066 /* HotActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127861CF0561900227066 /* HotActivityTableViewCell.m */; };
 		DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127891CF068C200227066 /* StarCommunityTableViewCell.m */; };
+		DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD41278C1CF170F400227066 /* HotActivityModel.m */; };
+		DD41278F1CF1860400227066 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD41278E1CF1860400227066 /* test.jpg */; };
+		DD4127941CF18D8000227066 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD4127931CF18D8000227066 /* test1.jpg */; };
 		E993E0049F3F51C845C25B59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3EE12099BB224ECB4817B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -357,6 +360,10 @@
 		DD4127861CF0561900227066 /* HotActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotActivityTableViewCell.m; path = xueyuanpai/UniversityAssn/HotActivityTableViewCell.m; sourceTree = SOURCE_ROOT; };
 		DD4127881CF068C200227066 /* StarCommunityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StarCommunityTableViewCell.h; path = xueyuanpai/UniversityAssn/StarCommunityTableViewCell.h; sourceTree = SOURCE_ROOT; };
 		DD4127891CF068C200227066 /* StarCommunityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StarCommunityTableViewCell.m; path = xueyuanpai/UniversityAssn/StarCommunityTableViewCell.m; sourceTree = SOURCE_ROOT; };
+		DD41278B1CF170F400227066 /* HotActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotActivityModel.h; path = xueyuanpai/UniversityAssn/HotActivityModel.h; sourceTree = SOURCE_ROOT; };
+		DD41278C1CF170F400227066 /* HotActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotActivityModel.m; path = xueyuanpai/UniversityAssn/HotActivityModel.m; sourceTree = SOURCE_ROOT; };
+		DD41278E1CF1860400227066 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		DD4127931CF18D8000227066 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
 		FFF3EE12099BB224ECB4817B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -517,6 +524,8 @@
 		5874A35D1CF03AF200CE9FC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DD41278B1CF170F400227066 /* HotActivityModel.h */,
+				DD41278C1CF170F400227066 /* HotActivityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -632,6 +641,8 @@
 		58F67BA11CD9863400D55BE0 /* xueyuanpai */ = {
 			isa = PBXGroup;
 			children = (
+				DD41278E1CF1860400227066 /* test.jpg */,
+				DD4127931CF18D8000227066 /* test1.jpg */,
 				58F67BA51CD9863400D55BE0 /* AppDelegate.h */,
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
@@ -1096,6 +1107,7 @@
 				DD41275E1CF0552F00227066 /* bigpie_order_add_press@3x.png in Resources */,
 				DD41276D1CF0552F00227066 /* hire_icon_intern@2x.png in Resources */,
 				DD4127811CF0552F00227066 /* shetuan_icon_location@2x.png in Resources */,
+				DD4127941CF18D8000227066 /* test1.jpg in Resources */,
 				58A944B41CE32A9500DAD398 /* forgetPassword@2x.png in Resources */,
 				DD4127681CF0552F00227066 /* hire_btn_contact@3x.png in Resources */,
 				DD4127771CF0552F00227066 /* nav_icon_fav@2x.png in Resources */,
@@ -1162,6 +1174,7 @@
 				58A944961CE277C600DAD398 /* login_password@2x.png in Resources */,
 				58A944971CE277C600DAD398 /* login_password@3x.png in Resources */,
 				5829986E1CDB29E7004A05FB /* Default-375w-667h@2x.png in Resources */,
+				DD41278F1CF1860400227066 /* test.jpg in Resources */,
 				DD4127801CF0552F00227066 /* page_end_owl@3x.png in Resources */,
 				DD41277D1CF0552F00227066 /* nav_icon_share@2x.png in Resources */,
 				DD4127831CF0552F00227066 /* shetuan_icon_time@2x.png in Resources */,
@@ -1249,6 +1262,7 @@
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				58F67BFC1CD990A200D55BE0 /* ExpressCenterViewController.m in Sources */,
+				DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,

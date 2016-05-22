@@ -39,6 +39,14 @@
 ///更新导师资料
 #define METHOD_OF_UPDATE_TEACHER_INFO    @"v1/user/updateteacherinfo?"
 
+///大学社团：热门活动
+#define METHOD_OF_UNIVERSITY_ACTIVITY    @"v1/association/hot?"
+///大学社团：明星社团
+#define METHOD_OF_UNIVERSITY_START_COMMUNITY    @"v1/association/star?"
+///大学社团：社团纳新
+#define METHOD_OF_UNIVERSITY_COMMUNITY_NEW      @"v1/association/nexeon?"
+
+
 
 
 
