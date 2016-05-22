@@ -13,7 +13,8 @@
 ///api的地址
 #define baseApiUrl        @"http://123.56.27.124/api/web/"
 ///后台管理系统图片的地址
-#define baseBackgroundUrl @"http://123.56.27.124"
+#define baseBackgroundUrlType1 @"http://123.56.27.124"
+#define baseBackgroundUrlType2 @"http://123.56.27.124/backend/web/"
 
 #pragma mark - 首页相关
 ///轮播图
@@ -38,6 +39,10 @@
 #define METHOD_OF_UPDATE_STUDENT_INFO    @"v1/user/updatestudentinfo?"
 ///更新导师资料
 #define METHOD_OF_UPDATE_TEACHER_INFO    @"v1/user/updateteacherinfo?"
+///根据关键字查询学校
+#define METHOD_OF_COLLEGE_SEARCH         @"v1/college/search?"
+///用户头像上传
+#define METHOD_OF_UPLOAD                 @"v1/user/upload?"
 
 ///大学社团：热门活动
 #define METHOD_OF_UNIVERSITY_ACTIVITY    @"v1/association/hot?"

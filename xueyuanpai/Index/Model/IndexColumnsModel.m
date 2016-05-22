@@ -25,7 +25,7 @@
         
         self.indexColumnsId        = [dic stringForKey:@"id"];
         self.indexColumnsName      = [dic stringForKey:@"name"];
-        self.indexColumnsPicUrl    = [dic stringForKey:@"picUrl"];
+        self.indexColumnsPicUrl    = [CommonUtils getEffectiveUrlWithUrl:[dic stringForKey:@"picUrl"] withType:1];//[dic stringForKey:@"picUrl"];
         self.indexColumnsOrd       = [dic stringForKey:@"ord"];
     }
     

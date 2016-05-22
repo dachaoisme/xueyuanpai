@@ -166,4 +166,13 @@
  *  @return
  */
 +(UILabel *)label:(float)size color:(NSString *)color align:(int)align;
+/**
+ *  @brief 全背景的灰色背景图
+ *
+ *  @param
+ *
+ *  @return
+ */
++(UIControl *)contolBackgroundWithAlph:(float)alpha;
+
 @end

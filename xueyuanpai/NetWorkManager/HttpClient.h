@@ -69,8 +69,34 @@
  */
 
 - (void)registerAndSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  根据关键字查询学校
+ *
+ *  @param
+ *
+ *  @return
+ */
 
+- (void)searchCollegeWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  更新个人用户资料
+ *
+ *  @param
+ *
+ *  @return
+ */
 
+- (void)updateStudentInfoWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+/**
+ *  @brief  上传用户头像
+ *
+ *  @param
+ *
+ *  @return
+ */
+
+- (void)uploadImageWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 #pragma mark - 大学社团
 #pragma mark - 1.热门活动
 /**
@@ -80,6 +106,7 @@
  *
  *  @return
  */
+
 - (void)getHotActivityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 
@@ -91,6 +118,7 @@
  *
  *  @return
  */
+
 - (void)getStartCommunityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 #pragma mark - 3.社团纳新
 /**

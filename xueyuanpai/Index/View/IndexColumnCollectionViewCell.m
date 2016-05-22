@@ -34,7 +34,7 @@
 }
 -(void)setContentViewWithModel:(IndexColumnsModel *)model
 {
-    [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexColumnsPicUrl]]];
+    [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl]];
     self.columnTitileLable.text = model.indexColumnsName;
 }
 @end

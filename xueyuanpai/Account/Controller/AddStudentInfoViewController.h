@@ -8,8 +8,9 @@
 
 #import "BaseViewController.h"
 
-@interface AddStudentInfoViewController : BaseViewController
+@interface AddStudentInfoViewController : BaseViewController<UITextFieldDelegate>
 
 @property(nonatomic,strong)NSString * userId;
+
 
 @end

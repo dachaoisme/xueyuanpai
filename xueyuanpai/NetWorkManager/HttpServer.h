@@ -40,5 +40,14 @@ typedef void(^XYPCommonListBlock)(HttpResponseCodeModel *responseModel ,HttpResp
  *  @return
  */
 -(void)getWithMethod:(NSString *)methond withParams:(NSDictionary *)dic withSuccess:(XYPBaseBlock)successBlock withFailBlock:(XYPHttpErrorBlock)failBlock;
-
+/**
+ *  @brief  post请求
+ *
+ *  @param  methond  表示请求的method，
+ *
+ *  @param  传入的参数，在此方法里面，会把其变成字符串URL
+ *
+ *  @return
+ */
+-(void)postWithMethod:(NSString *)methond withParams:(NSDictionary *)dic withUploadDic:(NSDictionary *)uploadDic withSuccess:(XYPBaseBlock)successBlock withFailBlock:(XYPHttpErrorBlock)failBlock;
 @end

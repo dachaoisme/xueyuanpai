@@ -703,9 +703,15 @@
     setxattr([path fileSystemRepresentation], "com.apple.MobileBackup", &b, 1, 0, 0);
 }
 
-+(NSString *)getEffectiveUrlWithUrl:(NSString *)url
++(NSString *)getEffectiveUrlWithUrl:(NSString *)url withType:(NSInteger)type
 {
-    NSString *effectiveUrl = [NSString stringWithFormat:@"%@%@",baseBackgroundUrl,url];
+    NSString *effectiveUrl;
+    if (type==1) {
+        effectiveUrl = [NSString stringWithFormat:@"%@%@",baseBackgroundUrlType1,url];
+    }else{
+        effectiveUrl = [NSString stringWithFormat:@"%@%@",baseBackgroundUrlType2,url];
+    }
+    
     return effectiveUrl;
 }
 @end
