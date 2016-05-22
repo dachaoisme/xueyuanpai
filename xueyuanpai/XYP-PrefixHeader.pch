@@ -18,6 +18,7 @@
 #import "EnumDefine.h"
 #import "ConfigDefine.h"
 #import "CommonUtils.h"
+#import "BlockDefine.h"
 //用户相关
 #import "UserAccountManager.h"
 //网络相关

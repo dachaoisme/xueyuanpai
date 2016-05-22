@@ -38,11 +38,8 @@
 #define METHOD_OF_UPDATE_STUDENT_INFO    @"v1/user/updatestudentinfo?"
 ///更新导师资料
 #define METHOD_OF_UPDATE_TEACHER_INFO    @"v1/user/updateteacherinfo?"
-
-
-
-
-
-
-
+///根据关键字查询学校
+#define METHOD_OF_COLLEGE_SEARCH         @"v1/college/search?"
+///用户头像上传
+#define METHOD_OF_UPLOAD                 @"v1/user/upload?"
 #endif /* NetworkConfigue_h */

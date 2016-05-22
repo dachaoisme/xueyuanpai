@@ -136,4 +136,12 @@
     if (align > 0)[lab setTextAlignment:align];
     return lab;
 }
+
++(UIControl *)contolBackgroundWithAlph:(float)alpha
+{
+    UIControl * control = [[UIControl alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    control.alpha = alpha;
+    [[UIApplication sharedApplication].delegate.window addSubview:control];
+    return control;
+}
 @end
