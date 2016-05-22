@@ -89,6 +89,16 @@
 - (void)updateStudentInfoWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 /**
+ *  @brief  更新导师用户资料
+ *
+ *  @param
+ *
+ *  @return
+ */
+
+- (void)updateTeacherInfoWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+/**
  *  @brief  上传用户头像
  *
  *  @param

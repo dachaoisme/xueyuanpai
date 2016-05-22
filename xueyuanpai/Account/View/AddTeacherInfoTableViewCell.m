@@ -8,54 +8,71 @@
 
 #import "AddTeacherInfoTableViewCell.h"
 
-@implementation AddTeacherInfoTableViewCell
-
--(instancetype)initWithFrame:(CGRect)frame
+@interface AddTeacherInfoTableViewCell ()<UITextFieldDelegate>
 {
-    self = [super initWithFrame:frame];
+   
+    UITextField * titleTextField;
+}
+@end
+
+@implementation AddTeacherInfoTableViewCell
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
         [self setContentView];
     }
     return self;
+    
 }
+
 
 -(void)setContentView
 {
-    /*
-    UILabel * mallTitileLable = [UIFactory label:12*3 color:@"999999" align:NSTextAlignmentLeft];
-    mallTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallImageView.frame), CGRectGetWidth(mallImageView.frame), 20) ;
-    [self addSubview:mallTitileLable];
-    self.mallTitileLable = mallTitileLable;
+    float leftWidth = 60;
+    float space = 16;
+    float rightWidth = 30;
+    float centerWidth = SCREEN_WIDTH-leftWidth-rightWidth-2*space;
+    float height = 44;
+    
+    _titleLable = [UIFactory label:12*3 color:@"c7c7cb" align:NSTextAlignmentLeft];
+    _titleLable.frame = CGRectMake(space, 0, leftWidth, height) ;
+    [self.contentView addSubview:_titleLable];
     
     //请输入手机号
-    phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, NAV_TOP_HEIGHT+topSpace, width, height)];
-    phoneTextField.tag = 2;
-    phoneTextField.delegate = self;
-    [phoneTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
-    phoneTextField.textAlignment = NSTextAlignmentLeft;
-    phoneTextField.borderStyle   = UITextBorderStyleNone;
-    phoneTextField.placeholder   = @"请输入手机号";
+    titleTextField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_titleLable.frame),0, centerWidth, height)];
+    titleTextField.tag = self.tag;
+    titleTextField.delegate = self;
+    titleTextField.textColor = [CommonUtils colorWithHex:@"c7c7cb"];
+    titleTextField.textAlignment = NSTextAlignmentLeft;
+    titleTextField.borderStyle   = UITextBorderStyleNone;
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
-    phoneTextField.adjustsFontSizeToFitWidth = YES;
-    phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    phoneTextField.leftViewMode    = UITextFieldViewModeAlways;
-    phoneTextField.rightViewMode   = UITextFieldViewModeAlways;
-    [self.view addSubview:phoneTextField];
+    titleTextField.adjustsFontSizeToFitWidth = YES;
+    titleTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    titleTextField.leftViewMode    = UITextFieldViewModeAlways;
+    titleTextField.rightViewMode   = UITextFieldViewModeAlways;
+    [self.contentView addSubview:titleTextField];
     
-    UIImageView * mallImageView = [UIFactory imageView:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-40) viewMode:UIViewContentModeScaleAspectFill image:nil];
-    [self addSubview:mallImageView];
-    self.mallImageView = mallImageView;
+    UILabel * tipsLable = [UIFactory label:12*3 color:@"c7c7cb" align:NSTextAlignmentLeft];
+    tipsLable.frame = CGRectMake(CGRectGetMaxX(titleTextField.frame),0 , rightWidth, height) ;
+    tipsLable.text = @"必填";
+    [self.contentView addSubview:tipsLable];
     
-    
-    
-    UILabel * mallIntegralTitileLable = [UIFactory label:12*3 color:@"999999" align:NSTextAlignmentLeft];
-    mallIntegralTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallTitileLable.frame), CGRectGetWidth(mallTitileLable.frame), 20) ;
-    [self addSubview:mallIntegralTitileLable];
-    self.mallIntegralTitileLable = mallIntegralTitileLable;
-    */
 }
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if ([self.delegate respondsToSelector:@selector(updateInputInfoWithIndex:withTextFieldText:)]) {
+        [self.delegate updateInputInfoWithIndex:textField.tag withTextFieldText:string];
+    }
+    return YES;
+}
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 - (void)awakeFromNib {
     // Initialization code
 }

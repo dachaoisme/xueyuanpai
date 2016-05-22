@@ -142,10 +142,17 @@
 }
 -(void)submitAndRegister:(UIButton *)sender
 {
+    if (self.registerRoleType==RegisterRoleOfStudent) {
+        AddStudentInfoViewController * studentInfoVC = [[AddStudentInfoViewController alloc]init];
+        [self.navigationController pushViewController:studentInfoVC animated:YES];
+        return;
+    }else{
+        AddTeacherViewController * studentInfoVC = [[AddTeacherViewController alloc]init];
+        [self.navigationController pushViewController:studentInfoVC animated:YES];
+        return;
+        
+    }
     
-    AddStudentInfoViewController * studentInfoVC = [[AddStudentInfoViewController alloc]init];
-    [self.navigationController pushViewController:studentInfoVC animated:YES];
-    return;
     [CommonUtils showToastWithStr:@"提交并注册"];
     
     /*
