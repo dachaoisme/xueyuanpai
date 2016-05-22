@@ -174,6 +174,8 @@
 		DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD41278C1CF170F400227066 /* HotActivityModel.m */; };
 		DD41278F1CF1860400227066 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD41278E1CF1860400227066 /* test.jpg */; };
 		DD4127941CF18D8000227066 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD4127931CF18D8000227066 /* test1.jpg */; };
+		DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127961CF19DC300227066 /* ActivityDetailView.m */; };
+		DD41279A1CF19F0700227066 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127991CF19F0700227066 /* ActivityDetailViewController.m */; };
 		E993E0049F3F51C845C25B59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3EE12099BB224ECB4817B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -428,6 +430,10 @@
 		DD41278C1CF170F400227066 /* HotActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotActivityModel.m; path = xueyuanpai/UniversityAssn/HotActivityModel.m; sourceTree = SOURCE_ROOT; };
 		DD41278E1CF1860400227066 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		DD4127931CF18D8000227066 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
+		DD4127951CF19DC300227066 /* ActivityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDetailView.h; path = xueyuanpai/UniversityAssn/ActivityDetailView.h; sourceTree = SOURCE_ROOT; };
+		DD4127961CF19DC300227066 /* ActivityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetailView.m; path = xueyuanpai/UniversityAssn/ActivityDetailView.m; sourceTree = SOURCE_ROOT; };
+		DD4127981CF19F0700227066 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
+		DD4127991CF19F0700227066 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
 		FFF3EE12099BB224ECB4817B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -582,6 +588,8 @@
 			children = (
 				5874A3651CF03B5700CE9FC9 /* UniversityAssnViewController.h */,
 				5874A3661CF03B5700CE9FC9 /* UniversityAssnViewController.m */,
+				DD4127981CF19F0700227066 /* ActivityDetailViewController.h */,
+				DD4127991CF19F0700227066 /* ActivityDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -604,6 +612,8 @@
 				DD4127861CF0561900227066 /* HotActivityTableViewCell.m */,
 				DD4127881CF068C200227066 /* StarCommunityTableViewCell.h */,
 				DD4127891CF068C200227066 /* StarCommunityTableViewCell.m */,
+				DD4127951CF19DC300227066 /* ActivityDetailView.h */,
+				DD4127961CF19DC300227066 /* ActivityDetailView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1393,12 +1403,14 @@
 				5849FDC41CE47D6E0039AFC2 /* UserAccountManager.m in Sources */,
 				583D65C81CDA793A00830BBE /* BaseTabBarViewController.m in Sources */,
 				58F67C001CD990A200D55BE0 /* HttpServer.m in Sources */,
+				DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
 				DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */,
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				58F67BFC1CD990A200D55BE0 /* ExpressCenterViewController.m in Sources */,
 				DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */,
+				DD41279A1CF19F0700227066 /* ActivityDetailViewController.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,

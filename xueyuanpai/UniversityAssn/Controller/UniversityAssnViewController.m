@@ -14,6 +14,8 @@
 
 #import "HotActivityModel.h"
 
+#import "ActivityDetailViewController.h"
+
 #define kNavigationBarHeight 64
 
 @interface UniversityAssnViewController ()<UniversityAssnHeaderViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -377,6 +379,33 @@
             break;
     }
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc] init];
+    switch (self.index) {
+        case 0:{
+            
+            detailVC.model = [_saveHotActivityDataArray objectAtIndex:indexPath.row];
+        }
+            break;
+        case 1:{
+            detailVC.model = [_saveStartCommunityArray objectAtIndex:indexPath.row];
+        }
+            break;
+        case 2:{
+            
+            detailVC.model = [_saveCommunityNewArray objectAtIndex:indexPath.row];
+        }
+            break;
+            
+        default:{
+        }
+            break;
+    }
+
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 
