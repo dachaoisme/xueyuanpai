@@ -385,10 +385,11 @@
 /**
  *  @brief  传入url需要拼接的部分
  *
- *  @param
+ *  @param  type1表示 http://123.56.27.124
+ *          type1表示 http://123.56.27.124/backend/web/
  *
  *  @return   添加上基本的url
  */
-+(NSString *)getEffectiveUrlWithUrl:(NSString *)url;
++(NSString *)getEffectiveUrlWithUrl:(NSString *)url withType:(NSInteger)type;
 
 @end
