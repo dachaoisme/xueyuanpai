@@ -12,6 +12,8 @@
 #import "HotActivityTableViewCell.h"
 #import "StarCommunityTableViewCell.h"
 
+#import "HotActivityModel.h"
+
 #define kNavigationBarHeight 64
 
 @interface UniversityAssnViewController ()<UniversityAssnHeaderViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -26,14 +28,32 @@
 ///用于显示的列表
 @property (nonatomic,strong)UITableView *tableView;
 
+///用于存储热门活动数据的数组
+@property (nonatomic,strong)NSMutableArray *saveHotActivityDataArray;
+
+
+///用于存储明星社团数据的数组
+@property (nonatomic,strong)NSMutableArray *saveStartCommunityArray;
+
+
+///用于存储社团纳新数据的数组
+@property (nonatomic,strong)NSMutableArray *saveCommunityNewArray;
+
 @end
 
 @implementation UniversityAssnViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self theTabBarHidden:YES];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.saveHotActivityDataArray = [NSMutableArray array];
+    self.saveStartCommunityArray = [NSMutableArray array];
+    self.saveCommunityNewArray = [NSMutableArray array];
     
     [self setTitle:@"大学"];
     
@@ -42,6 +62,131 @@
     
     //创建tableView
     [self createTableView];
+    
+    
+    //获取热门活动页面数据
+    [self getHotActivityData];
+}
+
+#pragma mark - 获取热门活动页面数据
+- (void)getHotActivityData{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:@"1" forKey:@"page"];
+    [dic setObject:@"10" forKey:@"size"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] getHotActivityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+        
+        NSLog(@"%@",listDic);
+        
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
+                
+                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:dic];
+                [_saveHotActivityDataArray addObject:model];
+
+            }
+            
+            [self.tableView reloadData];
+
+        }else{
+            
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+            
+        }
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+        
+    }];
+
+
+}
+
+
+#pragma mark - 获取明星社团页面的数据
+- (void)getStartCommunityData{
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:@"1" forKey:@"page"];
+    [dic setObject:@"10" forKey:@"size"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] getStartCommunityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+        NSLog(@"%@",listDic);
+        
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
+                
+                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:dic];
+                [_saveStartCommunityArray addObject:model];
+                
+            }
+            
+            [self.tableView reloadData];
+            
+        }else{
+            
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+            
+        }
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+    }];
+
+    
+}
+
+#pragma mark - 获取社团纳新的数据
+- (void)getCommunityNewData{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:@"1" forKey:@"page"];
+    [dic setObject:@"10" forKey:@"size"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] getStartCommunityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+        NSLog(@"%@",listDic);
+        
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
+                
+                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:dic];
+                [_saveCommunityNewArray addObject:model];
+                
+            }
+            
+            [self.tableView reloadData];
+            
+        }else{
+            
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+            
+        }
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+    }];
+
 }
 
 #pragma mark - 创建headerView
@@ -72,16 +217,26 @@
     switch (index) {
         case 0:
         {
+            //先移除旧的再添加新的
+            [_saveHotActivityDataArray removeAllObjects];
+            //获取热门活动页面数据
+            [self getHotActivityData];
+
             NSLog(@"点击热门活动");
         }
             break;
         case 1:
         {
+            
+            [_saveStartCommunityArray removeAllObjects];
+            [self getStartCommunityData];
             NSLog(@"点击明星社团");
         }
             break;
         case 2:
         {
+            [_saveCommunityNewArray removeAllObjects];
+            [self getCommunityNewData];
             NSLog(@"点击社团招纳");
         }
             break;
@@ -113,7 +268,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    
+    switch (self.index) {
+        case 0:
+        {
+            return _saveHotActivityDataArray.count;
+        }
+            break;
+        case 1:
+        {
+            return _saveStartCommunityArray.count;
+        }
+            break;
+        case 2:
+        {
+            return _saveCommunityNewArray.count;
+        }
+            break;
+            
+        default:
+            return 0;
+            break;
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -124,6 +301,10 @@
             HotActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotActivityTableViewCell"];
             if (!cell) {
                 cell = [[HotActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HotActivityTableViewCell"];
+                
+                HotActivityModel *model = [_saveHotActivityDataArray objectAtIndex:indexPath.row];
+                
+                [cell bindModel:model];
             }
             
             return cell;
@@ -135,6 +316,11 @@
             StarCommunityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StarCommunityTableViewCell"];
             if (!cell) {
                 cell = [[StarCommunityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StarCommunityTableViewCell"];
+                
+                HotActivityModel *model = [_saveStartCommunityArray objectAtIndex:indexPath.row];
+                
+                [cell bindModel:model];
+
             }
 
             return cell;
@@ -145,6 +331,11 @@
             HotActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotActivityTableViewCell1"];
             if (!cell) {
                 cell = [[HotActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HotActivityTableViewCell1"];
+                
+                HotActivityModel *model = [_saveCommunityNewArray objectAtIndex:indexPath.row];
+                
+                [cell bindModel:model];
+
             }
             
             return cell;
@@ -153,11 +344,7 @@
             break;
             
         default:{
-            HotActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotActivityTableViewCell2"];
-            if (!cell) {
-                cell = [[HotActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HotActivityTableViewCell2"];
-            }
-            
+            UITableViewCell *cell = nil;
             return cell;
 
         }

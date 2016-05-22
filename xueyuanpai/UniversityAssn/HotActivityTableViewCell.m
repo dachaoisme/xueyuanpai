@@ -7,6 +7,25 @@
 //
 
 #import "HotActivityTableViewCell.h"
+#import "HotActivityModel.h"
+
+@interface HotActivityTableViewCell ()
+
+///显示图片的imageView
+@property (nonatomic,strong)UIImageView *showImageView;
+
+///显示标题的lable
+@property (nonatomic,strong)UILabel *titleLable;
+
+///显示时间的lable
+@property (nonatomic,strong)UILabel *timeLabel;
+
+///显示食堂位置的lable
+@property (nonatomic,strong)UILabel *locationLable;
+
+//显示详情的lable
+@property (nonatomic,strong)UILabel *detailLabel;
+@end
 
 @implementation HotActivityTableViewCell
 
@@ -27,14 +46,15 @@
         
         //显示图片的imageView
         UIImageView *showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 150)];
-        showImageView.backgroundColor = [UIColor yellowColor];
         [backGroundView addSubview:showImageView];
+        self.showImageView = showImageView;
         
         
         //显示标题的lable
         UILabel *titleLable = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(showImageView.frame) + 10, [UIScreen mainScreen].bounds.size.width - 10, 20)];
-        titleLable.text = @"情暖人心公益活动";
+//        titleLable.text = @"情暖人心公益活动";
         [backGroundView addSubview:titleLable];
+        self.titleLable = titleLable;
         
         //显示钟表的背景图片
         UIImageView * timeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(titleLable.frame.origin.x, CGRectGetMaxY(titleLable.frame) + 10, 16, 16)];
@@ -45,8 +65,9 @@
         UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(32, CGRectGetMaxY(titleLable.frame) + 10, 160, 20)];
         timeLabel.font = [UIFont systemFontOfSize:14.0];
         timeLabel.textColor = [CommonUtils colorWithHex:@"c2c3c4"];
-        timeLabel.text = @"2016/4/24 17:00";
+//        timeLabel.text = @"2016/4/24 17:00";
         [backGroundView addSubview:timeLabel];
+        self.timeLabel = timeLabel;
         
         
         //显示食堂的背景图片
@@ -58,20 +79,33 @@
         UILabel *locationLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(locationImageView.frame) + 5, CGRectGetMaxY(titleLable.frame) + 10, 160, 20)];
         locationLable.font = [UIFont systemFontOfSize:14.0];
         locationLable.textColor = [CommonUtils colorWithHex:@"c2c3c4"];
-        locationLable.text = @"一楼食堂";
+//        locationLable.text = @"一楼食堂";
         [backGroundView addSubview:locationLable];
+        self.locationLable = locationLable;
         
         
         //显示详情的lable
         UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(titleLable.frame.origin.x, CGRectGetMaxY(timeImageView.frame) + 5, 200, 30)];
         detailLabel.font = [UIFont systemFontOfSize:14.0];
-        detailLabel.text = @"我是好人好人好人";
+//        detailLabel.text = @"我是好人好人好人";
         detailLabel.textColor = [CommonUtils colorWithHex:@"c2c3c4"];
         [backGroundView addSubview:detailLabel];
+        self.detailLabel = detailLabel;
 
         
     }
     return self;
+}
+
+#pragma mark - 处理model数据
+- (void)bindModel:(HotActivityModel *)model{
+    
+    [self.showImageView sd_setImageWithURL:[NSURL URLWithString:model.logoUrl] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+    self.titleLable.text = model.title;
+    self.timeLabel.text = model.createTime;
+    self.locationLable.text = model.place;
+    self.detailLabel.text = model.content;
+    
 }
 
 - (void)awakeFromNib {

@@ -42,4 +42,19 @@
 #define METHOD_OF_COLLEGE_SEARCH         @"v1/college/search?"
 ///用户头像上传
 #define METHOD_OF_UPLOAD                 @"v1/user/upload?"
+
+///大学社团：热门活动
+#define METHOD_OF_UNIVERSITY_ACTIVITY    @"v1/association/hot?"
+///大学社团：明星社团
+#define METHOD_OF_UNIVERSITY_START_COMMUNITY    @"v1/association/star?"
+///大学社团：社团纳新
+#define METHOD_OF_UNIVERSITY_COMMUNITY_NEW      @"v1/association/nexeon?"
+
+
+
+
+
+
+
+
 #endif /* NetworkConfigue_h */
