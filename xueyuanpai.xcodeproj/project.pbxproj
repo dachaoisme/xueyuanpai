@@ -63,6 +63,8 @@
 		5874A3FB1CF1AEE400CE9FC9 /* AddTeacherInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5874A3FA1CF1AEE400CE9FC9 /* AddTeacherInfoTableViewCell.m */; };
 		5874A3FE1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5874A3FD1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m */; };
 		5874A4041CF2458D00CE9FC9 /* UITextView+TopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5874A4031CF2458D00CE9FC9 /* UITextView+TopView.m */; };
+		5874A4071CF24CF700CE9FC9 /* ForgetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5874A4061CF24CF700CE9FC9 /* ForgetPasswordViewController.m */; };
+		5874A40A1CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5874A4091CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m */; };
 		58A9448B1CE277C600DAD398 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944741CE277C600DAD398 /* avatar@2x.png */; };
 		58A9448C1CE277C600DAD398 /* avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944751CE277C600DAD398 /* avatar@3x.png */; };
 		58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944761CE277C600DAD398 /* avatar_change@2x.png */; };
@@ -282,6 +284,10 @@
 		5874A3FD1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTeacherInfoTypeTwoTableViewCell.m; sourceTree = "<group>"; };
 		5874A4021CF2458D00CE9FC9 /* UITextView+TopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+TopView.h"; sourceTree = "<group>"; };
 		5874A4031CF2458D00CE9FC9 /* UITextView+TopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+TopView.m"; sourceTree = "<group>"; };
+		5874A4051CF24CF700CE9FC9 /* ForgetPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordViewController.h; sourceTree = "<group>"; };
+		5874A4061CF24CF700CE9FC9 /* ForgetPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordViewController.m; sourceTree = "<group>"; };
+		5874A4081CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPasswordOfSetNewPasswordViewController.h; sourceTree = "<group>"; };
+		5874A4091CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPasswordOfSetNewPasswordViewController.m; sourceTree = "<group>"; };
 		58A944741CE277C600DAD398 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		58A944751CE277C600DAD398 /* avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@3x.png"; sourceTree = "<group>"; };
 		58A944761CE277C600DAD398 /* avatar_change@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar_change@2x.png"; sourceTree = "<group>"; };
@@ -736,6 +742,10 @@
 				58A944C51CE3E0C200DAD398 /* AddTeacherViewController.m */,
 				5874A3F31CF14C7800CE9FC9 /* SelectedSchollViewController.h */,
 				5874A3F41CF14C7800CE9FC9 /* SelectedSchollViewController.m */,
+				5874A4051CF24CF700CE9FC9 /* ForgetPasswordViewController.h */,
+				5874A4061CF24CF700CE9FC9 /* ForgetPasswordViewController.m */,
+				5874A4081CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.h */,
+				5874A4091CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1455,11 +1465,13 @@
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
+				5874A4071CF24CF700CE9FC9 /* ForgetPasswordViewController.m in Sources */,
 				58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */,
 				58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */,
 				581ABF1E1CE0DAEA00B933D7 /* IndexCollectionReusableView.m in Sources */,
 				DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */,
 				58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */,
+				5874A40A1CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
