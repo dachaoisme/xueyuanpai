@@ -22,6 +22,7 @@
 
 #import "UniversityAssnViewController.h"
 #import "BigToSendViewController.h"
+#import "GiftDetailViewController.h"
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -270,7 +271,10 @@
             //时间银行
         }
     }else{
-        
+        IndexMallModel * model = obj;
+        GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
+        giftDetailVC.mallModel = model;
+        [self.navigationController pushViewController:giftDetailVC animated:YES];
     }
 }
 #pragma mark - 点击banner图

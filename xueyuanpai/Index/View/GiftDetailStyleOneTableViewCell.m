@@ -7,6 +7,15 @@
 //
 
 #import "GiftDetailStyleOneTableViewCell.h"
+#import "IndexMallModel.h"
+
+@interface GiftDetailStyleOneTableViewCell ()
+{
+    UILabel *goodsLabel;
+    UILabel *jiFenLabel;
+    UILabel *shengYuNumberLabel;
+}
+@end
 
 @implementation GiftDetailStyleOneTableViewCell
 
@@ -15,7 +24,7 @@
     if (self) {
         
         //初始化商品名字
-        UILabel *goodsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
+        goodsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
 //        goodsLabel.backgroundColor = [UIColor redColor];
         goodsLabel.text = @"海飞丝新品试用套装";
         goodsLabel.font = [UIFont systemFontOfSize:16];
@@ -23,7 +32,7 @@
         
         
         //显示积分
-        UILabel *jiFenLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(goodsLabel.frame), CGRectGetMaxY(goodsLabel.frame), 100, 30)];
+        jiFenLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(goodsLabel.frame), CGRectGetMaxY(goodsLabel.frame), 100, 30)];
 
         [self.contentView addSubview:jiFenLabel];
         
@@ -45,18 +54,21 @@
         
         
         //显示剩余的份数
-        UILabel *shengYuNumberLabel = [[UILabel  alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 10, CGRectGetMinY(jiFenLabel.frame), 100, 30)];
+        shengYuNumberLabel = [[UILabel  alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 100, CGRectGetMinY(jiFenLabel.frame), 100, 30)];
         shengYuNumberLabel.font = [UIFont systemFontOfSize:12];
         shengYuNumberLabel.text = @"剩余14份";
         shengYuNumberLabel.textColor = [CommonUtils colorWithHex:@"c2c3c4"];
         [self.contentView addSubview:shengYuNumberLabel];
-        
-        
-
-        
     }
     
     return self;
+}
+
+-(void)setWithContentModel:(IndexMallModel *)mallModel
+{
+    goodsLabel.text = mallModel.indexMallTitle;
+    jiFenLabel.text = mallModel.indexMallPoints;
+    shengYuNumberLabel.text = @"剩余分数123份";
 }
 
 - (void)awakeFromNib {

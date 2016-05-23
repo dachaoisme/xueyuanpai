@@ -116,8 +116,8 @@
             if (!cell) {
                 cell = [[GiftDetailStyleOneTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleOneTableViewCell0"];
             }
+            [cell setWithContentModel:self.mallModel];
             return cell;
-
 
         }
             break;
@@ -128,8 +128,8 @@
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell1"];
             }
             
-            cell.introduceLabel.text = @"试用学校";
-            cell.detailContentLabel.text = @"吉林大学";
+            cell.introduceLabel.text = @"适用学校";
+            cell.detailContentLabel.text = self.mallModel.indexMallCollegeName ;
             return cell;
             
         }
@@ -141,7 +141,7 @@
             }
             cell.introduceLabel.text = @"礼品描述";
 
-            cell.detailContentLabel.text = @"海飞丝新品试用";
+            cell.detailContentLabel.text = self.mallModel.indexMallDescription;
 
             return cell;
             
@@ -154,7 +154,7 @@
             }
             cell.introduceLabel.text = @"兑换方法";
 
-            cell.detailContentLabel.text = @"兑换成功";
+            cell.detailContentLabel.text = self.mallModel.indexMallExchangemethod;
 
             
             return cell;

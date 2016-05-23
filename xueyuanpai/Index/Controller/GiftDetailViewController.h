@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import "IndexMallModel.h"
 @interface GiftDetailViewController : BaseViewController
 
+@property(nonatomic,strong)IndexMallModel * mallModel;
+
+-(void)setWithContentModel:(IndexMallModel *)mallModel;
 @end

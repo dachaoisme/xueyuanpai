@@ -10,13 +10,16 @@
 
 #import "IndexMallCollectionViewCell.h"
 #import "IndexCollectionReusableView.h"
-
 #import "GiftDetailViewController.h"
+#import "IndexBannerModel.h"
 
-@interface BigToSendViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface BigToSendViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,IndexCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
     UICollectionView * theCollectionView;
+    NSMutableArray * bannerItemArray;
+    NSMutableArray * bannerImageArray;
+    NSMutableArray * mallItemArray;
 }
 
 @end
@@ -35,9 +38,72 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"大派送";
-    
+    bannerItemArray  = [NSMutableArray array];
+    bannerImageArray = [NSMutableArray array];
+    mallItemArray    = [NSMutableArray array];
     [self createCollectionView];
 
+    [self requestBannerData];
+    
+}
+//首页轮播图
+-(void)requestBannerData
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:@"1" forKey:@"page"];
+    [dic setObject:@"10" forKey:@"size"];
+    [dic setObject:@"2" forKey:@"type"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance]getBannerOfIndexWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
+                
+                IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
+                [bannerItemArray addObject:model];
+                [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:2]];
+            }
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+        
+        //[theCollectionView reloadData];
+        [self requestMallData];
+        
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+
+//首页积分商品
+-(void)requestMallData
+{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]getMallOfIndexWithParams:nil withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            
+            for (NSDictionary * dic in [listDic objectForKey:@"lists"]) {
+                
+                IndexMallModel * model = [[IndexMallModel alloc]initWithDic:dic];
+                [mallItemArray addObject:model];
+            }
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+        
+        [theCollectionView reloadData];
+        
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
     
 }
 
@@ -60,11 +126,8 @@
     [self.view addSubview:theCollectionView];
 
     //注册item类型 这里使用系统的类型
-    [theCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellid"];
-    
-    
-    
-    
+    [theCollectionView registerClass:[IndexMallCollectionViewCell class] forCellWithReuseIdentifier:@"cellMallId"];
+
     [theCollectionView registerClass:[IndexCollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
 }
 
@@ -83,8 +146,9 @@
             IndexCollectionReusableView *headReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         
         headReusableView.backgroundColor = [UIColor yellowColor];
-            
-            return headReusableView;
+        headReusableView.delegate = self;
+        headReusableView.imageArray = bannerImageArray;
+        return headReusableView;
     }else{
         return nil;
     }
@@ -111,12 +175,15 @@
 }
 //返回每个分区的item个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 2;
+    return mallItemArray.count;
 }
 //返回每个item
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    UICollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+   
+    IndexMallModel * model = [mallItemArray objectAtIndex:indexPath.row];
+    IndexMallCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellMallId" forIndexPath:indexPath];
+    [cell setContentViewWithModel:model];
+    
     return cell;
     
 }
@@ -125,12 +192,17 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     //进入礼品详情界面
+    IndexMallModel * model = [mallItemArray objectAtIndex:indexPath.row];
     GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
+    giftDetailVC.mallModel = model;
     [self.navigationController pushViewController:giftDetailVC animated:YES];
 }
 
 
-
+-(void)selectedImageIndex:(NSInteger)index
+{
+    [CommonUtils showToastWithStr:@"点击轮播图"];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

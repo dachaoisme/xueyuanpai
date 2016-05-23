@@ -40,7 +40,7 @@
 }
 -(void)setContentViewWithModel:(IndexMallModel *)model
 {
-    [self.mallImageView sd_setImageWithURL:[NSURL URLWithString:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg"]];//[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexMallThumbUrl]]];
+    [self.mallImageView sd_setImageWithURL:[NSURL URLWithString:model.indexMallThumbUrl] placeholderImage:[UIImage imageNamed:@"test.jpg"]];//[NSURL URLWithString:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg"]];
     self.mallTitileLable.text = model.indexMallTitle;
     self.mallIntegralTitileLable.text = [NSString stringWithFormat:@"%@积分",model.indexMallPoints];
 }

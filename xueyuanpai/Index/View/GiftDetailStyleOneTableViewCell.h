@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "IndexMallModel.h"
 @interface GiftDetailStyleOneTableViewCell : UITableViewCell
+
+
+-(void)setWithContentModel:(IndexMallModel *)mallModel;
 
 @end
