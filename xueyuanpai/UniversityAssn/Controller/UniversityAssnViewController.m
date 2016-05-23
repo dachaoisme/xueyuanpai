@@ -58,6 +58,7 @@
     self.saveCommunityNewArray = [NSMutableArray array];
     
     [self setTitle:@"大学"];
+    [self createLeftBackNavBtn];
     
     //创建headerView的三个选项框
     [self createHeaderView];

@@ -106,8 +106,9 @@
 - (void)createLeftBackNavBtn
 {
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-    //    [button setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
-    [button setTitle:@"返回" forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"nav_icon_back"] forState:UIControlStateNormal];
+    //[button setTitle:@"返回" forState:UIControlStateNormal];
+    [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
     [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(doNavEventBack:) forControlEvents:UIControlEventTouchUpInside];
     button.frame = CGRectMake(20, 0, 65, 44);
