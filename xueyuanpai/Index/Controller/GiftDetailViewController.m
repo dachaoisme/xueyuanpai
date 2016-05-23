@@ -11,7 +11,7 @@
 #import "ParallaxHeaderView.h"
 #import "GiftDetailStyleOneTableViewCell.h"
 #import "GiftDetailStyleTwoTableViewCell.h"
-
+#import "GiftExchangeViewController.h"
 #define kExchangeButtonHeight 50
 
 @interface GiftDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -23,7 +23,10 @@
 @end
 
 @implementation GiftDetailViewController
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self theTabBarHidden:YES];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -100,6 +103,10 @@
 - (void)exchangeButtonAction:(UIButton *)sender{
     
     NSLog(@"立即兑换");
+    GiftExchangeViewController * giftExchangeVC = [[GiftExchangeViewController alloc]init];
+    giftExchangeVC.mallModel = self.mallModel;
+    [self.navigationController pushViewController:giftExchangeVC animated:YES];
+    
 }
 
 #pragma mark - tableView的代理方法

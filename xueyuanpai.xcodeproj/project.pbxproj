@@ -117,6 +117,7 @@
 		58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AAF1CE20E6B0036D105 /* IndexColumnCollectionViewCell.m */; };
 		58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */; };
 		58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */; };
+		58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */; };
 		58F67BA41CD9863400D55BE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA31CD9863400D55BE0 /* main.m */; };
 		58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA61CD9863400D55BE0 /* AppDelegate.m */; };
 		58F67BAF1CD9863400D55BE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F67BAE1CD9863400D55BE0 /* Assets.xcassets */; };
@@ -389,6 +390,8 @@
 		58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexMallCollectionViewCell.m; sourceTree = "<group>"; };
 		58CF089A1CE1DE45008334E8 /* IndexBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexBannerModel.h; sourceTree = "<group>"; };
 		58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexBannerModel.m; sourceTree = "<group>"; };
+		58E028F81CF3442B006A2E74 /* GiftExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftExchangeViewController.h; sourceTree = "<group>"; };
+		58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeViewController.m; sourceTree = "<group>"; };
 		58F67B9F1CD9863400D55BE0 /* xueyuanpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xueyuanpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F67BA31CD9863400D55BE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58F67BA51CD9863400D55BE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1095,6 +1098,8 @@
 				DD4127B21CF251C600227066 /* BigToSendViewController.m */,
 				DD4127C71CF2F35D00227066 /* GiftDetailViewController.h */,
 				DD4127C81CF2F35D00227066 /* GiftDetailViewController.m */,
+				58E028F81CF3442B006A2E74 /* GiftExchangeViewController.h */,
+				58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1618,6 +1623,7 @@
 				DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				5874A3FE1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m in Sources */,
+				58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */,
 				58F67BFC1CD990A200D55BE0 /* ExpressCenterViewController.m in Sources */,
 				DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
