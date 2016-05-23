@@ -91,6 +91,22 @@
         failBlock(error);
     }];
 }
+- (void)validateTelephoneAndSecurityCodeWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_CHECKING_MESSAGE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+- (void)changePasswordWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_UPDATE_PASSWORD withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 - (void)searchCollegeWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_OF_COLLEGE_SEARCH withParams:params withSuccess:^(HttpResponseCodeModel *model) {

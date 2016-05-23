@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "RegisterViewController.h"
 #import "RegisterRoleView.h"
+#import "ForgetPasswordViewController.h"
 @interface LoginViewController ()<RegisterRoleViewDelegate>
 {
     UITextField *phoneTextField;
@@ -207,7 +208,8 @@
 -(void)forgetPasswordAccount:(UIButton *)sender
 {
     [CommonUtils showToastWithStr:@"忘记密码"];
-    
+    ForgetPasswordViewController * forgetPasswordVC = [[ForgetPasswordViewController alloc]init];
+    [self.navigationController pushViewController:forgetPasswordVC animated:YES];
 }
 #pragma mark - 登陆
 -(void)loginAccount:(UIButton *)sender

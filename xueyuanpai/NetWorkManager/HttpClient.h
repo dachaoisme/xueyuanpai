@@ -70,6 +70,24 @@
 
 - (void)registerAndSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 /**
+ *  @brief  忘记密码-----校验验证码，验证手机号和验证码是否匹配
+ *
+ *  @param
+ *
+ *  @return
+ */
+
+- (void)validateTelephoneAndSecurityCodeWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  修改密码
+ *
+ *  @param
+ *
+ *  @return
+ */
+
+- (void)changePasswordWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
  *  @brief  根据关键字查询学校
  *
  *  @param
