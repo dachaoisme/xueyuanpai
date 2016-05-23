@@ -2,7 +2,7 @@
 //  ActivityDetailViewController.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/5/22.
+//  Created by 王园园 on 16/5/23.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
@@ -21,8 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.title = @"活动详情";
+    
+    [self createLeftBackNavBtn];
     
     ActivityDetailView *detailView = [[ActivityDetailView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.view addSubview:detailView];
@@ -34,7 +35,7 @@
     
     //刷新数据
     [self refreshData];
-
+    
 }
 
 #pragma mark - 设置分享按钮
@@ -59,7 +60,7 @@
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
     [CommonUtils showToastWithStr:@"收藏"];
-
+    
 }
 
 
@@ -67,7 +68,7 @@
 - (void)refreshData{
     
     [_detailView adjustSubviewsWithContent:_model.content];
-
+    
     
     _detailView.titleLabel.text = _model.title;
     _detailView.authorLable.text = [NSString stringWithFormat:@"作者 %@",_model.author];
@@ -75,7 +76,7 @@
     _detailView.timeLabel.text = _model.createTime;
     _detailView.locationLable.text = _model.place;
     
-
+    
     _detailView.detailLabel.text = _model.content;
     
     
@@ -84,8 +85,6 @@
     
     
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
