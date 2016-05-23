@@ -21,6 +21,7 @@
 #import "LoginViewController.h"
 
 #import "UniversityAssnViewController.h"
+#import "BigToSendViewController.h"
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -281,6 +282,8 @@
 -(void)getMoreIntegralMall
 {
     
+    BigToSendViewController *bigToSendVC = [[BigToSendViewController alloc] init];
+    [self.navigationController pushViewController:bigToSendVC animated:YES];
 }
 #pragma mark - 我的
 -(void)leftItemActionWithBtn:(UIButton *)sender

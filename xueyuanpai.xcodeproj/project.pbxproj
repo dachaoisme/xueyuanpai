@@ -184,6 +184,11 @@
 		DD4127941CF18D8000227066 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD4127931CF18D8000227066 /* test1.jpg */; };
 		DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127961CF19DC300227066 /* ActivityDetailView.m */; };
 		DD41279A1CF19F0700227066 /* ActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127991CF19F0700227066 /* ActivityDetailViewController.m */; };
+		DD4127B31CF251C600227066 /* BigToSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127B21CF251C600227066 /* BigToSendViewController.m */; };
+		DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127C81CF2F35D00227066 /* GiftDetailViewController.m */; };
+		DD4127CC1CF2F98F00227066 /* ParallaxHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127CB1CF2F98F00227066 /* ParallaxHeaderView.m */; };
+		DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127CE1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m */; };
+		DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127D11CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m */; };
 		E993E0049F3F51C845C25B59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3EE12099BB224ECB4817B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -458,6 +463,16 @@
 		DD4127961CF19DC300227066 /* ActivityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetailView.m; path = xueyuanpai/UniversityAssn/ActivityDetailView.m; sourceTree = SOURCE_ROOT; };
 		DD4127981CF19F0700227066 /* ActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDetailViewController.h; sourceTree = "<group>"; };
 		DD4127991CF19F0700227066 /* ActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailViewController.m; sourceTree = "<group>"; };
+		DD4127B11CF251C600227066 /* BigToSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigToSendViewController.h; sourceTree = "<group>"; };
+		DD4127B21CF251C600227066 /* BigToSendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigToSendViewController.m; sourceTree = "<group>"; };
+		DD4127C71CF2F35D00227066 /* GiftDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftDetailViewController.h; sourceTree = "<group>"; };
+		DD4127C81CF2F35D00227066 /* GiftDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftDetailViewController.m; sourceTree = "<group>"; };
+		DD4127CA1CF2F98F00227066 /* ParallaxHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParallaxHeaderView.h; sourceTree = "<group>"; };
+		DD4127CB1CF2F98F00227066 /* ParallaxHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParallaxHeaderView.m; sourceTree = "<group>"; };
+		DD4127CD1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftDetailStyleOneTableViewCell.h; sourceTree = "<group>"; };
+		DD4127CE1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftDetailStyleOneTableViewCell.m; sourceTree = "<group>"; };
+		DD4127D01CF3040300227066 /* GiftDetailStyleTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftDetailStyleTwoTableViewCell.h; sourceTree = "<group>"; };
+		DD4127D11CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftDetailStyleTwoTableViewCell.m; sourceTree = "<group>"; };
 		FFF3EE12099BB224ECB4817B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -940,6 +955,10 @@
 			children = (
 				58F67BED1CD990A200D55BE0 /* IndexViewController.h */,
 				58F67BEE1CD990A200D55BE0 /* IndexViewController.m */,
+				DD4127B11CF251C600227066 /* BigToSendViewController.h */,
+				DD4127B21CF251C600227066 /* BigToSendViewController.m */,
+				DD4127C71CF2F35D00227066 /* GiftDetailViewController.h */,
+				DD4127C81CF2F35D00227066 /* GiftDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -960,6 +979,8 @@
 		58F67BF01CD990A200D55BE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DD4127CA1CF2F98F00227066 /* ParallaxHeaderView.h */,
+				DD4127CB1CF2F98F00227066 /* ParallaxHeaderView.m */,
 				58BA78D31CDCE191000C71D3 /* IndexScrollView.h */,
 				58BA78D41CDCE191000C71D3 /* IndexScrollView.m */,
 				581ABF1C1CE0DAEA00B933D7 /* IndexCollectionReusableView.h */,
@@ -970,6 +991,10 @@
 				58C27AAF1CE20E6B0036D105 /* IndexColumnCollectionViewCell.m */,
 				58C27AB11CE20E7C0036D105 /* IndexMallCollectionViewCell.h */,
 				58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */,
+				DD4127CD1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.h */,
+				DD4127CE1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m */,
+				DD4127D01CF3040300227066 /* GiftDetailStyleTwoTableViewCell.h */,
+				DD4127D11CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1445,14 +1470,17 @@
 				58F67C001CD990A200D55BE0 /* HttpServer.m in Sources */,
 				DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
+				DD4127CC1CF2F98F00227066 /* ParallaxHeaderView.m in Sources */,
 				DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */,
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
+				DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				5874A3FE1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m in Sources */,
 				58F67BFC1CD990A200D55BE0 /* ExpressCenterViewController.m in Sources */,
 				DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */,
 				DD41279A1CF19F0700227066 /* ActivityDetailViewController.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
+				DD4127B31CF251C600227066 /* BigToSendViewController.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
 				58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */,
@@ -1463,6 +1491,7 @@
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
+				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
 				5874A3F51CF14C7800CE9FC9 /* SelectedSchollViewController.m in Sources */,
@@ -1490,6 +1519,7 @@
 				5874A3F81CF172A000CE9FC9 /* CollegeModel.m in Sources */,
 				5829987A1CDB4486004A05FB /* MineViewController.m in Sources */,
 				58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */,
+				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
 				5874A3F21CF1405100CE9FC9 /* SelectedImageView.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
