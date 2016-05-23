@@ -38,6 +38,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"大派送";
+    [self createLeftBackNavBtn];
     bannerItemArray  = [NSMutableArray array];
     bannerImageArray = [NSMutableArray array];
     mallItemArray    = [NSMutableArray array];

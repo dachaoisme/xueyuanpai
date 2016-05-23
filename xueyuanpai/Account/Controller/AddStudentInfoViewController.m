@@ -37,7 +37,7 @@
     // Do any additional setup after loading the view.
     [self setTitle:@"设置资料"];
     self.view.backgroundColor = [CommonUtils colorWithHex:@"e5e5e5"];
-    
+    [self createLeftBackNavBtn];
     [self setContentView];
     
     if([[[UIDevice

@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self createLeftBackNavBtn];
     self.view.backgroundColor = [CommonUtils colorWithHex:@"e5e5e5"];
     [self setContentView];
     

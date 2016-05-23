@@ -12,5 +12,4 @@
 
 @property(nonatomic,strong)IndexMallModel * mallModel;
 
--(void)setWithContentModel:(IndexMallModel *)mallModel;
 @end

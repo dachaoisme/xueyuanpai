@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self createLeftBackNavBtn];
     NSMutableArray * sectionOneTitleArr = [NSMutableArray arrayWithObjects:@"真实姓名",@"身份证号",@"工作单位",@"职务",@"联系电话",@"邮箱", nil];
     NSMutableArray * sectionTwoTitleArr = [NSMutableArray arrayWithObjects:@"擅长辅导领域", nil];
     NSMutableArray * sectionThreeTitleArr = [NSMutableArray arrayWithObjects:@"导师背景",nil];

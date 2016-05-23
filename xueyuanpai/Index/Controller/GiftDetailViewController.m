@@ -31,7 +31,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"礼品详情";
-    
+    [self createLeftBackNavBtn];
     
     //创建一个tableView
     [self createTableView];

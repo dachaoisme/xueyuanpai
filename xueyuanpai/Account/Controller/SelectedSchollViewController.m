@@ -25,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTitle:@"选择学校"];
+    [self createLeftBackNavBtn];
     [self initContentView];
     dataArr = [NSMutableArray array];
     pageCount = 10;
