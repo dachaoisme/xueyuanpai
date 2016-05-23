@@ -142,16 +142,18 @@
 }
 -(void)submitAndRegister:(UIButton *)sender
 {
-    if (self.registerRoleType==RegisterRoleOfStudent) {
+    if (self.registerRoleType == RegisterRoleOfStudent) {
+        
+        //学生->跳转到设置用户资料界面，直接登录成功
         AddStudentInfoViewController * studentInfoVC = [[AddStudentInfoViewController alloc]init];
         [self.navigationController pushViewController:studentInfoVC animated:YES];
-        return;
+        //保存学生的用户信息
     }else{
-        AddTeacherViewController * studentInfoVC = [[AddTeacherViewController alloc]init];
-        [self.navigationController pushViewController:studentInfoVC animated:YES];
-        return;
-        
+        //教师->跳转到设置教师的用户资料界面，设置成功以后，返回登录页，因为需要审核
+        AddTeacherViewController * teacherInfoVC = [[AddTeacherViewController alloc]init];
+        [self.navigationController pushViewController:teacherInfoVC animated:YES];
     }
+    
     
     [CommonUtils showToastWithStr:@"提交并注册"];
     
