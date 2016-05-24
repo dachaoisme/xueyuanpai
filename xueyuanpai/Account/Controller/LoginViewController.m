@@ -214,7 +214,40 @@
 #pragma mark - 登陆
 -(void)loginAccount:(UIButton *)sender
 {
-    [CommonUtils showToastWithStr:@"登陆"];
+    NSString * phoneNum = phoneTextField.text;
+    if (!(phoneNum.length==11 && [CommonUtils checkPhoneNumIsAvailableWithPhoneNumString:phoneNum])) {
+        [CommonUtils showToastWithStr:@"请输入有效手机号"];
+        return;
+    }
+    if (passwordTextField.text.length<=0 ) {
+        [CommonUtils showToastWithStr:@"密码不能为空"];
+        return;
+    }
+    /*
+  mobile  string    必需    手机号码
+  passwd   string    必需    密码
+  role     string    必需    角色 1学生 2导师
+  
+  */
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:phoneTextField.text forKey:@"mobile"];
+    [dic setObject:passwordTextField.text forKey:@"passwd"];
+    [dic setObject:personalAccountBtn.selected?@"1":@"2" forKey:@"role"];
+    [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"登陆成功"];
+            NSString * userid = [model.responseCommonDic objectForKey:@"user_id"];
+            NSString * points = [model.responseCommonDic objectForKey:@"points"];
+            [[UserAccountManager sharedInstance]saveUserAccountWithUserId:userid withPhoneNum:phoneTextField.text withPassword:passwordTextField.text];
+            [[UserAccountManager sharedInstance]saveUsablePointsWithPoints:points];;
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
 }
 #pragma mark - 注册
 -(void)registerAccount:(UIButton *)sender

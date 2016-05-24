@@ -118,6 +118,7 @@
 		58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */; };
 		58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */; };
 		58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */; };
+		58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E029001CF45E04006A2E74 /* TimeBankViewController.m */; };
 		58F67BA41CD9863400D55BE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA31CD9863400D55BE0 /* main.m */; };
 		58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA61CD9863400D55BE0 /* AppDelegate.m */; };
 		58F67BAF1CD9863400D55BE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F67BAE1CD9863400D55BE0 /* Assets.xcassets */; };
@@ -392,6 +393,8 @@
 		58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexBannerModel.m; sourceTree = "<group>"; };
 		58E028F81CF3442B006A2E74 /* GiftExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftExchangeViewController.h; sourceTree = "<group>"; };
 		58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeViewController.m; sourceTree = "<group>"; };
+		58E028FF1CF45E04006A2E74 /* TimeBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankViewController.h; sourceTree = "<group>"; };
+		58E029001CF45E04006A2E74 /* TimeBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankViewController.m; sourceTree = "<group>"; };
 		58F67B9F1CD9863400D55BE0 /* xueyuanpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xueyuanpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F67BA31CD9863400D55BE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58F67BA51CD9863400D55BE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -922,6 +925,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		58E028FB1CF45DB7006A2E74 /* TimeBank */ = {
+			isa = PBXGroup;
+			children = (
+				58E028FC1CF45DD9006A2E74 /* Controller */,
+				58E028FD1CF45DD9006A2E74 /* View */,
+				58E028FE1CF45DD9006A2E74 /* Model */,
+			);
+			path = TimeBank;
+			sourceTree = "<group>";
+		};
+		58E028FC1CF45DD9006A2E74 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				58E028FF1CF45E04006A2E74 /* TimeBankViewController.h */,
+				58E029001CF45E04006A2E74 /* TimeBankViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		58E028FD1CF45DD9006A2E74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58E028FE1CF45DD9006A2E74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		58F67B961CD9863400D55BE0 = {
 			isa = PBXGroup;
 			children = (
@@ -953,6 +989,7 @@
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
 				58F67BD81CD990A200D55BE0 /* BaseViewController.m */,
+				58E028FB1CF45DB7006A2E74 /* TimeBank */,
 				5874A35B1CF03AF200CE9FC9 /* UniversityAssn */,
 				5849FDBE1CE4705D0039AFC2 /* UserAccountManager */,
 				58A944A21CE2796700DAD398 /* Account */,
@@ -1638,6 +1675,7 @@
 				587FF9DA1CF2F8F300AD2131 /* IQTextView.m in Sources */,
 				58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */,
 				5874A40A1CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */,
+				58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,

@@ -52,6 +52,15 @@
 
 #pragma mark - 用户相关
 /**
+ *  @brief  登陆
+ *
+ *  @param
+ *
+ *  @return
+ */
+
+- (void)loginWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
  *  @brief  发送验证码
  *
  *  @param

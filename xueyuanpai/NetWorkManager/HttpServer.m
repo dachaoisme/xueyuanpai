@@ -87,6 +87,7 @@
     //2.管理器
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //替换ContentType类型
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain", nil];
     [manager setSecurityPolicy:[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey]];
     //3.请求

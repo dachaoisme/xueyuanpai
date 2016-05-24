@@ -18,7 +18,8 @@
 @property (nonatomic, strong) NSString *password;
 ///是否是登陆状态
 @property (nonatomic, assign) BOOL isLogin;
-
+///可用积分
+@property (nonatomic, strong) NSString *usablePoints;
 
 + (instancetype)sharedInstance;
 
@@ -70,4 +71,20 @@
  *  @return
  */
 -(void)exitLogin;
+/**
+ *  @brief  保存获取用户可用积分
+ *
+ *  @param
+ *
+ *  @return
+ */
+-(void)saveUsablePointsWithPoints:(NSString * )points;
+/**
+ *  @brief  获取用户可用积分
+ *
+ *  @param
+ *
+ *  @return
+ */
+-(NSString *)getPoints;
 @end

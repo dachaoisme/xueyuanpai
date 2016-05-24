@@ -146,7 +146,7 @@
     [dic setObject:checkingMessageTextField.text forKey:@"captcha"];
     [[HttpClient sharedInstance]validateTelephoneAndSecurityCodeWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-            NSString * userId = [[model.responseCommonDic objectForKey:@"data"] objectForKey:@"user_id"];
+            NSString * userId = [model.responseCommonDic objectForKey:@"user_id"];
             //验证码和手机号验证成功
             ForgetPasswordOfSetNewPasswordViewController * forgetPasswordOfSetNewPasswordVC = [[ForgetPasswordOfSetNewPasswordViewController alloc] init];
             forgetPasswordOfSetNewPasswordVC.userId = userId;
