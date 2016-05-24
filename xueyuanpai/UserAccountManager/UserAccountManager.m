@@ -27,17 +27,24 @@
     NSString * userInfoKey = @"userInfo";
     
     NSMutableDictionary * userInfoDic = [NSMutableDictionary dictionary];
-    [userInfoDic setObject:userId forKey:@"userId"];
-    [userInfoDic setObject:phoneNum forKey:@"phoneNum"];
-    [userInfoDic setObject:password forKey:@"password"];
-    
-    [UserDefaultsDataDeal saveWithKey:userInfoKey andValue:userInfoDic];
-    
-    self.userId = userId;
-    self.phoneNum = phoneNum;
-    self.password = password;
-    
-    
+    if (userId) {
+        [userInfoDic setObject:userId forKey:@"userId"];
+        if (phoneNum) {
+            [userInfoDic setObject:phoneNum forKey:@"phoneNum"];
+        }
+        if (password) {
+            [userInfoDic setObject:password forKey:@"password"];
+        }
+        
+        [UserDefaultsDataDeal saveWithKey:userInfoKey andValue:userInfoDic];
+        
+        self.userId = userId;
+        self.phoneNum = phoneNum;
+        self.password = password;
+        self.isLogin = YES;
+    }else{
+        
+    }
 }
 -(NSDictionary *)getUserInfo
 {
@@ -47,9 +54,9 @@
     self.phoneNum = [dic objectForKey:@"phoneNum"];
     self.password = [dic objectForKey:@"password"];
     if (self.userId && self.userId.length>0) {
-        self.yesIsLogin = YES;
+        self.isLogin = YES;
     }else{
-        self.yesIsLogin = NO;
+        self.isLogin = NO;
     }
     return dic;
 }
@@ -82,6 +89,6 @@
 {
     NSString * userInfoKey = @"userInfo";
     [UserDefaultsDataDeal deleteKey:userInfoKey];
-    self.yesIsLogin = NO;
+    self.isLogin = NO;
 }
 @end

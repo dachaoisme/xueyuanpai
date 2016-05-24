@@ -158,4 +158,13 @@
  */
 - (void)getCommunityNewDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
+#pragma mark - 大派送
+/**
+ *  @brief  立即兑换
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)exchangeGiftWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 @end

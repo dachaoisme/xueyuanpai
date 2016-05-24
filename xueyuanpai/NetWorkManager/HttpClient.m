@@ -58,7 +58,7 @@
 }
 
 /*
- *  @brief 获取首页栏目分类
+ *  @brief 获取大派送信息
  */
 - (void)getMallOfIndexWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
@@ -185,5 +185,15 @@
         
     }];
 
+}
+
+#pragma mark - 大派送
+- (void)exchangeGiftWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXCHANGE_GIFT withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
 }
 @end

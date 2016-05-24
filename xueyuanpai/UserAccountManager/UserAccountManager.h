@@ -17,7 +17,7 @@
 //用户密码
 @property (nonatomic, strong) NSString *password;
 ///是否是登陆状态
-@property (nonatomic, assign) BOOL yesIsLogin;
+@property (nonatomic, assign) BOOL isLogin;
 
 
 + (instancetype)sharedInstance;

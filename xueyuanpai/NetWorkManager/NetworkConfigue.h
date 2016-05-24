@@ -50,8 +50,8 @@
 #define METHOD_OF_UNIVERSITY_START_COMMUNITY    @"v1/association/star?"
 ///大学社团：社团纳新
 #define METHOD_OF_UNIVERSITY_COMMUNITY_NEW      @"v1/association/nexeon?"
-
-
+///大派送-立即兑换礼品
+#define METHOD_EXCHANGE_GIFT                    @"v1/exchange/add?"
 
 
 

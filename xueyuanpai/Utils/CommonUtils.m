@@ -13,12 +13,12 @@
 @implementation CommonUtils
 
 +(BOOL)checkIsNum:(NSString *)str{
-//    NSString *num = @"^[0-9]+\\.{0,1}[0-9]{0,2}$";
-    NSString *num = @"^((13[0-9])|(147)|(15[^4,\\D])|(17[0-9])|(18[0,0-9]))\\d{8}$";
-    
-    NSPredicate *regExPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", num];
-    BOOL res = [regExPredicate evaluateWithObject:str];
-    return res;
+    str = [str stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+    if(str.length > 0)
+    {
+        return NO;
+    } 
+    return YES;
 }
 +(BOOL)checkPhoneNumIsAvailableWithPhoneNumString:(NSString *)phoneNum
 {
