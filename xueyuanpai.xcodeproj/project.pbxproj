@@ -147,6 +147,8 @@
 		58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67C231CD9CF9500D55BE0 /* UIView+MJExtension.m */; };
 		58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67C261CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m */; };
 		58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67C291CD9CF9500D55BE0 /* UIView+Toast.m */; };
+		58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */; };
+		58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996461CF598A700D67C63 /* TimeBankModel.m */; };
 		DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */; };
 		DD4127551CF0552F00227066 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127251CF0552E00227066 /* arrow@2x.png */; };
 		DD4127561CF0552F00227066 /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127261CF0552E00227066 /* arrow@3x.png */; };
@@ -460,6 +462,10 @@
 		58F67C261CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeExpectations.m"; sourceTree = "<group>"; };
 		58F67C281CD9CF9500D55BE0 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		58F67C291CD9CF9500D55BE0 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		58F996421CF5874900D67C63 /* LDCPullDownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDCPullDownMenuView.h; sourceTree = "<group>"; };
+		58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDCPullDownMenuView.m; sourceTree = "<group>"; };
+		58F996451CF598A700D67C63 /* TimeBankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankModel.h; sourceTree = "<group>"; };
+		58F996461CF598A700D67C63 /* TimeBankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankModel.m; sourceTree = "<group>"; };
 		DD4127211CF043DF00227066 /* UniversityAssnHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniversityAssnHeaderView.h; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.h; sourceTree = SOURCE_ROOT; };
 		DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UniversityAssnHeaderView.m; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.m; sourceTree = SOURCE_ROOT; };
 		DD4127251CF0552E00227066 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
@@ -954,6 +960,8 @@
 		58E028FE1CF45DD9006A2E74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58F996451CF598A700D67C63 /* TimeBankModel.h */,
+				58F996461CF598A700D67C63 /* TimeBankModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1213,6 +1221,7 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				58F996411CF5871500D67C63 /* LDCPullDownMenu */,
 				587FF9AC1CF2F8F300AD2131 /* IQKeyboardManager */,
 				58F67C081CD9CF9500D55BE0 /* MBProgressHUD */,
 				58F67C0B1CD9CF9500D55BE0 /* MJRefresh */,
@@ -1278,6 +1287,15 @@
 				58F67C291CD9CF9500D55BE0 /* UIView+Toast.m */,
 			);
 			path = Toast;
+			sourceTree = "<group>";
+		};
+		58F996411CF5871500D67C63 /* LDCPullDownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				58F996421CF5874900D67C63 /* LDCPullDownMenuView.h */,
+				58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */,
+			);
+			path = LDCPullDownMenu;
 			sourceTree = "<group>";
 		};
 		671D38BDB64123FCE86B41C0 /* Frameworks */ = {
@@ -1652,6 +1670,7 @@
 				587FF9DC1CF2F8F300AD2131 /* IQPreviousNextView.m in Sources */,
 				58F67C001CD990A200D55BE0 /* HttpServer.m in Sources */,
 				587FF9D51CF2F8F300AD2131 /* IQUIView+Hierarchy.m in Sources */,
+				58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */,
 				DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
 				DD4127CC1CF2F98F00227066 /* ParallaxHeaderView.m in Sources */,
@@ -1678,6 +1697,7 @@
 				58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
+				58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
 				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
