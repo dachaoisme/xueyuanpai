@@ -51,7 +51,7 @@
                 
                 NSData *imageData = uploadDic.allValues[i];
                 NSString *imageKey = uploadDic.allKeys[i];
-                [formData appendPartWithFileData:imageData name:imageKey fileName:fileName mimeType:@"image/png"];
+                [formData appendPartWithFileData:imageData name:imageKey fileName:fileName mimeType:@"file"];
             }
         }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {

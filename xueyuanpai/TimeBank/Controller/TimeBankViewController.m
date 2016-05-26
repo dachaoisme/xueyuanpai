@@ -43,6 +43,7 @@
     [super viewDidLoad];
     [self setTitle:@"时间银行"];
     [self createLeftBackNavBtn];
+    
     timeBankConditionCategoryModelArr = [NSMutableArray array];
     timeBankConditionCategoryTitleArr = [NSMutableArray array];
     timeBankConditionSexTitleArr      = [NSMutableArray array];
@@ -51,7 +52,9 @@
     timeBankCategoryParam = @"0";
     timeBankSexParam      = @"0" ;
     timeBankSortParam     = @"0";
+    
     [self requestToGetConditions];
+    [self createTableView];
 }
 
 -(void)requestToGetConditions
@@ -206,12 +209,69 @@
                 TimeBankModel * model = [[TimeBankModel alloc]initWithDic:smallDic];
                 [timeBankModelListArr addObject:model];
             }
+            [self.tableView reloadData];
         }else{
             
         }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
+    
+}
+
+#pragma mark - tableview UITableViewDataSource,UITableViewDelegate
+-(void)createTableView
+{
+    
+    float height = 40;
+    //初始化tableView
+    CGRect rc = self.view.bounds;
+    rc.origin.y = NAV_TOP_HEIGHT;
+    rc.size.height = SCREEN_HEIGHT-NAV_TOP_HEIGHT-height;
+    UITableView * tableView    = [[UITableView alloc]initWithFrame:rc style:UITableViewStylePlain];
+    tableView.backgroundColor  = [CommonUtils colorWithHex:@"f3f3f3"];
+    tableView.separatorInset   = UIEdgeInsetsZero;
+    tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
+    tableView.dataSource       = self;
+    tableView.delegate         = self;
+    [self.view addSubview:tableView];
+    self.tableView = tableView;
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //游玩日期
+    return 120;
+
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return timeBankModelListArr.count;
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //游玩日期
+    NSString * cellResuable = [NSString stringWithFormat:@"cell"];
+    TimeBankTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable];
+    if (!cell) {
+        cell = [[TimeBankTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
+        
+    }
+    TimeBankModel * timeBankModel = [timeBankModelListArr objectAtIndex:indexPath.row];
+    [cell setContentViewWithModel:timeBankModel];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {

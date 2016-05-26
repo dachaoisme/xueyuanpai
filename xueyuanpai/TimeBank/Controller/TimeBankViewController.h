@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "TimeBankTableViewCell.h"
+@interface TimeBankViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
-@interface TimeBankViewController : BaseViewController
 
+@property(nonatomic,strong)UITableView * tableView;
 @end
