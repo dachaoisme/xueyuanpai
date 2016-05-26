@@ -52,6 +52,25 @@ typedef NS_ENUM(NSInteger, RegisterRoleType){
     RegisterRoleTypeTeacher    = 2,
     
 };
+///时间银行中：性别
+typedef NS_ENUM(NSInteger, SexType){
+    
+    SexOfManType       =1,
+    SexOfWomanType     =2,
+    SexOfSecretType    =3
+    
+};
+
+///时间银行：申领状态  0未申请 1 已申请 2 已通过 3过期 4完成
+typedef NS_ENUM(NSInteger, TimeBankState){
+    
+    TimeBankStateUnApply          =0,
+    TimeBankStateAlreadyApply     =1,
+    TimeBankStateAlreadyPass      =2,
+    TimeBankStateAlreadyOverdue   =3,
+    TimeBankStateAlreadyComplete  =4
+};
+
 
 
 #endif /* EnumDefine_h */

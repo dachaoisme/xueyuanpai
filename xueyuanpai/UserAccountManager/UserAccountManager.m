@@ -27,30 +27,39 @@
     NSString * userInfoKey = @"userInfo";
     
     NSMutableDictionary * userInfoDic = [NSMutableDictionary dictionary];
-    [userInfoDic setObject:userId forKey:@"userId"];
-    [userInfoDic setObject:phoneNum forKey:@"phoneNum"];
-    [userInfoDic setObject:password forKey:@"password"];
-    
-    [UserDefaultsDataDeal saveWithKey:userInfoKey andValue:userInfoDic];
-    
-    self.userId = userId;
-    self.phoneNum = phoneNum;
-    self.password = password;
-    
-    
+    if (userId) {
+        NSString * userIdStr = [NSString stringWithFormat:@"%d",[userId intValue]];
+        [userInfoDic setObject:userIdStr forKey:@"userId"];
+        if (phoneNum) {
+            [userInfoDic setObject:phoneNum forKey:@"phoneNum"];
+        }
+        if (password) {
+            [userInfoDic setObject:password forKey:@"password"];
+        }
+        
+        [UserDefaultsDataDeal saveWithKey:userInfoKey andValue:userInfoDic];
+        
+        self.userId = userIdStr;
+        self.phoneNum = phoneNum;
+        self.password = password;
+        self.isLogin = YES;
+    }else{
+        
+    }
 }
 -(NSDictionary *)getUserInfo
 {
     NSString * userInfoKey = @"userInfo";
     NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
-    self.userId =[dic objectForKey:@"phoneNum"];
-    self.phoneNum = [dic objectForKey:@"phoneNum"];
-    self.password = [dic objectForKey:@"password"];
+    self.userId =[dic stringForKey:@"userId"];
+    self.phoneNum = [dic stringForKey:@"phoneNum"];
+    self.password = [dic stringForKey:@"password"];
     if (self.userId && self.userId.length>0) {
-        self.yesIsLogin = YES;
+        self.isLogin = YES;
     }else{
-        self.yesIsLogin = NO;
+        self.isLogin = NO;
     }
+    [self getPoints];
     return dic;
 }
 
@@ -82,6 +91,30 @@
 {
     NSString * userInfoKey = @"userInfo";
     [UserDefaultsDataDeal deleteKey:userInfoKey];
-    self.yesIsLogin = NO;
+    self.isLogin = NO;
+}
+-(void)saveUsablePointsWithPoints:(NSString * )points
+{
+    NSString * userInfoKey = @"points";
+    if (points) {
+        NSString * pointsStr = [NSString stringWithFormat:@"%d",[points intValue]];
+        NSMutableDictionary * userInfoDic = [NSMutableDictionary dictionary];
+        if (pointsStr) {
+            [userInfoDic setObject:pointsStr forKey:userInfoKey];
+            [UserDefaultsDataDeal saveWithKey:userInfoKey andValue:userInfoDic];
+            self.usablePoints = pointsStr;
+        }else{
+            
+        }
+    }
+    
+}
+-(NSString *)getPoints
+{
+    NSString * userInfoKey = @"points";
+    NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
+    NSString * usablePoints = [dic objectForKey:userInfoKey];
+    self.usablePoints = usablePoints;
+    return usablePoints;
 }
 @end

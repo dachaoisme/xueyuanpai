@@ -50,17 +50,34 @@
 #define METHOD_OF_UNIVERSITY_START_COMMUNITY    @"v1/association/star?"
 ///大学社团：社团纳新
 #define METHOD_OF_UNIVERSITY_COMMUNITY_NEW      @"v1/association/nexeon?"
+///大派送-立即兑换礼品
+#define METHOD_EXCHANGE_GIFT                    @"v1/exchange/add?"
 
 
 ///校园招聘网址
 #define METHOD_SCHOOL_BANNER    @"v1/recruitment/columns?"
 
-
-
-
-
-
-
-
+///时间银行:条件筛选接口
+#define METHOD_TIME_BANK_CONDITIONS           @"v1/timebank/conditions?"
+///时间银行:支付方式接口
+#define METHOD_TIME_BANK_PAYWAY               @"v1/timebank/payway?"
+///时间银行:列表接口
+#define METHOD_TIME_BANK_LIST                 @"v1/timebank/list?"
+///时间银行:添加或者发布时间银行接口
+#define METHOD_TIME_BANK_RELEASE              @"v1/timebank/create?"
+///时间银行:评论列表接口
+#define METHOD_TIME_BANK_COMMENTS             @"v1/timebank/comments?"
+///时间银行:添加评论接口
+#define METHOD_TIME_BANK_ADD_COMMENTS         @"v1/timebank/addcomment?"
+///时间银行:上传用户头像
+#define METHOD_TIME_BANK_ADD_UPLOAD           @"v1/timebank/upload/"
+///时间银行:申请赴约接口
+#define METHOD_TIME_BANK_APPLY_APPOINTMENT    @"v1/timebank/apply/"
+///时间银行:申领通过接口
+#define METHOD_TIME_BANK_APPLY_PASS           @"v1/timebank/verified/"
+///时间银行:详情接口
+#define METHOD_TIME_BANK_APPLY_DETAIL         @"v1/timebank/detail"
+///时间银行:增加浏览数接口
+#define METHOD_TIME_BANK_ADD_SCAN             @"v1/timebank/viewsadd"
 
 #endif /* NetworkConfigue_h */

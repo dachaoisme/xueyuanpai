@@ -31,7 +31,7 @@
     [self createLeftBackNavBtn];
     [self setTitle:@"积分兑换"];
     self.view.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
-    self.totalPoint = @"1000";
+    self.totalPoint = [UserAccountManager sharedInstance].usablePoints;
     self.mallModel.indexMallPoints = @"10";
     [self setcontentView];
 }
@@ -242,6 +242,28 @@
 #pragma mark - 立即兑换
 -(void)exchangeBtn:(UIButton *)sender
 {
+    /*
+     good_id int  必需    商品序号
+     points  int  必需    所需积分数
+     user_id int  必需    用户序号
+     number  int  必需    兑换数量     >0
+     */
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.mallModel.indexMallId forKey:@"good_id"];
+    [dic setObject:needPointValueLable.text forKey:@"points"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:centerTextField.text forKey:@"number"];
+    
+    [[HttpClient sharedInstance]exchangeGiftWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode==ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"兑换成功"];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
     
 }
 - (void)didReceiveMemoryWarning {

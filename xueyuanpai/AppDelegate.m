@@ -25,6 +25,9 @@
     _window.rootViewController=mainVC;
     
     [_window makeKeyAndVisible];
+    
+    
+    [[UserAccountManager sharedInstance]getUserInfo];
     return YES;
 }
 

@@ -51,7 +51,7 @@
                 
                 NSData *imageData = uploadDic.allValues[i];
                 NSString *imageKey = uploadDic.allKeys[i];
-                [formData appendPartWithFileData:imageData name:imageKey fileName:fileName mimeType:@"image/png"];
+                [formData appendPartWithFileData:imageData name:imageKey fileName:fileName mimeType:@"file"];
             }
         }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
@@ -87,6 +87,7 @@
     //2.管理器
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //替换ContentType类型
+    //manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain", nil];
     [manager setSecurityPolicy:[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey]];
     //3.请求

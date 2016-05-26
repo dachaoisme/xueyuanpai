@@ -17,7 +17,7 @@
         
         self.responseCode           =[[dic stringForKey:@"stat"] integerValue];
         self.responseMsg            = [dic stringForKey:@"msg"];
-        self.responseCommonDic      = [dic dictionaryForKey:@"data"];
+        self.responseCommonDic      = [dic objectForKey:@"data"];
     }
     
     return self;

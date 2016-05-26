@@ -83,7 +83,7 @@
         if (model.responseCode == ResponseCodeSuccess) {
             NSString * userId = [[model.responseCommonDic objectForKey:@"data"] objectForKey:@"user_id"];
             //若成功，应该是返回主页面，并且是已经登录状态
-            [[UserAccountManager sharedInstance]saveUserAccountWithUserId:self.userId withPhoneNum:self.telephoneNum withPassword:inputPasswordTextField.text];
+            [[UserAccountManager sharedInstance]saveUserAccountWithUserId:userId withPhoneNum:self.telephoneNum withPassword:inputPasswordTextField.text];
         }else{
             //验证失败
             [CommonUtils showToastWithStr:model.responseMsg];

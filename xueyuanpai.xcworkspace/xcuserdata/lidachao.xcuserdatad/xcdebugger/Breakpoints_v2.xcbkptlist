@@ -6,16 +6,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Index/Controller/GiftExchangeViewController.m"
-            timestampString = "485730078.114799"
+            filePath = "xueyuanpai/TimeBank/Controller/TimeBankViewController.m"
+            timestampString = "485947415.245471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-changeBuyTicketNumWithBtn:"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "-requestToGetTimeBankList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/TimeBank/View/TimeBankTableViewCell.m"
+            timestampString = "485947493.881082"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-setContentViewWithModel:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

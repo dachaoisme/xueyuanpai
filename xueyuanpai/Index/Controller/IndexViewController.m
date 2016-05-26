@@ -26,6 +26,8 @@
 #import "SchoolRecruitmentViewController.h"
 
 
+
+#import "TimeBankViewController.h"
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -268,6 +270,8 @@
             [self.navigationController pushViewController:universityAssnVC animated:YES];
         }else if (indexPath.row==1){
             //时间银行
+            TimeBankViewController  *timeBankViewControllerVC = [[TimeBankViewController alloc]init];
+            [self.navigationController pushViewController:timeBankViewControllerVC animated:YES];
         }else if (indexPath.row==2){
             //跳蚤市场
         }else{
