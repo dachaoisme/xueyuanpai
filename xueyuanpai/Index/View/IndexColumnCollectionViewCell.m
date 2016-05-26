@@ -20,6 +20,7 @@
     }
     return self;
 }
+
 -(void)setContentView
 {
     UIImageView * columnImageView = [UIFactory imageView:CGRectMake(0, 0, 45, 45) viewMode:UIViewContentModeScaleAspectFill image:nil];
@@ -32,6 +33,13 @@
     self.columnTitileLable = columnTitileLable;
     
 }
+
+- (void)layoutSubviews{
+    
+    
+    
+}
+
 -(void)setContentViewWithModel:(IndexColumnsModel *)model
 {
     [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl]];
