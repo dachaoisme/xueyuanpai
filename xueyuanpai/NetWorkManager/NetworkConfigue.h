@@ -52,6 +52,11 @@
 #define METHOD_OF_UNIVERSITY_COMMUNITY_NEW      @"v1/association/nexeon?"
 
 
+///校园招聘网址
+#define METHOD_SCHOOL_BANNER    @"v1/recruitment/columns?"
+
+
+
 
 
 

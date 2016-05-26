@@ -23,6 +23,9 @@
 #import "UniversityAssnViewController.h"
 #import "BigToSendViewController.h"
 #import "GiftDetailViewController.h"
+#import "SchoolRecruitmentViewController.h"
+
+
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -268,7 +271,11 @@
         }else if (indexPath.row==2){
             //跳蚤市场
         }else{
-            //时间银行
+            //校园招聘
+            SchoolRecruitmentViewController *schoolVC = [[SchoolRecruitmentViewController alloc] init];
+            [self.navigationController pushViewController:schoolVC animated:YES];
+            
+            
         }
     }else{
         IndexMallModel * model = obj;
