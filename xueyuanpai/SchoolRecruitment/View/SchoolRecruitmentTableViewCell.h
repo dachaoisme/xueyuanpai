@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SchoolRecruitmentModel.h"
 @interface SchoolRecruitmentTableViewCell : UITableViewCell
 
+-(void)setContentViewWithModel:(SchoolRecruitmentModel *)model;
 @end

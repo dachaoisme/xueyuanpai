@@ -28,6 +28,14 @@
 @end
 @implementation SchoolRecruitmentTableViewCell
 
+-(void)setContentViewWithModel:(SchoolRecruitmentModel *)model
+{
+    self.showTitleLabel.text   = model.schoolRecruitmentTitle;
+    self.showContentLabel.text = model.schoolRecruitmentCompany;
+    self.showRecordLabel.text  = model.schoolRecruitmentEducation;
+    self.showTimeLabel.text    = model.schoolRecruitmentDay;
+    self.showMoneyLabel.text   = model.schoolRecruitmentSalary;
+}
 
 - (void)awakeFromNib {
     // Initialization code

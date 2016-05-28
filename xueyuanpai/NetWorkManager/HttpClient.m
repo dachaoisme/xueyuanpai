@@ -226,4 +226,37 @@
         failBlock(error);
     }];
 }
+#pragma mark - 大学招聘
+/*
+ *  @brief 获取大学招聘栏目分类
+ */
+- (void)getColumnsOfSchoolRecruitmentWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_SCHOOL_RECRUITEMENT_COLUMNS withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //list
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+/*
+ *  @brief 获取大学招聘列表
+ */
+- (void)getListOfSchoolRecruitmentWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_SCHOOL_RECRUITEMENT_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //list
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 @end

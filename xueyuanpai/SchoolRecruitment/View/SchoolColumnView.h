@@ -16,4 +16,5 @@
 
 -(void)setContentViewWithModel:(IndexColumnsModel *)model;
 
+
 @end

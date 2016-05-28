@@ -30,7 +30,11 @@
     [self addSubview:columnTitileLable];
     self.columnTitileLable = columnTitileLable;
     
+        
 }
+
+
+
 -(void)setContentViewWithModel:(IndexColumnsModel *)model
 {
     [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl]];

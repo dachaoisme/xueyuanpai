@@ -76,8 +76,11 @@
 ///时间银行:申领通过接口
 #define METHOD_TIME_BANK_APPLY_PASS           @"v1/timebank/verified/"
 ///时间银行:详情接口
-#define METHOD_TIME_BANK_APPLY_DETAIL         @"v1/timebank/detail"
+#define METHOD_TIME_BANK_APPLY_DETAIL         @"v1/timebank/detail?"
 ///时间银行:增加浏览数接口
-#define METHOD_TIME_BANK_ADD_SCAN             @"v1/timebank/viewsadd"
+#define METHOD_TIME_BANK_ADD_SCAN             @"v1/timebank/viewsadd?"
 
+///大学招聘：校园招聘栏目接口SchoolRecruitmentViewController
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_COLUMNS             @"v1/recruitment/columns?"
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_LIST             @"v1/recruitment/list?"
 #endif /* NetworkConfigue_h */
