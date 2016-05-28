@@ -9,6 +9,8 @@
 #import "TimeBankViewController.h"
 #import "LDCPullDownMenuView.h"
 #import "TimeBankModel.h"
+#import "RequirementsViewController.h"
+
 @interface TimeBankViewController ()<LDCPullDownMenuViewDelegate>
 {
     NSMutableArray *timeBankConditionCategoryModelArr;
@@ -41,8 +43,11 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setTitle:@"时间银行"];
     [self createLeftBackNavBtn];
+    
+    [self creatRightNavWithTitle:@"发布需求"];
     
     timeBankConditionCategoryModelArr = [NSMutableArray array];
     timeBankConditionCategoryTitleArr = [NSMutableArray array];
@@ -56,6 +61,17 @@
     [self requestToGetConditions];
     [self createTableView];
 }
+
+#pragma mark - 导航栏右侧按钮响应的方法
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    
+
+    RequirementsViewController *requirementVC = [[RequirementsViewController alloc] init];
+    [self.navigationController pushViewController:requirementVC animated:YES];
+    
+}
+
 
 -(void)requestToGetConditions
 {
@@ -223,10 +239,10 @@
 -(void)createTableView
 {
     
-    float height = 40;
+    float height = 36;
     //初始化tableView
     CGRect rc = self.view.bounds;
-    rc.origin.y = NAV_TOP_HEIGHT;
+    rc.origin.y = NAV_TOP_HEIGHT+height;
     rc.size.height = SCREEN_HEIGHT-NAV_TOP_HEIGHT-height;
     UITableView * tableView    = [[UITableView alloc]initWithFrame:rc style:UITableViewStylePlain];
     tableView.backgroundColor  = [CommonUtils colorWithHex:@"f3f3f3"];
@@ -236,7 +252,13 @@
     tableView.delegate         = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
-
+    
+    
+    //注册cell
+    [tableView registerNib:[UINib nibWithNibName:@"TimeBankTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -258,11 +280,8 @@
     
     //游玩日期
     NSString * cellResuable = [NSString stringWithFormat:@"cell"];
-    TimeBankTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable];
-    if (!cell) {
-        cell = [[TimeBankTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
-        
-    }
+    TimeBankTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable forIndexPath:indexPath];
+   
     TimeBankModel * timeBankModel = [timeBankModelListArr objectAtIndex:indexPath.row];
     [cell setContentViewWithModel:timeBankModel];
     return cell;

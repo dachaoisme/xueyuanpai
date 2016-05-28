@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		58070EA21CF6D54700F03F6C /* TimeBankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58070EA11CF6D54700F03F6C /* TimeBankTableViewCell.m */; };
 		58070F941CF6E80200F03F6C /* disable_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F441CF6E80200F03F6C /* disable_tag@2x.png */; };
 		58070F951CF6E80200F03F6C /* disable_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F451CF6E80200F03F6C /* disable_tag@3x.png */; };
 		58070F961CF6E80200F03F6C /* filter_arrow_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F461CF6E80200F03F6C /* filter_arrow_hl@2x.png */; };
@@ -200,6 +199,11 @@
 		58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */; };
 		58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */; };
 		58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E029001CF45E04006A2E74 /* TimeBankViewController.m */; };
+		58F211671CF9A0E800926FB9 /* RequirementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F211661CF9A0E800926FB9 /* RequirementsViewController.m */; };
+		58F2116B1CF9AB7C00926FB9 /* RequirementTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F211691CF9AB7C00926FB9 /* RequirementTableViewCell.m */; };
+		58F2116C1CF9AB7C00926FB9 /* RequirementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F2116A1CF9AB7C00926FB9 /* RequirementTableViewCell.xib */; };
+		58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2116E1CF9CD4600926FB9 /* TimeBankTableViewCell.m */; };
+		58F211711CF9CD4600926FB9 /* TimeBankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F2116F1CF9CD4600926FB9 /* TimeBankTableViewCell.xib */; };
 		58F67BA41CD9863400D55BE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA31CD9863400D55BE0 /* main.m */; };
 		58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67BA61CD9863400D55BE0 /* AppDelegate.m */; };
 		58F67BAF1CD9863400D55BE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F67BAE1CD9863400D55BE0 /* Assets.xcassets */; };
@@ -314,8 +318,6 @@
 /* Begin PBXFileReference section */
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		58070EA01CF6D54700F03F6C /* TimeBankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankTableViewCell.h; sourceTree = "<group>"; };
-		58070EA11CF6D54700F03F6C /* TimeBankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankTableViewCell.m; sourceTree = "<group>"; };
 		58070F441CF6E80200F03F6C /* disable_tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disable_tag@2x.png"; sourceTree = "<group>"; };
 		58070F451CF6E80200F03F6C /* disable_tag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disable_tag@3x.png"; sourceTree = "<group>"; };
 		58070F461CF6E80200F03F6C /* filter_arrow_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter_arrow_hl@2x.png"; sourceTree = "<group>"; };
@@ -560,6 +562,14 @@
 		58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeViewController.m; sourceTree = "<group>"; };
 		58E028FF1CF45E04006A2E74 /* TimeBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankViewController.h; sourceTree = "<group>"; };
 		58E029001CF45E04006A2E74 /* TimeBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankViewController.m; sourceTree = "<group>"; };
+		58F211651CF9A0E800926FB9 /* RequirementsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementsViewController.h; sourceTree = "<group>"; };
+		58F211661CF9A0E800926FB9 /* RequirementsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementsViewController.m; sourceTree = "<group>"; };
+		58F211681CF9AB7C00926FB9 /* RequirementTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementTableViewCell.h; sourceTree = "<group>"; };
+		58F211691CF9AB7C00926FB9 /* RequirementTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementTableViewCell.m; sourceTree = "<group>"; };
+		58F2116A1CF9AB7C00926FB9 /* RequirementTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequirementTableViewCell.xib; sourceTree = "<group>"; };
+		58F2116D1CF9CD4600926FB9 /* TimeBankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankTableViewCell.h; sourceTree = "<group>"; };
+		58F2116E1CF9CD4600926FB9 /* TimeBankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankTableViewCell.m; sourceTree = "<group>"; };
+		58F2116F1CF9CD4600926FB9 /* TimeBankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeBankTableViewCell.xib; sourceTree = "<group>"; };
 		58F67B9F1CD9863400D55BE0 /* xueyuanpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xueyuanpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F67BA31CD9863400D55BE0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58F67BA51CD9863400D55BE0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1197,6 +1207,8 @@
 			children = (
 				58E028FF1CF45E04006A2E74 /* TimeBankViewController.h */,
 				58E029001CF45E04006A2E74 /* TimeBankViewController.m */,
+				58F211651CF9A0E800926FB9 /* RequirementsViewController.h */,
+				58F211661CF9A0E800926FB9 /* RequirementsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1204,8 +1216,12 @@
 		58E028FD1CF45DD9006A2E74 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				58070EA01CF6D54700F03F6C /* TimeBankTableViewCell.h */,
-				58070EA11CF6D54700F03F6C /* TimeBankTableViewCell.m */,
+				58F211681CF9AB7C00926FB9 /* RequirementTableViewCell.h */,
+				58F211691CF9AB7C00926FB9 /* RequirementTableViewCell.m */,
+				58F2116A1CF9AB7C00926FB9 /* RequirementTableViewCell.xib */,
+				58F2116D1CF9CD4600926FB9 /* TimeBankTableViewCell.h */,
+				58F2116E1CF9CD4600926FB9 /* TimeBankTableViewCell.m */,
+				58F2116F1CF9CD4600926FB9 /* TimeBankTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1821,6 +1837,7 @@
 				5874A3E81CF1249400CE9FC9 /* tab_icon_package_hl@2x.png in Resources */,
 				DD4127611CF0552F00227066 /* bigpie_order_minus_disable@2x.png in Resources */,
 				DD4127821CF0552F00227066 /* shetuan_icon_location@3x.png in Resources */,
+				58F2116C1CF9AB7C00926FB9 /* RequirementTableViewCell.xib in Resources */,
 				58070FC31CF6E80200F03F6C /* timebank_filter_movie_hl@3x.png in Resources */,
 				DD4127751CF0552F00227066 /* nav_icon_back@2x.png in Resources */,
 				5874A3DA1CF1249400CE9FC9 /* nav_icon_msg@2x.png in Resources */,
@@ -1906,6 +1923,7 @@
 				58070FC21CF6E80200F03F6C /* timebank_filter_movie_hl@2x.png in Resources */,
 				58070FE01CF6E80200F03F6C /* toast_fail@2x.png in Resources */,
 				5874A3E11CF1249400CE9FC9 /* tab_icon_creativity@3x.png in Resources */,
+				58F211711CF9CD4600926FB9 /* TimeBankTableViewCell.xib in Resources */,
 				5874A3E31CF1249400CE9FC9 /* tab_icon_home@3x.png in Resources */,
 				58070FBB1CF6E80200F03F6C /* timebank_filter_hot_hl@3x.png in Resources */,
 				5829986E1CDB29E7004A05FB /* Default-375w-667h@2x.png in Resources */,
@@ -2010,7 +2028,6 @@
 				DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */,
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
 				DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */,
-				58070EA21CF6D54700F03F6C /* TimeBankTableViewCell.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				5874A3FE1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m in Sources */,
 				58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */,
@@ -2030,6 +2047,7 @@
 				5874A40A1CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */,
 				58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
+				58F2116B1CF9AB7C00926FB9 /* RequirementTableViewCell.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
@@ -2073,8 +2091,10 @@
 				587FF9D91CF2F8F300AD2131 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				587FF9D21CF2F8F300AD2131 /* IQNSArray+Sort.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
+				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
 				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
 				587FF9D71CF2F8F300AD2131 /* IQUIWindow+Hierarchy.m in Sources */,
+				58F211671CF9A0E800926FB9 /* RequirementsViewController.m in Sources */,
 				5874A3EF1CF12C0500CE9FC9 /* SelectedSexView.m in Sources */,
 				DD4127871CF0561900227066 /* HotActivityTableViewCell.m in Sources */,
 				58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */,
