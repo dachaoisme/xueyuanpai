@@ -16,6 +16,9 @@
 #import "RecruitmentDetailViewController.h"
 
 #import "SchoolRecruitmentModel.h"
+
+#import "EmploymentRecruitmentViewController.h"
+
 @interface SchoolRecruitmentViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate>
 
 {
@@ -293,8 +296,10 @@
 
 #pragma mark - 轮播图下方三个小按钮点击响应的方法
 -(void) tap1Action:(UITapGestureRecognizer*) tap {
+        
     
-    [CommonUtils showToastWithStr:@"就业招聘"];
+    EmploymentRecruitmentViewController *employmentVC = [[EmploymentRecruitmentViewController alloc] init];
+    [self.navigationController pushViewController:employmentVC animated:YES];
 
 }
 -(void) tap2Action:(UITapGestureRecognizer*) tap {

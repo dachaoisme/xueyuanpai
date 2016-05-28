@@ -49,6 +49,9 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[contentView]|" options:0 metrics:nil views:NSDictionaryOfVariableBindings(contentView)]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-(%f)-[contentView]|",navHt] options:0 metrics:nil views:NSDictionaryOfVariableBindings(contentView)]];
      */
+    
+    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 -(UIView*)createContentView //创建背景视图
 {
@@ -146,7 +149,7 @@
 }
 -(void)creatLeftNavWithImageName:(NSString *)imageName
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, 25, 25)];
     imageView.image        = [UIImage imageNamed:imageName];
     imageView.contentMode  = UIViewContentModeScaleToFill;
     
@@ -169,7 +172,7 @@
 #pragma mark - 右侧自定义按钮
 -(void)creatRightNavWithImageName:(NSString *)imageName
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 10, 25, 25)];
     imageView.image        = [UIImage imageNamed:imageName];
     imageView.contentMode  = UIViewContentModeScaleToFill;
     
