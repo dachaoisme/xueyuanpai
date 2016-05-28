@@ -79,11 +79,6 @@
     
     _detailView.detailLabel.text = _model.content;
     
-    
-    
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -166,23 +166,24 @@
     if (url == nil) {
         return;
     }
-    dispatch_queue_t queue =dispatch_queue_create("loadImage",NULL);
-    dispatch_async(queue, ^{
-        if ([self getImageWithName:[self md5:urlStr]] != nil) {
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                imgView.image = [self getImageWithName:[self md5:urlStr]];
-            });
-        }else {
-            NSData *resultData = [NSData dataWithContentsOfURL:url];
-            UIImage *img = [UIImage imageWithData:resultData];
-            if (img != nil) {
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    imgView.image = img;
-                    [self saveImage:img withName:[self md5:urlStr]];
-                });
-            }
-        }
-    });
+    [imgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"test"]];
+//    dispatch_queue_t queue =dispatch_queue_create("loadImage",NULL);
+//    dispatch_async(queue, ^{
+//        if ([self getImageWithName:[self md5:urlStr]] != nil) {
+//            dispatch_sync(dispatch_get_main_queue(), ^{
+//                imgView.image = [self getImageWithName:[self md5:urlStr]];
+//            });
+//        }else {
+//            NSData *resultData = [NSData dataWithContentsOfURL:url];
+//            UIImage *img = [UIImage imageWithData:resultData];
+//            if (img != nil) {
+//                dispatch_sync(dispatch_get_main_queue(), ^{
+//                    imgView.image = img;
+//                    [self saveImage:img withName:[self md5:urlStr]];
+//                });
+//            }
+//        }
+//    });
 }
 #pragma mark 保存图片
 - (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName

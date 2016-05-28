@@ -53,6 +53,10 @@
 ///大派送-立即兑换礼品
 #define METHOD_EXCHANGE_GIFT                    @"v1/exchange/add?"
 
+
+///校园招聘网址
+#define METHOD_SCHOOL_BANNER    @"v1/recruitment/columns?"
+
 ///时间银行:条件筛选接口
 #define METHOD_TIME_BANK_CONDITIONS           @"v1/timebank/conditions?"
 ///时间银行:支付方式接口
@@ -72,8 +76,12 @@
 ///时间银行:申领通过接口
 #define METHOD_TIME_BANK_APPLY_PASS           @"v1/timebank/verified/"
 ///时间银行:详情接口
-#define METHOD_TIME_BANK_APPLY_DETAIL         @"v1/timebank/detail"
+#define METHOD_TIME_BANK_APPLY_DETAIL         @"v1/timebank/detail?"
 ///时间银行:增加浏览数接口
-#define METHOD_TIME_BANK_ADD_SCAN             @"v1/timebank/viewsadd"
+#define METHOD_TIME_BANK_ADD_SCAN             @"v1/timebank/viewsadd?"
 
+///大学招聘：校园招聘栏目接口SchoolRecruitmentViewController
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_COLUMNS        @"v1/recruitment/columns?"
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_LIST           @"v1/recruitment/list?"
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_Detail         @"v1/recruitment/detail?"
 #endif /* NetworkConfigue_h */

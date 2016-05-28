@@ -167,6 +167,7 @@
  */
 - (void)getCommunityNewDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
+
 #pragma mark - 大派送
 /**
  *  @brief  立即兑换
@@ -194,4 +195,29 @@
  *  @return
  */
 - (void)timeBankGetListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+#pragma mark - 校园招聘
+/**
+ *  @brief  获取校园招聘栏目
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getColumnsOfSchoolRecruitmentWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  获取校园招聘列表
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getListOfSchoolRecruitmentWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  获取校园招聘详情接口
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getSchoolRecruitmentDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 @end

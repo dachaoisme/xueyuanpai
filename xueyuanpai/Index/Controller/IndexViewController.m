@@ -23,6 +23,9 @@
 #import "UniversityAssnViewController.h"
 #import "BigToSendViewController.h"
 #import "GiftDetailViewController.h"
+#import "SchoolRecruitmentViewController.h"
+
+
 
 #import "TimeBankViewController.h"
 @interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
@@ -79,7 +82,7 @@
     //设置每个item的大小为100*100
     //layout.itemSize = CGSizeMake(100, 100);
     //创建collectionView 通过一个布局策略layout来创建
-    theCollectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:theCollectionLayout];
+    theCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:theCollectionLayout];
     theCollectionView.backgroundColor = [UIColor whiteColor];
     //代理设置
     theCollectionView.delegate=self;
@@ -185,12 +188,12 @@
     if (section==0) {
         if (bannerItemArray.count==0) {
         
-            return CGSizeMake(320, 0);
+            return CGSizeMake([UIScreen mainScreen].bounds.size.width, 0);
         }else{
-            return CGSizeMake(320, 150);
+            return CGSizeMake([UIScreen mainScreen].bounds.size.width, 150);
         }
     }else{
-        return CGSizeMake(320, 50);
+        return CGSizeMake([UIScreen mainScreen].bounds.size.width, 50);
     }
 }
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -224,14 +227,31 @@
         return CGSizeMake(140, 140);
     }
 }
+
+
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     if (section==0) {
-        NSLog(@"%f",(SCREEN_WIDTH-44*4)/5);
-        return UIEdgeInsetsMake(15, (SCREEN_WIDTH-60*4)/5, 15, (SCREEN_WIDTH-60*4)/5);
+        return UIEdgeInsetsMake(15, 15, 15, ([UIScreen mainScreen].bounds.size.width-60*4)/5);
+        
     }else{
-        return UIEdgeInsetsMake(5, (SCREEN_WIDTH-140*2)/3, 5, (SCREEN_WIDTH-140*2)/3);
+        
+        return UIEdgeInsetsMake(5, ([UIScreen mainScreen].bounds.size.width-140*2)/3, 5, ([UIScreen mainScreen].bounds.size.width-140*2)/3);
+        
+    }
+    
+
+}
+
+// 设置最小列间距，也就是左行与右一行的中间最小间隔
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    if (section == 0) {
+        return 30;
+
+    }else{
+        return 20;
     }
 }
 //返回分区个数
@@ -272,7 +292,11 @@
         }else if (indexPath.row==2){
             //跳蚤市场
         }else{
-            //时间银行
+            //校园招聘
+            SchoolRecruitmentViewController *schoolVC = [[SchoolRecruitmentViewController alloc] init];
+            [self.navigationController pushViewController:schoolVC animated:YES];
+            
+            
         }
     }else{
         IndexMallModel * model = obj;
