@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -64,13 +65,21 @@
                         <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-U4-uaY">
-                        <rect key="frame" x="246" y="6" width="70" height="22"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahh-U4-uaY">
+                        <rect key="frame" x="237" y="6" width="70" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="Klc-1y-KeU"/>
+                            <constraint firstAttribute="height" constant="22" id="MRL-VF-7b9"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <state key="normal" title="Button" backgroundImage="disable_tag.png"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="￥12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlH-Pp-AP3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlH-Pp-AP3">
                         <rect key="frame" x="285" y="34" width="31" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="31" id="IXn-Nk-IKE"/>
+                            <constraint firstAttribute="height" constant="21" id="nat-8k-jhW"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -82,6 +91,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="ahh-U4-uaY" secondAttribute="trailing" constant="5" id="3cp-XW-yCE"/>
+                    <constraint firstItem="ahh-U4-uaY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-2" id="LYQ-3w-Lqb"/>
+                    <constraint firstItem="zlH-Pp-AP3" firstAttribute="top" secondItem="ahh-U4-uaY" secondAttribute="bottom" constant="6" id="e6c-kr-jVE"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="zlH-Pp-AP3" secondAttribute="trailing" constant="-4" id="hJ5-dh-SHb"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="timeBankAdressLable" destination="ZW8-5p-P3D" id="pn4-PU-3qa"/>

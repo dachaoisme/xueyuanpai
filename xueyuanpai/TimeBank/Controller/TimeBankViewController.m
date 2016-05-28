@@ -154,7 +154,8 @@
     }else{
         
     }
-    
+    ///清楚之前旧数据
+    [timeBankModelListArr removeAllObjects];
     [self requestToGetTimeBankList];
 }
 -(void)setTimeBankCategoryParamWithTitle:(NSString *)title
