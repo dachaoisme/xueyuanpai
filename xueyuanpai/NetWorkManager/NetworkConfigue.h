@@ -81,6 +81,7 @@
 #define METHOD_TIME_BANK_ADD_SCAN             @"v1/timebank/viewsadd?"
 
 ///大学招聘：校园招聘栏目接口SchoolRecruitmentViewController
-#define METHOD_TIME_SCHOOL_RECRUITEMENT_COLUMNS             @"v1/recruitment/columns?"
-#define METHOD_TIME_SCHOOL_RECRUITEMENT_LIST             @"v1/recruitment/list?"
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_COLUMNS        @"v1/recruitment/columns?"
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_LIST           @"v1/recruitment/list?"
+#define METHOD_TIME_SCHOOL_RECRUITEMENT_Detail         @"v1/recruitment/detail?"
 #endif /* NetworkConfigue_h */

@@ -279,8 +279,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    SchoolRecruitmentModel * model =  [schoolRecruitmentListArray objectAtIndex:indexPath.row-1];
     RecruitmentDetailViewController *recruitmentVC = [[RecruitmentDetailViewController alloc] init];
+    recruitmentVC.jobId = model.schoolRecruitmentId;
     [self.navigationController pushViewController:recruitmentVC animated:YES];
 }
 

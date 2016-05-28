@@ -10,4 +10,5 @@
 
 @interface RecruitmentDetailViewController : BaseViewController
 
+@property(nonatomic,strong)NSString * jobId;
 @end

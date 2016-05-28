@@ -259,4 +259,17 @@
         failBlock(error);
     }];
 }
+
+/**
+ *  @brief  获取校园招聘详情接口
+ */
+- (void)getSchoolRecruitmentDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_SCHOOL_RECRUITEMENT_Detail withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 @end

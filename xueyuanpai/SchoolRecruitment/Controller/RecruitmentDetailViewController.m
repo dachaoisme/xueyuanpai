@@ -12,9 +12,11 @@
 #import "RecruitmentOneStyleTableViewCell.h"
 #import "RecruitmentTwoStyleTableViewCell.h"
 #import "RecruitmentThreeStyleTableViewCell.h"
-
+#import "SchoolRecruitmentModel.h"
 @interface RecruitmentDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    SchoolRecruitmentDetailModel * schoolRecruitmentDetailModel;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -27,7 +29,7 @@
     self.title = @"职位详情";
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self requeestData];
     //创建返回按钮
     [self createLeftBackNavBtn];
     
@@ -45,7 +47,18 @@
     
     
 }
-
+-(void)requeestData
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.jobId forKey:@"id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance] getSchoolRecruitmentDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        schoolRecruitmentDetailModel = [[SchoolRecruitmentDetailModel alloc]initWithDic:listDic];
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
 #pragma mark - 创建头部视图样式
 - (void)createHeadView{
     NSArray *arrar = [NSArray arrayWithObjects:@"职位信息",@"公司信息", nil];

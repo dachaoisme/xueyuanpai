@@ -212,4 +212,12 @@
  *  @return
  */
 - (void)getListOfSchoolRecruitmentWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  获取校园招聘详情接口
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getSchoolRecruitmentDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 @end
