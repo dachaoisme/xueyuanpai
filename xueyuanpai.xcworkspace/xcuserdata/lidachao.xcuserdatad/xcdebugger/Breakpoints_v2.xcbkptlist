@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/TimeBank/Controller/TimeBankViewController.m"
-            timestampString = "486136720.337862"
+            timestampString = "486167271.84638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-requestToGetTimeBankList"
             landmarkType = "5">
          </BreakpointContent>
