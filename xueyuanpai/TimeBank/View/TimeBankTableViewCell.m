@@ -54,10 +54,17 @@
 
 -(void)setContentViewWithModel:(TimeBankModel *)model
 {
+    
     [_timeBankImageView sd_setImageWithURL:[NSURL URLWithString:model.timeBankIcon] placeholderImage:[UIImage imageNamed:@"timebank_icon_user"]];
     _timeBankTitleLable.text     = model.timeBankTitle;
     _timeBankTimeLable.text      = model.timeBankAppointmentTime;
+    
+    
     _timeBankCategoryLable.text  = model.timeBankPayway;
+//    _timeBankCategoryLable.layer.borderColor=[UIColor redColor].CGColor;
+//    _timeBankCategoryLable.layer.borderWidth=0.5;
+    
+    
     _timeBankAdressLable.text    = model.timeBankArea;
     _timeBankDetailLable.text    = model.timeBankBrief;
     _timeBankNickNameLable.text  = model.timeBankUsername;

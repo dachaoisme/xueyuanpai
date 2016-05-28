@@ -13,6 +13,8 @@
 #import "RecruitmentTwoStyleTableViewCell.h"
 #import "RecruitmentThreeStyleTableViewCell.h"
 #import "SchoolRecruitmentModel.h"
+
+
 @interface RecruitmentDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     SchoolRecruitmentDetailModel * schoolRecruitmentDetailModel;
