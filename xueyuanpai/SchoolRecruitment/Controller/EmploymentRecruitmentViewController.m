@@ -21,7 +21,7 @@
     // Do any additional setup after loading the view.
     
     
-    self.title = @"就业招聘";
+//    self.title = @"就业招聘";
     
     [self createLeftBackNavBtn];
     

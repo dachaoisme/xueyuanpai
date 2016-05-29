@@ -9,17 +9,26 @@
 #import "RecruitmentDetailViewController.h"
 
 #import "UniversityAssnHeaderView.h"
-#import "RecruitmentOneStyleTableViewCell.h"
-#import "RecruitmentTwoStyleTableViewCell.h"
-#import "RecruitmentThreeStyleTableViewCell.h"
+
 #import "SchoolRecruitmentModel.h"
 
-
-@interface RecruitmentDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "PositionInforViewController.h"
+#import "ComponeyInforViewController.h"
+@interface RecruitmentDetailViewController ()<UniversityAssnHeaderViewDelegate>
 {
+    ///请求数据的model类
     SchoolRecruitmentDetailModel * schoolRecruitmentDetailModel;
+    
+    ///职位信息
+    PositionInforViewController *positionVC;
+    ///公司信息
+    ComponeyInforViewController *componyVC;
+    
+    
+    
 }
 @property (nonatomic,strong)UITableView *tableView;
+
 
 @end
 
@@ -38,25 +47,56 @@
     //创建头的显示样式
     [self createHeadView];
     
-    //创建显示内容的tableView
-    [self createTableView];
+    
+    [self p_setupShareButtonItem];
+    
+}
+
+#pragma mark - 设置分享按钮
+- (void)p_setupShareButtonItem{
+    
+    //分享按钮
+    UIBarButtonItem *shareButtonItem =[[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_share"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickSharButtonItemAction:)];
+    //收藏按钮
+    UIBarButtonItem * favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
+    self.navigationItem.rightBarButtonItems = @[favoriteButtonItem,shareButtonItem];
     
     
-    //注册cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"RecruitmentOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"RecruitmentTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"RecruitmentThreeStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
-    
+}
+#pragma mark - 分享按钮
+- (void)didClickSharButtonItemAction:(UIBarButtonItem *)buttonItem
+{
+    [CommonUtils showToastWithStr:@"分享"];
+}
+
+#pragma mark - 收藏按钮
+- (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
+{
+    [CommonUtils showToastWithStr:@"收藏"];
     
 }
 -(void)requeestData
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:self.jobId forKey:@"id"];
+    
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    
     [[HttpClient sharedInstance] getSchoolRecruitmentDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        
+        
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         schoolRecruitmentDetailModel = [[SchoolRecruitmentDetailModel alloc]initWithDic:listDic];
+        
+        //创建各个显示的子视图
+        [self createSubView:schoolRecruitmentDetailModel];
+
+        
+        
+        
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
@@ -67,7 +107,7 @@
     UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(self.view.center.x - 70, 64, 140, 50)];
     headerView.backgroundColor = [UIColor whiteColor];
     headerView.type = PiecewiseInterfaceTypeMobileLin;
-    //    headerView.delegate = self;
+    headerView.delegate = self;
     headerView.textFont = [UIFont systemFontOfSize:14];
     headerView.textNormalColor = [UIColor blackColor];
     headerView.textSeletedColor = [CommonUtils colorWithHex:@"00BEAF"];
@@ -77,109 +117,53 @@
     
     
 }
-
-#pragma mark - 创建显示内容的tableView
-- (void)createTableView{
+-(void)createSubView:(SchoolRecruitmentDetailModel *)model
+{
+    //创建显示职位信息和公司信息的controller
+    positionVC = [[PositionInforViewController alloc] init];
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 114, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 114)];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
+    positionVC.view.hidden = NO;
+    positionVC.view.frame = CGRectMake(0, 64+50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 114);
+    
+    positionVC.model = model;
+    [self.view addSubview:positionVC.view];
+    
+    
+    componyVC = [[ComponeyInforViewController alloc] init];
+    componyVC.view.hidden = YES;
+    componyVC.view.frame = CGRectMake(0, 64+50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 114);
+    
+    componyVC.model = model;
+    [self.view addSubview:componyVC.view];
 }
-
-#pragma mark - tableView的代理方法
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+#pragma mark - UniversityAssnHeaderViewDelegate代理方法
+#pragma mark - 点击每个选项卡响应的方法
+- (void)headerViewSelctAction:(UniversityAssnHeaderView *)headerView index:(NSInteger)index{
     
-    return 3;
-}
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    switch (indexPath.section) {
-        case 0:{
-            RecruitmentOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return cell;
-        }
-            break;
-        case 1:{
-            RecruitmentTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-            
-            return cell;
-        }
-            break;
-            
-        case 2:{
-             RecruitmentThreeStyleTableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-            
-            return cell;
-        }
-            break;
-
-            
-            
-
-            
-        default:{
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"defaultCell"];
-            
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"defaultCell"];
-            }
-            return cell;
-
-        }
-            break;
-    }
-    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    switch (indexPath.section) {
+    switch (index) {
         case 0:
-            return 200;
+        {
+            //职位信息
+            positionVC.view.hidden = NO;
+            componyVC.view.hidden = YES;
+        }
             break;
         case 1:
-            return 100;
-            break;
+        {
+            //公司信息
+            positionVC.view.hidden = YES;
+            componyVC.view.hidden = NO;
 
-        case 2:
-            return 50;
-            break;
             
+        }
+            break;
         default:
-            return 100;
             break;
     }
-
+    
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 10)];
-    grayView.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
-    
-    return grayView;
-}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 10;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

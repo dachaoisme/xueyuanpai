@@ -10,4 +10,13 @@
 
 @interface RecruitmentTwoStyleTableViewCell : UITableViewCell
 
+///职位描述
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+///职位详情介绍
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
+
+
+
 @end

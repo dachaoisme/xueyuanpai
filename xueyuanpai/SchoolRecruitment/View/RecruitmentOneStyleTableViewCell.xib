@@ -50,10 +50,6 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WC1-2m-YWb">
-                        <rect key="frame" x="109" y="45" width="25" height="21"/>
-                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="互联网/电子商务" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jp6-gI-zAC">
                         <rect key="frame" x="109" y="74" width="149" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -78,9 +74,30 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="执照" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9L-sC-CHZ">
+                        <rect key="frame" x="133" y="45" width="87" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hire_company_verify.png" translatesAutoresizingMaskIntoConstraints="NO" id="WC1-2m-YWb">
+                        <rect key="frame" x="109" y="48" width="16" height="16"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="componyName" destination="Ma3-Pu-vac" id="NRZ-hd-7wE"/>
+                <outlet property="industryLabel" destination="Jp6-gI-zAC" id="bdW-cY-MEt"/>
+                <outlet property="licenseImageView" destination="WC1-2m-YWb" id="QqR-jE-wgo"/>
+                <outlet property="licenseTextLabel" destination="R9L-sC-CHZ" id="l0E-vd-XlH"/>
+                <outlet property="locationLabel" destination="QBQ-wr-0bH" id="hlf-3g-BjE"/>
+                <outlet property="natureLabel" destination="BuV-SD-vI5" id="njw-L6-TgR"/>
+                <outlet property="pepoleLabel" destination="ebV-AO-X9o" id="fLT-Yc-Yp8"/>
+            </connections>
             <point key="canvasLocation" x="220" y="246.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="hire_company_verify.png" width="16" height="16"/>
+    </resources>
 </document>
