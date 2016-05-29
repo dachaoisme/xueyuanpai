@@ -61,8 +61,7 @@
     
     
     _timeBankCategoryLable.text  = model.timeBankPayway;
-//    _timeBankCategoryLable.layer.borderColor=[UIColor redColor].CGColor;
-//    _timeBankCategoryLable.layer.borderWidth=0.5;
+   
     
     
     _timeBankAdressLable.text    = model.timeBankArea;
@@ -103,6 +102,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    _timeBankCategoryLable.layer.borderColor= [CommonUtils colorWithHex:@"00beaf"].CGColor;
+    _timeBankCategoryLable.layer.borderWidth=0.5;
+    _timeBankCategoryLable.layer.cornerRadius = 2;
+    
+    _timeBankCategoryLable.textColor = [CommonUtils colorWithHex:@"00beaf"];
+    
+    
+    _timeBankPaywayLabel.layer.borderColor= [CommonUtils colorWithHex:@"00beaf"].CGColor;
+    _timeBankPaywayLabel.layer.borderWidth=0.5;
+    _timeBankPaywayLabel.layer.cornerRadius = 2;
+     _timeBankPaywayLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
+    
+    
+    _timeBankPriceLable.textColor = [CommonUtils colorWithHex:@"00beaf"];
+
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

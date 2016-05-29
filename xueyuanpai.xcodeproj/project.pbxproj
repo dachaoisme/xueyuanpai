@@ -330,6 +330,8 @@
 		DDD0BDC61CFAB87200073290 /* hire_search_checkbox_empty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDC21CFAB87200073290 /* hire_search_checkbox_empty@3x.png */; };
 		DDD0BDC71CFAB87200073290 /* hire_search_checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDC31CFAB87200073290 /* hire_search_checkbox@2x.png */; };
 		DDD0BDC81CFAB87200073290 /* hire_search_checkbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDC41CFAB87200073290 /* hire_search_checkbox@3x.png */; };
+		DDD0BDCF1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDCD1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m */; };
+		DDD0BDD01CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDCE1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib */; };
 		DDD3E5341CF44E8A001B579E /* SchoolRecruitmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5331CF44E8A001B579E /* SchoolRecruitmentViewController.m */; };
 		DDD3E5371CF458AF001B579E /* SchoolShufflingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5361CF458AF001B579E /* SchoolShufflingView.m */; };
 		DDD3E53A1CF49669001B579E /* SchoolColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5391CF49669001B579E /* SchoolColumnView.m */; };
@@ -805,6 +807,9 @@
 		DDD0BDC21CFAB87200073290 /* hire_search_checkbox_empty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_search_checkbox_empty@3x.png"; sourceTree = "<group>"; };
 		DDD0BDC31CFAB87200073290 /* hire_search_checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_search_checkbox@2x.png"; sourceTree = "<group>"; };
 		DDD0BDC41CFAB87200073290 /* hire_search_checkbox@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_search_checkbox@3x.png"; sourceTree = "<group>"; };
+		DDD0BDCC1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankDetailTwoStyleTableViewCell.h; sourceTree = "<group>"; };
+		DDD0BDCD1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankDetailTwoStyleTableViewCell.m; sourceTree = "<group>"; };
+		DDD0BDCE1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeBankDetailTwoStyleTableViewCell.xib; sourceTree = "<group>"; };
 		DDD3E5321CF44E8A001B579E /* SchoolRecruitmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolRecruitmentViewController.h; sourceTree = "<group>"; };
 		DDD3E5331CF44E8A001B579E /* SchoolRecruitmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolRecruitmentViewController.m; sourceTree = "<group>"; };
 		DDD3E5351CF458AF001B579E /* SchoolShufflingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolShufflingView.h; sourceTree = "<group>"; };
@@ -1350,6 +1355,9 @@
 				58898E501CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.h */,
 				58898E511CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m */,
 				58898E521CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib */,
+				DDD0BDCC1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.h */,
+				DDD0BDCD1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m */,
+				DDD0BDCE1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1983,6 +1991,7 @@
 				582998711CDB29E7004A05FB /* Default@2x.png in Resources */,
 				58070FD41CF6E80200F03F6C /* timebank_filter_time@2x.png in Resources */,
 				DDD0BDC51CFAB87200073290 /* hire_search_checkbox_empty@2x.png in Resources */,
+				DDD0BDD01CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib in Resources */,
 				58A9449C1CE277C600DAD398 /* nav_icon_back@2x.png in Resources */,
 				DD41275E1CF0552F00227066 /* bigpie_order_add_press@3x.png in Resources */,
 				58070FCC1CF6E80200F03F6C /* timebank_filter_shop@2x.png in Resources */,
@@ -2288,6 +2297,7 @@
 				581ABF1E1CE0DAEA00B933D7 /* IndexCollectionReusableView.m in Sources */,
 				DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */,
 				587FF9DA1CF2F8F300AD2131 /* IQTextView.m in Sources */,
+				DDD0BDCF1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m in Sources */,
 				58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */,
 				DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */,
 				DDD0BDB41CFA791100073290 /* PositionInforThreeTableViewCell.m in Sources */,

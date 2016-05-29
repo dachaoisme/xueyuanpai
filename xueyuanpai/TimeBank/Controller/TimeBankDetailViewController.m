@@ -10,6 +10,7 @@
 
 #import "TimeBankDetailOneStyleTableViewCell.h"
 
+#import "TimeBankDetailTwoStyleTableViewCell.h"
 
 @interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -47,6 +48,7 @@
     
     //注册cell
     [tableView registerNib:[UINib nibWithNibName:@"TimeBankDetailOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    [tableView registerNib:[UINib nibWithNibName:@"TimeBankDetailTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     
     
     
@@ -89,16 +91,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TimeBankDetailOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    
-    return cell;
+    if (indexPath.section == 0) {
+        TimeBankDetailOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        
+        
+        return cell;
+
+    } else {
+        TimeBankDetailTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+        
+        return cell;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 300;
+    return 250;
 }
+
 
 
 
