@@ -98,5 +98,7 @@ typedef NS_ENUM(NSInteger, SchoolRecruitmentType){
     SchoolRecruitmentTypeJianZhi           ,
     ///查看公司其他职位信息
     SchoolRecruitmentTypeCompanyPosition   ,
+    ///职位搜索
+    SchoolRecruitmentTypeCompanySearch     ,
 };
 #endif /* EnumDefine_h */

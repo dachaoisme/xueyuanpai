@@ -60,6 +60,8 @@
         [dic setObject:@"3" forKey:@"type"];
     }else if (self.type ==SchoolRecruitmentTypeCompanyPosition){
         [dic setObject:self.companyID?self.companyID:@"" forKey:@"company_id"];
+    }else if (self.type == SchoolRecruitmentTypeCompanySearch){
+        [dic addEntriesFromDictionary:self.companySearchDic];
     }
     
     [[HttpClient sharedInstance]getListOfSchoolRecruitmentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
