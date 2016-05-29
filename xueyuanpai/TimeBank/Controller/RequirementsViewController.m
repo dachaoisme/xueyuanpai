@@ -11,6 +11,8 @@
 
 #import "RequirementTableViewCell.h"
 #import "RequirementTwoTableViewCell.h"
+#import "RequirementThreeTableViewCell.h"
+
 #import "SelectedImageView.h"
 #import "TimeBankModel.h"
 #import "LTPickerView.h"
@@ -123,6 +125,7 @@
     //注册cell
     [tableView registerNib:[UINib nibWithNibName:@"RequirementTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
     [tableView registerNib:[UINib nibWithNibName:@"RequirementTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
+        [tableView registerNib:[UINib nibWithNibName:@"RequirementThreeTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
     
     
     
@@ -131,7 +134,7 @@
     
     //发布按钮的创建
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(10, 10, 200, 40);
+    button.frame = CGRectMake(0, 10, 100, 40);
     [button setTitle:@"发布" forState:UIControlStateNormal];
     
     button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
@@ -294,6 +297,14 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 3) {
+        return 120;
+    }else{
+        return 48;
+    }
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 4;
@@ -366,18 +377,21 @@
             
         case 3:{
             
-            RequirementTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-            cell.showTextLabel.text = @"描述内容";
-            cell.tag = TimeBankSubmitDescriptionTag;
-            cell.delegate = self;
+           RequirementThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+//            cell.showTextLabel.text = @"描述内容";
+//            cell.tag = TimeBankSubmitDescriptionTag;
+//            cell.delegate = self;
             return cell;
         }
             break;
+            
 
         default:{
             
             RequirementTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
             //                cell.titleLable.text = @"类型";
+            
+            
             return cell;
         }
             

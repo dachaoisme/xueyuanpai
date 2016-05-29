@@ -164,6 +164,11 @@
 		58898E411CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898E3F1CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib */; };
 		58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E441CFA89C90007D9B3 /* LTPickerView.m */; };
 		58898E471CFA89C90007D9B3 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898E451CFA89C90007D9B3 /* LTPickerView.xib */; };
+		58898E4B1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E491CFAC5E40007D9B3 /* RequirementThreeTableViewCell.m */; };
+		58898E4C1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898E4A1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.xib */; };
+		58898E4F1CFAD0790007D9B3 /* TimeBankDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E4E1CFAD0790007D9B3 /* TimeBankDetailViewController.m */; };
+		58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E511CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m */; };
+		58898E541CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898E521CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib */; };
 		58A9448B1CE277C600DAD398 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944741CE277C600DAD398 /* avatar@2x.png */; };
 		58A9448C1CE277C600DAD398 /* avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944751CE277C600DAD398 /* avatar@3x.png */; };
 		58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944761CE277C600DAD398 /* avatar_change@2x.png */; };
@@ -550,6 +555,14 @@
 		58898E431CFA89C90007D9B3 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
 		58898E441CFA89C90007D9B3 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
 		58898E451CFA89C90007D9B3 /* LTPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTPickerView.xib; sourceTree = "<group>"; };
+		58898E481CFAC5E40007D9B3 /* RequirementThreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementThreeTableViewCell.h; sourceTree = "<group>"; };
+		58898E491CFAC5E40007D9B3 /* RequirementThreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementThreeTableViewCell.m; sourceTree = "<group>"; };
+		58898E4A1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequirementThreeTableViewCell.xib; sourceTree = "<group>"; };
+		58898E4D1CFAD0790007D9B3 /* TimeBankDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankDetailViewController.h; sourceTree = "<group>"; };
+		58898E4E1CFAD0790007D9B3 /* TimeBankDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankDetailViewController.m; sourceTree = "<group>"; };
+		58898E501CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankDetailOneStyleTableViewCell.h; sourceTree = "<group>"; };
+		58898E511CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankDetailOneStyleTableViewCell.m; sourceTree = "<group>"; };
+		58898E521CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeBankDetailOneStyleTableViewCell.xib; sourceTree = "<group>"; };
 		58A944741CE277C600DAD398 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		58A944751CE277C600DAD398 /* avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@3x.png"; sourceTree = "<group>"; };
 		58A944761CE277C600DAD398 /* avatar_change@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar_change@2x.png"; sourceTree = "<group>"; };
@@ -1311,6 +1324,8 @@
 			children = (
 				58E028FF1CF45E04006A2E74 /* TimeBankViewController.h */,
 				58E029001CF45E04006A2E74 /* TimeBankViewController.m */,
+				58898E4D1CFAD0790007D9B3 /* TimeBankDetailViewController.h */,
+				58898E4E1CFAD0790007D9B3 /* TimeBankDetailViewController.m */,
 				58F211651CF9A0E800926FB9 /* RequirementsViewController.h */,
 				58F211661CF9A0E800926FB9 /* RequirementsViewController.m */,
 			);
@@ -1326,9 +1341,15 @@
 				58898E3D1CFA5A280007D9B3 /* RequirementTwoTableViewCell.h */,
 				58898E3E1CFA5A280007D9B3 /* RequirementTwoTableViewCell.m */,
 				58898E3F1CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib */,
+				58898E481CFAC5E40007D9B3 /* RequirementThreeTableViewCell.h */,
+				58898E491CFAC5E40007D9B3 /* RequirementThreeTableViewCell.m */,
+				58898E4A1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.xib */,
 				58F2116D1CF9CD4600926FB9 /* TimeBankTableViewCell.h */,
 				58F2116E1CF9CD4600926FB9 /* TimeBankTableViewCell.m */,
 				58F2116F1CF9CD4600926FB9 /* TimeBankTableViewCell.xib */,
+				58898E501CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.h */,
+				58898E511CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m */,
+				58898E521CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2072,6 +2093,7 @@
 				DD41275A1CF0552F00227066 /* bigpie_order_add@3x.png in Resources */,
 				DD4127841CF0552F00227066 /* shetuan_icon_time@3x.png in Resources */,
 				58070FDF1CF6E80200F03F6C /* timebank_status_time@3x.png in Resources */,
+				58898E4C1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.xib in Resources */,
 				58A944931CE277C600DAD398 /* login_bg@2x.jpg in Resources */,
 				DD4127731CF0552F00227066 /* hire_search_checkbox_empty@2x.png in Resources */,
 				5874A3D81CF1249400CE9FC9 /* home_popup_score@2x.png in Resources */,
@@ -2141,6 +2163,7 @@
 				5874A3E11CF1249400CE9FC9 /* tab_icon_creativity@3x.png in Resources */,
 				58F211711CF9CD4600926FB9 /* TimeBankTableViewCell.xib in Resources */,
 				5874A3E31CF1249400CE9FC9 /* tab_icon_home@3x.png in Resources */,
+				58898E541CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib in Resources */,
 				58070FBB1CF6E80200F03F6C /* timebank_filter_hot_hl@3x.png in Resources */,
 				5829986E1CDB29E7004A05FB /* Default-375w-667h@2x.png in Resources */,
 				DD41278F1CF1860400227066 /* test.jpg in Resources */,
@@ -2317,6 +2340,7 @@
 				DDD3E5371CF458AF001B579E /* SchoolShufflingView.m in Sources */,
 				58F67C2E1CD9CF9500D55BE0 /* MJRefreshFooter.m in Sources */,
 				5874A3F81CF172A000CE9FC9 /* CollegeModel.m in Sources */,
+				58898E4B1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.m in Sources */,
 				5829987A1CDB4486004A05FB /* MineViewController.m in Sources */,
 				58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */,
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
@@ -2326,6 +2350,7 @@
 				587FF9D21CF2F8F300AD2131 /* IQNSArray+Sort.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
+				58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */,
 				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
 				587FF9D71CF2F8F300AD2131 /* IQUIWindow+Hierarchy.m in Sources */,
 				DDD0BD9A1CFA4A9000073290 /* EmploymentRecruitmentViewController.m in Sources */,
@@ -2333,6 +2358,7 @@
 				5874A3EF1CF12C0500CE9FC9 /* SelectedSexView.m in Sources */,
 				DD4127871CF0561900227066 /* HotActivityTableViewCell.m in Sources */,
 				58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */,
+				58898E4F1CFAD0790007D9B3 /* TimeBankDetailViewController.m in Sources */,
 				5874A4041CF2458D00CE9FC9 /* UITextView+TopView.m in Sources */,
 				DDD0BD8E1CF9A43C00073290 /* SchoolRecruitmentModel.m in Sources */,
 				58A944C01CE3360B00DAD398 /* RegisterRoleView.m in Sources */,

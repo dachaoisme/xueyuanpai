@@ -11,6 +11,8 @@
 #import "TimeBankModel.h"
 #import "RequirementsViewController.h"
 
+#import "TimeBankDetailViewController.h"
+
 @interface TimeBankViewController ()<LDCPullDownMenuViewDelegate>
 {
     NSMutableArray *timeBankConditionCategoryModelArr;
@@ -292,6 +294,13 @@
 {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    
+    //点击进入时间银行详情
+    TimeBankDetailViewController *detailVC = [[TimeBankDetailViewController alloc] init];
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    
     
 }
 - (void)didReceiveMemoryWarning {
