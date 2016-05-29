@@ -207,11 +207,12 @@
      */
     
     NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
+    
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setObject:nickNameTextField.text forKey:@"nickname"];
     [dic setObject:theCollegeModel.collegeID forKey:@"college_id"];
     [dic setObject:[[sexBtn titleForState:UIControlStateNormal] isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
-    [dic setObject:avatarImageUploaded forKey:@"icon"];
+    [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
     
     [[HttpClient sharedInstance]updateStudentInfoWithParams:nil withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {

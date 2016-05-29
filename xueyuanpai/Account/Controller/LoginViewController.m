@@ -43,7 +43,7 @@
 }
 -(void)setContentView
 {
-    float topSpace = 35;
+    float topSpace = 32;
     float leftSpace = 35;
     float rightSpace = 35;
     float width = SCREEN_WIDTH - 35*2;
@@ -58,27 +58,34 @@
     UIImageView * logoImageView = [UIFactory imageView:CGRectMake(leftSpace, topSpace, logoImage.size.width, logoImage.size.height) viewMode:UIViewContentModeScaleToFill image:@"login_logo"];
     [self.view addSubview:logoImageView];
     
+    float boardHeight = 0.5;
+    
+    UIView *textFieldbackgroundView = [[UIView alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(logoImageView.frame)+topSpace , width, height *2)];
+    textFieldbackgroundView.layer.borderColor = [CommonUtils colorWithHex:@"c2c3c4"].CGColor;
+    textFieldbackgroundView.layer.borderWidth = boardHeight;
+    [self.view addSubview:textFieldbackgroundView];
+    
     //手机号输入框
     UIImageView * phoneImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"login_phone"]];
-    phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(logoImageView.frame)+topSpace, width, height)];
+    phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(boardHeight, boardHeight, CGRectGetWidth(textFieldbackgroundView.frame)-2*boardHeight, height-boardHeight)];
     phoneTextField.tag = 1;
     phoneTextField.delegate = self;
     phoneTextField.textAlignment = NSTextAlignmentLeft;
-    phoneTextField.borderStyle = UITextBorderStyleLine;
+    phoneTextField.borderStyle = UITextBorderStyleNone;
     phoneTextField.placeholder = @"请输入手机号";
     phoneTextField.adjustsFontSizeToFitWidth = YES;
     phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     phoneTextField.leftViewMode = UITextFieldViewModeAlways;
     phoneTextField.leftView = phoneImageView;
-    [self.view addSubview:phoneTextField];
+    [textFieldbackgroundView addSubview:phoneTextField];
     
     //密码输入框
     UIImageView * passwordImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"login_password"]];
-    passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(phoneTextField.frame), width, height)];
+    passwordTextField = [[UITextField alloc]initWithFrame:CGRectMake(boardHeight, CGRectGetMaxY(phoneTextField.frame), CGRectGetWidth(textFieldbackgroundView.frame)-2*boardHeight, height-boardHeight)];
     passwordTextField.tag = 2;
     passwordTextField.delegate = self;
     passwordTextField.textAlignment = NSTextAlignmentLeft;
-    passwordTextField.borderStyle = UITextBorderStyleLine;
+    passwordTextField.borderStyle = UITextBorderStyleNone;
     passwordTextField.placeholder = @"请输入密码";
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     passwordTextField.adjustsFontSizeToFitWidth = YES;
@@ -86,7 +93,9 @@
     passwordTextField.leftViewMode = UITextFieldViewModeAlways;
     passwordTextField.leftView = passwordImageView;
     passwordTextField.rightViewMode = UITextFieldViewModeAlways;
-    [self.view addSubview:passwordTextField];
+    [textFieldbackgroundView addSubview:passwordTextField];
+    
+    [UIFactory showLineInView:textFieldbackgroundView color:@"c2c3c4" rect:CGRectMake(0, CGRectGetMaxY(phoneTextField.frame), CGRectGetWidth(textFieldbackgroundView.frame), 0.5)];
     
     UIButton * forgetPasswordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [forgetPasswordBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
@@ -104,10 +113,10 @@
     personalAccountBtn.layer.cornerRadius = 3.0;
     [personalAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
     [personalAccountBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateSelected];
-    [personalAccountBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(passwordTextField.frame)+smallSpace, (SCREEN_WIDTH-CGRectGetMinX(phoneTextField.frame)*2-smallSpace)/2, smallHeight)];
+    [personalAccountBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, (SCREEN_WIDTH-smallSpace-2*leftSpace)/2, smallHeight)];
     [personalAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     [personalAccountBtn setTitle:@"个人账号" forState:UIControlStateNormal];
-    personalAccountBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    personalAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:personalAccountBtn];
     
     teacherAccountBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -116,10 +125,10 @@
     teacherAccountBtn.layer.cornerRadius = 3.0;
     [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
     [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateSelected];
-    [teacherAccountBtn setFrame:CGRectMake(CGRectGetMaxX(personalAccountBtn.frame)+smallSpace, CGRectGetMaxY(passwordTextField.frame)+smallSpace, (SCREEN_WIDTH-CGRectGetMinX(phoneTextField.frame)*2-smallSpace)/2, smallHeight)];
+    [teacherAccountBtn setFrame:CGRectMake(CGRectGetMaxX(personalAccountBtn.frame)+smallSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, CGRectGetWidth(personalAccountBtn.frame), smallHeight)];
     [teacherAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     [teacherAccountBtn setTitle:@"导师账号" forState:UIControlStateNormal];
-    teacherAccountBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    teacherAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:teacherAccountBtn];
     
     //登陆按钮
@@ -147,12 +156,12 @@
     [self.view addSubview:registerBtn];
     
     justToLook = [UIButton buttonWithType:UIButtonTypeCustom];
-    [justToLook setContentMode:UIViewContentModeRight];
+    [justToLook setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     [justToLook setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
-    [justToLook setFrame:CGRectMake(SCREEN_WIDTH-rightSpace-100, SCREEN_HEIGHT-smallSpace-height, 100, height)];
+    [justToLook setFrame:CGRectMake(SCREEN_WIDTH-rightSpace-100, CGRectGetMaxY(registerBtn.frame)+100, 100, height)];
     [justToLook addTarget:self action:@selector(justToLook:) forControlEvents:UIControlEventTouchUpInside];
     [justToLook setTitle:@"随便逛逛 >" forState:UIControlStateNormal];
-    justToLook.titleLabel.font = [UIFont systemFontOfSize:12];
+    justToLook.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:justToLook];
     
 }

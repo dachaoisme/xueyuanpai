@@ -10,6 +10,7 @@
 #import "BusinessCenterViewController.h"
 #import "ExpressCenterViewController.h"
 #import "IndexViewController.h"
+#import "LoginViewController.h"
 @interface BaseTabBarViewController ()
 
 @end
@@ -58,6 +59,11 @@
     [_baseTabBarView setContentView];
     [_baseTabBarView setSelected:0];
     
+    if ([[UserAccountManager sharedInstance] getUserId].length<=0) {
+        LoginViewController * loginVC = [[LoginViewController alloc]init];
+        [IndexVC.navigationController pushViewController:loginVC animated:NO];
+    }
+    
 }
 -(void)stateBarHidden
 {
@@ -67,7 +73,7 @@
 {
     _baseTabBarView.hidden=NO;
     if (_baseTabBarView.frame.origin.x!=0 || _baseTabBarView.frame.origin.y!=self.view.bounds.size.height-49) {
-        [UIView animateWithDuration:0.25 animations:^{
+        [UIView animateWithDuration:0 animations:^{
             _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height-49, SCREEN_WIDTH, 49);
         }];
     }
@@ -75,7 +81,7 @@
 -(void)tabBarHiddenToBottom:(BOOL)toBottom
 {
     if (_baseTabBarView.frame.origin.x==0 && _baseTabBarView.frame.origin.y==self.view.bounds.size.height-49) {
-        [UIView animateWithDuration:0.3 animations:^{
+        [UIView animateWithDuration:0 animations:^{
             if (toBottom) {
                 _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 49);
             }else

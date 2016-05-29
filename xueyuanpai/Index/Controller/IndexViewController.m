@@ -320,15 +320,28 @@
 #pragma mark - 我的
 -(void)leftItemActionWithBtn:(UIButton *)sender
 {
-    //弹出我的界面
-    MineViewController * mineVC = [[MineViewController alloc]init];
-    [self.navigationController pushViewController:mineVC animated:YES];
+    BOOL yesLogin = [UserAccountManager sharedInstance].isLogin;
+    //需要先判断是否已经登陆
+    if (yesLogin) {
+        //收件箱界面
+        [CommonUtils showToastWithStr:@"我的"];
+        //弹出我的界面
+        MineViewController * mineVC = [[MineViewController alloc]init];
+        [self.navigationController pushViewController:mineVC animated:YES];
+    }else{
+        //进入登陆注册页面
+        
+        LoginViewController * loginVC = [[LoginViewController alloc]init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+    
+    
 }
 #pragma mark - 收件箱
 -(void)rightItemActionWithBtn:(UIButton *)sender
 {
     
-    BOOL yesLogin = NO;
+    BOOL yesLogin = [UserAccountManager sharedInstance].isLogin;
     //需要先判断是否已经登陆
     if (yesLogin) {
         //收件箱界面
