@@ -108,7 +108,7 @@
     [submitAndRegisterBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
     [submitAndRegisterBtn setFrame:CGRectMake(topSpace, CGRectGetMaxY(inputPasswordTextField.frame)+topSpace, width-2*topSpace, height)];
     [submitAndRegisterBtn addTarget:self action:@selector(submitAndRegister:) forControlEvents:UIControlEventTouchUpInside];
-    [submitAndRegisterBtn setTitle:@"提交并注册" forState:UIControlStateNormal];
+    [submitAndRegisterBtn setTitle:@"提交" forState:UIControlStateNormal];
     submitAndRegisterBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     [self.view addSubview:submitAndRegisterBtn];
 }

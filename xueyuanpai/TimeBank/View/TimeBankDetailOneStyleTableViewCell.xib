@@ -12,10 +12,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="264"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="263.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSv-3L-ywG">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timebank_icon_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="aSv-3L-ywG">
                         <rect key="frame" x="8" y="8" width="80" height="80"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小小琳琳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FW-sN-cHu">
@@ -62,20 +62,19 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9tM-Nj-Aqb">
                         <rect key="frame" x="209" y="37" width="26" height="14"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="唱歌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucz-cu-nPj">
                         <rect key="frame" x="243" y="37" width="26" height="14"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天一起出去唱歌" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw2-Ep-Fkc">
-                        <rect key="frame" x="16" y="125" width="304" height="80"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="今天我们去唱歌" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tw2-Ep-Fkc">
+                        <rect key="frame" x="16" y="125" width="1872" height="80"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="PiF-p8-XWr"/>
                         </constraints>
@@ -84,17 +83,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eE0-ch-8Qu">
-                        <rect key="frame" x="68" y="209" width="184" height="30"/>
+                        <rect key="frame" x="68" y="220" width="184" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="ldO-qx-HXb"/>
                         </constraints>
-                        <state key="normal" title="我要唱歌"/>
+                        <state key="normal" title="我要唱歌">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="eE0-ch-8Qu" secondAttribute="bottom" constant="16.5" id="2nW-YI-xJf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="eE0-ch-8Qu" secondAttribute="bottom" constant="5" id="2nW-YI-xJf"/>
                     <constraint firstAttribute="trailingMargin" secondItem="eE0-ch-8Qu" secondAttribute="trailing" constant="60" id="6f1-vG-ui0"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="tw2-Ep-Fkc" secondAttribute="bottom" constant="50" id="Ly1-zw-tP7"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="tw2-Ep-Fkc" secondAttribute="bottom" constant="40" id="Ly1-zw-tP7"/>
                     <constraint firstItem="tw2-Ep-Fkc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Sl8-cq-Bh9"/>
                     <constraint firstItem="tw2-Ep-Fkc" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="lBg-iW-bL5"/>
                     <constraint firstItem="eE0-ch-8Qu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="60" id="tfn-kP-iOo"/>

@@ -46,7 +46,6 @@
 
 
 ///赴约按钮
-
 @property (weak, nonatomic) IBOutlet UIButton *activityContentButton;
 
 
