@@ -78,6 +78,7 @@
     theCollectionLayout = [[UICollectionViewFlowLayout alloc]init];
     //设置布局方向为垂直流布局
     theCollectionLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    //theCollectionLayout.minimumInteritemSpacing = 38;
     //[theCollectionLayout setHeaderReferenceSize:CGSizeMake(320, 150)];
     //设置每个item的大小为100*100
     //layout.itemSize = CGSizeMake(100, 100);
@@ -183,6 +184,7 @@
     
 }
 #pragma mark - UICollectionViewDelegate,UICollectionViewDataSource
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
     if (section==0) {
@@ -222,9 +224,11 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        return CGSizeMake(60,60);
+        float width = (SCREEN_WIDTH-2*15-30*3)/4;
+        return CGSizeMake(width,60);
     }else{
-        return CGSizeMake(140, 140);
+        float width = (SCREEN_WIDTH-2*15-15)/2;
+        return CGSizeMake(width, 140);
     }
 }
 
@@ -233,11 +237,11 @@
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     if (section==0) {
-        return UIEdgeInsetsMake(15, 15, 15, ([UIScreen mainScreen].bounds.size.width-60*4)/5);
+        return UIEdgeInsetsMake(15, 15, 15, 15);
         
     }else{
         
-        return UIEdgeInsetsMake(5, ([UIScreen mainScreen].bounds.size.width-140*2)/3, 5, ([UIScreen mainScreen].bounds.size.width-140*2)/3);
+        return UIEdgeInsetsMake(5, 15, 5, 15);
         
     }
     
@@ -251,7 +255,7 @@
         return 30;
 
     }else{
-        return 20;
+        return 15;
     }
 }
 //返回分区个数
