@@ -10,8 +10,22 @@
 
 @implementation RecruitmentOneStyleTableViewCell
 
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model{
+    
+    //设置数据
+    self.componyName.text = model.schoolRecruitmentDetailCompanyName;
+    
+    self.licenseTextLabel.text = model.schoolRecruitmentDetailBusinesslicense;
+    self.industryLabel.text = model.schoolRecruitmentDetailIndustry;
+    self.pepoleLabel.text = model.schoolRecruitmentDetailScale;
+    self.natureLabel.text = model.schoolRecruitmentDetailCompanyProperty;
+    self.locationLabel.text = model.schoolRecruitmentDetailCompanyAddress;
+}
+
 - (void)awakeFromNib {
     // Initialization code
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

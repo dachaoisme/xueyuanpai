@@ -310,6 +310,17 @@
 		DDD0BD9A1CFA4A9000073290 /* EmploymentRecruitmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD991CFA4A9000073290 /* EmploymentRecruitmentViewController.m */; };
 		DDD0BD9E1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD9C1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.m */; };
 		DDD0BD9F1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD9D1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.xib */; };
+		DDD0BDA31CFA536300073290 /* PositionInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDA21CFA536300073290 /* PositionInforViewController.m */; };
+		DDD0BDA61CFA53B100073290 /* ComponeyInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDA51CFA53B100073290 /* ComponeyInforViewController.m */; };
+		DDD0BDAA1CFA735A00073290 /* PositionInforTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDA81CFA735A00073290 /* PositionInforTableViewCell.m */; };
+		DDD0BDAB1CFA735A00073290 /* PositionInforTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDA91CFA735A00073290 /* PositionInforTableViewCell.xib */; };
+		DDD0BDAF1CFA75E800073290 /* PositionTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDAD1CFA75E800073290 /* PositionTwoTableViewCell.m */; };
+		DDD0BDB01CFA75E800073290 /* PositionTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDAE1CFA75E800073290 /* PositionTwoTableViewCell.xib */; };
+		DDD0BDB41CFA791100073290 /* PositionInforThreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDB21CFA791100073290 /* PositionInforThreeTableViewCell.m */; };
+		DDD0BDB51CFA791100073290 /* PositionInforThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDB31CFA791100073290 /* PositionInforThreeTableViewCell.xib */; };
+		DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDB71CFA7A8700073290 /* PositionInforFourTableViewCell.m */; };
+		DDD0BDBA1CFA7A8700073290 /* PositionInforFourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDB81CFA7A8700073290 /* PositionInforFourTableViewCell.xib */; };
+		DDD0BDC01CFA929800073290 /* PositionSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDBF1CFA929800073290 /* PositionSearchViewController.m */; };
 		DDD3E5341CF44E8A001B579E /* SchoolRecruitmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5331CF44E8A001B579E /* SchoolRecruitmentViewController.m */; };
 		DDD3E5371CF458AF001B579E /* SchoolShufflingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5361CF458AF001B579E /* SchoolShufflingView.m */; };
 		DDD3E53A1CF49669001B579E /* SchoolColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5391CF49669001B579E /* SchoolColumnView.m */; };
@@ -755,6 +766,24 @@
 		DDD0BD9B1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmploymentRecruitmentTableViewCell.h; sourceTree = "<group>"; };
 		DDD0BD9C1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmploymentRecruitmentTableViewCell.m; sourceTree = "<group>"; };
 		DDD0BD9D1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmploymentRecruitmentTableViewCell.xib; sourceTree = "<group>"; };
+		DDD0BDA11CFA536300073290 /* PositionInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionInforViewController.h; sourceTree = "<group>"; };
+		DDD0BDA21CFA536300073290 /* PositionInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionInforViewController.m; sourceTree = "<group>"; };
+		DDD0BDA41CFA53B100073290 /* ComponeyInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponeyInforViewController.h; sourceTree = "<group>"; };
+		DDD0BDA51CFA53B100073290 /* ComponeyInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComponeyInforViewController.m; sourceTree = "<group>"; };
+		DDD0BDA71CFA735A00073290 /* PositionInforTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionInforTableViewCell.h; sourceTree = "<group>"; };
+		DDD0BDA81CFA735A00073290 /* PositionInforTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionInforTableViewCell.m; sourceTree = "<group>"; };
+		DDD0BDA91CFA735A00073290 /* PositionInforTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PositionInforTableViewCell.xib; sourceTree = "<group>"; };
+		DDD0BDAC1CFA75E800073290 /* PositionTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionTwoTableViewCell.h; sourceTree = "<group>"; };
+		DDD0BDAD1CFA75E800073290 /* PositionTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionTwoTableViewCell.m; sourceTree = "<group>"; };
+		DDD0BDAE1CFA75E800073290 /* PositionTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PositionTwoTableViewCell.xib; sourceTree = "<group>"; };
+		DDD0BDB11CFA791100073290 /* PositionInforThreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionInforThreeTableViewCell.h; sourceTree = "<group>"; };
+		DDD0BDB21CFA791100073290 /* PositionInforThreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionInforThreeTableViewCell.m; sourceTree = "<group>"; };
+		DDD0BDB31CFA791100073290 /* PositionInforThreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PositionInforThreeTableViewCell.xib; sourceTree = "<group>"; };
+		DDD0BDB61CFA7A8700073290 /* PositionInforFourTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionInforFourTableViewCell.h; sourceTree = "<group>"; };
+		DDD0BDB71CFA7A8700073290 /* PositionInforFourTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionInforFourTableViewCell.m; sourceTree = "<group>"; };
+		DDD0BDB81CFA7A8700073290 /* PositionInforFourTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PositionInforFourTableViewCell.xib; sourceTree = "<group>"; };
+		DDD0BDBE1CFA929800073290 /* PositionSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PositionSearchViewController.h; sourceTree = "<group>"; };
+		DDD0BDBF1CFA929800073290 /* PositionSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PositionSearchViewController.m; sourceTree = "<group>"; };
 		DDD3E5321CF44E8A001B579E /* SchoolRecruitmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolRecruitmentViewController.h; sourceTree = "<group>"; };
 		DDD3E5331CF44E8A001B579E /* SchoolRecruitmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolRecruitmentViewController.m; sourceTree = "<group>"; };
 		DDD3E5351CF458AF001B579E /* SchoolShufflingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolShufflingView.h; sourceTree = "<group>"; };
@@ -1714,6 +1743,25 @@
 			path = CompanyInforCell;
 			sourceTree = "<group>";
 		};
+		DDD0BDA01CFA52C200073290 /* PositionInfor */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0BDA71CFA735A00073290 /* PositionInforTableViewCell.h */,
+				DDD0BDA81CFA735A00073290 /* PositionInforTableViewCell.m */,
+				DDD0BDA91CFA735A00073290 /* PositionInforTableViewCell.xib */,
+				DDD0BDAC1CFA75E800073290 /* PositionTwoTableViewCell.h */,
+				DDD0BDAD1CFA75E800073290 /* PositionTwoTableViewCell.m */,
+				DDD0BDAE1CFA75E800073290 /* PositionTwoTableViewCell.xib */,
+				DDD0BDB11CFA791100073290 /* PositionInforThreeTableViewCell.h */,
+				DDD0BDB21CFA791100073290 /* PositionInforThreeTableViewCell.m */,
+				DDD0BDB31CFA791100073290 /* PositionInforThreeTableViewCell.xib */,
+				DDD0BDB61CFA7A8700073290 /* PositionInforFourTableViewCell.h */,
+				DDD0BDB71CFA7A8700073290 /* PositionInforFourTableViewCell.m */,
+				DDD0BDB81CFA7A8700073290 /* PositionInforFourTableViewCell.xib */,
+			);
+			path = PositionInfor;
+			sourceTree = "<group>";
+		};
 		DDD3E52E1CF44DF6001B579E /* SchoolRecruitment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1727,6 +1775,7 @@
 		DDD3E52F1CF44E15001B579E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DDD0BDA01CFA52C200073290 /* PositionInfor */,
 				DDD0BD8B1CF985CB00073290 /* CompanyInforCell */,
 				DDD3E5351CF458AF001B579E /* SchoolShufflingView.h */,
 				DDD3E5361CF458AF001B579E /* SchoolShufflingView.m */,
@@ -1758,8 +1807,14 @@
 				DDD3E5331CF44E8A001B579E /* SchoolRecruitmentViewController.m */,
 				DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */,
 				DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */,
+				DDD0BDA11CFA536300073290 /* PositionInforViewController.h */,
+				DDD0BDA21CFA536300073290 /* PositionInforViewController.m */,
+				DDD0BDA41CFA53B100073290 /* ComponeyInforViewController.h */,
+				DDD0BDA51CFA53B100073290 /* ComponeyInforViewController.m */,
 				DDD0BD981CFA4A9000073290 /* EmploymentRecruitmentViewController.h */,
 				DDD0BD991CFA4A9000073290 /* EmploymentRecruitmentViewController.m */,
+				DDD0BDBE1CFA929800073290 /* PositionSearchViewController.h */,
+				DDD0BDBF1CFA929800073290 /* PositionSearchViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1874,6 +1929,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58070FAD1CF6E80200F03F6C /* timebank_filter_chair@3x.png in Resources */,
+				DDD0BDAB1CFA735A00073290 /* PositionInforTableViewCell.xib in Resources */,
 				58A9448F1CE277C600DAD398 /* avatar_upload@2x.png in Resources */,
 				58070FCD1CF6E80200F03F6C /* timebank_filter_shop@3x.png in Resources */,
 				58070F991CF6E80200F03F6C /* filter_arrow@3x.png in Resources */,
@@ -1935,10 +1991,12 @@
 				58070F9C1CF6E80200F03F6C /* gender_male@2x.png in Resources */,
 				58070FB31CF6E80200F03F6C /* timebank_filter_female_hl@3x.png in Resources */,
 				58A944B51CE32A9500DAD398 /* forgetPassword@3x.png in Resources */,
+				DDD0BDBA1CFA7A8700073290 /* PositionInforFourTableViewCell.xib in Resources */,
 				58070FBD1CF6E80200F03F6C /* timebank_filter_hot@3x.png in Resources */,
 				DD41276A1CF0552F00227066 /* hire_btn_contact_press@3x.png in Resources */,
 				DD4127551CF0552F00227066 /* arrow@2x.png in Resources */,
 				DD4127791CF0552F00227066 /* nav_icon_fav_full@2x.png in Resources */,
+				DDD0BDB51CFA791100073290 /* PositionInforThreeTableViewCell.xib in Resources */,
 				58070F951CF6E80200F03F6C /* disable_tag@3x.png in Resources */,
 				58070FC61CF6E80200F03F6C /* timebank_filter_other_hl@2x.png in Resources */,
 				DD41277B1CF0552F00227066 /* nav_icon_search@2x.png in Resources */,
@@ -1958,6 +2016,7 @@
 				58070FD61CF6E80200F03F6C /* timebank_icon_location@2x.png in Resources */,
 				58A944B51CE32A9500DAD398 /* forgetPassword@3x.png in Resources */,
 				DDE8C2331CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib in Resources */,
+				DDD0BDB01CFA75E800073290 /* PositionTwoTableViewCell.xib in Resources */,
 				58F67C2B1CD9CF9500D55BE0 /* MJRefresh.bundle in Resources */,
 				5874A3D31CF1249400CE9FC9 /* home_icon_recruit@3x.png in Resources */,
 				58A944981CE277C600DAD398 /* login_phone@2x.png in Resources */,
@@ -2168,6 +2227,7 @@
 				DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
 				DD4127CC1CF2F98F00227066 /* ParallaxHeaderView.m in Sources */,
+				DDD0BDA31CFA536300073290 /* PositionInforViewController.m in Sources */,
 				DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */,
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
 				DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */,
@@ -2182,6 +2242,7 @@
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
 				5874A4071CF24CF700CE9FC9 /* ForgetPasswordViewController.m in Sources */,
+				DDD0BDAA1CFA735A00073290 /* PositionInforTableViewCell.m in Sources */,
 				58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */,
 				58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */,
 				DDD3E53A1CF49669001B579E /* SchoolColumnView.m in Sources */,
@@ -2190,6 +2251,7 @@
 				587FF9DA1CF2F8F300AD2131 /* IQTextView.m in Sources */,
 				58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */,
 				DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */,
+				DDD0BDB41CFA791100073290 /* PositionInforThreeTableViewCell.m in Sources */,
 				5874A40A1CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */,
 				58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
@@ -2200,16 +2262,19 @@
 				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
+				DDD0BDC01CFA929800073290 /* PositionSearchViewController.m in Sources */,
 				5874A3F51CF14C7800CE9FC9 /* SelectedSchollViewController.m in Sources */,
 				58A944B71CE32BA600DAD398 /* LoginViewController.m in Sources */,
 				DDD0BD9E1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.m in Sources */,
 				5874A3EC1CF1286A00CE9FC9 /* SelectedPickView.m in Sources */,
 				58F67C341CD9CF9500D55BE0 /* UIScrollView+MJExtension.m in Sources */,
+				DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */,
 				587FF9DB1CF2F8F300AD2131 /* IQBarButtonItem.m in Sources */,
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
 				587FF9DD1CF2F8F300AD2131 /* IQTitleBarButtonItem.m in Sources */,
 				58F67BFF1CD990A200D55BE0 /* HttpModel.m in Sources */,
 				58F67C351CD9CF9500D55BE0 /* UIScrollView+MJRefresh.m in Sources */,
+				DDD0BDA61CFA53B100073290 /* ComponeyInforViewController.m in Sources */,
 				58A944C31CE3E0B000DAD398 /* AddStudentInfoViewController.m in Sources */,
 				5874A3FB1CF1AEE400CE9FC9 /* AddTeacherInfoTableViewCell.m in Sources */,
 				58A944AB1CE27A5300DAD398 /* RegisterViewController.m in Sources */,
@@ -2222,6 +2287,7 @@
 				58A944C61CE3E0C200DAD398 /* AddTeacherViewController.m in Sources */,
 				587FF9D61CF2F8F300AD2131 /* IQUIViewController+Additions.m in Sources */,
 				587FF9DE1CF2F8F300AD2131 /* IQToolbar.m in Sources */,
+				DDD0BDAF1CFA75E800073290 /* PositionTwoTableViewCell.m in Sources */,
 				58F67C321CD9CF9500D55BE0 /* MJRefreshLegendFooter.m in Sources */,
 				583D10291CE173100010F9D8 /* HttpCommonModel.m in Sources */,
 				DDD3E5341CF44E8A001B579E /* SchoolRecruitmentViewController.m in Sources */,

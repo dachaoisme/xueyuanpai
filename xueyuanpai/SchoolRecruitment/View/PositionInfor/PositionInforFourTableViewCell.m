@@ -1,18 +1,19 @@
 //
-//  RecruitmentTwoStyleTableViewCell.m
+//  PositionInforFourTableViewCell.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/5/28.
+//  Created by 王园园 on 16/5/29.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "RecruitmentTwoStyleTableViewCell.h"
+#import "PositionInforFourTableViewCell.h"
 
-@implementation RecruitmentTwoStyleTableViewCell
+@implementation PositionInforFourTableViewCell
 
 - (void)bindModel:(SchoolRecruitmentDetailModel *)model{
-    
-    self.contentLabel.text = model.schoolRecruitmentDetailCompanyIntroduction;
+    //
+    self.contentLabel.text = model.schoolRecruitmentDetailOfficer;
+    self.phoneNumber.text = model.schoolRecruitmentDetailTelphone;
 }
 
 - (void)awakeFromNib {

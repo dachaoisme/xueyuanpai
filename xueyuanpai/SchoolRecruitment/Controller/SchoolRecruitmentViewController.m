@@ -18,6 +18,7 @@
 #import "SchoolRecruitmentModel.h"
 
 #import "EmploymentRecruitmentViewController.h"
+#import "PositionSearchViewController.h"
 
 @interface SchoolRecruitmentViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate>
 
@@ -46,6 +47,9 @@
     //设置左侧返回按钮
     [self createLeftBackNavBtn];
     
+    //设置右侧按钮
+    [self creatRightNavWithImageName:@"nav_icon_search"];
+    
     //隐藏选项框栏
     [self theTabBarHidden:YES];
     
@@ -54,6 +58,16 @@
     
     [self requestBannerData];
 }
+
+#pragma mark - 右侧导航栏按钮响应方法
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    
+    //跳转职位搜索界面
+    PositionSearchViewController *searchVC = [[PositionSearchViewController alloc] init];
+    [self.navigationController pushViewController:searchVC animated:YES];
+}
+
 
 #pragma mark - 创建tableView
 - (void)createTableView{
