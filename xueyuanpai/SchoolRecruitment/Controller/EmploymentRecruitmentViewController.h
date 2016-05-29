@@ -10,4 +10,6 @@
 
 @interface EmploymentRecruitmentViewController : BaseViewController
 
+@property(nonatomic,assign)SchoolRecruitmentType type;
+@property(nonatomic,strong)NSString            * companyID;
 @end

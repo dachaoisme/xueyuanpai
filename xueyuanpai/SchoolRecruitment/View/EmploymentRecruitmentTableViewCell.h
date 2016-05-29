@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SchoolRecruitmentModel.h"
 @interface EmploymentRecruitmentTableViewCell : UITableViewCell
 
 ///职位的label
@@ -26,5 +26,5 @@
 ///工作薪水
 @property (weak, nonatomic) IBOutlet UILabel *offerLabel;
 
-
+-(void)bindModel:(SchoolRecruitmentModel *)model;
 @end

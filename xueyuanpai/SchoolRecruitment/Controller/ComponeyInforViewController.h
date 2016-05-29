@@ -14,6 +14,7 @@
 
 ///请求数据的model类
 @property (nonatomic,strong)SchoolRecruitmentDetailModel * model;
+@property (nonatomic,strong)UIViewController * superVC;
 
 
 

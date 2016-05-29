@@ -88,5 +88,15 @@ typedef NS_ENUM(NSInteger, TimeBankSubmitTag){
     ///描述详情
     TimeBankSubmitDescriptionTag   ,
 };
-
+///校园招聘
+typedef NS_ENUM(NSInteger, SchoolRecruitmentType){
+    ///就业招聘
+    SchoolRecruitmentTypeJiuYe           =0,
+    ///实习招聘
+    SchoolRecruitmentTypeShiXi             ,
+    ///兼职招聘
+    SchoolRecruitmentTypeJianZhi           ,
+    ///查看公司其他职位信息
+    SchoolRecruitmentTypeCompanyPosition   ,
+};
 #endif /* EnumDefine_h */

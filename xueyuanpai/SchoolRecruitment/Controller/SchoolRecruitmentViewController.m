@@ -313,19 +313,25 @@
         
     
     EmploymentRecruitmentViewController *employmentVC = [[EmploymentRecruitmentViewController alloc] init];
+    employmentVC.type = SchoolRecruitmentTypeJiuYe;
+    employmentVC.title = @"就业招聘";
     [self.navigationController pushViewController:employmentVC animated:YES];
 
 }
 -(void) tap2Action:(UITapGestureRecognizer*) tap {
     
-    [CommonUtils showToastWithStr:@"实习招聘"];
-
+    EmploymentRecruitmentViewController *employmentVC = [[EmploymentRecruitmentViewController alloc] init];
+    employmentVC.type = SchoolRecruitmentTypeShiXi;
+    employmentVC.title = @"实习招聘";
+    [self.navigationController pushViewController:employmentVC animated:YES];
     
 }
 -(void) tap3Action:(UITapGestureRecognizer*) tap {
     
-    [CommonUtils showToastWithStr:@"兼职招聘"];
-
+    EmploymentRecruitmentViewController *employmentVC = [[EmploymentRecruitmentViewController alloc] init];
+    employmentVC.type = SchoolRecruitmentTypeJianZhi;
+    employmentVC.title = @"兼职招聘";
+    [self.navigationController pushViewController:employmentVC animated:YES];
 }
 
 

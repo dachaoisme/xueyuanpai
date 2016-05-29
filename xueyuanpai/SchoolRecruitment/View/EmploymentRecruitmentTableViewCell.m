@@ -10,6 +10,16 @@
 
 @implementation EmploymentRecruitmentTableViewCell
 
+-(void)bindModel:(SchoolRecruitmentModel *)model
+{
+    self.positionLabel.text = model.schoolRecruitmentTitle;
+    self.compony.text = model.schoolRecruitmentCompany;
+    
+    self.studentLabel.text = [NSString stringWithFormat:@"%@|%@",model.schoolRecruitmentEducation,model.schoolRecruitmentWorkinglife];
+    
+    self.dateLabel.text = model.schoolRecruitmentDay;
+    self.offerLabel.text = model.schoolRecruitmentSalary;
+}
 - (void)awakeFromNib {
     // Initialization code
 }
