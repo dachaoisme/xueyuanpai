@@ -59,6 +59,7 @@
     keyWordsTextField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(keyWordsLable.frame), 0, centerWidth, height)];
     keyWordsTextField.backgroundColor = [UIColor whiteColor];
     keyWordsTextField.font = [UIFont systemFontOfSize:14];
+    keyWordsTextField.textAlignment = NSTextAlignmentRight;
     keyWordsTextField.delegate = self;
     keyWordsTextField.tag = 10001;
     keyWordsTextField.placeholder = @"请输入职位名称或者公司名称)";
@@ -94,6 +95,7 @@
     [schoolingEducationalView addSubview:schoolingEducationalLable];
     schoolingEducationalBtn = [UIFactory button:nil sel:nil titleColor:@"333333" title:@"" fontSize:14 frame:CGRectMake(CGRectGetMaxX(schoolingEducationalLable.frame), 0, centerWidth-rightArrowWidth, height)];
     [schoolingEducationalBtn addTarget:self action:@selector(schoolEducation:) forControlEvents:UIControlEventTouchUpInside];
+    [schoolingEducationalBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     [schoolingEducationalView addSubview:schoolingEducationalBtn];
     UIButton * schoolingEducationalArrowBtn = [UIFactory button:nil sel:nil titleColor:@"333333" title:@"" fontSize:14 frame:CGRectMake(CGRectGetWidth(schoolingEducationalView.frame)-space-rightArrowWidth, height/4, rightArrowWidth, height/2)];
     [schoolingEducationalArrowBtn setImage:[UIImage imageNamed:@"arrow"] forState:UIControlStateNormal];
@@ -105,6 +107,7 @@
     salaryLable.text = @"薪资待遇";
     [salaryView addSubview:salaryLable];
     salaryBtn = [UIFactory button:@"" sel:@"" titleColor:@"333333" title:@"" fontSize:14 frame:CGRectMake(CGRectGetMaxX(salaryLable.frame), 0, centerWidth-rightArrowWidth, height)];
+    [salaryBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     [salaryBtn addTarget:self action:@selector(salary:) forControlEvents:UIControlEventTouchUpInside];
     [salaryView addSubview:salaryBtn];
     UIButton * salaryArrowBtn = [UIFactory button:nil sel:nil titleColor:@"333333" title:@"" fontSize:14 frame:CGRectMake(CGRectGetWidth(salaryView.frame)-space-rightArrowWidth, height/4, rightArrowWidth, height/2)];
@@ -117,6 +120,7 @@
     workAreaLable.text = @"工作区域";
     [workAreaView addSubview:workAreaLable];
     workAreaBtn = [UIFactory button:nil sel:nil titleColor:@"333333" title:@"" fontSize:14 frame:CGRectMake(CGRectGetMaxX(workAreaLable.frame), 0, centerWidth-rightArrowWidth, height)];
+    [workAreaBtn setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     [workAreaView addSubview:workAreaBtn];
     UIButton * workAreaArrowBtn = [UIFactory button:nil sel:nil titleColor:@"333333" title:@"" fontSize:14 frame:CGRectMake(CGRectGetWidth(workAreaView.frame)-space-rightArrowWidth, height/4, rightArrowWidth, height/2)];
     [workAreaArrowBtn setImage:[UIImage imageNamed:@"arrow"] forState:UIControlStateNormal];
