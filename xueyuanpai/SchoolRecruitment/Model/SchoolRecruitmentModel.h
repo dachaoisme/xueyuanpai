@@ -21,11 +21,17 @@
  */
 
 @property(nonatomic,strong)NSString *schoolRecruitmentId;
+///招聘职位标题
 @property(nonatomic,strong)NSString *schoolRecruitmentTitle;
+///招聘公司
 @property(nonatomic,strong)NSString *schoolRecruitmentCompany;
+///招聘薪水
 @property(nonatomic,strong)NSString *schoolRecruitmentSalary;
+///招聘日期
 @property(nonatomic,strong)NSString *schoolRecruitmentDay;
+///学历
 @property(nonatomic,strong)NSString *schoolRecruitmentEducation;
+///工作经历
 @property(nonatomic,strong)NSString *schoolRecruitmentWorkinglife;
 - (id)initWithDic:(NSDictionary *)dic;
 @end

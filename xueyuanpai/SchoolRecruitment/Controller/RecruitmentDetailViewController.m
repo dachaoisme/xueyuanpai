@@ -131,6 +131,7 @@
     
     componyVC = [[ComponeyInforViewController alloc] init];
     componyVC.view.hidden = YES;
+    componyVC.superVC = self;
     componyVC.view.frame = CGRectMake(0, 64+50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 114);
     
     componyVC.model = model;

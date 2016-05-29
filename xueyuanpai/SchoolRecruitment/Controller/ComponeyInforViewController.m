@@ -12,6 +12,8 @@
 #import "RecruitmentTwoStyleTableViewCell.h"
 #import "RecruitmentThreeStyleTableViewCell.h"
 
+#import "EmploymentRecruitmentViewController.h"
+
 @interface ComponeyInforViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 
@@ -106,6 +108,19 @@
             
         }
             break;
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    if (indexPath.section == 2) {
+        EmploymentRecruitmentViewController *employmentVC = [[EmploymentRecruitmentViewController alloc] init];
+        employmentVC.type = SchoolRecruitmentTypeCompanyPosition;
+        employmentVC.title = self.model.schoolRecruitmentDetailCompanyName;
+        [self.superVC.navigationController pushViewController:employmentVC animated:YES];
+        
     }
     
 }
