@@ -271,7 +271,7 @@
     registerRoleAlertView.delegate = self;
     registerRoleAlertView.clipsToBounds = YES;
     registerRoleAlertView.layer.cornerRadius = 10.0;
-    registerRoleAlertView.backgroundColor = [UIColor redColor];
+    registerRoleAlertView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:registerRoleAlertView];
     
 }
