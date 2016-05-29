@@ -10,6 +10,11 @@
 
 @implementation RecruitmentTwoStyleTableViewCell
 
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model{
+    
+    self.contentLabel.text = model.schoolRecruitmentDetailCompanyIntroduction;
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

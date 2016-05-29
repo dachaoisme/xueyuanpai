@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SchoolRecruitmentModel.h"
+
+
 @interface PositionInforThreeTableViewCell : UITableViewCell
 
 ///职位描述详情
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 
+
+- (void)bindModel:(SchoolRecruitmentDetailModel * )model;
 @end

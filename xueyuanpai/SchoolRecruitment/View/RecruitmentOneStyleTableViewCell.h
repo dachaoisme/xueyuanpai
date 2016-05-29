@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SchoolRecruitmentModel.h"
+
 @interface RecruitmentOneStyleTableViewCell : UITableViewCell
 
 ///公司名称
@@ -34,7 +36,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 
 
-
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model;
 
 
 @end

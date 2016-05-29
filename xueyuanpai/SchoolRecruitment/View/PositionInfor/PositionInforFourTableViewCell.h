@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SchoolRecruitmentModel.h"
+
 @interface PositionInforFourTableViewCell : UITableViewCell
 
 ///联系人
@@ -19,6 +21,7 @@
 ///提醒内容
 @property (weak, nonatomic) IBOutlet UILabel *alertLabel;
 
+- (void)bindModel:(SchoolRecruitmentDetailModel * )model;
 
 
 @end

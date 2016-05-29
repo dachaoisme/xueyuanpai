@@ -10,6 +10,12 @@
 
 @implementation PositionInforThreeTableViewCell
 
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model{
+    
+    self.descriptionLabel.text = model.schoolRecruitmentDetailJobDescription;
+    
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

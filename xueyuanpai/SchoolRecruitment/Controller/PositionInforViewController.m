@@ -69,8 +69,8 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             //设置数据
-            cell.titleLabel.text = _model.schoolRecruitmentDetailTitle;
-            cell.updateTimeLabel.text = _model.schoolRecruitmentDetailUpdateTime;
+            [cell bindModel:self.model];
+
             return cell;
         }
             break;
@@ -79,13 +79,8 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             //设置数据
-            cell.moneyLabel.text = self.model.schoolRecruitmentDetailSalary;
-            cell.componyNameLabel.text = self.model.schoolRecruitmentDetailCompanyName;
-            cell.componyLocationLabel.text = self.model.schoolRecruitmentDetailWorksArea;
-            cell.peopleNumber.text = self.model.schoolRecruitmentDetailnumber;
-            cell.recordLabel.text = self.model.schoolRecruitmentDetailEducation;
-            cell.genderLabel.text = self.model.schoolRecruitmentDetailSex;
-            cell.dateLabel.text = self.model.schoolRecruitmentDetailWorkinglife;
+            [cell bindModel:self.model];
+
             
             return cell;
         }
@@ -97,7 +92,7 @@
             
             
             //设置工作描述数据
-            cell.descriptionLabel.text = self.model.schoolRecruitmentDetailJobDescription;
+            [cell bindModel:self.model];
             
             
             return cell;
@@ -111,9 +106,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             
-            //
-            cell.contentLabel.text = self.model.schoolRecruitmentDetailOfficer;
-            cell.phoneNumber.text = self.model.schoolRecruitmentDetailTelphone;
+            [cell bindModel:self.model];
             
             cell.alertLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
             

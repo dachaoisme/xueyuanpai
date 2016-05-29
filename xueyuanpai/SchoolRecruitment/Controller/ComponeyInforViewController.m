@@ -67,14 +67,8 @@
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            //设置数据
-            cell.componyName.text = self.model.schoolRecruitmentDetailCompanyName;
-            
-            cell.licenseTextLabel.text = self.model.schoolRecruitmentDetailBusinesslicense;
-            cell.industryLabel.text = self.model.schoolRecruitmentDetailIndustry;
-            cell.pepoleLabel.text = self.model.schoolRecruitmentDetailScale;
-            cell.natureLabel.text = self.model.schoolRecruitmentDetailCompanyProperty;
-            cell.locationLabel.text = self.model.schoolRecruitmentDetailCompanyAddress;
+
+            [cell bindModel:self.model];
             
             return cell;
         }
@@ -84,7 +78,9 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             
-            cell.contentLabel.text = self.model.schoolRecruitmentDetailCompanyIntroduction;
+            [cell bindModel:self.model];
+
+            
             return cell;
         }
             break;

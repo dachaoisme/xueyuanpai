@@ -10,6 +10,12 @@
 
 @implementation PositionInforTableViewCell
 
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model{
+    
+    self.titleLabel.text = model.schoolRecruitmentDetailTitle;
+    self.updateTimeLabel.text = model.schoolRecruitmentDetailUpdateTime;
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SchoolRecruitmentModel.h"
+
 @interface PositionTwoTableViewCell : UITableViewCell
 
 ///月薪
@@ -31,6 +33,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 
-
+- (void)bindModel:(SchoolRecruitmentDetailModel * )model;
 
 @end

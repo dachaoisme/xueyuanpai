@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SchoolRecruitmentModel.h"
+
 @interface RecruitmentThreeStyleTableViewCell : UITableViewCell
+
+
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model;
 
 @end

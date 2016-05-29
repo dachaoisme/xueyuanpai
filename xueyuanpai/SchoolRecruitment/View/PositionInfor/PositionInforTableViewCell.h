@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SchoolRecruitmentModel.h"
+
 @interface PositionInforTableViewCell : UITableViewCell
 
 ///市场推广人员
@@ -17,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *updateTimeLabel;
 
 
+- (void)bindModel:(SchoolRecruitmentDetailModel * )model;
 
 @end

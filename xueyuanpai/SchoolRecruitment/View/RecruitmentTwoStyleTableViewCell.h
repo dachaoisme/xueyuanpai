@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "SchoolRecruitmentModel.h"
+
 @interface RecruitmentTwoStyleTableViewCell : UITableViewCell
 
 ///职位描述
@@ -17,6 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
 
-
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model;
 
 @end

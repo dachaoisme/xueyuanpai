@@ -10,6 +10,12 @@
 
 @implementation PositionInforFourTableViewCell
 
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model{
+    //
+    self.contentLabel.text = model.schoolRecruitmentDetailOfficer;
+    self.phoneNumber.text = model.schoolRecruitmentDetailTelphone;
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

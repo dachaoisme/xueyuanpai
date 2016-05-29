@@ -10,6 +10,16 @@
 
 @implementation PositionTwoTableViewCell
 
+- (void)bindModel:(SchoolRecruitmentDetailModel *)model{
+    self.moneyLabel.text = model.schoolRecruitmentDetailSalary;
+    self.componyNameLabel.text = model.schoolRecruitmentDetailCompanyName;
+    self.componyLocationLabel.text = model.schoolRecruitmentDetailWorksArea;
+    self.peopleNumber.text = model.schoolRecruitmentDetailnumber;
+    self.recordLabel.text = model.schoolRecruitmentDetailEducation;
+    self.genderLabel.text = model.schoolRecruitmentDetailSex;
+    self.dateLabel.text = model.schoolRecruitmentDetailWorkinglife;
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }
