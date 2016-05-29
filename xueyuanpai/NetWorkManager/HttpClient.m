@@ -226,6 +226,23 @@
         failBlock(error);
     }];
 }
+
+- (void)timeBankGetPayWayWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_BANK_PAYWAY withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+- (void)timeBankSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_BANK_RELEASE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 #pragma mark - 大学招聘
 /*
  *  @brief 获取大学招聘栏目分类

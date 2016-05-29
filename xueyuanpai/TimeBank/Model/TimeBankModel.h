@@ -50,3 +50,27 @@
 
 -(id)initWithDic:(NSDictionary *)dic;
 @end
+
+@interface TimeBankPayWayModel : NSObject
+
+///"id":"8","name":"\u5403\u996d"
+@property(nonatomic,strong)NSString *timeBankPayWayId;
+@property(nonatomic,strong)NSString *timeBankPayWayName;
+
+-(id)initWithDic:(NSDictionary *)dic;
+@end
+
+@interface TimeBankSubmitModel : NSObject
+
+@property(nonatomic,strong)NSString *timeBankSubmitTitle;
+@property(nonatomic,strong)NSString *timeBankSubmitType;
+@property(nonatomic,strong)NSString *timeBankSubmitTime;
+@property(nonatomic,strong)NSString *timeBankSubmitNoon;///上午、下午和中午
+@property(nonatomic,strong)NSString *timeBankSubmitAdress;
+@property(nonatomic,strong)NSString *timeBankSubmitPerson;
+@property(nonatomic,strong)NSString *timeBankSubmitPayWay;
+@property(nonatomic,strong)NSString *timeBankSubmitDescription;
+@property(nonatomic,strong)NSString *timeBankSubmitPrice;
+
+-(id)initWithDic:(NSDictionary *)dic;
+@end

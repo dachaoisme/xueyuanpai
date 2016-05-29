@@ -71,6 +71,22 @@ typedef NS_ENUM(NSInteger, TimeBankState){
     TimeBankStateAlreadyComplete  =4
 };
 
-
+///时间银行：发布需求的时候，需要使用枚举值来标记tag值
+typedef NS_ENUM(NSInteger, TimeBankSubmitTag){
+    ///标题
+    TimeBankSubmitTitleTag       =0,
+    ///类型。娱乐、唱歌等
+    TimeBankSubmitTypeTag          ,
+    ///时间
+    TimeBankSubmitTimeTag          ,
+    ///地址
+    TimeBankSubmitAdressTag        ,
+    ///人数
+    TimeBankSubmitPersonNumTag     ,
+    ///支付方式
+    TimeBankSubmitPayWayTag        ,
+    ///描述详情
+    TimeBankSubmitDescriptionTag   ,
+};
 
 #endif /* EnumDefine_h */

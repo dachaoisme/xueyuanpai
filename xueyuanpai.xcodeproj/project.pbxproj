@@ -160,6 +160,10 @@
 		587FF9DE1CF2F8F300AD2131 /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 587FF9CC1CF2F8F300AD2131 /* IQToolbar.m */; };
 		587FF9DF1CF2F8F300AD2131 /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 587FF9CE1CF2F8F300AD2131 /* IQUIView+IQKeyboardToolbar.m */; };
 		587FF9E01CF2F8F300AD2131 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 587FF9D11CF2F8F300AD2131 /* IQKeyboardManager.bundle */; };
+		58898E401CFA5A280007D9B3 /* RequirementTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E3E1CFA5A280007D9B3 /* RequirementTwoTableViewCell.m */; };
+		58898E411CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898E3F1CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib */; };
+		58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E441CFA89C90007D9B3 /* LTPickerView.m */; };
+		58898E471CFA89C90007D9B3 /* LTPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898E451CFA89C90007D9B3 /* LTPickerView.xib */; };
 		58A9448B1CE277C600DAD398 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944741CE277C600DAD398 /* avatar@2x.png */; };
 		58A9448C1CE277C600DAD398 /* avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944751CE277C600DAD398 /* avatar@3x.png */; };
 		58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944761CE277C600DAD398 /* avatar_change@2x.png */; };
@@ -525,6 +529,12 @@
 		587FF9CE1CF2F8F300AD2131 /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		587FF9CF1CF2F8F300AD2131 /* KeyboardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardManager.h; sourceTree = "<group>"; };
 		587FF9D11CF2F8F300AD2131 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		58898E3D1CFA5A280007D9B3 /* RequirementTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementTwoTableViewCell.h; sourceTree = "<group>"; };
+		58898E3E1CFA5A280007D9B3 /* RequirementTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementTwoTableViewCell.m; sourceTree = "<group>"; };
+		58898E3F1CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RequirementTwoTableViewCell.xib; sourceTree = "<group>"; };
+		58898E431CFA89C90007D9B3 /* LTPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPickerView.h; sourceTree = "<group>"; };
+		58898E441CFA89C90007D9B3 /* LTPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPickerView.m; sourceTree = "<group>"; };
+		58898E451CFA89C90007D9B3 /* LTPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTPickerView.xib; sourceTree = "<group>"; };
 		58A944741CE277C600DAD398 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		58A944751CE277C600DAD398 /* avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@3x.png"; sourceTree = "<group>"; };
 		58A944761CE277C600DAD398 /* avatar_change@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar_change@2x.png"; sourceTree = "<group>"; };
@@ -1144,6 +1154,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		58898E421CFA89C90007D9B3 /* LTPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				58898E431CFA89C90007D9B3 /* LTPickerView.h */,
+				58898E441CFA89C90007D9B3 /* LTPickerView.m */,
+				58898E451CFA89C90007D9B3 /* LTPickerView.xib */,
+			);
+			path = LTPickerView;
+			sourceTree = "<group>";
+		};
 		58A944731CE277C600DAD398 /* account */ = {
 			isa = PBXGroup;
 			children = (
@@ -1262,6 +1282,9 @@
 				58F211681CF9AB7C00926FB9 /* RequirementTableViewCell.h */,
 				58F211691CF9AB7C00926FB9 /* RequirementTableViewCell.m */,
 				58F2116A1CF9AB7C00926FB9 /* RequirementTableViewCell.xib */,
+				58898E3D1CFA5A280007D9B3 /* RequirementTwoTableViewCell.h */,
+				58898E3E1CFA5A280007D9B3 /* RequirementTwoTableViewCell.m */,
+				58898E3F1CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib */,
 				58F2116D1CF9CD4600926FB9 /* TimeBankTableViewCell.h */,
 				58F2116E1CF9CD4600926FB9 /* TimeBankTableViewCell.m */,
 				58F2116F1CF9CD4600926FB9 /* TimeBankTableViewCell.xib */,
@@ -1534,6 +1557,7 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				58898E421CFA89C90007D9B3 /* LTPickerView */,
 				58F996411CF5871500D67C63 /* LDCPullDownMenu */,
 				587FF9AC1CF2F8F300AD2131 /* IQKeyboardManager */,
 				58F67C081CD9CF9500D55BE0 /* MBProgressHUD */,
@@ -1891,6 +1915,7 @@
 				DD41275C1CF0552F00227066 /* bigpie_order_add_disable@3x.png in Resources */,
 				58070FC81CF6E80200F03F6C /* timebank_filter_other@2x.png in Resources */,
 				5874A3DE1CF1249400CE9FC9 /* tab_bg_round@2x.png in Resources */,
+				58898E411CFA5A280007D9B3 /* RequirementTwoTableViewCell.xib in Resources */,
 				DD4127741CF0552F00227066 /* hire_search_checkbox_empty@3x.png in Resources */,
 				58070FBA1CF6E80200F03F6C /* timebank_filter_hot_hl@2x.png in Resources */,
 				58070FCA1CF6E80200F03F6C /* timebank_filter_shop_hl@2x.png in Resources */,
@@ -2016,6 +2041,7 @@
 				DD4127571CF0552F00227066 /* bigpi_icon_coin@2x.png in Resources */,
 				58070F971CF6E80200F03F6C /* filter_arrow_hl@3x.png in Resources */,
 				DD41277A1CF0552F00227066 /* nav_icon_fav_full@3x.png in Resources */,
+				58898E471CFA89C90007D9B3 /* LTPickerView.xib in Resources */,
 				5874A3CE1CF1249400CE9FC9 /* home_icon_community@2x.png in Resources */,
 				58070F941CF6E80200F03F6C /* disable_tag@2x.png in Resources */,
 				58070FB11CF6E80200F03F6C /* timebank_filter_chat@3x.png in Resources */,
@@ -2191,6 +2217,8 @@
 				58F67C2F1CD9CF9500D55BE0 /* MJRefreshGifFooter.m in Sources */,
 				58F67C2D1CD9CF9500D55BE0 /* MJRefreshConst.m in Sources */,
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
+				58898E401CFA5A280007D9B3 /* RequirementTwoTableViewCell.m in Sources */,
+				58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */,
 				58A944C61CE3E0C200DAD398 /* AddTeacherViewController.m in Sources */,
 				587FF9D61CF2F8F300AD2131 /* IQUIViewController+Additions.m in Sources */,
 				587FF9DE1CF2F8F300AD2131 /* IQToolbar.m in Sources */,

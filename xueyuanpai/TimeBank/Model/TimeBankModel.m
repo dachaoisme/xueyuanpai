@@ -64,3 +64,41 @@
 }
 
 @end
+
+@implementation TimeBankPayWayModel
+
+-(id)initWithDic:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        
+        self.timeBankPayWayId         = [dic stringForKey:@"id"];
+        self.timeBankPayWayName       = [dic stringForKey:@"name"];
+    }
+    
+    return self;
+}
+
+@end
+
+@implementation TimeBankSubmitModel
+
+-(id)initWithDic:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        
+        self.timeBankSubmitTitle        = @"";
+        self.timeBankSubmitType         = @"";
+        self.timeBankSubmitTime         = @"";
+        self.timeBankSubmitNoon         = @"";
+        self.timeBankSubmitAdress       = @"";
+        self.timeBankSubmitPerson       = @"";
+        self.timeBankSubmitPayWay       = @"";
+        self.timeBankSubmitDescription  = @"";
+        self.timeBankSubmitPrice        = @"";
+    }
+    return self;
+}
+
+@end

@@ -195,6 +195,22 @@
  *  @return
  */
 - (void)timeBankGetListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  发布需求:获取支付方式
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)timeBankGetPayWayWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  发布需求:提交发布时间银行
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)timeBankSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 #pragma mark - 校园招聘
 /**
  *  @brief  获取校园招聘栏目

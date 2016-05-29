@@ -7,12 +7,29 @@
 //
 
 #import "RequirementTableViewCell.h"
-
+#import "IQUIView+IQKeyboardToolbar.h"
 @implementation RequirementTableViewCell
 
+
+-(void)setcontentView
+{
+    self.inputTextField.delegate = self;
+    self.inputTextField.tag = self.tag;
+    
+    
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if ([self.delegate respondsToSelector:@selector(setInputContentWithContent:withTag:)]) {
+        [self.delegate setInputContentWithContent:textField.text withTag:self.tag];
+    }
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [self setcontentView];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -10,4 +10,5 @@
 
 @interface RequirementsViewController : BaseViewController
 
+@property(nonatomic,strong)UIButton *headImageSelectedBtn;
 @end

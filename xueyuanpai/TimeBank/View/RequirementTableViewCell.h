@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RequirementTableViewCell : UITableViewCell
+@protocol RequirementTableViewCellDelegate <NSObject>
+
+-(void)setInputContentWithContent:(NSString *)content withTag:(NSInteger )tag;
+
+@end
+
+@interface RequirementTableViewCell : UITableViewCell<UITextFieldDelegate>
 
 ///显示标题
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-///显示内容
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-
+///输入内容的textField
+@property (weak, nonatomic) IBOutlet UITextField *inputTextField;
+@property(nonatomic,strong)id<RequirementTableViewCellDelegate>delegate;
 
 
 @end
