@@ -42,6 +42,15 @@
     [super viewWillAppear:animated];
     [self theTabBarHidden:YES];
     
+    
+
+
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    self.tableView.frame = CGRectMake(0, 36, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,7 +70,9 @@
     timeBankSortParam     = @"0";
     
     [self requestToGetConditions];
+    
     [self createTableView];
+
 }
 
 #pragma mark - 导航栏右侧按钮响应的方法

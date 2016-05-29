@@ -14,6 +14,8 @@
 
 @interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,strong)UITableView * tableView;
+
 @end
 
 @implementation TimeBankDetailViewController
@@ -23,7 +25,7 @@
     // Do any additional setup after loading the view.
     
     
-    [self setTitle:@"时间银行"];
+    [self setTitle:@"时间银行详情"];
     [self createLeftBackNavBtn];
     [self p_setupShareButtonItem];
 
@@ -33,17 +35,20 @@
     
 }
 
+
+
 #pragma mark - tableview UITableViewDataSource,UITableViewDelegate
 -(void)createTableView
 {
     
-    UITableView * tableView    = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStyleGrouped];
+    UITableView * tableView    = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
     tableView.backgroundColor  = [CommonUtils colorWithHex:@"f3f3f3"];
     tableView.separatorInset   = UIEdgeInsetsZero;
     tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
     tableView.dataSource       = self;
     tableView.delegate         = self;
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
     
     //注册cell

@@ -439,7 +439,9 @@
             };
             break;
         }
-        case TimeBankSubmitTimeTag:
+        case TimeBankSubmitTimeTag:{
+            [CommonUtils showToastWithStr:@"选择时间"];
+        }
             
             break;
         case TimeBankSubmitPersonNumTag:{

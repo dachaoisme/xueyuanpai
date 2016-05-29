@@ -32,6 +32,12 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    
+    self.tableView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+}
+
 #pragma mark - 创建tableView
 - (void)createTableView{
     
