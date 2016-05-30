@@ -165,8 +165,8 @@
         
         //调取拨打电话界面
         NSString *telephoneStr = [self.model.schoolRecruitmentDetailTelphone stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",telephoneStr]]];
-        
+        NSString * urlStr = [NSString stringWithFormat:@"tel:%@",telephoneStr];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
     }
 }
 

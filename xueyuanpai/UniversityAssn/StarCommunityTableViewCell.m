@@ -35,7 +35,7 @@
     if (self) {
         //创建显示图片imageView
         UIImageView *showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
-        showImageView.backgroundColor = [UIColor redColor];
+        showImageView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:showImageView];
         self.showImageView = showImageView;
         

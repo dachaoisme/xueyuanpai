@@ -217,7 +217,7 @@
     
     [backGroundView addSubview:schoolShufflingView];
     
-    schoolShufflingView.backgroundColor = [UIColor redColor];
+    schoolShufflingView.backgroundColor = [UIColor whiteColor];
     
     schoolShufflingView.delegate = self;
     
