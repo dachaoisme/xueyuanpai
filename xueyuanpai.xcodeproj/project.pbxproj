@@ -332,6 +332,8 @@
 		DDD0BDC81CFAB87200073290 /* hire_search_checkbox@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDC41CFAB87200073290 /* hire_search_checkbox@3x.png */; };
 		DDD0BDCF1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BDCD1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m */; };
 		DDD0BDD01CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BDCE1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib */; };
+		DDD0BE681CFC2ADE00073290 /* JobMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BE671CFC2ADE00073290 /* JobMarketViewController.m */; };
+		DDD0BE6E1CFC3C8600073290 /* JobMarketCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BE6D1CFC3C8600073290 /* JobMarketCollectionViewCell.m */; };
 		DDD3E5341CF44E8A001B579E /* SchoolRecruitmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5331CF44E8A001B579E /* SchoolRecruitmentViewController.m */; };
 		DDD3E5371CF458AF001B579E /* SchoolShufflingView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5361CF458AF001B579E /* SchoolShufflingView.m */; };
 		DDD3E53A1CF49669001B579E /* SchoolColumnView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD3E5391CF49669001B579E /* SchoolColumnView.m */; };
@@ -810,6 +812,10 @@
 		DDD0BDCC1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankDetailTwoStyleTableViewCell.h; sourceTree = "<group>"; };
 		DDD0BDCD1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankDetailTwoStyleTableViewCell.m; sourceTree = "<group>"; };
 		DDD0BDCE1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeBankDetailTwoStyleTableViewCell.xib; sourceTree = "<group>"; };
+		DDD0BE661CFC2ADE00073290 /* JobMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JobMarketViewController.h; path = ../JobMarketViewController.h; sourceTree = "<group>"; };
+		DDD0BE671CFC2ADE00073290 /* JobMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JobMarketViewController.m; path = ../JobMarketViewController.m; sourceTree = "<group>"; };
+		DDD0BE6C1CFC3C8600073290 /* JobMarketCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarketCollectionViewCell.h; sourceTree = "<group>"; };
+		DDD0BE6D1CFC3C8600073290 /* JobMarketCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobMarketCollectionViewCell.m; sourceTree = "<group>"; };
 		DDD3E5321CF44E8A001B579E /* SchoolRecruitmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolRecruitmentViewController.h; sourceTree = "<group>"; };
 		DDD3E5331CF44E8A001B579E /* SchoolRecruitmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolRecruitmentViewController.m; sourceTree = "<group>"; };
 		DDD3E5351CF458AF001B579E /* SchoolShufflingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolShufflingView.h; sourceTree = "<group>"; };
@@ -1402,6 +1408,7 @@
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
 				58F67BD81CD990A200D55BE0 /* BaseViewController.m */,
+				DDD0BE651CFC2AA200073290 /* JobMarket */,
 				DDD3E52E1CF44DF6001B579E /* SchoolRecruitment */,
 				58E028FB1CF45DB7006A2E74 /* TimeBank */,
 				5874A35B1CF03AF200CE9FC9 /* UniversityAssn */,
@@ -1801,6 +1808,41 @@
 				DDD0BDB81CFA7A8700073290 /* PositionInforFourTableViewCell.xib */,
 			);
 			path = PositionInfor;
+			sourceTree = "<group>";
+		};
+		DDD0BE651CFC2AA200073290 /* JobMarket */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0BE6B1CFC31C100073290 /* Controller */,
+				DDD0BE6A1CFC31B000073290 /* View */,
+				DDD0BE691CFC319F00073290 /* Model */,
+			);
+			path = JobMarket;
+			sourceTree = "<group>";
+		};
+		DDD0BE691CFC319F00073290 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DDD0BE6A1CFC31B000073290 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0BE6C1CFC3C8600073290 /* JobMarketCollectionViewCell.h */,
+				DDD0BE6D1CFC3C8600073290 /* JobMarketCollectionViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDD0BE6B1CFC31C100073290 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DDD0BE661CFC2ADE00073290 /* JobMarketViewController.h */,
+				DDD0BE671CFC2ADE00073290 /* JobMarketViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		DDD3E52E1CF44DF6001B579E /* SchoolRecruitment */ = {
@@ -2307,6 +2349,7 @@
 				58F2116B1CF9AB7C00926FB9 /* RequirementTableViewCell.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */,
+				DDD0BE681CFC2ADE00073290 /* JobMarketViewController.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
 				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
@@ -2354,6 +2397,7 @@
 				5829987A1CDB4486004A05FB /* MineViewController.m in Sources */,
 				58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */,
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
+				DDD0BE6E1CFC3C8600073290 /* JobMarketCollectionViewCell.m in Sources */,
 				DD41281E1CF3427400227066 /* ActivityDetailViewController.m in Sources */,
 				5874A3F21CF1405100CE9FC9 /* SelectedImageView.m in Sources */,
 				587FF9D91CF2F8F300AD2131 /* IQKeyboardReturnKeyHandler.m in Sources */,

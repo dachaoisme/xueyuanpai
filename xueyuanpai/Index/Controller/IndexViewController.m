@@ -25,6 +25,8 @@
 #import "GiftDetailViewController.h"
 #import "SchoolRecruitmentViewController.h"
 
+#import "JobMarketViewController.h"
+
 
 
 #import "TimeBankViewController.h"
@@ -295,6 +297,10 @@
             [self.navigationController pushViewController:timeBankViewControllerVC animated:YES];
         }else if (indexPath.row==2){
             //跳蚤市场
+            
+            JobMarketViewController *jobMarketVC = [[JobMarketViewController alloc] init];
+            [self.navigationController pushViewController:jobMarketVC animated:YES];
+            
         }else{
             //校园招聘
             SchoolRecruitmentViewController *schoolVC = [[SchoolRecruitmentViewController alloc] init];
