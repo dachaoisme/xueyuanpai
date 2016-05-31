@@ -106,8 +106,8 @@
                 
                 IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
                 [bannerItemArray addObject:model];
-                //[bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:2]];
-                [bannerImageArray addObject:@"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg"];
+                [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:1]];
+                //[bannerImageArray addObject:@"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg"];
             }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
