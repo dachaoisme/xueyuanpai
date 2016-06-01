@@ -164,9 +164,9 @@
     if (indexPath.section == 3) {
         
         //调取拨打电话界面
-        NSString *telephoneStr = [self.model.schoolRecruitmentDetailTelphone stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString * urlStr = [NSString stringWithFormat:@"tel:%@",telephoneStr];
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlStr]];
+        
+        [CommonUtils callServiceWithTelephoneNum:self.model.schoolRecruitmentDetailTelphone];
+
     }
 }
 

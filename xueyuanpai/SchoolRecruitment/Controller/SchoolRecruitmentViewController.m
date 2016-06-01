@@ -106,8 +106,10 @@
                 
                 IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
                 [bannerItemArray addObject:model];
-                //[bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:2]];
-                [bannerImageArray addObject:@"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg"];
+                [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:2]];
+                
+                //测试数据
+//                [bannerImageArray addObject:@"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg"];
             }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
@@ -217,7 +219,7 @@
     
     [backGroundView addSubview:schoolShufflingView];
     
-    schoolShufflingView.backgroundColor = [UIColor whiteColor];
+//    schoolShufflingView.backgroundColor = [UIColor whiteColor];
     
     schoolShufflingView.delegate = self;
     
@@ -228,11 +230,11 @@
 #warning 测试的死数据，需要修改
     
         //仅用来测试布局用的
-        NSString *path1 = @"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg";
-        NSString *path2 = @"http://www.qqpk.cn/Article/UploadFiles/201111/2011112212072571.jpg";
-        NSArray *pathArray = [NSArray arrayWithObjects:path1,path2, nil];
-
-        schoolShufflingView.imageArray = pathArray;
+//        NSString *path1 = @"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg";
+//        NSString *path2 = @"http://www.qqpk.cn/Article/UploadFiles/201111/2011112212072571.jpg";
+//        NSArray *pathArray = [NSArray arrayWithObjects:path1,path2, nil];
+//
+//        schoolShufflingView.imageArray = pathArray;
 
     }
 
@@ -245,7 +247,7 @@
     
     
     //初始化三个按钮
-    CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 80*3)/4;
+    CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 70*3)/4;
     SchoolColumnView *columnView1 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width, 10, 80, 100)];
     columnView1.columnImageView.image = [UIImage imageNamed:@"hire_icon_job"];
     columnView1.columnTitileLable.text = @"就业招聘";
