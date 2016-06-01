@@ -12,6 +12,7 @@
 #import "JobMarketCollectionViewCell.h"
 
 #import "JobMarketDetailViewController.h"
+#import "PublishInformationViewController.h"
 
 @interface JobMarketViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate>
 
@@ -46,6 +47,16 @@
     [self createFlowLayout];
 
 }
+
+#pragma mark - 导航栏右侧按钮响应方法
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+   
+    PublishInformationViewController *publishVC = [[PublishInformationViewController alloc] init];
+    
+    [self.navigationController pushViewController:publishVC animated:YES];
+}
+
 
 
 #pragma mark - 创建搜索按钮
