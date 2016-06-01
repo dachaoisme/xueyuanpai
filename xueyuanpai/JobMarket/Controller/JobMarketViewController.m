@@ -11,6 +11,8 @@
 #import "LDCPullDownMenuView.h"
 #import "JobMarketCollectionViewCell.h"
 
+#import "JobMarketDetailViewController.h"
+
 @interface JobMarketViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchController *searchController;
@@ -121,7 +123,14 @@
 #pragma mark - 选中的是当前的第几个item
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
+    //跳转跳槽市场详情
+    JobMarketDetailViewController *jobMarketVC = [[JobMarketDetailViewController alloc] init];
+    [self.navigationController pushViewController:jobMarketVC animated:YES];
+    
+    
     NSLog(@"section:%ld,row:%ld",indexPath.section,indexPath.row);
+    
+    
     
 }
 
