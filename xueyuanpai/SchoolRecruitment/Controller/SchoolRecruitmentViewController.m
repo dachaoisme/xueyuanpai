@@ -113,7 +113,6 @@
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
-        
         //[self.tableView reloadData];
         [self requestColumnsData];
         

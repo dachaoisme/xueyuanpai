@@ -100,6 +100,8 @@
 		583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CC1CDA7C8200830BBE /* UIFactory.m */; };
 		583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CF1CDA7D4B00830BBE /* ResLoader.m */; };
 		583D65D41CDA824200830BBE /* BaseNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65D31CDA824200830BBE /* BaseNavView.m */; };
+		58487CDC1D00742000EE0E0D /* MyPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58487CDB1D00742000EE0E0D /* MyPickView.m */; };
+		58487CDF1D00748900EE0E0D /* PickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58487CDE1D00748900EE0E0D /* PickerCell.m */; };
 		5849FDC41CE47D6E0039AFC2 /* UserAccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849FDC31CE47D6E0039AFC2 /* UserAccountManager.m */; };
 		5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849FDC61CE47F790039AFC2 /* UserDefaultsDataDeal.m */; };
 		5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5874A3661CF03B5700CE9FC9 /* UniversityAssnViewController.m */; };
@@ -542,6 +544,10 @@
 		583D65D01CDA7D4B00830BBE /* ResLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResLoader.h; sourceTree = "<group>"; };
 		583D65D21CDA824200830BBE /* BaseNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavView.h; sourceTree = "<group>"; };
 		583D65D31CDA824200830BBE /* BaseNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavView.m; sourceTree = "<group>"; };
+		58487CDA1D00742000EE0E0D /* MyPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPickView.h; sourceTree = "<group>"; };
+		58487CDB1D00742000EE0E0D /* MyPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPickView.m; sourceTree = "<group>"; };
+		58487CDD1D00748900EE0E0D /* PickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerCell.h; sourceTree = "<group>"; };
+		58487CDE1D00748900EE0E0D /* PickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerCell.m; sourceTree = "<group>"; };
 		5849FDC21CE47D6E0039AFC2 /* UserAccountManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAccountManager.h; sourceTree = "<group>"; };
 		5849FDC31CE47D6E0039AFC2 /* UserAccountManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAccountManager.m; sourceTree = "<group>"; };
 		5849FDC51CE47F790039AFC2 /* UserDefaultsDataDeal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsDataDeal.h; sourceTree = "<group>"; };
@@ -1532,6 +1538,10 @@
 				DDD0BDCC1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.h */,
 				DDD0BDCD1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m */,
 				DDD0BDCE1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib */,
+				58487CDA1D00742000EE0E0D /* MyPickView.h */,
+				58487CDB1D00742000EE0E0D /* MyPickView.m */,
+				58487CDD1D00748900EE0E0D /* PickerCell.h */,
+				58487CDE1D00748900EE0E0D /* PickerCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2697,6 +2707,7 @@
 				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
+				58487CDF1D00748900EE0E0D /* PickerCell.m in Sources */,
 				DDD0BDC01CFA929800073290 /* PositionSearchViewController.m in Sources */,
 				5874A3F51CF14C7800CE9FC9 /* SelectedSchollViewController.m in Sources */,
 				58A944B71CE32BA600DAD398 /* LoginViewController.m in Sources */,
@@ -2761,6 +2772,7 @@
 				5874A3EF1CF12C0500CE9FC9 /* SelectedSexView.m in Sources */,
 				DD4127871CF0561900227066 /* HotActivityTableViewCell.m in Sources */,
 				58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */,
+				58487CDC1D00742000EE0E0D /* MyPickView.m in Sources */,
 				DD0B1E6D1CFEDD1800C4BAB2 /* UIImage+Extension.m in Sources */,
 				58898E4F1CFAD0790007D9B3 /* TimeBankDetailViewController.m in Sources */,
 				5874A4041CF2458D00CE9FC9 /* UITextView+TopView.m in Sources */,
