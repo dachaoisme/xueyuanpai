@@ -21,5 +21,11 @@
 
 
 
+///文本的标题
+@property (nonatomic,strong)UILabel * titileLable;
+
+///查看更多
+@property (nonatomic,strong)UIButton * button;
+
 
 @end

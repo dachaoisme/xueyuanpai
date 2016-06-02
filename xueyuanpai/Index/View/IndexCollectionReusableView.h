@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+///轮播图
+
 @protocol IndexCollectionReusableViewDelegate <NSObject>
 
 -(void)selectedImageIndex:(NSInteger)index;

@@ -277,13 +277,6 @@
     UITapGestureRecognizer *tap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap3Action:)];
     [columnView3 addGestureRecognizer:tap3];
 
-    
-    
-    
-//    //需要添加灰色的UIView
-//    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(columnView1.frame) - 30, [UIScreen mainScreen].bounds.size.width, 10)];
-//    grayView.backgroundColor = [CommonUtils colorWithHex:@"e5e5e5"];
-//    [showColumView addSubview:grayView];
 
     
     return backGroundView;
