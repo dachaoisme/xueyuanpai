@@ -80,7 +80,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
     [photoCollectionView registerClass:[PhotoSelectorCell class] forCellWithReuseIdentifier:Identifier];
     photoCollectionView.dataSource = self;
     photoCollectionView.backgroundColor = [UIColor whiteColor];
-    photoCollectionView.userInteractionEnabled = NO;
+//    photoCollectionView.userInteractionEnabled = NO;
     
     tableView.tableHeaderView = photoCollectionView;
 

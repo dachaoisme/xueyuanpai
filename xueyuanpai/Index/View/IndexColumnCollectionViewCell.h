@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "IndexColumnsModel.h"
+
+///四个按钮选项
 @interface IndexColumnCollectionViewCell : UICollectionViewCell
 
 @property(nonatomic,strong)UIImageView * columnImageView;
