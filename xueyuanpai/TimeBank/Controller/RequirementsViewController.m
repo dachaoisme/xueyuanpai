@@ -16,18 +16,25 @@
 #import "SelectedImageView.h"
 #import "TimeBankModel.h"
 #import "LTPickerView.h"
-@interface RequirementsViewController ()<UITableViewDelegate,UITableViewDataSource,RequirementTableViewCellDelegate,RequirementTwoTableViewCellDelegate>
+#import "MyPickView.h"
+@interface RequirementsViewController ()<UITableViewDelegate,UITableViewDataSource,RequirementTableViewCellDelegate,RequirementTwoTableViewCellDelegate,MyPickViewDelegate>
 {
-    SelectedImageView *selectedImageView;
-    NSString          *avatarImageUploaded;
-    NSMutableArray    *timeBankConditionCategoryModelArr;
-    NSMutableArray    *timeBankConditionCategoryTitleArr;
-    NSMutableArray    *timeBankPayWayModelArr;
-    NSMutableArray    *timeBankPayWayTitleArr;
-    TimeBankSubmitModel * timeBankSubmitModel;
-}
-@property (nonatomic,strong)UITableView *tableView;
+    SelectedImageView   *selectedImageView;
+    NSString            *avatarImageUploaded;
+    NSMutableArray      *timeBankConditionCategoryModelArr;
+    NSMutableArray      *timeBankConditionCategoryTitleArr;
+    NSMutableArray      *timeBankPayWayModelArr;
+    NSMutableArray      *timeBankPayWayTitleArr;
+    
 
+}
+
+@property (nonatomic,strong)UITableView *tableView;
+@property (nonatomic,strong)MyPickView   *myPic;
+@property (nonatomic,strong)NSArray *noonArr;
+@property (nonatomic,strong)NSArray *yearArr;
+@property (nonatomic,strong)NSArray *monthArr;
+@property (nonatomic,strong)TimeBankSubmitModel *timeBankSubmitModel;
 @end
 
 @implementation RequirementsViewController
@@ -40,7 +47,7 @@
     timeBankConditionCategoryTitleArr = [NSMutableArray array];
     timeBankPayWayModelArr            = [NSMutableArray array];
     timeBankPayWayTitleArr            = [NSMutableArray array];
-    timeBankSubmitModel = [[TimeBankSubmitModel alloc]initWithDic:nil];
+    _timeBankSubmitModel = [[TimeBankSubmitModel alloc]initWithDic:nil];
     self.title = @"发布需求";
     [self createLeftBackNavBtn];
     
@@ -100,8 +107,8 @@
                 NSMutableDictionary * dic = [NSMutableDictionary dictionary];
                 [dic setObject:value forKey:key];
                 [timeBankPayWayTitleArr addObject:value];
-                TimeBankPayWayModel * model = [[TimeBankPayWayModel alloc]initWithDic:dic];
-                [timeBankPayWayModelArr addObject:model];
+                TimeBankPayWayModel * payWaymodel = [[TimeBankPayWayModel alloc]initWithDic:dic];
+                [timeBankPayWayModelArr addObject:payWaymodel];
             }
             
         }else{
@@ -212,36 +219,36 @@
      brief            string  必需   简介
      icon             string  非必需   头像地址
      */
-    if (timeBankSubmitModel.timeBankSubmitTitle.length<=0) {
+    if (_timeBankSubmitModel.timeBankSubmitTitle.length<=0) {
         [CommonUtils showToastWithStr:@"请输入标题"];
         return;
     }
-    else if (timeBankSubmitModel.timeBankSubmitType.length<=0){
+    else if (_timeBankSubmitModel.timeBankSubmitType.length<=0){
         [CommonUtils showToastWithStr:@"请选择类型"];
         return;
     }
-    else if (timeBankSubmitModel.timeBankSubmitTime.length<=0){
+    else if (_timeBankSubmitModel.timeBankSubmitTime.length<=0){
         [CommonUtils showToastWithStr:@"请选择时间"];
         return;
     }
-    else if (timeBankSubmitModel.timeBankSubmitNoon.length<=0){
+    else if (_timeBankSubmitModel.timeBankSubmitNoon.length<=0){
         [CommonUtils showToastWithStr:@"请选择时间"];
         return;
     }
-    else if (timeBankSubmitModel.timeBankSubmitAdress.length<=0){
+    else if (_timeBankSubmitModel.timeBankSubmitAdress.length<=0){
         [CommonUtils showToastWithStr:@"请输入地址"];
         return;
     }
-    else if (timeBankSubmitModel.timeBankSubmitPerson.length<=0){
+    else if (_timeBankSubmitModel.timeBankSubmitPerson.length<=0){
         [CommonUtils showToastWithStr:@"请选择人数"];
         return;
-    }else if (timeBankSubmitModel.timeBankSubmitPayWay.length<=0){
-        [CommonUtils showToastWithStr:@"强选择支付方式"];
+    }else if (_timeBankSubmitModel.timeBankSubmitPayWay.length<=0){
+        [CommonUtils showToastWithStr:@"请选择支付方式"];
         return;
-    }else if (timeBankSubmitModel.timeBankSubmitPrice.length<=0){
+    }else if (_timeBankSubmitModel.timeBankSubmitPrice.length<=0){
         [CommonUtils showToastWithStr:@"请选择价格"];
         return;
-    }else if (timeBankSubmitModel.timeBankSubmitDescription.length<=0){
+    }else if (_timeBankSubmitModel.timeBankSubmitDescription.length<=0){
         [CommonUtils showToastWithStr:@"请填写描述"];
         return;
     }
@@ -249,15 +256,15 @@
     [CommonUtils showToastWithStr:@"发布"];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitTitle forKey:@"title"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitType forKey:@"category_id"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitTime forKey:@"appointment_time"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitNoon  forKey:@"noon"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitAdress forKey:@"area"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitPerson forKey:@"number"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitPayWay forKey:@"payway"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitPrice forKey:@"price"];
-    [dic setObject:timeBankSubmitModel.timeBankSubmitDescription forKey:@"brief"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitTitle forKey:@"title"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitType forKey:@"category_id"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitTime forKey:@"appointment_time"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitNoon  forKey:@"noon"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitAdress forKey:@"area"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitPerson forKey:@"number"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitPayWay forKey:@"payway"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitPrice forKey:@"price"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitDescription forKey:@"brief"];
     if (avatarImageUploaded && avatarImageUploaded.length>0) {
         [dic setObject:avatarImageUploaded forKey:@"icon"];
     }
@@ -408,10 +415,10 @@
 {
     if (tag == TimeBankSubmitTitleTag) {
         ///标题
-        timeBankSubmitModel.timeBankSubmitTitle = content;
+        _timeBankSubmitModel.timeBankSubmitTitle = content;
     }else if (tag == TimeBankSubmitAdressTag){
         ///地址
-        timeBankSubmitModel.timeBankSubmitAdress = content;
+        _timeBankSubmitModel.timeBankSubmitAdress = content;
     }else{
         
     }
@@ -434,13 +441,14 @@
                 NSLog(@"选择了第%d行的%@",num,str);
                 [sender setTitle:str forState:UIControlStateNormal];
                 TimeBankConditionCategoryModel * model = [timeBankConditionCategoryModelArr objectAtIndex:num];
-                timeBankSubmitModel.timeBankSubmitType = model.timeBankConditionCategoryId;
+                _timeBankSubmitModel.timeBankSubmitType = model.timeBankConditionCategoryId;
                 
             };
             break;
         }
         case TimeBankSubmitTimeTag:{
             [CommonUtils showToastWithStr:@"选择时间"];
+            [self presentSelectedTimeViewWithBtn:sender];
         }
             
             break;
@@ -458,7 +466,7 @@
                 NSLog(@"选择了第%d行的%@",num,str);
                 [sender setTitle:str forState:UIControlStateNormal];
                
-                timeBankSubmitModel.timeBankSubmitPerson = str;
+                _timeBankSubmitModel.timeBankSubmitPerson = str;
                 
             };
             break;
@@ -477,7 +485,7 @@
                 NSLog(@"选择了第%d行的%@",num,str);
                 [sender setTitle:str forState:UIControlStateNormal];
                 TimeBankPayWayModel  *model = [timeBankPayWayModelArr objectAtIndex:num];
-                timeBankSubmitModel.timeBankSubmitPayWay = model.timeBankPayWayId;
+                _timeBankSubmitModel.timeBankSubmitPayWay = model.timeBankPayWayId;
                 
             };
             break;
@@ -485,6 +493,39 @@
         default:
             break;
     }
+}
+-(void)presentSelectedTimeViewWithBtn:(UIButton *)sender
+{
+    _myPic=[[MyPickView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame)-250, SCREEN_WIDTH, 250)];
+    _myPic.delegate = self;
+    _myPic.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_myPic];
+    
+    _yearArr = @[@"2016",@"2017"];
+    _monthArr = @[@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"10",@"11",@"12"];
+    _noonArr=@[@"上午",@"中午",@"下午"];
+    
+    weakSelf(weakSelf);
+    [_myPic myPickView:nil yearArray:_yearArr monthArray:_monthArr hourArray:_noonArr minuArr:nil];
+    _myPic.selectedBlock = ^(BOOL yesIsSure,NSString * selectedDate,NSInteger noonIndex){
+        if (yesIsSure==YES) {
+            //NSString * selectedTime = weakSelf.myPic.selectedDate;
+            NSString * noonDate = [weakSelf.noonArr objectAtIndex:weakSelf.myPic.selectedNoonIndex];
+            weakSelf.timeBankSubmitModel.timeBankSubmitTime = selectedDate;
+            weakSelf.timeBankSubmitModel.timeBankSubmitNoon = noonDate;
+            NSString * time = [NSString stringWithFormat:@"%@%@",selectedDate,noonDate];
+            [sender setTitle:time forState:UIControlStateNormal];
+            NSLog(@"selectedTime:%@;;noonDate:%@",selectedDate,noonDate);
+        }
+    };
+    
+}
+
+
+-(void)selectedTime
+{
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
