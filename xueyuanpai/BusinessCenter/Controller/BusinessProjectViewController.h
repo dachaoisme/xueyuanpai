@@ -1,5 +1,5 @@
 //
-//  BusinessCenterViewController.h
+//  BusinessProjectViewController.h
 //  xueyuanpai
 //
 //  Created by 王园园 on 16/6/3.
@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface BusinessCenterViewController : BaseViewController
+@interface BusinessProjectViewController : BaseViewController
 
 @end
