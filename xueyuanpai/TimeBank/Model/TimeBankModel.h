@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+///时间银行molde
 @interface TimeBankModel : NSObject
 /*
  "id":2,         //序号
@@ -40,7 +40,7 @@
 -(id)initWithDic:(NSDictionary *)dic;
 @end
 
-
+///筛选条件model
 @interface TimeBankConditionCategoryModel : NSObject
 
 ///"id":"8","name":"\u5403\u996d","ord":"1"
@@ -50,7 +50,7 @@
 
 -(id)initWithDic:(NSDictionary *)dic;
 @end
-
+///支付方式model
 @interface TimeBankPayWayModel : NSObject
 
 ///"id":"8","name":"\u5403\u996d"
@@ -60,6 +60,7 @@
 -(id)initWithDic:(NSDictionary *)dic;
 @end
 
+///发布时间银行model
 @interface TimeBankSubmitModel : NSObject
 
 @property(nonatomic,strong)NSString *timeBankSubmitTitle;
@@ -71,6 +72,68 @@
 @property(nonatomic,strong)NSString *timeBankSubmitPayWay;
 @property(nonatomic,strong)NSString *timeBankSubmitDescription;
 @property(nonatomic,strong)NSString *timeBankSubmitPrice;
+
+-(id)initWithDic:(NSDictionary *)dic;
+@end
+
+///发布时间银行model
+@interface TimeBankDetailModel : NSObject
+
+
+///序号
+@property(nonatomic,strong)NSString *timeBankDetailId;
+///用户名
+@property(nonatomic,strong)NSString *timeBankDetailUserName;
+///性别
+@property(nonatomic,strong)NSString *timeBankDetailSex;
+///价格
+@property(nonatomic,strong)NSString *timeBankDetailPrice;
+///头像
+@property(nonatomic,strong)NSString *timeBankDetailIcon;
+///标题
+@property(nonatomic,strong)NSString *timeBankDetailTitle;
+///约会时间
+@property(nonatomic,strong)NSString *timeBankDetailAppointmentTime;
+///1上午 2中午 3下午
+@property(nonatomic,strong)NSString *timeBankDetailNoon;
+///地点
+@property(nonatomic,strong)NSString *timeBankDetailArea;
+///任务
+@property(nonatomic,strong)NSString *timeBankDetailTasks;
+///简介
+@property(nonatomic,strong)NSString *timeBankDetailIdBrief;
+///支付方式
+@property(nonatomic,strong)NSString *timeBankDetailPayWay;
+///申领状态 申领状态  0未申请 1 已申请 2 已通过 3过期 4完成
+@property(nonatomic,strong)NSString *timeBankDetailStat;
+///内容
+@property(nonatomic,strong)NSString *timeBankDetailContent;
+///浏览数
+@property(nonatomic,strong)NSString *timeBankDetailViews;
+///人数
+@property(nonatomic,strong)NSString *timeBankDetailNumber;
+
+-(id)initWithDic:(NSDictionary *)dic;
+@end
+
+///时间银行评论列表评论model
+@interface TimeBankCommentModel : NSObject
+
+/*
+ 
+ {"id":2,
+ "user_id":2, 
+ "username":"\u4efb\u5fd7\u5f3a",
+ "icon":"",
+ "content":"fsdafadf",
+ "create_at":"2016-05-16 23:22:46"}
+ */
+@property(nonatomic,strong)NSString *timeBankCommentId;
+@property(nonatomic,strong)NSString *timeBankCommentUserId;
+@property(nonatomic,strong)NSString *timeBankCommentUserName;
+@property(nonatomic,strong)NSString *timeBankCommentIcon;
+@property(nonatomic,strong)NSString *timeBankCommentContent;
+@property(nonatomic,strong)NSString *timeBankCommentCreateTime;
 
 -(id)initWithDic:(NSDictionary *)dic;
 @end

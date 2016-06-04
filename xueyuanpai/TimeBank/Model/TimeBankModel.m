@@ -102,3 +102,70 @@
 }
 
 @end
+
+
+@implementation TimeBankDetailModel
+/*
+ "id":1,                                                         //序号
+ "username":3,                                                   //用户名
+ "sex":3,                                                   //性别
+ "price":3,                                                   //价格
+ "icon":"\/backend\/web\/uploads\/20160516\/14634064623808.jpg", //头像
+ "title":"\u5927\u5e45\u653e\u677e\u7684",                       //标题
+ "appointment_time":"2016-03-28",                                //时间
+ "noon":1,                                                       //1上午 2中午 3下午
+ "area":"sadfsdda\u5c11\u65f6\u8bf5\u8bd7\u4e66ss",              //地点
+ "tasks":"的撒啊撒",                                              //任务
+ "brief":"1ssss",                                                //简介
+ "payway":"AA",                                                   //支付方式
+ "stat":1,                                                       //申领状态  0未申请 1 已申请 2 已通过 3过期 4完成
+ "content":"dsafafafa",                                          //内容
+ "views":1,                                                      //浏览数
+ "number":8                                                      //人数
+ }
+ */
+-(id)initWithDic:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        
+        self.timeBankDetailId               = [dic stringForKey:@"id"];
+        self.timeBankDetailUserName         = [dic stringForKey:@"username"];
+        self.timeBankDetailSex              = [dic stringForKey:@"sex"];
+        self.timeBankDetailPrice            = [dic stringForKey:@"price"];
+        self.timeBankDetailIcon             = [dic stringForKey:@"icon"];;
+        self.timeBankDetailTitle            = [dic stringForKey:@"title"];
+        self.timeBankDetailAppointmentTime  = [dic stringForKey:@"appointment_time"];
+        self.timeBankDetailNoon             = [dic stringForKey:@"noon"];
+        self.timeBankDetailArea             = [dic stringForKey:@"area"];
+        self.timeBankDetailTasks            = [dic stringForKey:@"tasks"];
+        self.timeBankDetailIdBrief          = [dic stringForKey:@"brief"];
+        self.timeBankDetailPayWay           = [dic stringForKey:@"payway"];
+        self.timeBankDetailStat             = [dic stringForKey:@"stat"];
+        self.timeBankDetailContent          = [dic stringForKey:@"content"];
+        self.timeBankDetailViews            = [dic stringForKey:@"views"];
+        self.timeBankDetailNumber           = [dic stringForKey:@"number"];
+    }
+    return self;
+}
+
+@end
+
+@implementation TimeBankCommentModel
+
+-(id)initWithDic:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        
+        self.timeBankCommentId           = @"id";
+        self.timeBankCommentUserId       = @"user_id";
+        self.timeBankCommentUserName     = @"username";
+        self.timeBankCommentIcon         = @"icon";
+        self.timeBankCommentContent      = @"content";
+        self.timeBankCommentCreateTime   = @"create_at";
+    }
+    return self;
+}
+
+@end
