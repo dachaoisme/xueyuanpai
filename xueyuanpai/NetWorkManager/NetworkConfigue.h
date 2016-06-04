@@ -84,4 +84,15 @@
 #define METHOD_TIME_SCHOOL_RECRUITEMENT_COLUMNS        @"v1/recruitment/columns?"
 #define METHOD_TIME_SCHOOL_RECRUITEMENT_LIST           @"v1/recruitment/list?"
 #define METHOD_TIME_SCHOOL_RECRUITEMENT_Detail         @"v1/recruitment/detail?"
+
+///跳蚤市场:跳蚤市场分类接口
+#define METHOD_JOB_MARKET_CONDITION_CATEGORY           @"v1/fleamarket/category?"
+///跳蚤市场:跳蚤市场列表接口
+#define METHOD_JOB_MARKET_LIST                         @"v1/fleamarket/list?"
+///跳蚤市场:跳蚤市场上传照片接口
+#define METHOD_JOB_MARKET_IMAGEUPLOAD                  @"v1/fleamarket/imageupload/?"
+///跳蚤市场:添加跳蚤接口
+#define METHOD_JOB_MARKET_ADD                          @"v1/fleamarket/create/?"
+///跳蚤市场:跳蚤详情接口
+#define METHOD_JOB_MARKET_DETAIL                       @"v1/fleamarket/detail/?"
 #endif /* NetworkConfigue_h */

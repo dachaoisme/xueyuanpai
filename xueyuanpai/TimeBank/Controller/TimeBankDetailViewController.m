@@ -215,7 +215,7 @@
 -(void)requestToCommentList
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.timeBankId forKey:@"tb_id"];
+    [dic setObject:self.timeBankId forKey:@"bank_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankCommentListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
