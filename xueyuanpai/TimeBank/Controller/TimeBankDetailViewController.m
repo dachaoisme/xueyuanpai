@@ -361,7 +361,9 @@
 -(void)requestToAddCommentWithCommentContent:(NSString *)commentContent
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
     [dic setObject:self.timeBankId forKey:@"bank_id"];
     [dic setObject:commentContent forKey:@"content"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

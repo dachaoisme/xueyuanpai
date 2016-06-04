@@ -44,14 +44,14 @@
 - (void)createImageView{
     
     //创建imageView用于显示数据
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 165, 165)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), 165)];
     imageView.image = [UIImage imageNamed:@"test1.jpg"];
     [self.contentView addSubview:imageView];
     self.goodsImageView = imageView;
     
     
     //创建用于显示商品名称的Label
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame) + 5, 200, 17)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame) + 5, CGRectGetWidth(self.frame), 30)];
     nameLabel.text = @"";
     nameLabel.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:nameLabel];
@@ -87,6 +87,10 @@
 -(void)setContentWithModel:(JobMarketModel *)model
 {
     [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.jobMarketIdThumbUrl] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+    
+    self.nameLabel.numberOfLines = 0;
+    [CommonUtils getTextSizeWithText:model.jobMarketTitle WithFont:14 WithTextWidth:CGRectGetWidth(self.frame)];
+    
     self.nameLabel.text = model.jobMarketTitle;
     self.currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",model.jobMarketSalePrice];
     self.deprecatedPriceLabel.attributedText = [CommonUtils lineStr:[NSString stringWithFormat:@"￥%@",model.jobMarketOriginPrice]];
