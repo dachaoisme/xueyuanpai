@@ -17,7 +17,7 @@
 
 static NSString *Identifier = @"photoCollectionViewCell";
 
-@interface PublishInformationViewController ()<UICollectionViewDataSource,PhotoSelectorCellDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface PublishInformationViewController ()<UICollectionViewDataSource,PhotoSelectorCellDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     NSMutableArray * jobMarketConditionCategoryTitleArr;
     NSMutableArray * jobMarketConditionModelArr;
@@ -51,6 +51,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
     //注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"PublishInformationOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
+     [self.tableView registerNib:[UINib nibWithNibName:@"PublishInformationOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell2"];
+     [self.tableView registerNib:[UINib nibWithNibName:@"PublishInformationOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell3"];
     
      [self.tableView registerNib:[UINib nibWithNibName:@"PublishInformationTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     
@@ -171,6 +173,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
+    
     if (indexPath.section == 0) {
         
         switch (indexPath.row) {
@@ -181,6 +185,12 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 
                 oneCell.titleLabel.text = @"标题";
                 oneCell.yuanLabel.hidden = YES;
+                
+                oneCell.inputContentTextField.delegate = self;
+                
+                
+                //标题
+                publishJobMarketModel.publicJobMarketTitle = oneCell.inputContentTextField.text;
                 return oneCell;
 
             }
@@ -198,17 +208,26 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 twoCell.alertLabel.hidden = YES;
                 twoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
                 
+                
+                
                 return twoCell;
             }
                 break;
                 
             case 2:{
                 
-                PublishInformationOneStyleTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+                PublishInformationOneStyleTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell2" forIndexPath:indexPath];
                 oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
                 
                 oneCell.titleLabel.text = @"出售价格";
+                
+                oneCell.inputContentTextField.delegate = self;
+
+                
+                
+                publishJobMarketModel.publicJobMarketSalePrice = oneCell.inputContentTextField.text;
+
                 
                 return oneCell;
                 
@@ -216,8 +235,13 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 break;
 
             case 3:{
-                PublishInformationOneStyleTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+                PublishInformationOneStyleTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell3" forIndexPath:indexPath];
                 oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+                oneCell.inputContentTextField.delegate = self;
+
+                
+                publishJobMarketModel.publicJobMarketOriginPrice = oneCell.inputContentTextField.text;
 
 
                 oneCell.titleLabel.text = @"原价";
@@ -241,12 +265,18 @@ static NSString *Identifier = @"photoCollectionViewCell";
         
         switch (indexPath.row) {
             case 0:{
+                
+#warning 数据没从接口显示
                
                 PublishInformationTwoStyleTableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 twoCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
                 twoCell.titleLabel.text = @"所在学校";
                 twoCell.contentLabel.text = @"吉林长春大学";
+                
+                
+                publishJobMarketModel.publicJobMarketCollegeId = twoCell.contentLabel.text;
+                
                 
                 return twoCell;
             }
@@ -259,6 +289,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 twoCell.titleLabel.text = @"联系方式";
                 twoCell.contentLabel.text = @"188888888888";
                 twoCell.alertLabel.hidden = YES;
+                
+                publishJobMarketModel.publicJobMarketTelephone = twoCell.contentLabel.text;
                 
                 return twoCell;
                 
@@ -278,6 +310,12 @@ static NSString *Identifier = @"photoCollectionViewCell";
         
         PublishInformationThreeStyleTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
         threeCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        threeCell.inputContentTextView.delegate = self;
+        
+        
+        
+        publishJobMarketModel.publicJobMarketDescription = threeCell.inputContentTextView.text;
 
         
         return threeCell;
@@ -305,6 +343,19 @@ static NSString *Identifier = @"photoCollectionViewCell";
     }else{
         return 48;
     }
+}
+
+
+#pragma mark - textField的代理方法
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    [self.tableView reloadData];
+}
+
+#pragma mark - textView代理方法
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - 设置图片选择器如下所示
@@ -378,7 +429,6 @@ static NSString *Identifier = @"photoCollectionViewCell";
     
     if (indexPath.section == 0 && indexPath.row == 1) {
         
-        [CommonUtils showToastWithStr:@"请选择分类"];
         LTPickerView* pickerView = [LTPickerView new];
         pickerView.dataSource = jobMarketConditionCategoryTitleArr;//@[@"1",@"2",@"3",@"4",@"5"];//设置要显示的数据
         //pickerView.defaultStr = @"1";//默认选择的数据
@@ -451,10 +501,12 @@ static NSString *Identifier = @"photoCollectionViewCell";
         [CommonUtils showToastWithStr:@"请输入标题"];
         return;
     }
-    else if (publishJobMarketModel.publicJobMarketImages.length<=0){
-        [CommonUtils showToastWithStr:@"请添加照片"];
-        return;
-    }
+    
+#warning 添加照片逻辑没处理
+//    else if (publishJobMarketModel.publicJobMarketImages.length<=0){
+//        [CommonUtils showToastWithStr:@"请添加照片"];
+//        return;
+//    }
     else if (publishJobMarketModel.publicJobMarketCategoryId.length<=0){
         [CommonUtils showToastWithStr:@"请选择分类"];
         return;
@@ -479,15 +531,15 @@ static NSString *Identifier = @"photoCollectionViewCell";
     }
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:publishJobMarketModel.publicJobMarketTitle forKey:@"title"];
-    [dic setObject:publishJobMarketModel.publicJobMarketImages forKey:@"images"];
-    [dic setObject:publishJobMarketModel.publicJobMarketCategoryId forKey:@"cat_id"];
-    [dic setObject:publishJobMarketModel.publicJobMarketSalePrice  forKey:@"sale_price"];
-    [dic setObject:publishJobMarketModel.publicJobMarketOriginPrice forKey:@"origin_price"];
-    [dic setObject:publishJobMarketModel.publicJobMarketCollegeId forKey:@"college_id"];
-    [dic setObject:publishJobMarketModel.publicJobMarketTelephone forKey:@"telphone"];
-    [dic setObject:publishJobMarketModel.publicJobMarketDescription forKey:@"description"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:publishJobMarketModel.publicJobMarketTitle forKey:@"title"];
+    [dic setValue:publishJobMarketModel.publicJobMarketImages forKey:@"images"];
+    [dic setValue:publishJobMarketModel.publicJobMarketCategoryId forKey:@"cat_id"];
+    [dic setValue:publishJobMarketModel.publicJobMarketSalePrice  forKey:@"sale_price"];
+    [dic setValue:publishJobMarketModel.publicJobMarketOriginPrice forKey:@"origin_price"];
+    [dic setValue:publishJobMarketModel.publicJobMarketCollegeId forKey:@"college_id"];
+    [dic setValue:publishJobMarketModel.publicJobMarketTelephone forKey:@"telphone"];
+    [dic setValue:publishJobMarketModel.publicJobMarketDescription forKey:@"description"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]jobMarketSubmitWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {

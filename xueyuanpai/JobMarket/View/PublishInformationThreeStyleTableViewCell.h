@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublishInformationThreeStyleTableViewCell : UITableViewCell
+@interface PublishInformationThreeStyleTableViewCell : UITableViewCell<UITextViewDelegate>
 
 ///文本输入框
 @property (weak, nonatomic) IBOutlet UITextView *inputContentTextView;
