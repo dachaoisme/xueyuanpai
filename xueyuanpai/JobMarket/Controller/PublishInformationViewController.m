@@ -18,7 +18,12 @@
 static NSString *Identifier = @"photoCollectionViewCell";
 
 @interface PublishInformationViewController ()<UICollectionViewDataSource,PhotoSelectorCellDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
-
+{
+    NSMutableArray * jobMarketConditionCategoryTitleArr;
+    NSMutableArray * jobMarketConditionModelArr;
+    
+    PublishJobMarketModel * publishJobMarketModel ;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray* pictureImages;
@@ -34,8 +39,9 @@ static NSString *Identifier = @"photoCollectionViewCell";
     // Do any additional setup after loading the view.
     
     self.title = @"发布二手物品";
-    
-    
+    jobMarketConditionCategoryTitleArr = [NSMutableArray array];
+    jobMarketConditionModelArr         = [NSMutableArray array];
+    publishJobMarketModel = [[PublishJobMarketModel alloc]initWithDic:nil];
     [self createLeftBackNavBtn];
     
     //创建列表视图
@@ -51,7 +57,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"PublishInformationThreeStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
     
-    
+    [self requestToGetConditionsCategory];
 }
 
 #pragma mark - 创建列表视图
@@ -103,11 +109,33 @@ static NSString *Identifier = @"photoCollectionViewCell";
     self.tableView.tableFooterView = button;
     
 }
-
-#pragma mark - 确认提交按钮响应方法
-- (void)commitAction{
+#pragma mark - 获取分类列表,家电什么的
+-(void)requestToGetConditionsCategory
+{
+    NSDictionary * dic = [NSDictionary dictionary];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [CommonUtils showToastWithStr:@"确认提交"];
+    [[HttpClient sharedInstance]getJobMarketConditionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * conditionsDic = model.responseCommonDic ;
+            ///"id":"8","name":"\u5403\u996d","ord":"1"
+            ///类别：看电影、吃饭
+            for (NSString *key in [conditionsDic allKeys]) {
+                
+                JobMarketConditionCategoryModel * model = [[JobMarketConditionCategoryModel alloc] initWithDic: [conditionsDic objectForKey:key]];
+                [jobMarketConditionModelArr addObject:model];
+                [jobMarketConditionCategoryTitleArr addObject:model.jobMarketConditionCategoryName];
+            }
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
 }
 
 #pragma mark - tableView的代理方法
@@ -165,8 +193,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
 
                 twoCell.titleLabel.text = @"分类";
-                twoCell.contentLabel.text = @"请选择分类";
-                twoCell.contentLabel.textColor = [UIColor groupTableViewBackgroundColor];
+                twoCell.contentLabel.text = publishJobMarketModel.publicJobMarketCategoryName.length>0?publishJobMarketModel.publicJobMarketCategoryName:@"请选择分类";
+                twoCell.contentLabel.textColor = [UIColor blackColor];
                 twoCell.alertLabel.hidden = YES;
                 twoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
                 
@@ -351,10 +379,26 @@ static NSString *Identifier = @"photoCollectionViewCell";
     if (indexPath.section == 0 && indexPath.row == 1) {
         
         [CommonUtils showToastWithStr:@"请选择分类"];
+        LTPickerView* pickerView = [LTPickerView new];
+        pickerView.dataSource = jobMarketConditionCategoryTitleArr;//@[@"1",@"2",@"3",@"4",@"5"];//设置要显示的数据
+        //pickerView.defaultStr = @"1";//默认选择的数据
+        [pickerView show];//显示
+        //回调block
+        weakSelf(weakSelf);
+        pickerView.block = ^(LTPickerView* obj,NSString* str,int num){
+            //obj:LTPickerView对象
+            //str:选中的字符串
+            //num:选中了第几行
+            NSLog(@"选择了第%d行的%@",num,str);
+            JobMarketConditionCategoryModel * model = [jobMarketConditionModelArr objectAtIndex:num];
+            publishJobMarketModel.publicJobMarketCategoryId = model.jobMarketConditionCategoryId;
+            publishJobMarketModel.publicJobMarketCategoryName = str;
+            [weakSelf.tableView reloadData];
+        };
     }
 }
 
-#pragma PhotoSelectorCellDelegate
+#pragma mark -  请选择图片  PhotoSelectorCellDelegate
 - (void)photoDidAddSelector:(PhotoSelectorCell *)cell {
     
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary] ) {
@@ -389,6 +433,76 @@ static NSString *Identifier = @"photoCollectionViewCell";
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - 确认提交按钮响应方法
+- (void)commitAction{
+    
+    [CommonUtils showToastWithStr:@"确认提交"];
+    /*
+     title             string     必需    标题
+     images            string     必需    照片 多个以;号分隔
+     cat_id            int        必需    分类序号
+     sale_price        int        必需    销售价格
+     origin_price      int        必需    原价
+     college_id        int        必需    学校序号
+     telphone          string     必需    联系方式
+     description       string     必需    描述
+     */
+    if (publishJobMarketModel.publicJobMarketTitle.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入标题"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketImages.length<=0){
+        [CommonUtils showToastWithStr:@"请添加照片"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketCategoryId.length<=0){
+        [CommonUtils showToastWithStr:@"请选择分类"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketSalePrice.length<=0){
+        [CommonUtils showToastWithStr:@"请输入价格"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketOriginPrice.length<=0){
+        [CommonUtils showToastWithStr:@"请输入原价"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketCollegeId.length<=0){
+        [CommonUtils showToastWithStr:@"请选择学校"];
+        return;
+    }else if (publishJobMarketModel.publicJobMarketTelephone.length<=0){
+        [CommonUtils showToastWithStr:@"请输入联系方式"];
+        return;
+    }else if (publishJobMarketModel.publicJobMarketDescription.length<=0){
+        [CommonUtils showToastWithStr:@"请添加描述"];
+        return;
+    }
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:publishJobMarketModel.publicJobMarketTitle forKey:@"title"];
+    [dic setObject:publishJobMarketModel.publicJobMarketImages forKey:@"images"];
+    [dic setObject:publishJobMarketModel.publicJobMarketCategoryId forKey:@"cat_id"];
+    [dic setObject:publishJobMarketModel.publicJobMarketSalePrice  forKey:@"sale_price"];
+    [dic setObject:publishJobMarketModel.publicJobMarketOriginPrice forKey:@"origin_price"];
+    [dic setObject:publishJobMarketModel.publicJobMarketCollegeId forKey:@"college_id"];
+    [dic setObject:publishJobMarketModel.publicJobMarketTelephone forKey:@"telphone"];
+    [dic setObject:publishJobMarketModel.publicJobMarketDescription forKey:@"description"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]jobMarketSubmitWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"发布跳蚤市场成功"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

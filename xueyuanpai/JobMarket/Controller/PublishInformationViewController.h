@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JobMarketModel.h"
+#import "LTPickerView.h"
 @interface PublishInformationViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end

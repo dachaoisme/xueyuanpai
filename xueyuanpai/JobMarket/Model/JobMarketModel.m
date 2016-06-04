@@ -73,7 +73,31 @@
     }
     return self;
 }
+@end
 
+@implementation PublishJobMarketModel
+
+-(id)initWithDic:(NSDictionary *)dic
+{
+    
+    self = [super init];
+    if (self) {
+        
+        self.publicJobMarketId               = @"";
+        self.publicJobMarketTitle            = @"";
+        self.publicJobMarketImages           = @"";
+        self.publicJobMarketCategoryId       = @"";
+        self.publicJobMarketCategoryName     = @"";
+        self.publicJobMarketSalePrice        = @"";
+        self.publicJobMarketOriginPrice      = @"";
+        self.publicJobMarketCollegeId        = @"";
+        self.publicJobMarketTelephone        = @"";
+        self.publicJobMarketDescription      = @"";
+        
+        
+    }
+    return self;
+}
 
 
 @end
