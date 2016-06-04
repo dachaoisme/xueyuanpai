@@ -173,13 +173,13 @@
 -(void)requestToaddScanViewNum
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.timeBankId forKey:@"tb_id"];
+    [dic setObject:self.timeBankId forKey:@"id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankAddScanNumWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
-            NSDictionary * dataDic = [model.responseCommonDic objectForKey:@"data"];
+            NSDictionary * dataDic = model.responseCommonDic ;
             timeBankDetailScanViewNum = [dataDic stringForKey:@"views"];
             
         }else{
