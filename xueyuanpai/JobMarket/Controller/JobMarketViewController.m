@@ -133,17 +133,17 @@
 - (void)createFlowLayout{
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     //设置item的行间距(如果不设置，默认是10)
-    flowLayout.minimumLineSpacing = 10;
+    //flowLayout.minimumLineSpacing = 10;
     //设置item的列间距
-    flowLayout.minimumInteritemSpacing = 10;
+    //flowLayout.minimumInteritemSpacing = 10;
     //设置item的大小
-    flowLayout.itemSize = CGSizeMake(165, 220);
+    //flowLayout.itemSize = CGSizeMake((SCREEN_WIDTH - 10 - 20)/2, 220);
     
     //设置滚动方向
     flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
         
     //设置UICollectionView距离屏幕上，下，左，右的一个距离
-    flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    //flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
 
     
 #pragma mark - 创建真正要使用的UICollectionView
@@ -166,6 +166,23 @@
 }
 
 #pragma mark - 实现UICollectionView的代理方法
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    float width = (SCREEN_WIDTH-2*10-20)/2;
+    return CGSizeMake(width,220);
+}
+//定义每个UICollectionView 的 margin
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(10, 10, 10, 10);
+    
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+
+    return 20;
+    
+}
 //1.返回cell个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
@@ -197,7 +214,7 @@
     [self.navigationController pushViewController:jobMarketVC animated:YES];
     
     
-    NSLog(@"section:%ld,row:%ld",indexPath.section,indexPath.row);
+    NSLog(@"section:%ld,row:%ld",(long)indexPath.section,(long)indexPath.row);
     
     
     
