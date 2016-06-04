@@ -10,6 +10,13 @@
 
 #import "JobMarketModel.h"
 
+@protocol JobMarkDetailTwoStyleTableViewCellDelegate <NSObject>
+
+//打电话
+- (void)callAction;
+
+@end
+
 @interface JobMarkDetailTwoStyleTableViewCell : UITableViewCell
 
 ///头像
@@ -29,6 +36,9 @@
 
 
 - (void)bindModel:(JobMarketDetailModel *)model;
+
+
+@property (nonatomic,assign)id<JobMarkDetailTwoStyleTableViewCellDelegate>delegate;
 
 
 @end

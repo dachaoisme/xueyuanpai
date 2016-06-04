@@ -48,8 +48,9 @@
     
     
     //创建用于显示商品名称的Label
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 200, 17)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 40, 17)];
     nameLabel.text = @"神州笔记本电脑";
+    nameLabel.numberOfLines = 0;
     nameLabel.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:nameLabel];
     self.nameLabel = nameLabel;

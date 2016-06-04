@@ -11,7 +11,7 @@
 #import "JobMarketDetailOneStyleTableViewCell.h"
 #import "JobMarkDetailTwoStyleTableViewCell.h"
 
-@interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate>
+@interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate,JobMarkDetailTwoStyleTableViewCellDelegate>
 {
     JobMarketDetailModel * jobMarketDetailModel;
 }
@@ -130,6 +130,8 @@
  
             }else{
                 JobMarkDetailTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                
+                cell.delegate = self;
                 
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -278,6 +280,12 @@
     }
     
     
+}
+
+#pragma mark - 打电话活动
+- (void)callAction{
+    
+     [CommonUtils callServiceWithTelephoneNum:jobMarketDetailModel.jobMarketDetailMobile];
 }
 
 #pragma mark - 点击banner图

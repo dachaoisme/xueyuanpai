@@ -39,9 +39,10 @@
 
 - (IBAction)callAction:(id)sender {
     
-    //跳转打电话界面
-    
-    [CommonUtils callServiceWithTelephoneNum:_phoneNuber];
+    if ([_delegate respondsToSelector:@selector(callAction)]) {
+        
+        [_delegate callAction];
+    }
 }
 
 
