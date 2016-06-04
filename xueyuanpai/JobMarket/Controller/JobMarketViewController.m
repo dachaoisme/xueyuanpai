@@ -93,9 +93,6 @@
 }
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    
-    
-    
     return YES;
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -127,7 +124,7 @@
     searchKeyWord = searchBar.text;
     searchBar.text = @"";
     [searchBar resignFirstResponder];
-    [self requestToGetTimeBankList];
+    [self requestToGetJobMarketList];
 }
 #pragma mark - 创建flowLayout
 - (void)createFlowLayout{
@@ -205,12 +202,12 @@
     return 1;
 }
 
-
-#pragma mark - 选中的是当前的第几个item
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     //跳转跳槽市场详情
+    JobMarketModel * model = [jobMarketModelListArr objectAtIndex:indexPath.row];
     JobMarketDetailViewController *jobMarketVC = [[JobMarketDetailViewController alloc] init];
+    jobMarketVC.jobMarketId =model.jobMarketId;
     [self.navigationController pushViewController:jobMarketVC animated:YES];
     
     
@@ -219,6 +216,8 @@
     
     
 }
+#pragma mark - 筛选条件，选中的是当前的第几个item
+
 ///获取筛选分类列表
 -(void)requestToGetConditionsCategory
 {
@@ -280,7 +279,7 @@
             
             [self setPullDownMenuView];
             ///获取到筛选条件以后，获取时间银行的列表
-            [self requestToGetTimeBankList];
+            [self requestToGetJobMarketList];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -289,7 +288,7 @@
     }];
     
 }
--(void)requestToGetTimeBankList
+-(void)requestToGetJobMarketList
 {
     /*
      page           int     非必需    第几页        默认1
@@ -362,7 +361,7 @@
     }
     ///清楚之前旧数据
     [jobMarketModelListArr removeAllObjects];
-    [self requestToGetTimeBankList];
+    [self requestToGetJobMarketList];
 }
 
 #pragma mark - 通过标题来设置参数id

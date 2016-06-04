@@ -12,7 +12,9 @@
 #import "JobMarkDetailTwoStyleTableViewCell.h"
 
 @interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate>
-
+{
+    JobMarketDetailModel * jobMarketDetailModel;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -34,7 +36,7 @@
     //设置tableView
     [self createTableView];
 
-    
+    [self requestToGetJobMarketDetail];
     
 }
 
@@ -240,7 +242,28 @@
     NSLog(@"点击了第%ld张图片",(long)index+1);
 }
 
-
+#pragma mark - 请求跳蚤市场详情数据
+-(void)requestToGetJobMarketDetail
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.jobMarketId?self.jobMarketId:@"" forKey:@"id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]jobMarketDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * dataDic = model.responseCommonDic ;
+            jobMarketDetailModel = [[JobMarketDetailModel alloc]initWithDic:dataDic];
+            
+            [self.tableView reloadData];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 
 
 

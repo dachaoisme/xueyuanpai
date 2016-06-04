@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JobMarketModel.h"
 @interface JobMarketDetailViewController : BaseViewController
 
+@property(nonatomic,strong)NSString * jobMarketId;
 @end
