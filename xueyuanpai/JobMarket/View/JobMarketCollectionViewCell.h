@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JobMarketModel.h"
 @interface JobMarketCollectionViewCell : UICollectionViewCell
 
+-(void)setContentWithModel:(JobMarketModel *)model;
 @end

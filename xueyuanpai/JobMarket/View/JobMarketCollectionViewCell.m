@@ -52,7 +52,7 @@
     
     //创建用于显示商品名称的Label
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame) + 5, 200, 17)];
-    nameLabel.text = @"神州笔记本电脑";
+    nameLabel.text = @"";
     nameLabel.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:nameLabel];
     self.nameLabel = nameLabel;
@@ -60,7 +60,7 @@
     
     //创建用于显示价格的label
     UILabel *currentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame) + 5, 100, 17)];
-    currentPriceLabel.text = @"￥1900";
+    currentPriceLabel.text = @"";
     currentPriceLabel.font = [UIFont systemFontOfSize:12];
     [currentPriceLabel setTextColor:[CommonUtils colorWithHex:@"ff6478"]];
     [self.contentView addSubview:currentPriceLabel];
@@ -70,20 +70,28 @@
     
     //创建用于显示弃用价格的label
     UILabel *deprecatedPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, CGRectGetMinY(currentPriceLabel.frame), 100, 17)];
-    deprecatedPriceLabel.text = @"￥1900";
+    deprecatedPriceLabel.text = @"";
     deprecatedPriceLabel.font = [UIFont systemFontOfSize:12];
     [deprecatedPriceLabel setTextColor:[CommonUtils colorWithHex:@"c7c6cb"]];
     [self.contentView addSubview:deprecatedPriceLabel];
     self.deprecatedPriceLabel = deprecatedPriceLabel;
     
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(deprecatedPriceLabel.frame)+2, CGRectGetMinY(deprecatedPriceLabel.frame)+8, 40, 1)];
-    lineView.backgroundColor = [CommonUtils colorWithHex:@"c7c6cb"];
-    [self.contentView addSubview:lineView];
+//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(deprecatedPriceLabel.frame)+2, CGRectGetMinY(deprecatedPriceLabel.frame)+8, 40, 1)];
+//    lineView.backgroundColor = [CommonUtils colorWithHex:@"c7c6cb"];
+//    [self.contentView addSubview:lineView];
 
     
 }
 
+-(void)setContentWithModel:(JobMarketModel *)model
+{
+    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.jobMarketIdThumbUrl] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+    self.nameLabel.text = model.jobMarketTitle;
+    self.currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",model.jobMarketSalePrice];
+    self.deprecatedPriceLabel.attributedText = [CommonUtils lineStr:[NSString stringWithFormat:@"￥%@",model.jobMarketOriginPrice]];
+    
+}
 
 
 @end

@@ -7,8 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
-@interface JobMarketViewController : BaseViewController
+#import "JobMarketModel.h"
+#import "LDCPullDownMenuView.h"
+@interface JobMarketViewController : BaseViewController<LDCPullDownMenuViewDelegate>
 
 
 

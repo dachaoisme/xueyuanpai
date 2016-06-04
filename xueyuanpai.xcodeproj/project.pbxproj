@@ -208,6 +208,7 @@
 		58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AAF1CE20E6B0036D105 /* IndexColumnCollectionViewCell.m */; };
 		58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */; };
 		58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */; };
+		58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D396501D025EFC0066EA05 /* JobMarketModel.m */; };
 		58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */; };
 		58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E029001CF45E04006A2E74 /* TimeBankViewController.m */; };
 		58F211671CF9A0E800926FB9 /* RequirementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F211661CF9A0E800926FB9 /* RequirementsViewController.m */; };
@@ -800,6 +801,8 @@
 		58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexMallCollectionViewCell.m; sourceTree = "<group>"; };
 		58CF089A1CE1DE45008334E8 /* IndexBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexBannerModel.h; sourceTree = "<group>"; };
 		58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexBannerModel.m; sourceTree = "<group>"; };
+		58D3964F1D025EFC0066EA05 /* JobMarketModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarketModel.h; sourceTree = "<group>"; };
+		58D396501D025EFC0066EA05 /* JobMarketModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobMarketModel.m; sourceTree = "<group>"; };
 		58E028F81CF3442B006A2E74 /* GiftExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftExchangeViewController.h; sourceTree = "<group>"; };
 		58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeViewController.m; sourceTree = "<group>"; };
 		58E028FF1CF45E04006A2E74 /* TimeBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankViewController.h; sourceTree = "<group>"; };
@@ -1704,6 +1707,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		58D3964E1D025ECB0066EA05 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58D3964F1D025EFC0066EA05 /* JobMarketModel.h */,
+				58D396501D025EFC0066EA05 /* JobMarketModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		58E028FB1CF45DB7006A2E74 /* TimeBank */ = {
 			isa = PBXGroup;
 			children = (
@@ -2434,18 +2446,11 @@
 		DDD0BE651CFC2AA200073290 /* JobMarket */ = {
 			isa = PBXGroup;
 			children = (
+				58D3964E1D025ECB0066EA05 /* Model */,
 				DDD0BE6B1CFC31C100073290 /* Controller */,
 				DDD0BE6A1CFC31B000073290 /* View */,
-				DDD0BE691CFC319F00073290 /* Model */,
 			);
 			path = JobMarket;
-			sourceTree = "<group>";
-		};
-		DDD0BE691CFC319F00073290 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		DDD0BE6A1CFC31B000073290 /* View */ = {
@@ -3186,6 +3191,7 @@
 				58898E401CFA5A280007D9B3 /* RequirementTwoTableViewCell.m in Sources */,
 				58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */,
 				58A944C61CE3E0C200DAD398 /* AddTeacherViewController.m in Sources */,
+				58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */,
 				DD13CE0E1D0028F0000A69FE /* BusinessNewsDetailViewController.m in Sources */,
 				587FF9D61CF2F8F300AD2131 /* IQUIViewController+Additions.m in Sources */,
 				DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */,

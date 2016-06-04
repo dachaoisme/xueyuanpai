@@ -276,4 +276,22 @@
  *  @return
  */
 - (void)getSchoolRecruitmentDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+#pragma mark - 跳蚤市场
+/**
+ *  @brief  跳蚤市场，获取筛选条件
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)getJobMarketConditionWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  跳蚤市场，获取列表
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)jobMarketGetListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 @end
