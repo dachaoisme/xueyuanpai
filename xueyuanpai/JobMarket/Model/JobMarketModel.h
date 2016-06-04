@@ -84,3 +84,41 @@
 -(id)initWithDic:(NSDictionary *)dic;
 @end
 
+///发布跳蚤市场model
+@interface PublishJobMarketModel : NSObject
+/*
+ user_id           int        必需    用户序号
+ title             string     必需    标题
+ images            string     必需    照片 多个以;号分隔
+ cat_id            int        必需    分类序号
+ sale_price        int        必需    销售价格
+ origin_price      int        必需    原价
+ college_id        int        必需    学校序号
+ telphone          string     必需    联系方式
+ description       string     必需    描述 */
+
+///用户序号
+@property(nonatomic,strong)NSString *publicJobMarketId;
+///标题
+@property(nonatomic,strong)NSString *publicJobMarketTitle;
+///照片
+@property(nonatomic,strong)NSString *publicJobMarketImages;
+///分类序号
+@property(nonatomic,strong)NSString *publicJobMarketCategoryId;
+///分类序号
+@property(nonatomic,strong)NSString *publicJobMarketCategoryName;
+///销售价格
+@property(nonatomic,strong)NSString *publicJobMarketSalePrice;
+///原价
+@property(nonatomic,strong)NSString *publicJobMarketOriginPrice;
+///学校序号
+@property(nonatomic,strong)NSString *publicJobMarketCollegeId;
+///联系方式
+@property(nonatomic,strong)NSString *publicJobMarketTelephone;
+///描述
+@property(nonatomic,strong)NSString *publicJobMarketDescription;
+-(id)initWithDic:(NSDictionary *)dic;
+@end
+
+
+
