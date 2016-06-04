@@ -283,10 +283,7 @@
 - (void)addComment{
     
     _commentView.hidden = NO;
-    
-    
-    
-
+    [self.commentTextField becomeFirstResponder];
     
 }
 
@@ -328,8 +325,8 @@
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
             NSDictionary * dataDic = [model.responseCommonDic objectForKey:@"data"];
-//            NSString * userId = [dataDic stringForKey:@"user_id"];
-//            NSString * timeBankId = [dataDic stringForKey:@"tb_id"];
+            NSString * userId = [dataDic stringForKey:@"user_id"];
+            NSString * timeBankId = [dataDic stringForKey:@"tb_id"];
             [CommonUtils showToastWithStr:@"申领状态成功"];
             
         }else{
@@ -365,7 +362,7 @@
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:self.timeBankId forKey:@"tb_id"];
+    [dic setObject:self.timeBankId forKey:@"bank_id"];
     [dic setObject:commentContent forKey:@"content"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {

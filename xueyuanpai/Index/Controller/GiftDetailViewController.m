@@ -58,7 +58,7 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     
-    self.showImageHeaderView = [ParallaxHeaderView parallaxHeaderViewWithImage:[UIImage imageNamed:@"test.jpg"] forSize:CGSizeMake(tableView.frame.size.width, 200)];
+    self.showImageHeaderView = [ParallaxHeaderView parallaxHeaderViewWithImage:[UIImage imageNamed:@"placeHoder.png"] forSize:CGSizeMake(tableView.frame.size.width, 200)];
     [tableView setTableHeaderView:self.showImageHeaderView];
 
     

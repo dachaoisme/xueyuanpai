@@ -95,7 +95,7 @@
     
     //图片
 //    _activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, 88, 130)];
-//    _activityImageView.image = [UIImage imageNamed:@"test.jpg"];
+//    _activityImageView.image = [UIImage imageNamed:@"placeHoder.png"];
 //    [_bottomScrollView addSubview:_activityImageView];
     
 }

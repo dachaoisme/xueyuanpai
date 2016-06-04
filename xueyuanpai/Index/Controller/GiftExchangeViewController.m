@@ -52,7 +52,7 @@
     [self.view addSubview:headView];
     
     UIImageView * leftImageView = [[UIImageView alloc]initWithFrame:CGRectMake(space, space, leftImageWidth,leftImageHeight)];
-    [leftImageView sd_setImageWithURL:[NSURL URLWithString:self.mallModel.indexMallThumbUrl] placeholderImage:[UIImage imageNamed:@"test.jpg" ]];
+    [leftImageView sd_setImageWithURL:[NSURL URLWithString:self.mallModel.indexMallThumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder.png" ]];
     [headView addSubview:leftImageView];
     
     UILabel * exangeTitleLable = [UIFactory label:14*3 color:@"333333" align:NSTextAlignmentLeft];
