@@ -308,9 +308,10 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    
+    TimeBankModel * model = [timeBankModelListArr objectAtIndex:indexPath.row];
     //点击进入时间银行详情
     TimeBankDetailViewController *detailVC = [[TimeBankDetailViewController alloc] init];
+    detailVC.timeBankId = model.timeBankId;
     [self.navigationController pushViewController:detailVC animated:YES];
     
     

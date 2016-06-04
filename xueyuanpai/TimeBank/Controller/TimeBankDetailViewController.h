@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "TimeBankModel.h"
 @interface TimeBankDetailViewController : BaseViewController
 
+@property(nonatomic,strong)NSString *timeBankId;
 @end

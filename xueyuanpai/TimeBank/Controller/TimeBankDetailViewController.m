@@ -13,7 +13,14 @@
 #import "TimeBankDetailTwoStyleTableViewCell.h"
 
 @interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    TimeBankDetailModel * detailModel;
+    ///时间银行浏览次数
+    NSString * timeBankDetailScanViewNum;
+    ///申请项目的时候，捎句话
+    NSString * applyProjectWord;
+    NSMutableArray * timeBankCommentListArr;
+}
 @property (nonatomic,strong)UITableView * tableView;
 
 @end
@@ -28,10 +35,13 @@
     [self setTitle:@"时间银行详情"];
     [self createLeftBackNavBtn];
     [self p_setupShareButtonItem];
-
+    timeBankCommentListArr = [NSMutableArray array];
     
     //创建tableView
     [self createTableView];
+    //请求数据
+    [self requestToGetTimeBankDetail];
+    [self requestToaddScanViewNum];
     
 }
 
@@ -113,9 +123,118 @@
     
     return 250;
 }
+#pragma mark - 请求时间银行详情数据
+-(void)requestToGetTimeBankDetail
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.timeBankId?self.timeBankId:@"" forKey:@"id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]timeBankDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * dataDic = model.responseCommonDic ;
+            detailModel = [[TimeBankDetailModel alloc]initWithDic:dataDic];
+            [self requestToCommentList];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+#pragma mark - 申领项目
+-(void)requestToApply
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:self.timeBankId forKey:@"tb_id"];
+    [dic setObject:applyProjectWord forKey:@"msg"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]timeBankProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * dataDic = [model.responseCommonDic objectForKey:@"data"];
+            NSString * userId = [dataDic stringForKey:@"user_id"];
+            NSString * timeBankId = [dataDic stringForKey:@"tb_id"];
+            [CommonUtils showToastWithStr:@"申领状态成功"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+#pragma mark - 增加浏览次数
+-(void)requestToaddScanViewNum
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.timeBankId forKey:@"tb_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]timeBankAddScanNumWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * dataDic = [model.responseCommonDic objectForKey:@"data"];
+            timeBankDetailScanViewNum = [dataDic stringForKey:@"views"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+#pragma mark - 增加评论
+-(void)requestToAddCommentWithCommentContent:(NSString *)commentContent
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:self.timeBankId forKey:@"tb_id"];
+    [dic setObject:commentContent forKey:@"content"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]timeBankAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"评论成功"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
 
-
-
+#pragma mark - 评论列表
+-(void)requestToCommentList
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.timeBankId forKey:@"tb_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]timeBankCommentListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * dic in arr) {
+                TimeBankCommentModel * commentModel = [[TimeBankCommentModel alloc]initWithDic:dic];
+                [timeBankCommentListArr addObject:commentModel];
+            }
+            
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
