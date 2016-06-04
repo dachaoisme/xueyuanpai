@@ -1,23 +1,20 @@
 //
-//  BusinessNewsViewController.m
+//  BusinessProjectViewController.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/6/2.
+//  Created by 王园园 on 16/6/3.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessNewsViewController.h"
-
-#import "BusinessCenterTableViewCell.h"
-#import "BusinessNewsDetailViewController.h"
-#import "BusinessClassDetailViewController.h"
 #import "BusinessProjectViewController.h"
 
-@interface BusinessNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "BusinessCenterTableViewCell.h"
+
+@interface BusinessProjectViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
-@implementation BusinessNewsViewController
+@implementation BusinessProjectViewController
 
 -(void)viewWillAppear:(BOOL)animated{
     [self theTabBarHidden:YES];
@@ -28,7 +25,13 @@
     // Do any additional setup after loading the view.
     
     
+    self.title = @"创业项目";
+    
+    
     [self createLeftBackNavBtn];
+    
+    
+    [self createSearchBar];
     
     
     [self createTableView];
@@ -37,10 +40,25 @@
     
 }
 
+#pragma mark - 创建搜索按钮
+- (void)createSearchBar{
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, 30)];
+    searchBar.barStyle = UIBarStyleDefault;
+    searchBar.placeholder = @"搜索";
+    
+    searchBar.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self.view addSubview:searchBar];
+    
+}
+
+
+
+
 #pragma mark - 创建展示视图
 - (void)createTableView{
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + 30, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -69,61 +87,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    
-
-    
-    switch (_index) {
-        case 100:{
-            //创业新闻
-            BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-            
-            detailVC.title = @"新闻详情";
-            [self.navigationController pushViewController:detailVC animated:YES];
-
-        }
-            break;
-        case 101:{
-            
-            //创业大赛
-            BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-            detailVC.title = @"大赛详情";
-            [self.navigationController pushViewController:detailVC animated:YES];
-        }
-            
-            break;
-
-        case 102:{
-            //创业讲堂
-            BusinessClassDetailViewController *detailVC = [[BusinessClassDetailViewController alloc] init];
-            
-            [self.navigationController pushViewController:detailVC animated:YES];
-
-        }
-            
-            break;
-        case 103:{
-            
-            
-            //创业项目
-//            detailVC.title = @"项目详情";
-            
-            
-            
-            
-
-        }
-            
-            break;
-
-
-            
-        default:
-            break;
-    }
-    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
