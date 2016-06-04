@@ -55,7 +55,7 @@
 -(void)setContentViewWithModel:(TimeBankModel *)model
 {
     
-    [_timeBankImageView sd_setImageWithURL:[NSURL URLWithString:model.timeBankIcon] placeholderImage:[UIImage imageNamed:@"timebank_icon_user"]];
+    [_timeBankImageView sd_setImageWithURL:[NSURL URLWithString:model.timeBankIcon] placeholderImage:[UIImage imageNamed:@"placeHoder.png"]];
     _timeBankTitleLable.text     = model.timeBankTitle;
     _timeBankTimeLable.text      = model.timeBankAppointmentTime;
     

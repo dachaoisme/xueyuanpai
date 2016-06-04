@@ -371,6 +371,10 @@
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"评论成功"];
             
+            
+            self.commentTextField.text = @"";
+            [self.commentTextField resignFirstResponder];
+            
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
