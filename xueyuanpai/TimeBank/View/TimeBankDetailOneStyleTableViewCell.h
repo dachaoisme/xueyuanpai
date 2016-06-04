@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TimeBankDetailOneStyleTableViewCellDelegate <NSObject>
+
+//获取按钮的状态
+- (void)getActivityContentButtonStatus;
+
+@end
+
+
 @interface TimeBankDetailOneStyleTableViewCell : UITableViewCell
+
+
 
 ///头像
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -47,6 +57,10 @@
 
 ///赴约按钮
 @property (weak, nonatomic) IBOutlet UIButton *activityContentButton;
+
+
+
+@property (nonatomic,assign)id<TimeBankDetailOneStyleTableViewCellDelegate> delegate;
 
 
 @end

@@ -26,6 +26,9 @@
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kD3-S9-vKL">
                         <rect key="frame" x="196" y="8" width="95" height="30"/>
                         <state key="normal" title="添加评论"/>
+                        <connections>
+                            <action selector="addCommentAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Q7X-UE-HRb"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bX6-XL-Its">
                         <rect key="frame" x="15" y="37" width="600" height="1"/>

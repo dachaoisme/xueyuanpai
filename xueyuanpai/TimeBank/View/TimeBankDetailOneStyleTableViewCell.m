@@ -39,6 +39,15 @@
 }
 
 
+#pragma mark - 赴约button按钮的响应方法
+- (IBAction)activityButtonAction:(id)sender {
+    
+    if ([self.delegate respondsToSelector:@selector(getActivityContentButtonStatus)]) {
+        [self.delegate getActivityContentButtonStatus];
+    }
+
+}
+
 
 
 

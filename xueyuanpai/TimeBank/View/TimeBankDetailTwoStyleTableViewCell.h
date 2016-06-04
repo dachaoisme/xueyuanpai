@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol  TimeBankDetailTwoStyleTableViewCellDelegate <NSObject>
+
+- (void)addComment;
+
+@end
+
 @interface TimeBankDetailTwoStyleTableViewCell : UITableViewCell
 
 ///头像
@@ -23,4 +29,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 
+
+@property (nonatomic,assign)id<TimeBankDetailTwoStyleTableViewCellDelegate>delegate;
 @end
