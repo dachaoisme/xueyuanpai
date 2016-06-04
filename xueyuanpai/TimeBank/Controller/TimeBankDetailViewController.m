@@ -292,7 +292,7 @@
 -(void)requestToGetTimeBankDetail
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.timeBankId?self.timeBankId:@"" forKey:@"id"];
+    [dic setValue:self.timeBankId?self.timeBankId:@"" forKey:@"id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -316,9 +316,9 @@
 -(void)requestToApply
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:self.timeBankId forKey:@"tb_id"];
-    [dic setObject:applyProjectWord forKey:@"msg"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.timeBankId forKey:@"tb_id"];
+    [dic setValue:applyProjectWord forKey:@"msg"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -341,7 +341,7 @@
 -(void)requestToaddScanViewNum
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.timeBankId forKey:@"id"];
+    [dic setValue:self.timeBankId forKey:@"id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankAddScanNumWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

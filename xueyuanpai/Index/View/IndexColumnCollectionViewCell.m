@@ -42,7 +42,23 @@
 
 -(void)setContentViewWithModel:(IndexColumnsModel *)model
 {
-    [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl]];
+    
+    if ([model.indexColumnsId intValue] == 1) {
+        
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_community"]];
+    }else if ([model.indexColumnsId intValue] == 2) {
+        
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_timebank"]];
+    }else if ([model.indexColumnsId intValue] == 3) {
+        
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_market"]];
+    }else if ([model.indexColumnsId intValue] == 4) {
+        
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_recruit"]];
+    }
+
+
+
     self.columnTitileLable.text = model.indexColumnsName;
 }
 @end

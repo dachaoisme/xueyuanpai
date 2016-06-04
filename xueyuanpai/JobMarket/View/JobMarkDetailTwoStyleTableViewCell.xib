@@ -19,14 +19,11 @@
                         <rect key="frame" x="15" y="8" width="45" height="45"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小芳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIq-qC-8Vy">
-                        <rect key="frame" x="68" y="8" width="40" height="21"/>
+                        <rect key="frame" x="68" y="8" width="51" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timebank_filter_female_hl.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vle-lO-xLW">
-                        <rect key="frame" x="102" y="13" width="12" height="12"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="云南大学" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-Lh-FcQ">
                         <rect key="frame" x="145" y="8" width="104" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -46,13 +43,26 @@
                             <constraint firstAttribute="height" constant="36" id="oyH-6E-pYN"/>
                         </constraints>
                         <state key="normal" backgroundImage="hire_btn_contact.png"/>
+                        <connections>
+                            <action selector="callAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oW1-Yd-eMQ"/>
+                        </connections>
                     </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timebank_filter_female_hl.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vle-lO-xLW">
+                        <rect key="frame" x="125" y="13" width="12" height="12"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="gGd-wO-beq" secondAttribute="trailing" constant="10" id="O02-PO-UPP"/>
                     <constraint firstItem="gGd-wO-beq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="vc5-fd-FnE"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="headImageView" destination="pnf-ye-po5" id="R3G-7e-Nty"/>
+                <outlet property="nameLabel" destination="yIq-qC-8Vy" id="G5Z-2p-XXZ"/>
+                <outlet property="phoneNumberLabel" destination="Aic-8w-eMy" id="lZD-Hr-vxt"/>
+                <outlet property="schoolLabel" destination="bkB-Lh-FcQ" id="ayX-PW-il1"/>
+                <outlet property="sexImageView" destination="Vle-lO-xLW" id="O7T-9c-PWl"/>
+            </connections>
             <point key="canvasLocation" x="347" y="248"/>
         </tableViewCell>
     </objects>

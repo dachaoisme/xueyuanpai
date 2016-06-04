@@ -11,11 +11,18 @@
 #import "JobMarketDetailOneStyleTableViewCell.h"
 #import "JobMarkDetailTwoStyleTableViewCell.h"
 
-@interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate>
+@interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate,JobMarkDetailTwoStyleTableViewCellDelegate>
 {
     JobMarketDetailModel * jobMarketDetailModel;
 }
 @property (nonatomic,strong)UITableView *tableView;
+
+
+///存储图片的数组
+@property (nonatomic,strong)NSMutableArray *imageArray;
+
+///计算cell的高度
+@property (nonatomic,assign)CGFloat height;
 
 @end
 
@@ -24,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.imageArray = [NSMutableArray array];
     
     self.title = @"跳槽市场详情";
     
@@ -112,12 +121,24 @@
                 JobMarketDetailOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
+                if (jobMarketDetailModel) {
+                    [cell bindModel:jobMarketDetailModel];
+
+                }
+                
                 return cell;
  
             }else{
                 JobMarkDetailTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 
+                cell.delegate = self;
+                
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+                if (jobMarketDetailModel) {
+                    [cell bindModel:jobMarketDetailModel];
+                    
+                }
 
                 
                 return cell;
@@ -145,10 +166,19 @@
                 return cell;
                 
             }else{
-                cell.textLabel.text = @"两年没有发票怎么办";
+                
+//               CGSize textSize =  [CommonUtils getTextSizeWithText:jobMarketDetailModel.jobMarketDetailDescription WithFont:14 WithTextWidth:SCREEN_WIDTH];
+//                _height = textSize.height;
+                
+                cell.textLabel.text = jobMarketDetailModel.jobMarketDetailDescription;
+                cell.textLabel.numberOfLines = 0;
+                
+                CGRect frame = CGRectMake(15, 5, SCREEN_WIDTH, _height);
+                
+                cell.textLabel.frame = frame;
+                
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
                 cell.textLabel.font = [UIFont systemFontOfSize:14];
-
                
                 return cell;
             }
@@ -174,6 +204,20 @@
             return 70;
             break;
             
+        case 1:{
+            
+            if (indexPath.row == 0) {
+                return 45;
+            }else{
+                
+                CGSize textSize =  [CommonUtils getTextSizeWithText:jobMarketDetailModel.jobMarketDetailDescription WithFont:16 WithTextWidth:SCREEN_WIDTH-36];
+                _height = textSize.height;
+                return _height;
+            }
+        }
+            
+            break;
+            
         default:
             return 30;
 
@@ -190,7 +234,7 @@
             
             //跳转打电话界面
             
-            [CommonUtils callServiceWithTelephoneNum:@"123456"];
+            [CommonUtils callServiceWithTelephoneNum:jobMarketDetailModel.jobMarketDetailMobile];
             
         }
     }
@@ -205,14 +249,16 @@
         
         schoolShufflingView.delegate = self;
         
-        //仅用来测试布局用的
-        NSString *path1 = @"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg";
-        NSString *path2 = @"http://www.qqpk.cn/Article/UploadFiles/201111/2011112212072571.jpg";
-        NSArray *pathArray = [NSArray arrayWithObjects:path1,path2, nil];
-        
-        schoolShufflingView.imageArray = pathArray;
+//        //仅用来测试布局用的
+//        NSString *path1 = @"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg";
+//        NSString *path2 = @"http://www.qqpk.cn/Article/UploadFiles/201111/2011112212072571.jpg";
+//        NSArray *pathArray = [NSArray arrayWithObjects:path1,path2, nil];
         
         
+        if (_imageArray.count > 0) {
+            schoolShufflingView.imageArray = _imageArray;
+
+        }
         return schoolShufflingView;
 
     }else{
@@ -236,6 +282,12 @@
     
 }
 
+#pragma mark - 打电话活动
+- (void)callAction{
+    
+     [CommonUtils callServiceWithTelephoneNum:jobMarketDetailModel.jobMarketDetailMobile];
+}
+
 #pragma mark - 点击banner图
 -(void)selectedImageIndex:(NSInteger)index
 {
@@ -254,6 +306,8 @@
         if (model.responseCode == ResponseCodeSuccess) {
             NSDictionary * dataDic = model.responseCommonDic ;
             jobMarketDetailModel = [[JobMarketDetailModel alloc]initWithDic:dataDic];
+            
+            [_imageArray addObjectsFromArray:jobMarketDetailModel.jobMarketDetailImageArr];
             
             [self.tableView reloadData];
         }else{

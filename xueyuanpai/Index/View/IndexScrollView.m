@@ -70,7 +70,8 @@
         }else {
             urlStr = self.pics[i - 1];
         }
-        [self loadImage:urlStr imageView:imageView];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+        //[self loadImage:urlStr imageView:imageView];
         [self setVFrame:i imageView:imageView];
         [_imgScrollView addSubview:imageView];
     }
@@ -166,7 +167,7 @@
     if (url == nil) {
         return;
     }
-    [imgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"test"]];
+    //[imgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"test"]];
 //    dispatch_queue_t queue =dispatch_queue_create("loadImage",NULL);
 //    dispatch_async(queue, ^{
 //        if ([self getImageWithName:[self md5:urlStr]] != nil) {
