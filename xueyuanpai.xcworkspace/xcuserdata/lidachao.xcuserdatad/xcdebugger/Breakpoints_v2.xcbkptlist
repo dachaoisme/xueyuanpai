@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JobMarket/Controller/JobMarketViewController.m"
-            timestampString = "486719834.367853"
+            filePath = "xueyuanpai/JobMarket/Controller/JobMarketDetailViewController.m"
+            timestampString = "486721994.802525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
-            landmarkName = "-requestToGetTimeBankList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JobMarket/Controller/JobMarketViewController.m"
-            timestampString = "486719834.367853"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "-requestToGetTimeBankList"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "-requestToGetJobMarketDetail"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
