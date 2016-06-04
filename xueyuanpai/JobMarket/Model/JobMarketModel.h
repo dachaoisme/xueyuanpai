@@ -59,27 +59,27 @@
  
  */
 
-///序号
+///详情id
 @property(nonatomic,strong)NSString *jobMarketDetailId;
-///用户名
+///图片数组
 @property(nonatomic,strong)NSMutableArray *jobMarketDetailImageArr;
-///性别
-@property(nonatomic,strong)NSString *jobMarketDetailTitle;
-///价格
-@property(nonatomic,strong)NSString *jobMarketDetailOrginPrice;
-///头像
-@property(nonatomic,strong)NSString *jobMarketDetailSalePrice;
 ///标题
+@property(nonatomic,strong)NSString *jobMarketDetailTitle;
+///原价
+@property(nonatomic,strong)NSString *jobMarketDetailOrginPrice;
+///计算价格
+@property(nonatomic,strong)NSString *jobMarketDetailSalePrice;
+///创建时间
 @property(nonatomic,strong)NSString *jobMarketDetailCreateTime;
-///约会时间
+///宝贝描述
 @property(nonatomic,strong)NSString *jobMarketDetailDescription;
-///1上午 2中午 3下午
+///用户名
 @property(nonatomic,strong)NSString *jobMarketDetailUserName;
-///地点
+///头像
 @property(nonatomic,strong)NSString *jobMarketDetailIcon;
-///任务
+///电话
 @property(nonatomic,strong)NSString *jobMarketDetailMobile;
-///简介
+///大学
 @property(nonatomic,strong)NSString *jobMarketDetailCollege;
 -(id)initWithDic:(NSDictionary *)dic;
 @end

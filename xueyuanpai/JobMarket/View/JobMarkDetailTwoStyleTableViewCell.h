@@ -8,6 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
+#import "JobMarketModel.h"
+
 @interface JobMarkDetailTwoStyleTableViewCell : UITableViewCell
+
+///头像
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+
+///姓名
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+///性别
+@property (weak, nonatomic) IBOutlet UIImageView *sexImageView;
+
+///大学
+@property (weak, nonatomic) IBOutlet UILabel *schoolLabel;
+
+///电话号码
+@property (weak, nonatomic) IBOutlet UILabel *phoneNumberLabel;
+
+
+- (void)bindModel:(JobMarketDetailModel *)model;
+
 
 @end

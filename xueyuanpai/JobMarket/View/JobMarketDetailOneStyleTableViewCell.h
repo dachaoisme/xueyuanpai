@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import "JobMarketModel.h"
+
 @interface JobMarketDetailOneStyleTableViewCell : UITableViewCell
+
+- (void)bindModel:(JobMarketDetailModel *)model;
 
 @end

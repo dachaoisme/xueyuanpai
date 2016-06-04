@@ -8,11 +8,42 @@
 
 #import "JobMarkDetailTwoStyleTableViewCell.h"
 
+@interface JobMarkDetailTwoStyleTableViewCell ()
+
+@property (nonatomic,strong)NSString *phoneNuber;
+
+@end
+
 @implementation JobMarkDetailTwoStyleTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
 }
+
+
+- (void)bindModel:(JobMarketDetailModel *)model{
+    
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.jobMarketDetailIcon] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    
+    
+    self.nameLabel.text = model.jobMarketDetailUserName;
+    
+#warning 性别没返回
+    
+    self.schoolLabel.text = model.jobMarketDetailCollege;
+    
+    self.phoneNumberLabel.text = model.jobMarketDetailMobile;
+}
+
+#pragma mark -
+
+- (IBAction)callAction:(id)sender {
+    
+    //跳转打电话界面
+    
+    [CommonUtils callServiceWithTelephoneNum:_phoneNuber];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

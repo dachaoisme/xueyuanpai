@@ -66,21 +66,20 @@
     
     
     //创建用于显示弃用价格的label
-    UILabel *deprecatedPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, CGRectGetMinY(currentPriceLabel.frame), 100, 17)];
+    UILabel *deprecatedPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, CGRectGetMinY(currentPriceLabel.frame), 100, 17)];
     deprecatedPriceLabel.text = @"￥1900";
     deprecatedPriceLabel.font = [UIFont systemFontOfSize:12];
     [deprecatedPriceLabel setTextColor:[CommonUtils colorWithHex:@"c7c6cb"]];
     [self.contentView addSubview:deprecatedPriceLabel];
     self.deprecatedPriceLabel = deprecatedPriceLabel;
     
-    
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(deprecatedPriceLabel.frame)+2, CGRectGetMinY(deprecatedPriceLabel.frame)+8, 40, 1)];
-    lineView.backgroundColor = [CommonUtils colorWithHex:@"c7c6cb"];
-    [self.contentView addSubview:lineView];
+//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(deprecatedPriceLabel.frame)+2, CGRectGetMinY(deprecatedPriceLabel.frame)+8, 40, 1)];
+//    lineView.backgroundColor = [CommonUtils colorWithHex:@"c7c6cb"];
+//    [self.contentView addSubview:lineView];
     
     
     //创建一个发布时间
-    UILabel *releaseTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 80, CGRectGetMinY(currentPriceLabel.frame), 100, 17)];
+    UILabel *releaseTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 130, CGRectGetMinY(currentPriceLabel.frame), 140, 17)];
     releaseTimeLabel.text = @"5天前发布";
     releaseTimeLabel.font = [UIFont systemFontOfSize:12];
     [releaseTimeLabel setTextColor:[CommonUtils colorWithHex:@"c7c6cb"]];
@@ -88,6 +87,20 @@
     self.releaseTimeLabel = releaseTimeLabel;
 
     
+    
+}
+
+- (void)bindModel:(JobMarketDetailModel *)model{
+    
+    
+    self.nameLabel.text = model.jobMarketDetailTitle;
+    self.currentPriceLabel.text = [NSString stringWithFormat:@"￥%@",model.jobMarketDetailSalePrice];
+    self.deprecatedPriceLabel.attributedText = [CommonUtils lineStr:[NSString stringWithFormat:@"￥%@",model.jobMarketDetailOrginPrice]];
+    
+    self.releaseTimeLabel.text = model.jobMarketDetailCreateTime;
+    
+    
+
     
 }
 
