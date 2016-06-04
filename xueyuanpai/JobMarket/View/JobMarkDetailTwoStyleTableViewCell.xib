@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="test.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-ye-po5">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeHoder.png" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-ye-po5">
                         <rect key="frame" x="15" y="8" width="45" height="45"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小芳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIq-qC-8Vy">
@@ -58,7 +58,7 @@
     </objects>
     <resources>
         <image name="hire_btn_contact.png" width="36" height="36"/>
-        <image name="test.jpg" width="329" height="220"/>
+        <image name="placeHoder.png" width="93" height="93"/>
         <image name="timebank_filter_female_hl.png" width="22" height="22"/>
     </resources>
 </document>

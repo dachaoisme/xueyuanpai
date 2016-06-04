@@ -480,6 +480,9 @@
 		DDAB05A51D01D429007A6027 /* BusinessTeacherOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05A31D01D429007A6027 /* BusinessTeacherOneTableViewCell.xib */; };
 		DDAB05A91D01D957007A6027 /* BusinessTeacherTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05A71D01D957007A6027 /* BusinessTeacherTwoTableViewCell.m */; };
 		DDAB05AA1D01D957007A6027 /* BusinessTeacherTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05A81D01D957007A6027 /* BusinessTeacherTwoTableViewCell.xib */; };
+		DDAB05B01D026422007A6027 /* placeHoder.png in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05AF1D026421007A6027 /* placeHoder.png */; };
+		DDAB05B41D028051007A6027 /* TimeBankDetailThreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05B21D028051007A6027 /* TimeBankDetailThreeTableViewCell.m */; };
+		DDAB05B51D028051007A6027 /* TimeBankDetailThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05B31D028051007A6027 /* TimeBankDetailThreeTableViewCell.xib */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1146,6 +1149,10 @@
 		DDAB05A61D01D957007A6027 /* BusinessTeacherTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTeacherTwoTableViewCell.h; sourceTree = "<group>"; };
 		DDAB05A71D01D957007A6027 /* BusinessTeacherTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTeacherTwoTableViewCell.m; sourceTree = "<group>"; };
 		DDAB05A81D01D957007A6027 /* BusinessTeacherTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessTeacherTwoTableViewCell.xib; sourceTree = "<group>"; };
+		DDAB05AF1D026421007A6027 /* placeHoder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeHoder.png; sourceTree = "<group>"; };
+		DDAB05B11D028051007A6027 /* TimeBankDetailThreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankDetailThreeTableViewCell.h; sourceTree = "<group>"; };
+		DDAB05B21D028051007A6027 /* TimeBankDetailThreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankDetailThreeTableViewCell.m; sourceTree = "<group>"; };
+		DDAB05B31D028051007A6027 /* TimeBankDetailThreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeBankDetailThreeTableViewCell.xib; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -1741,6 +1748,9 @@
 				DDD0BDCC1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.h */,
 				DDD0BDCD1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.m */,
 				DDD0BDCE1CFAF28600073290 /* TimeBankDetailTwoStyleTableViewCell.xib */,
+				DDAB05B11D028051007A6027 /* TimeBankDetailThreeTableViewCell.h */,
+				DDAB05B21D028051007A6027 /* TimeBankDetailThreeTableViewCell.m */,
+				DDAB05B31D028051007A6027 /* TimeBankDetailThreeTableViewCell.xib */,
 				58487CDA1D00742000EE0E0D /* MyPickView.h */,
 				58487CDB1D00742000EE0E0D /* MyPickView.m */,
 				58487CDD1D00748900EE0E0D /* PickerCell.h */,
@@ -1783,6 +1793,7 @@
 		58F67BA11CD9863400D55BE0 /* xueyuanpai */ = {
 			isa = PBXGroup;
 			children = (
+				DDAB05AF1D026421007A6027 /* placeHoder.png */,
 				DD41278E1CF1860400227066 /* test.jpg */,
 				DD4127931CF18D8000227066 /* test1.jpg */,
 				58F67BA51CD9863400D55BE0 /* AppDelegate.h */,
@@ -2667,6 +2678,7 @@
 				58A944941CE277C600DAD398 /* login_logo@2x.png in Resources */,
 				58A944991CE277C600DAD398 /* login_phone@3x.png in Resources */,
 				5874A3E51CF1249400CE9FC9 /* tab_icon_home_hl@3x.png in Resources */,
+				DDAB05B01D026422007A6027 /* placeHoder.png in Resources */,
 				582998711CDB29E7004A05FB /* Default@2x.png in Resources */,
 				DD0B1EDF1CFEE51000C4BAB2 /* market_post_add_pic_press@2x.png in Resources */,
 				58070FD41CF6E80200F03F6C /* timebank_filter_time@2x.png in Resources */,
@@ -2837,6 +2849,7 @@
 				5874A3D21CF1249400CE9FC9 /* home_icon_recruit@2x.png in Resources */,
 				58070F9A1CF6E80200F03F6C /* gender_female@2x.png in Resources */,
 				58A9449F1CE277C600DAD398 /* signup_student@3x.png in Resources */,
+				DDAB05B51D028051007A6027 /* TimeBankDetailThreeTableViewCell.xib in Resources */,
 				DD41275D1CF0552F00227066 /* bigpie_order_add_press@2x.png in Resources */,
 				58070FA61CF6E80200F03F6C /* timebank_filter_all_hl@2x.png in Resources */,
 				DD0B1F051CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.xib in Resources */,
@@ -3118,6 +3131,7 @@
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
 				5874A4071CF24CF700CE9FC9 /* ForgetPasswordViewController.m in Sources */,
 				DDAB05A91D01D957007A6027 /* BusinessTeacherTwoTableViewCell.m in Sources */,
+				DDAB05B41D028051007A6027 /* TimeBankDetailThreeTableViewCell.m in Sources */,
 				DDD0BDAA1CFA735A00073290 /* PositionInforTableViewCell.m in Sources */,
 				58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */,
 				58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */,

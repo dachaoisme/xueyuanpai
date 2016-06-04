@@ -28,6 +28,10 @@
 ///聊天时间
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
+///添加评论按钮
+@property (weak, nonatomic) IBOutlet UIButton *addCommentButton;
+
+
 
 
 @property (nonatomic,assign)id<TimeBankDetailTwoStyleTableViewCellDelegate>delegate;

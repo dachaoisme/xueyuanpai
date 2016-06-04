@@ -130,9 +130,13 @@
  */
 @property(nonatomic,strong)NSString *timeBankCommentId;
 @property(nonatomic,strong)NSString *timeBankCommentUserId;
+///用户名
 @property(nonatomic,strong)NSString *timeBankCommentUserName;
+///用户头像
 @property(nonatomic,strong)NSString *timeBankCommentIcon;
+///评论内容
 @property(nonatomic,strong)NSString *timeBankCommentContent;
+///评论创建时间
 @property(nonatomic,strong)NSString *timeBankCommentCreateTime;
 
 -(id)initWithDic:(NSDictionary *)dic;

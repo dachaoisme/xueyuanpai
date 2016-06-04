@@ -23,6 +23,19 @@
 - (void)awakeFromNib {
     // Initialization code
     
+    
+    UIImage *image = [UIImage imageNamed:@"timebank_add_comment"];
+    
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    
+    [_addCommentButton setImage:image forState:UIControlStateNormal];
+    
+    
+    [_addCommentButton setTitle:@"添加评论" forState:UIControlStateNormal];
+    
+    [_addCommentButton setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+    
     //设置imageView的圆角
     self.headImageView.layer.cornerRadius = 20;
 }

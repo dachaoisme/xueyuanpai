@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TimeBankModel.h"
+
 @protocol TimeBankDetailOneStyleTableViewCellDelegate <NSObject>
 
 //获取按钮的状态
@@ -49,6 +51,9 @@
 ///人数
 @property (weak, nonatomic) IBOutlet UILabel *peopleNumber;
 
+///显示金额的label
+@property (weak, nonatomic) IBOutlet UILabel *moneyLabel;
+
 
 ///具体活动内容
 @property (weak, nonatomic) IBOutlet UILabel *activityContentLabel;
@@ -61,6 +66,9 @@
 
 
 @property (nonatomic,assign)id<TimeBankDetailOneStyleTableViewCellDelegate> delegate;
+
+
+- (void)bindModel:(TimeBankDetailModel *)model;
 
 
 @end
