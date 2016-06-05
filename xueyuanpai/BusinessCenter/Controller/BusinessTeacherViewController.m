@@ -10,9 +10,12 @@
 
 #import "BusinessTeacherTableViewCell.h"
 
-@interface BusinessTeacherViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface BusinessTeacherViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 
-
+{
+    NSString * keyword;
+    NSMutableArray * tutorStarModelListArr;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -32,17 +35,31 @@
     
     
     self.title = @"创业导师";
-    
+    tutorStarModelListArr = [NSMutableArray array];
     
     [self createLeftBackNavBtn];
     
     [self createTableView];
+    [self createSearchBar];
+    [self requestToGetBusinessTeachersList];
+}
+#pragma mark - 创建搜索按钮
+- (void)createSearchBar{
+    
+    float height = 36;
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, height)];
+    searchBar.barStyle = UIBarStyleDefault;
+    searchBar.placeholder = @"搜索";
+    searchBar.delegate = self;
+    searchBar.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self.view addSubview:searchBar];
+    
 }
 
 #pragma mark - 创建tableView
 - (void)createTableView{
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+    float height = 36;
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+height ,SCREEN_WIDTH, height) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -75,6 +92,44 @@
     
 }
 
+#pragma mark - 搜索
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    return YES;
+}
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+    // 修改UISearchBar右侧的取消按钮文字颜色及背景图片
+    for (UIView *view in [[searchBar.subviews lastObject] subviews]) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            UIButton *cancelBtn = (UIButton *)view;
+            [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+            [cancelBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+            [cancelBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateHighlighted];
+            cancelBtn.titleLabel.textColor = [UIColor redColor];
+        }
+    }
+}
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = NO;
+    return YES;
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    keyword = searchBar.text;
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
+    
+    [self requestToGetBusinessTeachersList];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -82,6 +137,34 @@
     // Dispose of any resources that can be recreated.
 }
 
+///创业导师
+-(void)requestToGetBusinessTeachersList
+{
+    int pageNo = 1;
+    int pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setValue:keyword forKey:@"keyword"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetTeachersListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                BusinessCenterTutorModel * model = [[BusinessCenterTutorModel alloc]initWithDic:smallDic];
+                [tutorStarModelListArr  addObject:model];
+            }
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 /*
 #pragma mark - Navigation
 
