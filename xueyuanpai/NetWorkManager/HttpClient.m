@@ -335,7 +335,7 @@
     }];
 }
 
-#pragma mark - 获取跳蚤市场筛选条件
+#pragma mark - 跳蚤市场
 - (void)getJobMarketConditionWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_JOB_MARKET_CONDITION_CATEGORY withParams:params withSuccess:^(HttpResponseCodeModel *model) {
@@ -374,7 +374,8 @@
     }];
 }
 
-#pragma mark - 创业新闻
+#pragma mark - 创业中心
+///创业新闻
 - (void)businessCenterGetListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_BUSINESS_CENTER_NEWS_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
@@ -387,4 +388,16 @@
     }];
 }
 
+///创业大赛
+- (void)businessCenterGetCompetitionListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_BUSINESS_CENTER_COMPETITION_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,pageModel,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 @end
