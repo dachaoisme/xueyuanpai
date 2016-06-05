@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BusinessCenterModel.h"
 @interface BusinessNewsViewController : BaseViewController
 
 

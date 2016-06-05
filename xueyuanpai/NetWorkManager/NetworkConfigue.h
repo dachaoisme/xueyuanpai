@@ -95,4 +95,28 @@
 #define METHOD_JOB_MARKET_ADD                          @"v1/fleamarket/create/?"
 ///跳蚤市场:跳蚤详情接口
 #define METHOD_JOB_MARKET_DETAIL                       @"v1/fleamarket/detail/?"
+
+///创业中心:创业新闻
+#define METHOD_BUSINESS_CENTER_NEWS_LIST                       @"v1/news/list?"
+///创业中心:创业讲堂 schoolroom
+#define METHOD_BUSINESS_CENTER_SCHOOLROOM_LIST                 @"v1/forum/list?"
+///创业中心:创业讲堂详情
+#define METHOD_BUSINESS_CENTER_SCHOOLROOM_Detail               @"v1/forum/detail?"
+///创业中心:创业讲堂报名
+#define METHOD_BUSINESS_CENTER_SCHOOLROOM_APPLY                @"v1/forum/apply?"
+///创业中心:创业大赛列表
+#define METHOD_BUSINESS_CENTER_COMPETITION_LIST                @"v1/competition/list?"
+///创业中心:创业导师列表
+#define METHOD_BUSINESS_CENTER_TUTOR_LIST                      @"v1/tutor/list?"
+///创业中心:创业导师详情
+#define METHOD_BUSINESS_CENTER_TUTOR_DETAIL                    @"v1/tutor/detail?"
+///创业中心:创业项目分类
+#define METHOD_BUSINESS_CENTER_PROGECT_CATEGORY_LIST           @"v1/project/category?"
+///创业中心:创业项目列表
+#define METHOD_BUSINESS_CENTER_PROGECT_LIST                    @"v1/project/list?"
+///创业中心:创业项目详情
+#define METHOD_BUSINESS_CENTER_PROGECT_DETAIL                  @"v1/project/detail?"
+///创业中心:添加创业项目
+#define METHOD_BUSINESS_CENTER_PROGECT_CREATE                  @"v1/project/create?"
+
 #endif /* NetworkConfigue_h */

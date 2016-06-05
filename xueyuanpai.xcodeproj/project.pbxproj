@@ -207,6 +207,7 @@
 		58C27AAD1CE20ABC0036D105 /* IndexMallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AAC1CE20ABC0036D105 /* IndexMallModel.m */; };
 		58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AAF1CE20E6B0036D105 /* IndexColumnCollectionViewCell.m */; };
 		58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */; };
+		58C688271D03A91600E8B4AA /* BusinessCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C688261D03A91600E8B4AA /* BusinessCenterModel.m */; };
 		58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */; };
 		58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D396501D025EFC0066EA05 /* JobMarketModel.m */; };
 		58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */; };
@@ -798,6 +799,8 @@
 		58C27AAF1CE20E6B0036D105 /* IndexColumnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexColumnCollectionViewCell.m; sourceTree = "<group>"; };
 		58C27AB11CE20E7C0036D105 /* IndexMallCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexMallCollectionViewCell.h; sourceTree = "<group>"; };
 		58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexMallCollectionViewCell.m; sourceTree = "<group>"; };
+		58C688251D03A91600E8B4AA /* BusinessCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterModel.h; sourceTree = "<group>"; };
+		58C688261D03A91600E8B4AA /* BusinessCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterModel.m; sourceTree = "<group>"; };
 		58CF089A1CE1DE45008334E8 /* IndexBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexBannerModel.h; sourceTree = "<group>"; };
 		58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexBannerModel.m; sourceTree = "<group>"; };
 		58D3964F1D025EFC0066EA05 /* JobMarketModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarketModel.h; sourceTree = "<group>"; };
@@ -2293,6 +2296,8 @@
 		DD13CDF71D001B64000A69FE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58C688251D03A91600E8B4AA /* BusinessCenterModel.h */,
+				58C688261D03A91600E8B4AA /* BusinessCenterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3189,6 +3194,7 @@
 				587FF9DD1CF2F8F300AD2131 /* IQTitleBarButtonItem.m in Sources */,
 				58F67BFF1CD990A200D55BE0 /* HttpModel.m in Sources */,
 				58F67C351CD9CF9500D55BE0 /* UIScrollView+MJRefresh.m in Sources */,
+				58C688271D03A91600E8B4AA /* BusinessCenterModel.m in Sources */,
 				DDD0BDA61CFA53B100073290 /* ComponeyInforViewController.m in Sources */,
 				DDE8F62E1CFD8EC000680214 /* JobMarketViewController.m in Sources */,
 				58A944C31CE3E0B000DAD398 /* AddStudentInfoViewController.m in Sources */,
