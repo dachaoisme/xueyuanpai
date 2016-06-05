@@ -89,7 +89,7 @@
 #pragma mark - tableview代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return businessCenterProgectModelListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -100,6 +100,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    
+    BusinessCenterProgectModel * model = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterProgectImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    
+    cell.titleLabel.text = model.businessCenterProgectTitle;
+    
+    cell.contentLabel.text = model.businessCenterProgectBrief;
+    
+    
     
     return cell;
 }
@@ -135,6 +144,8 @@
             }
             ///获取排列顺序的接口
             [self requestToGetConditionsSort];
+            
+            
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }

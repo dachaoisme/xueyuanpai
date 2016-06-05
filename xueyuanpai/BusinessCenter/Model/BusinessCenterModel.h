@@ -254,9 +254,9 @@
 @property(nonatomic,strong)NSString *businessCenterProgectId;
 ///标题
 @property(nonatomic,strong)NSString *businessCenterProgectTitle;
-///摘要
-@property(nonatomic,strong)NSString *businessCenterProgectImage;
 ///缩略图
+@property(nonatomic,strong)NSString *businessCenterProgectImage;
+///摘要
 @property(nonatomic,strong)NSString *businessCenterProgectBrief;
 ///作者
 @property(nonatomic,strong)NSString *businessCenterProgectCreateTime;

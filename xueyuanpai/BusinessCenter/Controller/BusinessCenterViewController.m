@@ -286,6 +286,12 @@
         BusinessTeacherDetailViewController *teacherVC = [[BusinessTeacherDetailViewController alloc] init];
         
         [self.navigationController pushViewController:teacherVC animated:YES];
+    }else if (indexPath.section == 1 && indexPath.row == 0) {
+        BusinessProjectViewController *projectVC = [[BusinessProjectViewController alloc] init];
+        
+        [self.navigationController pushViewController:projectVC animated:YES];
+
+        
     }else if (indexPath.section == 1 && indexPath.row == 1) {
         
         //跳转项目详情
@@ -293,6 +299,8 @@
         
         [self.navigationController pushViewController:projectVC animated:YES];
     }
+    
+
 }
 
 #pragma mark - 请求数据
