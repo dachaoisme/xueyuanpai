@@ -9,28 +9,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/BusinessCenter/Controller/BusinessCenterViewController.m"
-            timestampString = "486829409.214048"
+            filePath = "xueyuanpai/BusinessCenter/Controller/BusinessTeacherViewController.m"
+            timestampString = "486856967.992739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
-            landmarkName = "-requestToGetBusinessProgectList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/BusinessCenter/Controller/BusinessCenterViewController.m"
-            timestampString = "486829413.09205"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "-requestToGetBusinessTeachersList"
             landmarkType = "5">
          </BreakpointContent>
