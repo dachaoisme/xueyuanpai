@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BusinessCenterModel.h"
 @interface BaoMingViewController : BaseViewController
 
+@property(nonatomic,strong)BusinessCenterSchoolRoomDetailModel *schoolRoomDetailModel;
 @end

@@ -56,7 +56,7 @@
  "create_at":"2016-05-08 08:32:19" //创建时间
  }
  */
-///用户序号
+///序号
 @property(nonatomic,strong)NSString *businessCenterSchoolRoomId;
 ///标题
 @property(nonatomic,strong)NSString *businessCenterSchoolRoomTitle;

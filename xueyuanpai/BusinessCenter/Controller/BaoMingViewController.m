@@ -114,6 +114,31 @@
     
 }
 
+#pragma mark - 请求创业讲堂详情数据
+-(void)requestToGetBusinessClassRoomDetail
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.schoolRoomDetailModel.businessCenterSchoolRoomDetailId ?self.schoolRoomDetailModel.businessCenterSchoolRoomDetailId:@"" forKey:@"forum_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:@"" forKey:@"name"];
+    [dic setValue:@"" forKey:@"college"];
+    [dic setValue:@"" forKey:@"major"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterBaoMingWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            ///报名成功
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

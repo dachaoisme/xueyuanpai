@@ -15,6 +15,11 @@
 
 @interface BusinessClassDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+{
+    ///创业讲堂详情的model
+    BusinessCenterSchoolRoomDetailModel *schoolRoomDetailModel;
+}
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation BusinessClassDetailViewController
@@ -33,6 +38,7 @@
     [self createBottomView];
 
 
+    [self requestToGetBusinessClassRoomDetail];
 }
 
 #pragma mark - 创建tableView
@@ -145,6 +151,30 @@
     }
     
 }
+#pragma mark - 请求创业讲堂详情数据
+-(void)requestToGetBusinessClassRoomDetail
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.model.businessCenterSchoolRoomId?self.model.businessCenterSchoolRoomId:@"" forKey:@"id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetSchoolRoomDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * dataDic = model.responseCommonDic ;
+            schoolRoomDetailModel = [[BusinessCenterSchoolRoomDetailModel alloc]initWithDic:dataDic];
+            
+            [self.tableView reloadData];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {
