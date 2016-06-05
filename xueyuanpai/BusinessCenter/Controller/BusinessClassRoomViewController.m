@@ -54,7 +54,6 @@
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
-    
     //注册cell
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
