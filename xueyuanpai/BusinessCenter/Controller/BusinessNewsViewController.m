@@ -88,9 +88,8 @@
     
     //创业新闻
     BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
+
     detailVC.title = @"新闻详情";
-    
-    
      BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
     
     detailVC.model = model;

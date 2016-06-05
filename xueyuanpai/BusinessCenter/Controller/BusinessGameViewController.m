@@ -13,7 +13,12 @@
 
 
 @interface BusinessGameViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    NSInteger pageNo ;
+    NSInteger pageSize ;
+    NSMutableArray *businessCenterCompetitionModelListArr;
+}
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation BusinessGameViewController
@@ -27,7 +32,7 @@
     // Do any additional setup after loading the view.
     
     self.title = @"创业大赛";
-    
+    businessCenterCompetitionModelListArr = [NSMutableArray array];
     [self createLeftBackNavBtn];
     
     
@@ -75,7 +80,32 @@
     detailVC.title = @"大赛详情";
     [self.navigationController pushViewController:detailVC animated:YES];
 }
-
+-(void)requestToGetBusinessCompetitionList
+{
+    pageNo = 1;
+    pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetCompetitionListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                BusinessCenterCompetitionModel * model = [[BusinessCenterCompetitionModel alloc]initWithDic:smallDic];
+                [businessCenterCompetitionModelListArr  addObject:model];
+            }
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

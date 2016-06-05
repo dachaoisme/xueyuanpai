@@ -16,4 +16,5 @@
 ///创业新闻页面的model
 @property (nonatomic,strong)BusinessCenterNewsModel * model;
 
+
 @end

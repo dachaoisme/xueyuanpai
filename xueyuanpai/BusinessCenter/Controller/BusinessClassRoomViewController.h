@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BusinessCenterModel.h"
 @interface BusinessClassRoomViewController : BaseViewController
 
 @end

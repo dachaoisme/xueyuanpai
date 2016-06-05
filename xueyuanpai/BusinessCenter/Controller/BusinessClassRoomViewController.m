@@ -13,6 +13,13 @@
 
 @interface BusinessClassRoomViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+{
+    NSInteger pageNo ;
+    NSInteger pageSize ;
+    NSMutableArray *businessCenterClassRoomModelListArr;
+}
+@property(nonatomic,strong)UITableView *tableView;
+
 @end
 
 @implementation BusinessClassRoomViewController
@@ -22,7 +29,7 @@
     // Do any additional setup after loading the view.
     
     self.title = @"创业讲堂";
-
+    businessCenterClassRoomModelListArr = [NSMutableArray array];
 
     [self createLeftBackNavBtn];
 
@@ -74,7 +81,32 @@
     
 }
 
-
+-(void)requestToGetBusinessCompetitionList
+{
+    pageNo = 1;
+    pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetSchoolRoomListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                BusinessCenterSchoolRoomModel * model = [[BusinessCenterSchoolRoomModel alloc]initWithDic:smallDic];
+                [businessCenterClassRoomModelListArr  addObject:model];
+            }
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
