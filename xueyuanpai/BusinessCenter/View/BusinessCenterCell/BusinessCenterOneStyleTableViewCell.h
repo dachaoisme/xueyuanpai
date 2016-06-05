@@ -14,5 +14,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 
+///显示全部按钮
+@property (weak, nonatomic) IBOutlet UIButton *searchAllButton;
+
+
 
 @end

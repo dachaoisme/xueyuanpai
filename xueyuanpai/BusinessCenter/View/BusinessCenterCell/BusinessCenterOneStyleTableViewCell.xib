@@ -40,6 +40,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="searchAllButton" destination="bfE-1I-sPf" id="OUE-p0-GUe"/>
                 <outlet property="titleLabel" destination="dnT-pm-GBc" id="meg-Aj-p6v"/>
             </connections>
             <point key="canvasLocation" x="209" y="233.5"/>
