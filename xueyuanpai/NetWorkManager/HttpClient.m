@@ -463,5 +463,14 @@
         failBlock(error);
     }];
 }
+///导师详情
+- (void)businessCenterGetTeachersDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_BUSINESS_CENTER_TUTOR_DETAIL withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
 @end

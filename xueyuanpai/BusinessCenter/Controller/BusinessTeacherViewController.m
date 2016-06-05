@@ -91,7 +91,13 @@
     return cell;
     
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row];
+    BusinessTeacherDetailViewController * teacherDetailVC = [[BusinessTeacherDetailViewController alloc]init];
+    teacherDetailVC.tutorModel = model;
+    [self.navigationController pushViewController:teacherDetailVC animated:YES];
+}
 #pragma mark - 搜索
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
@@ -136,8 +142,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-///创业导师
+#pragma mark - 请求数据 创业导师
 -(void)requestToGetBusinessTeachersList
 {
     int pageNo = 1;

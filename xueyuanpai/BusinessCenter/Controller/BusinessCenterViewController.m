@@ -282,9 +282,9 @@
     }else if (indexPath.section == 0 && indexPath.row == 1) {
         
         //跳转导师详情
-        
+        BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row-1];
         BusinessTeacherDetailViewController *teacherVC = [[BusinessTeacherDetailViewController alloc] init];
-        
+        teacherVC.tutorModel = model;
         [self.navigationController pushViewController:teacherVC animated:YES];
     }else if (indexPath.section == 1 && indexPath.row == 0) {
         BusinessProjectViewController *projectVC = [[BusinessProjectViewController alloc] init];

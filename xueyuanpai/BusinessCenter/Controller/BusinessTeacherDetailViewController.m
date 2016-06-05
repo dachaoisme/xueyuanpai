@@ -12,7 +12,10 @@
 #import "BusinessTeacherTwoTableViewCell.h"
 
 @interface BusinessTeacherDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    BusinessCenterTutorDetailModel *tutorDetailModel;
+}
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation BusinessTeacherDetailViewController
@@ -32,7 +35,7 @@
     
     [self createTableView];
     
-    
+    [self requestToGetBusinessTutorDetail];
 }
 
 #pragma mark - 设置分享按钮
@@ -68,7 +71,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
-    
+    self.tableView = tableView;
     //注册cell
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
@@ -217,7 +220,29 @@
     
 }
 
-
+#pragma mark - 请求创业讲堂详情数据
+-(void)requestToGetBusinessTutorDetail
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.tutorModel.businessCenterTutorId?self.tutorModel.businessCenterTutorId:@"" forKey:@"id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetTeachersDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * dataDic = model.responseCommonDic ;
+            tutorDetailModel = [[BusinessCenterTutorDetailModel alloc]initWithDic:dataDic];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

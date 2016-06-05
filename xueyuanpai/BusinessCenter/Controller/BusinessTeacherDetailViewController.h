@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BusinessCenterModel.h"
 @interface BusinessTeacherDetailViewController : BaseViewController
 
+@property(nonatomic,strong)BusinessCenterTutorModel *tutorModel;
 @end
