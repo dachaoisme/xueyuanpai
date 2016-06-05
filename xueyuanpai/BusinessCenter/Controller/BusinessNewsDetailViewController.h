@@ -14,7 +14,11 @@
 @interface BusinessNewsDetailViewController : BaseViewController
 
 ///创业新闻页面的model
-@property (nonatomic,strong)BusinessCenterNewsModel * model;
+@property (nonatomic,strong)BusinessCenterNewsModel * newsModel;
+
+
+///创业大赛的model
+@property (nonatomic,strong)BusinessCenterCompetitionModel * competationModel;
 
 
 @end

@@ -92,7 +92,7 @@
     detailVC.title = @"新闻详情";
      BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
     
-    detailVC.model = model;
+    detailVC.newsModel = model;
     
     
     [self.navigationController pushViewController:detailVC animated:YES];
