@@ -14,7 +14,12 @@
 #import "BusinessProjectViewController.h"
 
 @interface BusinessNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    NSInteger pageNo ;
+    NSInteger pageSize ;
+    NSMutableArray * businessCenterModelListArr;
+}
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation BusinessNewsViewController
@@ -26,34 +31,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    businessCenterModelListArr  = [NSMutableArray array];
     
     [self createLeftBackNavBtn];
     
     
     [self createTableView];
     
-    
+    [self requestToGetBusinessNewsList];
     
 }
 
 #pragma mark - 创建展示视图
 - (void)createTableView{
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
+    _tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
     
     //注册cell
     
-    [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return businessCenterModelListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -124,6 +129,34 @@
     }
     
 }
+
+-(void)requestToGetBusinessNewsList
+{
+    pageNo = 1;
+    pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                BusinessCenterNewsModel * model = [[BusinessCenterNewsModel alloc]initWithDic:smallDic];
+                [businessCenterModelListArr  addObject:model];
+            }
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

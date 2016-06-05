@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BusinessCenterModel.h"
 @interface BusinessNewsViewController : BaseViewController
 
 ///点击具体跳转哪个栏目
