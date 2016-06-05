@@ -22,6 +22,8 @@
 #import "BusinessTeacherDetailViewController.h"
 #import "BusinessProjectDetailViewController.h"
 
+#import "BusinessPublishProjectViewController.h"
+
 
 
 @interface BusinessCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -60,6 +62,18 @@
     [self createTableView];
 
 }
+
+#pragma mark - 导航栏右侧按钮的响应方法
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+   
+    BusinessPublishProjectViewController *publishProjectVC = [[BusinessPublishProjectViewController alloc] init];
+    
+    [self.navigationController pushViewController:publishProjectVC animated:YES];
+}
+
+
+
 
 #pragma mark - 创建tableView
 - (void)createTableView{

@@ -484,6 +484,14 @@
 		DDAB05D11D03B40F007A6027 /* BusinessProjectDetailThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05CF1D03B40F007A6027 /* BusinessProjectDetailThreeTableViewCell.xib */; };
 		DDAB05D51D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05D31D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.m */; };
 		DDAB05D61D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05D41D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.xib */; };
+		DDAB05D91D042EE4007A6027 /* BusinessPublishProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05D81D042EE4007A6027 /* BusinessPublishProjectViewController.m */; };
+		DDAB05DE1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05DC1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.m */; };
+		DDAB05DF1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05DD1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.xib */; };
+		DDAB05E31D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05E11D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m */; };
+		DDAB05E41D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05E21D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib */; };
+		DDAB05E81D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05E61D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m */; };
+		DDAB05E91D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05E71D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib */; };
+		DDAB05F01D04576F007A6027 /* JKPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05EF1D04576F007A6027 /* JKPlaceholderTextView.m */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1164,6 +1172,19 @@
 		DDAB05D21D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessProjectDetailFourTableViewCell.h; sourceTree = "<group>"; };
 		DDAB05D31D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessProjectDetailFourTableViewCell.m; sourceTree = "<group>"; };
 		DDAB05D41D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessProjectDetailFourTableViewCell.xib; sourceTree = "<group>"; };
+		DDAB05D71D042EE4007A6027 /* BusinessPublishProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectViewController.h; sourceTree = "<group>"; };
+		DDAB05D81D042EE4007A6027 /* BusinessPublishProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPublishProjectViewController.m; sourceTree = "<group>"; };
+		DDAB05DB1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectOneTableViewCell.h; sourceTree = "<group>"; };
+		DDAB05DC1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPublishProjectOneTableViewCell.m; sourceTree = "<group>"; };
+		DDAB05DD1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessPublishProjectOneTableViewCell.xib; sourceTree = "<group>"; };
+		DDAB05E01D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectTwoTableViewCell.h; sourceTree = "<group>"; };
+		DDAB05E11D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPublishProjectTwoTableViewCell.m; sourceTree = "<group>"; };
+		DDAB05E21D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessPublishProjectTwoTableViewCell.xib; sourceTree = "<group>"; };
+		DDAB05E51D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectThreeTableViewCell.h; sourceTree = "<group>"; };
+		DDAB05E61D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPublishProjectThreeTableViewCell.m; sourceTree = "<group>"; };
+		DDAB05E71D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessPublishProjectThreeTableViewCell.xib; sourceTree = "<group>"; };
+		DDAB05EE1D04576F007A6027 /* JKPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPlaceholderTextView.h; sourceTree = "<group>"; };
+		DDAB05EF1D04576F007A6027 /* JKPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPlaceholderTextView.m; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -1886,6 +1907,8 @@
 			children = (
 				DDAB058F1D01BF6A007A6027 /* BusinessCenterViewController.h */,
 				DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */,
+				DDAB05D71D042EE4007A6027 /* BusinessPublishProjectViewController.h */,
+				DDAB05D81D042EE4007A6027 /* BusinessPublishProjectViewController.m */,
 				DDAB059D1D01D252007A6027 /* BusinessTeacherDetailViewController.h */,
 				DDAB059E1D01D252007A6027 /* BusinessTeacherDetailViewController.m */,
 				DDAB05BF1D03A747007A6027 /* BusinessProjectDetailViewController.h */,
@@ -2050,6 +2073,7 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				DDAB05ED1D04576F007A6027 /* PlaceholderTextView */,
 				58898E421CFA89C90007D9B3 /* LTPickerView */,
 				58F996411CF5871500D67C63 /* LDCPullDownMenu */,
 				587FF9AC1CF2F8F300AD2131 /* IQKeyboardManager */,
@@ -2305,6 +2329,7 @@
 		DD13CDF81D001B77000A69FE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DDAB05DA1D043061007A6027 /* BusinessPublishProject */,
 				DDAB05C21D03A99B007A6027 /* BusinessProjectDetailCell */,
 				DDAB05A01D01D3C0007A6027 /* BusinessTeacherCell */,
 				DDAB05921D01C43D007A6027 /* BusinessCenterCell */,
@@ -2430,6 +2455,31 @@
 				DDAB05D41D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.xib */,
 			);
 			path = BusinessProjectDetailCell;
+			sourceTree = "<group>";
+		};
+		DDAB05DA1D043061007A6027 /* BusinessPublishProject */ = {
+			isa = PBXGroup;
+			children = (
+				DDAB05DB1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.h */,
+				DDAB05DC1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.m */,
+				DDAB05DD1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.xib */,
+				DDAB05E01D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.h */,
+				DDAB05E11D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m */,
+				DDAB05E21D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib */,
+				DDAB05E51D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.h */,
+				DDAB05E61D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m */,
+				DDAB05E71D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib */,
+			);
+			path = BusinessPublishProject;
+			sourceTree = "<group>";
+		};
+		DDAB05ED1D04576F007A6027 /* PlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				DDAB05EE1D04576F007A6027 /* JKPlaceholderTextView.h */,
+				DDAB05EF1D04576F007A6027 /* JKPlaceholderTextView.m */,
+			);
+			path = PlaceholderTextView;
 			sourceTree = "<group>";
 		};
 		DDD0BD8B1CF985CB00073290 /* CompanyInforCell */ = {
@@ -2767,6 +2817,7 @@
 				58070FBA1CF6E80200F03F6C /* timebank_filter_hot_hl@2x.png in Resources */,
 				58070FCA1CF6E80200F03F6C /* timebank_filter_shop_hl@2x.png in Resources */,
 				5874A3D51CF1249400CE9FC9 /* home_icon_timebank@3x.png in Resources */,
+				DDAB05DF1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.xib in Resources */,
 				DDAB05C71D03B154007A6027 /* BusinessProjectDetailOneTableViewCell.xib in Resources */,
 				58070FB41CF6E80200F03F6C /* timebank_filter_female@2x.png in Resources */,
 				5874A3DB1CF1249400CE9FC9 /* nav_icon_msg@3x.png in Resources */,
@@ -2903,6 +2954,7 @@
 				DD4127621CF0552F00227066 /* bigpie_order_minus_disable@3x.png in Resources */,
 				DD41275F1CF0552F00227066 /* bigpie_order_minus@2x.png in Resources */,
 				DD0B1EF31CFEE51000C4BAB2 /* timebank_filter_other_hl@2x.png in Resources */,
+				DDAB05E91D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib in Resources */,
 				5874A3D71CF1249400CE9FC9 /* home_popup_gift@3x.png in Resources */,
 				58070FD11CF6E80200F03F6C /* timebank_filter_sport@3x.png in Resources */,
 				5874A3D11CF1249400CE9FC9 /* home_icon_market@3x.png in Resources */,
@@ -2935,6 +2987,7 @@
 				58070F981CF6E80200F03F6C /* filter_arrow@2x.png in Resources */,
 				DD0B1EC71CFEE51000C4BAB2 /* market_filter_appliance@2x.png in Resources */,
 				DD13CDC41D00186D000A69FE /* startup_filter_culture_hl@3x.png in Resources */,
+				DDAB05E41D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib in Resources */,
 				DD0B1EC21CFEE51000C4BAB2 /* hire_btn_contact@3x.png in Resources */,
 				DD0B1EE61CFEE51000C4BAB2 /* pic_check_full@3x.png in Resources */,
 				DD13CDC21D00186D000A69FE /* startup_filter_culture@3x.png in Resources */,
@@ -3122,6 +3175,7 @@
 				58F67C301CD9CF9500D55BE0 /* MJRefreshGifHeader.m in Sources */,
 				587FF9DF1CF2F8F300AD2131 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				583D65D41CDA824200830BBE /* BaseNavView.m in Sources */,
+				DDAB05E31D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m in Sources */,
 				5849FDC41CE47D6E0039AFC2 /* UserAccountManager.m in Sources */,
 				583D65C81CDA793A00830BBE /* BaseTabBarViewController.m in Sources */,
 				587FF9DC1CF2F8F300AD2131 /* IQPreviousNextView.m in Sources */,
@@ -3178,6 +3232,7 @@
 				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
 				DDAB05911D01BF6A007A6027 /* BusinessCenterViewController.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
+				DDAB05D91D042EE4007A6027 /* BusinessPublishProjectViewController.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
 				58487CDF1D00748900EE0E0D /* PickerCell.m in Sources */,
 				DDD0BDC01CFA929800073290 /* PositionSearchViewController.m in Sources */,
@@ -3237,10 +3292,12 @@
 				58898E4B1CFAC5E40007D9B3 /* RequirementThreeTableViewCell.m in Sources */,
 				5829987A1CDB4486004A05FB /* MineViewController.m in Sources */,
 				DD0B1E411CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.m in Sources */,
+				DDAB05DE1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.m in Sources */,
 				58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */,
 				DD13CE0A1D00251D000A69FE /* BusinessCenterTableViewCell.m in Sources */,
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
 				DDAB05961D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.m in Sources */,
+				DDAB05E81D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m in Sources */,
 				DDD0BE6E1CFC3C8600073290 /* JobMarketCollectionViewCell.m in Sources */,
 				DD41281E1CF3427400227066 /* ActivityDetailViewController.m in Sources */,
 				5874A3F21CF1405100CE9FC9 /* SelectedImageView.m in Sources */,
@@ -3251,6 +3308,7 @@
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
 				DD0B1E6C1CFEDD1800C4BAB2 /* PhotoSelectorCell.m in Sources */,
 				58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */,
+				DDAB05F01D04576F007A6027 /* JKPlaceholderTextView.m in Sources */,
 				583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */,
 				DD0B1E731CFEDDBB00C4BAB2 /* PublishInformationViewController.m in Sources */,
 				587FF9D71CF2F8F300AD2131 /* IQUIWindow+Hierarchy.m in Sources */,
