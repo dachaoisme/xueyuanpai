@@ -200,7 +200,7 @@
      */
     pageNo = 1;
     pageSize = 10;
-    
+    [businessCenterProgectModelListArr removeAllObjects];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
@@ -216,10 +216,11 @@
                 BusinessCenterProgectModel * model = [[BusinessCenterProgectModel alloc]initWithDic:smallDic];
                 [businessCenterProgectModelListArr  addObject:model];
             }
-            [self.tableView reloadData];
+           
         }else{
             
         }
+         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
