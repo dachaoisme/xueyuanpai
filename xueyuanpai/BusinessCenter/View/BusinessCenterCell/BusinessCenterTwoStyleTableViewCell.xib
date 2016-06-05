@@ -39,6 +39,12 @@
                     </view>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="backGroundView" destination="Czd-3q-8o4" id="mAL-Wr-b6x"/>
+                <outlet property="headImageView" destination="h8L-5w-aN7" id="HDv-Ol-g9g"/>
+                <outlet property="introduceLabel" destination="wxc-r2-cl6" id="llW-aY-7rk"/>
+                <outlet property="nameLabel" destination="Y9H-xm-r6p" id="XlI-sN-IYG"/>
+            </connections>
             <point key="canvasLocation" x="93" y="206.5"/>
         </tableViewCell>
     </objects>

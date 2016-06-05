@@ -205,7 +205,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 2;
+    if (section == 0) {
+        return tutorStarModelListArr.count + 1;
+    }else  {
+        return businessProjectModelListArr.count + 1;
+    }
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -226,6 +231,16 @@
             BusinessCenterTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row - 1];
+            
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterTutorImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+            
+            
+            cell.nameLabel.text = model.businessCenterTutorUserName;
+            
+            cell.introduceLabel.text = model.businessCenterTutorJob;
 
             
             return cell;
@@ -246,7 +261,15 @@
             
             BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            BusinessCenterProgectModel * model = [businessProjectModelListArr objectAtIndex:indexPath.row - 1];
+            
+            [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterProgectImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
 
+            cell.titleLabel.text = model.businessCenterProgectTitle;
+            cell.contentLabel.text = model.businessCenterProgectBrief;
+            
             
             return cell;
         }
@@ -260,7 +283,13 @@
         return 45;
     }else{
         
-        return 200;
+        if (indexPath.section == 0) {
+            return 200;
+        }else{
+            
+            return 115;
+        }
+        
     }
 }
 
