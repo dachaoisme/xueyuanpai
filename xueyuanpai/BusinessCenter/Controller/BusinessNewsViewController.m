@@ -79,8 +79,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //创业新闻
+    BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
     BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-    
+    detailVC.newsModel = model;
     detailVC.title = @"新闻详情";
     [self.navigationController pushViewController:detailVC animated:YES];
 
