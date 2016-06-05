@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     
     self.title = @"创业大赛";
-    
+    businessCenterCompetitionModelListArr = [NSMutableArray array];
     [self createLeftBackNavBtn];
     
     
