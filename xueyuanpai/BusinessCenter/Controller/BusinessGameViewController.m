@@ -39,6 +39,9 @@
     [self createTableView];
     
     
+    [self requestToGetBusinessCompetitionList];
+    
+    
     
 }
 
@@ -58,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return businessCenterCompetitionModelListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -69,6 +72,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    BusinessCenterCompetitionModel * model = [businessCenterCompetitionModelListArr objectAtIndex:indexPath.row];
+    
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterCompetitionImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    
+    
+    cell.titleLabel.text = model.businessCenterCompetitionTitle;
+    
+    
+    cell.contentLabel.text = model.businessCenterCompetitionBrief;
     
     return cell;
 }
@@ -78,6 +90,11 @@
     //创业大赛
     BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
     detailVC.title = @"大赛详情";
+    
+     BusinessCenterCompetitionModel * model = [businessCenterCompetitionModelListArr objectAtIndex:indexPath.row];
+    
+    detailVC.competationModel = model;
+    
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 -(void)requestToGetBusinessCompetitionList

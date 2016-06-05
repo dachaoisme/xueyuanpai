@@ -99,11 +99,11 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             
-            cell.titleLabel.text = self.model.businessCenterNewsTitle;
+            cell.titleLabel.text = _newsModel.businessCenterNewsTitle;
             
-            cell.authorLabel.text = [NSString stringWithFormat:@"作者 %@",self.model.businessCenterNewsAuthor];
+            cell.authorLabel.text = [NSString stringWithFormat:@"作者 %@",_newsModel.businessCenterNewsAuthor];
             
-            cell.timeLabel.text = self.model.businessCenterNewsCreateTime;
+            cell.timeLabel.text = _newsModel.businessCenterNewsCreateTime;
             
             
             
@@ -115,9 +115,9 @@
             
             
             
-            cell.contentLabel.text = self.model.businessCenterNewsContent;
+            cell.contentLabel.text = _newsModel.businessCenterNewsContent;
             
-            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_model.businessCenterNewsImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_newsModel.businessCenterNewsImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
             
             
             
@@ -135,6 +135,15 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             
+            cell.titleLabel.text = _competationModel.businessCenterCompetitionTitle;
+            
+            cell.authorLabel.text = [NSString stringWithFormat:@"作者 %@",_competationModel.businessCenterCompetitionAuthor];
+            
+            cell.timeLabel.text = _competationModel.businessCenterCompetitionCreateTime;
+            
+
+            
+            
             return cell;
             
         }else{
@@ -142,6 +151,12 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             
+            
+            cell.contentLabel.text = _competationModel.businessCenterCompetitionContent;
+            
+            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_competationModel.businessCenterCompetitionImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+            
+
             
             return cell;
             
