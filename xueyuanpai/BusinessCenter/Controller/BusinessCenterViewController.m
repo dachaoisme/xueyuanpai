@@ -20,6 +20,7 @@
 #import "BusinessProjectViewController.h"
 
 #import "BusinessTeacherDetailViewController.h"
+#import "BusinessProjectDetailViewController.h"
 
 
 
@@ -255,6 +256,12 @@
         BusinessTeacherDetailViewController *teacherVC = [[BusinessTeacherDetailViewController alloc] init];
         
         [self.navigationController pushViewController:teacherVC animated:YES];
+    }else if (indexPath.section == 1 && indexPath.row == 1) {
+        
+        //跳转项目详情
+        BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
+        
+        [self.navigationController pushViewController:projectVC animated:YES];
     }
 }
 
