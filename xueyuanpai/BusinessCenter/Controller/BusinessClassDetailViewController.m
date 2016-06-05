@@ -20,6 +20,12 @@
     BusinessCenterSchoolRoomDetailModel *schoolRoomDetailModel;
 }
 @property(nonatomic,strong)UITableView *tableView;
+
+///展示已报名人数
+@property (nonatomic,strong)UILabel *showLabel;
+
+///报名的按钮
+@property (nonatomic,strong)UIButton *baoMingButton;
 @end
 
 @implementation BusinessClassDetailViewController
@@ -33,12 +39,16 @@
     [self createLeftBackNavBtn];
     
     
+
+    
     [self createTableView];
+    
+    [self requestToGetBusinessClassRoomDetail];
+
     
     [self createBottomView];
 
 
-    [self requestToGetBusinessClassRoomDetail];
 }
 
 #pragma mark - 创建tableView
@@ -49,6 +59,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
     
     
@@ -66,10 +77,16 @@
     UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 40, SCREEN_WIDTH, 40)];
     
     UILabel *showLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH/3, 40)];
-    showLabel.text = @"已报名  168人";
     showLabel.textAlignment = NSTextAlignmentCenter;
     showLabel.font = [UIFont systemFontOfSize:14];
     [footView addSubview:showLabel];
+    self.showLabel = showLabel;
+    
+    
+    //    "isregistered":0,//是否已报名  1已报名 0 未报名
+
+    
+    
     
     UIButton *baoMingButton = [UIButton buttonWithType:UIButtonTypeCustom];
     baoMingButton.frame = CGRectMake(CGRectGetMaxX(showLabel.frame), 0, SCREEN_WIDTH*2/3, 40);
@@ -78,6 +95,7 @@
     [baoMingButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [baoMingButton addTarget:self action:@selector(baoMingAction) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:baoMingButton];
+    self.baoMingButton = baoMingButton;
     
     [self.view addSubview:footView];
 
@@ -89,6 +107,8 @@
 //    [CommonUtils showToastWithStr:@"立即报名"];
     
     BaoMingViewController *baoMingVC = [[BaoMingViewController alloc] init];
+    
+    baoMingVC.schoolRoomDetailModel = schoolRoomDetailModel;
     
     [self.navigationController pushViewController:baoMingVC animated:YES];
 }
@@ -115,11 +135,11 @@
         BusinessNewsDetailOneStleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        cell.titleLabel.text = _model.businessCenterSchoolRoomTitle;
+        cell.titleLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailTitle;
         
-        cell.authorLabel.text = [NSString stringWithFormat:@"作者 %@",_model.businessCenterSchoolRoomAuthor];
+        cell.authorLabel.text = [NSString stringWithFormat:@"作者 %@",schoolRoomDetailModel.businessCenterSchoolRoomDetailAuthor];
         
-        cell.timeLabel.text = _model.businessCenterSchoolRoomCreateTime;
+        cell.timeLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailCreateTime;
         
         
         return cell;
@@ -129,7 +149,11 @@
         BusinessClassDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        cell.contentLabel.text = _model.businessCenterSchoolRoomContent;
+        cell.timeLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailTime;
+        cell.locationLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailPlace;
+        
+        
+        cell.contentLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailContent;
         
         [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_model.businessCenterSchoolRoomImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
         
@@ -164,6 +188,29 @@
         if (model.responseCode == ResponseCodeSuccess) {
             NSDictionary * dataDic = model.responseCommonDic ;
             schoolRoomDetailModel = [[BusinessCenterSchoolRoomDetailModel alloc]initWithDic:dataDic];
+            
+            
+            _showLabel.text = [NSString stringWithFormat:@"已报名  %d人",[schoolRoomDetailModel.businessCenterSchoolRoomDetailPeopleNum intValue]];
+            
+            
+            //判断是否已经报名
+            if ([schoolRoomDetailModel.businessCenterSchoolRoomDetailIsRegistered intValue] == 0) {
+                
+                
+                _baoMingButton.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+                [_baoMingButton setTitle:@"立即报名" forState:UIControlStateNormal];
+                
+                
+                
+            }else if ([schoolRoomDetailModel.businessCenterSchoolRoomDetailIsRegistered intValue] == 1) {
+                
+                
+                _baoMingButton.backgroundColor = [CommonUtils colorWithHex:@"cccccc"];
+                [_baoMingButton setTitle:@"已报名" forState:UIControlStateNormal];
+                _baoMingButton.userInteractionEnabled = NO;
+                
+            }
+
             
             [self.tableView reloadData];
         }else{

@@ -24,6 +24,8 @@
 
 #import "BusinessPublishProjectViewController.h"
 
+#import "BusinessTeacherViewController.h"
+
 
 
 @interface BusinessCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -263,7 +265,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section == 0 && indexPath.row == 1) {
+    if (indexPath.section == 0 && indexPath.row == 0){
+        
+        //跳转创业导师页面
+        BusinessTeacherViewController *teacherVC = [[BusinessTeacherViewController alloc] init];
+        
+        [self.navigationController pushViewController:teacherVC animated:YES];
+        
+        
+    }else if (indexPath.section == 0 && indexPath.row == 1) {
         
         //跳转导师详情
         

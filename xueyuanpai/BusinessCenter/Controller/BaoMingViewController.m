@@ -11,7 +11,26 @@
 #import "PublishInformationOneStyleTableViewCell.h"
 #import "PublishInformationTwoStyleTableViewCell.h"
 
-@interface BaoMingViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+#import "BaoMingSuccessViewController.h"
+
+@interface BaoMingViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+
+
+@property (nonatomic,strong)UITableView *tableView;
+
+///姓名
+@property (nonatomic,strong)NSString *nameStr;
+
+///专业
+@property (nonatomic,strong)NSString *professionalStr;
+
+
+@property (nonatomic,strong)UITextField *nameTextField;
+@property (nonatomic,strong)UITextField *majorTextField;
+
+///学校
+@property (nonatomic,strong)NSString *schoolStr;
 
 @end
 
@@ -39,6 +58,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
     //设置tableView的footView
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -56,12 +76,21 @@
     
     [tableView registerNib:[UINib nibWithNibName:@"PublishInformationTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     
+    [tableView registerNib:[UINib nibWithNibName:@"PublishInformationOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
+
 }
 
 #pragma mark - 提交按钮的响应方法
 - (void)commitAction{
     
-    [CommonUtils showToastWithStr:@"提交"];
+//    [CommonUtils showToastWithStr:@"提交"];
+    
+    [self.nameTextField resignFirstResponder];
+    
+    [self.majorTextField resignFirstResponder];
+    
+    [self requestToGetBusinessClassRoomDetail];
+    
 }
 
 #pragma mark - tableView代理方法
@@ -82,6 +111,12 @@
         oneCell.titleLabel.text = @"你的姓名";
         oneCell.yuanLabel.hidden = YES;
         
+        self.nameTextField = oneCell.inputContentTextField;
+        
+        self.nameStr = oneCell.inputContentTextField.text;
+        
+        oneCell.inputContentTextField.delegate = self;
+        
         return oneCell;
 
 
@@ -94,24 +129,42 @@
         twoCell.titleLabel.text = @"学校";
         twoCell.contentLabel.text = @"吉林长春大学";
         
+        self.schoolStr = twoCell.contentLabel.text;
+        
         return twoCell;
         
 
     }else{
         
 
-        PublishInformationOneStyleTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+        PublishInformationOneStyleTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
         oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
         oneCell.titleLabel.text = @"专业";
         oneCell.yuanLabel.hidden = YES;
         
+        self.majorTextField = oneCell.inputContentTextField;
+
+        
+        oneCell.inputContentTextField.delegate = self;
+
+        
         return oneCell;
 
 
     }
     
+    
+}
+
+#pragma mark - textField的代理对象
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    
+    [self.tableView reloadData];
+    
+    
+    return YES;
 }
 
 #pragma mark - 请求创业讲堂详情数据
@@ -120,19 +173,31 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:self.schoolRoomDetailModel.businessCenterSchoolRoomDetailId ?self.schoolRoomDetailModel.businessCenterSchoolRoomDetailId:@"" forKey:@"forum_id"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setValue:@"" forKey:@"name"];
-    [dic setValue:@"" forKey:@"college"];
-    [dic setValue:@"" forKey:@"major"];
+    [dic setValue:self.nameStr forKey:@"name"];
+    [dic setValue:self.schoolStr forKey:@"college"];
+    [dic setValue:self.professionalStr forKey:@"major"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterBaoMingWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
-        if (model.responseCode == ResponseCodeSuccess) {
+//        if (model.responseCode == ResponseCodeSuccess) {
             ///报名成功
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }
+//            [CommonUtils showToastWithStr:model.responseMsg];
+        
+            
+            [self.tableView reloadData];
+
+            //跳转成功界面
+            BaoMingSuccessViewController *successVC = [[BaoMingSuccessViewController alloc] init];
+            
+            [self.navigationController pushViewController:successVC animated:YES];
+            
+            
+            
+            
+//        }else{
+//            [CommonUtils showToastWithStr:model.responseMsg];
+//        }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
