@@ -33,6 +33,9 @@
     // Do any additional setup after loading the view.
     businessCenterModelListArr  = [NSMutableArray array];
     
+    self.title = @"创业新闻";
+    
+    
     [self createLeftBackNavBtn];
     
     
@@ -75,58 +78,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    //创业新闻
+    BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
     
-    
+    detailVC.title = @"新闻详情";
+    [self.navigationController pushViewController:detailVC animated:YES];
 
-    
-    switch (_index) {
-        case 100:{
-            //创业新闻
-            BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-            
-            detailVC.title = @"新闻详情";
-            [self.navigationController pushViewController:detailVC animated:YES];
-
-        }
-            break;
-        case 101:{
-            
-            //创业大赛
-            BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-            detailVC.title = @"大赛详情";
-            [self.navigationController pushViewController:detailVC animated:YES];
-        }
-            
-            break;
-
-        case 102:{
-            //创业讲堂
-            BusinessClassDetailViewController *detailVC = [[BusinessClassDetailViewController alloc] init];
-            
-            [self.navigationController pushViewController:detailVC animated:YES];
-
-        }
-            
-            break;
-        case 103:{
-            
-            
-            //创业项目
-//            detailVC.title = @"项目详情";
-            
-            
-            
-            
-
-        }
-            
-            break;
-
-
-            
-        default:
-            break;
-    }
     
 }
 

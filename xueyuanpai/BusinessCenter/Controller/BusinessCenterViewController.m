@@ -15,6 +15,8 @@
 #import "BusinessCenterTableViewCell.h"
 
 #import "BusinessNewsViewController.h"
+#import "BusinessGameViewController.h"
+#import "BusinessClassRoomViewController.h"
 #import "BusinessProjectViewController.h"
 
 #import "BusinessTeacherDetailViewController.h"
@@ -137,8 +139,6 @@
     
     BusinessNewsViewController *newsVC = [[BusinessNewsViewController alloc] init];
     
-    newsVC.title = @"创业新闻";
-    newsVC.index = 100;
     [self.navigationController pushViewController:newsVC animated:YES];
     
 }
@@ -146,12 +146,10 @@
     
     //    [CommonUtils showToastWithStr:@"创业大赛"];
     
-    BusinessNewsViewController *newsVC = [[BusinessNewsViewController alloc] init];
+    BusinessGameViewController *gameVC = [[BusinessGameViewController alloc] init];
     
-    newsVC.title = @"创业大赛";
-    newsVC.index = 101;
     
-    [self.navigationController pushViewController:newsVC animated:YES];
+    [self.navigationController pushViewController:gameVC animated:YES];
     
 }
 -(void) tap3Action:(UITapGestureRecognizer*) tap {
@@ -159,12 +157,10 @@
     //    [CommonUtils showToastWithStr:@"创业讲堂"];
     
     
-    BusinessNewsViewController *newsVC = [[BusinessNewsViewController alloc] init];
+    BusinessClassRoomViewController *classVC = [[BusinessClassRoomViewController alloc] init];
     
-    newsVC.title = @"创业讲堂";
-    newsVC.index = 102;
     
-    [self.navigationController pushViewController:newsVC animated:YES];
+    [self.navigationController pushViewController:classVC animated:YES];
     
 }
 
