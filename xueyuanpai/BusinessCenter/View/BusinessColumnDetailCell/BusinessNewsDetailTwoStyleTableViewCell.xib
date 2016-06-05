@@ -25,6 +25,10 @@
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="lSX-a2-Xgd" id="RDv-P9-wGl"/>
+                <outlet property="detailImageView" destination="Bub-WY-haa" id="mHd-dD-pew"/>
+            </connections>
             <point key="canvasLocation" x="316" y="290"/>
         </tableViewCell>
     </objects>

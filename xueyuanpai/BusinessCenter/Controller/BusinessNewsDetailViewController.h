@@ -8,6 +8,12 @@
 
 #import "BaseViewController.h"
 
+#import "BusinessCenterModel.h"
+
+
 @interface BusinessNewsDetailViewController : BaseViewController
+
+///创业新闻页面的model
+@property (nonatomic,strong)BusinessCenterNewsModel * model;
 
 @end

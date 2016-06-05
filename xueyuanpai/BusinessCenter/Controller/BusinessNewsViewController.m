@@ -73,6 +73,14 @@
     
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
+    BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
+    
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterNewsImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder.png"]];
+    
+    cell.titleLabel.text = model.businessCenterNewsTitle;
+    
+    cell.contentLabel.text = model.businessCenterNewsBrief;
+    
     return cell;
 }
 
@@ -80,8 +88,14 @@
     
     //创业新闻
     BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-    
     detailVC.title = @"新闻详情";
+    
+    
+     BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
+    
+    detailVC.model = model;
+    
+    
     [self.navigationController pushViewController:detailVC animated:YES];
 
     

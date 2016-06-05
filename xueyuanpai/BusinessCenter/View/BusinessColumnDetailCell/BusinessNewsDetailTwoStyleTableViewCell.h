@@ -10,4 +10,12 @@
 
 @interface BusinessNewsDetailTwoStyleTableViewCell : UITableViewCell
 
+///详情内容
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
+///详情图片
+@property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
+
+
+
 @end

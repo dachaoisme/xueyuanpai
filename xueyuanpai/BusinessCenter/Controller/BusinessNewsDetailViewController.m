@@ -91,24 +91,66 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    if (indexPath.section == 0) {
+    if ([self.title isEqualToString:@"新闻详情"]) {
         
-        BusinessNewsDetailOneStleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        
-        return cell;
+        if (indexPath.section == 0) {
+            
+            BusinessNewsDetailOneStleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            cell.titleLabel.text = self.model.businessCenterNewsTitle;
+            
+            cell.authorLabel.text = [NSString stringWithFormat:@"作者 %@",self.model.businessCenterNewsAuthor];
+            
+            cell.timeLabel.text = self.model.businessCenterNewsCreateTime;
+            
+            
+            
+            return cell;
+            
+        }else{
+            BusinessNewsDetailTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            
+            cell.contentLabel.text = self.model.businessCenterNewsContent;
+            
+            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_model.businessCenterNewsImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+            
+            
+            
+            
+            return cell;
+            
+            
+        }
 
     }else{
-        BusinessNewsDetailTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        
-        
-        return cell;
-        
-        
+        if (indexPath.section == 0) {
+            
+            BusinessNewsDetailOneStleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            return cell;
+            
+        }else{
+            BusinessNewsDetailTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            
+            return cell;
+            
+            
+        }
+
     }
+    
+    
     
     
     
