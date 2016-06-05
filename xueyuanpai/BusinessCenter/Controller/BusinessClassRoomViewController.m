@@ -1,42 +1,36 @@
 //
-//  BusinessNewsViewController.m
+//  BusinessClassRoomViewController.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/6/2.
+//  Created by 王园园 on 16/6/5.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessNewsViewController.h"
+#import "BusinessClassRoomViewController.h"
 
 #import "BusinessCenterTableViewCell.h"
-#import "BusinessNewsDetailViewController.h"
 #import "BusinessClassDetailViewController.h"
-#import "BusinessProjectViewController.h"
 
-@interface BusinessNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface BusinessClassRoomViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
-@implementation BusinessNewsViewController
-
--(void)viewWillAppear:(BOOL)animated{
-    [self theTabBarHidden:YES];
-}
+@implementation BusinessClassRoomViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"创业新闻";
-    
-    
+    self.title = @"创业讲堂";
+
+
     [self createLeftBackNavBtn];
-    
-    
+
+
     [self createTableView];
-    
-    
-    
+
+
+
 }
 
 #pragma mark - 创建展示视图
@@ -72,14 +66,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //创业新闻
-    BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
+        //创业讲堂
+    BusinessClassDetailViewController *detailVC = [[BusinessClassDetailViewController alloc] init];
     
-    detailVC.title = @"新闻详情";
     [self.navigationController pushViewController:detailVC animated:YES];
-
+    
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

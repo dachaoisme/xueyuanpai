@@ -1,23 +1,22 @@
 //
-//  BusinessNewsViewController.m
+//  BusinessGameViewController.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/6/2.
+//  Created by 王园园 on 16/6/5.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessNewsViewController.h"
+#import "BusinessGameViewController.h"
 
 #import "BusinessCenterTableViewCell.h"
 #import "BusinessNewsDetailViewController.h"
-#import "BusinessClassDetailViewController.h"
-#import "BusinessProjectViewController.h"
 
-@interface BusinessNewsViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+@interface BusinessGameViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @end
 
-@implementation BusinessNewsViewController
+@implementation BusinessGameViewController
 
 -(void)viewWillAppear:(BOOL)animated{
     [self theTabBarHidden:YES];
@@ -27,8 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"创业新闻";
-    
+    self.title = @"创业大赛";
     
     [self createLeftBackNavBtn];
     
@@ -72,13 +70,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //创业新闻
+    //创业大赛
     BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-    
-    detailVC.title = @"新闻详情";
+    detailVC.title = @"大赛详情";
     [self.navigationController pushViewController:detailVC animated:YES];
-
-    
 }
 
 - (void)didReceiveMemoryWarning {

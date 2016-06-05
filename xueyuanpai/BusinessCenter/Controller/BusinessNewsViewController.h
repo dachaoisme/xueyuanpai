@@ -10,7 +10,6 @@
 
 @interface BusinessNewsViewController : BaseViewController
 
-///点击具体跳转哪个栏目
-@property (nonatomic,assign)NSInteger index;
+
 
 @end
