@@ -8,6 +8,12 @@
 
 #import "BaseViewController.h"
 
+#import "BusinessCenterModel.h"
+
 @interface BusinessClassDetailViewController : BaseViewController
+
+
+///创业讲堂详情model
+@property (nonatomic,strong)BusinessCenterSchoolRoomModel * model ;
 
 @end

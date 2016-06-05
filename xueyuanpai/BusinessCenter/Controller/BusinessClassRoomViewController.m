@@ -24,6 +24,10 @@
 
 @implementation BusinessClassRoomViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self theTabBarHidden:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -36,6 +40,8 @@
 
     [self createTableView];
 
+    
+    [self requestToGetBusinessCompetitionList];
 
 
 }
@@ -47,6 +53,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    self.tableView = tableView;
     
     //注册cell
     
@@ -56,7 +63,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return businessCenterClassRoomModelListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -67,14 +74,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    BusinessCenterSchoolRoomModel * model = [businessCenterClassRoomModelListArr objectAtIndex:indexPath.row];
+    
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterSchoolRoomImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    
+    cell.titleLabel.text = model.businessCenterSchoolRoomTitle;
+    
+    cell.contentLabel.text = model.businessCenterSchoolRoomBrief;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-        //创业讲堂
+    //创业讲堂
     BusinessClassDetailViewController *detailVC = [[BusinessClassDetailViewController alloc] init];
+    
+    BusinessCenterSchoolRoomModel * model = [businessCenterClassRoomModelListArr objectAtIndex:indexPath.row];
+
+    detailVC.model = model;
     
     [self.navigationController pushViewController:detailVC animated:YES];
     

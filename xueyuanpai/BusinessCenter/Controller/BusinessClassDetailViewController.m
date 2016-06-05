@@ -109,6 +109,12 @@
         BusinessNewsDetailOneStleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        cell.titleLabel.text = _model.businessCenterSchoolRoomTitle;
+        
+        cell.authorLabel.text = [NSString stringWithFormat:@"作者 %@",_model.businessCenterSchoolRoomAuthor];
+        
+        cell.timeLabel.text = _model.businessCenterSchoolRoomCreateTime;
+        
         
         return cell;
 
@@ -116,6 +122,10 @@
         
         BusinessClassDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.contentLabel.text = _model.businessCenterSchoolRoomContent;
+        
+        [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_model.businessCenterSchoolRoomImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
         
         
         return cell;
