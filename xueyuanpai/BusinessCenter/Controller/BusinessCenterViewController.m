@@ -30,6 +30,10 @@
 
 @interface BusinessCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
+{
+    NSMutableArray * tutorStarModelListArr;
+    NSMutableArray * businessProjectModelListArr;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -55,13 +59,15 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     [self setTitle:@"创业中心"];
-    
+    tutorStarModelListArr = [NSMutableArray array];
+    businessProjectModelListArr = [NSMutableArray array];
     //创建导航栏右侧按钮
     [self creatRightNavWithTitle:@"发布项目"];
     
     
     //创建tableView
     [self createTableView];
+    [self requestToGetBusinessTeachersList];
 
 }
 
@@ -289,6 +295,74 @@
     }
 }
 
+#pragma mark - 请求数据
+///创业导师
+-(void)requestToGetBusinessTeachersList
+{
+    int pageNo = 1;
+    int pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetTeachersListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                BusinessCenterTutorModel * model = [[BusinessCenterTutorModel alloc]initWithDic:smallDic];
+                [tutorStarModelListArr  addObject:model];
+            }
+            [self requestToGetBusinessProgectList];
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+
+///创业项目
+-(void)requestToGetBusinessProgectList
+{
+    /*
+     page        int     非必需    第几页        默认1
+     size        int     非必需    每页多少条     默认10
+     keyword     string  非必需    关键字
+     category_id  int    非必需    分类序号      默认全部
+     sort         int    非必需    排序          默认1  1最新发布 2点击最多 3申领最多 （客户端组装排序文字）
+     
+     */
+    int pageNo = 1;
+    int pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    //[dic setValue:keyword forKey:@"keyword"];
+    //[dic setValue:categoryParam forKey:@"cat_id"];
+    //[dic setValue:sortParam  forKey:@"sort"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetProgectListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                BusinessCenterProgectModel * model = [[BusinessCenterProgectModel alloc]initWithDic:smallDic];
+                [businessProjectModelListArr  addObject:model];
+            }
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

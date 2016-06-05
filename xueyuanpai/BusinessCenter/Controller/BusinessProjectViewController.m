@@ -10,7 +10,7 @@
 
 #import "BusinessCenterTableViewCell.h"
 #import "LDCPullDownMenuView.h"
-@interface BusinessProjectViewController ()<UITableViewDataSource,UITableViewDelegate,LDCPullDownMenuViewDelegate>
+@interface BusinessProjectViewController ()<UITableViewDataSource,UITableViewDelegate,LDCPullDownMenuViewDelegate,UISearchBarDelegate>
 {
     NSString * keyword;
     NSString * categoryParam;
@@ -41,10 +41,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    self.view.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     self.title = @"创业项目";
     businessCenterProgectModelListArr      = [NSMutableArray array];
     businessCenterProgectCategoryModelArr  = [NSMutableArray array];
+    businessCenterProgectCategoryTitleArr  = [NSMutableArray array];
     businessCenterProgectSortTitleArr      = [NSMutableArray array];
     businessCenterProgectSortModelArr      = [NSMutableArray array];
     [self createLeftBackNavBtn];
@@ -55,29 +56,26 @@
     
     [self createTableView];
     
-    
+    [self requestToGetConditionsCategory];
     
 }
 
 #pragma mark - 创建搜索按钮
 - (void)createSearchBar{
     
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, 30)];
+    float height = 36;
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, height)];
     searchBar.barStyle = UIBarStyleDefault;
     searchBar.placeholder = @"搜索";
-    
+    searchBar.delegate = self;
     searchBar.backgroundColor = [UIColor groupTableViewBackgroundColor];
     [self.view addSubview:searchBar];
     
 }
-
-
-
-
 #pragma mark - 创建展示视图
 - (void)createTableView{
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + 30, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+    float height = 36;
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + height*2+5, SCREEN_WIDTH, SCREEN_HEIGHT-NAV_TOP_HEIGHT-height*2-5) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -88,6 +86,7 @@
 }
 
 
+#pragma mark - tableview代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return 3;
@@ -107,7 +106,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
-
+#pragma mark - 请求数据
 ///获取筛选分类列表
 -(void)requestToGetConditionsCategory
 {
@@ -169,7 +168,7 @@
             
             [self setPullDownMenuView];
             ///获取到筛选条件以后，获取时间银行的列表
-            [self requestToGetBusinessCompetitionList];
+            [self requestToGetBusinessProgectList];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -178,7 +177,7 @@
     }];
     
 }
--(void)requestToGetBusinessCompetitionList
+-(void)requestToGetBusinessProgectList
 {
     /*
      page        int     非必需    第几页        默认1
@@ -215,6 +214,46 @@
     }];
     
 }
+
+#pragma mark - 搜索
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
+{
+    return YES;
+}
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+    // 修改UISearchBar右侧的取消按钮文字颜色及背景图片
+    for (UIView *view in [[searchBar.subviews lastObject] subviews]) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            UIButton *cancelBtn = (UIButton *)view;
+            [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+            [cancelBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+            [cancelBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateHighlighted];
+            cancelBtn.titleLabel.textColor = [UIColor redColor];
+        }
+    }
+}
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    searchBar.showsCancelButton = NO;
+    return YES;
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
+}
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    keyword = searchBar.text;
+    searchBar.text = @"";
+    [searchBar resignFirstResponder];
+    
+    [self requestToGetBusinessProgectList];
+}
+
+#pragma mark - MXPullDownMenuDelegate
 -(void)setPullDownMenuView
 {
     float height = 36;
@@ -226,7 +265,6 @@
     [self.view addSubview:pullDownMenuView];
 }
 
-#pragma mark - MXPullDownMenuDelegate
 
 - (void)PullDownMenu:(LDCPullDownMenuView *)pullDownMenu didSelectRowAtColumn:(NSInteger)column row:(NSInteger)row
 {
@@ -248,7 +286,7 @@
     }
     ///清楚之前旧数据
     [businessCenterProgectModelListArr removeAllObjects];
-    [self requestToGetBusinessCompetitionList];
+    [self requestToGetBusinessProgectList];
 }
 
 #pragma mark - 通过标题来设置参数id
@@ -257,7 +295,7 @@
     for (BusinessCenterProgectCategoryModel * model in businessCenterProgectCategoryModelArr) {
         NSString * modelName = model.BusinessCenterProgectName;
         if ([modelName isEqualToString:title]) {
-            categoryParam = model.BusinessCenterProgectName;
+            categoryParam = model.BusinessCenterProgectId;
         }
     }
     
