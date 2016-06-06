@@ -207,6 +207,7 @@
 		58C27AAD1CE20ABC0036D105 /* IndexMallModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AAC1CE20ABC0036D105 /* IndexMallModel.m */; };
 		58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AAF1CE20E6B0036D105 /* IndexColumnCollectionViewCell.m */; };
 		58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */; };
+		58C40DF61D0579050061C174 /* MineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C40DF41D0579050061C174 /* MineModel.m */; };
 		58C688271D03A91600E8B4AA /* BusinessCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C688261D03A91600E8B4AA /* BusinessCenterModel.m */; };
 		58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */; };
 		58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D396501D025EFC0066EA05 /* JobMarketModel.m */; };
@@ -853,6 +854,8 @@
 		58C27AAF1CE20E6B0036D105 /* IndexColumnCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexColumnCollectionViewCell.m; sourceTree = "<group>"; };
 		58C27AB11CE20E7C0036D105 /* IndexMallCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexMallCollectionViewCell.h; sourceTree = "<group>"; };
 		58C27AB21CE20E7C0036D105 /* IndexMallCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexMallCollectionViewCell.m; sourceTree = "<group>"; };
+		58C40DF41D0579050061C174 /* MineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineModel.m; sourceTree = "<group>"; };
+		58C40DF51D0579050061C174 /* MineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineModel.h; sourceTree = "<group>"; };
 		58C688251D03A91600E8B4AA /* BusinessCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterModel.h; sourceTree = "<group>"; };
 		58C688261D03A91600E8B4AA /* BusinessCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterModel.m; sourceTree = "<group>"; };
 		58CF089A1CE1DE45008334E8 /* IndexBannerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexBannerModel.h; sourceTree = "<group>"; };
@@ -2632,6 +2635,8 @@
 		DDAB43931D05545E00FADB3E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58C40DF41D0579050061C174 /* MineModel.m */,
+				58C40DF51D0579050061C174 /* MineModel.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3417,6 +3422,7 @@
 				DDAB43BD1D05802C00FADB3E /* MineFriendsViewController.m in Sources */,
 				DDAB05FA1D0483D7007A6027 /* BusinessTeacherTableViewCell.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
+				58C40DF61D0579050061C174 /* MineModel.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
 				5874A4071CF24CF700CE9FC9 /* ForgetPasswordViewController.m in Sources */,
 				DDAB05A91D01D957007A6027 /* BusinessTeacherTwoTableViewCell.m in Sources */,

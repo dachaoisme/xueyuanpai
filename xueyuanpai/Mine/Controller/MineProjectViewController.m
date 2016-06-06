@@ -12,9 +12,10 @@
 #import "BusinessProjectDetailViewController.h"
 
 @interface MineProjectViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    NSMutableArray * projectModelListArr;
+}
 @property (nonatomic,strong)UITableView *tableView;
-
 @end
 
 @implementation MineProjectViewController
@@ -25,10 +26,11 @@
     
     
     self.title = @"我的项目";
-    
+    projectModelListArr = [NSMutableArray array];
     [self createLeftBackNavBtn];
     
     [self createTableView];
+    [self requestToGetProgectList];
 }
 
 #pragma mark - 创建展示视图
@@ -47,7 +49,7 @@
 #pragma mark - tableview代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return projectModelListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -58,8 +60,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    
+    BusinessCenterProgectModel * model = [projectModelListArr objectAtIndex:indexPath.row];
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterProgectImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    cell.titleLabel.text = model.businessCenterProgectTitle;
+    cell.contentLabel.text = model.businessCenterProgectBrief;
     
     return cell;
 }
@@ -68,11 +72,39 @@
     
     //跳转项目详情
     BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
-//    BusinessCenterProgectModel * businessCenterProgectModel = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
-//    projectVC.businessCenterProgectModel = businessCenterProgectModel;
+    BusinessCenterProgectModel * businessCenterProgectModel = [projectModelListArr objectAtIndex:indexPath.row];
+    projectVC.businessCenterProgectModel = businessCenterProgectModel;
     [self.navigationController pushViewController:projectVC animated:YES];
 }
 
+-(void)requestToGetProgectList
+{
+    int pageNo = 1;
+    int pageSize = 10;
+    [projectModelListArr removeAllObjects];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterGetProgectListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                BusinessCenterProgectModel * model = [[BusinessCenterProgectModel alloc]initWithDic:smallDic];
+                [projectModelListArr  addObject:model];
+            }
+            
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -119,4 +119,7 @@
 ///创业中心:添加创业项目
 #define METHOD_BUSINESS_CENTER_PROGECT_CREATE                  @"v1/project/create?"
 
+///个人中心:我的项目
+#define METHOD_MINE_PROGECT_LIST                               @"v1/my/project?"
+
 #endif /* NetworkConfigue_h */
