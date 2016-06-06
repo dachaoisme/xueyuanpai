@@ -20,6 +20,13 @@
 
 @implementation BusinessTeacherDetailViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self theTabBarHidden:YES];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -116,6 +123,12 @@
         
         BusinessTeacherOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:tutorDetailModel.businessCenterTutorDetailImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+        
+        cell.nameLabel.text =  tutorDetailModel.businessCenterTutorDetailRealName;
+        
+        cell.jobLabel.text = tutorDetailModel.businessCenterTutorDetailJob;
+        
         return cell;
 
     }else if (indexPath.section == 1){
@@ -126,21 +139,26 @@
             case 0:
                 
                 cell.titleLabel.text = @"工作单位";
+                cell.contentLabel.text = tutorDetailModel.businessCenterTutorDetailCompany;
                 
                 break;
             case 1:
                 
                 cell.titleLabel.text = @"职   务";
+                 cell.contentLabel.text = tutorDetailModel.businessCenterTutorDetailJob;
 
                 break;
             case 2:
                 
                 cell.titleLabel.text = @"联系电话";
+                cell.contentLabel.text = tutorDetailModel.businessCenterTutorDetailTelephone;
+
                 
                 break;
             case 3:
                 
                 cell.titleLabel.text = @"邮   箱";
+                 cell.contentLabel.text = tutorDetailModel.businessCenterTutorDetailEmail;
 
                 break;
                 
@@ -159,7 +177,7 @@
         
         if (indexPath.section == 2) {
             
-            cell.textLabel.text = @"已申领3个项目";
+            cell.textLabel.text = [NSString stringWithFormat:@"已申领%@个项目",tutorDetailModel.businessCenterTutorDetailExperience];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的
         }else if (indexPath.section == 3){
@@ -171,7 +189,7 @@
 
             }else{
                 
-                cell.textLabel.text = @"互联网等";
+                cell.textLabel.text = tutorDetailModel.businessCenterTutorDetailSkillFul;
                 cell.textLabel.font = [UIFont systemFontOfSize:14];
             }
             
@@ -185,7 +203,7 @@
                 
             }else{
                 
-                cell.textLabel.text = @"背景简介";
+                cell.textLabel.text = tutorDetailModel.businessCenterTutorDetailTutorBackground;
                 cell.textLabel.font = [UIFont systemFontOfSize:14];
             }
             
