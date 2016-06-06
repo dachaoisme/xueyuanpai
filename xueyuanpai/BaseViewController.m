@@ -192,7 +192,7 @@
 -(void)creatRightNavWithTitle:(NSString *)title
 {
     UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    userDefineLeftBtn.frame     = CGRectMake(-10, 0, 60, 40);
+    userDefineLeftBtn.frame     = CGRectMake(-10, 0, 100, 40);
     [userDefineLeftBtn setTitle:title forState:UIControlStateNormal];
     [userDefineLeftBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
     [userDefineLeftBtn setFont:[UIFont systemFontOfSize:14]];

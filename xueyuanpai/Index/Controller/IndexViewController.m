@@ -334,7 +334,6 @@
     //需要先判断是否已经登陆
     if (yesLogin) {
         //收件箱界面
-        [CommonUtils showToastWithStr:@"我的"];
         //弹出我的界面
         MineViewController * mineVC = [[MineViewController alloc]init];
         [self.navigationController pushViewController:mineVC animated:YES];
