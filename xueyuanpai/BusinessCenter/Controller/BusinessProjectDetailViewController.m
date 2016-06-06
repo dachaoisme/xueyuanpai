@@ -42,6 +42,11 @@
     
     [self requestToGetBusinessProjectDetail];
     
+    
+    
+#warning 判定是否有导师逻辑暂未处理，个人中心逻辑页面搭建完毕之后继续
+    
+    
 }
 
 #pragma mark - 设置分享按钮
@@ -93,7 +98,7 @@
 #pragma mark - tableView的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 4;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -118,6 +123,10 @@
                 
                 BusinessProjectDetailOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
                 
+                cell.titleLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailTitle;
+                
+                cell.dateLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailDate;
+                
             
                 return cell;
 
@@ -125,6 +134,28 @@
             }else{
                 
                 BusinessProjectDetailTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                
+                //头像
+                [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserIcon withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+                
+                //姓名
+                cell.nameLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserRealName;
+                
+                //性别
+                if ([businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserSex intValue]== SexOfManType) {
+                    ///男
+                    [cell.genderImageView setImage:[UIImage imageNamed:@"gender_male"]];
+                }else if ([businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserSex intValue]==SexOfWomanType){
+                    ///女
+                    [cell.genderImageView setImage:[UIImage imageNamed:@"gender_female"]];
+                }else{
+                    ///保密
+                    [cell.genderImageView setImage:[UIImage imageNamed:@"timebank_icon_user"]];
+                }
+
+                
+                //学校名称
+                cell.schoolLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailCollege;
                 
                 
                 
@@ -139,6 +170,16 @@
             
             
             BusinessProjectDetailThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+            
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:businessCenterProgectDetailModel.businessCenterProgectDetailTutorModel.businessCenterProgectDetailTutorImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+            
+            cell.nameLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailTutorModel.businessCenterProgectDetailTutorRealName;
+            
+            
+            cell.jobNameLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailTutorModel.businessCenterProgectDetailTutorJob;
+            
+            
+            
             
             
             return cell;
@@ -158,9 +199,15 @@
                 
                 cell.titleLabel.text = @"经费预算";
                 
+                cell.contentLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailBudge;
+                
             }else{
                 
                 cell.titleLabel.text = @"项目领域";
+                
+                cell.contentLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailField;
+                
+
 
             }
             
@@ -175,9 +222,9 @@
 
         case 3:{
             
-            
-            
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+
             
             
             if (indexPath.row == 0) {
@@ -186,12 +233,11 @@
                 
                 cell.textLabel.text = @"项目简介";
                 
-                cell.textLabel.font = [UIFont systemFontOfSize:14];
                 
             }else{
                 
                 
-                cell.textLabel.text = @"项目内容介绍";
+                cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailDescription;
             }
             
            
@@ -202,6 +248,76 @@
             
         }
             break;
+        case 4:{
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+
+            
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.textColor = [UIColor lightGrayColor];
+                
+                cell.textLabel.text = @"项目成员";
+                
+                
+            }else{
+                
+                
+                cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailMember;
+            }
+            
+            return cell;
+        }
+            break;
+        case 5:{
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+
+            
+            
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.textColor = [UIColor lightGrayColor];
+                
+                cell.textLabel.text = @"项目面临问题及需求";
+                
+                
+            }else{
+                
+                
+                cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailBackground;
+            }
+            
+            return cell;
+        }
+            break;
+            
+        case 6:{
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+
+            
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.textColor = [UIColor lightGrayColor];
+                
+                cell.textLabel.text = @"项目实施计划和预期进展";
+                
+                
+            }else{
+                
+                
+                cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailPlan;
+            }
+            
+            return cell;
+        }
+            break;
+
+
 
 
             

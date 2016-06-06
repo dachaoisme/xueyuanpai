@@ -182,6 +182,8 @@
         if (model.responseCode == ResponseCodeSuccess) {
             //报名成功
             [CommonUtils showToastWithStr:model.responseMsg];
+            
+#warning 后台缺少返回积分项
         
             //跳转成功界面
             BaoMingSuccessViewController *successVC = [[BaoMingSuccessViewController alloc] init];
@@ -192,7 +194,14 @@
             
             
         }else{
+            
             [CommonUtils showToastWithStr:model.responseMsg];
+
+            
+            //跳转成功界面
+            BaoMingSuccessViewController *successVC = [[BaoMingSuccessViewController alloc] init];
+            
+            [self.navigationController pushViewController:successVC animated:YES];
         }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

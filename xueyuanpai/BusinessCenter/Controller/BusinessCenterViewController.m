@@ -322,7 +322,7 @@
         
         //跳转项目详情
         BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
-        BusinessCenterProgectModel * businessCenterProgectModel = [businessProjectModelListArr objectAtIndex:indexPath.row];
+        BusinessCenterProgectModel * businessCenterProgectModel = [businessProjectModelListArr objectAtIndex:indexPath.row -1];
         projectVC.businessCenterProgectModel = businessCenterProgectModel;
         [self.navigationController pushViewController:projectVC animated:YES];
     }

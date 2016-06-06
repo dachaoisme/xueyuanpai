@@ -26,7 +26,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小丽" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Axr-S5-7hK">
                         <rect key="frame" x="68" y="15" width="43" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="云南大学2016级本科" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJS-Fe-eZh">
@@ -44,6 +44,12 @@
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="genderImageView" destination="UBP-5w-zu2" id="G8W-ru-1gR"/>
+                <outlet property="headImageView" destination="BBY-7x-NE8" id="eJe-Cm-9iY"/>
+                <outlet property="nameLabel" destination="Axr-S5-7hK" id="igx-t0-DQj"/>
+                <outlet property="schoolLabel" destination="SJS-Fe-eZh" id="rqV-Xu-Yb5"/>
+            </connections>
             <point key="canvasLocation" x="372" y="334"/>
         </tableViewCell>
     </objects>

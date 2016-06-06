@@ -10,4 +10,16 @@
 
 @interface BusinessProjectDetailTwoTableViewCell : UITableViewCell
 
+///头像
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+
+///姓名
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+///性别
+@property (weak, nonatomic) IBOutlet UIImageView *genderImageView;
+
+///学校名称
+@property (weak, nonatomic) IBOutlet UILabel *schoolLabel;
+
 @end

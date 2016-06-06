@@ -10,4 +10,15 @@
 
 @interface BusinessProjectDetailThreeTableViewCell : UITableViewCell
 
+///头像
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+
+///姓名
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+///职称
+@property (weak, nonatomic) IBOutlet UILabel *jobNameLabel;
+
+
+
 @end
