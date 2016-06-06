@@ -12,7 +12,7 @@
 #import "BusinessPublishProjectTwoTableViewCell.h"
 #import "BusinessPublishProjectThreeTableViewCell.h"
 
-@interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     BusinessCenterPublicProgectModel * publicProgectModel;
 }
@@ -83,6 +83,8 @@
 #pragma mark - 发布按钮
 - (void)publishAction{
     
+    [self.tableView reloadData];
+    
     [CommonUtils showToastWithStr:@"确认提交"];
      if (publicProgectModel.businessCenterPublicProgectTitle.length<=0) {
          [CommonUtils showToastWithStr:@"请输入标题"];
@@ -97,10 +99,10 @@
          [CommonUtils showToastWithStr:@"请添加预算"];
          return;
      }
-     else if (publicProgectModel.businessCenterPublicProgectDetailField.length<=0){
-         [CommonUtils showToastWithStr:@"请输入擅长领域"];
-         return;
-     }
+//     else if (publicProgectModel.businessCenterPublicProgectDetailField.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入擅长领域"];
+//         return;
+//     }
      else if (publicProgectModel.businessCenterPublicProgectDetailDescription.length<=0){
          [CommonUtils showToastWithStr:@"请输入项目简介"];
          return;
@@ -114,29 +116,30 @@
      }else if (publicProgectModel.businessCenterPublicProgectDetailPlan.length<=0){
          [CommonUtils showToastWithStr:@"请实施计划"];
          return;
-     }else if (publicProgectModel.businessCenterPublicProgectRealName.length<=0){
-         [CommonUtils showToastWithStr:@"请输入真实名字"];
-         return;
-     }else if (publicProgectModel.businessCenterPublicProgectIdentityCard.length<=0){
-         [CommonUtils showToastWithStr:@"请输入身份证号"];
-         return;
-     }else if (publicProgectModel.businessCenterPublicProgectTelephone.length<=0){
-         [CommonUtils showToastWithStr:@"请输入电话"];
-         return;
-     }else if (publicProgectModel.businessCenterPublicProgectCollege.length<=0){
-         [CommonUtils showToastWithStr:@"请输入学校"];
-         return;
-     }else if (publicProgectModel.businessCenterPublicProgectMajor.length<=0){
-         [CommonUtils showToastWithStr:@"请输入专业"];
-         return;
-     }else if (publicProgectModel.businessCenterPublicProgectJob.length<=0){
-         [CommonUtils showToastWithStr:@"请输入学历"];
-         return;
-     }else if (publicProgectModel.businessCenterPublicProgectGraduationtime.length<=0){
-         [CommonUtils showToastWithStr:@"请输入毕业时间"];
-         return;
      }
-     
+//     else if (publicProgectModel.businessCenterPublicProgectRealName.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入真实名字"];
+//         return;
+//     }else if (publicProgectModel.businessCenterPublicProgectIdentityCard.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入身份证号"];
+//         return;
+//     }else if (publicProgectModel.businessCenterPublicProgectTelephone.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入电话"];
+//         return;
+//     }else if (publicProgectModel.businessCenterPublicProgectCollege.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入学校"];
+//         return;
+//     }else if (publicProgectModel.businessCenterPublicProgectMajor.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入专业"];
+//         return;
+//     }else if (publicProgectModel.businessCenterPublicProgectJob.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入学历"];
+//         return;
+//     }else if (publicProgectModel.businessCenterPublicProgectGraduationtime.length<=0){
+//         [CommonUtils showToastWithStr:@"请输入毕业时间"];
+//         return;
+//     }
+    
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
@@ -231,14 +234,20 @@
             
             if (indexPath.row == 0) {
                 BusinessPublishProjectOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
                 cell.yuanLabel.hidden = YES;
                 
+                cell.inputContentTextField.tag = 100;
+                cell.inputContentTextField.delegate = self;
+                
+              
                 
                 return cell;
             }else{
                 
                 BusinessPublishProjectTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 
@@ -251,7 +260,10 @@
         case 1:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
             
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             cell.textLabel.text = @"添加负责人信息";
             
             return cell;
@@ -263,18 +275,25 @@
             if (indexPath.row == 0) {
                 BusinessPublishProjectOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
                 cell.titleLabel.text = @"经费预算";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                cell.inputContentTextField.tag = 101;
+                cell.inputContentTextField.delegate = self;
+
+
                 
                 return cell;
 
             }else{
                 
                 BusinessPublishProjectTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
                 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 
                 cell.titleLabel.text = @"项目领域";
                 cell.contentLabel.text = @"请选择分类";
-                
                 
                 return cell;
                 
@@ -287,23 +306,43 @@
             
         default:{
             BusinessPublishProjectThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             if (indexPath.section == 3) {
+                
+            
+                cell.inputContentTextView.tag = 1000;
+                cell.inputContentTextView.delegate = self;
 
                 
             }else if (indexPath.section == 4) {
                 
+                cell.inputContentTextView.tag = 1001;
+
                 cell.titleLabel.text = @"项目成员介绍";
+                cell.inputContentTextView.delegate = self;
+
+                
 
             }else if (indexPath.section == 5) {
                 
-                cell.titleLabel.text = @"项目背景面临问题及需求";
+                cell.inputContentTextView.tag = 1002;
+
                 
+                cell.titleLabel.text = @"项目背景面临问题及需求";
+                cell.inputContentTextView.delegate = self;
+
 
 
             }else if (indexPath.section == 6) {
                 
+                cell.inputContentTextView.tag = 1003;
+
+                
                 cell.titleLabel.text = @"项目实施计划和预期进展";
+                cell.inputContentTextView.delegate = self;
+
+
                 
             }
 
@@ -313,11 +352,54 @@
             
             break;
     }
-    
-    
-    
-    
 }
+
+
+#pragma mark - textField的代理方法
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField.tag == 100) {
+        
+       publicProgectModel.businessCenterPublicProgectTitle = textField.text;
+        
+    }else if (textField.tag == 101){
+        
+       publicProgectModel.businessCenterPublicProgectDetailBudge = textField.text;
+    }
+    
+    
+    return YES;
+}
+
+
+#pragma mark - textView的代理方法
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    
+    if (textView.tag == 1000) {
+        
+       publicProgectModel.businessCenterPublicProgectDetailDescription = textView.text;
+        
+    }else if (textView.tag == 1001){
+        
+        publicProgectModel.businessCenterPublicProgectDetailMember = textView.text;
+        
+    }else if (textView.tag == 1002){
+        
+        publicProgectModel.businessCenterPublicProgectDetailBackground = textView.text;
+        
+    }else if (textView.tag == 1003){
+        
+        publicProgectModel.businessCenterPublicProgectDetailPlan = textView.text;
+    }
+
+
+    
+    
+    return YES;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
