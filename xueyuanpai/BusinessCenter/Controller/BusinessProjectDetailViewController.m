@@ -15,7 +15,10 @@
 #import "BusinessProjectDetailFourTableViewCell.h"
 
 @interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    BusinessCenterProgectDetailModel * businessCenterProgectDetailModel;
+}
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation BusinessProjectDetailViewController
@@ -37,7 +40,7 @@
     
     [self createTableView];
     
-    
+    [self requestToGetBusinessProjectDetail];
     
 }
 
@@ -73,7 +76,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
-    
+    self.tableView = tableView;
     
     //注册cell
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -233,6 +236,30 @@
     }
 }
 
+#pragma mark - 请求创业项目详情数据
+-(void)requestToGetBusinessProjectDetail
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.businessCenterProgectModel.businessCenterProgectId?self.businessCenterProgectModel.businessCenterProgectId:@"" forKey:@"id"];
+    //[dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance]businessCenterGetProjectDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * dataDic = model.responseCommonDic ;
+            businessCenterProgectDetailModel = [[BusinessCenterProgectDetailModel alloc]initWithDic:dataDic];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

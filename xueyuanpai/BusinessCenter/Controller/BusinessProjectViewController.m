@@ -114,6 +114,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //跳转项目详情
+    BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
+    BusinessCenterProgectModel * businessCenterProgectModel = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
+    projectVC.businessCenterProgectModel = businessCenterProgectModel;
+    [self.navigationController pushViewController:projectVC animated:YES];
 }
 #pragma mark - 请求数据
 ///获取筛选分类列表

@@ -315,7 +315,6 @@
         [self.navigationController pushViewController:teacherVC animated:YES];
     }else if (indexPath.section == 1 && indexPath.row == 0) {
         BusinessProjectViewController *projectVC = [[BusinessProjectViewController alloc] init];
-        
         [self.navigationController pushViewController:projectVC animated:YES];
 
         
@@ -323,7 +322,8 @@
         
         //跳转项目详情
         BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
-        
+        BusinessCenterProgectModel * businessCenterProgectModel = [businessProjectModelListArr objectAtIndex:indexPath.row];
+        projectVC.businessCenterProgectModel = businessCenterProgectModel;
         [self.navigationController pushViewController:projectVC animated:YES];
     }
     
