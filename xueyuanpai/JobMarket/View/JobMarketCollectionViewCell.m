@@ -52,7 +52,7 @@
     
     //创建用于显示商品名称的Label
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame) + 5, CGRectGetWidth(self.frame), 30)];
-    nameLabel.text = @"";
+    nameLabel.text = @"苹果产品";
     nameLabel.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:nameLabel];
     self.nameLabel = nameLabel;
@@ -60,7 +60,7 @@
     
     //创建用于显示价格的label
     UILabel *currentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame) + 5, 100, 17)];
-    currentPriceLabel.text = @"";
+    currentPriceLabel.text = @"15555";
     currentPriceLabel.font = [UIFont systemFontOfSize:12];
     [currentPriceLabel setTextColor:[CommonUtils colorWithHex:@"ff6478"]];
     [self.contentView addSubview:currentPriceLabel];
@@ -70,7 +70,7 @@
     
     //创建用于显示弃用价格的label
     UILabel *deprecatedPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, CGRectGetMinY(currentPriceLabel.frame), 100, 17)];
-    deprecatedPriceLabel.text = @"";
+    deprecatedPriceLabel.text = @"1233";
     deprecatedPriceLabel.font = [UIFont systemFontOfSize:12];
     [deprecatedPriceLabel setTextColor:[CommonUtils colorWithHex:@"c7c6cb"]];
     [self.contentView addSubview:deprecatedPriceLabel];
