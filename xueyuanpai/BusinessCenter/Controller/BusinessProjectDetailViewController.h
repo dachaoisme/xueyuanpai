@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BusinessCenterModel.h"
 @interface BusinessProjectDetailViewController : BaseViewController
 
+
+@property(nonatomic,strong)BusinessCenterProgectModel * businessCenterProgectModel;
 @end

@@ -451,6 +451,16 @@
         failBlock(error);
     }];
 }
+///创业项目详情
+- (void)businessCenterGetProjectDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_BUSINESS_CENTER_PROGECT_DETAIL withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
 ///明星导师
 - (void)businessCenterGetTeachersListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
