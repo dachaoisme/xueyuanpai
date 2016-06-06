@@ -10,4 +10,21 @@
 
 @interface BusinessTeacherTableViewCell : UITableViewCell
 
+///头像
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+
+///姓名
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+///职位
+@property (weak, nonatomic) IBOutlet UILabel *jobNameLabel;
+
+///擅长领域
+@property (weak, nonatomic) IBOutlet UILabel *goodAtLabel;
+
+
+
+
+
+
 @end
