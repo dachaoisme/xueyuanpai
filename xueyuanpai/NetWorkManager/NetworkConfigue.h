@@ -123,5 +123,6 @@
 #define METHOD_MINE_PROGECT_LIST                               @"v1/my/project?"
 ///个人中心:我的跳蚤市场
 #define METHOD_MINE_JOB_MARKET_LIST                               @"v1/my/fleamarket?"
-
+///个人中心:我的收藏
+#define METHOD_MINE_COLLECTION_LIST                               @"v1/mark/list?"
 #endif /* NetworkConfigue_h */

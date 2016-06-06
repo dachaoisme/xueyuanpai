@@ -9,9 +9,15 @@
 #import "MineCollectionViewController.h"
 
 #import "UniversityAssnHeaderView.h"
-
+#import "MineCollectionSubViewController.h"
 @interface MineCollectionViewController ()<UniversityAssnHeaderViewDelegate>
-
+{
+    MineCollectionSubViewController * projectVC;
+    MineCollectionSubViewController * timeBankVC;
+    MineCollectionSubViewController * jobMarketVC;
+    MineCollectionSubViewController * giftExchangeVC;
+    MineCollectionSubViewController * tutorVC;
+}
 @end
 
 @implementation MineCollectionViewController
@@ -31,7 +37,7 @@
 #pragma mark - 创建头部视图样式
 - (void)createHeadView{
     NSArray *arrar = [NSArray arrayWithObjects:@"项目",@"时间银行",@"二手物品",@"兑换礼品",@"导师", nil];
-    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(20, 64, SCREEN_WIDTH - 40, 50)];
+    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(20, NAV_TOP_HEIGHT, SCREEN_WIDTH - 40, 50)];
     headerView.backgroundColor = [UIColor whiteColor];
     headerView.type = PiecewiseInterfaceTypeMobileLin;
     headerView.delegate = self;
@@ -42,7 +48,12 @@
     [headerView loadTitleArray:arrar];
     [self.view addSubview:headerView];
     
-    
+    projectVC = [[MineCollectionSubViewController alloc]init];
+    projectVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+    projectVC.view.hidden = YES;
+    projectVC.superViewController = self;
+    projectVC.mineType = 1;
+    [self.view addSubview:projectVC.view];
     
 }
 
@@ -53,33 +64,96 @@
     switch (index) {
         case 0:
         {
-            
+            if (!projectVC) {
+                projectVC = [[MineCollectionSubViewController alloc]init];
+                projectVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                projectVC.view.hidden = YES;
+                projectVC.superViewController = self;
+                projectVC.mineType = MineTypeOfProject;
+                [self.view addSubview:projectVC.view];
+            }
             //项目
+            projectVC.view.hidden = NO;
+            timeBankVC.view.hidden = YES;
+            jobMarketVC.view.hidden = YES;
+            giftExchangeVC.view.hidden = YES;
+            tutorVC.view.hidden = YES;
+            
         }
             break;
         case 1:
         {
-            //时间银行
+            if (!timeBankVC) {
+                timeBankVC = [[MineCollectionSubViewController alloc]init];
+                timeBankVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                timeBankVC.view.hidden = YES;
+                timeBankVC.superViewController = self;
+                timeBankVC.mineType = MineTypeOfTimeBank;
+                [self.view addSubview:timeBankVC.view];
+            }
             
+            //时间银行
+            projectVC.view.hidden = YES;
+            timeBankVC.view.hidden = NO;
+            jobMarketVC.view.hidden = YES;
+            giftExchangeVC.view.hidden = YES;
+            tutorVC.view.hidden = YES;
         }
             break;
         case 2:
         {
-            //二手物品
+            if (!jobMarketVC) {
+                jobMarketVC = [[MineCollectionSubViewController alloc]init];
+                jobMarketVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                jobMarketVC.view.hidden = YES;
+                jobMarketVC.superViewController = self;
+                jobMarketVC.mineType = MineTypeOfJobMarket;
+                [self.view addSubview:jobMarketVC.view];
+            }
             
+            //二手物品
+            projectVC.view.hidden = YES;
+            timeBankVC.view.hidden = YES;
+            jobMarketVC.view.hidden = NO;
+            giftExchangeVC.view.hidden = YES;
+            tutorVC.view.hidden = YES;
         }
             break;
             
         case 3:
         {
+            if (!giftExchangeVC) {
+                giftExchangeVC = [[MineCollectionSubViewController alloc]init];
+                giftExchangeVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                giftExchangeVC.view.hidden = YES;
+                giftExchangeVC.superViewController = self;
+                giftExchangeVC.mineType = MineTypeOfGiftExchange;
+                [self.view addSubview:giftExchangeVC.view];
+            }
             //兑换礼品
-            
+            projectVC.view.hidden = YES;
+            timeBankVC.view.hidden = YES;
+            jobMarketVC.view.hidden = YES;
+            giftExchangeVC.view.hidden = NO;
+            tutorVC.view.hidden = YES;
         }
             break;
         case 4:
         {
+            if (!tutorVC) {
+                tutorVC = [[MineCollectionSubViewController alloc]init];
+                tutorVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                tutorVC.view.hidden = YES;
+                tutorVC.superViewController = self;
+                tutorVC.mineType = MineTypeOfTutor;
+                [self.view addSubview:tutorVC.view];
+            }
             //导师
-            
+            projectVC.view.hidden = YES;
+            timeBankVC.view.hidden = YES;
+            jobMarketVC.view.hidden = YES;
+            giftExchangeVC.view.hidden = YES;
+            tutorVC.view.hidden = NO;
         }
             break;
 

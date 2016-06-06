@@ -109,7 +109,7 @@
 {
     BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row];
     BusinessTeacherDetailViewController * teacherDetailVC = [[BusinessTeacherDetailViewController alloc]init];
-    teacherDetailVC.tutorModel = model;
+    teacherDetailVC.teacherId = model.businessCenterTutorId;
     [self.navigationController pushViewController:teacherDetailVC animated:YES];
 }
 

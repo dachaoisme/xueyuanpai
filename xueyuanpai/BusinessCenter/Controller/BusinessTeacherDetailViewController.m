@@ -242,7 +242,7 @@
 -(void)requestToGetBusinessTutorDetail
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:self.tutorModel.businessCenterTutorId?self.tutorModel.businessCenterTutorId:@"" forKey:@"id"];
+    [dic setValue:self.teacherId?self.teacherId:@"" forKey:@"id"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterGetTeachersDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {

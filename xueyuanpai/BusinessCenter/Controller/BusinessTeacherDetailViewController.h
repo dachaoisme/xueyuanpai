@@ -10,5 +10,5 @@
 #import "BusinessCenterModel.h"
 @interface BusinessTeacherDetailViewController : BaseViewController
 
-@property(nonatomic,strong)BusinessCenterTutorModel *tutorModel;
+@property(nonatomic,strong)NSString *teacherId;
 @end

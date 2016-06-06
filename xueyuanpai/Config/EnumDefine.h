@@ -101,4 +101,26 @@ typedef NS_ENUM(NSInteger, SchoolRecruitmentType){
     ///职位搜索
     SchoolRecruitmentTypeCompanySearch     ,
 };
+
+#pragma mark - 我的
+
+///1项目2时间银行3二手物品4兑换礼品5导师
+
+///校园招聘
+
+typedef NS_ENUM(NSInteger, MineType){
+    
+    ///创业项目
+    MineTypeOfProject           =1,
+    ///时间银行
+    MineTypeOfTimeBank            ,
+    ///二手市场/跳蚤市场
+    MineTypeOfJobMarket           ,
+    ///兑换礼品
+    MineTypeOfGiftExchange        ,
+    ///tutor导师
+    MineTypeOfTutor               ,
+    
+};
+
 #endif /* EnumDefine_h */
