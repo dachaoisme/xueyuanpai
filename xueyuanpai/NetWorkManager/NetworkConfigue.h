@@ -121,5 +121,7 @@
 
 ///个人中心:我的项目
 #define METHOD_MINE_PROGECT_LIST                               @"v1/my/project?"
+///个人中心:我的跳蚤市场
+#define METHOD_MINE_JOB_MARKET_LIST                               @"v1/my/fleamarket?"
 
 #endif /* NetworkConfigue_h */

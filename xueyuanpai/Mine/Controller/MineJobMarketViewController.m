@@ -12,7 +12,11 @@
 #import "JobMarketDetailViewController.h"
 
 @interface MineJobMarketViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
-
+{
+    NSMutableArray *jobMarketModelListArr;
+    
+}
+@property(nonatomic,strong)UICollectionView *collectionView;
 @end
 
 @implementation MineJobMarketViewController
@@ -23,13 +27,13 @@
     
     
     self.title = @"我的跳槽市场";
-    
+    jobMarketModelListArr = [NSMutableArray array];
     [self createLeftBackNavBtn];
     
     //创建flowLayout和collectionView
     [self createFlowLayout];
 
-    
+    [self requestToGetJobMarketList];
     
 }
 
@@ -60,7 +64,7 @@
     collectionView.delegate = self;
     
     [self.view addSubview:collectionView];
-    
+    self.collectionView = collectionView;
     
     //先注册collectionViewCell
     [collectionView registerClass:[JobMarketCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -89,14 +93,15 @@
 //1.返回cell个数
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 10;
+    return jobMarketModelListArr.count;
 }
 
 //2.设置cell视图对象
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     JobMarketCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    
+    JobMarketModel * model = [jobMarketModelListArr objectAtIndex:indexPath.row];
+    [cell setContentWithModel:model];
     return cell;
 }
 
@@ -108,9 +113,9 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     //跳转跳槽市场详情
-//    JobMarketModel * model = [jobMarketModelListArr objectAtIndex:indexPath.row];
+    JobMarketModel * model = [jobMarketModelListArr objectAtIndex:indexPath.row];
     JobMarketDetailViewController *jobMarketVC = [[JobMarketDetailViewController alloc] init];
-//    jobMarketVC.jobMarketId =model.jobMarketId;
+    jobMarketVC.jobMarketId =model.jobMarketId;
     [self.navigationController pushViewController:jobMarketVC animated:YES];
     
     
@@ -120,7 +125,36 @@
     
 }
 
+-(void)requestToGetJobMarketList
+{
 
+    int pageNo = 1;
+    int pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]mineToGetjobMarketListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            [jobMarketModelListArr removeAllObjects];
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                JobMarketModel * model = [[JobMarketModel alloc]initWithDic:smallDic];
+                [jobMarketModelListArr addObject:model];
+            }
+            
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+        [self.collectionView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
