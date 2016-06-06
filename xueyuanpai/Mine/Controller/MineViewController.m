@@ -13,6 +13,7 @@
 
 #import "MineProjectViewController.h"
 #import "MineJobMarketViewController.h"
+#import "MineFriendsViewController.h"
 
 
 #import "MineSettingViewController.h"
@@ -217,6 +218,13 @@
         //跳转跳槽市场界面
         MineJobMarketViewController *jobMarketVC = [[MineJobMarketViewController alloc] init];
         [self.navigationController pushViewController:jobMarketVC animated:YES];
+    }else if (indexPath.row == 4) {
+        
+        //跳转好友列表界面
+        MineFriendsViewController *friendsVC = [[MineFriendsViewController alloc] init];
+        
+        [self.navigationController pushViewController:friendsVC animated:YES];
+        
     }else if (indexPath.row == 6) {
         
         //跳转设置界面
@@ -224,6 +232,7 @@
         [self.navigationController pushViewController:settingVC animated:YES];
     }
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
