@@ -185,12 +185,13 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 
                 oneCell.titleLabel.text = @"标题";
                 oneCell.yuanLabel.hidden = YES;
+                oneCell.inputContentTextField.tag = 100;
                 
                 oneCell.inputContentTextField.delegate = self;
                 
                 
-                //标题
-                publishJobMarketModel.publicJobMarketTitle = oneCell.inputContentTextField.text;
+                
+               
                 return oneCell;
 
             }
@@ -221,13 +222,11 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
                 
                 oneCell.titleLabel.text = @"出售价格";
+                 oneCell.inputContentTextField.tag = 101;
                 
                 oneCell.inputContentTextField.delegate = self;
 
                 
-                
-                publishJobMarketModel.publicJobMarketSalePrice = oneCell.inputContentTextField.text;
-
                 
                 return oneCell;
                 
@@ -238,10 +237,10 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 PublishInformationOneStyleTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell3" forIndexPath:indexPath];
                 oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
+                oneCell.inputContentTextField.tag = 102;
+                
                 oneCell.inputContentTextField.delegate = self;
 
-                
-                publishJobMarketModel.publicJobMarketOriginPrice = oneCell.inputContentTextField.text;
 
 
                 oneCell.titleLabel.text = @"原价";
@@ -315,7 +314,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
         
         
         
-        publishJobMarketModel.publicJobMarketDescription = threeCell.inputContentTextView.text;
+     
 
         
         return threeCell;
@@ -343,19 +342,6 @@ static NSString *Identifier = @"photoCollectionViewCell";
     }else{
         return 48;
     }
-}
-
-
-#pragma mark - textField的代理方法
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    
-    [self.tableView reloadData];
-}
-
-#pragma mark - textView代理方法
-- (void)textViewDidEndEditing:(UITextView *)textView{
-    
-    [self.tableView reloadData];
 }
 
 #pragma mark - 设置图片选择器如下所示
@@ -554,6 +540,35 @@ static NSString *Identifier = @"photoCollectionViewCell";
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
+}
+
+
+#pragma mark - textField的代理方法
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    
+    if (textField.tag == 100) {
+        //标题
+        publishJobMarketModel.publicJobMarketTitle = textField.text;
+    }else if (textField.tag == 101){
+        
+        publishJobMarketModel.publicJobMarketSalePrice = textField.text;
+
+        
+    }else if (textField.tag == 102){
+        
+        publishJobMarketModel.publicJobMarketOriginPrice = textField.text;
+        
+    }
+    
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+   publishJobMarketModel.publicJobMarketDescription = textView.text;
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

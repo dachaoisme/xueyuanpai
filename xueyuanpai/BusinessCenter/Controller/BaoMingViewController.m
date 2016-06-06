@@ -25,10 +25,6 @@
 ///专业
 @property (nonatomic,strong)NSString *professionalStr;
 
-
-@property (nonatomic,strong)UITextField *nameTextField;
-@property (nonatomic,strong)UITextField *majorTextField;
-
 ///学校
 @property (nonatomic,strong)NSString *schoolStr;
 
@@ -83,12 +79,6 @@
 #pragma mark - 提交按钮的响应方法
 - (void)commitAction{
     
-//    [CommonUtils showToastWithStr:@"提交"];
-    
-    [self.nameTextField resignFirstResponder];
-    
-    [self.majorTextField resignFirstResponder];
-    
     [self requestToGetBusinessClassRoomDetail];
     
 }
@@ -111,9 +101,8 @@
         oneCell.titleLabel.text = @"你的姓名";
         oneCell.yuanLabel.hidden = YES;
         
-        self.nameTextField = oneCell.inputContentTextField;
+        oneCell.inputContentTextField.tag = 100;
         
-        self.nameStr = oneCell.inputContentTextField.text;
         
         oneCell.inputContentTextField.delegate = self;
         
@@ -144,7 +133,8 @@
         oneCell.titleLabel.text = @"专业";
         oneCell.yuanLabel.hidden = YES;
         
-        self.majorTextField = oneCell.inputContentTextField;
+        
+        oneCell.inputContentTextField.tag = 101;
 
         
         oneCell.inputContentTextField.delegate = self;
@@ -158,10 +148,19 @@
     
 }
 
-#pragma mark - textField的代理对象
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+#pragma mark - textField的代理方法
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
-    [self.tableView reloadData];
+    if (textField.tag == 100) {
+        
+        self.nameStr = textField.text;
+
+        
+    }else if (textField.tag == 101){
+        
+        self.professionalStr = textField.text;
+
+    }
     
     
     return YES;
@@ -180,13 +179,10 @@
     [[HttpClient sharedInstance]businessCenterBaoMingWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
-//        if (model.responseCode == ResponseCodeSuccess) {
-            ///报名成功
-//            [CommonUtils showToastWithStr:model.responseMsg];
+        if (model.responseCode == ResponseCodeSuccess) {
+            //报名成功
+            [CommonUtils showToastWithStr:model.responseMsg];
         
-            
-            [self.tableView reloadData];
-
             //跳转成功界面
             BaoMingSuccessViewController *successVC = [[BaoMingSuccessViewController alloc] init];
             
@@ -195,9 +191,9 @@
             
             
             
-//        }else{
-//            [CommonUtils showToastWithStr:model.responseMsg];
-//        }
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];

@@ -13,16 +13,9 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    _inputContentTextView.delegate = self;
 }
 
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    
-    _inputContentTextView.text = @"";
-    
-    return YES;
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
