@@ -9,6 +9,8 @@
 #import "BusinessTeacherViewController.h"
 
 #import "BusinessTeacherTableViewCell.h"
+#import "BusinessCenterModel.h"
+
 
 @interface BusinessTeacherViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 
@@ -59,11 +61,10 @@
 #pragma mark - 创建tableView
 - (void)createTableView{
     float height = 36;
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+height ,SCREEN_WIDTH, height) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, height ,SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
-    
     self.tableView = tableView;
     
     
@@ -75,7 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 10;
+    return tutorStarModelListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -83,13 +84,26 @@
     return 100;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+
     BusinessTeacherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
-    
+
+
+    BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row];
+
+
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterTutorImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+
+    cell.nameLabel.text = model.businessCenterTutorUserName;
+
+    cell.jobNameLabel.text = model.businessCenterTutorJob;
+
+    cell.goodAtLabel.text = model.businessCenterTutorGoodAt;
+
+
     return cell;
-    
+
 }
 
 #pragma mark - 搜索
@@ -166,13 +180,13 @@
     
 }
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
