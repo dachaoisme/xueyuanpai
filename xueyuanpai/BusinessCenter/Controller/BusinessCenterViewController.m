@@ -215,8 +215,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    
     if (indexPath.section == 0) {
         
         if (indexPath.row == 0) {
@@ -308,7 +306,7 @@
         [self.navigationController pushViewController:teacherVC animated:YES];
         
         
-    }else if (indexPath.section == 0 && indexPath.row == 1) {
+    }else if (indexPath.section == 0 && indexPath.row > 0) {
         
         //跳转导师详情
         BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row-1];
