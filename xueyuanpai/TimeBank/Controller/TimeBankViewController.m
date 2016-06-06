@@ -41,11 +41,6 @@
 {
     [super viewWillAppear:animated];
     [self theTabBarHidden:YES];
-    
-    
-    
-    
-
 
     
 }

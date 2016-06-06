@@ -12,10 +12,11 @@
 #import "MineTwoStyleTableViewCell.h"
 
 #import "MineProjectViewController.h"
+#import "MineBankViewController.h"
+
 #import "MineJobMarketViewController.h"
 #import "MineFriendsViewController.h"
-
-
+#import "MineCollectionViewController.h"
 #import "MineSettingViewController.h"
 
 
@@ -213,6 +214,13 @@
         [self.navigationController pushViewController:projectVC animated:YES];
         
         
+    }else if (indexPath.row == 2){
+        
+        //跳转我的时间银行
+        MineBankViewController *bankVC = [[MineBankViewController alloc] init];
+        [self.navigationController pushViewController:bankVC animated:YES];
+        
+        
     }else if (indexPath.row == 3) {
         
         //跳转跳槽市场界面
@@ -224,6 +232,13 @@
         MineFriendsViewController *friendsVC = [[MineFriendsViewController alloc] init];
         
         [self.navigationController pushViewController:friendsVC animated:YES];
+        
+    }else if (indexPath.row == 5) {
+        
+        //跳转我的收藏界面
+        MineCollectionViewController *collectionVC = [[MineCollectionViewController alloc] init];
+        
+        [self.navigationController pushViewController:collectionVC animated:YES];
         
     }else if (indexPath.row == 6) {
         

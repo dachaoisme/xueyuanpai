@@ -539,6 +539,8 @@
 		DDAB43BD1D05802C00FADB3E /* MineFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43BC1D05802C00FADB3E /* MineFriendsViewController.m */; };
 		DDAB43C11D05813300FADB3E /* MineFriendsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43BF1D05813300FADB3E /* MineFriendsTableViewCell.m */; };
 		DDAB43C21D05813300FADB3E /* MineFriendsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB43C01D05813300FADB3E /* MineFriendsTableViewCell.xib */; };
+		DDCD705A1D05AE09009FBE9A /* MineBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70591D05AE09009FBE9A /* MineBankViewController.m */; };
+		DDCD705D1D05B2D1009FBE9A /* MineCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD705C1D05B2D1009FBE9A /* MineCollectionViewController.m */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1295,6 +1297,10 @@
 		DDAB43BE1D05813300FADB3E /* MineFriendsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineFriendsTableViewCell.h; sourceTree = "<group>"; };
 		DDAB43BF1D05813300FADB3E /* MineFriendsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineFriendsTableViewCell.m; sourceTree = "<group>"; };
 		DDAB43C01D05813300FADB3E /* MineFriendsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineFriendsTableViewCell.xib; sourceTree = "<group>"; };
+		DDCD70581D05AE09009FBE9A /* MineBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineBankViewController.h; sourceTree = "<group>"; };
+		DDCD70591D05AE09009FBE9A /* MineBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineBankViewController.m; sourceTree = "<group>"; };
+		DDCD705B1D05B2D1009FBE9A /* MineCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCollectionViewController.h; sourceTree = "<group>"; };
+		DDCD705C1D05B2D1009FBE9A /* MineCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineCollectionViewController.m; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -1514,10 +1520,14 @@
 				582998791CDB4486004A05FB /* MineViewController.m */,
 				DDAB43B81D057D9200FADB3E /* MineProjectViewController.h */,
 				DDAB43B91D057D9200FADB3E /* MineProjectViewController.m */,
+				DDCD70581D05AE09009FBE9A /* MineBankViewController.h */,
+				DDCD70591D05AE09009FBE9A /* MineBankViewController.m */,
 				DDAB43B51D057A5C00FADB3E /* MineJobMarketViewController.h */,
 				DDAB43B61D057A5C00FADB3E /* MineJobMarketViewController.m */,
 				DDAB43BB1D05802C00FADB3E /* MineFriendsViewController.h */,
 				DDAB43BC1D05802C00FADB3E /* MineFriendsViewController.m */,
+				DDCD705B1D05B2D1009FBE9A /* MineCollectionViewController.h */,
+				DDCD705C1D05B2D1009FBE9A /* MineCollectionViewController.m */,
 				DDAB439F1D055BA000FADB3E /* MineSettingViewController.h */,
 				DDAB43A01D055BA000FADB3E /* MineSettingViewController.m */,
 				DDAB43B21D05717500FADB3E /* BindPhoneViewController.h */,
@@ -3404,6 +3414,7 @@
 				DDAB05FF1D0487A9007A6027 /* BaoMingSuccessViewController.m in Sources */,
 				DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */,
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
+				DDCD705A1D05AE09009FBE9A /* MineBankViewController.m in Sources */,
 				DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */,
 				DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
@@ -3421,6 +3432,7 @@
 				DD13CE121D002A14000A69FE /* BusinessNewsDetailOneStleTableViewCell.m in Sources */,
 				DDAB43BD1D05802C00FADB3E /* MineFriendsViewController.m in Sources */,
 				DDAB05FA1D0483D7007A6027 /* BusinessTeacherTableViewCell.m in Sources */,
+				DDCD705D1D05B2D1009FBE9A /* MineCollectionViewController.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				58C40DF61D0579050061C174 /* MineModel.m in Sources */,
 				58F67BFE1CD990A200D55BE0 /* HttpClient.m in Sources */,
