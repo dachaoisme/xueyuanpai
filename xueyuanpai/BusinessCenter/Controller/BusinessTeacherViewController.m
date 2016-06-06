@@ -112,6 +112,7 @@
     teacherDetailVC.tutorModel = model;
     [self.navigationController pushViewController:teacherDetailVC animated:YES];
 }
+
 #pragma mark - 搜索
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {

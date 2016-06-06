@@ -321,7 +321,7 @@
         [self.navigationController pushViewController:projectVC animated:YES];
 
         
-    }else if (indexPath.section == 1 && indexPath.row == 1) {
+    }else if (indexPath.section == 1 && indexPath.row > 0) {
         
         //跳转项目详情
         BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
