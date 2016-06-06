@@ -220,7 +220,7 @@
     
 }
 
-#pragma mark - 请求创业讲堂详情数据
+#pragma mark - 请求明星导师详情数据
 -(void)requestToGetBusinessTutorDetail
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];

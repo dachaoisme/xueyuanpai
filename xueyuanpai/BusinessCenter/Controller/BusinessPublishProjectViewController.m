@@ -13,7 +13,9 @@
 #import "BusinessPublishProjectThreeTableViewCell.h"
 
 @interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    BusinessCenterPublicProgectModel * publicProgectModel;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -39,7 +41,7 @@
     // Do any additional setup after loading the view.
     
     self.title = @"发布项目";
-    
+    publicProgectModel = [[BusinessCenterPublicProgectModel alloc]initWithDic:nil];
     [self createLeftBackNavBtn];
     
     
@@ -230,7 +232,105 @@
     
     
 }
-
+#pragma mark - 确认提交按钮响应方法
+- (void)commitAction{
+    
+    [CommonUtils showToastWithStr:@"确认提交"];
+    /*
+     owner_id         int        必需  发布者序号
+     title            string     必需  项目名称
+     thumbUrl         string     必需 项目封面图  图片上传请调用跳蚤市场上传照片接口
+     budget           string     必需 项目预算
+     field            string     必需 项目领域
+     description      string     必需 项目简介
+     member           string     必需 项目成员介绍
+     background       string     必需 项目背景
+     plan             string     必需 项目实施计划
+     master_name      string     必需 负责人姓名
+     idcard          string     必需  负责人身份证号
+     telphone        string     必需  联系电话
+     college         string     必需  学校
+     major           string     必需 专业
+     education       string     必需 学历
+     graduationtime  string     必需 毕业时间
+     */
+    /*
+    if (publishJobMarketModel.publicJobMarketTitle.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入"];
+        return;
+    }
+    
+#warning 添加照片逻辑没处理
+    //    else if (publishJobMarketModel.publicJobMarketImages.length<=0){
+    //        [CommonUtils showToastWithStr:@"请添加照片"];
+    //        return;
+    //    }
+    else if (publishJobMarketModel.publicJobMarketCategoryId.length<=0){
+        [CommonUtils showToastWithStr:@"请选择分类"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketSalePrice.length<=0){
+        [CommonUtils showToastWithStr:@"请输入价格"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketOriginPrice.length<=0){
+        [CommonUtils showToastWithStr:@"请输入原价"];
+        return;
+    }
+    else if (publishJobMarketModel.publicJobMarketCollegeId.length<=0){
+        [CommonUtils showToastWithStr:@"请选择学校"];
+        return;
+    }else if (publishJobMarketModel.publicJobMarketTelephone.length<=0){
+        [CommonUtils showToastWithStr:@"请输入联系方式"];
+        return;
+    }else if (publishJobMarketModel.publicJobMarketDescription.length<=0){
+        [CommonUtils showToastWithStr:@"请添加描述"];
+        return;
+    }
+    */
+    /*
+     
+     master_name      string     必需 负责人姓名
+     idcard          string     必需  负责人身份证号
+     telphone        string     必需  联系电话
+     college         string     必需  学校
+     major           string     必需 专业
+     education       string     必需 学历
+     graduationtime  string     必需 毕业时间
+     */
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectTitle forKey:@"title"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectImage forKey:@"thumbUrl"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectDetailBudge forKey:@"budget"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectDetailField  forKey:@"field"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectDetailDescription forKey:@"description"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectDetailMember forKey:@"member"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectDetailBackground forKey:@"background"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectDetailPlan forKey:@"plan"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectRealName forKey:@"master_name"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectIdentityCard forKey:@"idcard"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectTelephone forKey:@"telphone"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectCollege forKey:@"college"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectMajor forKey:@"major"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectJob forKey:@"education"];
+    [dic setValue:publicProgectModel.businessCenterPublicProgectGraduationtime forKey:@"graduationtime"];
+    
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]jobMarketSubmitWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"发布跳蚤市场成功"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -332,15 +332,15 @@
  "job": "11" //职位
  },
  */
-///负责人姓名
+///负责人头像
 @property(nonatomic,strong)NSString *businessCenterProgectDetailTutorImage;
-///负责人联系电话
+///负责人昵称
 @property(nonatomic,strong)NSString *businessCenterProgectDetailTutorNickName;
-///负责人学校
+///负责人真实姓名
 @property(nonatomic,strong)NSString *businessCenterProgectDetailTutorRealName;
-///负责人专业
+///负责人工作单位
 @property(nonatomic,strong)NSString *businessCenterProgectDetailTutorCompany;
-///负责人学历
+///负责人职位
 @property(nonatomic,strong)NSString *businessCenterProgectDetailTutorJob;
 
 -(id)initWithDic:(NSDictionary *)dic;
@@ -421,3 +421,61 @@
 -(id)initWithDic:(NSDictionary *)dic;
 @end
 
+#pragma mark - 发布创业项目model
+@interface BusinessCenterPublicProgectModel : NSObject
+/*
+ owner_id         int        必需  发布者序号
+ title            string     必需  项目名称
+ thumbUrl         string     必需 项目封面图  图片上传请调用跳蚤市场上传照片接口
+ budget           string     必需 项目预算
+ field            string     必需 项目领域
+ description      string     必需 项目简介
+ member           string     必需 项目成员介绍
+ background       string     必需 项目背景
+ plan             string     必需 项目实施计划
+ master_name      string     必需 负责人姓名
+ idcard          string     必需  负责人身份证号
+ telphone        string     必需  联系电话
+ college         string     必需  学校
+ major           string     必需 专业
+ education       string     必需 学历
+ graduationtime  string     必需 毕业时间
+ */
+
+///拥有者id
+@property(nonatomic,strong)NSString *businessCenterPublicProgectOwnId;
+///项目标题
+@property(nonatomic,strong)NSString *businessCenterPublicProgectTitle;
+///项目封面图
+@property(nonatomic,strong)NSString *businessCenterPublicProgectImage;
+///项目预算
+@property(nonatomic,strong)NSString *businessCenterPublicProgectDetailBudge;
+///项目领域
+@property(nonatomic,strong)NSString *businessCenterPublicProgectDetailField;
+///项目简介
+@property(nonatomic,strong)NSString *businessCenterPublicProgectDetailDescription;
+///项目成员
+@property(nonatomic,strong)NSString *businessCenterPublicProgectDetailMember;
+///项目背景
+@property(nonatomic,strong)NSString *businessCenterPublicProgectDetailBackground;
+///实施计划
+@property(nonatomic,strong)NSString *businessCenterPublicProgectDetailPlan;
+
+///负责人姓名
+@property(nonatomic,strong)NSString *businessCenterPublicProgectRealName;
+///负责人身份证号
+@property(nonatomic,strong)NSString *businessCenterPublicProgectIdentityCard;
+///负责人联系电话
+@property(nonatomic,strong)NSString *businessCenterPublicProgectTelephone;
+///负责人学校
+@property(nonatomic,strong)NSString *businessCenterPublicProgectCollege;
+///负责人专业
+@property(nonatomic,strong)NSString *businessCenterPublicProgectMajor;
+///负责人学历
+@property(nonatomic,strong)NSString *businessCenterPublicProgectJob;
+///负责人毕业时间
+@property(nonatomic,strong)NSString *businessCenterPublicProgectGraduationtime;
+
+
+-(id)initWithDic:(NSDictionary *)dic;
+@end

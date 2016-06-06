@@ -304,3 +304,52 @@
 
 @end
 
+#pragma mark - 发布创业项目model
+@implementation BusinessCenterPublicProgectModel
+/*
+ owner_id         int        必需  发布者序号
+ title            string     必需  项目名称
+ thumbUrl         string     必需 项目封面图  图片上传请调用跳蚤市场上传照片接口
+ budget           string     必需 项目预算
+ field            string     必需 项目领域
+ description      string     必需 项目简介
+ member           string     必需 项目成员介绍
+ background       string     必需 项目背景
+ plan             string     必需 项目实施计划
+ master_name      string     必需 负责人姓名
+ idcard          string     必需  负责人身份证号
+ telphone        string     必需  联系电话
+ college         string     必需  学校
+ major           string     必需 专业
+ education       string     必需 学历
+ graduationtime  string     必需 毕业时间
+ */
+-(id)initWithDic:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        self.businessCenterPublicProgectOwnId              = @"";
+        self.businessCenterPublicProgectTitle              = @"";
+        self.businessCenterPublicProgectImage              = @"";
+        self.businessCenterPublicProgectDetailBudge        = @"";
+        self.businessCenterPublicProgectDetailField        = @"";
+        self.businessCenterPublicProgectDetailDescription  = @"";
+        self.businessCenterPublicProgectDetailDescription  = @"";
+        self.businessCenterPublicProgectDetailMember       = @"";
+        self.businessCenterPublicProgectDetailBackground   = @"";
+        self.businessCenterPublicProgectDetailPlan         = @"";
+        self.businessCenterPublicProgectRealName           = @"";
+        self.businessCenterPublicProgectIdentityCard       = @"";
+        self.businessCenterPublicProgectTelephone          = @"";
+        self.businessCenterPublicProgectCollege            = @"";
+        self.businessCenterPublicProgectMajor              = @"";
+        self.businessCenterPublicProgectJob                = @"";
+        self.businessCenterPublicProgectGraduationtime               = @"";
+        
+    }
+    return self;
+}
+
+
+
+@end
