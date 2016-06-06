@@ -11,8 +11,13 @@
 #import "MineOneStyleTableViewCell.h"
 #import "MineTwoStyleTableViewCell.h"
 
+#import "MineProjectViewController.h"
+#import "MineJobMarketViewController.h"
+
 
 #import "MineSettingViewController.h"
+
+
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -201,8 +206,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
-    if (indexPath.row == 6) {
+    if (indexPath.row == 1) {
+        //跳转我的项目
+        MineProjectViewController *projectVC = [[MineProjectViewController alloc] init];
+        [self.navigationController pushViewController:projectVC animated:YES];
+        
+        
+    }else if (indexPath.row == 3) {
+        
+        //跳转跳槽市场界面
+        MineJobMarketViewController *jobMarketVC = [[MineJobMarketViewController alloc] init];
+        [self.navigationController pushViewController:jobMarketVC animated:YES];
+    }else if (indexPath.row == 6) {
         
         //跳转设置界面
         MineSettingViewController *settingVC = [[MineSettingViewController alloc] init];
