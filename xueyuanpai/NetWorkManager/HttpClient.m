@@ -492,4 +492,18 @@
     }];
 }
 
+#pragma mark - 我的
+///个人中心-我的项目
+- (void)mineProgectListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_PROGECT_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,pageModel,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
 @end
