@@ -535,7 +535,6 @@
     
     return attribtStr;
 }
-
 //计算是周几
 +(NSString *)changedStringToWeak:(NSString *)timestamp
 {

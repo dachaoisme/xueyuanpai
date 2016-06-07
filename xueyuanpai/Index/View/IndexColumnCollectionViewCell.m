@@ -27,12 +27,15 @@
     [self addSubview:columnImageView];
     self.columnImageView = columnImageView;
     
-    UILabel * columnTitileLable = [UIFactory label:10*3 color:@"999999" align:NSTextAlignmentCenter];
-    columnTitileLable.frame = CGRectMake(0, CGRectGetMaxY(columnImageView.frame), CGRectGetWidth(columnImageView.frame), 15) ;
+    UILabel * columnTitileLable = [UIFactory label:10*3 color:@"333333" align:NSTextAlignmentCenter];
+    columnTitileLable.font = [UIFont systemFontOfSize:12];
+    columnTitileLable.frame = CGRectMake(0, CGRectGetMaxY(columnImageView.frame) + 7, CGRectGetWidth(columnImageView.frame) + 3, 15) ;
     [self addSubview:columnTitileLable];
     self.columnTitileLable = columnTitileLable;
     
 }
+
+
 
 - (void)layoutSubviews{
     

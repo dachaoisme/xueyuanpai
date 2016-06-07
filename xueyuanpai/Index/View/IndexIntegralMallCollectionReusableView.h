@@ -24,6 +24,9 @@
 ///文本的标题
 @property (nonatomic,strong)UILabel * titileLable;
 
+///图片的label
+@property (nonatomic,strong)UIImageView *showImageView;
+
 ///查看更多
 @property (nonatomic,strong)UIButton * button;
 

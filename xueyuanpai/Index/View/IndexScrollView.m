@@ -70,7 +70,7 @@
         }else {
             urlStr = self.pics[i - 1];
         }
-        [imageView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"1.jpg"]];
         //[self loadImage:urlStr imageView:imageView];
         [self setVFrame:i imageView:imageView];
         [_imgScrollView addSubview:imageView];
