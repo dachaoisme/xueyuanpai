@@ -75,28 +75,28 @@
         BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
         
         projectVC.projectId = mineStoreModel.mineStoreId;
-        [self.navigationController pushViewController:projectVC animated:YES];
+        [self.superViewController.navigationController pushViewController:projectVC animated:YES];
     }else if (self.mineType == MineTypeOfTimeBank){
         //点击进入时间银行详情
         TimeBankDetailViewController *detailVC = [[TimeBankDetailViewController alloc] init];
         detailVC.timeBankId = mineStoreModel.mineStoreId;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        [self.superViewController.navigationController pushViewController:detailVC animated:YES];
     }else if (self.mineType == MineTypeOfJobMarket){
         ///点击进入跳蚤市场
         JobMarketDetailViewController *detailVC = [[JobMarketDetailViewController alloc] init];
         detailVC.jobMarketId = mineStoreModel.mineStoreId;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        [self.superViewController.navigationController pushViewController:detailVC animated:YES];
     }else if (self.mineType == MineTypeOfGiftExchange){
         ///点击进入跳蚤市场
 #warning 这个地方需要验证一下
         GiftDetailViewController *detailVC = [[GiftDetailViewController alloc] init];
         detailVC.giftDetailId = mineStoreModel.mineStoreId;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        [self.superViewController.navigationController pushViewController:detailVC animated:YES];
     }else{
         ///导师
         BusinessTeacherDetailViewController *detailVC = [[BusinessTeacherDetailViewController alloc] init];
         detailVC.teacherId = mineStoreModel.mineStoreId;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        [self.superViewController.navigationController pushViewController:detailVC animated:YES];
     }
     
 }
@@ -114,6 +114,7 @@
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)self.mineType] forKey:@"type"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]mineToGetCollectionListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

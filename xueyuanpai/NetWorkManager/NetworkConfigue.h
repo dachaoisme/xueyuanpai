@@ -122,7 +122,17 @@
 ///个人中心:我的项目
 #define METHOD_MINE_PROGECT_LIST                               @"v1/my/project?"
 ///个人中心:我的跳蚤市场
-#define METHOD_MINE_JOB_MARKET_LIST                               @"v1/my/fleamarket?"
+#define METHOD_MINE_JOB_MARKET_LIST                            @"v1/my/fleamarket?"
 ///个人中心:我的收藏
-#define METHOD_MINE_COLLECTION_LIST                               @"v1/mark/list?"
+#define METHOD_MINE_COLLECTION_LIST                            @"v1/mark/list?"
+///个人中心:我的时间银行
+#define METHOD_MINE_TIME_BANK_LIST                            @"v1/my/timebank?"
+
+///收藏相关-添加收藏
+#define METHOD_COLLECTION_ADD                                 @"v1/mark/add?"
+///收藏相关-取消收藏
+#define METHOD_COLLECTION_CANCEL                              @"v1/mark/cancel?"
+///收藏相关-是否已经添加收藏
+#define METHOD_COLLECTION_CHECK                               @"v1/mark/check?"
+
 #endif /* NetworkConfigue_h */

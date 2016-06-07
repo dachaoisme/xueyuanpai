@@ -61,6 +61,7 @@
 {
     [CommonUtils showToastWithStr:@"收藏"];
     
+   // [HttpClient sharedInstance]
 }
 
 

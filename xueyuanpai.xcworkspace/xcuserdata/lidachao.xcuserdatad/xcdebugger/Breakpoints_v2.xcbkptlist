@@ -9,13 +9,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/MineCollectionSubViewController.m"
-            timestampString = "486921875.475352"
+            filePath = "xueyuanpai/Mine/Controller/MineBankSubViewController.m"
+            timestampString = "486959289.911548"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-requestToGetTimeBankList"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MineBankSubViewController requestToGetTimeBankList]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Mine/Controller/MineBankSubViewController.m"
+                  timestampString = "486959289.929367"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "771">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__53-[MineBankSubViewController requestToGetTimeBankList]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Mine/Controller/MineBankSubViewController.m"
+                  timestampString = "486959289.929673"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "115"
+                  endingLineNumber = "115"
+                  offsetFromSymbolStart = "151">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/Mine/Controller/MineBankSubViewController.m"
+            timestampString = "486959332.107903"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
-            landmarkName = "-requestToGetProgectList"
+            landmarkName = "-requestToGetTimeBankList"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/MineCollectionSubViewController.m"
-            timestampString = "486921875.475352"
+            filePath = "xueyuanpai/Mine/Controller/MineBankSubViewController.m"
+            timestampString = "486959337.558427"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-requestToGetProgectList"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-requestToGetTimeBankList"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,45 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/MineCollectionSubViewController.m"
-            timestampString = "486922321.293512"
+            filePath = "xueyuanpai/Mine/Controller/MineBankSubViewController.m"
+            timestampString = "486959338.609486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "-requestToGetProgectList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/MineCollectionSubViewController.m"
-            timestampString = "486922365.820721"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "-requestToGetProgectList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/MineCollectionViewController.m"
-            timestampString = "486923516.556316"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-headerViewSelctAction:index:"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-requestToGetTimeBankList"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

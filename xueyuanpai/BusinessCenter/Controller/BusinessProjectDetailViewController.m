@@ -71,7 +71,7 @@
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
     [CommonUtils showToastWithStr:@"收藏"];
-    
+    //[HttpClient sharedInstance]
 }
 
 #pragma mark - 创建tableView
