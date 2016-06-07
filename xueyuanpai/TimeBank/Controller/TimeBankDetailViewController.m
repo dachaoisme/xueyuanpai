@@ -142,7 +142,19 @@
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
     [CommonUtils showToastWithStr:@"收藏"];
-    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.timeBankId forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfTimeBank] forKey:@"type"];
+    [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"收藏成功"];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 
 #pragma mark - tableView的代理方法

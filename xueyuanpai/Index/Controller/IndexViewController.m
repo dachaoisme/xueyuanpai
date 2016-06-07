@@ -312,6 +312,7 @@
         IndexMallModel * model = obj;
         GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
         giftDetailVC.mallModel = model;
+        
         [self.navigationController pushViewController:giftDetailVC animated:YES];
     }
 }

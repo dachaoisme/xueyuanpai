@@ -50,7 +50,6 @@
     
     projectVC = [[MineCollectionSubViewController alloc]init];
     projectVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
-    projectVC.view.hidden = YES;
     projectVC.superViewController = self;
     projectVC.mineType = 1;
     [self.view addSubview:projectVC.view];
@@ -67,7 +66,6 @@
             if (!projectVC) {
                 projectVC = [[MineCollectionSubViewController alloc]init];
                 projectVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
-                projectVC.view.hidden = YES;
                 projectVC.superViewController = self;
                 projectVC.mineType = MineTypeOfProject;
                 [self.view addSubview:projectVC.view];
@@ -86,7 +84,6 @@
             if (!timeBankVC) {
                 timeBankVC = [[MineCollectionSubViewController alloc]init];
                 timeBankVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
-                timeBankVC.view.hidden = YES;
                 timeBankVC.superViewController = self;
                 timeBankVC.mineType = MineTypeOfTimeBank;
                 [self.view addSubview:timeBankVC.view];
@@ -105,7 +102,6 @@
             if (!jobMarketVC) {
                 jobMarketVC = [[MineCollectionSubViewController alloc]init];
                 jobMarketVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
-                jobMarketVC.view.hidden = YES;
                 jobMarketVC.superViewController = self;
                 jobMarketVC.mineType = MineTypeOfJobMarket;
                 [self.view addSubview:jobMarketVC.view];
@@ -125,7 +121,6 @@
             if (!giftExchangeVC) {
                 giftExchangeVC = [[MineCollectionSubViewController alloc]init];
                 giftExchangeVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
-                giftExchangeVC.view.hidden = YES;
                 giftExchangeVC.superViewController = self;
                 giftExchangeVC.mineType = MineTypeOfGiftExchange;
                 [self.view addSubview:giftExchangeVC.view];
@@ -143,7 +138,6 @@
             if (!tutorVC) {
                 tutorVC = [[MineCollectionSubViewController alloc]init];
                 tutorVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
-                tutorVC.view.hidden = YES;
                 tutorVC.superViewController = self;
                 tutorVC.mineType = MineTypeOfTutor;
                 [self.view addSubview:tutorVC.view];
