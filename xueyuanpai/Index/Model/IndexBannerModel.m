@@ -8,6 +8,7 @@
 
 #import "IndexBannerModel.h"
 
+
 @implementation IndexBannerModel
 
 -(id)initWithDic:(NSDictionary *)dic
