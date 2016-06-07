@@ -13,9 +13,15 @@
 #import "TimeBankTableViewCell.h"
 #import "TimeBankDetailViewController.h"
 
-
-@interface MineBankViewController ()<UniversityAssnHeaderViewDelegate,UITableViewDataSource,UITableViewDelegate>
-
+#import "MineBankSubViewController.h"
+@interface MineBankViewController ()<UniversityAssnHeaderViewDelegate>
+{
+    MineBankSubViewController * timeBankNoneApplyVC;
+    MineBankSubViewController * timeBankAlreadyApplyVC;
+    MineBankSubViewController * timeBankPassVC;
+    MineBankSubViewController * timeBankOverdueVC;
+    MineBankSubViewController * timeBankCompleteVC;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -35,8 +41,6 @@
     //创建头的显示样式
     [self createHeadView];
     
-    [self createTableView];
-
 }
 
 #pragma mark - 创建头部视图样式
@@ -54,7 +58,12 @@
     [self.view addSubview:headerView];
     
     
-    
+    timeBankAlreadyApplyVC = [[MineBankSubViewController alloc]init];
+    timeBankAlreadyApplyVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+    timeBankAlreadyApplyVC.view.hidden = YES;
+    timeBankAlreadyApplyVC.superViewController = self;
+    timeBankAlreadyApplyVC.mineTimeBankStatus = MineTimeBankAlreadyApplyStatus;
+    [self.view addSubview:timeBankAlreadyApplyVC.view];
 }
 
 #pragma mark - UniversityAssnHeaderViewDelegate代理方法
@@ -66,25 +75,71 @@
         {
             
             //正在进行
+            if (!timeBankAlreadyApplyVC) {
+                timeBankAlreadyApplyVC = [[MineBankSubViewController alloc]init];
+                timeBankAlreadyApplyVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                timeBankAlreadyApplyVC.view.hidden = YES;
+                timeBankAlreadyApplyVC.superViewController = self;
+                timeBankAlreadyApplyVC.mineTimeBankStatus = MineTimeBankAlreadyApplyStatus;
+                [self.view addSubview:timeBankAlreadyApplyVC.view];
+            }
+            //项目
+            timeBankAlreadyApplyVC.view.hidden = NO;
+            timeBankCompleteVC.view.hidden = YES;
+            timeBankOverdueVC.view.hidden = YES;
+            timeBankPassVC.view.hidden = YES;
         }
             break;
         case 1:
         {
             //已经完成
-            
+            if (!timeBankCompleteVC) {
+                timeBankCompleteVC = [[MineBankSubViewController alloc]init];
+                timeBankCompleteVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                timeBankCompleteVC.view.hidden = YES;
+                timeBankCompleteVC.superViewController = self;
+                timeBankCompleteVC.mineTimeBankStatus = MineTimeBankCompleteStatus;
+                [self.view addSubview:timeBankCompleteVC.view];
+            }
+            timeBankAlreadyApplyVC.view.hidden = YES;
+            timeBankCompleteVC.view.hidden = NO;
+            timeBankOverdueVC.view.hidden = YES;
+            timeBankPassVC.view.hidden = YES;
         }
             break;
         case 2:
         {
             //已经过期
-            
+            if (!timeBankOverdueVC) {
+                timeBankOverdueVC = [[MineBankSubViewController alloc]init];
+                timeBankOverdueVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                timeBankOverdueVC.view.hidden = YES;
+                timeBankOverdueVC.superViewController = self;
+                timeBankOverdueVC.mineTimeBankStatus = MineTimeBankOverdueStatus;
+                [self.view addSubview:timeBankOverdueVC.view];
+            }
+            timeBankAlreadyApplyVC.view.hidden = YES;
+            timeBankCompleteVC.view.hidden = YES;
+            timeBankOverdueVC.view.hidden = NO;
+            timeBankPassVC.view.hidden = YES;
         }
             break;
 
         case 3:
         {
             //我申领的
-            
+            if (!timeBankPassVC) {
+                timeBankPassVC = [[MineBankSubViewController alloc]init];
+                timeBankPassVC.view.frame = CGRectMake(0, 50+NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-50-NAV_TOP_HEIGHT);
+                timeBankPassVC.view.hidden = YES;
+                timeBankPassVC.superViewController = self;
+                timeBankPassVC.mineTimeBankStatus = MineTimeBankPassStatus;
+                [self.view addSubview:timeBankPassVC.view];
+            }
+            timeBankAlreadyApplyVC.view.hidden = YES;
+            timeBankCompleteVC.view.hidden = YES;
+            timeBankOverdueVC.view.hidden = YES;
+            timeBankPassVC.view.hidden = NO;
         }
             break;
         default:
@@ -92,76 +147,6 @@
     }
     
 }
-
-
-#pragma mark - tableview UITableViewDataSource,UITableViewDelegate
--(void)createTableView
-{
-    
-    float height = 50;
-    //初始化tableView
-    CGRect rc = self.view.bounds;
-    rc.origin.y = NAV_TOP_HEIGHT+height;
-    rc.size.height = SCREEN_HEIGHT-NAV_TOP_HEIGHT-height;
-    UITableView * tableView    = [[UITableView alloc]initWithFrame:rc style:UITableViewStylePlain];
-    tableView.backgroundColor  = [CommonUtils colorWithHex:@"f3f3f3"];
-    tableView.separatorInset   = UIEdgeInsetsZero;
-    tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
-    tableView.dataSource       = self;
-    tableView.delegate         = self;
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
-    
-    
-    //注册cell
-    [tableView registerNib:[UINib nibWithNibName:@"TimeBankTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
-    
-    
-    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //游玩日期
-    return 120;
-    
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
-    return 3;
-    
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    //游玩日期
-    NSString * cellResuable = [NSString stringWithFormat:@"cell"];
-    TimeBankTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable forIndexPath:indexPath];
-    
-//    TimeBankModel * timeBankModel = [timeBankModelListArr objectAtIndex:indexPath.row];
-//    [cell setContentViewWithModel:timeBankModel];
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-//    TimeBankModel * model = [timeBankModelListArr objectAtIndex:indexPath.row];
-    //点击进入时间银行详情
-    TimeBankDetailViewController *detailVC = [[TimeBankDetailViewController alloc] init];
-//    detailVC.timeBankId = model.timeBankId;
-    [self.navigationController pushViewController:detailVC animated:YES];
-    
-    
-    
-}
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

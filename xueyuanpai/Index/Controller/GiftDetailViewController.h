@@ -11,5 +11,5 @@
 @interface GiftDetailViewController : BaseViewController
 
 @property(nonatomic,strong)IndexMallModel * mallModel;
-
+@property(nonatomic,strong)NSString *giftDetailId;
 @end

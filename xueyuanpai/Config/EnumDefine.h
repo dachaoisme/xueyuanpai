@@ -101,4 +101,37 @@ typedef NS_ENUM(NSInteger, SchoolRecruitmentType){
     ///职位搜索
     SchoolRecruitmentTypeCompanySearch     ,
 };
+
+#pragma mark - 我的
+
+///我的收藏：1项目2时间银行3二手物品4兑换礼品5导师
+typedef NS_ENUM(NSInteger, MineType){
+    
+    ///创业项目
+    MineTypeOfProject           =1,
+    ///时间银行
+    MineTypeOfTimeBank            ,
+    ///二手市场/跳蚤市场
+    MineTypeOfJobMarket           ,
+    ///兑换礼品
+    MineTypeOfGiftExchange        ,
+    ///tutor导师
+    MineTypeOfTutor               ,
+    
+};
+///// 我的时间银行：0 未申请 1 已申请 2 已通过 3 过期 4 完成
+typedef NS_ENUM(NSInteger, MineTimeBankStatus){
+    
+    ///未申请
+    MineTimeBankNoneApplyStatus           =0,
+    ///已申请
+    MineTimeBankAlreadyApplyStatus          ,
+    ///已通过
+    MineTimeBankPassStatus                  ,
+    ///过期
+    MineTimeBankOverdueStatus               ,
+    ///完成
+    MineTimeBankCompleteStatus              ,
+    
+};
 #endif /* EnumDefine_h */

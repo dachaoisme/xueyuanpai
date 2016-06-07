@@ -71,7 +71,7 @@
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
     [CommonUtils showToastWithStr:@"收藏"];
-    
+    //[HttpClient sharedInstance]
 }
 
 #pragma mark - 创建tableView
@@ -355,7 +355,7 @@
 -(void)requestToGetBusinessProjectDetail
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:self.businessCenterProgectModel.businessCenterProgectId?self.businessCenterProgectModel.businessCenterProgectId:@"" forKey:@"id"];
+    [dic setValue:self.projectId?self.projectId:@"" forKey:@"id"];
     //[dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     

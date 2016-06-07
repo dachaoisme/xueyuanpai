@@ -311,7 +311,7 @@
         //跳转导师详情
         BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row-1];
         BusinessTeacherDetailViewController *teacherVC = [[BusinessTeacherDetailViewController alloc] init];
-        teacherVC.tutorModel = model;
+        teacherVC.teacherId = model.businessCenterTutorId;
         [self.navigationController pushViewController:teacherVC animated:YES];
     }else if (indexPath.section == 1 && indexPath.row == 0) {
         BusinessProjectViewController *projectVC = [[BusinessProjectViewController alloc] init];
@@ -323,7 +323,7 @@
         //跳转项目详情
         BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
         BusinessCenterProgectModel * businessCenterProgectModel = [businessProjectModelListArr objectAtIndex:indexPath.row -1];
-        projectVC.businessCenterProgectModel = businessCenterProgectModel;
+        projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
         [self.navigationController pushViewController:projectVC animated:YES];
     }
     

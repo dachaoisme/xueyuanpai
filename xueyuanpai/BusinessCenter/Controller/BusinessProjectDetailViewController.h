@@ -10,6 +10,5 @@
 #import "BusinessCenterModel.h"
 @interface BusinessProjectDetailViewController : BaseViewController
 
-
-@property(nonatomic,strong)BusinessCenterProgectModel * businessCenterProgectModel;
+@property(nonatomic,strong)NSString * projectId;
 @end
