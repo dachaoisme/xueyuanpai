@@ -11,17 +11,22 @@
 #import "MineOneStyleTableViewCell.h"
 #import "MineTwoStyleTableViewCell.h"
 
+#import "MineIntegralViewController.h"
+
 #import "MineProjectViewController.h"
 #import "MineBankViewController.h"
-
 #import "MineJobMarketViewController.h"
 #import "MineFriendsViewController.h"
 #import "MineCollectionViewController.h"
 #import "MineSettingViewController.h"
 
 
+#import "EditProfileViewController.h"
+#import "MyWalletViewController.h"
 
-@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+
+@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,MineOneStyleTableViewCellDelegate>
 
 
 @property (nonatomic,strong)UITableView *tableView;
@@ -53,6 +58,16 @@
     
 }
 
+#pragma mark - 导航栏右侧按钮响应方法
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    
+    EditProfileViewController *editProfileVC = [[EditProfileViewController alloc] init];
+    
+    [self.navigationController pushViewController:editProfileVC animated:YES];
+}
+
+
 #pragma mark - 创建tableView
 - (void)createTableView{
     
@@ -62,9 +77,8 @@
     [self.view addSubview:tableView];
     self.tableView = tableView;
     //注册cell
+    [tableView registerClass:[MineOneStyleTableViewCell class] forCellReuseIdentifier:@"oneCell"];
     
-    
-    [tableView registerNib:[UINib nibWithNibName:@"MineOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
     
     [tableView registerNib:[UINib nibWithNibName:@"MineTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
 
@@ -107,6 +121,7 @@
 }
 
 
+#pragma mark - tableView代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return 7;
@@ -129,6 +144,8 @@
     if (indexPath.row == 0) {
         
         MineOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+        
+        cell.delegate = self;
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -247,6 +264,31 @@
         [self.navigationController pushViewController:settingVC animated:YES];
     }
 }
+
+
+#pragma mark - 我的钱包按钮的跳转事件
+- (void)leftAction{
+   
+//    [CommonUtils showToastWithStr:@"我的钱包"];
+    
+    
+    MyWalletViewController *walletVC = [[MyWalletViewController alloc] init];
+    
+    [self.navigationController pushViewController:walletVC animated:YES];
+    
+}
+
+
+#pragma mark - 我的积分按钮的跳转事件
+- (void)rightAction{
+    
+//    [CommonUtils showToastWithStr:@"我的积分"];
+    
+    MineIntegralViewController *integralVC = [[MineIntegralViewController alloc] init];
+    
+    [self.navigationController pushViewController:integralVC animated:YES];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
