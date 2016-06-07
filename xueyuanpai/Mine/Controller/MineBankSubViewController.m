@@ -28,12 +28,7 @@
 -(void)createTableView
 {
     
-    float height = 50;
-    //初始化tableView
-    CGRect rc = self.view.bounds;
-    rc.origin.y = NAV_TOP_HEIGHT+height;
-    rc.size.height = SCREEN_HEIGHT-NAV_TOP_HEIGHT-height;
-    UITableView * tableView    = [[UITableView alloc]initWithFrame:rc style:UITableViewStylePlain];
+    UITableView * tableView    = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStylePlain];
     tableView.backgroundColor  = [CommonUtils colorWithHex:@"f3f3f3"];
     tableView.separatorInset   = UIEdgeInsetsZero;
     tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
