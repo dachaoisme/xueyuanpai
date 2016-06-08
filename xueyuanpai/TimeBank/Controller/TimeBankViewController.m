@@ -266,6 +266,10 @@
             for (NSDictionary * smallDic in arr) {
                 TimeBankModel * model = [[TimeBankModel alloc]initWithDic:smallDic];
                 [timeBankModelListArr addObject:model];
+                if (pageNo>=[pageModel.responsePageTotalCount integerValue]) {
+                    //说明是最后一张
+                    self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+                }
             }
             [self.tableView reloadData];
         }else{

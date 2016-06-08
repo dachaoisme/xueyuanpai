@@ -158,12 +158,14 @@
 
 #pragma mark - 大学社团
 #pragma mark - 1.热门活动
-- (void)getHotActivityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+- (void)getHotActivityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
     
     [[HttpServer sharedInstance] getWithMethod:METHOD_OF_UNIVERSITY_ACTIVITY withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
         NSDictionary * listDic = model.responseCommonDic;
-        successBlock(model,listDic);
+        successBlock(model,pageModel,listDic);
  
     } withFailBlock:^(NSError *error) {
         failBlock(error);
@@ -171,10 +173,12 @@
     }];
 }
 
-- (void)getStartCommunityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
+- (void)getStartCommunityDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
     [[HttpServer sharedInstance] getWithMethod:METHOD_OF_UNIVERSITY_START_COMMUNITY withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
         NSDictionary * listDic = model.responseCommonDic;
-        successBlock(model,listDic);
+        successBlock(model,pageModel,listDic);
         
     } withFailBlock:^(NSError *error) {
         failBlock(error);
@@ -183,10 +187,12 @@
 
 }
 
-- (void)getCommunityNewDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
+- (void)getCommunityNewDataWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
     [[HttpServer sharedInstance] getWithMethod:METHOD_OF_UNIVERSITY_COMMUNITY_NEW withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
         NSDictionary * listDic = model.responseCommonDic;
-        successBlock(model,listDic);
+        successBlock(model,pageModel,listDic);
         
     } withFailBlock:^(NSError *error) {
         failBlock(error);

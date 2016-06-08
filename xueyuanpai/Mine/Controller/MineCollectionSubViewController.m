@@ -129,7 +129,10 @@
                 MineStoreModel * model = [[MineStoreModel alloc]initWithDic:smallDic];
                 [collectionModelListArr  addObject:model];
             }
-            
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }

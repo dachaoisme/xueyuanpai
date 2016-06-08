@@ -106,13 +106,14 @@
     [dic setValue:[NSString stringWithFormat:@"%d",hotActivityPageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%d",hotActivityPageSize] forKey:@"size"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[HttpClient sharedInstance] getHotActivityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        NSLog(@"%@",listDic);
+    [[HttpClient sharedInstance]getHotActivityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [self.tableView.footer endRefreshing];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (responseModel.responseCode == ResponseCodeSuccess) {
-            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
-                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:dic];
+            
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:smallDic];
                 [_saveHotActivityDataArray addObject:model];
             }
             [self.tableView reloadData];
@@ -131,11 +132,13 @@
     [dic setValue:[NSString stringWithFormat:@"%d",startCommunityPageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%d",startCommunityPageSize] forKey:@"size"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[HttpClient sharedInstance] getStartCommunityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+    [[HttpClient sharedInstance] getStartCommunityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
-            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
-                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:dic];
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:smallDic];
                 [_saveStartCommunityArray addObject:model];
             }
             [self.tableView reloadData];
@@ -153,11 +156,13 @@
     [dic setValue:[NSString stringWithFormat:@"%d",communityNewPageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%d",communityNewPageSize] forKey:@"size"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[HttpClient sharedInstance] getStartCommunityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+    [self.tableView.footer endRefreshing];
+    [[HttpClient sharedInstance] getStartCommunityDataWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic){
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (responseModel.responseCode == ResponseCodeSuccess) {
-            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
-                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:dic];
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                HotActivityModel * model = [[HotActivityModel alloc]initWithDic:smallDic];
                 [_saveCommunityNewArray addObject:model];
             }
             [self.tableView reloadData];

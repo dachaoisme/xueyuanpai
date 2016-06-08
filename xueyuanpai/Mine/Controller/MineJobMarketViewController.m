@@ -143,7 +143,10 @@
                 JobMarketModel * model = [[JobMarketModel alloc]initWithDic:smallDic];
                 [jobMarketModelListArr addObject:model];
             }
-            
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.collectionView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }

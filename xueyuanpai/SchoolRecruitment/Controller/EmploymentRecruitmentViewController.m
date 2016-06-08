@@ -120,6 +120,10 @@
                 SchoolRecruitmentModel * model = [[SchoolRecruitmentModel alloc]initWithDic:dic];
                 [schoolRecruitmentListArray addObject:model];
             }
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
             [self.tableView reloadData];
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
