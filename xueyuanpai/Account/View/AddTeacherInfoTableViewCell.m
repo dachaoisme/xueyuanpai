@@ -38,6 +38,7 @@
     float height = 44;
     
     _titleLable = [UIFactory label:12*3 color:@"c7c7cb" align:NSTextAlignmentLeft];
+    _titleLable.font = [UIFont systemFontOfSize:14];
     _titleLable.frame = CGRectMake(space, 0, leftWidth, height) ;
     [self.contentView addSubview:_titleLable];
     
@@ -48,6 +49,8 @@
     titleTextField.textColor = [CommonUtils colorWithHex:@"c7c7cb"];
     titleTextField.textAlignment = NSTextAlignmentLeft;
     titleTextField.borderStyle   = UITextBorderStyleNone;
+    titleTextField.font = [UIFont systemFontOfSize:14];
+
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     titleTextField.adjustsFontSizeToFitWidth = YES;
     titleTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -58,6 +61,7 @@
     UILabel * tipsLable = [UIFactory label:12*3 color:@"c7c7cb" align:NSTextAlignmentLeft];
     tipsLable.frame = CGRectMake(CGRectGetMaxX(titleTextField.frame),0 , rightWidth, height) ;
     tipsLable.text = @"必填";
+    tipsLable.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:tipsLable];
     
 }

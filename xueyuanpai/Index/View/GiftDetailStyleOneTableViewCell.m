@@ -54,7 +54,7 @@
         
         
         //显示剩余的份数
-        shengYuNumberLabel = [[UILabel  alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame) - 100, CGRectGetMinY(jiFenLabel.frame), 100, 30)];
+        shengYuNumberLabel = [[UILabel  alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 100, CGRectGetMinY(jiFenLabel.frame), 100, 30)];
         shengYuNumberLabel.font = [UIFont systemFontOfSize:12];
         shengYuNumberLabel.text = @"剩余14份";
         shengYuNumberLabel.textColor = [CommonUtils colorWithHex:@"c2c3c4"];
@@ -67,8 +67,18 @@
 -(void)setWithContentModel:(IndexMallModel *)mallModel
 {
     goodsLabel.text = mallModel.indexMallTitle;
-    jiFenLabel.text = mallModel.indexMallPoints;
-    shengYuNumberLabel.text = @"剩余分数123份";
+    
+    NSMutableAttributedString *hintString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@积分",mallModel.indexMallPoints]];
+    
+    NSRange range1=[[hintString string]rangeOfString:mallModel.indexMallPoints];
+    
+    UIColor *color = [CommonUtils colorWithHex:@"ff6478"];
+    [hintString addAttribute:NSForegroundColorAttributeName value:color range:range1];
+    
+    jiFenLabel.attributedText = hintString;
+    
+    //礼品的剩余份数没写
+    shengYuNumberLabel.text = @"剩余123份";
 }
 
 - (void)awakeFromNib {

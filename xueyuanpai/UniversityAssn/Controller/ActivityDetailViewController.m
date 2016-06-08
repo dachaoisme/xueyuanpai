@@ -71,7 +71,7 @@
     
     
     _detailView.titleLabel.text = _model.title;
-    _detailView.authorLable.text = [NSString stringWithFormat:@"作者 %@",_model.author];
+    _detailView.authorLable.text = [NSString stringWithFormat:@"作者 %@  %@",_model.author,_model.createTime];
     
     _detailView.timeLabel.text = _model.createTime;
     _detailView.locationLable.text = _model.place;

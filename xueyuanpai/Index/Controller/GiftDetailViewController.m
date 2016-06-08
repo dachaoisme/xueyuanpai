@@ -58,7 +58,7 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     
-    self.showImageHeaderView = [ParallaxHeaderView parallaxHeaderViewWithImage:[UIImage imageNamed:@"placeHoder.png"] forSize:CGSizeMake(tableView.frame.size.width, 200)];
+    self.showImageHeaderView = [ParallaxHeaderView parallaxHeaderViewWithImage:[UIImage imageNamed:@"2.jpg"] forSize:CGSizeMake(tableView.frame.size.width, 200)];
     [tableView setTableHeaderView:self.showImageHeaderView];
 
     
@@ -113,6 +113,7 @@
     btn.backgroundColor = [CommonUtils colorWithHex:@"00BEAF"];
     [btn setTitle:@"立即兑换" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(exchangeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    btn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:btn];
 }
 
@@ -137,6 +138,7 @@
     switch (indexPath.row) {
         case 0:{
             GiftDetailStyleOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleOneTableViewCell0"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!cell) {
                 cell = [[GiftDetailStyleOneTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleOneTableViewCell0"];
             }
@@ -148,6 +150,8 @@
             
         case 1:{
             GiftDetailStyleTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleTwoTableViewCell1"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             if (!cell) {
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell1"];
             }
@@ -160,6 +164,8 @@
             break;
         case 2:{
             GiftDetailStyleTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleTwoTableViewCell2"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             if (!cell) {
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell2"];
             }
@@ -173,6 +179,8 @@
             break;
         case 3:{
             GiftDetailStyleTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleTwoTableViewCell3"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             if (!cell) {
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell3"];
             }

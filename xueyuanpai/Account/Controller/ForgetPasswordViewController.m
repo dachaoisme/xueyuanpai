@@ -48,6 +48,7 @@
     [phoneTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
     phoneTextField.textAlignment = NSTextAlignmentLeft;
     phoneTextField.borderStyle   = UITextBorderStyleNone;
+    phoneTextField.font = [UIFont systemFontOfSize:14];
     phoneTextField.placeholder   = @"请输入手机号";
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     phoneTextField.adjustsFontSizeToFitWidth = YES;
@@ -63,8 +64,8 @@
     [sendMessageBtn setFrame:CGRectMake(0, 0, 80, 30)];
     [sendMessageBtn setContentMode:UIViewContentModeCenter];
     [sendMessageBtn addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
+    sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     [sendMessageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
-    sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:10];
     phoneTextField.rightView = sendMessageBtn;
  
     //请输入验证码
@@ -72,6 +73,7 @@
     checkingMessageTextField.tag = 2;
     checkingMessageTextField.delegate = self;
     [checkingMessageTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
+    checkingMessageTextField.font = [UIFont systemFontOfSize:14];
     checkingMessageTextField.textAlignment = NSTextAlignmentLeft;
     checkingMessageTextField.borderStyle = UITextBorderStyleNone;
     checkingMessageTextField.placeholder = @"请输入验证码";
@@ -81,17 +83,17 @@
     
     
     float lineHeight = 0.5;
-    [UIFactory showLineInView:backgroundView color:@"999999" rect:CGRectMake(space, CGRectGetMaxY(phoneTextField.frame), width+space,lineHeight)];
+    [UIFactory showLineInView:backgroundView color:@"c7c6cb" rect:CGRectMake(space, CGRectGetMaxY(phoneTextField.frame), width+space,lineHeight)];
     
     sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    sureBtn.layer.cornerRadius = 3.0;
+    sureBtn.layer.cornerRadius = 10;
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [sureBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
     [sureBtn setFrame:CGRectMake(space, CGRectGetMaxY(backgroundView.frame)+space, width, height)];
     [sureBtn setContentMode:UIViewContentModeCenter];
     [sureBtn addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
-    sureBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+    sureBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:sureBtn];
 }
 

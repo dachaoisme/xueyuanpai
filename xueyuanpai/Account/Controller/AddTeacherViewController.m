@@ -10,8 +10,9 @@
 #import "AddTeacherViewController.h"
 #import "SelectedImageView.h"
 #import "AddTeacherInfoTableViewCell.h"
-#import "AddTeacherInfoTypeTwoTableViewCell.h"
-@interface AddTeacherViewController ()<UITableViewDataSource,UITableViewDelegate,AddTeacherInfoTableViewCellDelegate,AddTeacherInfoTypeTwoTableViewCellDelegate>
+
+#import "CommonTableViewCell.h"
+@interface AddTeacherViewController ()<UITableViewDataSource,UITableViewDelegate,AddTeacherInfoTableViewCellDelegate,UITextViewDelegate>
 {
     NSMutableArray    *dataArr ;
     SelectedImageView *selectedImageView;
@@ -38,6 +39,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"认证导师资料";
+    
     [self createLeftBackNavBtn];
     NSMutableArray * sectionOneTitleArr = [NSMutableArray arrayWithObjects:@"真实姓名",@"身份证号",@"工作单位",@"职务",@"联系电话",@"邮箱", nil];
     NSMutableArray * sectionTwoTitleArr = [NSMutableArray arrayWithObjects:@"擅长辅导领域", nil];
@@ -64,6 +68,11 @@
     UIView * headView = [self headView];
     //设置头视图
     self.tableView.tableHeaderView = headView;
+    
+    
+    UIView *footView = [self footView];
+    
+    self.tableView.tableFooterView = footView;
     
     
 }
@@ -96,9 +105,12 @@
 {
     float space = 16;
     float btnHeight = 44;
-    float footViewHeight = 44+2*space;
-    float btnWidth = CGRectGetWidth(self.view.frame);
+    float footViewHeight = 48;
+    float btnWidth = SCREEN_WIDTH - 30;
     UIView * theFootView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
+    
+    UIView *backGroundView = [[UIView alloc] initWithFrame:theFootView.bounds];
+    [theFootView addSubview:backGroundView];
     
     //    float height = 44;
     //    float width = SCREEN_WIDTH-2*space;
@@ -109,8 +121,10 @@
     [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
     [_submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
-    [_submitBtn addTarget:self action:@selector(selectedImageFromPhotoAlbum:) forControlEvents:UIControlEventTouchUpInside];
-    [theFootView addSubview:_submitBtn];
+    _submitBtn.layer.cornerRadius = 10.0;
+
+    [_submitBtn addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:_submitBtn];
     
     return theFootView;
 }
@@ -144,7 +158,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return dataArr.count;
+    return 3;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -155,9 +169,20 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 10;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[dataArr objectAtIndex:section] count];
+    if (section == 0) {
+        return [[dataArr objectAtIndex:section] count];
+    }else{
+        
+        return 1;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,27 +201,38 @@
     }else if (indexPath.section==1){
         //擅长领域
         NSString * cellResuable = @"cell1";
-        AddTeacherInfoTypeTwoTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable];
+        CommonTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable];
         if (!cell) {
-            cell = [[AddTeacherInfoTypeTwoTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
+            cell = [[CommonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.delegate = self;
         }
-        cell.tag = indexPath.section;
-        cell.titleLable.text = @"擅长辅导领域";
+        
+        cell.titleLabel.text = @"擅长辅导领域";
+        cell.textView.placehoderText = @"2-40个字符，多个领域以顿号隔开";
+        
+        cell.tag = 123;
+        
+        cell.textView.delegate = self;
+      
         return cell;
     }else{
         //导师背景
         //擅长领域
         NSString * cellResuable = @"cell2";
-        AddTeacherInfoTypeTwoTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable];
+        CommonTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellResuable];
         if (!cell) {
-            cell = [[AddTeacherInfoTypeTwoTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
+            cell = [[CommonTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.delegate = self;
         }
-        cell.tag = indexPath.section;
-        cell.titleLable.text = @"导师背景";
+        
+        cell.titleLabel.text = @"导师背景";
+        cell.textView.placehoderText = @"2-300个字符";
+        
+        cell.tag = 456;
+        
+        cell.textView.delegate = self;
+
+        
         return cell;
     }
 }
@@ -205,6 +241,23 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
+
+#pragma mark - 文本输入框的代理方法
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    if (textView.tag == 123) {
+        //擅长领域
+        goodAtField = text;
+    }else{
+        
+        //导师背景
+        teacherBackground = text;
+
+    }
+    
+    return YES;
+}
+
 #pragma mark - AddTeacherInfoTableViewCellDelegate,AddTeacherInfoTypeTwoTableViewCellDelegate
 -(void)updateInputInfoWithIndex:(NSInteger)index withTextFieldText:(NSString *)text
 {
@@ -238,21 +291,6 @@
     }
 }
 
--(void)updateInputInfoTypeTwoWithIndex:(NSInteger)index withTextFieldText:(NSString *)text
-{
-    switch (index) {
-        case 0:
-            //擅长领域
-            goodAtField = text;
-            break;
-        case 1:
-            //导师背景
-            teacherBackground = text;
-            break;
-        default:
-            break;
-    }
-}
 #pragma mark - 提交审核
 -(void)submit
 {

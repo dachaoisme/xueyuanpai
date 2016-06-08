@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Index/View/IndexIntegralMallCollectionReusableView.m"
-            timestampString = "487005094.885076"
+            filePath = "xueyuanpai/TimeBank/Controller/RequirementsViewController.m"
+            timestampString = "487068954.214984"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-setContentView"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "-releaseAction"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
