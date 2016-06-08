@@ -15,10 +15,12 @@
 #define kExchangeButtonHeight 50
 
 @interface GiftDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    BOOL yesIsCollection;
+}
 ///轮播展示商品图片
 @property(nonatomic,strong)ParallaxHeaderView * showImageHeaderView;
-
+@property(nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
 
 @end
 
@@ -34,6 +36,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"礼品详情";
+    yesIsCollection = NO;
     [self createLeftBackNavBtn];
     
     //创建一个tableView
@@ -47,6 +50,7 @@
     //创建立即兑换按钮
     [self createExchangeButton];
     
+    [self checkoutIsCollectionOrNot];
 }
 
 #pragma mark - 创建列表
@@ -70,8 +74,8 @@
     //分享按钮
     UIBarButtonItem *shareButtonItem =[[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_share"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickSharButtonItemAction:)];
     //收藏按钮
-    UIBarButtonItem * favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
-    self.navigationItem.rightBarButtonItems = @[favoriteButtonItem,shareButtonItem];
+    _favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
+    self.navigationItem.rightBarButtonItems = @[_favoriteButtonItem,shareButtonItem];
     
     
 }
@@ -85,7 +89,9 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    [CommonUtils showToastWithStr:@"收藏"];
+    if (yesIsCollection==YES) {
+        return;
+    }
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     if (self.mallModel) {
@@ -97,7 +103,14 @@
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfGiftExchange] forKey:@"type"];
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"收藏成功"];
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -105,7 +118,31 @@
         
     }];
 }
-
+-(void)checkoutIsCollectionOrNot
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    if (self.mallModel) {
+        [dic setValue:self.mallModel.indexMallId forKey:@"obj_id"];
+    }else{
+        [dic setValue:self.giftDetailId forKey:@"obj_id"];
+    }
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfGiftExchange] forKey:@"type"];
+    [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 #pragma mark - 创建立即兑换
 - (void)createExchangeButton{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

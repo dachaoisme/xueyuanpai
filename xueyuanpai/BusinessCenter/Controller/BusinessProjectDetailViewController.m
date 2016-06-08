@@ -17,8 +17,10 @@
 @interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     BusinessCenterProgectDetailModel * businessCenterProgectDetailModel;
+    BOOL yesIsCollection;
 }
 @property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
 @end
 
 @implementation BusinessProjectDetailViewController
@@ -29,7 +31,7 @@
     
     
     self.title = @"项目详情";
-    
+    yesIsCollection = NO;
     [self createLeftBackNavBtn];
     
     [self theTabBarHidden:YES];
@@ -42,7 +44,7 @@
     
     [self requestToGetBusinessProjectDetail];
     
-    
+    [self checkoutIsCollectionOrNot];
     
 #warning 判定是否有导师逻辑暂未处理，个人中心逻辑页面搭建完毕之后继续
     
@@ -55,8 +57,8 @@
     //分享按钮
     UIBarButtonItem *shareButtonItem =[[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_share"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickSharButtonItemAction:)];
     //收藏按钮
-    UIBarButtonItem * favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
-    self.navigationItem.rightBarButtonItems = @[favoriteButtonItem,shareButtonItem];
+    _favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
+    self.navigationItem.rightBarButtonItems = @[_favoriteButtonItem,shareButtonItem];
     
     
 }
@@ -70,7 +72,9 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    [CommonUtils showToastWithStr:@"收藏"];
+    if (yesIsCollection==YES) {
+        return;
+    }
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.projectId forKey:@"obj_id"];
@@ -78,6 +82,7 @@
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"收藏成功"];
+            [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -85,7 +90,27 @@
         
     }];
 }
-
+-(void)checkoutIsCollectionOrNot
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.projectId forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfProject] forKey:@"type"];
+    [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 #pragma mark - 创建tableView
 - (void)createTableView{
     
