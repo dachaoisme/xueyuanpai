@@ -13,7 +13,7 @@
 #import "PublishInformationOneStyleTableViewCell.h"
 #import "PublishInformationTwoStyleTableViewCell.h"
 
-#import "PublishInformationThreeStyleTableViewCell.h"
+#import "CommonTableViewCell.h"
 
 static NSString *Identifier = @"photoCollectionViewCell";
 
@@ -57,14 +57,14 @@ static NSString *Identifier = @"photoCollectionViewCell";
      [self.tableView registerNib:[UINib nibWithNibName:@"PublishInformationTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"PublishInformationThreeStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
+    [self.tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"threeCell"];
     
     [self requestToGetConditionsCategory];
 }
 
 #pragma mark - 创建列表视图
 - (void)createTableView{
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -100,15 +100,37 @@ static NSString *Identifier = @"photoCollectionViewCell";
     [photoCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footerView"];
     
     
-    //设置tableView的footView
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(15, 15, SCREEN_WIDTH - 30, 48);
-    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
-    [button setTitle:@"确定提交" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
-    button.layer.cornerRadius = 10.0;
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.tableView.tableFooterView = button;
+//    //设置tableView的footView
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(15, 15, SCREEN_WIDTH - 30, 48);
+//    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+//    [button setTitle:@"确定提交" forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
+//    button.layer.cornerRadius = 10.0;
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    self.tableView.tableFooterView = button;
+    
+    //发布按钮的创建
+    
+    float space = 16;
+    float btnHeight = 44;
+    float footViewHeight = 48;
+    float btnWidth = SCREEN_WIDTH - 30;
+    
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setTitle:@"确定提交" forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
+    submitBtn.layer.cornerRadius = 10.0;
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [submitBtn addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:submitBtn];
+    
+    self.tableView.tableFooterView = backGroundView;
+
     
 }
 #pragma mark - 获取分类列表,家电什么的
@@ -166,9 +188,21 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 10;
+    if (section == 0) {
+        return 30;
+
+    }else{
+        
+        return 0;
+    }
     
     
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -205,7 +239,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
                 twoCell.titleLabel.text = @"分类";
                 twoCell.contentLabel.text = publishJobMarketModel.publicJobMarketCategoryName.length>0?publishJobMarketModel.publicJobMarketCategoryName:@"请选择分类";
-                twoCell.contentLabel.textColor = [UIColor blackColor];
+                twoCell.contentLabel.textColor = [CommonUtils colorWithHex:@"c7c6cb"];
                 twoCell.alertLabel.hidden = YES;
                 twoCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
                 
@@ -272,6 +306,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
                 twoCell.titleLabel.text = @"所在学校";
                 twoCell.contentLabel.text = @"吉林长春大学";
+                twoCell.contentLabel.textColor = [CommonUtils colorWithHex:@"333333"];
                 
                 
                 publishJobMarketModel.publicJobMarketCollegeId = twoCell.contentLabel.text;
@@ -287,6 +322,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
                 twoCell.titleLabel.text = @"联系方式";
                 twoCell.contentLabel.text = @"188888888888";
+                twoCell.contentLabel.textColor = [CommonUtils colorWithHex:@"333333"];
+
                 twoCell.alertLabel.hidden = YES;
                 
                 publishJobMarketModel.publicJobMarketTelephone = twoCell.contentLabel.text;
@@ -307,15 +344,17 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
     }else if (indexPath.section == 2){
         
-        PublishInformationThreeStyleTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+        CommonTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
         threeCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        threeCell.titleLabel.text = @"宝贝描述";
+        threeCell.titleLabel.textColor = [UIColor lightGrayColor];
         
-        threeCell.inputContentTextView.delegate = self;
+        threeCell.rightLabel.hidden = YES;
+        threeCell.textView.delegate = self;
+        
+        threeCell.textView.placehoderText = @"请输入";
         
         
-        
-     
-
         
         return threeCell;
         

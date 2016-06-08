@@ -317,8 +317,6 @@
 		DD0B1F001CFEFB6200C4BAB2 /* PublishInformationOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0B1EFE1CFEFB6200C4BAB2 /* PublishInformationOneStyleTableViewCell.xib */; };
 		DD0B1F041CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1F021CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.m */; };
 		DD0B1F051CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0B1F031CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.xib */; };
-		DD0B1F091CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1F071CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.m */; };
-		DD0B1F0A1CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0B1F081CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.xib */; };
 		DD13CDAD1D00186D000A69FE /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13CD631D00186D000A69FE /* arrow@2x.png */; };
 		DD13CDAE1D00186D000A69FE /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13CD641D00186D000A69FE /* arrow@3x.png */; };
 		DD13CDB31D00186D000A69FE /* input_icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13CD691D00186D000A69FE /* input_icon_search@2x.png */; };
@@ -452,7 +450,6 @@
 		DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127891CF068C200227066 /* StarCommunityTableViewCell.m */; };
 		DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD41278C1CF170F400227066 /* HotActivityModel.m */; };
 		DD41278F1CF1860400227066 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD41278E1CF1860400227066 /* test.jpg */; };
-		DD4127941CF18D8000227066 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD4127931CF18D8000227066 /* test1.jpg */; };
 		DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127961CF19DC300227066 /* ActivityDetailView.m */; };
 		DD4127B31CF251C600227066 /* BigToSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127B21CF251C600227066 /* BigToSendViewController.m */; };
 		DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127C81CF2F35D00227066 /* GiftDetailViewController.m */; };
@@ -584,7 +581,6 @@
 		DDCD70CE1D06F31F009FBE9A /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CD1D06F31F009FBE9A /* 1.jpg */; };
 		DDCD70D01D06F325009FBE9A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CF1D06F325009FBE9A /* 2.jpg */; };
 		DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */; };
-		DDCD70D51D082218009FBE9A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70D41D082218009FBE9A /* 3.png */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1065,9 +1061,6 @@
 		DD0B1F011CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishInformationTwoStyleTableViewCell.h; sourceTree = "<group>"; };
 		DD0B1F021CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishInformationTwoStyleTableViewCell.m; sourceTree = "<group>"; };
 		DD0B1F031CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishInformationTwoStyleTableViewCell.xib; sourceTree = "<group>"; };
-		DD0B1F061CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishInformationThreeStyleTableViewCell.h; sourceTree = "<group>"; };
-		DD0B1F071CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishInformationThreeStyleTableViewCell.m; sourceTree = "<group>"; };
-		DD0B1F081CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishInformationThreeStyleTableViewCell.xib; sourceTree = "<group>"; };
 		DD13CD631D00186D000A69FE /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		DD13CD641D00186D000A69FE /* arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@3x.png"; sourceTree = "<group>"; };
 		DD13CD691D00186D000A69FE /* input_icon_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input_icon_search@2x.png"; sourceTree = "<group>"; };
@@ -1213,7 +1206,6 @@
 		DD41278B1CF170F400227066 /* HotActivityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotActivityModel.h; path = xueyuanpai/UniversityAssn/HotActivityModel.h; sourceTree = SOURCE_ROOT; };
 		DD41278C1CF170F400227066 /* HotActivityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotActivityModel.m; path = xueyuanpai/UniversityAssn/HotActivityModel.m; sourceTree = SOURCE_ROOT; };
 		DD41278E1CF1860400227066 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
-		DD4127931CF18D8000227066 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
 		DD4127951CF19DC300227066 /* ActivityDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDetailView.h; path = xueyuanpai/UniversityAssn/ActivityDetailView.h; sourceTree = SOURCE_ROOT; };
 		DD4127961CF19DC300227066 /* ActivityDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetailView.m; path = xueyuanpai/UniversityAssn/ActivityDetailView.m; sourceTree = SOURCE_ROOT; };
 		DD4127B11CF251C600227066 /* BigToSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigToSendViewController.h; sourceTree = "<group>"; };
@@ -1405,7 +1397,6 @@
 		DDCD70CF1D06F325009FBE9A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		DDCD70D11D0808ED009FBE9A /* CommonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCell.h; sourceTree = "<group>"; };
 		DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
-		DDCD70D41D082218009FBE9A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2076,10 +2067,8 @@
 			children = (
 				DDCD70CD1D06F31F009FBE9A /* 1.jpg */,
 				DDCD70CF1D06F325009FBE9A /* 2.jpg */,
-				DDCD70D41D082218009FBE9A /* 3.png */,
 				DDAB05AF1D026421007A6027 /* placeHoder.png */,
 				DD41278E1CF1860400227066 /* test.jpg */,
-				DD4127931CF18D8000227066 /* test1.jpg */,
 				58F67BA51CD9863400D55BE0 /* AppDelegate.h */,
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
@@ -2909,9 +2898,6 @@
 				DD0B1F011CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.h */,
 				DD0B1F021CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.m */,
 				DD0B1F031CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.xib */,
-				DD0B1F061CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.h */,
-				DD0B1F071CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.m */,
-				DD0B1F081CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3147,12 +3133,10 @@
 				DDAB437F1D05531A00FADB3E /* arrow@2x.png in Resources */,
 				DD0B1ED81CFEE51000C4BAB2 /* market_filter_home@3x.png in Resources */,
 				58070FB61CF6E80200F03F6C /* timebank_filter_food_hl@2x.png in Resources */,
-				DD4127941CF18D8000227066 /* test1.jpg in Resources */,
 				DDD0BDC61CFAB87200073290 /* hire_search_checkbox_empty@3x.png in Resources */,
 				58A944B41CE32A9500DAD398 /* forgetPassword@2x.png in Resources */,
 				DD0B1EBE1CFEE51000C4BAB2 /* gender_female@3x.png in Resources */,
 				DD13CDD11D00186D000A69FE /* startup_filter_internet@2x.png in Resources */,
-				DD0B1F0A1CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.xib in Resources */,
 				DD0B1F001CFEFB6200C4BAB2 /* PublishInformationOneStyleTableViewCell.xib in Resources */,
 				58070FDC1CF6E80200F03F6C /* timebank_status_done@2x.png in Resources */,
 				DDCD70B71D06BA1D009FBE9A /* gender_male@3x.png in Resources */,
@@ -3230,7 +3214,6 @@
 				DD0B1EEB1CFEE51000C4BAB2 /* timebank_filter_all_hl@2x.png in Resources */,
 				58070FBD1CF6E80200F03F6C /* timebank_filter_hot@3x.png in Resources */,
 				DD13CDF61D00186D000A69FE /* timebank_filter_other_hl@3x.png in Resources */,
-				DDCD70D51D082218009FBE9A /* 3.png in Resources */,
 				DD41276A1CF0552F00227066 /* hire_btn_contact_press@3x.png in Resources */,
 				DDAB43A61D055D7600FADB3E /* MineSettingTableViewCell.xib in Resources */,
 				DD13CDEB1D00186D000A69FE /* timebank_filter_all@2x.png in Resources */,
@@ -3687,7 +3670,6 @@
 				58F67C341CD9CF9500D55BE0 /* UIScrollView+MJExtension.m in Sources */,
 				DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */,
 				587FF9DB1CF2F8F300AD2131 /* IQBarButtonItem.m in Sources */,
-				DD0B1F091CFF095F00C4BAB2 /* PublishInformationThreeStyleTableViewCell.m in Sources */,
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
 				DDAB059B1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m in Sources */,
 				587FF9DD1CF2F8F300AD2131 /* IQTitleBarButtonItem.m in Sources */,

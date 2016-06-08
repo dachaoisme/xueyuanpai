@@ -86,11 +86,30 @@
     theSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, 36)];
     theSearchBar.delegate = self;
     theSearchBar.searchBarStyle = UISearchBarStyleMinimal;
-    
+    theSearchBar.backgroundColor = [UIColor whiteColor];
+    theSearchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:theSearchBar.bounds.size];
     theSearchBar.placeholder = @"搜索商品";
+    theSearchBar.tintColor = [CommonUtils colorWithHex:@"00beaf"];
     [self.view addSubview:theSearchBar];
 
 }
+
+//取消searchbar背景色
+- (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
+{
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
     return YES;
@@ -103,9 +122,9 @@
         if ([view isKindOfClass:[UIButton class]]) {
             UIButton *cancelBtn = (UIButton *)view;
             [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+            cancelBtn.titleLabel.font = [UIFont systemFontOfSize:14];
             [cancelBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
             [cancelBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateHighlighted];
-            cancelBtn.titleLabel.textColor = [UIColor redColor];
         }
     }
 }
