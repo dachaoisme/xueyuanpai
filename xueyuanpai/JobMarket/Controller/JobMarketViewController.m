@@ -85,8 +85,7 @@
     
     theSearchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, 36)];
     theSearchBar.delegate = self;
-    theSearchBar.searchBarStyle = UISearchBarStyleMinimal;
-    theSearchBar.backgroundColor = [UIColor whiteColor];
+    theSearchBar.searchBarStyle = UIBarStyleDefault;
     theSearchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:theSearchBar.bounds.size];
     theSearchBar.placeholder = @"搜索商品";
     theSearchBar.tintColor = [CommonUtils colorWithHex:@"00beaf"];

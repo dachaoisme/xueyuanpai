@@ -10,7 +10,8 @@
 
 #import "BusinessPublishProjectOneTableViewCell.h"
 #import "BusinessPublishProjectTwoTableViewCell.h"
-#import "BusinessPublishProjectThreeTableViewCell.h"
+
+#import "CommonTableViewCell.h"
 
 @interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
@@ -60,22 +61,34 @@
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
-    //设置tableView的footView
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(15, 15, SCREEN_WIDTH - 30, 48);
-    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
-    [button setTitle:@"发布" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(publishAction) forControlEvents:UIControlEventTouchUpInside];
-    button.layer.cornerRadius = 10.0;
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.tableView.tableFooterView = button;
+    //发布按钮的创建
+    
+    float space = 16;
+    float btnHeight = 44;
+    float footViewHeight = 48;
+    float btnWidth = SCREEN_WIDTH - 30;
+    
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setTitle:@"发布" forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
+    submitBtn.layer.cornerRadius = 10.0;
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [submitBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
+    [submitBtn addTarget:self action:@selector(publishAction) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:submitBtn];
+    
+    self.tableView.tableFooterView = backGroundView;
 
     
     //注册cell
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [tableView registerNib:[UINib nibWithNibName:@"BusinessPublishProjectOneTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
     [tableView registerNib:[UINib nibWithNibName:@"BusinessPublishProjectTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
-    [tableView registerNib:[UINib nibWithNibName:@"BusinessPublishProjectThreeTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
+    [tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"threeCell"];
     
 
 }
@@ -295,6 +308,8 @@
                 cell.titleLabel.text = @"项目领域";
                 cell.contentLabel.text = @"请选择分类";
                 
+                
+                
                 return cell;
                 
 
@@ -305,42 +320,57 @@
             break;
             
         default:{
-            BusinessPublishProjectThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+            CommonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
             if (indexPath.section == 3) {
                 
             
-                cell.inputContentTextView.tag = 1000;
-                cell.inputContentTextView.delegate = self;
+                cell.textView.tag = 1000;
+                cell.textView.delegate = self;
+                
+                cell.titleLabel.text = @"项目简介";
+                cell.rightLabel.text = @"50-500字";
+                cell.textView.placehoderText = @"请简单介绍项目";
 
                 
             }else if (indexPath.section == 4) {
                 
-                cell.inputContentTextView.tag = 1001;
+                cell.textView.tag = 1001;
 
                 cell.titleLabel.text = @"项目成员介绍";
-                cell.inputContentTextView.delegate = self;
+                cell.textView.delegate = self;
 
+                
+                cell.rightLabel.text = @"50-500字";
+                cell.textView.placehoderText = @"请简单描述项目成员";
                 
 
             }else if (indexPath.section == 5) {
                 
-                cell.inputContentTextView.tag = 1002;
+                cell.textView.tag = 1002;
 
                 
                 cell.titleLabel.text = @"项目背景面临问题及需求";
-                cell.inputContentTextView.delegate = self;
+                cell.textView.delegate = self;
+                cell.rightLabel.text = @"50-500字";
+
+                cell.textView.placehoderText = @"请填写";
 
 
 
             }else if (indexPath.section == 6) {
                 
-                cell.inputContentTextView.tag = 1003;
+                cell.textView.tag = 1003;
 
                 
                 cell.titleLabel.text = @"项目实施计划和预期进展";
-                cell.inputContentTextView.delegate = self;
+                cell.textView.delegate = self;
+                cell.rightLabel.text = @"50-500字";
+
+                
+                cell.textView.placehoderText = @"请填写";
+
 
 
                 

@@ -22,4 +22,7 @@
 ///学校名称
 @property (weak, nonatomic) IBOutlet UILabel *schoolLabel;
 
+///发送消息按钮
+@property (weak, nonatomic) IBOutlet UIButton *sendMessageButton;
+
 @end

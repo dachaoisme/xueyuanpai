@@ -69,13 +69,32 @@
     searchBar.placeholder = @"搜索";
     searchBar.delegate = self;
     searchBar.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    searchBar.backgroundImage = [self imageWithColor:[UIColor clearColor] size:searchBar.bounds.size];
+    searchBar.tintColor = [CommonUtils colorWithHex:@"00beaf"];
     [self.view addSubview:searchBar];
-    
 }
+
+    
+//取消searchbar背景色
+- (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
+{
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 #pragma mark - 创建展示视图
 - (void)createTableView{
     float height = 36;
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + height*2+5, SCREEN_WIDTH, SCREEN_HEIGHT-NAV_TOP_HEIGHT-height*2-5) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + height*2+5, SCREEN_WIDTH, SCREEN_HEIGHT-NAV_TOP_HEIGHT-height*2-5) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];

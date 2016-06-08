@@ -172,7 +172,7 @@
     justToLook = [UIButton buttonWithType:UIButtonTypeCustom];
     [justToLook setContentHorizontalAlignment:UIControlContentHorizontalAlignmentRight];
     [justToLook setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
-    [justToLook setFrame:CGRectMake(SCREEN_WIDTH-rightSpace-100, CGRectGetMaxY(registerBtn.frame)+100, 100, height)];
+    [justToLook setFrame:CGRectMake(SCREEN_WIDTH-rightSpace-100, SCREEN_HEIGHT - 50, 100, height)];
     [justToLook addTarget:self action:@selector(justToLook:) forControlEvents:UIControlEventTouchUpInside];
     [justToLook setTitle:@"随便逛逛 >" forState:UIControlStateNormal];
     justToLook.titleLabel.font = [UIFont systemFontOfSize:14];

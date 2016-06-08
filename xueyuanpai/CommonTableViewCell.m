@@ -27,7 +27,7 @@
     
     
     //擅长领域
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 100, 20)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 180, 20)];
     titleLabel.text = @"擅长辅导领域";
     titleLabel.font = [UIFont systemFontOfSize:14];
     titleLabel.textColor = [CommonUtils colorWithHex:@"666666"];
