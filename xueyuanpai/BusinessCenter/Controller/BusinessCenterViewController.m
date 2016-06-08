@@ -95,7 +95,8 @@
     //注册cell
     
     
-    [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterOneStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
+    
+    [tableView registerClass:[BusinessCenterOneStyleTableViewCell class] forCellReuseIdentifier:@"oneCell"];
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     
@@ -115,8 +116,8 @@
     self.tableView.tableHeaderView = showColumView;
     
     //初始化三个按钮
-    CGFloat width = ([[UIScreen mainScreen] bounds].size.width - 70*4)/5;
-    SchoolColumnView *columnView1 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width, 10, 80, 100)];
+    CGFloat width = (SCREEN_WIDTH - 50*4)/5;
+    SchoolColumnView *columnView1 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width, 10, 50, 100)];
     columnView1.columnImageView.image = [UIImage imageNamed:@"startup_icon_news"];
     columnView1.columnTitileLable.text = @"创业新闻";
     [showColumView addSubview:columnView1];
@@ -126,7 +127,7 @@
     
     
     
-    SchoolColumnView *columnView2 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width*2 + 80, 10, 80, 100)];
+    SchoolColumnView *columnView2 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width*2 + 50, 10, 50, 100)];
     columnView2.columnImageView.image = [UIImage imageNamed:@"startup_icon_contest"];
     columnView2.columnTitileLable.text = @"创业大赛";
     columnView2.tag = 101;
@@ -136,7 +137,7 @@
     
     
     
-    SchoolColumnView *columnView3 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width*3 + 80*2, 10, 80, 100)];
+    SchoolColumnView *columnView3 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width*3 + 50*2, 10, 50, 100)];
     columnView3.columnImageView.image = [UIImage imageNamed:@"startup_icon_lecture"];
     columnView3.columnTitileLable.text = @"创业讲堂";
     columnView3.tag = 102;
@@ -145,7 +146,7 @@
     [columnView3 addGestureRecognizer:tap3];
     
     
-    SchoolColumnView *columnView4 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width*4 + 80*3, 10, 80, 100)];
+    SchoolColumnView *columnView4 = [[SchoolColumnView alloc] initWithFrame:CGRectMake(width*4 + 50*3, 10, 50, 100)];
     columnView4.columnImageView.image = [UIImage imageNamed:@"startup_icon_project"];
     columnView4.columnTitileLable.text = @"创业项目";
     columnView4.tag = 102;
@@ -222,6 +223,10 @@
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
+            cell.titleLabel.text = @"明星导师";
+
+            
+            
             return cell;
 
         }else{
@@ -251,7 +256,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             cell.titleLabel.text = @"创业项目";
-
+            
             
             return cell;
             

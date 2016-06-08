@@ -159,6 +159,7 @@
             if (indexPath.row == 0) {
                 
                 BusinessProjectDetailOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
                 cell.titleLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailTitle;
                 
@@ -171,6 +172,8 @@
             }else{
                 
                 BusinessProjectDetailTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
                 
                 //头像
                 [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserIcon withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
@@ -207,6 +210,8 @@
             
             
             BusinessProjectDetailThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:businessCenterProgectDetailModel.businessCenterProgectDetailTutorModel.businessCenterProgectDetailTutorImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
             
@@ -230,6 +235,8 @@
             
             
             BusinessProjectDetailFourTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fourCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             if (indexPath.row == 0) {
                 
@@ -261,6 +268,8 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
 
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             
             if (indexPath.row == 0) {
@@ -289,6 +298,8 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
 
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             if (indexPath.row == 0) {
                 
@@ -311,7 +322,8 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
 
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             if (indexPath.row == 0) {
                 

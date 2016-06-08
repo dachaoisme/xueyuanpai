@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.contentLabel.textColor = [CommonUtils colorWithHex:@"c7c6cb"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

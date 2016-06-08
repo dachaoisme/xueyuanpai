@@ -460,8 +460,6 @@
 		DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */; };
 		DDAB058E1D01AF18007A6027 /* BusinessProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */; };
 		DDAB05911D01BF6A007A6027 /* BusinessCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */; };
-		DDAB05961D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05941D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.m */; };
-		DDAB05971D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05951D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.xib */; };
 		DDAB059B1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05991D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m */; };
 		DDAB059C1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB059A1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib */; };
 		DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB059E1D01D252007A6027 /* BusinessTeacherDetailViewController.m */; };
@@ -488,8 +486,6 @@
 		DDAB05DF1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05DD1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.xib */; };
 		DDAB05E31D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05E11D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m */; };
 		DDAB05E41D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05E21D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib */; };
-		DDAB05E81D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05E61D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m */; };
-		DDAB05E91D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05E71D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib */; };
 		DDAB05F01D04576F007A6027 /* JKPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05EF1D04576F007A6027 /* JKPlaceholderTextView.m */; };
 		DDAB05FA1D0483D7007A6027 /* BusinessTeacherTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05F81D0483D7007A6027 /* BusinessTeacherTableViewCell.m */; };
 		DDAB05FB1D0483D7007A6027 /* BusinessTeacherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05F91D0483D7007A6027 /* BusinessTeacherTableViewCell.xib */; };
@@ -581,6 +577,7 @@
 		DDCD70CE1D06F31F009FBE9A /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CD1D06F31F009FBE9A /* 1.jpg */; };
 		DDCD70D01D06F325009FBE9A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CF1D06F325009FBE9A /* 2.jpg */; };
 		DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */; };
+		DDCD70FE1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70FD1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1226,9 +1223,6 @@
 		DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessProjectViewController.m; sourceTree = "<group>"; };
 		DDAB058F1D01BF6A007A6027 /* BusinessCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterViewController.h; sourceTree = "<group>"; };
 		DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterViewController.m; sourceTree = "<group>"; };
-		DDAB05931D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterOneStyleTableViewCell.h; sourceTree = "<group>"; };
-		DDAB05941D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterOneStyleTableViewCell.m; sourceTree = "<group>"; };
-		DDAB05951D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessCenterOneStyleTableViewCell.xib; sourceTree = "<group>"; };
 		DDAB05981D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterTwoStyleTableViewCell.h; sourceTree = "<group>"; };
 		DDAB05991D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterTwoStyleTableViewCell.m; sourceTree = "<group>"; };
 		DDAB059A1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessCenterTwoStyleTableViewCell.xib; sourceTree = "<group>"; };
@@ -1270,9 +1264,6 @@
 		DDAB05E01D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectTwoTableViewCell.h; sourceTree = "<group>"; };
 		DDAB05E11D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPublishProjectTwoTableViewCell.m; sourceTree = "<group>"; };
 		DDAB05E21D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessPublishProjectTwoTableViewCell.xib; sourceTree = "<group>"; };
-		DDAB05E51D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectThreeTableViewCell.h; sourceTree = "<group>"; };
-		DDAB05E61D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPublishProjectThreeTableViewCell.m; sourceTree = "<group>"; };
-		DDAB05E71D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessPublishProjectThreeTableViewCell.xib; sourceTree = "<group>"; };
 		DDAB05EE1D04576F007A6027 /* JKPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKPlaceholderTextView.h; sourceTree = "<group>"; };
 		DDAB05EF1D04576F007A6027 /* JKPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKPlaceholderTextView.m; sourceTree = "<group>"; };
 		DDAB05F71D0483D7007A6027 /* BusinessTeacherTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTeacherTableViewCell.h; sourceTree = "<group>"; };
@@ -1397,6 +1388,8 @@
 		DDCD70CF1D06F325009FBE9A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		DDCD70D11D0808ED009FBE9A /* CommonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCell.h; sourceTree = "<group>"; };
 		DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
+		DDCD70FC1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterOneStyleTableViewCell.h; sourceTree = "<group>"; };
+		DDCD70FD1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterOneStyleTableViewCell.m; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2642,9 +2635,8 @@
 		DDAB05921D01C43D007A6027 /* BusinessCenterCell */ = {
 			isa = PBXGroup;
 			children = (
-				DDAB05931D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.h */,
-				DDAB05941D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.m */,
-				DDAB05951D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.xib */,
+				DDCD70FC1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.h */,
+				DDCD70FD1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m */,
 				DDAB05981D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.h */,
 				DDAB05991D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m */,
 				DDAB059A1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib */,
@@ -2696,9 +2688,6 @@
 				DDAB05E01D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.h */,
 				DDAB05E11D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m */,
 				DDAB05E21D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.xib */,
-				DDAB05E51D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.h */,
-				DDAB05E61D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m */,
-				DDAB05E71D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib */,
 			);
 			path = BusinessPublishProject;
 			sourceTree = "<group>";
@@ -3341,7 +3330,6 @@
 				DD41275F1CF0552F00227066 /* bigpie_order_minus@2x.png in Resources */,
 				DD0B1EF31CFEE51000C4BAB2 /* timebank_filter_other_hl@2x.png in Resources */,
 				DDCD70AB1D06BA1D009FBE9A /* deliver_icon_noti@3x.png in Resources */,
-				DDAB05E91D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.xib in Resources */,
 				5874A3D71CF1249400CE9FC9 /* home_popup_gift@3x.png in Resources */,
 				58070FD11CF6E80200F03F6C /* timebank_filter_sport@3x.png in Resources */,
 				5874A3D11CF1249400CE9FC9 /* home_icon_market@3x.png in Resources */,
@@ -3462,7 +3450,6 @@
 				58070FE01CF6E80200F03F6C /* toast_fail@2x.png in Resources */,
 				DDAB43791D05531A00FADB3E /* about_logo@2x.png in Resources */,
 				5874A3E11CF1249400CE9FC9 /* tab_icon_creativity@3x.png in Resources */,
-				DDAB05971D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.xib in Resources */,
 				DD0B1ECC1CFEE51000C4BAB2 /* market_filter_book@3x.png in Resources */,
 				DDCD70B21D06BA1D009FBE9A /* deliver_msg_dai@2x.png in Resources */,
 				58F211711CF9CD4600926FB9 /* TimeBankTableViewCell.xib in Resources */,
@@ -3690,6 +3677,7 @@
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
 				DD13CE171D002D12000A69FE /* BusinessNewsDetailTwoStyleTableViewCell.m in Sources */,
 				58898E401CFA5A280007D9B3 /* RequirementTwoTableViewCell.m in Sources */,
+				DDCD70FE1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m in Sources */,
 				58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */,
 				58A944C61CE3E0C200DAD398 /* AddTeacherViewController.m in Sources */,
 				58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */,
@@ -3726,8 +3714,6 @@
 				58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */,
 				DD13CE0A1D00251D000A69FE /* BusinessCenterTableViewCell.m in Sources */,
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
-				DDAB05961D01C467007A6027 /* BusinessCenterOneStyleTableViewCell.m in Sources */,
-				DDAB05E81D04415B007A6027 /* BusinessPublishProjectThreeTableViewCell.m in Sources */,
 				DDCD70751D069AA2009FBE9A /* ExchangeGiftsViewController.m in Sources */,
 				DDAB43B11D056AA100FADB3E /* FeedbackViewController.m in Sources */,
 				DDCD708F1D06A8C2009FBE9A /* TopUpTwoTableViewCell.m in Sources */,
