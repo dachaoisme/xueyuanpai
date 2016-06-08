@@ -18,15 +18,12 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeHoder.png" translatesAutoresizingMaskIntoConstraints="NO" id="2ds-zq-OIm">
                         <rect key="frame" x="8" y="8" width="80" height="80"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小小琳琳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bn-7U-hP8">
-                        <rect key="frame" x="17" y="96" width="49" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="小小琳琳" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bn-7U-hP8">
+                        <rect key="frame" x="14" y="93" width="49" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timebank_icon_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="TLq-Wu-3pI">
-                        <rect key="frame" x="65" y="97" width="14" height="14"/>
-                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timebank_filter_time.png" translatesAutoresizingMaskIntoConstraints="NO" id="PhK-4v-a1g">
                         <rect key="frame" x="96" y="37" width="14" height="14"/>
                     </imageView>
@@ -88,6 +85,9 @@
                         <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timebank_icon_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="TLq-Wu-3pI">
+                        <rect key="frame" x="66" y="96" width="14" height="14"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="ahh-U4-uaY" secondAttribute="trailing" constant="5" id="3cp-XW-yCE"/>

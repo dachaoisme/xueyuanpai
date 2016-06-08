@@ -51,7 +51,7 @@
      */
     
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [CommonUtils colorWithHex:@"fafafa"];
 }
 -(UIView*)createContentView //创建背景视图
 {
@@ -195,8 +195,11 @@
     userDefineLeftBtn.frame     = CGRectMake(-10, 0, 100, 40);
     [userDefineLeftBtn setTitle:title forState:UIControlStateNormal];
     [userDefineLeftBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
-    [userDefineLeftBtn setFont:[UIFont systemFontOfSize:14]];
+    userDefineLeftBtn.titleLabel.textAlignment = NSTextAlignmentRight;
+    userDefineLeftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [userDefineLeftBtn addTarget:self action:@selector(rightItemActionWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    userDefineLeftBtn.contentHorizontalAlignment =UIControlContentHorizontalAlignmentRight;
+
     
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:userDefineLeftBtn];
     self.navigationItem.rightBarButtonItem = rightItem;

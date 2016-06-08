@@ -80,7 +80,7 @@
     
     if ([model.timeBankStat intValue]== TimeBankStateUnApply) {
         [_timeBankStateBtn setTitle:@"未申请" forState:UIControlStateNormal];
-        [_timeBankStateBtn setHidden:NO];
+        [_timeBankStateBtn setHidden:YES];
     }else if ([model.timeBankStat intValue]== TimeBankStateAlreadyApply){
         [_timeBankStateBtn setTitle:@"已申请" forState:UIControlStateNormal];
         [_timeBankStateBtn setHidden:NO];
@@ -111,8 +111,9 @@
     
     
     _timeBankPaywayLabel.layer.borderColor= [CommonUtils colorWithHex:@"00beaf"].CGColor;
+    
     _timeBankPaywayLabel.layer.borderWidth=0.5;
-    _timeBankPaywayLabel.layer.cornerRadius = 2;
+    _timeBankPaywayLabel.layer.cornerRadius = 3;
      _timeBankPaywayLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
     
     
