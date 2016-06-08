@@ -12,7 +12,7 @@
 
 @end
 
-
+///我的收藏
 @implementation MineStoreModel
 
 -(id)initWithDic:(NSDictionary *)dic
@@ -30,6 +30,7 @@
 }
 
 @end
+///我的积分
 @implementation MinePointModel
 
 /*
@@ -55,7 +56,7 @@
 
 @end
 
-
+///我的钱包
 @implementation MineWalletModel
 
 /*
@@ -69,10 +70,10 @@
 {
     self = [super init];
     if (self) {
-        self.minePointId           = [dic stringForKey:@"id"];
-        self.minePointAmount       = [dic stringForKey:@"amount"];
-        self.minePointMsg          = [dic stringForKey:@"msg"];
-        self.minePointCreateTime   = [dic stringForKey:@"create_at"];
+        self.mineWalletId           = [dic stringForKey:@"id"];
+        self.mineWalletAmount       = [dic stringForKey:@"amount"];
+        self.mineWalletMsg          = [dic stringForKey:@"msg"];
+        self.mineWalletCreateTime   = [dic stringForKey:@"create_at"];
     }
     return self;
 }
