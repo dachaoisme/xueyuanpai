@@ -64,12 +64,12 @@
  "create_at": "2016-06-03 06:13:21"
  */
 ///id
-@property(nonatomic,strong)NSString  *minePointId;
+@property(nonatomic,strong)NSString  *mineWalletId;
 ///积分数量
-@property(nonatomic,strong)NSString  *minePointAmount;
+@property(nonatomic,strong)NSString  *mineWalletAmount;
 ///积分记录信息
-@property(nonatomic,strong)NSString  *minePointMsg;
+@property(nonatomic,strong)NSString  *mineWalletMsg;
 ///创建时间
-@property(nonatomic,strong)NSString  *minePointCreateTime;
+@property(nonatomic,strong)NSString  *mineWalletCreateTime;
 -(id)initWithDic:(NSDictionary *)dic;
 @end

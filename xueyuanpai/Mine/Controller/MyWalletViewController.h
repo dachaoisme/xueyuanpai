@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "MineModel.h"
 @interface MyWalletViewController : BaseViewController
 
 @end

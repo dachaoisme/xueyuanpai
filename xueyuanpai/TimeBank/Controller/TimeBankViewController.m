@@ -237,6 +237,7 @@
                 TimeBankModel * model = [[TimeBankModel alloc]initWithDic:smallDic];
                 [timeBankModelListArr addObject:model];
             }
+            
             [self.tableView reloadData];
         }else{
             

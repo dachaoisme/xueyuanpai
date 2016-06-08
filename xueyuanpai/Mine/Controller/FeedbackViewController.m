@@ -11,7 +11,10 @@
 #import "JKPlaceholderTextView.h"
 
 @interface FeedbackViewController ()<UITextViewDelegate>
-
+{
+    UITextField *connectTextField;
+    JKPlaceholderTextView *textView;
+}
 @end
 
 @implementation FeedbackViewController
@@ -37,7 +40,7 @@
     
     
     //联系方式
-    UITextField *connectTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + 10, SCREEN_WIDTH, 48)];
+    connectTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + 10, SCREEN_WIDTH, 48)];
     connectTextField.borderStyle = UITextBorderStyleNone;
     connectTextField.backgroundColor = [UIColor whiteColor];
     connectTextField.placeholder = @" 联系方式";
@@ -46,8 +49,9 @@
     
     
     //意见反馈
-    JKPlaceholderTextView *textView = [[JKPlaceholderTextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(connectTextField.frame) + 10, SCREEN_WIDTH, 150)];
+    textView = [[JKPlaceholderTextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(connectTextField.frame) + 10, SCREEN_WIDTH, 150)];
     textView.backgroundColor = [UIColor whiteColor];
+    textView.keyboardType = UIKeyboardTypeDefault;
     textView.font = [UIFont systemFontOfSize:14];
     textView.placehoderText = @"你有什么意见或建议？";
     [textView setPlacehoderTextLabelTextColor:[CommonUtils colorWithHex:@"c7c6cb"]];
@@ -69,8 +73,34 @@
 
 #pragma mark - 提交意见反馈按钮
 - (void)commitAction{
-    
+    if (connectTextField.text.length<=0 ) {
+        [CommonUtils showToastWithStr:@"请输入联系方式"];
+        return;
+    }
+    if (textView.text.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入反馈信息"];
+    }
     [CommonUtils showToastWithStr:@"提交意见反馈"];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:connectTextField.text forKey:@"contact"];
+    [dic setValue:textView.text forKey:@"suggestions"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]feedBackWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (model.responseCode ==ResponseCodeSuccess) {
+            ///反馈成功
+            [CommonUtils showToastWithStr:@"反馈成功"];
+            
+        }else{
+            ///反馈失败
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    }];
+    
 }
 
 

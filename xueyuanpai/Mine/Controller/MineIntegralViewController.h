@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "MineModel.h"
+#import "BigToSendViewController.h"
 @interface MineIntegralViewController : BaseViewController
 
 @end
