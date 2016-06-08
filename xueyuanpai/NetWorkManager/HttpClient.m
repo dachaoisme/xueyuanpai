@@ -294,6 +294,21 @@
         failBlock(error);
     }];
 }
+///时间银行，发布需求照片上传
+- (void)uploadTimeBankIconWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]postWithMethod:METHOD_TIME_BANK_ADD_UPLOAD withParams:params withUploadDic:uploadDic withSuccess:^(HttpResponseCodeModel *model) {
+        
+        successBlock(model);
+        
+    } withFailBlock:^(NSError *error) {
+        
+        failBlock(error);
+        
+    }];
+    
+}
+
 #pragma mark - 大学招聘
 /*
  *  @brief 获取大学招聘栏目分类

@@ -56,6 +56,12 @@
     self.view.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
     
     
+    _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
+    _disPlayLink.frameInterval = 40;
+    [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+
+    
+    
     [self createCenterView];
     
     
@@ -64,8 +70,8 @@
 #pragma mark - 创建中间视图
 - (void)createCenterView{
     
-    
-    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(95, SCREEN_HEIGHT/2 - 90, SCREEN_WIDTH - 95*2, 180)];
+    //SCREEN_WIDTH - 95*2
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 90, SCREEN_HEIGHT/2 - 90, 180, 180)];
     
     backGroundView.backgroundColor = [UIColor whiteColor];
     backGroundView.layer.cornerRadius = 89;
@@ -89,7 +95,7 @@
     
     
     UIButton *noticeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    noticeButton.frame = CGRectMake(37, SCREEN_HEIGHT - 109, 135, 40);
+    noticeButton.frame = CGRectMake(15, SCREEN_HEIGHT - 109, 135, 40);
     noticeButton.backgroundColor = [UIColor whiteColor];
     [noticeButton setImage:[UIImage imageNamed:@"deliver_icon_noti"] forState:UIControlStateNormal];
     noticeButton.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -101,7 +107,7 @@
     
     
     UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    recordButton.frame = CGRectMake(SCREEN_WIDTH - 37 - 135, SCREEN_HEIGHT - 109, 135, 40);
+    recordButton.frame = CGRectMake(SCREEN_WIDTH - 15 - 135, SCREEN_HEIGHT - 109, 135, 40);
     recordButton.backgroundColor = [UIColor whiteColor];
     [recordButton setImage:[UIImage imageNamed:@"deliver_icon_order"] forState:UIControlStateNormal];
     recordButton.titleLabel.font = [UIFont systemFontOfSize:14];

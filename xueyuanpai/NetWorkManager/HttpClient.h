@@ -251,6 +251,15 @@
  *  @return
  */
 - (void)timeBankCommentListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  时间银行，发布需求照片上传
+ *
+ *  @param
+ *
+ *  @return
+ */
+- (void)uploadTimeBankIconWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
 #pragma mark - 校园招聘
 /**
  *  @brief  获取校园招聘栏目

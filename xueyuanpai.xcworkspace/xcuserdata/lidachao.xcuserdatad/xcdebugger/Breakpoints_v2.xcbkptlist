@@ -2,4 +2,86 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/TimeBank/Controller/RequirementsViewController.m"
+            timestampString = "487102712.628148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
+            landmarkName = "-releaseAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/TimeBank/Controller/RequirementsViewController.m"
+            timestampString = "487102712.628148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
+            landmarkName = "-releaseAction"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RequirementsViewController releaseAction]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/TimeBank/Controller/RequirementsViewController.m"
+                  timestampString = "487102882.98068"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "297"
+                  endingLineNumber = "297"
+                  offsetFromSymbolStart = "4110">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__43-[RequirementsViewController releaseAction]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/TimeBank/Controller/RequirementsViewController.m"
+                  timestampString = "487102882.980979"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "297"
+                  endingLineNumber = "297"
+                  offsetFromSymbolStart = "54">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/TimeBank/Controller/RequirementsViewController.m"
+            timestampString = "487102712.628148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
+            landmarkName = "-releaseAction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

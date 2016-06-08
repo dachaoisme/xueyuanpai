@@ -106,7 +106,8 @@
                 NSString * key = [keyArr objectAtIndex:i];
                 NSArray * value = [model.responseCommonDic objectForKey:key];
                 NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-                [dic setObject:value forKey:key];
+                [dic setValue:key forKey:@"id"];
+                [dic setObject:value forKey:@"name"];
                 [timeBankPayWayTitleArr addObject:value];
                 TimeBankPayWayModel * payWaymodel = [[TimeBankPayWayModel alloc]initWithDic:dic];
                 [timeBankPayWayModelArr addObject:payWaymodel];
@@ -198,18 +199,18 @@
     selectedImageView = [[SelectedImageView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height) withSuperController:self];
     weakSelf(wSelf)
     selectedImageView.callBackBlock = ^(UIImage * selectedImage){
-        
+        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(200, 200) withImage:selectedImage];
         [wSelf.headImageSelectedBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
         [wSelf.headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
         //需要把图片上传到服务器
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
-        NSData * imageData = UIImagePNGRepresentation(selectedImage);
-        [imageDic setObject:imageData forKey:@"Users[file]"];
-        [[HttpClient sharedInstance]uploadImageWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
-            avatarImageUploaded = [CommonUtils getEffectiveUrlWithUrl:[dic objectForKey:@"picUrl"]withType:2];
+        NSData * imageData = UIImagePNGRepresentation(scaleImg);
+        [imageDic setObject:imageData forKey:@"Timebank[file]"];
+        [[HttpClient sharedInstance]uploadTimeBankIconWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+            avatarImageUploaded = [model.responseCommonDic objectForKey:@"picUrl"];
         } withFaileBlock:^(NSError *error) {
-            
+            NSLog(@"%@",error);
         }];
         
     };
@@ -232,6 +233,9 @@
      brief            string  必需   简介
      icon             string  非必需   头像地址
      */
+    if (avatarImageUploaded.length<=0) {
+        [CommonUtils showToastWithStr:@"请重新上传图片"];
+    }
     if (_timeBankSubmitModel.timeBankSubmitTitle.length<=0) {
         [CommonUtils showToastWithStr:@"请输入标题"];
         return;
@@ -258,7 +262,7 @@
     }else if (_timeBankSubmitModel.timeBankSubmitPayWay.length<=0){
         [CommonUtils showToastWithStr:@"请选择支付方式"];
         return;
-    }else if (_timeBankSubmitModel.timeBankSubmitPrice.length<=0){
+    }else if ([_timeBankSubmitModel.timeBankSubmitPayWay integerValue]==2&& _timeBankSubmitModel.timeBankSubmitPrice.length<=0){
         [CommonUtils showToastWithStr:@"请选择价格"];
         return;
     }else if (_timeBankSubmitModel.timeBankSubmitDescription.length<=0){
@@ -272,11 +276,18 @@
     [dic setObject:_timeBankSubmitModel.timeBankSubmitTitle forKey:@"title"];
     [dic setObject:_timeBankSubmitModel.timeBankSubmitType forKey:@"category_id"];
     [dic setObject:_timeBankSubmitModel.timeBankSubmitTime forKey:@"appointment_time"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitNoon  forKey:@"noon"];
+    if ([_timeBankSubmitModel.timeBankSubmitNoon isEqualToString:@""]) {
+        [dic setObject:@"1"  forKey:@"noon"];
+    }else if ([_timeBankSubmitModel.timeBankSubmitNoon isEqualToString:@""]){
+        [dic setObject:@"2"  forKey:@"noon"];
+    }else{
+        [dic setObject:@"3"  forKey:@"noon"];
+    }
+    
     [dic setObject:_timeBankSubmitModel.timeBankSubmitAdress forKey:@"area"];
     [dic setObject:_timeBankSubmitModel.timeBankSubmitPerson forKey:@"number"];
     [dic setObject:_timeBankSubmitModel.timeBankSubmitPayWay forKey:@"payway"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitPrice forKey:@"price"];
+    [dic setObject:_timeBankSubmitModel.timeBankSubmitPrice.length>0?_timeBankSubmitModel.timeBankSubmitPrice:@"0" forKey:@"price"];
     [dic setObject:_timeBankSubmitModel.timeBankSubmitDescription forKey:@"brief"];
     if (avatarImageUploaded && avatarImageUploaded.length>0) {
         [dic setObject:avatarImageUploaded forKey:@"icon"];

@@ -68,7 +68,7 @@
     //创建tableView
     [self createTableView];
     [self requestToGetBusinessTeachersList];
-
+    [self requestToGetBusinessProgectList];
 }
 
 #pragma mark - 导航栏右侧按钮的响应方法
@@ -349,7 +349,7 @@
                 BusinessCenterTutorModel * model = [[BusinessCenterTutorModel alloc]initWithDic:smallDic];
                 [tutorStarModelListArr  addObject:model];
             }
-            [self requestToGetBusinessProgectList];
+            
             [self.tableView reloadData];
         }else{
             
