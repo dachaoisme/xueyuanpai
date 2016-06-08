@@ -345,7 +345,6 @@
     [[HttpClient sharedInstance]jobMarketGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (responseModel.responseCode == ResponseCodeSuccess) {
-            [jobMarketModelListArr removeAllObjects];
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 JobMarketModel * model = [[JobMarketModel alloc]initWithDic:smallDic];

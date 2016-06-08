@@ -15,6 +15,8 @@
 @interface MineCollectionSubViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * collectionModelListArr;
+    int pageNum;
+    int pageSize;
     
 }
 @property(nonatomic,strong)UITableView *tableView;
@@ -26,6 +28,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     collectionModelListArr = [NSMutableArray array];
+    pageNum = 1;
+    pageSize = 10;
     [self createTableView];
     
     //[self requestToGetProgectList];
@@ -41,6 +45,8 @@
     //注册cell
     
     [tableView registerNib:[UINib nibWithNibName:@"MineTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    
+    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -107,17 +113,16 @@
 }
 -(void)requestToGetProgectList
 {
-    int pageNo = 1;
-    int pageSize = 10;
-    [collectionModelListArr removeAllObjects];
+   
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)self.mineType] forKey:@"type"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]mineToGetCollectionListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
@@ -130,9 +135,15 @@
         }
         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
+        [self.tableView.footer endRefreshing];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
     
+}
+-(void)requestMoreData
+{
+    pageNum = pageNum+1;
+    [self requestToGetProgectList];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
