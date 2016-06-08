@@ -585,6 +585,8 @@
 		DDCD70CC1D06CA65009FBE9A /* SendCourierThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CA1D06CA65009FBE9A /* SendCourierThreeTableViewCell.xib */; };
 		DDCD70CE1D06F31F009FBE9A /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CD1D06F31F009FBE9A /* 1.jpg */; };
 		DDCD70D01D06F325009FBE9A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CF1D06F325009FBE9A /* 2.jpg */; };
+		DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */; };
+		DDCD70D51D082218009FBE9A /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70D41D082218009FBE9A /* 3.png */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1406,6 +1408,9 @@
 		DDCD70CA1D06CA65009FBE9A /* SendCourierThreeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendCourierThreeTableViewCell.xib; sourceTree = "<group>"; };
 		DDCD70CD1D06F31F009FBE9A /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		DDCD70CF1D06F325009FBE9A /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		DDCD70D11D0808ED009FBE9A /* CommonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTableViewCell.h; sourceTree = "<group>"; };
+		DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
+		DDCD70D41D082218009FBE9A /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2079,6 +2084,7 @@
 			children = (
 				DDCD70CD1D06F31F009FBE9A /* 1.jpg */,
 				DDCD70CF1D06F325009FBE9A /* 2.jpg */,
+				DDCD70D41D082218009FBE9A /* 3.png */,
 				DDAB05AF1D026421007A6027 /* placeHoder.png */,
 				DD41278E1CF1860400227066 /* test.jpg */,
 				DD4127931CF18D8000227066 /* test1.jpg */,
@@ -2086,6 +2092,8 @@
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
 				58F67BD81CD990A200D55BE0 /* BaseViewController.m */,
+				DDCD70D11D0808ED009FBE9A /* CommonTableViewCell.h */,
+				DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */,
 				583D65C51CDA78F700830BBE /* TabBar */,
 				DDD0BE651CFC2AA200073290 /* JobMarket */,
 				DDD3E52E1CF44DF6001B579E /* SchoolRecruitment */,
@@ -3230,6 +3238,7 @@
 				DD0B1EEB1CFEE51000C4BAB2 /* timebank_filter_all_hl@2x.png in Resources */,
 				58070FBD1CF6E80200F03F6C /* timebank_filter_hot@3x.png in Resources */,
 				DD13CDF61D00186D000A69FE /* timebank_filter_other_hl@3x.png in Resources */,
+				DDCD70D51D082218009FBE9A /* 3.png in Resources */,
 				DD41276A1CF0552F00227066 /* hire_btn_contact_press@3x.png in Resources */,
 				DDAB43A61D055D7600FADB3E /* MineSettingTableViewCell.xib in Resources */,
 				DD13CDEB1D00186D000A69FE /* timebank_filter_all@2x.png in Resources */,
@@ -3757,6 +3766,7 @@
 				5874A3F21CF1405100CE9FC9 /* SelectedImageView.m in Sources */,
 				587FF9D91CF2F8F300AD2131 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				587FF9D21CF2F8F300AD2131 /* IQNSArray+Sort.m in Sources */,
+				DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				DDAB05C11D03A747007A6027 /* BusinessProjectDetailViewController.m in Sources */,
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,

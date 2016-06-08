@@ -280,6 +280,7 @@
     switch (self.index) {
         case 0:{
             HotActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotActivityTableViewCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!cell) {
                 cell = [[HotActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HotActivityTableViewCell"];
                 
@@ -293,6 +294,8 @@
         case 1:{
             
             StarCommunityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StarCommunityTableViewCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             if (!cell) {
                 cell = [[StarCommunityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"StarCommunityTableViewCell"];
                 HotActivityModel *model = [_saveStartCommunityArray objectAtIndex:indexPath.row];
@@ -303,6 +306,8 @@
             break;
         case 2:{
             HotActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotActivityTableViewCell1"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             if (!cell) {
                 cell = [[HotActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"HotActivityTableViewCell1"];
                 HotActivityModel *model = [_saveCommunityNewArray objectAtIndex:indexPath.row];

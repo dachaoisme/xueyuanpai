@@ -55,9 +55,10 @@
     [leftImageView sd_setImageWithURL:[NSURL URLWithString:self.mallModel.indexMallThumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder.png" ]];
     [headView addSubview:leftImageView];
     
-    UILabel * exangeTitleLable = [UIFactory label:14*3 color:@"333333" align:NSTextAlignmentLeft];
+    UILabel * exangeTitleLable = [UIFactory label:14*3 color:@"999999" align:NSTextAlignmentLeft];
     exangeTitleLable.frame = CGRectMake(CGRectGetMaxX(leftImageView.frame)+space, CGRectGetMinY(leftImageView.frame), CGRectGetWidth(headView.frame)-CGRectGetWidth(leftImageView.frame)-3*space, leftImageHeight/3);
     exangeTitleLable.text = @"兑换内容";
+    
     [headView addSubview:exangeTitleLable];
     
     UILabel * exangeProductNameLable = [UIFactory label:14*3 color:@"333333" align:NSTextAlignmentLeft];
@@ -67,10 +68,19 @@
     
     UILabel * pointLable = [UIFactory label:14*3 color:@"333333" align:NSTextAlignmentLeft];
     pointLable.frame = CGRectMake(CGRectGetMinX(exangeTitleLable.frame), CGRectGetMaxY(exangeProductNameLable.frame), CGRectGetWidth(headView.frame)-CGRectGetWidth(leftImageView.frame)-3*space, leftImageHeight/3);
-    pointLable.text = [NSString stringWithFormat:@"%@ 积分",self.mallModel.indexMallPoints];
+    
+    NSMutableAttributedString *hintString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@ 积分",self.mallModel.indexMallPoints]];
+    
+    NSRange range1=[[hintString string]rangeOfString:self.mallModel.indexMallPoints];
+    
+    UIColor *color = [CommonUtils colorWithHex:@"ff6478"];
+    [hintString addAttribute:NSForegroundColorAttributeName value:color range:range1];
+    
+    pointLable.attributedText = hintString;
+
     [headView addSubview:pointLable];
     
-    [UIFactory showLineInView:headView color:@"333333" rect:CGRectMake(space, CGRectGetHeight(headView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
+    [UIFactory showLineInView:headView color:@"e5e5e5" rect:CGRectMake(space, CGRectGetHeight(headView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
     
     //兑换份数
     UIView * remainderExangePartView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(headView.frame), SCREEN_WIDTH,height)];
@@ -85,7 +95,7 @@
     [remainderExangePartView addSubview:rduceAndAddView];
     [self setStepperViewContentViewWithStepperView:rduceAndAddView];
     
-    [UIFactory showLineInView:remainderExangePartView color:@"333333" rect:CGRectMake(space, CGRectGetHeight(remainderExangePartView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
+    [UIFactory showLineInView:remainderExangePartView color:@"e5e5e5" rect:CGRectMake(space, CGRectGetHeight(remainderExangePartView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
     
     //所需积分
     UIView * needPointView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(remainderExangePartView.frame), SCREEN_WIDTH,height)];
@@ -98,7 +108,7 @@
     
     needPointValueLable = [UIFactory label:14*3 color:@"333333" align:NSTextAlignmentRight];
     needPointValueLable.frame = CGRectMake(CGRectGetMaxX(needPointLable.frame),0, rightWidth, height);
-    needPointValueLable.text = @"0分";
+    needPointValueLable.text = @"0";
     [needPointView addSubview:needPointValueLable];
     
     [UIFactory showLineInView:needPointView color:@"333333" rect:CGRectMake(space, CGRectGetHeight(needPointView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
@@ -128,7 +138,7 @@
     [exchangeBtn setFrame:CGRectMake(space, CGRectGetMaxY(residualPointView.frame)+space, width, height)];
     [exchangeBtn addTarget:self action:@selector(exchangeBtn:) forControlEvents:UIControlEventTouchUpInside];
     [exchangeBtn setTitle:@"兑换" forState:UIControlStateNormal];
-    exchangeBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    exchangeBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:exchangeBtn];
     
 }

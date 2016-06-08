@@ -71,13 +71,14 @@
     nickNameTextField.backgroundColor = [UIColor whiteColor];
     nickNameTextField.delegate = self;
     nickNameTextField.placeholder = @"设置昵称(4-10个字符)";
+    nickNameTextField.font = [UIFont systemFontOfSize:14];
     [nickNameView addSubview:nickNameTextField];
     
     ///选择性别
     sexView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(nickNameView.frame), SCREEN_WIDTH, height)];
     sexView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:sexView];
-    sexBtn = [UIFactory button:nil sel:nil titleColor:@"c2c3c4" title:@"选择性别" fontSize:15 frame:CGRectMake(space,0 , width-arrowWidth, CGRectGetHeight(sexView.frame))];
+    sexBtn = [UIFactory button:nil sel:nil titleColor:@"666666" title:@"选择性别" fontSize:14 frame:CGRectMake(space,0 , width-arrowWidth, CGRectGetHeight(sexView.frame))];
     [sexBtn setBackgroundColor:[UIColor whiteColor]];
     sexBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [sexBtn addTarget:self action:@selector(selectedSxe:) forControlEvents:UIControlEventTouchUpInside];
@@ -91,7 +92,7 @@
     schoolView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(sexView.frame), SCREEN_WIDTH, height)];
     [schoolView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:schoolView];
-    schoolBtn = [UIFactory button:nil sel:nil titleColor:@"c2c3c4" title:@"选择学校" fontSize:15 frame:CGRectMake(space, 0, width-arrowWidth, height)];
+    schoolBtn = [UIFactory button:nil sel:nil titleColor:@"666666" title:@"选择学校" fontSize:14 frame:CGRectMake(space, 0, width-arrowWidth, height)];
     [schoolBtn setBackgroundColor:[UIColor whiteColor]];
     schoolBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [schoolBtn addTarget:self action:@selector(selectedSchool:) forControlEvents:UIControlEventTouchUpInside];
@@ -101,12 +102,12 @@
     [schoolArrowImageView setBackgroundColor:[UIColor whiteColor]];
     [schoolView addSubview:schoolArrowImageView];
     ///提交
-    submitBtn = [UIFactory button:nil sel:nil titleColor:@"f5f5f5" title:@"提交" fontSize:15 frame:CGRectMake(space, CGRectGetMaxY(schoolView.frame)+space, width, height)];
+    submitBtn = [UIFactory button:nil sel:nil titleColor:@"f5f5f5" title:@"提交" fontSize:16 frame:CGRectMake(space, CGRectGetMaxY(schoolView.frame)+space, width, height)];
     [submitBtn addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
     [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
     [self.view addSubview:submitBtn];
     ///稍后完善
-    unperfectBtn = [UIFactory button:nil sel:nil titleColor:@"00beaf" title:@"稍后完善" fontSize:15 frame:CGRectMake(space, CGRectGetMaxY(submitBtn.frame)+space, width, height)];
+    unperfectBtn = [UIFactory button:nil sel:nil titleColor:@"00beaf" title:@"稍后完善" fontSize:16 frame:CGRectMake(space, CGRectGetMaxY(submitBtn.frame)+space, width, height)];
     [unperfectBtn addTarget:self action:@selector(unperfect:) forControlEvents:UIControlEventTouchUpInside];
     [unperfectBtn setBackgroundColor:[CommonUtils colorWithHex:@"f5f5f5"]];
     unperfectBtn.layer.borderColor = [CommonUtils colorWithHex:@"00beaf"].CGColor;

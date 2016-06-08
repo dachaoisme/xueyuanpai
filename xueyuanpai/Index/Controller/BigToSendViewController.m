@@ -38,6 +38,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"大派送";
+    
+    [self creatRightNavWithImageName:@"bigpi_icon_coin"];
+    
+    //设置文字
+//    [self creatRightNavWithTitle:[UserAccountManager sharedInstance].usablePoints];
+    
     [self createLeftBackNavBtn];
     bannerItemArray  = [NSMutableArray array];
     bannerImageArray = [NSMutableArray array];
@@ -146,7 +152,6 @@
     if (kind == UICollectionElementKindSectionHeader) {
             IndexCollectionReusableView *headReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         
-        headReusableView.backgroundColor = [UIColor yellowColor];
         headReusableView.delegate = self;
         headReusableView.imageArray = bannerImageArray;
         return headReusableView;

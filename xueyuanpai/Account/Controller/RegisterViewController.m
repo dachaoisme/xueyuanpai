@@ -39,17 +39,23 @@
 -(void)setContentView
 {
     float topSpace = 15;
-    float leftSpace = 0;
+    float leftSpace = 15;
     float width = SCREEN_WIDTH ;
     float height = 48;
 
     
+    //创建背景视图
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+topSpace, width, 3 * height)];
+    backGroundView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:backGroundView];
+    
     //请输入手机号
-    phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, NAV_TOP_HEIGHT+topSpace, width, height)];
+    phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, 15, width, height-30)];
     phoneTextField.tag = 2;
     phoneTextField.delegate = self;
-    [phoneTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
+//    [phoneTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
     phoneTextField.textAlignment = NSTextAlignmentLeft;
+    phoneTextField.font = [UIFont systemFontOfSize:14];
     phoneTextField.borderStyle   = UITextBorderStyleNone;
     phoneTextField.placeholder   = @"请输入手机号";
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
@@ -57,48 +63,56 @@
     phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     phoneTextField.leftViewMode    = UITextFieldViewModeAlways;
     phoneTextField.rightViewMode   = UITextFieldViewModeAlways;
-    [self.view addSubview:phoneTextField];
+    [backGroundView addSubview:phoneTextField];
     
     sendMessageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendMessageBtn.layer.cornerRadius = 3.0;
     [sendMessageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [sendMessageBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
-    [sendMessageBtn setFrame:CGRectMake(0, 0, 80, 30)];
+    [sendMessageBtn setFrame:CGRectMake(SCREEN_WIDTH - 80 - 15,  9, 80, 30)];
     [sendMessageBtn setContentMode:UIViewContentModeCenter];
     [sendMessageBtn addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
     [sendMessageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
-    sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:10];
-    phoneTextField.rightView = sendMessageBtn;
+    sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [backGroundView addSubview:sendMessageBtn];
     
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, 48, SCREEN_WIDTH, 1)];
+    lineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [backGroundView addSubview:lineView];
+//
     //请输入验证码
-    checkingMessageTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(phoneTextField.frame), width, height)];
+    checkingMessageTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(lineView.frame) + 15, width, height-30)];
     checkingMessageTextField.tag = 2;
     checkingMessageTextField.delegate = self;
+    checkingMessageTextField.font = [UIFont systemFontOfSize:14];
+
     [checkingMessageTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
     checkingMessageTextField.textAlignment = NSTextAlignmentLeft;
     checkingMessageTextField.borderStyle = UITextBorderStyleNone;
     checkingMessageTextField.placeholder = @"请输入验证码";
     checkingMessageTextField.adjustsFontSizeToFitWidth = YES;
     checkingMessageTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:checkingMessageTextField];
+    [backGroundView addSubview:checkingMessageTextField];
     
+    UIView *lineView1 = [[UIView alloc] initWithFrame:CGRectMake(15, 48 * 2, SCREEN_WIDTH, 1)];
+    lineView1.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [backGroundView addSubview:lineView1];
 
-    float lineHeight = 0.5;
-    [UIFactory showLineInView:self.view color:@"999999" rect:CGRectMake(leftSpace, CGRectGetMaxY(phoneTextField.frame), width,lineHeight)];
+
     
     //请输入密码
-    inputPasswordTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(checkingMessageTextField.frame), width, height)];
+    inputPasswordTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(lineView1.frame) + 15, width, height - 30)];
     inputPasswordTextField.tag = 2;
     inputPasswordTextField.delegate = self;
     [inputPasswordTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
+    inputPasswordTextField.font = [UIFont systemFontOfSize:14];
     inputPasswordTextField.textAlignment = NSTextAlignmentLeft;
     inputPasswordTextField.borderStyle = UITextBorderStyleNone;
     inputPasswordTextField.placeholder = @"请设置密码";
     inputPasswordTextField.adjustsFontSizeToFitWidth = YES;
     inputPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:inputPasswordTextField];
+    [backGroundView addSubview:inputPasswordTextField];
     
-    [UIFactory showLineInView:self.view color:@"999999" rect:CGRectMake(leftSpace, CGRectGetMaxY(checkingMessageTextField.frame), width,lineHeight)];
     
     //提交并注册
     submitAndRegisterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -106,10 +120,10 @@
     submitAndRegisterBtn.tag = 10002;
     submitAndRegisterBtn.layer.cornerRadius = 5.0;
     [submitAndRegisterBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
-    [submitAndRegisterBtn setFrame:CGRectMake(topSpace, CGRectGetMaxY(inputPasswordTextField.frame)+topSpace, width-2*topSpace, height)];
+    [submitAndRegisterBtn setFrame:CGRectMake(topSpace, CGRectGetMaxY(backGroundView.frame)+topSpace, width-2*topSpace, height)];
     [submitAndRegisterBtn addTarget:self action:@selector(submitAndRegister:) forControlEvents:UIControlEventTouchUpInside];
-    [submitAndRegisterBtn setTitle:@"提交" forState:UIControlStateNormal];
-    submitAndRegisterBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [submitAndRegisterBtn setTitle:@"提交并注册" forState:UIControlStateNormal];
+    submitAndRegisterBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:submitAndRegisterBtn];
 }
 -(void)sendmessage:(UIButton *)sender
@@ -182,7 +196,7 @@
             NSString * userId = [listDic objectForKey:@"user_id"];
             
             if (self.registerRoleType == RegisterRoleOfStudent) {
-                
+    
                 //学生->跳转到设置用户资料界面，直接登录成功
                 AddStudentInfoViewController * studentInfoVC = [[AddStudentInfoViewController alloc]init];
                 studentInfoVC.userId = userId;
