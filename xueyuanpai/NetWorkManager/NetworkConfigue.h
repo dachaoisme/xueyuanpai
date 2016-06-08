@@ -131,6 +131,8 @@
 #define METHOD_MINE_POINTS_LIST                               @"v1/my/integral?"
 ///个人中心：我的钱包记录列表接
 #define METHOD_MINE_WALLET_LIST                               @"v1/my/wallet?"
+///个人中心：意见反馈
+#define METHOD_MINE_FEED_BACK                               @"v1/feedback/add/?"
 
 ///收藏相关-添加收藏
 #define METHOD_COLLECTION_ADD                                 @"v1/mark/add?"
