@@ -158,10 +158,42 @@
     
     //先注册collectionViewCell
     [_collectionView registerClass:[JobMarketCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    
-
+    [_collectionView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(refreshMoreData)];
 }
 
+-(void)refreshMoreData
+{
+    pageNo = pageNo+1;
+    pageSize = 10;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setObject:jobMarketCategoryParam forKey:@"cat_id"];
+    [dic setObject:jobMarketSortParam forKey:@"sort"];
+    if (searchKeyWord.length>0) {
+        [dic setObject:searchKeyWord forKey:@"keyword"];
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]jobMarketGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                JobMarketModel * model = [[JobMarketModel alloc]initWithDic:smallDic];
+                [jobMarketModelListArr addObject:model];
+            }
+            [_collectionView reloadData];
+        }else{
+            
+        }
+        [_collectionView.footer endRefreshing];
+    } withFaileBlock:^(NSError *error) {
+        
+        [_collectionView.footer endRefreshing];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
 #pragma mark - 实现UICollectionView的代理方法
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {

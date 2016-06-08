@@ -38,4 +38,5 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking/AFNetworking.h>
 #import "MBProgressHUD.h"
+#import "MJRefresh.h"
 #endif /* XYP_PrefixHeader_pch */
