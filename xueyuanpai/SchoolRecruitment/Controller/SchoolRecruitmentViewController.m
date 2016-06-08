@@ -176,7 +176,7 @@
 #pragma mark - tableView的代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return schoolRecruitmentListArray.count ;
+    return schoolRecruitmentListArray.count + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -221,20 +221,7 @@
     
     schoolShufflingView.delegate = self;
     
-    if (bannerImageArray.count > 0) {
-            schoolShufflingView.imageArray = bannerImageArray;
-    }else{
-    
-#warning 测试的死数据，需要修改
-    
-        //仅用来测试布局用的
-//        NSString *path1 = @"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg";
-//        NSString *path2 = @"http://www.qqpk.cn/Article/UploadFiles/201111/2011112212072571.jpg";
-//        NSArray *pathArray = [NSArray arrayWithObjects:path1,path2, nil];
-//
-//        schoolShufflingView.imageArray = pathArray;
-
-    }
+    schoolShufflingView.imageArray = bannerImageArray;
 
 
     
@@ -289,10 +276,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    SchoolRecruitmentModel * model =  [schoolRecruitmentListArray objectAtIndex:indexPath.row-1];
-    RecruitmentDetailViewController *recruitmentVC = [[RecruitmentDetailViewController alloc] init];
-    recruitmentVC.jobId = model.schoolRecruitmentId;
-    [self.navigationController pushViewController:recruitmentVC animated:YES];
+    
+    if (indexPath.row > 0) {
+        SchoolRecruitmentModel * model =  [schoolRecruitmentListArray objectAtIndex:indexPath.row-1];
+        RecruitmentDetailViewController *recruitmentVC = [[RecruitmentDetailViewController alloc] init];
+        recruitmentVC.jobId = model.schoolRecruitmentId;
+        [self.navigationController pushViewController:recruitmentVC animated:YES];
+    }
+    
 }
 
 #pragma mark - 点击banner图

@@ -15,7 +15,7 @@
     
     
     //设置按钮的圆角
-    self.activityContentButton.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+    self.activityContentButton.backgroundColor = [CommonUtils colorWithHex:@"cccccc"];
     self.activityContentButton.layer.cornerRadius = 10;
 
     
@@ -23,20 +23,20 @@
     
     _payMethordLabel.layer.borderColor= [CommonUtils colorWithHex:@"00beaf"].CGColor;
     _payMethordLabel.layer.borderWidth=0.5;
-    _payMethordLabel.layer.cornerRadius = 2;
+    _payMethordLabel.layer.cornerRadius = 3;
     
     _payMethordLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
     
     
     _singLabel.layer.borderColor= [CommonUtils colorWithHex:@"00beaf"].CGColor;
     _singLabel.layer.borderWidth=0.5;
-    _singLabel.layer.cornerRadius = 2;
+    _singLabel.layer.cornerRadius = 3;
     _singLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
     
     
     _moneyLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
     
-    _activityContentLabel.backgroundColor = [CommonUtils colorWithHex:@"cccccc"];
+    _activityContentLabel.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
 
 
 }

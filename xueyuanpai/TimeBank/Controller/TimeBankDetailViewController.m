@@ -271,7 +271,7 @@
         }
     }else{
         
-        return 250;
+        return 300;
     }
     
     
@@ -286,6 +286,7 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"你确定申请邀约吗？" message:@"\n\n" preferredStyle:UIAlertControllerStyleAlert];
         //这里就可以设置子控件的frame,但是alert的frame不可以设置
         UITextField * textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 64, 240, 30)];//wight = 270;
+        textField.placeholder = @"捎句话";
         textField.borderStyle = UITextBorderStyleRoundedRect;//设置边框的样式
         //添加子控件也是直接add
         [alert.view addSubview:textField];
