@@ -54,7 +54,7 @@
 
     [tableView registerNib:[UINib nibWithNibName:@"EmploymentRecruitmentTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
-    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(refreshMoreData)];
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(refreshMoreData)];
 }
 
 //校园招聘列表list

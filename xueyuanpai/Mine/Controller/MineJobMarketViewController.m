@@ -71,7 +71,7 @@
     //先注册collectionViewCell
     [collectionView registerClass:[JobMarketCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    [collectionView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    [collectionView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 #pragma mark - 实现UICollectionView的代理方法

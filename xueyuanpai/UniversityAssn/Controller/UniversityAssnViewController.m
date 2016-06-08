@@ -238,7 +238,7 @@
     
     self.tableView = tableView;
     
-    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 #pragma mark - tableView的代理方法
