@@ -14,6 +14,8 @@
 @interface MineJobMarketViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     NSMutableArray *jobMarketModelListArr;
+    int pageNum;
+    int pageSize;
     
 }
 @property(nonatomic,strong)UICollectionView *collectionView;
@@ -24,9 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
     self.title = @"我的跳槽市场";
+    pageSize = 10;
+    pageNum = 1;
     jobMarketModelListArr = [NSMutableArray array];
     [self createLeftBackNavBtn];
     
@@ -69,7 +71,7 @@
     //先注册collectionViewCell
     [collectionView registerClass:[JobMarketCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    
+    [collectionView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 #pragma mark - 实现UICollectionView的代理方法
@@ -127,19 +129,15 @@
 
 -(void)requestToGetJobMarketList
 {
-
-    int pageNo = 1;
-    int pageSize = 10;
-    
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]mineToGetjobMarketListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.collectionView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
-            [jobMarketModelListArr removeAllObjects];
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 JobMarketModel * model = [[JobMarketModel alloc]initWithDic:smallDic];
@@ -151,9 +149,15 @@
         }
         [self.collectionView reloadData];
     } withFaileBlock:^(NSError *error) {
+        [self.collectionView.footer endRefreshing];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
     
+}
+-(void)requestMoreData
+{
+    pageNum = pageNum+1;
+    [self requestToGetJobMarketList];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

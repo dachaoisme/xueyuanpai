@@ -14,6 +14,8 @@
 @interface MineProjectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * projectModelListArr;
+    int pageSize;
+    int pageNum;
 }
 @property (nonatomic,strong)UITableView *tableView;
 @end
@@ -23,9 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
     self.title = @"我的项目";
+    pageNum = 1;
+    pageSize = 10;
     projectModelListArr = [NSMutableArray array];
     [self createLeftBackNavBtn];
     
@@ -43,6 +45,8 @@
     //注册cell
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    
+    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -79,16 +83,15 @@
 
 -(void)requestToGetProgectList
 {
-    int pageNo = 1;
-    int pageSize = 10;
-    [projectModelListArr removeAllObjects];
+
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterGetProgectListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
@@ -102,10 +105,15 @@
         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
     }];
     
 }
-
+-(void)requestMoreData
+{
+    pageNum = pageNum+1;
+    [self requestToGetProgectList];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

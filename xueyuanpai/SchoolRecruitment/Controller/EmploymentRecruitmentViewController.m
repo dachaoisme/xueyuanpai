@@ -14,6 +14,8 @@
 @interface EmploymentRecruitmentViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * schoolRecruitmentListArray;
+    int pageSize;
+    int pageNum;
 }
 @property(nonatomic,strong)UITableView *tableView;
 @end
@@ -24,7 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     schoolRecruitmentListArray = [NSMutableArray array];
-    
+    pageNum = 1;
+    pageSize = 10;
 //    self.title = @"就业招聘";
     [self requestListData];
     [self createLeftBackNavBtn];
@@ -50,14 +53,16 @@
     //注册cell
 
     [tableView registerNib:[UINib nibWithNibName:@"EmploymentRecruitmentTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    
+    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(refreshMoreData)];
 }
 
 //校园招聘列表list
 -(void)requestListData
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:@"1" forKey:@"page"];
-    [dic setObject:@"10" forKey:@"size"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageNum] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     if (self.type == SchoolRecruitmentTypeJiuYe) {
         [dic setObject:@"1" forKey:@"type"];
     }else if (self.type == SchoolRecruitmentTypeShiXi){
@@ -85,6 +90,42 @@
         }
     } withFaileBlock:^(NSError *error) {
         
+    }];
+}
+-(void)refreshMoreData
+{
+    pageNum = pageNum +1;
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageNum] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    if (self.type == SchoolRecruitmentTypeJiuYe) {
+        [dic setObject:@"1" forKey:@"type"];
+    }else if (self.type == SchoolRecruitmentTypeShiXi){
+        [dic setObject:@"2" forKey:@"type"];
+    }else if (self.type == SchoolRecruitmentTypeJianZhi){
+        [dic setObject:@"3" forKey:@"type"];
+    }else if (self.type ==SchoolRecruitmentTypeCompanyPosition){
+        [dic setObject:self.companyID?self.companyID:@"" forKey:@"company_id"];
+    }else if (self.type == SchoolRecruitmentTypeCompanySearch){
+        [dic addEntriesFromDictionary:self.companySearchDic];
+    }
+    
+    [[HttpClient sharedInstance]getListOfSchoolRecruitmentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [self.tableView.footer endRefreshing];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            
+            for (NSDictionary * dic in [ListDic objectForKey:@"lists"] ) {
+                
+                SchoolRecruitmentModel * model = [[SchoolRecruitmentModel alloc]initWithDic:dic];
+                [schoolRecruitmentListArray addObject:model];
+            }
+            [self.tableView reloadData];
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [self.tableView.footer endRefreshing];
     }];
 }
 #pragma mark - tableView的代理方法

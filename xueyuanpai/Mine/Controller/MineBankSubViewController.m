@@ -11,6 +11,8 @@
 @interface MineBankSubViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * timebankModelListArr;
+    int pageNum;
+    int pageSize;
 }
 @property(nonatomic,strong)UITableView * tableView;
 @end
@@ -20,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    pageNum = 1;
+    pageSize = 10;
     timebankModelListArr = [NSMutableArray array];
     [self createTableView];
 }
@@ -41,7 +45,7 @@
     //注册cell
     [tableView registerNib:[UINib nibWithNibName:@"TimeBankTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
-    
+    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
     
 }
 
@@ -98,17 +102,15 @@
      size           int     非必需    每页多少条     默认10
      status         int     非必需    申领状态       //0 未申请 1 已申请 2 已通过 3 过期 4 完成
      */
-    int pageNo = 1;
-    int pageSize = 10;
-    [timebankModelListArr removeAllObjects];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)self.mineTimeBankStatus] forKey:@"type"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]mineToGetTimeBankListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
@@ -122,10 +124,15 @@
         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
     }];
     
 }
-
+-(void)requestMoreData
+{
+    pageNum = pageNum +1;
+    [self requestToGetTimeBankList];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

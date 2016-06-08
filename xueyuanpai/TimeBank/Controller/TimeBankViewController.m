@@ -166,6 +166,7 @@
     }
     ///清楚之前旧数据
     [timeBankModelListArr removeAllObjects];
+    pageNo = 1;
     [self requestToGetTimeBankList];
 }
 -(void)setTimeBankCategoryParamWithTitle:(NSString *)title
@@ -246,6 +247,35 @@
     
 }
 
+-(void)requestMoreData
+{
+    pageNo = pageNo+1;
+    
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setObject:timeBankCategoryParam forKey:@"cat_id"];
+    [dic setObject:timeBankSexParam forKey:@"sex"];
+    [dic setObject:timeBankSortParam forKey:@"sort"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]timeBankGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                TimeBankModel * model = [[TimeBankModel alloc]initWithDic:smallDic];
+                [timeBankModelListArr addObject:model];
+            }
+            [self.tableView reloadData];
+        }else{
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
+    }];
+}
 #pragma mark - tableview UITableViewDataSource,UITableViewDelegate
 -(void)createTableView
 {
@@ -268,7 +298,7 @@
     //注册cell
     [tableView registerNib:[UINib nibWithNibName:@"TimeBankTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
-    
+    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
     
 }
 
