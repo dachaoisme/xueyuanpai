@@ -14,9 +14,10 @@
 @interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate,JobMarkDetailTwoStyleTableViewCellDelegate>
 {
     JobMarketDetailModel * jobMarketDetailModel;
+    BOOL yesIsCollection ;
 }
 @property (nonatomic,strong)UITableView *tableView;
-
+@property (nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
 
 ///存储图片的数组
 @property (nonatomic,strong)NSMutableArray *imageArray;
@@ -35,7 +36,7 @@
     self.imageArray = [NSMutableArray array];
     
     self.title = @"跳槽市场详情";
-    
+    yesIsCollection = NO;
     //返回
     [self createLeftBackNavBtn];
     
@@ -47,6 +48,7 @@
 
     [self requestToGetJobMarketDetail];
     
+    [self checkoutIsCollectionOrNot];
 }
 
 #pragma mark - 设置分享按钮
@@ -55,8 +57,8 @@
     //分享按钮
     UIBarButtonItem *shareButtonItem =[[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_share"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickSharButtonItemAction:)];
     //收藏按钮
-    UIBarButtonItem * favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
-    self.navigationItem.rightBarButtonItems = @[favoriteButtonItem,shareButtonItem];
+    _favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
+    self.navigationItem.rightBarButtonItems = @[_favoriteButtonItem,shareButtonItem];
     
     
 }
@@ -70,6 +72,9 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
+    if (yesIsCollection==YES) {
+        return;
+    }
     [CommonUtils showToastWithStr:@"收藏"];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
@@ -77,9 +82,35 @@
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfJobMarket] forKey:@"type"];
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"收藏成功"];
-        }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+-(void)checkoutIsCollectionOrNot
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.jobMarketId forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfJobMarket] forKey:@"type"];
+    [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
         }
     } withFaileBlock:^(NSError *error) {
         

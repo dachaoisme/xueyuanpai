@@ -3056,7 +3056,7 @@
 				TargetAttributes = {
 					58F67B9E1CD9863400D55BE0 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = SBXP28TEHB;
+						DevelopmentTeam = H67PRMBBCW;
 					};
 					58F67BB71CD9863400D55BE0 = {
 						CreatedOnToolsVersion = 7.3;
@@ -3835,8 +3835,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing MFtour International Travel Service Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing MFtour International Travel Service Co., Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jin Liang (YAU277YZ77)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jin Liang (YAU277YZ77)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3860,7 +3860,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "439bd43b-8ccd-4dc7-8abf-509ac713f00a";
+				PROVISIONING_PROFILE = "cde15ac7-b2ed-4ea4-9e41-fcda767163e4";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3914,15 +3914,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jin Liang (YAU277YZ77)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xueyuanpai/XYP-PrefixHeader.pch";
 				INFOPLIST_FILE = xueyuanpai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.xueyuanpai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ipiao.bus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cde15ac7-b2ed-4ea4-9e41-fcda767163e4";
 			};
 			name = Debug;
 		};
@@ -3933,14 +3933,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing MFtour International Travel Service Co., Ltd.";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xueyuanpai/XYP-PrefixHeader.pch";
 				INFOPLIST_FILE = xueyuanpai/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xueyuanpai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ipiao.bus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "439bd43b-8ccd-4dc7-8abf-509ac713f00a";
 			};
 			name = Release;
 		};
