@@ -34,12 +34,21 @@
     teacherAccountBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [teacherAccountBtn setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
     teacherAccountBtn.tag = 10001;
-    [teacherAccountBtn setImage:[UIImage imageNamed:@"signup_teacher"] forState:UIControlStateNormal];
+    UIImage *image = [UIImage imageNamed:@"signup_teacher"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [teacherAccountBtn setImage:image forState:UIControlStateNormal];
+    
+    teacherAccountBtn.imageEdgeInsets = UIEdgeInsetsMake(20,teacherAccountBtn.center.x + 30,21,teacherAccountBtn.titleLabel.bounds.size.width);
+    teacherAccountBtn.titleEdgeInsets = UIEdgeInsetsMake(71, -teacherAccountBtn.titleLabel.bounds.size.width-50, 0, 0);
+    
     [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
     [teacherAccountBtn setFrame:leftRect];
     [teacherAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     [teacherAccountBtn setTitle:@"我是导师" forState:UIControlStateNormal];
-    teacherAccountBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    
+    
+    
+    teacherAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:teacherAccountBtn];
     
     
@@ -52,7 +61,7 @@
     [personalAccountBtn setFrame:rightRect];
     [personalAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     [personalAccountBtn setTitle:@"我是学生" forState:UIControlStateNormal];
-    personalAccountBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    personalAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:personalAccountBtn];
     float height = CGRectGetHeight(self.frame);
     float width = CGRectGetWidth(self.frame);

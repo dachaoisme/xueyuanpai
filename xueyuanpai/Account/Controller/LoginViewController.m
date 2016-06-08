@@ -43,8 +43,8 @@
 }
 -(void)setContentView
 {
-    float topSpace = 32;
-    float leftSpace = 35;
+    float topSpace = 96;
+    float leftSpace = 39;
     float rightSpace = 35;
     float width = SCREEN_WIDTH - 35*2;
     float height = 48;
@@ -60,7 +60,7 @@
     
     float boardHeight = 0.5;
     
-    UIView *textFieldbackgroundView = [[UIView alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(logoImageView.frame)+topSpace , width, height *2)];
+    UIView *textFieldbackgroundView = [[UIView alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(logoImageView.frame)+60 , width, height *2)];
     textFieldbackgroundView.layer.borderColor = [CommonUtils colorWithHex:@"c2c3c4"].CGColor;
     textFieldbackgroundView.layer.borderWidth = boardHeight;
     [self.view addSubview:textFieldbackgroundView];
@@ -72,6 +72,7 @@
     phoneTextField.delegate = self;
     phoneTextField.textAlignment = NSTextAlignmentLeft;
     phoneTextField.borderStyle = UITextBorderStyleNone;
+    phoneTextField.font = [UIFont systemFontOfSize:14];
     phoneTextField.placeholder = @"请输入手机号";
     phoneTextField.adjustsFontSizeToFitWidth = YES;
     phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -87,6 +88,8 @@
     passwordTextField.textAlignment = NSTextAlignmentLeft;
     passwordTextField.borderStyle = UITextBorderStyleNone;
     passwordTextField.placeholder = @"请输入密码";
+    passwordTextField.font = [UIFont systemFontOfSize:14];
+
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     passwordTextField.adjustsFontSizeToFitWidth = YES;
     passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -102,7 +105,7 @@
     [forgetPasswordBtn setFrame:CGRectMake(0, 0, 50, 30)];
     [forgetPasswordBtn addTarget:self action:@selector(forgetPasswordAccount:) forControlEvents:UIControlEventTouchUpInside];
     [forgetPasswordBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
-    forgetPasswordBtn.titleLabel.font = [UIFont systemFontOfSize:10];
+    forgetPasswordBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     passwordTextField.rightView = forgetPasswordBtn;
     
     
@@ -112,8 +115,12 @@
     personalAccountBtn.tag = 10001;
     personalAccountBtn.layer.cornerRadius = 3.0;
     [personalAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
+    [personalAccountBtn setImage: [UIImage imageNamed:@"login_type_check"] forState:UIControlStateSelected];
+    
     [personalAccountBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateSelected];
     [personalAccountBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, (SCREEN_WIDTH-smallSpace-2*leftSpace)/2, smallHeight)];
+    [personalAccountBtn setImageEdgeInsets:UIEdgeInsetsMake(smallHeight - 39/2, (SCREEN_WIDTH-smallSpace-2*leftSpace)/2 - 39/2, 0, 0)];
+    
     [personalAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     [personalAccountBtn setTitle:@"个人账号" forState:UIControlStateNormal];
     personalAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -125,6 +132,10 @@
     teacherAccountBtn.layer.cornerRadius = 3.0;
     [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
     [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateSelected];
+    
+    [teacherAccountBtn setImage: [UIImage imageNamed:@"login_type_check"] forState:UIControlStateSelected];
+    [teacherAccountBtn setImageEdgeInsets:UIEdgeInsetsMake(smallHeight - 39/2, (SCREEN_WIDTH-smallSpace-2*leftSpace)/2 - 39/2, 0, 0)];
+    
     [teacherAccountBtn setFrame:CGRectMake(CGRectGetMaxX(personalAccountBtn.frame)+smallSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, CGRectGetWidth(personalAccountBtn.frame), smallHeight)];
     [teacherAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
     [teacherAccountBtn setTitle:@"导师账号" forState:UIControlStateNormal];
@@ -135,24 +146,27 @@
     loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [loginBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
     loginBtn.tag = 10002;
-    loginBtn.layer.cornerRadius = 3.0;
+    loginBtn.layer.cornerRadius = 5.0;
     [loginBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
     [loginBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(personalAccountBtn.frame)+smallSpace, width, height)];
     [loginBtn addTarget:self action:@selector(loginAccount:) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setTitle:@"登陆" forState:UIControlStateNormal];
-    loginBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    loginBtn.layer.masksToBounds = YES;
+
+    loginBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:loginBtn];
     
     //注册按钮
     registerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [registerBtn setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
     registerBtn.tag = 10002;
-    registerBtn.layer.cornerRadius = 3.0;
+    registerBtn.layer.cornerRadius = 5.0;
+    registerBtn.layer.masksToBounds = YES;
     [registerBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
     [registerBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(loginBtn.frame)+smallSpace, width, height)];
     [registerBtn addTarget:self action:@selector(registerAccount:) forControlEvents:UIControlEventTouchUpInside];
     [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
-    registerBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    registerBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:registerBtn];
     
     justToLook = [UIButton buttonWithType:UIButtonTypeCustom];
