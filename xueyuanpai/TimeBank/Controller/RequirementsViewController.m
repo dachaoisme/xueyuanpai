@@ -11,13 +11,14 @@
 
 #import "RequirementTableViewCell.h"
 #import "RequirementTwoTableViewCell.h"
-#import "RequirementThreeTableViewCell.h"
+
+#import "CommonTableViewCell.h"
 
 #import "SelectedImageView.h"
 #import "TimeBankModel.h"
 #import "LTPickerView.h"
 #import "MyPickView.h"
-@interface RequirementsViewController ()<UITableViewDelegate,UITableViewDataSource,RequirementTableViewCellDelegate,RequirementTwoTableViewCellDelegate,MyPickViewDelegate>
+@interface RequirementsViewController ()<UITableViewDelegate,UITableViewDataSource,RequirementTwoTableViewCellDelegate,MyPickViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     SelectedImageView   *selectedImageView;
     NSString            *avatarImageUploaded;
@@ -132,7 +133,7 @@
     //注册cell
     [tableView registerNib:[UINib nibWithNibName:@"RequirementTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
     [tableView registerNib:[UINib nibWithNibName:@"RequirementTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
-        [tableView registerNib:[UINib nibWithNibName:@"RequirementThreeTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
+    [tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"threeCell"];
     
     
     
@@ -140,14 +141,26 @@
 - (void)createFootView{
     
     //发布按钮的创建
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0, 10, 100, 40);
-    [button setTitle:@"发布" forState:UIControlStateNormal];
     
-    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
-    [button addTarget:self action:@selector(releaseAction) forControlEvents:UIControlEventTouchUpInside];
+    float space = 16;
+    float btnHeight = 44;
+    float footViewHeight = 48;
+    float btnWidth = SCREEN_WIDTH - 30;
     
-    self.tableView.tableFooterView = button;
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setTitle:@"确定提交" forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
+    submitBtn.layer.cornerRadius = 10.0;
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+    [submitBtn addTarget:self action:@selector(releaseAction) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:submitBtn];
+    
+    self.tableView.tableFooterView = backGroundView;
+
 }
 - (void)createHeaderView{
     
@@ -324,15 +337,18 @@
         case 0:{
             if (indexPath.row == 0) {
                 RequirementTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.titleLabel.text = @"标题";
-                cell.tag = TimeBankSubmitTitleTag;
-                cell.delegate = self;
+                
+                cell.inputTextField.delegate = self;
+                cell.inputTextField.tag = 1000;
                 return cell;
  
             }else{
                 
                 RequirementTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-                
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
                 cell.showTextLabel.text = @"类型";
                 cell.tag = TimeBankSubmitTypeTag;
                 cell.delegate = self;
@@ -346,6 +362,8 @@
             if (indexPath.row == 0) {
                 
                 RequirementTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
                 cell.showTextLabel.text = @"时间";
                 cell.tag = TimeBankSubmitTimeTag;
                 cell.delegate = self;
@@ -354,14 +372,18 @@
             }else if (indexPath.row == 1){
                 
                 RequirementTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
                 cell.titleLabel.text = @"地点";
-                cell.tag = TimeBankSubmitAdressTag;
-                cell.delegate = self;
+                cell.inputTextField.tag = 1001;
+                cell.inputTextField.delegate = self;
                 return cell;
                 
             }else{
                 
                 RequirementTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
                 cell.showTextLabel.text = @"需要人数";
                 cell.tag = TimeBankSubmitPersonNumTag;
                 cell.delegate = self;
@@ -374,6 +396,8 @@
         case 2:{
             
             RequirementTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             cell.showTextLabel.text = @"付款方式";
             cell.tag = TimeBankSubmitPayWayTag;
             cell.delegate = self;
@@ -384,10 +408,14 @@
             
         case 3:{
             
-           RequirementThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
-//            cell.showTextLabel.text = @"描述内容";
-//            cell.tag = TimeBankSubmitDescriptionTag;
-//            cell.delegate = self;
+           CommonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            cell.titleLabel.text = @"宝贝描述";
+            cell.rightLabel.hidden = YES;
+            cell.textView.placehoderText = @"请输入";
+            cell.textView.delegate = self;
+
             return cell;
         }
             break;
@@ -410,19 +438,30 @@
     
     return 1;
 }
-#pragma mark - RequirementTableViewCellDelegate
--(void)setInputContentWithContent:(NSString *)content withTag:(NSInteger)tag
-{
-    if (tag == TimeBankSubmitTitleTag) {
+#pragma mark - 输入框代理方法
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField.tag == 1000) {
         ///标题
-        _timeBankSubmitModel.timeBankSubmitTitle = content;
-    }else if (tag == TimeBankSubmitAdressTag){
-        ///地址
-        _timeBankSubmitModel.timeBankSubmitAdress = content;
+        _timeBankSubmitModel.timeBankSubmitTitle = textField.text;
     }else{
         
+        ///地址
+        _timeBankSubmitModel.timeBankSubmitAdress = textField.text;
+
     }
+    
+    return YES;
 }
+
+#pragma mark - textView代理方法
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    _timeBankSubmitModel.timeBankSubmitDescription = textView.text;
+    
+    return YES;
+}
+
 #pragma mark - RequirementTwoTableViewCellDelegate
 -(void)selectedContentWithwithTag:(NSInteger)tag withBtn:(UIButton *)sender
 {

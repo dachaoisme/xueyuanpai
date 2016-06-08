@@ -32,6 +32,7 @@
     titleLabel.font = [UIFont systemFontOfSize:14];
     titleLabel.textColor = [CommonUtils colorWithHex:@"666666"];
     [self.contentView addSubview:titleLabel];
+    self.titleLabel = titleLabel;
     
     
     //

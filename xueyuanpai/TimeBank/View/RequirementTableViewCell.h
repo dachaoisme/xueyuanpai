@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol RequirementTableViewCellDelegate <NSObject>
-
--(void)setInputContentWithContent:(NSString *)content withTag:(NSInteger )tag;
-
-@end
 
 @interface RequirementTableViewCell : UITableViewCell<UITextFieldDelegate>
 
@@ -21,7 +16,6 @@
 
 ///输入内容的textField
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
-@property(nonatomic,strong)id<RequirementTableViewCellDelegate>delegate;
 
 
 @end
