@@ -71,7 +71,7 @@
     //先注册collectionViewCell
     [collectionView registerClass:[JobMarketCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    [collectionView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    [collectionView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 #pragma mark - 实现UICollectionView的代理方法
@@ -143,7 +143,10 @@
                 JobMarketModel * model = [[JobMarketModel alloc]initWithDic:smallDic];
                 [jobMarketModelListArr addObject:model];
             }
-            
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.collectionView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }

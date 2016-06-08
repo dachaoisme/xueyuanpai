@@ -45,7 +45,7 @@
     //注册cell
     [tableView registerNib:[UINib nibWithNibName:@"TimeBankTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
-    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
     
 }
 
@@ -117,7 +117,10 @@
                 TimeBankModel * model = [[TimeBankModel alloc]initWithDic:smallDic];
                 [timebankModelListArr  addObject:model];
             }
-            
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }

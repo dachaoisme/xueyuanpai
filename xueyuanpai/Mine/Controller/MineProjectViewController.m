@@ -46,7 +46,7 @@
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
-    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -98,7 +98,10 @@
                 BusinessCenterProgectModel * model = [[BusinessCenterProgectModel alloc]initWithDic:smallDic];
                 [projectModelListArr  addObject:model];
             }
-            
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }

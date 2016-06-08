@@ -46,7 +46,7 @@
     
     [tableView registerNib:[UINib nibWithNibName:@"MineTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
-    [tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -129,7 +129,10 @@
                 MineStoreModel * model = [[MineStoreModel alloc]initWithDic:smallDic];
                 [collectionModelListArr  addObject:model];
             }
-            
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
