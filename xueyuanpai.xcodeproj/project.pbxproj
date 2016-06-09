@@ -3958,7 +3958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing MFtour International Travel Service Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing MFtour International Travel Service Co., Ltd.";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/xueyuanpai/XYP-PrefixHeader.pch";
 				INFOPLIST_FILE = xueyuanpai/Info.plist;

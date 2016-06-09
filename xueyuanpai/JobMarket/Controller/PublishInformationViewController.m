@@ -441,6 +441,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
 #pragma mark -  请选择分类
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     
     if (indexPath.section == 0 && indexPath.row == 1) {
         

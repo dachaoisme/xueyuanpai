@@ -10,6 +10,7 @@
 
 #import "UniversityAssnHeaderView.h"
 #import "MineCollectionSubViewController.h"
+
 @interface MineCollectionViewController ()<UniversityAssnHeaderViewDelegate>
 {
     MineCollectionSubViewController * projectVC;
@@ -37,12 +38,12 @@
 #pragma mark - 创建头部视图样式
 - (void)createHeadView{
     NSArray *arrar = [NSArray arrayWithObjects:@"项目",@"时间银行",@"二手物品",@"兑换礼品",@"导师", nil];
-    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(15, NAV_TOP_HEIGHT, SCREEN_WIDTH - 30, 50)];
+    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, 50)];
     headerView.backgroundColor = [UIColor whiteColor];
     headerView.type = PiecewiseInterfaceTypeMobileLin;
     headerView.delegate = self;
     headerView.textFont = [UIFont systemFontOfSize:14];
-    headerView.textNormalColor = [UIColor blackColor];
+    headerView.textNormalColor = [CommonUtils colorWithHex:@"999999"];
     headerView.textSeletedColor = [CommonUtils colorWithHex:@"00BEAF"];
     headerView.linColor = [CommonUtils colorWithHex:@"00BEAF"];
     [headerView loadTitleArray:arrar];

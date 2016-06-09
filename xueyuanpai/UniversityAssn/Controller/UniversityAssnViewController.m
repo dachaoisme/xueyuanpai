@@ -48,8 +48,8 @@
     headerView.backgroundColor = [UIColor whiteColor];
     headerView.type = PiecewiseInterfaceTypeMobileLin;
     headerView.delegate = self;
-    headerView.textFont = [UIFont systemFontOfSize:18];
-    headerView.textNormalColor = [UIColor blackColor];
+    headerView.textFont = [UIFont systemFontOfSize:14];
+    headerView.textNormalColor = [CommonUtils colorWithHex:@"666666"];
     headerView.textSeletedColor = [CommonUtils colorWithHex:@"00BEAF"];
     headerView.linColor = [CommonUtils colorWithHex:@"00BEAF"];
     [headerView loadTitleArray:arrar];

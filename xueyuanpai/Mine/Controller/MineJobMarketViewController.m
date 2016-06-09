@@ -113,6 +113,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+
     
     //跳转跳槽市场详情
     JobMarketModel * model = [jobMarketModelListArr objectAtIndex:indexPath.row];

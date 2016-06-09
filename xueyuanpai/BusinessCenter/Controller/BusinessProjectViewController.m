@@ -134,6 +134,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    
     //跳转项目详情
     BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
     BusinessCenterProgectModel * businessCenterProgectModel = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
@@ -307,6 +310,7 @@
 {
     NSLog(@"column:%ld -- row:%ld", (long)column, (long)row);
     
+
     ///直接处理成请求列表需要的参数
     if (column==0) {
         ///类别那一栏

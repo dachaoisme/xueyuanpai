@@ -86,6 +86,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    
     //创业讲堂
     BusinessClassDetailViewController *detailVC = [[BusinessClassDetailViewController alloc] init];
     

@@ -145,9 +145,9 @@ typedef NS_ENUM(NSInteger, UserInfoRole){
 };
 typedef NS_ENUM(NSInteger, UserInfoSex){
     
-    ///学生
+    ///男
     UserInfoSexMan           =1,
-    ///教师
+    ///女
     UserInfoSexWoman         =0,
     
 };

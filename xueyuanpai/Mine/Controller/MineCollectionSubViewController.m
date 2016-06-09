@@ -12,6 +12,9 @@
 #import "JobMarketDetailViewController.h"
 #import "GiftDetailViewController.h"
 #import "BusinessTeacherDetailViewController.h"
+
+
+
 @interface MineCollectionSubViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * collectionModelListArr;
@@ -44,7 +47,7 @@
     self.tableView = tableView;
     //注册cell
     
-    [tableView registerNib:[UINib nibWithNibName:@"MineTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
     [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
@@ -58,21 +61,23 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 100;
+    return 120;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MineTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     MineStoreModel * model = [collectionModelListArr objectAtIndex:indexPath.row];
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:model.mineStoreImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
-    //cell.titleLabel.text = model.mineStoreTitle;
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.mineStoreImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    cell.titleLabel.text = model.mineStoreTitle;
     cell.contentLabel.text = model.mineStoreBrief;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     
     MineStoreModel * mineStoreModel = [collectionModelListArr objectAtIndex:indexPath.row];
     

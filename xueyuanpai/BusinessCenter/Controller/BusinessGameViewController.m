@@ -86,6 +86,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     
     //创业大赛
     BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
