@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 #import "BusinessCenterModel.h"
+#import "SelectedImageView.h"
 @interface BusinessPublishProjectViewController : BaseViewController
-
+{
+    SelectedImageView *selectedImageView;
+}
 @end

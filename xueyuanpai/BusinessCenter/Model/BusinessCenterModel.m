@@ -333,6 +333,7 @@
         self.businessCenterPublicProgectImage              = @"";
         self.businessCenterPublicProgectDetailBudge        = @"";
         self.businessCenterPublicProgectDetailField        = @"";
+        self.businessCenterPublicProgectDetailFieldId      = @"";
         self.businessCenterPublicProgectDetailDescription  = @"";
         self.businessCenterPublicProgectDetailDescription  = @"";
         self.businessCenterPublicProgectDetailMember       = @"";
@@ -342,9 +343,10 @@
         self.businessCenterPublicProgectIdentityCard       = @"";
         self.businessCenterPublicProgectTelephone          = @"";
         self.businessCenterPublicProgectCollege            = @"";
+        self.businessCenterPublicProgectCollegeId          = @"";
         self.businessCenterPublicProgectMajor              = @"";
         self.businessCenterPublicProgectJob                = @"";
-        self.businessCenterPublicProgectGraduationtime               = @"";
+        self.businessCenterPublicProgectGraduationtime     = @"";
         
     }
     return self;

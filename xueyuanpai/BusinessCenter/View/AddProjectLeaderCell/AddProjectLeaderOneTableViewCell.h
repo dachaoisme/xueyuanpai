@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AddProjectLeaderOneTableViewCell : UITableViewCell
+#import "BusinessCenterModel.h"
+@interface AddProjectLeaderOneTableViewCell : UITableViewCell<UITextFieldDelegate>
 
 ///标题
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -16,4 +16,6 @@
 ///输入内容的输入框
 @property (weak, nonatomic) IBOutlet UITextField *inputContentTextField;
 
+///传入的model
+@property(nonatomic,strong)BusinessCenterPublicProgectModel * publicProgectModel;
 @end
