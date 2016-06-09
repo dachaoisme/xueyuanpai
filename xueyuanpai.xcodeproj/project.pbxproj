@@ -578,6 +578,12 @@
 		DDCD70D01D06F325009FBE9A /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DDCD70CF1D06F325009FBE9A /* 2.jpg */; };
 		DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */; };
 		DDCD70FE1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70FD1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m */; };
+		DDCD71011D092D8F009FBE9A /* AddProjectLeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71001D092D8F009FBE9A /* AddProjectLeaderViewController.m */; };
+		DDCD71061D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71041D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.m */; };
+		DDCD71071D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD71051D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib */; };
+		DDCD71101D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD710E1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m */; };
+		DDCD71111D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD710F1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib */; };
+		DDCD71141D093A73009FBE9A /* SelectSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71131D093A73009FBE9A /* SelectSchoolViewController.m */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1390,6 +1396,16 @@
 		DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTableViewCell.m; sourceTree = "<group>"; };
 		DDCD70FC1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterOneStyleTableViewCell.h; sourceTree = "<group>"; };
 		DDCD70FD1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterOneStyleTableViewCell.m; sourceTree = "<group>"; };
+		DDCD70FF1D092D8F009FBE9A /* AddProjectLeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProjectLeaderViewController.h; sourceTree = "<group>"; };
+		DDCD71001D092D8F009FBE9A /* AddProjectLeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProjectLeaderViewController.m; sourceTree = "<group>"; };
+		DDCD71031D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProjectLeaderOneTableViewCell.h; sourceTree = "<group>"; };
+		DDCD71041D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProjectLeaderOneTableViewCell.m; sourceTree = "<group>"; };
+		DDCD71051D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProjectLeaderOneTableViewCell.xib; sourceTree = "<group>"; };
+		DDCD710D1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProjectLeaderTwoTableViewCell.h; sourceTree = "<group>"; };
+		DDCD710E1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProjectLeaderTwoTableViewCell.m; sourceTree = "<group>"; };
+		DDCD710F1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProjectLeaderTwoTableViewCell.xib; sourceTree = "<group>"; };
+		DDCD71121D093A73009FBE9A /* SelectSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSchoolViewController.h; sourceTree = "<group>"; };
+		DDCD71131D093A73009FBE9A /* SelectSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSchoolViewController.m; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2136,6 +2152,10 @@
 				DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */,
 				DDAB05D71D042EE4007A6027 /* BusinessPublishProjectViewController.h */,
 				DDAB05D81D042EE4007A6027 /* BusinessPublishProjectViewController.m */,
+				DDCD70FF1D092D8F009FBE9A /* AddProjectLeaderViewController.h */,
+				DDCD71001D092D8F009FBE9A /* AddProjectLeaderViewController.m */,
+				DDCD71121D093A73009FBE9A /* SelectSchoolViewController.h */,
+				DDCD71131D093A73009FBE9A /* SelectSchoolViewController.m */,
 				DD82A8531D04E715009E3671 /* BusinessTeacherViewController.h */,
 				DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */,
 				DDAB059D1D01D252007A6027 /* BusinessTeacherDetailViewController.h */,
@@ -2549,6 +2569,7 @@
 		DD13CDF81D001B77000A69FE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DDCD71021D092EF2009FBE9A /* AddProjectLeaderCell */,
 				DDAB05DA1D043061007A6027 /* BusinessPublishProject */,
 				DDAB05C21D03A99B007A6027 /* BusinessProjectDetailCell */,
 				DDAB05A01D01D3C0007A6027 /* BusinessTeacherCell */,
@@ -2823,6 +2844,19 @@
 				DDCD70A51D06BA1D009FBE9A /* gender_male@3x.png */,
 			);
 			path = Courier;
+			sourceTree = "<group>";
+		};
+		DDCD71021D092EF2009FBE9A /* AddProjectLeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				DDCD71031D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.h */,
+				DDCD71041D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.m */,
+				DDCD71051D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib */,
+				DDCD710D1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.h */,
+				DDCD710E1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m */,
+				DDCD710F1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib */,
+			);
+			path = AddProjectLeaderCell;
 			sourceTree = "<group>";
 		};
 		DDD0BD8B1CF985CB00073290 /* CompanyInforCell */ = {
@@ -3207,6 +3241,7 @@
 				DDAB43A61D055D7600FADB3E /* MineSettingTableViewCell.xib in Resources */,
 				DD13CDEB1D00186D000A69FE /* timebank_filter_all@2x.png in Resources */,
 				DD13CDAE1D00186D000A69FE /* arrow@3x.png in Resources */,
+				DDCD71111D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib in Resources */,
 				DD0B1ED71CFEE51000C4BAB2 /* market_filter_home@2x.png in Resources */,
 				DD13CE131D002A14000A69FE /* BusinessNewsDetailOneStleTableViewCell.xib in Resources */,
 				DD0B1EDB1CFEE51000C4BAB2 /* market_filter_price@2x.png in Resources */,
@@ -3238,6 +3273,7 @@
 				58070FD31CF6E80200F03F6C /* timebank_filter_time_hl@3x.png in Resources */,
 				58070FD61CF6E80200F03F6C /* timebank_icon_location@2x.png in Resources */,
 				DDAB437B1D05531A00FADB3E /* acount_icon_alipay@2x.png in Resources */,
+				DDCD71071D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib in Resources */,
 				DD0B1EED1CFEE51000C4BAB2 /* timebank_filter_hot@2x.png in Resources */,
 				DD13CDDC1D00186D000A69FE /* startup_filter_media_hl@3x.png in Resources */,
 				DD0B1EDD1CFEE51000C4BAB2 /* market_post_add_pic@2x.png in Resources */,
@@ -3677,6 +3713,7 @@
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
 				DD13CE171D002D12000A69FE /* BusinessNewsDetailTwoStyleTableViewCell.m in Sources */,
 				58898E401CFA5A280007D9B3 /* RequirementTwoTableViewCell.m in Sources */,
+				DDCD71061D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.m in Sources */,
 				DDCD70FE1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m in Sources */,
 				58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */,
 				58A944C61CE3E0C200DAD398 /* AddTeacherViewController.m in Sources */,
@@ -3687,6 +3724,7 @@
 				DDAB05D01D03B40F007A6027 /* BusinessProjectDetailThreeTableViewCell.m in Sources */,
 				587FF9DE1CF2F8F300AD2131 /* IQToolbar.m in Sources */,
 				DDD0BDAF1CFA75E800073290 /* PositionTwoTableViewCell.m in Sources */,
+				DDCD71141D093A73009FBE9A /* SelectSchoolViewController.m in Sources */,
 				DDAB05B81D033601007A6027 /* BusinessGameViewController.m in Sources */,
 				58F67C321CD9CF9500D55BE0 /* MJRefreshLegendFooter.m in Sources */,
 				583D10291CE173100010F9D8 /* HttpCommonModel.m in Sources */,
@@ -3728,6 +3766,7 @@
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				DDAB05C11D03A747007A6027 /* BusinessProjectDetailViewController.m in Sources */,
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
+				DDCD71011D092D8F009FBE9A /* AddProjectLeaderViewController.m in Sources */,
 				DD0B1E6C1CFEDD1800C4BAB2 /* PhotoSelectorCell.m in Sources */,
 				58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */,
 				DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */,
@@ -3740,6 +3779,7 @@
 				DDD0BD9A1CFA4A9000073290 /* EmploymentRecruitmentViewController.m in Sources */,
 				58F211671CF9A0E800926FB9 /* RequirementsViewController.m in Sources */,
 				5874A3EF1CF12C0500CE9FC9 /* SelectedSexView.m in Sources */,
+				DDCD71101D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m in Sources */,
 				DD4127871CF0561900227066 /* HotActivityTableViewCell.m in Sources */,
 				58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */,
 				DDAB43C11D05813300FADB3E /* MineFriendsTableViewCell.m in Sources */,
