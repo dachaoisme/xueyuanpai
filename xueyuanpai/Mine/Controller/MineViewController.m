@@ -21,10 +21,12 @@
 #import "MineSettingViewController.h"
 
 
-#import "EditProfileViewController.h"
 #import "MyWalletViewController.h"
 
 
+#import "EditProfileViewController.h"
+
+#import "EditTeacherProfileViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,MineOneStyleTableViewCellDelegate>
 
@@ -62,9 +64,26 @@
 -(void)rightItemActionWithBtn:(UIButton *)sender
 {
     
-    EditProfileViewController *editProfileVC = [[EditProfileViewController alloc] init];
     
-    [self.navigationController pushViewController:editProfileVC animated:YES];
+    if ([UserAccountManager sharedInstance].userRole == UserInfoRoleStudent) {
+        
+        //编辑认证个人资料
+        EditProfileViewController *editProfileVC = [[EditProfileViewController alloc] init];
+        
+        [self.navigationController pushViewController:editProfileVC animated:YES];
+
+    }else if ([UserAccountManager sharedInstance].userRole == UserInfoRoleTeacher){
+        //编辑认证导师资料
+    
+        EditTeacherProfileViewController *teacherVC = [[EditTeacherProfileViewController alloc] init];
+        
+        [self.navigationController pushViewController:teacherVC animated:YES];
+    
+    }
+    
+    
+    
+    
 }
 
 
