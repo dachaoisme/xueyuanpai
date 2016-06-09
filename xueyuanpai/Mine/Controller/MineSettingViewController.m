@@ -66,6 +66,8 @@
 - (void)existAction{
     
     [CommonUtils showToastWithStr:@"退出"];
+    [[UserAccountManager sharedInstance]exitLogin];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

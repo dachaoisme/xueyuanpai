@@ -93,7 +93,6 @@
 {
     NSString * userInfoKey = @"userInfo";
     [UserDefaultsDataDeal deleteKey:userInfoKey];
-    self.isLogin = NO;
     [self getUserInfo];
 }
 -(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord
