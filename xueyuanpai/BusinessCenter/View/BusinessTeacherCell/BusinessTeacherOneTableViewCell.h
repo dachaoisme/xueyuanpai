@@ -19,5 +19,8 @@
 ///职位
 @property (weak, nonatomic) IBOutlet UILabel *jobLabel;
 
+///发私信按钮
+@property (weak, nonatomic) IBOutlet UIButton *sendMessageButton;
+
 
 @end

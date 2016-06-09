@@ -37,7 +37,7 @@
 #pragma mark - 创建头部视图样式
 - (void)createHeadView{
     NSArray *arrar = [NSArray arrayWithObjects:@"项目",@"时间银行",@"二手物品",@"兑换礼品",@"导师", nil];
-    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(20, NAV_TOP_HEIGHT, SCREEN_WIDTH - 40, 50)];
+    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(15, NAV_TOP_HEIGHT, SCREEN_WIDTH - 30, 50)];
     headerView.backgroundColor = [UIColor whiteColor];
     headerView.type = PiecewiseInterfaceTypeMobileLin;
     headerView.delegate = self;

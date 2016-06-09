@@ -12,6 +12,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.sendMessageButton.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+    [self.sendMessageButton setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
+    
+    self.sendMessageButton.layer.cornerRadius = 5;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
