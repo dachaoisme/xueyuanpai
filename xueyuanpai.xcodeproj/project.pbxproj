@@ -245,6 +245,9 @@
 		58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67C231CD9CF9500D55BE0 /* UIView+MJExtension.m */; };
 		58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67C261CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m */; };
 		58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F67C291CD9CF9500D55BE0 /* UIView+Toast.m */; };
+		58F80A041D0931B30099DCCD /* UinversityHotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A031D0931B30099DCCD /* UinversityHotActivityViewController.m */; };
+		58F80A071D09336C0099DCCD /* UinversityStarSocietyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A061D09336C0099DCCD /* UinversityStarSocietyViewController.m */; };
+		58F80A0A1D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A091D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m */; };
 		58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */; };
 		58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996461CF598A700D67C63 /* TimeBankModel.m */; };
 		DD0B1E3D1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1E3C1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m */; };
@@ -977,6 +980,12 @@
 		58F67C261CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+SafeExpectations.m"; sourceTree = "<group>"; };
 		58F67C281CD9CF9500D55BE0 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		58F67C291CD9CF9500D55BE0 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		58F80A021D0931B30099DCCD /* UinversityHotActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UinversityHotActivityViewController.h; sourceTree = "<group>"; };
+		58F80A031D0931B30099DCCD /* UinversityHotActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UinversityHotActivityViewController.m; sourceTree = "<group>"; };
+		58F80A051D09336C0099DCCD /* UinversityStarSocietyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UinversityStarSocietyViewController.h; sourceTree = "<group>"; };
+		58F80A061D09336C0099DCCD /* UinversityStarSocietyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UinversityStarSocietyViewController.m; sourceTree = "<group>"; };
+		58F80A081D0934680099DCCD /* UinversitySocietyRecruitmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UinversitySocietyRecruitmentViewController.h; sourceTree = "<group>"; };
+		58F80A091D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UinversitySocietyRecruitmentViewController.m; sourceTree = "<group>"; };
 		58F996421CF5874900D67C63 /* LDCPullDownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDCPullDownMenuView.h; sourceTree = "<group>"; };
 		58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDCPullDownMenuView.m; sourceTree = "<group>"; };
 		58F996451CF598A700D67C63 /* TimeBankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankModel.h; sourceTree = "<group>"; };
@@ -1714,6 +1723,12 @@
 			children = (
 				5874A3651CF03B5700CE9FC9 /* UniversityAssnViewController.h */,
 				5874A3661CF03B5700CE9FC9 /* UniversityAssnViewController.m */,
+				58F80A021D0931B30099DCCD /* UinversityHotActivityViewController.h */,
+				58F80A031D0931B30099DCCD /* UinversityHotActivityViewController.m */,
+				58F80A051D09336C0099DCCD /* UinversityStarSocietyViewController.h */,
+				58F80A061D09336C0099DCCD /* UinversityStarSocietyViewController.m */,
+				58F80A081D0934680099DCCD /* UinversitySocietyRecruitmentViewController.h */,
+				58F80A091D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m */,
 				DD41281C1CF3427400227066 /* ActivityDetailViewController.h */,
 				DD41281D1CF3427400227066 /* ActivityDetailViewController.m */,
 			);
@@ -3633,6 +3648,7 @@
 				5874A40A1CF253B500CE9FC9 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */,
 				58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */,
 				DD0B1EFF1CFEFB6200C4BAB2 /* PublishInformationOneStyleTableViewCell.m in Sources */,
+				58F80A0A1D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
 				58F2116B1CF9AB7C00926FB9 /* RequirementTableViewCell.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
@@ -3675,6 +3691,7 @@
 				58F67C2D1CD9CF9500D55BE0 /* MJRefreshConst.m in Sources */,
 				DDAB05CB1D03B24C007A6027 /* BusinessProjectDetailTwoTableViewCell.m in Sources */,
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
+				58F80A041D0931B30099DCCD /* UinversityHotActivityViewController.m in Sources */,
 				DD13CE171D002D12000A69FE /* BusinessNewsDetailTwoStyleTableViewCell.m in Sources */,
 				58898E401CFA5A280007D9B3 /* RequirementTwoTableViewCell.m in Sources */,
 				DDCD70FE1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m in Sources */,
@@ -3728,6 +3745,7 @@
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				DDAB05C11D03A747007A6027 /* BusinessProjectDetailViewController.m in Sources */,
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
+				58F80A071D09336C0099DCCD /* UinversityStarSocietyViewController.m in Sources */,
 				DD0B1E6C1CFEDD1800C4BAB2 /* PhotoSelectorCell.m in Sources */,
 				58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */,
 				DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */,
