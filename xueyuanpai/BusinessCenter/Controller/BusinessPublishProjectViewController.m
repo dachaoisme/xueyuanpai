@@ -13,6 +13,8 @@
 
 #import "CommonTableViewCell.h"
 
+#import "AddProjectLeaderViewController.h"
+
 @interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     BusinessCenterPublicProgectModel * publicProgectModel;
@@ -279,6 +281,7 @@
 
             cell.textLabel.text = @"添加负责人信息";
             
+            
             return cell;
             
         }
@@ -430,6 +433,16 @@
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    if (indexPath.section == 1) {
+        //跳转项目负责人页面
+        AddProjectLeaderViewController *addProjectLeaderVC = [[AddProjectLeaderViewController alloc] init];
+        
+        [self.navigationController pushViewController:addProjectLeaderVC animated:YES];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -25,8 +25,8 @@
 -(void)setContentView
 {
     
-    UIView * view = [UIFactory viewWithFrame:self.bounds backgroundColor:@"ffffff"];
-    [self addSubview:view];
+    UIView * view = [UIFactory viewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.frame.size.height) backgroundColor:@"ffffff"];
+    [self.contentView addSubview:view];
     
     UILabel * titileLable = [[UILabel alloc] init];
     titileLable.frame = CGRectMake(15, 16, 80, 17);
@@ -37,7 +37,7 @@
     self.titleLabel = titileLable;
     
     
-    UIButton * button = [UIFactory button:nil sel:nil titleColor:@"999999" title:@"查看全部" fontSize:12 frame:CGRectMake(CGRectGetWidth(self.frame)-95, 0, 80,  50)];
+    UIButton * button = [UIFactory button:nil sel:nil titleColor:@"999999" title:@"查看全部" fontSize:12 frame:CGRectMake(SCREEN_WIDTH-95, 0, 80,  50)];
     button.userInteractionEnabled = NO;
     [button setImage:[UIImage imageNamed:@"arrow"] forState:UIControlStateNormal];
     float length = [CommonUtils getTextSizeWithText:@"查看全部" WithFont:12 WithTextheight:17].width;
