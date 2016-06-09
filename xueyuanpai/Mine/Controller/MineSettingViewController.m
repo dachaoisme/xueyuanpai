@@ -64,8 +64,23 @@
 
 #pragma mark - 退出按钮的响应方法
 - (void)existAction{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定要退出登录？" message:@"\n" preferredStyle:UIAlertControllerStyleAlert];
     
-    [CommonUtils showToastWithStr:@"退出"];
+    //这跟 actionSheet有点类似了,因为都是UIAlertController里面的嘛
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+        [[UserAccountManager sharedInstance]exitLogin];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        
+    }];
+    //添加按钮
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    //以modal的方式来弹出
+    [self presentViewController:alert animated:YES completion:^{ }];
 }
 
 
@@ -99,7 +114,7 @@
     
     if (indexPath.section == 0) {
         
-        
+        cell.contentLabel.text = [UserAccountManager sharedInstance].userMobile;
         
     }else{
         
