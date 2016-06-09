@@ -435,7 +435,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     if (indexPath.section == 1) {
         //跳转项目负责人页面
         AddProjectLeaderViewController *addProjectLeaderVC = [[AddProjectLeaderViewController alloc] init];

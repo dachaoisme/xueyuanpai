@@ -127,6 +127,8 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row];
     BusinessTeacherDetailViewController * teacherDetailVC = [[BusinessTeacherDetailViewController alloc]init];
     teacherDetailVC.teacherId = model.businessCenterTutorId;

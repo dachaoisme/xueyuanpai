@@ -150,6 +150,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     SchoolRecruitmentModel * model =  [schoolRecruitmentListArray objectAtIndex:indexPath.row];
     RecruitmentDetailViewController *recruitmentVC = [[RecruitmentDetailViewController alloc] init];
     recruitmentVC.jobId = model.schoolRecruitmentId;

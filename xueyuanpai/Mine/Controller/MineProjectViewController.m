@@ -74,6 +74,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    
     //跳转项目详情
     BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
     BusinessCenterProgectModel * businessCenterProgectModel = [projectModelListArr objectAtIndex:indexPath.row];

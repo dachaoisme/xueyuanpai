@@ -303,6 +303,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    
     if (indexPath.section == 0 && indexPath.row == 0){
         
         //跳转创业导师页面

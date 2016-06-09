@@ -96,6 +96,15 @@
     
     [self.view addSubview:_headImageSelectedBtn];
     
+    
+    if ([UserAccountManager sharedInstance].userIcon.length > 0) {
+        NSURL *imageUrl = [NSURL URLWithString:[UserAccountManager sharedInstance].userIcon];
+        
+        [_headImageSelectedBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]] forState:UIControlStateNormal];
+    }
+    
+
+    
 }
 
 #pragma mark - tableView代理方法
@@ -112,28 +121,39 @@
     if (indexPath.row == 0) {
         
         cell.titleLabel.text = @"昵称";
-        cell.contentLabel.text = @"丽丽lyli";
+        cell.contentLabel.text = [UserAccountManager sharedInstance].userNickname;
         
         cell.accessoryType = UITableViewCellAccessoryNone;
     }else if (indexPath.row == 1) {
         
         cell.titleLabel.text = @"性别";
-        cell.contentLabel.text = @"女";
+        
+        if ([UserAccountManager sharedInstance].userSex == UserInfoSexMan) {
+          
+            cell.contentLabel.text = @"男";
+
+        }else if ([UserAccountManager sharedInstance].userSex == UserInfoSexWoman){
+            
+            cell.contentLabel.text = @"女";
+        }else{
+            
+            cell.contentLabel.text = @"未知";
+        }
         
     }else if (indexPath.row == 2) {
         
         cell.titleLabel.text = @"生日";
-        cell.contentLabel.text = @"1998年8月12日";
+        cell.contentLabel.text = @"";
         
     }else if (indexPath.row == 3) {
         
         cell.titleLabel.text = @"学校";
-        cell.contentLabel.text = @"吉林大学";
+        cell.contentLabel.text = [UserAccountManager sharedInstance].userCollegeName;
         
     }else if (indexPath.row == 4) {
         
         cell.titleLabel.text = @"年级";
-        cell.contentLabel.text = @"2016级本科";
+        cell.contentLabel.text = @"";
         
     }
 

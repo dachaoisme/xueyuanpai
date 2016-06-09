@@ -373,6 +373,8 @@
                 
                 
                 cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailPlan;
+                cell.textLabel.textColor = [UIColor blackColor];
+
                 
                 cell.textLabel.numberOfLines = 0;
 
@@ -423,7 +425,7 @@
                 
                 //根据文本信息多少调整cell的高度
                 NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailDescription;
-                return [self textHeight:string]+10;
+                return [self textHeight:string];
 
             }
             
@@ -438,7 +440,7 @@
                 
                 //根据文本信息多少调整cell的高度
                 NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailMember;
-                return [self textHeight:string]+10;
+                return [self textHeight:string];
 
             }
             
@@ -452,7 +454,7 @@
             }else{
                 //根据文本信息多少调整cell的高度
                 NSString * string = businessCenterProgectDetailModel.businessCenterProgectDetailBackground;
-                return [self textHeight:string]+10;
+                return [self textHeight:string];
  
             }
             
@@ -469,7 +471,7 @@
                 
                 //根据文本信息多少调整cell的高度
                 NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailPlan;
-                return [self textHeight:string]+10;
+                return [self textHeight:string];
 
             }
             
@@ -487,7 +489,7 @@
 //自适应撑高
 //计算字符串的frame
 - (CGFloat)textHeight:(NSString *)string{
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 10, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 10, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
     //返回计算好的高度
     return rect.size.height;
     

@@ -277,6 +277,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    
     if (indexPath.row > 0) {
         SchoolRecruitmentModel * model =  [schoolRecruitmentListArray objectAtIndex:indexPath.row-1];
         RecruitmentDetailViewController *recruitmentVC = [[RecruitmentDetailViewController alloc] init];

@@ -7,9 +7,9 @@
 //
 
 #import "BaseViewController.h"
-#import "MineTwoStyleTableViewCell.h"
 #import "MineModel.h"
 #import "TimeBankModel.h"
+#import "BusinessCenterTableViewCell.h"
 @interface MineCollectionSubViewController : BaseViewController
 
 @property(nonatomic,assign)MineType mineType;

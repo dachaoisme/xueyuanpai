@@ -46,12 +46,12 @@
 #pragma mark - 创建头部视图样式
 - (void)createHeadView{
     NSArray *arrar = [NSArray arrayWithObjects:@"正在进行",@"已经完成",@"已过期",@"我申领的", nil];
-    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(20, 64, SCREEN_WIDTH - 40, 50)];
+    UniversityAssnHeaderView *headerView = [[UniversityAssnHeaderView alloc]initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, 50)];
     headerView.backgroundColor = [UIColor whiteColor];
     headerView.type = PiecewiseInterfaceTypeMobileLin;
     headerView.delegate = self;
     headerView.textFont = [UIFont systemFontOfSize:14];
-    headerView.textNormalColor = [UIColor blackColor];
+    headerView.textNormalColor = [CommonUtils colorWithHex:@"999999"];
     headerView.textSeletedColor = [CommonUtils colorWithHex:@"00BEAF"];
     headerView.linColor = [CommonUtils colorWithHex:@"00BEAF"];
     [headerView loadTitleArray:arrar];
