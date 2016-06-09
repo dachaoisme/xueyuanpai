@@ -21,7 +21,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
 {
     NSMutableArray * jobMarketConditionCategoryTitleArr;
     NSMutableArray * jobMarketConditionModelArr;
-    
+    NSString * uploadImageStr;
     PublishJobMarketModel * publishJobMarketModel ;
 }
 @property (nonatomic,strong)UITableView *tableView;
@@ -295,7 +295,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 twoCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
                 twoCell.titleLabel.text = @"所在学校";
-                twoCell.contentLabel.text = @"吉林长春大学";
+                twoCell.contentLabel.text = [UserAccountManager sharedInstance].userCollegeName;
                 twoCell.contentLabel.textColor = [CommonUtils colorWithHex:@"333333"];
                 
                 
@@ -311,7 +311,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
                 twoCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
                 twoCell.titleLabel.text = @"联系方式";
-                twoCell.contentLabel.text = @"188888888888";
+                twoCell.contentLabel.text = [UserAccountManager sharedInstance].userMobile;
                 twoCell.contentLabel.textColor = [CommonUtils colorWithHex:@"333333"];
 
                 twoCell.alertLabel.hidden = YES;
@@ -502,6 +502,34 @@ static NSString *Identifier = @"photoCollectionViewCell";
 - (void)commitAction{
     
     [CommonUtils showToastWithStr:@"确认提交"];
+    NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
+    for (int i = 0; i<self.pictureImages.count; i++) {
+        UIImage *img = [self.pictureImages objectAtIndex:i];
+        ///上传图片,压缩图片，不能过大
+        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(300, 300) withImage:img];
+        NSData * imageData = UIImagePNGRepresentation(scaleImg);
+        NSString * key = [NSString stringWithFormat:@"UploadForm[file][%d]",i];
+        [imageDic setObject:imageData forKey:key];
+    }
+    
+    [[HttpClient sharedInstance]uploadJobMarketIconWithParams:imageDic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        if (model.responseCode==ResponseCodeSuccess) {
+            NSArray  *imageArr =(NSArray *)model.responseCommonDic;
+            uploadImageStr = [imageArr componentsJoinedByString:@";"];
+            publishJobMarketModel.publicJobMarketImages = uploadImageStr;
+            [self requestToPublish];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+}
+
+-(void)requestToPublish
+{
     /*
      title             string     必需    标题
      images            string     必需    照片 多个以;号分隔
@@ -517,11 +545,10 @@ static NSString *Identifier = @"photoCollectionViewCell";
         return;
     }
     
-#warning 添加照片逻辑没处理
-//    else if (publishJobMarketModel.publicJobMarketImages.length<=0){
-//        [CommonUtils showToastWithStr:@"请添加照片"];
-//        return;
-//    }
+    else if (publishJobMarketModel.publicJobMarketImages.length<=0){
+        [CommonUtils showToastWithStr:@"请添加照片"];
+        return;
+    }
     else if (publishJobMarketModel.publicJobMarketCategoryId.length<=0){
         [CommonUtils showToastWithStr:@"请选择分类"];
         return;
@@ -534,10 +561,10 @@ static NSString *Identifier = @"photoCollectionViewCell";
         [CommonUtils showToastWithStr:@"请输入原价"];
         return;
     }
-    else if (publishJobMarketModel.publicJobMarketCollegeId.length<=0){
+    else if ([UserAccountManager sharedInstance].userCollegeId.length<=0){
         [CommonUtils showToastWithStr:@"请选择学校"];
         return;
-    }else if (publishJobMarketModel.publicJobMarketTelephone.length<=0){
+    }else if ([UserAccountManager sharedInstance].userMobile.length<=0){
         [CommonUtils showToastWithStr:@"请输入联系方式"];
         return;
     }else if (publishJobMarketModel.publicJobMarketDescription.length<=0){
@@ -552,7 +579,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
     [dic setValue:publishJobMarketModel.publicJobMarketCategoryId forKey:@"cat_id"];
     [dic setValue:publishJobMarketModel.publicJobMarketSalePrice  forKey:@"sale_price"];
     [dic setValue:publishJobMarketModel.publicJobMarketOriginPrice forKey:@"origin_price"];
-    [dic setValue:publishJobMarketModel.publicJobMarketCollegeId forKey:@"college_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
     [dic setValue:publishJobMarketModel.publicJobMarketTelephone forKey:@"telphone"];
     [dic setValue:publishJobMarketModel.publicJobMarketDescription forKey:@"description"];
     
@@ -562,7 +589,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"发布跳蚤市场成功"];
-            
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -570,34 +597,26 @@ static NSString *Identifier = @"photoCollectionViewCell";
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
 }
-
-
 #pragma mark - textField的代理方法
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-    
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
     if (textField.tag == 100) {
         //标题
         publishJobMarketModel.publicJobMarketTitle = textField.text;
     }else if (textField.tag == 101){
         
         publishJobMarketModel.publicJobMarketSalePrice = textField.text;
-
+        
         
     }else if (textField.tag == 102){
         
         publishJobMarketModel.publicJobMarketOriginPrice = textField.text;
         
     }
-    
-    return YES;
 }
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
-   publishJobMarketModel.publicJobMarketDescription = textView.text;
-    
-    return YES;
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    publishJobMarketModel.publicJobMarketDescription = textView.text;
 }
 
 - (void)didReceiveMemoryWarning {

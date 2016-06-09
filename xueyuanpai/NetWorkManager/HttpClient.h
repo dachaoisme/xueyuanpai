@@ -251,75 +251,28 @@
  *  @return
  */
 - (void)timeBankCommentListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  时间银行，发布需求照片上传
- *
- *  @param
- *
- *  @return
- */
+///时间银行，发布需求照片上传
 - (void)uploadTimeBankIconWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 #pragma mark - 校园招聘
-/**
- *  @brief  获取校园招聘栏目
- *
- *  @param
- *
- *  @return
- */
+///获取校园招聘栏目
 - (void)getColumnsOfSchoolRecruitmentWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  获取校园招聘列表
- *
- *  @param
- *
- *  @return
- */
+///获取校园招聘列表
 - (void)getListOfSchoolRecruitmentWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  获取校园招聘详情接口
- *
- *  @param
- *
- *  @return
- */
+///获取校园招聘详情接口
 - (void)getSchoolRecruitmentDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 #pragma mark - 跳蚤市场
-/**
- *  @brief  跳蚤市场，获取筛选条件
- *
- *  @param
- *
- *  @return
- */
+///跳蚤市场，获取筛选条件
 - (void)getJobMarketConditionWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  跳蚤市场，获取列表
- *
- *  @param
- *
- *  @return
- */
+///跳蚤市场，获取列表
 - (void)jobMarketGetListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  跳蚤市场，跳蚤市场详情
- *
- *  @param
- *
- *  @return
- */
+///跳蚤市场，跳蚤市场详情
 - (void)jobMarketDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  跳蚤市场，发布跳蚤市场
- *
- *  @param
- *
- *  @return
- */
+///跳蚤市场，发布跳蚤市场
 - (void)jobMarketSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-
+///跳蚤市场，发布需求照片上传
+- (void)uploadJobMarketIconWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 #pragma mark - 创业中心
 ///创业新闻
 - (void)businessCenterGetListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;

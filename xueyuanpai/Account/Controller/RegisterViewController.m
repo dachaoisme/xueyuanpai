@@ -202,7 +202,8 @@
                 studentInfoVC.userId = userId;
                 [self.navigationController pushViewController:studentInfoVC animated:YES];
                 //保存学生的用户信息
-                [[UserAccountManager sharedInstance]saveUserAccountWithUserId:userId withPhoneNum:phoneTextField.text withPassword:inputPasswordTextField.text];
+                [[UserAccountManager sharedInstance]loginWithUserPhoneNum:phoneTextField.text andPassWord:inputPasswordTextField.text];
+                
             }else{
                 //教师->跳转到设置教师的用户资料界面，设置成功以后，返回登录页，因为需要审核
                 AddTeacherViewController * teacherInfoVC = [[AddTeacherViewController alloc]init];

@@ -93,7 +93,7 @@
     UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 35, 20, 70, 70)];
     headImageView.layer.cornerRadius = 35;
     headImageView.layer.masksToBounds = YES;
-    headImageView.image = [UIImage imageNamed:@"test.jpg"];
+    [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
     [headBackGroundView addSubview:headImageView];
     
     
@@ -101,7 +101,7 @@
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40, CGRectGetMaxY(headImageView.frame), 80, 20)];
     nameLabel.font = [UIFont systemFontOfSize:14];
     nameLabel.textAlignment = NSTextAlignmentCenter;
-    nameLabel.text = @"王石";
+    nameLabel.text = [UserAccountManager sharedInstance].userNickname;
     [headBackGroundView addSubview:nameLabel];
     
     //工作职称
@@ -110,7 +110,7 @@
     
     jobNameLabel.textAlignment = NSTextAlignmentCenter;
     
-    jobNameLabel.text = @"万科CEO";
+    jobNameLabel.text = [UserAccountManager sharedInstance].userJob;
     jobNameLabel.textColor = [UIColor lightGrayColor];
     
     [headBackGroundView addSubview:jobNameLabel];
@@ -148,7 +148,8 @@
         cell.delegate = self;
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%@",[UserAccountManager sharedInstance].userUsableMoney?[UserAccountManager sharedInstance].userUsableMoney:@"0"];
+        cell.integralLabel.text = [[UserAccountManager sharedInstance]userUsablePoints];
         return cell;
 
         

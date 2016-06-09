@@ -21,70 +21,72 @@
     return sharedClient;
 }
 
--(void)saveUserAccountWithUserId:(NSString *)userId withPhoneNum:(NSString *)phoneNum withPassword:(NSString *)password
+-(void)saveUserAccountWithUserInfoDic:(NSMutableDictionary *)userInfoDic
 {
     
     NSString * userInfoKey = @"userInfo";
-    
-    NSMutableDictionary * userInfoDic = [NSMutableDictionary dictionary];
-    if (userId) {
-        NSString * userIdStr = [NSString stringWithFormat:@"%d",[userId intValue]];
-        [userInfoDic setObject:userIdStr forKey:@"userId"];
-        if (phoneNum) {
-            [userInfoDic setObject:phoneNum forKey:@"phoneNum"];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:userInfoDic];
+    for (NSString * key in [userInfoDic allKeys]) {
+        NSString * value = [userInfoDic objectForKey:key];
+        if ([value isEqual:[NSNull null]]) {
+            [dic setValue:@"" forKey:key];
+        }else{
+            
         }
-        if (password) {
-            [userInfoDic setObject:password forKey:@"password"];
-        }
-        
-        [UserDefaultsDataDeal saveWithKey:userInfoKey andValue:userInfoDic];
-        
-        self.userId = userIdStr;
-        self.phoneNum = phoneNum;
-        self.password = password;
-        self.isLogin = YES;
-    }else{
-        
     }
+    [[NSUserDefaults standardUserDefaults]setObject:dic forKey:userInfoKey];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    [self getUserInfo];
 }
--(NSDictionary *)getUserInfo
+-(void)getUserInfo
 {
+    
+    /*
+     "user_id": 4,//用户序号
+     "points": 0, //积分
+     "role": 1,  //1学生 2导师
+     "icon": "", //头像
+     "nickname": "答案的", //昵称
+     "mobile": "13718360863",//手机号码
+     "college_id": 1, //学校序号
+     "college_name": "北京大学",
+     "sex": 1,       //性别 1男 0女
+     "realname": "", //真实姓名
+     "idcard": 0,   //身份证号
+     "company": "", //工作单位
+     "job": "",    //职务
+     "telphone": "", //联系电话
+     "email": "",
+     "skillful": "",//擅长辅导领域
+     "tutorbackground": "" //导师背景
+     */
     NSString * userInfoKey = @"userInfo";
-    NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
-    self.userId =[dic stringForKey:@"userId"];
-    self.phoneNum = [dic stringForKey:@"phoneNum"];
-    self.password = [dic stringForKey:@"password"];
+    NSDictionary * userInfoDic = [[NSUserDefaults standardUserDefaults] objectForKey:userInfoKey];
+    
+    self.userId           = [userInfoDic stringForKey:@"user_id"];
+    self.userUsablePoints = [userInfoDic stringForKey:@"points"];
+    self.userRole         = [[userInfoDic stringForKey:@"role"] integerValue];
+    self.userIcon         = [userInfoDic stringForKey:@"icon"];
+    self.userNickname     = [userInfoDic stringForKey:@"nickname"];
+    self.userMobile       = [userInfoDic stringForKey:@"mobile"];
+    self.userCollegeId    = [userInfoDic stringForKey:@"college_id"];
+    self.userCollegeName  = [userInfoDic stringForKey:@"college_name"];
+    self.userSex          = [[userInfoDic stringForKey:@"sex"] integerValue];
+    self.userRealName     = [userInfoDic stringForKey:@"realname"];
+    self.userIdCard       = [userInfoDic stringForKey:@"idcard"];
+    self.userCompany      = [userInfoDic stringForKey:@"company"];
+    self.userJob          = [userInfoDic stringForKey:@"job"];
+    self.userTelphone     = [userInfoDic stringForKey:@"telphone"];
+    self.userEmail        = [userInfoDic stringForKey:@"email"];
+    self.userSkillful     = [userInfoDic stringForKey:@"skillful"];
+    self.userTutorbackground= [userInfoDic stringForKey:@"tutorbackground"];
+    
     if (self.userId && self.userId.length>0) {
         self.isLogin = YES;
     }else{
         self.isLogin = NO;
     }
-    [self getPoints];
-    return dic;
-}
 
--(NSString *)getUserId
-{
-    NSString * userInfoKey = @"userInfo";
-    NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
-    NSString * userId = [dic objectForKey:@"userId"];
-    return userId;
-}
-
--(NSString *)getUserPhoneNum
-{
-    NSString * userInfoKey = @"userInfo";
-    NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
-    NSString * userId = [dic objectForKey:@"phoneNum"];
-    return userId;
-}
-
--(NSString *)getUserPassWord
-{
-    NSString * userInfoKey = @"userInfo";
-    NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
-    NSString * userId = [dic objectForKey:@"password"];
-    return userId;
 }
 
 -(void)exitLogin
@@ -92,29 +94,22 @@
     NSString * userInfoKey = @"userInfo";
     [UserDefaultsDataDeal deleteKey:userInfoKey];
     self.isLogin = NO;
+    [self getUserInfo];
 }
--(void)saveUsablePointsWithPoints:(NSString * )points
+-(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord
 {
-    NSString * userInfoKey = @"points";
-    if (points) {
-        NSString * pointsStr = [NSString stringWithFormat:@"%d",[points intValue]];
-        NSMutableDictionary * userInfoDic = [NSMutableDictionary dictionary];
-        if (pointsStr) {
-            [userInfoDic setObject:pointsStr forKey:userInfoKey];
-            [UserDefaultsDataDeal saveWithKey:userInfoKey andValue:userInfoDic];
-            self.usablePoints = pointsStr;
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:phoneNum forKey:@"mobile"];
+    [dic setObject:passWord forKey:@"passwd"];
+    [dic setObject:[NSString stringWithFormat:@"%d",self.userRole] forKey:@"role"];
+    [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+        [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
         }else{
-            
+            [CommonUtils showToastWithStr:model.responseMsg];
         }
-    }
-    
-}
--(NSString *)getPoints
-{
-    NSString * userInfoKey = @"points";
-    NSDictionary * dic = [UserDefaultsDataDeal getDictionaryForKey:userInfoKey];
-    NSString * usablePoints = [dic objectForKey:userInfoKey];
-    self.usablePoints = usablePoints;
-    return usablePoints;
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 @end

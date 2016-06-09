@@ -90,7 +90,7 @@
 ///跳蚤市场:跳蚤市场列表接口
 #define METHOD_JOB_MARKET_LIST                         @"v1/fleamarket/list?"
 ///跳蚤市场:跳蚤市场上传照片接口
-#define METHOD_JOB_MARKET_IMAGEUPLOAD                  @"v1/fleamarket/imageupload/?"
+#define METHOD_JOB_MARKET_IMAGEUPLOAD                  @"v1/fleamarket/imageupload/"
 ///跳蚤市场:添加跳蚤接口
 #define METHOD_JOB_MARKET_ADD                          @"v1/fleamarket/create/?"
 ///跳蚤市场:跳蚤详情接口

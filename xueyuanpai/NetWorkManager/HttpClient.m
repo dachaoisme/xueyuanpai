@@ -394,6 +394,20 @@
         failBlock(error);
     }];
 }
+///跳蚤市场，发布需求照片上传
+- (void)uploadJobMarketIconWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]postWithMethod:METHOD_JOB_MARKET_IMAGEUPLOAD withParams:params withUploadDic:uploadDic withSuccess:^(HttpResponseCodeModel *model) {
+        
+        successBlock(model);
+        
+    } withFailBlock:^(NSError *error) {
+        
+        failBlock(error);
+        
+    }];
+    
+}
 
 #pragma mark - 创业中心
 ///创业新闻

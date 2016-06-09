@@ -134,4 +134,21 @@ typedef NS_ENUM(NSInteger, MineTimeBankStatus){
     MineTimeBankCompleteStatus              ,
     
 };
+#pragma mark - 个人账户相关
+typedef NS_ENUM(NSInteger, UserInfoRole){
+    
+    ///学生
+    UserInfoRoleStudent           =1,
+    ///教师
+    UserInfoRoleTeacher          ,
+   
+};
+typedef NS_ENUM(NSInteger, UserInfoSex){
+    
+    ///学生
+    UserInfoSexMan           =1,
+    ///教师
+    UserInfoSexWoman         =0,
+    
+};
 #endif /* EnumDefine_h */

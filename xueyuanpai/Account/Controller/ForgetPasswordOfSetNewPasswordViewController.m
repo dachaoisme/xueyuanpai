@@ -81,9 +81,9 @@
     [dic setObject:inputPasswordTextField.text forKey:@"passwd"];
     [[HttpClient sharedInstance]changePasswordWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-            NSString * userId = [[model.responseCommonDic objectForKey:@"data"] objectForKey:@"user_id"];
+            NSDictionary * userInfoDic = [model.responseCommonDic objectForKey:@"data"];
             //若成功，应该是返回主页面，并且是已经登录状态
-            [[UserAccountManager sharedInstance]saveUserAccountWithUserId:userId withPhoneNum:self.telephoneNum withPassword:inputPasswordTextField.text];
+            [[UserAccountManager sharedInstance]loginWithUserPhoneNum:[UserAccountManager sharedInstance].userMobile andPassWord:inputPasswordTextField.text];
         }else{
             //验证失败
             [CommonUtils showToastWithStr:model.responseMsg];

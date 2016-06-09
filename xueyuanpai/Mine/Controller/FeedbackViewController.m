@@ -80,7 +80,6 @@
     if (textView.text.length<=0) {
         [CommonUtils showToastWithStr:@"请输入反馈信息"];
     }
-    [CommonUtils showToastWithStr:@"提交意见反馈"];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:connectTextField.text forKey:@"contact"];
     [dic setValue:textView.text forKey:@"suggestions"];
@@ -91,7 +90,7 @@
         if (model.responseCode ==ResponseCodeSuccess) {
             ///反馈成功
             [CommonUtils showToastWithStr:@"反馈成功"];
-            
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
             ///反馈失败
             [CommonUtils showToastWithStr:model.responseMsg];

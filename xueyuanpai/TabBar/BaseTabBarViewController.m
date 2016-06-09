@@ -59,7 +59,7 @@
     [_baseTabBarView setContentView];
     [_baseTabBarView setSelected:0];
     
-    if ([[UserAccountManager sharedInstance] getUserId].length<=0) {
+    if ([UserAccountManager sharedInstance].userId.length<=0) {
         LoginViewController * loginVC = [[LoginViewController alloc]init];
         [IndexVC.navigationController pushViewController:loginVC animated:NO];
     }

@@ -57,12 +57,12 @@
     
     
     //创建金额的label
-    UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(myWalletLabel.frame), CGRectGetMaxY(myWalletLabel.frame)+10, CGRectGetWidth(myWalletLabel.frame), CGRectGetHeight(myWalletLabel.frame))];
-    moneyLabel.font = [UIFont systemFontOfSize:16];
-    moneyLabel.text = @"￥10";
-    moneyLabel.textAlignment = NSTextAlignmentCenter;
-    moneyLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
-    [leftView addSubview:moneyLabel];
+    _moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(myWalletLabel.frame), CGRectGetMaxY(myWalletLabel.frame)+10, CGRectGetWidth(myWalletLabel.frame), CGRectGetHeight(myWalletLabel.frame))];
+    _moneyLabel.font = [UIFont systemFontOfSize:16];
+    _moneyLabel.text = @"￥0";
+    _moneyLabel.textAlignment = NSTextAlignmentCenter;
+    _moneyLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
+    [leftView addSubview:_moneyLabel];
     
     
     //创建右侧视图的两个label
@@ -72,13 +72,13 @@
     [rightView addSubview:jifenLabel];
     
     
-    UILabel *integralLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(jifenLabel.frame), CGRectGetMaxY(jifenLabel.frame)+10, CGRectGetWidth(jifenLabel.frame), CGRectGetHeight(jifenLabel.frame))];
-    integralLabel.font = [UIFont systemFontOfSize:16];
-    integralLabel.text = @"0";
-    integralLabel.textAlignment = NSTextAlignmentCenter;
+    _integralLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(jifenLabel.frame), CGRectGetMaxY(jifenLabel.frame)+10, CGRectGetWidth(jifenLabel.frame), CGRectGetHeight(jifenLabel.frame))];
+    _integralLabel.font = [UIFont systemFontOfSize:16];
+    _integralLabel.text = @"0";
+    _integralLabel.textAlignment = NSTextAlignmentCenter;
 
-    integralLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
-    [rightView addSubview:integralLabel];
+    _integralLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
+    [rightView addSubview:_integralLabel];
     
     
     //给左侧和右侧视图添加tap手势

@@ -20,6 +20,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [[UserAccountManager sharedInstance]getUserInfo];
+    
     BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
     _mainTabBar=mainVC;
     _window.rootViewController=mainVC;
@@ -27,7 +29,7 @@
     [_window makeKeyAndVisible];
     
     
-    [[UserAccountManager sharedInstance]getUserInfo];
+    
     return YES;
 }
 

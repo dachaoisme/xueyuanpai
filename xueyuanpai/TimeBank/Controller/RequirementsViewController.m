@@ -199,7 +199,8 @@
     selectedImageView = [[SelectedImageView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height) withSuperController:self];
     weakSelf(wSelf)
     selectedImageView.callBackBlock = ^(UIImage * selectedImage){
-        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(200, 200) withImage:selectedImage];
+        ///压缩图片，不能过大
+        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
         [wSelf.headImageSelectedBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
         [wSelf.headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
         //需要把图片上传到服务器

@@ -20,7 +20,7 @@
 
 
 @property (nonatomic,assign)id<MineOneStyleTableViewCellDelegate>delegate;
-
-
+@property(nonatomic,strong)UILabel *moneyLabel;
+@property(nonatomic,strong)UILabel *integralLabel;
 
 @end
