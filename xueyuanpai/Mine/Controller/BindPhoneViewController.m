@@ -45,7 +45,7 @@
     
     
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(bindLabel.frame), 10, 100, 20)];
-    phoneLabel.text = @"18555880028";
+    phoneLabel.text = [UserAccountManager sharedInstance].userMobile;
     phoneLabel.font = [UIFont systemFontOfSize:14];
     [backGroundView addSubview:phoneLabel];
     

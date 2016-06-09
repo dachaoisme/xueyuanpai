@@ -101,7 +101,7 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:phoneNum forKey:@"mobile"];
     [dic setObject:passWord forKey:@"passwd"];
-    [dic setObject:[NSString stringWithFormat:@"%d",self.userRole] forKey:@"role"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)self.userRole] forKey:@"role"];
     [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
         [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];

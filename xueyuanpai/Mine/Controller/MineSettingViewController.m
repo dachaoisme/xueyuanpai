@@ -99,7 +99,7 @@
     
     if (indexPath.section == 0) {
         
-        
+        cell.contentLabel.text = [UserAccountManager sharedInstance].userMobile;
         
     }else{
         
