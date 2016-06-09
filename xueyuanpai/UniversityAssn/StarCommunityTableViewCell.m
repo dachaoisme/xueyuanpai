@@ -36,22 +36,26 @@
         //创建显示图片imageView
         UIImageView *showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 50, 50)];
         showImageView.backgroundColor = [UIColor whiteColor];
+        showImageView.layer.cornerRadius = 5;
+        showImageView.layer.masksToBounds = YES;
         [self.contentView addSubview:showImageView];
         self.showImageView = showImageView;
         
         
         //创建显示图片名称的lable
-        UILabel *showTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(showImageView.frame) + 10, CGRectGetMinY(showImageView.frame), 200, 20)];
+        UILabel *showTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(showImageView.frame) + 10, CGRectGetMinY(showImageView.frame)-5, SCREEN_WIDTH - CGRectGetMaxX(showImageView.frame) - 20, 35)];
+        showTitleLable.numberOfLines = 0;
         showTitleLable.textColor = [CommonUtils colorWithHex:@"333333"];
-        showTitleLable.font = [UIFont systemFontOfSize:16];
+        showTitleLable.font = [UIFont systemFontOfSize:14];
 //        showLable.text = @"吉他社";
         [self.contentView addSubview:showTitleLable];
         self.showTitleLable = showTitleLable;
         
         
         //创建图片显示详情的lable
-        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(showTitleLable.frame), CGRectGetMaxY(showTitleLable.frame)+10, SCREEN_WIDTH - CGRectGetMinX(showTitleLable.frame), 30)];
-        detailLabel.font = [UIFont systemFontOfSize:14];
+        UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(showTitleLable.frame), CGRectGetMaxY(showTitleLable.frame), SCREEN_WIDTH - CGRectGetMinX(showTitleLable.frame), 30)];
+        detailLabel.font = [UIFont systemFontOfSize:12];
+        detailLabel.numberOfLines = 0;
         detailLabel.textColor = [CommonUtils colorWithHex:@"999999"];
 //        detailLabel.text = @"吉他社";
         [self.contentView addSubview:detailLabel];

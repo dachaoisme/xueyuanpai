@@ -283,6 +283,9 @@
                 
                 
                 cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailDescription;
+                cell.textLabel.numberOfLines = 0;
+                
+                cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:businessCenterProgectDetailModel.businessCenterProgectDetailDescription]);
             }
             
            
@@ -312,6 +315,11 @@
                 
                 
                 cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailMember;
+                
+                cell.textLabel.numberOfLines = 0;
+
+                
+                cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight: businessCenterProgectDetailModel.businessCenterProgectDetailMember]);
             }
             
             return cell;
@@ -336,6 +344,12 @@
                 
                 
                 cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailBackground;
+                
+                
+                cell.textLabel.numberOfLines = 0;
+
+                
+                cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:businessCenterProgectDetailModel.businessCenterProgectDetailBackground]);
             }
             
             return cell;
@@ -359,6 +373,12 @@
                 
                 
                 cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailPlan;
+                
+                cell.textLabel.numberOfLines = 0;
+
+                
+                cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:businessCenterProgectDetailModel.businessCenterProgectDetailPlan]);
+                
             }
             
             return cell;
@@ -387,18 +407,92 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     switch (indexPath.section) {
-        case 0:
+        case 0:{
             
             return 80;
+        }
+            break;
             
+        case 3:{
+            
+            if (indexPath.row == 0) {
+                
+                return 45;
+                
+            }else{
+                
+                //根据文本信息多少调整cell的高度
+                NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailDescription;
+                return [self textHeight:string]+10;
+
+            }
+            
+
+        }
+            break;
+        case 4:{
+            
+            if (indexPath.row == 0) {
+                return 45;
+            }else{
+                
+                //根据文本信息多少调整cell的高度
+                NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailMember;
+                return [self textHeight:string]+10;
+
+            }
+            
+            
+        }
+            break;
+        case 5:{
+            
+            if (indexPath.row == 0) {
+                return 45;
+            }else{
+                //根据文本信息多少调整cell的高度
+                NSString * string = businessCenterProgectDetailModel.businessCenterProgectDetailBackground;
+                return [self textHeight:string]+10;
+ 
+            }
+            
+            
+        }
+            break;
+        case 6:{
+            
+            if (indexPath.row == 0) {
+                
+                return 45;
+                
+            }else{
+                
+                //根据文本信息多少调整cell的高度
+                NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailPlan;
+                return [self textHeight:string]+10;
+
+            }
+            
+            
+        }
             break;
             
         default:
-            
             return 45;
             break;
     }
 }
+
+
+//自适应撑高
+//计算字符串的frame
+- (CGFloat)textHeight:(NSString *)string{
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 10, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+    //返回计算好的高度
+    return rect.size.height;
+    
+}
+
 
 #pragma mark - 请求创业项目详情数据
 -(void)requestToGetBusinessProjectDetail
