@@ -12,8 +12,26 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.inputContentTextField.delegate = self;
 }
-
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (self.tag==0) {
+        //姓名
+        self.publicProgectModel.businessCenterPublicProgectRealName = textField.text;
+    }else if (self.tag==1){
+        //身份证
+        self.publicProgectModel.businessCenterPublicProgectIdentityCard = textField.text;
+    }else if (self.tag==2){
+        //联系电话
+        self.publicProgectModel.businessCenterPublicProgectTelephone = textField.text;
+    }else if (self.tag ==3){
+        //专业
+        self.publicProgectModel.businessCenterPublicProgectMajor = textField.text;
+    }else{
+        
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

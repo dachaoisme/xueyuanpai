@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddProjectLeaderTwoTableViewCell : UITableViewCell
+@interface AddProjectLeaderTwoTableViewCell : UITableViewCell<UITextFieldDelegate>
 
 ///标题
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

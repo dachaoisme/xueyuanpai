@@ -452,6 +452,8 @@
 @property(nonatomic,strong)NSString *businessCenterPublicProgectDetailBudge;
 ///项目领域
 @property(nonatomic,strong)NSString *businessCenterPublicProgectDetailField;
+///项目领域ID
+@property(nonatomic,strong)NSString *businessCenterPublicProgectDetailFieldId;
 ///项目简介
 @property(nonatomic,strong)NSString *businessCenterPublicProgectDetailDescription;
 ///项目成员
@@ -469,10 +471,14 @@
 @property(nonatomic,strong)NSString *businessCenterPublicProgectTelephone;
 ///负责人学校
 @property(nonatomic,strong)NSString *businessCenterPublicProgectCollege;
+///负责人学校id
+@property(nonatomic,strong)NSString *businessCenterPublicProgectCollegeId;
 ///负责人专业
 @property(nonatomic,strong)NSString *businessCenterPublicProgectMajor;
 ///负责人学历
 @property(nonatomic,strong)NSString *businessCenterPublicProgectJob;
+///负责人学历id
+@property(nonatomic,strong)NSString *businessCenterPublicProgectJobId;
 ///负责人毕业时间
 @property(nonatomic,strong)NSString *businessCenterPublicProgectGraduationtime;
 

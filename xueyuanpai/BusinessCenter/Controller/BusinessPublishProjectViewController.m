@@ -18,6 +18,8 @@
 @interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     BusinessCenterPublicProgectModel * publicProgectModel;
+    NSMutableArray *businessCenterProgectCategoryModelArr;
+    NSMutableArray *businessCenterProgectCategoryTitleArr;
 }
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -30,30 +32,52 @@
     [super viewWillDisappear:animated];
     
 }
-
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self theTabBarHidden:YES];
 }
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.title = @"发布项目";
+    
+    businessCenterProgectCategoryModelArr = [NSMutableArray array];
+    businessCenterProgectCategoryTitleArr = [NSMutableArray array];
     publicProgectModel = [[BusinessCenterPublicProgectModel alloc]initWithDic:nil];
     [self createLeftBackNavBtn];
-    
-    
-    
+ 
     //创建tableView
     [self createTableView];
-
+    [self requestToGetConditionsCategory];
 }
-
+///获取筛选分类列表
+-(void)requestToGetConditionsCategory
+{
+    NSDictionary * dic = [NSDictionary dictionary];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance]getbusinessCenterConditionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSDictionary * conditionsDic = model.responseCommonDic ;
+            ///"id":"8","name":"\u5403\u996d","ord":"1"
+            ///类别：农业，轻工业
+            for (NSString *key in [conditionsDic allKeys]) {
+                BusinessCenterProgectCategoryModel * model = [[BusinessCenterProgectCategoryModel alloc] initWithDic: [conditionsDic objectForKey:key]];
+                [businessCenterProgectCategoryModelArr  addObject:model];
+                [businessCenterProgectCategoryTitleArr addObject:model.BusinessCenterProgectName];
+            }
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
 #pragma mark - 创建tableView
 - (void)createTableView{
     
@@ -85,14 +109,12 @@
     
     self.tableView.tableFooterView = backGroundView;
 
-    
     //注册cell
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [tableView registerNib:[UINib nibWithNibName:@"BusinessPublishProjectOneTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
     [tableView registerNib:[UINib nibWithNibName:@"BusinessPublishProjectTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     [tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"threeCell"];
     
-
 }
 
 #pragma mark - 发布按钮
@@ -100,24 +122,22 @@
     
     [self.tableView reloadData];
     
-    [CommonUtils showToastWithStr:@"确认提交"];
      if (publicProgectModel.businessCenterPublicProgectTitle.length<=0) {
          [CommonUtils showToastWithStr:@"请输入标题"];
          return;
      }
-     #warning 添加照片逻辑没处理
-//         else if (publicProgectModel.businessCenterPublicProgectImage.length<=0){
-//             [CommonUtils showToastWithStr:@"请添加照片"];
-//             return;
-//         }
+    else if (publicProgectModel.businessCenterPublicProgectImage.length<=0){
+             [CommonUtils showToastWithStr:@"请添加照片"];
+             return;
+         }
      else if (publicProgectModel.businessCenterPublicProgectDetailBudge.length<=0){
          [CommonUtils showToastWithStr:@"请添加预算"];
          return;
      }
-//     else if (publicProgectModel.businessCenterPublicProgectDetailField.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入擅长领域"];
-//         return;
-//     }
+     else if (publicProgectModel.businessCenterPublicProgectDetailFieldId.length<=0){
+         [CommonUtils showToastWithStr:@"请输入擅长领域"];
+         return;
+     }
      else if (publicProgectModel.businessCenterPublicProgectDetailDescription.length<=0){
          [CommonUtils showToastWithStr:@"请输入项目简介"];
          return;
@@ -132,32 +152,32 @@
          [CommonUtils showToastWithStr:@"请实施计划"];
          return;
      }
-//     else if (publicProgectModel.businessCenterPublicProgectRealName.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入真实名字"];
-//         return;
-//     }else if (publicProgectModel.businessCenterPublicProgectIdentityCard.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入身份证号"];
-//         return;
-//     }else if (publicProgectModel.businessCenterPublicProgectTelephone.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入电话"];
-//         return;
-//     }else if (publicProgectModel.businessCenterPublicProgectCollege.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入学校"];
-//         return;
-//     }else if (publicProgectModel.businessCenterPublicProgectMajor.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入专业"];
-//         return;
-//     }else if (publicProgectModel.businessCenterPublicProgectJob.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入学历"];
-//         return;
-//     }else if (publicProgectModel.businessCenterPublicProgectGraduationtime.length<=0){
-//         [CommonUtils showToastWithStr:@"请输入毕业时间"];
-//         return;
-//     }
+     else if (publicProgectModel.businessCenterPublicProgectRealName.length<=0){
+         [CommonUtils showToastWithStr:@"请输入真实名字"];
+         return;
+     }else if (publicProgectModel.businessCenterPublicProgectIdentityCard.length<=0){
+         [CommonUtils showToastWithStr:@"请输入身份证号"];
+         return;
+     }else if (publicProgectModel.businessCenterPublicProgectTelephone.length<=0){
+         [CommonUtils showToastWithStr:@"请输入电话"];
+         return;
+     }else if (publicProgectModel.businessCenterPublicProgectCollegeId.length<=0){
+         [CommonUtils showToastWithStr:@"请输入学校"];
+         return;
+     }else if (publicProgectModel.businessCenterPublicProgectMajor.length<=0){
+         [CommonUtils showToastWithStr:@"请输入专业"];
+         return;
+     }else if (publicProgectModel.businessCenterPublicProgectJobId.length<=0){
+         [CommonUtils showToastWithStr:@"请输入学历"];
+         return;
+     }else if (publicProgectModel.businessCenterPublicProgectGraduationtime.length<=0){
+         [CommonUtils showToastWithStr:@"请输入毕业时间"];
+         return;
+     }
     
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"owner_id"];
     [dic setValue:publicProgectModel.businessCenterPublicProgectTitle forKey:@"title"];
     [dic setValue:publicProgectModel.businessCenterPublicProgectImage forKey:@"thumbUrl"];
     [dic setValue:publicProgectModel.businessCenterPublicProgectDetailBudge forKey:@"budget"];
@@ -181,7 +201,7 @@
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"发布项目成功"];
-            
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -389,29 +409,23 @@
 
 
 #pragma mark - textField的代理方法
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
     if (textField.tag == 100) {
         
-       publicProgectModel.businessCenterPublicProgectTitle = textField.text;
+        publicProgectModel.businessCenterPublicProgectTitle = textField.text;
         
     }else if (textField.tag == 101){
         
-       publicProgectModel.businessCenterPublicProgectDetailBudge = textField.text;
+        publicProgectModel.businessCenterPublicProgectDetailBudge = textField.text;
     }
-    
-    
-    return YES;
 }
-
-
 #pragma mark - textView的代理方法
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
-    
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
     if (textView.tag == 1000) {
         
-       publicProgectModel.businessCenterPublicProgectDetailDescription = textView.text;
+        publicProgectModel.businessCenterPublicProgectDetailDescription = textView.text;
         
     }else if (textView.tag == 1001){
         
@@ -425,23 +439,71 @@
         
         publicProgectModel.businessCenterPublicProgectDetailPlan = textView.text;
     }
-
-
     
-    
-    return YES;
+
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    ///跳转到选择照片页面
+    if (indexPath.section==0&&indexPath.row==1) {
+        
+        float height = 200;
+        
+        selectedImageView = [[SelectedImageView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height) withSuperController:self];
+        //weakSelf(wSelf)
+        selectedImageView.callBackBlock = ^(UIImage * selectedImage){
+            ///压缩图片，不能过大
+            UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
+            
+            //需要把图片上传到服务器
+            NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+            NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
+            NSData * imageData = UIImagePNGRepresentation(scaleImg);
+            [imageDic setObject:imageData forKey:@"UploadForm[file][]"];
+            [[HttpClient sharedInstance]uploadJobMarketIconWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+                NSArray * imageArr = (NSArray *)model.responseCommonDic;
+                if (imageArr &&imageArr.count>0) {
+                    publicProgectModel.businessCenterPublicProgectImage = [imageArr firstObject];
+                }
+            } withFaileBlock:^(NSError *error) {
+                NSLog(@"%@",error);
+            }];
+            
+        };
+        [[UIApplication sharedApplication].delegate.window addSubview:selectedImageView];
+        
+    }
+    
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.section == 1) {
         //跳转项目负责人页面
         AddProjectLeaderViewController *addProjectLeaderVC = [[AddProjectLeaderViewController alloc] init];
-        
+        addProjectLeaderVC.publicProgectModel = publicProgectModel;
         [self.navigationController pushViewController:addProjectLeaderVC animated:YES];
+    }
+    
+    if (indexPath.section==2) {
+
+        LTPickerView* pickerView = [LTPickerView new];
+        pickerView.dataSource = businessCenterProgectCategoryTitleArr;//设置要显示的数据
+        //pickerView.defaultStr = @"1";//默认选择的数据
+        [pickerView show];//显示
+        weakSelf(weakSelf);
+        //回调block
+        pickerView.block = ^(LTPickerView* obj,NSString* str,int num){
+            //obj:LTPickerView对象
+            //str:选中的字符串
+            //num:选中了第几行
+            BusinessPublishProjectTwoTableViewCell * smallCell = (BusinessPublishProjectTwoTableViewCell*)cell;
+            NSLog(@"选择了第%d行的%@",num,str);
+            publicProgectModel.businessCenterPublicProgectDetailField = [businessCenterProgectCategoryTitleArr objectAtIndex:num];
+            publicProgectModel.businessCenterPublicProgectDetailFieldId = [[businessCenterProgectCategoryModelArr objectAtIndex:num] BusinessCenterProgectId ];
+            smallCell.contentLabel.text = str;
+            
+        };
     }
 }
 

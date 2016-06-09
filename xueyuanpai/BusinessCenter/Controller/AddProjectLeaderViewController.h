@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "BusinessCenterModel.h"
+#import "LTPickerView.h"
 @interface AddProjectLeaderViewController : BaseViewController
 
+@property(nonatomic,strong)BusinessCenterPublicProgectModel * publicProgectModel;
 @end

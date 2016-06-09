@@ -150,7 +150,7 @@
     NSDictionary * dic = [NSDictionary dictionary];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[HttpClient sharedInstance]getJobMarketConditionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+    [[HttpClient sharedInstance]getbusinessCenterConditionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
