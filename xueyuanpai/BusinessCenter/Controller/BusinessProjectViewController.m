@@ -94,7 +94,7 @@
 #pragma mark - 创建展示视图
 - (void)createTableView{
     float height = 36;
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + height*2+5, SCREEN_WIDTH, SCREEN_HEIGHT-NAV_TOP_HEIGHT-height*2-5) style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + height*2+5, SCREEN_WIDTH, SCREEN_HEIGHT-NAV_TOP_HEIGHT-height*2-5) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
