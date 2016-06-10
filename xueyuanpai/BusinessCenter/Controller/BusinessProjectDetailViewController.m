@@ -29,6 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //学生查看到的项目详情
+    
     
     self.title = @"项目详情";
     yesIsCollection = NO;

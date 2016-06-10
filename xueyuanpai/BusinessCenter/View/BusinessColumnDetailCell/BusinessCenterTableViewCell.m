@@ -13,11 +13,9 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    self.titleLabel.frame = CGRectMake(123, 15, SCREEN_WIDTH - 123 -10, 40);
-    
-    self.contentLabel.frame = CGRectMake(123, 65, SCREEN_WIDTH - 123 -10, 40);
     
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
