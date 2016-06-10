@@ -639,6 +639,7 @@
 }
 
 #pragma mark - 快递中心
+///获取正在接单的快递员数目
 - (void)expressCenterGetExpressPeopleWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
    
@@ -650,4 +651,51 @@
     
 }
 
+///获取正在接单的快递员数目
+- (void)expressCenterDistributeExpressPeopleWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXPRESS_CENTER_DISTRIBUTE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+    
+}
+
+///发快递
+- (void)expressCenterSendExpressWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXPRESS_CENTER_SEND_EXPRESS withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+    
+}
+///取消发快递
+- (void)expressCenterCancelExpressWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXPRESS_CENTER_CANCEL_EXPRESS withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+    
+}
+
+///我的发送快递记录
+- (void)expressCenterExpressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXPRESS_CENTER_EXPRESS_HISTORY withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,pageModel,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 @end
