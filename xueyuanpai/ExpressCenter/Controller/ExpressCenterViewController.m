@@ -103,7 +103,7 @@
     [self.view addSubview:imageView];
     
     
-    UILabel *showLocationLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 5, NAV_TOP_HEIGHT + 5, 200, 20)];
+    UILabel *showLocationLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 5, NAV_TOP_HEIGHT + 5, SCREEN_WIDTH - CGRectGetMaxX(imageView.frame) - 15, 20)];
     
     showLocationLable.text = @"北京";
     showLocationLable.font = [UIFont systemFontOfSize:14];

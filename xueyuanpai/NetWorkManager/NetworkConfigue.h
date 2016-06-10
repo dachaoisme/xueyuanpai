@@ -134,6 +134,9 @@
 ///个人中心：意见反馈
 #define METHOD_MINE_FEED_BACK                               @"v1/feedback/add/?"
 
+///个人中心：关于我们
+#define METHOD_MINE_ABOUT_US                                @"v1/aboutus/index?"
+
 ///收藏相关-添加收藏
 #define METHOD_COLLECTION_ADD                                 @"v1/mark/add?"
 ///收藏相关-取消收藏
