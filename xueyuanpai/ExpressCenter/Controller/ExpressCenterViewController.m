@@ -64,11 +64,6 @@
     _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
     _disPlayLink.frameInterval = 40;
     [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    
-
- 
-    [self requestExpressPeopleCount];
-    
 
 
 }
@@ -91,6 +86,9 @@
     self.view.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
     
     [self createCenterView];
+    
+    [self requestExpressPeopleCount];
+
     
     
     //开始定位
@@ -185,11 +183,6 @@
     
     //根据经纬度反编码取出地名
     [self getAdressByLongitude:coordinate.longitude Latitude:coordinate.latitude];
-
-
-    //为了节省电源，如果不适用定位，需要把定位关掉
-//    [self.manager stopUpdatingLocation];
-    
 }
 
 #pragma mark - 根据经纬度获取地址
@@ -201,7 +194,6 @@
     CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
     [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         
-//        NSDictionary *dic = placemarks.firstObject.addressDictionary;
         
         //显示最前面的地标信息
         CLPlacemark *firstPlacemark=[placemarks firstObject];
@@ -226,6 +218,7 @@
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    
     [[HttpClient sharedInstance]expressCenterGetExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
         

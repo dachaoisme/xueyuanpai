@@ -163,14 +163,25 @@
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [[HttpClient sharedInstance]expressCenterDistributeExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
         NSLog(@"%@",expressPeopleCount);
         ///快递员信息
         expressCenterPeopleModel = [[ExpressCenterPeopleModel alloc]initWithDic:model.responseCommonDic];
         
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        
         [self.tableView reloadData];
+        
+
     } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         
     }];
 }

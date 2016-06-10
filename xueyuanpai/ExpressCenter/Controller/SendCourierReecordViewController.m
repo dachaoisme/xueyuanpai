@@ -70,6 +70,9 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:@"1" forKey:@"page"];
     [dic setValue:@"10" forKey:@"size"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [[HttpClient sharedInstance]expressCenterExpressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
@@ -79,11 +82,21 @@
                 [_modelArray addObject:expressInforModel];
             }
             
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
             [self.tableView reloadData];
         }else{
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+            
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
     } withFaileBlock:^(NSError *error) {
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         
     }];
     

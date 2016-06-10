@@ -38,8 +38,8 @@
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [teacherAccountBtn setImage:image forState:UIControlStateNormal];
     
-    teacherAccountBtn.imageEdgeInsets = UIEdgeInsetsMake(20,teacherAccountBtn.center.x + 30,21,teacherAccountBtn.titleLabel.bounds.size.width);
-    teacherAccountBtn.titleEdgeInsets = UIEdgeInsetsMake(71, -teacherAccountBtn.titleLabel.bounds.size.width-50, 0, 0);
+    teacherAccountBtn.imageEdgeInsets = UIEdgeInsetsMake(20,teacherAccountBtn.center.x ,80,-60);
+    teacherAccountBtn.titleEdgeInsets = UIEdgeInsetsMake(30, -teacherAccountBtn.titleLabel.bounds.size.width-50, 0, 0);
     
     [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
     [teacherAccountBtn setFrame:leftRect];
@@ -60,6 +60,10 @@
     [personalAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
     [personalAccountBtn setFrame:rightRect];
     [personalAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+    personalAccountBtn.imageEdgeInsets = UIEdgeInsetsMake(20,40 ,80,0);
+    personalAccountBtn.titleEdgeInsets = UIEdgeInsetsMake(30, -personalAccountBtn.titleLabel.bounds.size.width-50, 0, 0);
+    
     [personalAccountBtn setTitle:@"我是学生" forState:UIControlStateNormal];
     personalAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:personalAccountBtn];
