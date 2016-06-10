@@ -1,36 +1,39 @@
 //
-//  BusinessProjectDetailViewController.m
+//  BussinessProjectTeacherDetailViewController.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/6/5.
+//  Created by 王园园 on 16/6/10.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessProjectDetailViewController.h"
-
+#import "BussinessProjectTeacherDetailViewController.h"
 
 #import "BusinessProjectDetailOneTableViewCell.h"
 #import "BusinessProjectDetailTwoTableViewCell.h"
 #import "BusinessProjectDetailThreeTableViewCell.h"
 #import "BusinessProjectDetailFourTableViewCell.h"
 
-@interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "BusinessProjectDetailFiveTableViewCell.h"
+
+
+@interface BussinessProjectTeacherDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailFiveTableViewCellDelegate>
 {
     BusinessCenterProgectDetailModel * businessCenterProgectDetailModel;
     BOOL yesIsCollection;
 }
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
+
+
 @end
 
-@implementation BusinessProjectDetailViewController
+@implementation BussinessProjectTeacherDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    //学生查看到的项目详情
-    
+    //导师查看到的详情
     
     self.title = @"项目详情";
     yesIsCollection = NO;
@@ -47,10 +50,7 @@
     [self requestToGetBusinessProjectDetail];
     
     [self checkoutIsCollectionOrNot];
-    
-#warning 判定是否有导师逻辑暂未处理，个人中心逻辑页面搭建完毕之后继续
-    
-    
+
 }
 
 #pragma mark - 设置分享按钮
@@ -122,6 +122,27 @@
     [self.view addSubview:tableView];
     self.tableView = tableView;
     
+    
+    float space = 16;
+    float btnHeight = 44;
+    float footViewHeight = 48;
+    float btnWidth = SCREEN_WIDTH - 30;
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setTitle:@"申领该项目" forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
+    submitBtn.layer.cornerRadius = 10.0;
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [submitBtn addTarget:self action:@selector(applyProject) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:submitBtn];
+    
+    self.tableView.tableFooterView = backGroundView;
+    
+
+    
     //注册cell
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [tableView registerNib:[UINib nibWithNibName:@"BusinessProjectDetailOneTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
@@ -131,20 +152,34 @@
     [tableView registerNib:[UINib nibWithNibName:@"BusinessProjectDetailThreeTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessProjectDetailFourTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"fourCell"];
+    
+    
+    [tableView registerNib:[UINib nibWithNibName:@"BusinessProjectDetailFiveTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"fiveCell"];
 
+    
+}
+
+#pragma mark - 申领项目按钮响应方法
+- (void)applyProject{
+    
+    [CommonUtils showToastWithStr:@"申领项目"];
 }
 
 #pragma mark - tableView的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 6;
+    return 7;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    
+    if (section == 1) {
+        return 1;
+    }else{
+        return 2;
 
-    return 2;
+    }
+    
     
 }
 
@@ -164,15 +199,15 @@
                 
                 cell.dateLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailDate;
                 
-            
+                
                 return cell;
-
+                
                 
             }else{
                 
                 BusinessProjectDetailTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+                
                 
                 //头像
                 [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserIcon withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
@@ -191,7 +226,7 @@
                     ///保密
                     [cell.genderImageView setImage:[UIImage imageNamed:@"timebank_icon_user"]];
                 }
-
+                
                 
                 //学校名称
                 cell.schoolLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailCollege;
@@ -199,19 +234,34 @@
                 
                 
                 return cell;
-
+                
             }
         }
             break;
             
-            
         case 1:{
+            
+            BusinessProjectDetailFiveTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fiveCell" forIndexPath:indexPath];
+            cell.delegate = self;
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+           
+            [cell bindModel:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel];
+
+            return cell;
+            
+        }
+            break;
+            
+            
+        case 2:{
             
             
             
             BusinessProjectDetailFourTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fourCell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+            
             
             if (indexPath.row == 0) {
                 
@@ -225,8 +275,8 @@
                 
                 cell.contentLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailField;
                 
-
-
+                
+                
             }
             
             
@@ -237,14 +287,14 @@
             
         }
             break;
-
-        case 2:{
+            
+        case 3:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
-
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+            
             
             
             if (indexPath.row == 0) {
@@ -263,7 +313,7 @@
                 cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:businessCenterProgectDetailModel.businessCenterProgectDetailDescription]);
             }
             
-           
+            
             
             return cell;
             
@@ -271,13 +321,13 @@
             
         }
             break;
-        case 3:{
+        case 4:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
-
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+            
             
             if (indexPath.row == 0) {
                 
@@ -292,7 +342,7 @@
                 cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailMember;
                 
                 cell.textLabel.numberOfLines = 0;
-
+                
                 
                 cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight: businessCenterProgectDetailModel.businessCenterProgectDetailMember]);
             }
@@ -300,13 +350,13 @@
             return cell;
         }
             break;
-        case 4:{
+        case 5:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
-
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+            
             
             if (indexPath.row == 0) {
                 
@@ -322,7 +372,7 @@
                 
                 
                 cell.textLabel.numberOfLines = 0;
-
+                
                 
                 cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:businessCenterProgectDetailModel.businessCenterProgectDetailBackground]);
             }
@@ -331,11 +381,11 @@
         }
             break;
             
-        case 5:{
+        case 6:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
-
+            
             
             if (indexPath.row == 0) {
                 
@@ -349,10 +399,10 @@
                 
                 cell.textLabel.text =  businessCenterProgectDetailModel.businessCenterProgectDetailPlan;
                 cell.textLabel.textColor = [UIColor blackColor];
-
+                
                 
                 cell.textLabel.numberOfLines = 0;
-
+                
                 
                 cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:businessCenterProgectDetailModel.businessCenterProgectDetailPlan]);
                 
@@ -361,10 +411,10 @@
             return cell;
         }
             break;
-
-
-
-
+            
+            
+            
+            
             
         default:{
             return nil;
@@ -390,7 +440,13 @@
         }
             break;
             
-        case 2:{
+        case 1:{
+            
+            return 180;
+        }
+            break;
+            
+        case 3:{
             
             if (indexPath.row == 0) {
                 
@@ -401,22 +457,7 @@
                 //根据文本信息多少调整cell的高度
                 NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailDescription;
                 return [self textHeight:string];
-
-            }
-            
-
-        }
-            break;
-        case 3:{
-            
-            if (indexPath.row == 0) {
-                return 45;
-            }else{
                 
-                //根据文本信息多少调整cell的高度
-                NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailMember;
-                return [self textHeight:string];
-
             }
             
             
@@ -427,16 +468,31 @@
             if (indexPath.row == 0) {
                 return 45;
             }else{
+                
                 //根据文本信息多少调整cell的高度
-                NSString * string = businessCenterProgectDetailModel.businessCenterProgectDetailBackground;
+                NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailMember;
                 return [self textHeight:string];
- 
+                
             }
             
             
         }
             break;
         case 5:{
+            
+            if (indexPath.row == 0) {
+                return 45;
+            }else{
+                //根据文本信息多少调整cell的高度
+                NSString * string = businessCenterProgectDetailModel.businessCenterProgectDetailBackground;
+                return [self textHeight:string];
+                
+            }
+            
+            
+        }
+            break;
+        case 6:{
             
             if (indexPath.row == 0) {
                 
@@ -447,7 +503,7 @@
                 //根据文本信息多少调整cell的高度
                 NSString * string =   businessCenterProgectDetailModel.businessCenterProgectDetailPlan;
                 return [self textHeight:string];
-
+                
             }
             
             
@@ -495,6 +551,15 @@
     }];
     
 }
+
+#pragma mark - 打电话的代理方法
+- (void)callPhoneNumberAction{
+    
+    [CommonUtils callServiceWithTelephoneNum:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone];
+
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

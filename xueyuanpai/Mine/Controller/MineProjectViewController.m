@@ -11,6 +11,8 @@
 #import "BusinessCenterTableViewCell.h"
 #import "BusinessProjectDetailViewController.h"
 
+#import "BussinessProjectTeacherDetailViewController.h"
+
 @interface MineProjectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * projectModelListArr;
@@ -76,12 +78,30 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    //根据不同的身份跳转不同的详情
     
-    //跳转项目详情
-    BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
-    BusinessCenterProgectModel * businessCenterProgectModel = [projectModelListArr objectAtIndex:indexPath.row];
-    projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
-    [self.navigationController pushViewController:projectVC animated:YES];
+    if ([UserAccountManager sharedInstance].userRole == UserInfoRoleStudent) {
+        
+        //跳转项目详情
+        BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
+        BusinessCenterProgectModel * businessCenterProgectModel = [projectModelListArr objectAtIndex:indexPath.row];
+        projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
+        [self.navigationController pushViewController:projectVC animated:YES];
+
+        
+    }else{
+        
+        //跳转项目详情
+        BussinessProjectTeacherDetailViewController *projectVC = [[BussinessProjectTeacherDetailViewController alloc] init];
+        BusinessCenterProgectModel * businessCenterProgectModel = [projectModelListArr objectAtIndex:indexPath.row];
+        projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
+        [self.navigationController pushViewController:projectVC animated:YES];
+        
+        
+    }
+    
+    
+   
 }
 
 -(void)requestToGetProgectList

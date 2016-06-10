@@ -595,6 +595,9 @@
 		DDCD71261D09B363009FBE9A /* EditTeacherProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD71241D09B363009FBE9A /* EditTeacherProfileTableViewCell.xib */; };
 		DDCD712A1D09B677009FBE9A /* EditTeacherTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71281D09B677009FBE9A /* EditTeacherTwoTableViewCell.m */; };
 		DDCD712B1D09B677009FBE9A /* EditTeacherTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD71291D09B677009FBE9A /* EditTeacherTwoTableViewCell.xib */; };
+		DDCD712E1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD712D1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m */; };
+		DDCD71321D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71301D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m */; };
+		DDCD71331D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD71311D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1436,6 +1439,11 @@
 		DDCD71271D09B677009FBE9A /* EditTeacherTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTeacherTwoTableViewCell.h; sourceTree = "<group>"; };
 		DDCD71281D09B677009FBE9A /* EditTeacherTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTeacherTwoTableViewCell.m; sourceTree = "<group>"; };
 		DDCD71291D09B677009FBE9A /* EditTeacherTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTeacherTwoTableViewCell.xib; sourceTree = "<group>"; };
+		DDCD712C1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BussinessProjectTeacherDetailViewController.h; sourceTree = "<group>"; };
+		DDCD712D1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BussinessProjectTeacherDetailViewController.m; sourceTree = "<group>"; };
+		DDCD712F1D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessProjectDetailFiveTableViewCell.h; sourceTree = "<group>"; };
+		DDCD71301D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessProjectDetailFiveTableViewCell.m; sourceTree = "<group>"; };
+		DDCD71311D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessProjectDetailFiveTableViewCell.xib; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2200,6 +2208,8 @@
 				DDAB059E1D01D252007A6027 /* BusinessTeacherDetailViewController.m */,
 				DDAB05BF1D03A747007A6027 /* BusinessProjectDetailViewController.h */,
 				DDAB05C01D03A747007A6027 /* BusinessProjectDetailViewController.m */,
+				DDCD712C1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.h */,
+				DDCD712D1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m */,
 				DD13CE031D0022D5000A69FE /* BusinessNewsViewController.h */,
 				DD13CE041D0022D5000A69FE /* BusinessNewsViewController.m */,
 				DDAB05B61D033601007A6027 /* BusinessGameViewController.h */,
@@ -2734,6 +2744,9 @@
 				DDAB05D21D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.h */,
 				DDAB05D31D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.m */,
 				DDAB05D41D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.xib */,
+				DDCD712F1D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.h */,
+				DDCD71301D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m */,
+				DDCD71311D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib */,
 			);
 			path = BusinessProjectDetailCell;
 			sourceTree = "<group>";
@@ -3533,6 +3546,7 @@
 				DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */,
 				DD13CDD61D00186D000A69FE /* startup_filter_life@3x.png in Resources */,
 				58070FC21CF6E80200F03F6C /* timebank_filter_movie_hl@2x.png in Resources */,
+				DDCD71331D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib in Resources */,
 				DD13CDE61D00186D000A69FE /* starup_vip@3x.png in Resources */,
 				58070FE01CF6E80200F03F6C /* toast_fail@2x.png in Resources */,
 				DDAB43791D05531A00FADB3E /* about_logo@2x.png in Resources */,
@@ -3660,6 +3674,7 @@
 				58C40DF91D05C0D50061C174 /* MineCollectionSubViewController.m in Sources */,
 				DDAB05E31D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m in Sources */,
 				5849FDC41CE47D6E0039AFC2 /* UserAccountManager.m in Sources */,
+				DDCD71321D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m in Sources */,
 				583D65C81CDA793A00830BBE /* BaseTabBarViewController.m in Sources */,
 				DDAB43A51D055D7600FADB3E /* MineSettingTableViewCell.m in Sources */,
 				58C40DFC1D065E7D0061C174 /* MineBankSubViewController.m in Sources */,
@@ -3775,6 +3790,7 @@
 				58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */,
 				58A944C61CE3E0C200DAD398 /* AddTeacherViewController.m in Sources */,
 				58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */,
+				DDCD712E1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m in Sources */,
 				DD13CE0E1D0028F0000A69FE /* BusinessNewsDetailViewController.m in Sources */,
 				587FF9D61CF2F8F300AD2131 /* IQUIViewController+Additions.m in Sources */,
 				DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */,

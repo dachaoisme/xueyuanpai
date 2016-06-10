@@ -42,7 +42,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487213937.599249"
+                  timestampString = "487220869.655175"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "382"
@@ -57,7 +57,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487213937.600197"
+                  timestampString = "487220869.65586"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -72,7 +72,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487213937.600554"
+                  timestampString = "487220869.656106"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -87,7 +87,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487213937.60093"
+                  timestampString = "487220869.656371"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "382"
@@ -152,7 +152,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/Mine/Controller/EditProfileViewController.m"
-                  timestampString = "487213937.648442"
+                  timestampString = "487220869.661015"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
@@ -167,7 +167,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/Mine/Controller/EditProfileViewController.m"
-                  timestampString = "487213937.648819"
+                  timestampString = "487220869.66133"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
@@ -190,32 +190,6 @@
             startingLineNumber = "139"
             endingLineNumber = "139"
             landmarkName = "-commitAction"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/EditProfileViewController.m"
-            timestampString = "487213928.398473"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "281"
-            endingLineNumber = "281"
-            landmarkName = "-selectedImageFromPhotoAlbum:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
