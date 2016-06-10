@@ -281,7 +281,7 @@
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
         NSData * imageData = UIImagePNGRepresentation(selectedImage);
-        [imageDic setObject:imageData forKey:@"Users[file]"];
+        [imageDic setObject:imageData forKey:@"Users[]"];
         [[HttpClient sharedInstance]uploadImageWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
             avatarImageUploaded = [dic objectForKey:@"picUrl"];
         } withFaileBlock:^(NSError *error) {

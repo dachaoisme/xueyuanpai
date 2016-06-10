@@ -135,17 +135,14 @@
 #pragma mark - tableView的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 7;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (section == 1) {
-        return 1;
-    }else{
-        return 2;
+    
 
-    }
+    return 2;
     
 }
 
@@ -205,32 +202,8 @@
         }
             break;
             
+            
         case 1:{
-            
-            
-            
-            BusinessProjectDetailThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-            
-            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:businessCenterProgectDetailModel.businessCenterProgectDetailTutorModel.businessCenterProgectDetailTutorImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
-            
-            cell.nameLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailTutorModel.businessCenterProgectDetailTutorRealName;
-            
-            
-            cell.jobNameLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailTutorModel.businessCenterProgectDetailTutorJob;
-            
-            
-            
-
-            return cell;
-            
-                
-            
-        }
-            break;
-            
-        case 2:{
             
             
             
@@ -263,7 +236,7 @@
         }
             break;
 
-        case 3:{
+        case 2:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -296,7 +269,7 @@
             
         }
             break;
-        case 4:{
+        case 3:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -325,7 +298,7 @@
             return cell;
         }
             break;
-        case 5:{
+        case 4:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -356,7 +329,7 @@
         }
             break;
             
-        case 6:{
+        case 5:{
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -415,7 +388,7 @@
         }
             break;
             
-        case 3:{
+        case 2:{
             
             if (indexPath.row == 0) {
                 
@@ -432,7 +405,7 @@
 
         }
             break;
-        case 4:{
+        case 3:{
             
             if (indexPath.row == 0) {
                 return 45;
@@ -447,7 +420,7 @@
             
         }
             break;
-        case 5:{
+        case 4:{
             
             if (indexPath.row == 0) {
                 return 45;
@@ -461,7 +434,7 @@
             
         }
             break;
-        case 6:{
+        case 5:{
             
             if (indexPath.row == 0) {
                 
