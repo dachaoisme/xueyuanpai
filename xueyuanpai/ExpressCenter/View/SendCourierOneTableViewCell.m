@@ -14,6 +14,24 @@
     // Initialization code
 }
 
+#pragma mark - 打电话
+- (IBAction)callAction:(id)sender {
+    
+    /**/
+}
+
+- (void)bindModel: (ExpressCenterPeopleModel * )model{
+        
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.ExpressCenterPeopleImg] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    
+    _nameLabel.text = model.ExpressCenterPeopleRealName;
+    
+    _phoneLabel.text = model.ExpressCenterPeopleMobile;
+    
+    _contentLabel.text = model.ExpressCenterPeopleGrade;
+}
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

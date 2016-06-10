@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="211" id="KGk-i7-Jjw" customClass="SendCourierRecordTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="211"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeHoder.png" translatesAutoresizingMaskIntoConstraints="NO" id="RJG-tz-Vaq">
+                        <rect key="frame" x="15" y="15" width="46" height="46"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="23"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="清河" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9b-LT-reU">
+                        <rect key="frame" x="74" y="15" width="67" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="11111111111111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ds4-8m-tuk">
+                        <rect key="frame" x="74" y="40" width="115" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1小时前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qW-VF-muy">
+                        <rect key="frame" x="202" y="27" width="100" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="FCF-dC-zvf"/>
+                            <constraint firstAttribute="width" constant="100" id="uVT-6t-yE0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="取件地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGM-8G-eYn">
+                        <rect key="frame" x="15" y="75" width="56" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="取件时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LoU-kD-2V6">
+                        <rect key="frame" x="15" y="104" width="56" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="一号楼宿舍下" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPb-3l-81G">
+                        <rect key="frame" x="89" y="75" width="171" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2016-4-10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-GT-2Ba">
+                        <rect key="frame" x="89" y="104" width="171" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRA-Rs-ZHt">
+                        <rect key="frame" x="256" y="86" width="46" height="46"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="Ary-R7-rUk"/>
+                            <constraint firstAttribute="height" constant="46" id="zm4-8k-ryq"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="hire_btn_contact.png"/>
+                        <connections>
+                            <action selector="callButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Moo-YW-ir0"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8v3-qo-IYM">
+                        <rect key="frame" x="15" y="141" width="400" height="1"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="取件状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3o-iq-kzY">
+                        <rect key="frame" x="15" y="160" width="147" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4z-d6-diM">
+                        <rect key="frame" x="214" y="157" width="88" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="88" id="J0p-sZ-hlW"/>
+                            <constraint firstAttribute="height" constant="30" id="hl7-nH-pWv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="取消取件预约">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="cancleButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="gkZ-iC-3Sl"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="YRA-Rs-ZHt" secondAttribute="trailing" constant="10" id="1xa-KR-oIm"/>
+                    <constraint firstItem="8qW-VF-muy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="19" id="Ily-Pu-KdD"/>
+                    <constraint firstItem="D4z-d6-diM" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-10" id="XqW-A7-Cd4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="D4z-d6-diM" secondAttribute="bottom" constant="15" id="gGs-Jt-8ki"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="YRA-Rs-ZHt" secondAttribute="bottom" constant="70" id="hkt-Qi-Qsw"/>
+                    <constraint firstItem="8qW-VF-muy" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-10" id="ktz-z0-Cw4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="cancleButton" destination="D4z-d6-diM" id="BKZ-46-6Rl"/>
+                <outlet property="contentLabel" destination="ds4-8m-tuk" id="aNQ-Xa-40w"/>
+                <outlet property="headImageView" destination="RJG-tz-Vaq" id="MOf-rt-fpv"/>
+                <outlet property="nameLabel" destination="U9b-LT-reU" id="jPA-uI-CFN"/>
+                <outlet property="takeAdress" destination="cPb-3l-81G" id="ICy-O4-cef"/>
+                <outlet property="takeStatues" destination="E3o-iq-kzY" id="PZx-VP-KS7"/>
+                <outlet property="takeTime" destination="H4w-GT-2Ba" id="beL-ZP-hte"/>
+                <outlet property="timeLabel" destination="8qW-VF-muy" id="ebi-JX-QLT"/>
+            </connections>
+            <point key="canvasLocation" x="328" y="296.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="hire_btn_contact.png" width="36" height="36"/>
+        <image name="placeHoder.png" width="93" height="93"/>
+    </resources>
+</document>

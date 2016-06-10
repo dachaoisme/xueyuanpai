@@ -12,29 +12,81 @@
 #import "SendCourierTwoTableViewCell.h"
 #import "SendCourierThreeTableViewCell.h"
 
-@interface SendCourierViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "ExpressCenterModel.h"
+
+
+@interface SendCourierViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+
+{
+    ExpressCenterPeopleModel * expressCenterPeopleModel;
+
+}
+
+@property (nonatomic,strong)UITableView *tableView;
+
+///地址
+@property (nonatomic,strong)NSString *address;
+
+///取件时间
+@property (nonatomic,strong)NSString *time;
+
+///取件电话
+@property (nonatomic,strong)NSString *phone;
 
 @end
 
 @implementation SendCourierViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [self theTabBarHidden:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.phone = [UserAccountManager sharedInstance].userMobile;
     
     self.title = @"发快递";
     
     [self createLeftBackNavBtn];
     
     [self createTableView];
+    
+    [self requestDistributeExpressPeople];
 }
 
 - (void)createTableView{
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
+    self.tableView = tableView;
+    
+    //发布按钮的创建
+    
+    float space = 16;
+    float btnHeight = 44;
+    float footViewHeight = 48;
+    float btnWidth = SCREEN_WIDTH - 30;
+    
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setTitle:@"发送取件请求" forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
+    submitBtn.layer.cornerRadius = 10.0;
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [submitBtn addTarget:self action:@selector(sendTakeRequest) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:submitBtn];
+    
+    self.tableView.tableFooterView = backGroundView;
+    
+
     
     
     //注册cell
@@ -44,6 +96,85 @@
     [tableView registerNib:[UINib nibWithNibName:@"SendCourierTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     [tableView registerNib:[UINib nibWithNibName:@"SendCourierThreeTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
 }
+
+
+#pragma mark - 发送取件请求
+- (void)sendTakeRequest{
+    
+//    [CommonUtils showToastWithStr:@"发送取件请求"];
+
+    
+    [self requestSendCourier];
+}
+
+
+///发送取件请求
+- (void)requestSendCourier{
+    
+    if (self.address.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入取件地址"];
+        return;
+    }else if (self.time.length<=0){
+        [CommonUtils showToastWithStr:@"请输入取件时间"];
+        return;
+    }else if (self.phone.length<=0){
+        [CommonUtils showToastWithStr:@"请输入电话"];
+        return;
+    }
+    
+    
+    NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
+    
+    /*
+     参数:
+     user_id          int        必需   用户序号
+     courier_id       int        必需   快递员序号
+     address          string     必需   取件地址
+     fetchtime        string     必需   取件时间
+     telphone         sgring     必需   联系电话
+
+     */
+    
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+#warning 缺少快递序号
+    [dic setObject:@"快递序号" forKey:@"courier_id"];
+    [dic setObject:self.address forKey:@"address"];
+    [dic setObject:self.time forKey:@"fetchtime"];
+    [dic setObject:self.phone forKey:@"telphone"];
+    
+    [[HttpClient sharedInstance] expressCenterSendExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"发送取件请求成功"];
+        }else{
+            [CommonUtils showToastWithStr:@"发送取件请求失败"];
+        }
+
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
+    
+}
+
+///分配de快递员接口
+-(void)requestDistributeExpressPeople
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]expressCenterDistributeExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
+        NSLog(@"%@",expressPeopleCount);
+        ///快递员信息
+        expressCenterPeopleModel = [[ExpressCenterPeopleModel alloc]initWithDic:model.responseCommonDic];
+        
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+
 
 #pragma mark - tableView的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -63,6 +194,11 @@
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 10;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0) {
@@ -78,33 +214,54 @@
     if (indexPath.section == 0) {
         SendCourierOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        [cell bindModel:expressCenterPeopleModel];
+        
         return cell;
     }else{
         
         if (indexPath.row == 0) {
             
             SendCourierTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+            cell.contextTextField.delegate = self;
+
+            cell.contextTextField.tag = 100;
 
             return cell;
             
         }else if (indexPath.row == 1){
             SendCourierThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.contentLabel.textColor = [UIColor lightGrayColor];
+            cell.contentLabel.textColor = [CommonUtils colorWithHex:@"c7c6cb"];
+            
             
             return cell;
 
             
         }else{
             
-            SendCourierThreeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+            SendCourierTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
             
-            cell.titlelabel.text = @"联系电话";
-            cell.contentLabel.text = @"3211111111";
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            cell.titleLabel.text = @"联系电话";
+            
+            cell.contextTextField.text = [UserAccountManager sharedInstance].userMobile;
+            cell.contextTextField.delegate = self;
+
+
+            cell.tag = 101;
             
             return cell;
-
+            
+           
         }
         
     }
@@ -112,6 +269,42 @@
     
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 1 && indexPath.row == 1) {
+        
+        
+        //给取件时间赋值
+        self.time = @"2016-6-10";
+    }
+}
+
+#pragma mark - textField的代理方法
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField.tag == 100) {
+        self.address = textField.text;
+    }else{
+        
+        self.phone = textField.text;
+    }
+
+    
+    return YES;
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    if (textField.tag == 100) {
+        self.address = textField.text;
+    }else{
+        
+        self.phone = textField.text;
+    }
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

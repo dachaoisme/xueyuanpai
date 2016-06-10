@@ -10,6 +10,8 @@
 
 #import "SendCourierViewController.h"
 
+#import "SendCourierReecordViewController.h"
+
 @interface ExpressCenterViewController ()
 
 {
@@ -18,7 +20,12 @@
     CADisplayLink *_disPlayLink;
     
     ExpressCenterPeopleModel * expressCenterPeopleModel;
+
+    
 }
+
+///显示接单数量的控件视图
+@property (nonatomic,strong)UILabel *showNumberCourier;
 
 
 
@@ -31,134 +38,59 @@
     [super viewWillAppear:animated];
     [self theTabBarHidden:NO];
     
-    _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
-    _disPlayLink.frameInterval = 40;
-    [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-}
-
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
     [self.view.layer removeAllAnimations];
     [_disPlayLink invalidate];
     _disPlayLink = nil;
 
     
+    _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
+    _disPlayLink.frameInterval = 40;
+    [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
+
+ 
+    [self requestExpressPeopleCount];
+
+
 }
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+    [self.view.layer removeAllAnimations];
+    [_disPlayLink invalidate];
+    _disPlayLink = nil;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTitle:@"我的快递"];
     
-    
-
-    
     self.view.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
     
-    
-    _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
-    _disPlayLink.frameInterval = 40;
-    [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [self createCenterView];
 
     
     
-    [self createCenterView];
-    [self requestExpressPeopleCount];
-    
 }
-///获取正在接单的快递员
+///获取正在接单的快递员数量
 -(void)requestExpressPeopleCount
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]expressCenterGetExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
+        
+        _showNumberCourier.text = [NSString stringWithFormat:@"本校有%@个快递员正在接单",expressPeopleCount];
         NSLog(@"%@",expressPeopleCount);
     } withFaileBlock:^(NSError *error) {
         
     }];
 }
-///分配de快递员接口
--(void)requestDistributeExpressPeople
-{
-    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [[HttpClient sharedInstance]expressCenterDistributeExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
-        NSLog(@"%@",expressPeopleCount);
-        ///快递员信息
-        expressCenterPeopleModel = [[ExpressCenterPeopleModel alloc]initWithDic:model.responseCommonDic];
-    } withFaileBlock:^(NSError *error) {
-        
-    }];
-}
-///发送快递
--(void)sendExpress
-{
-    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setValue:expressCenterPeopleModel.ExpressCenterPeopleId forKey:@"courier_id"];
-    ///取件地址
-    [dic setValue:@"地址" forKey:@"address"];
-    ///取件时间
-    [dic setValue:@"取件时间" forKey:@"fetchtime"];
-    ///联系电话
-    [dic setValue:@"联系电话" forKey:@"telphone"];
-    
-    [[HttpClient sharedInstance]expressCenterSendExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        if (model.responseCode==ResponseCodeSuccess) {
-            ///发件成功
-            [CommonUtils showToastWithStr:@"发件成功"];
-        }else
-        {
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }
-    } withFaileBlock:^(NSError *error) {
-        [CommonUtils showToastWithStr:@"发件失败"];
-    }];
-}
-///取消发送快递
--(void)requestCancelSendExpress
-{
-    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    ///发快递序号
-    [dic setValue:expressCenterPeopleModel.ExpressCenterPeopleId forKey:@"id"];
-    [[HttpClient sharedInstance]expressCenterCancelExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        if (model.responseCode==ResponseCodeSuccess) {
-            ///发件成功
-            [CommonUtils showToastWithStr:@"取消发件成功"];
-        }else
-        {
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }
-    } withFaileBlock:^(NSError *error) {
-        [CommonUtils showToastWithStr:@"取消发件成功"];
-    }];
-}
-///发送快递记录
--(void)requestExpressHistory
-{
-    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    ///发快递序号
-    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setValue:@"2" forKey:@"page"];
-    [dic setValue:@"10" forKey:@"size"];
-    [[HttpClient sharedInstance]expressCenterExpressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
-        if (responseModel.responseCode == ResponseCodeSuccess) {
-            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
-            for (NSDictionary * smallDic in arr) {
-                ExpressCenterExpressInfoModel * model = [[ExpressCenterExpressInfoModel alloc]initWithDic:smallDic];
-            }
-        }else{
-            [CommonUtils showToastWithStr:responseModel.responseMsg];
-        }
-    } withFaileBlock:^(NSError *error) {
-        
-    }];
-    
-}
+
 #pragma mark - 创建中间视图
 - (void)createCenterView{
     
@@ -178,12 +110,21 @@
     
     //创建显示label
     UILabel *showTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(wifiImageView.frame), 120, 56)];
-    showTextLabel.text = @"正在为您分配快递";
+    showTextLabel.text = @"我要发快递";
     showTextLabel.textAlignment = NSTextAlignmentCenter;
     showTextLabel.numberOfLines = 0;
     showTextLabel.font = [UIFont systemFontOfSize:20];
     [backGroundView addSubview:showTextLabel];
     
+    
+    //本校有多少个快递员正在接单
+    UILabel *showNumberCourier = [[UILabel alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(showTextLabel.frame), 80, 30)];
+    showNumberCourier.textAlignment = NSTextAlignmentCenter;
+    showNumberCourier.numberOfLines = 0;
+    showNumberCourier.textColor = [CommonUtils  colorWithHex:@"5f746c"];
+    showNumberCourier.font = [UIFont systemFontOfSize:10];
+    [backGroundView addSubview:showNumberCourier];
+    self.showNumberCourier = showNumberCourier;
     
     
     UIButton *noticeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -210,17 +151,31 @@
     recordButton.layer.masksToBounds = YES;
     [self.view addSubview:recordButton];
     
+    _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
+    _disPlayLink.frameInterval = 40;
+    [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    
+
+    
+}
+
+#pragma mark - 我要发快递按钮的响应方法
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
+    
+    [self.navigationController pushViewController:sendVC animated:YES];
 
     
 }
 
 
-#pragma mark - 发快递按钮的响应方法
+#pragma mark - 发快递记录按钮的响应方法
 - (void)sendRecordAction{
     
-    SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
     
-    [self.navigationController pushViewController:sendVC animated:YES];
+    SendCourierReecordViewController *recordVC = [[SendCourierReecordViewController alloc] init];
+    [self.navigationController pushViewController:recordVC animated:YES];
 }
 
 #pragma mark - 动画效果

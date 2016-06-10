@@ -99,17 +99,6 @@ static NSString *Identifier = @"photoCollectionViewCell";
     //注册尾部视图
     [photoCollectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footerView"];
     
-    
-//    //设置tableView的footView
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.frame = CGRectMake(15, 15, SCREEN_WIDTH - 30, 48);
-//    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
-//    [button setTitle:@"确定提交" forState:UIControlStateNormal];
-//    [button addTarget:self action:@selector() forControlEvents:UIControlEventTouchUpInside];
-//    button.layer.cornerRadius = 10.0;
-//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    self.tableView.tableFooterView = button;
-    
     //发布按钮的创建
     
     float space = 16;

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -54,12 +55,30 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sks-lz-GMc">
+                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sks-lz-GMc">
                         <rect key="frame" x="261" y="49" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="L1Q-cO-mhF"/>
+                            <constraint firstAttribute="height" constant="36" id="ibl-zr-P3L"/>
+                        </constraints>
                         <state key="normal" backgroundImage="hire_btn_contact.png"/>
+                        <connections>
+                            <action selector="callAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FSo-3P-pEI"/>
+                        </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="sks-lz-GMc" secondAttribute="trailing" constant="15" id="DQc-eG-ow3"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sks-lz-GMc" secondAttribute="bottom" constant="17" id="Xkw-C2-7bs"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="2G6-7d-YYW" id="ez6-PP-mHS"/>
+                <outlet property="headImageView" destination="20E-JC-1hg" id="3z2-Y6-xMI"/>
+                <outlet property="nameLabel" destination="ikT-uz-bm0" id="Dio-rA-4vu"/>
+                <outlet property="phoneLabel" destination="6gd-em-68v" id="ikj-8f-jOV"/>
+                <outlet property="sexImageView" destination="JPl-Uf-jnj" id="qVi-FL-gcE"/>
+            </connections>
             <point key="canvasLocation" x="436" y="250.5"/>
         </tableViewCell>
     </objects>

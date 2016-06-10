@@ -23,9 +23,16 @@
                         <rect key="frame" x="91" y="11" width="180" height="30"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="b6x-UG-S6G"/>
+                        </connections>
                     </textField>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contextTextField" destination="uN2-bB-f2f" id="uBc-11-vAS"/>
+                <outlet property="titleLabel" destination="Gke-xG-nGn" id="qXj-aC-VL7"/>
+            </connections>
             <point key="canvasLocation" x="208" y="216.5"/>
         </tableViewCell>
     </objects>

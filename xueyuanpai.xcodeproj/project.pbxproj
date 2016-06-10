@@ -598,6 +598,9 @@
 		DDCD712E1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD712D1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m */; };
 		DDCD71321D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71301D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m */; };
 		DDCD71331D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD71311D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib */; };
+		DDCD71361D0A8497009FBE9A /* SendCourierReecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71351D0A8497009FBE9A /* SendCourierReecordViewController.m */; };
+		DDCD713A1D0A8557009FBE9A /* SendCourierRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71381D0A8557009FBE9A /* SendCourierRecordTableViewCell.m */; };
+		DDCD713B1D0A8557009FBE9A /* SendCourierRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD71391D0A8557009FBE9A /* SendCourierRecordTableViewCell.xib */; };
 		DDD0BD7B1CF968BE00073290 /* RecruitmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */; };
 		DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0BD7D1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m */; };
 		DDD0BD801CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0BD7E1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.xib */; };
@@ -1444,6 +1447,11 @@
 		DDCD712F1D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessProjectDetailFiveTableViewCell.h; sourceTree = "<group>"; };
 		DDCD71301D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessProjectDetailFiveTableViewCell.m; sourceTree = "<group>"; };
 		DDCD71311D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessProjectDetailFiveTableViewCell.xib; sourceTree = "<group>"; };
+		DDCD71341D0A8497009FBE9A /* SendCourierReecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCourierReecordViewController.h; sourceTree = "<group>"; };
+		DDCD71351D0A8497009FBE9A /* SendCourierReecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCourierReecordViewController.m; sourceTree = "<group>"; };
+		DDCD71371D0A8557009FBE9A /* SendCourierRecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendCourierRecordTableViewCell.h; sourceTree = "<group>"; };
+		DDCD71381D0A8557009FBE9A /* SendCourierRecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendCourierRecordTableViewCell.m; sourceTree = "<group>"; };
+		DDCD71391D0A8557009FBE9A /* SendCourierRecordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendCourierRecordTableViewCell.xib; sourceTree = "<group>"; };
 		DDD0BD791CF968BE00073290 /* RecruitmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecruitmentDetailViewController.h; sourceTree = "<group>"; };
 		DDD0BD7A1CF968BE00073290 /* RecruitmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecruitmentDetailViewController.m; sourceTree = "<group>"; };
 		DDD0BD7C1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecruitmentOneStyleTableViewCell.h; path = ../RecruitmentOneStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2260,6 +2268,8 @@
 				58F67BE81CD990A200D55BE0 /* ExpressCenterViewController.m */,
 				DDCD70B81D06C30D009FBE9A /* SendCourierViewController.h */,
 				DDCD70B91D06C30D009FBE9A /* SendCourierViewController.m */,
+				DDCD71341D0A8497009FBE9A /* SendCourierReecordViewController.h */,
+				DDCD71351D0A8497009FBE9A /* SendCourierReecordViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2870,6 +2880,9 @@
 				DDCD70C81D06CA65009FBE9A /* SendCourierThreeTableViewCell.h */,
 				DDCD70C91D06CA65009FBE9A /* SendCourierThreeTableViewCell.m */,
 				DDCD70CA1D06CA65009FBE9A /* SendCourierThreeTableViewCell.xib */,
+				DDCD71371D0A8557009FBE9A /* SendCourierRecordTableViewCell.h */,
+				DDCD71381D0A8557009FBE9A /* SendCourierRecordTableViewCell.m */,
+				DDCD71391D0A8557009FBE9A /* SendCourierRecordTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3364,6 +3377,7 @@
 				DDAB43861D05531A00FADB3E /* profile_icon_fav@3x.png in Resources */,
 				5874A3E91CF1249400CE9FC9 /* tab_icon_package_hl@3x.png in Resources */,
 				58070FA01CF6E80200F03F6C /* timebank_add_comment@2x.png in Resources */,
+				DDCD713B1D0A8557009FBE9A /* SendCourierRecordTableViewCell.xib in Resources */,
 				5874A3E81CF1249400CE9FC9 /* tab_icon_package_hl@2x.png in Resources */,
 				DD4127611CF0552F00227066 /* bigpie_order_minus_disable@2x.png in Resources */,
 				DD4127821CF0552F00227066 /* shetuan_icon_location@3x.png in Resources */,
@@ -3824,6 +3838,7 @@
 				DD0B1E411CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.m in Sources */,
 				DDAB05DE1D043087007A6027 /* BusinessPublishProjectOneTableViewCell.m in Sources */,
 				58B7982B1CE0EB26005F1559 /* IndexIntegralMallCollectionReusableView.m in Sources */,
+				DDCD713A1D0A8557009FBE9A /* SendCourierRecordTableViewCell.m in Sources */,
 				DD13CE0A1D00251D000A69FE /* BusinessCenterTableViewCell.m in Sources */,
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
 				DDCD70751D069AA2009FBE9A /* ExchangeGiftsViewController.m in Sources */,
@@ -3836,6 +3851,7 @@
 				5874A3F21CF1405100CE9FC9 /* SelectedImageView.m in Sources */,
 				DDCD712A1D09B677009FBE9A /* EditTeacherTwoTableViewCell.m in Sources */,
 				587FF9D91CF2F8F300AD2131 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				DDCD71361D0A8497009FBE9A /* SendCourierReecordViewController.m in Sources */,
 				587FF9D21CF2F8F300AD2131 /* IQNSArray+Sort.m in Sources */,
 				DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
