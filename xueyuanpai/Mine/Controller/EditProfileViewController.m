@@ -91,18 +91,18 @@
     
     [CommonUtils showToastWithStr:@"提交"];
     
-//    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
-//    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
-//    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
-//    NSData   *newImageData = UIImagePNGRepresentation(newImage);
-//    if ([oldImageData isEqualToData:newImageData]) {
-//        [CommonUtils showToastWithStr:@"请选择头像"];
-//        return;
-//    }
-//    if (avatarImageUploaded.length<=0) {
-//        [CommonUtils showToastWithStr:@"请选择头像"];
-//        return;
-//    }
+    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
+    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
+    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
+    NSData   *newImageData = UIImagePNGRepresentation(newImage);
+    if ([oldImageData isEqualToData:newImageData]) {
+        [CommonUtils showToastWithStr:@"请选择头像"];
+        return;
+    }
+    if (avatarImageUploaded.length<=0) {
+        [CommonUtils showToastWithStr:@"请选择头像"];
+        return;
+    }
     if (_nickName.length>10 || _nickName.length<4) {
         [CommonUtils showToastWithStr:@"请输入4-10个字符"];
         return;
@@ -216,9 +216,7 @@
         cell.inputTextField.delegate = self;
         
         cell.inputTextField.text = [UserAccountManager sharedInstance].userNickname;
-        
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        
+                
         return cell;
         
     }else{
@@ -300,6 +298,8 @@
     __weak typeof(self)weakSelf = self;
     
     if (indexPath.row == 1) {
+        
+        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         //选择性别
         float height = 200;
         
@@ -307,7 +307,7 @@
         selectedView.callBackBlock = ^(NSString * sex){
             [CommonUtils showToastWithStr:sex];
             
-            EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+
             
             cell.contentLabel.text = sex;
             
@@ -315,15 +315,17 @@
             
         };
         [[UIApplication sharedApplication].delegate.window addSubview:selectedView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
     }else if (indexPath.row == 2){
         
         //选择生日
     }else if (indexPath.row == 3){
+        
+         EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         //选择学校
         SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
         schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
-            
-            EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
             
             cell.contentLabel.text = collegeModel.collegeName;
 
@@ -333,6 +335,9 @@
             theCollegeModel = collegeModel;
 
         };
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        
         [self.navigationController pushViewController:schollVC animated:YES];
         
     }else if (indexPath.row == 4){
