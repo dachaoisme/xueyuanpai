@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "ExpressCenterModel.h"
 @interface ExpressCenterViewController : BaseViewController
 
 @end

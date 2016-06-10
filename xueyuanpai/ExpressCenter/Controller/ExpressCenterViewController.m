@@ -16,6 +16,8 @@
     CALayer *_layer;
     CAAnimationGroup *_animaTionGroup;
     CADisplayLink *_disPlayLink;
+    
+    ExpressCenterPeopleModel * expressCenterPeopleModel;
 }
 
 
@@ -77,6 +79,85 @@
     } withFaileBlock:^(NSError *error) {
         
     }];
+}
+///分配de快递员接口
+-(void)requestDistributeExpressPeople
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]expressCenterDistributeExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
+        NSLog(@"%@",expressPeopleCount);
+        ///快递员信息
+        expressCenterPeopleModel = [[ExpressCenterPeopleModel alloc]initWithDic:model.responseCommonDic];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+///发送快递
+-(void)sendExpress
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:expressCenterPeopleModel.ExpressCenterPeopleId forKey:@"courier_id"];
+    ///取件地址
+    [dic setValue:@"地址" forKey:@"address"];
+    ///取件时间
+    [dic setValue:@"取件时间" forKey:@"fetchtime"];
+    ///联系电话
+    [dic setValue:@"联系电话" forKey:@"telphone"];
+    
+    [[HttpClient sharedInstance]expressCenterSendExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode==ResponseCodeSuccess) {
+            ///发件成功
+            [CommonUtils showToastWithStr:@"发件成功"];
+        }else
+        {
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [CommonUtils showToastWithStr:@"发件失败"];
+    }];
+}
+///取消发送快递
+-(void)requestCancelSendExpress
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    ///发快递序号
+    [dic setValue:expressCenterPeopleModel.ExpressCenterPeopleId forKey:@"id"];
+    [[HttpClient sharedInstance]expressCenterCancelExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode==ResponseCodeSuccess) {
+            ///发件成功
+            [CommonUtils showToastWithStr:@"取消发件成功"];
+        }else
+        {
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [CommonUtils showToastWithStr:@"取消发件成功"];
+    }];
+}
+///发送快递记录
+-(void)requestExpressHistory
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    ///发快递序号
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:@"2" forKey:@"page"];
+    [dic setValue:@"10" forKey:@"size"];
+    [[HttpClient sharedInstance]expressCenterExpressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
+            for (NSDictionary * smallDic in arr) {
+                ExpressCenterExpressInfoModel * model = [[ExpressCenterExpressInfoModel alloc]initWithDic:smallDic];
+            }
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
 }
 #pragma mark - 创建中间视图
 - (void)createCenterView{
