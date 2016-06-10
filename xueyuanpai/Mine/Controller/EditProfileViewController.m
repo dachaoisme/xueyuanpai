@@ -278,14 +278,18 @@
         [wSelf.headImageSelectedBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
         [wSelf.headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
         //需要把图片上传到服务器
+        //需要把图片上传到服务器
+        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
+        //需要把图片上传到服务器
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
-        NSData * imageData = UIImagePNGRepresentation(selectedImage);
-        [imageDic setObject:imageData forKey:@"Users[]"];
+        NSData * imageData = UIImagePNGRepresentation(scaleImg);
+        [imageDic setObject:imageData forKey:@"Users[file]"];
         [[HttpClient sharedInstance]uploadImageWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
             avatarImageUploaded = [dic objectForKey:@"picUrl"];
-        } withFaileBlock:^(NSError *error) {
             
+        } withFaileBlock:^(NSError *error) {
+            [CommonUtils showToastWithStr:@"图片上传失败"];
         }];
         
     };

@@ -63,10 +63,21 @@
     
     
     [self createCenterView];
-    
+    [self requestExpressPeopleCount];
     
 }
-
+///获取正在接单的快递员
+-(void)requestExpressPeopleCount
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]expressCenterGetExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
+        NSLog(@"%@",expressPeopleCount);
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 #pragma mark - 创建中间视图
 - (void)createCenterView{
     

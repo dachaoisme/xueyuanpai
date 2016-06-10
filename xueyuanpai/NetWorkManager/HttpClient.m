@@ -637,4 +637,17 @@
         failBlock(error);
     }];
 }
+
+#pragma mark - 快递中心
+- (void)expressCenterGetExpressPeopleWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+   
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXPRESS_CENTER_COUNT withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+    
+}
+
 @end
