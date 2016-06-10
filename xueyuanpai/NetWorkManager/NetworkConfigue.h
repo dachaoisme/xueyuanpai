@@ -141,4 +141,17 @@
 ///收藏相关-是否已经添加收藏
 #define METHOD_COLLECTION_CHECK                               @"v1/mark/check?"
 
+
+#pragma mark - 快递中心
+///快递中心：正在接收快递的快递员人数
+#define METHOD_EXPRESS_CENTER_COUNT                               @"v1/express/working?"
+///快递中心：分配快递员接口
+#define METHOD_EXPRESS_CENTER_DISTRIBUTE                          @"v1/express/getcourier?"
+///快递中心：发快递接口
+#define METHOD_EXPRESS_CENTER_SEND_EXPRESS                        @"v1/express/send?"
+///快递中心：取消发快递接口
+#define METHOD_EXPRESS_CENTER_CANCEL_EXPRESS                      @"v1/express/cancel?"
+///快递中心：我的发快递历史记录接口
+#define METHOD_EXPRESS_CENTER_EXPRESS_HISTORY                     @"v1/express/history?"
+
 #endif /* NetworkConfigue_h */

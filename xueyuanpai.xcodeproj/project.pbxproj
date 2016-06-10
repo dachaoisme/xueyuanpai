@@ -248,6 +248,7 @@
 		58F80A041D0931B30099DCCD /* UinversityHotActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A031D0931B30099DCCD /* UinversityHotActivityViewController.m */; };
 		58F80A071D09336C0099DCCD /* UinversityStarSocietyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A061D09336C0099DCCD /* UinversityStarSocietyViewController.m */; };
 		58F80A0A1D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A091D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m */; };
+		58F80A0D1D0A495C0099DCCD /* ExpressCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A0C1D0A495C0099DCCD /* ExpressCenterModel.m */; };
 		58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */; };
 		58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996461CF598A700D67C63 /* TimeBankModel.m */; };
 		DD0B1E3D1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1E3C1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m */; };
@@ -999,6 +1000,8 @@
 		58F80A061D09336C0099DCCD /* UinversityStarSocietyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UinversityStarSocietyViewController.m; sourceTree = "<group>"; };
 		58F80A081D0934680099DCCD /* UinversitySocietyRecruitmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UinversitySocietyRecruitmentViewController.h; sourceTree = "<group>"; };
 		58F80A091D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UinversitySocietyRecruitmentViewController.m; sourceTree = "<group>"; };
+		58F80A0B1D0A495C0099DCCD /* ExpressCenterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressCenterModel.h; sourceTree = "<group>"; };
+		58F80A0C1D0A495C0099DCCD /* ExpressCenterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressCenterModel.m; sourceTree = "<group>"; };
 		58F996421CF5874900D67C63 /* LDCPullDownMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LDCPullDownMenuView.h; sourceTree = "<group>"; };
 		58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDCPullDownMenuView.m; sourceTree = "<group>"; };
 		58F996451CF598A700D67C63 /* TimeBankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankModel.h; sourceTree = "<group>"; };
@@ -2861,6 +2864,8 @@
 		DDCD70921D06B692009FBE9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58F80A0B1D0A495C0099DCCD /* ExpressCenterModel.h */,
+				58F80A0C1D0A495C0099DCCD /* ExpressCenterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3648,6 +3653,7 @@
 				587FF9D41CF2F8F300AD2131 /* IQUITextFieldView+Additions.m in Sources */,
 				DDE8C2321CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m in Sources */,
 				DDD0BD891CF980E600073290 /* RecruitmentThreeStyleTableViewCell.m in Sources */,
+				58F80A0D1D0A495C0099DCCD /* ExpressCenterModel.m in Sources */,
 				58F67C301CD9CF9500D55BE0 /* MJRefreshGifHeader.m in Sources */,
 				587FF9DF1CF2F8F300AD2131 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				583D65D41CDA824200830BBE /* BaseNavView.m in Sources */,
