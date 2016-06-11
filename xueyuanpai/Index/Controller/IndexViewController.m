@@ -355,7 +355,7 @@
     //需要先判断是否已经登陆
     if (yesLogin) {
         //收件箱界面
-        [CommonUtils showToastWithStr:@"收件箱"];
+//        [CommonUtils showToastWithStr:@"收件箱"];
     }else{
         //进入登陆注册页面
         

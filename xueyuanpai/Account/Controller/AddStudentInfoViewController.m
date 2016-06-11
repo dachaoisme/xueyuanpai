@@ -156,7 +156,7 @@
     
     SelectedSexView * selectedView = [[SelectedSexView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
     selectedView.callBackBlock = ^(NSString * sex){
-        [CommonUtils showToastWithStr:sex];
+//        [CommonUtils showToastWithStr:sex];
         [sexBtn setTitle:sex forState:UIControlStateNormal];
     };
     [[UIApplication sharedApplication].delegate.window addSubview:selectedView];

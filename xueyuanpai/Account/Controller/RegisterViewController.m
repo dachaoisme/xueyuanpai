@@ -168,9 +168,6 @@
 //        [self.navigationController pushViewController:teacherInfoVC animated:YES];
 //    }
     
-    
-    [CommonUtils showToastWithStr:@"提交并注册"];
-    
     /*
      
      参数:

@@ -16,5 +16,7 @@
 ///内容
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
+///显示图片的imageView
+@property (weak, nonatomic) IBOutlet UIImageView *showImageView;
 
 @end

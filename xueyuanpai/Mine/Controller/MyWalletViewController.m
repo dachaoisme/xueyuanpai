@@ -132,14 +132,12 @@
 #pragma mark - 充值的响应方法
 - (void)leftButtonAction{
     
-//    [CommonUtils showToastWithStr:@"充值"];
     TopUpViewController *topUpVC = [[TopUpViewController alloc] init];
     [self.navigationController pushViewController:topUpVC animated:YES];
 }
 #pragma mark - 提现的响应方法
 - (void)rightButtonAction{
     
-//    [CommonUtils showToastWithStr:@"提现"];
     WithdrawalViewController *withdrawalVC = [[WithdrawalViewController alloc] init];
     [self.navigationController pushViewController:withdrawalVC animated:YES];
 }

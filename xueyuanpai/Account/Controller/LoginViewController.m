@@ -230,7 +230,6 @@
 #pragma mark - 忘记密码
 -(void)forgetPasswordAccount:(UIButton *)sender
 {
-//    [CommonUtils showToastWithStr:@"忘记密码"];
     ForgetPasswordViewController * forgetPasswordVC = [[ForgetPasswordViewController alloc]init];
     [self.navigationController pushViewController:forgetPasswordVC animated:YES];
 }
@@ -258,9 +257,8 @@
     [dic setObject:personalAccountBtn.selected?@"1":@"2" forKey:@"role"];
     [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-//            [CommonUtils showToastWithStr:@"登陆成功"];
-            NSString * userid = [model.responseCommonDic objectForKey:@"user_id"];
-            NSString * points = [model.responseCommonDic objectForKey:@"points"];
+            [CommonUtils showToastWithStr:@"登陆成功"];
+
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
@@ -274,7 +272,6 @@
 #pragma mark - 注册
 -(void)registerAccount:(UIButton *)sender
 {
-//    [CommonUtils showToastWithStr:@"注册"];
     
     
     if (registerRoleAlertView) {
@@ -300,7 +297,6 @@
 #pragma mark - 随便看看
 -(void)justToLook:(UIButton *)sender
 {
-//    [CommonUtils showToastWithStr:@"随便看看"];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {

@@ -15,6 +15,8 @@
 
 #import "AddProjectLeaderViewController.h"
 
+#import "BusinessPublishProjectTheeTableViewCell.h"
+
 @interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     BusinessCenterPublicProgectModel * publicProgectModel;
@@ -115,6 +117,8 @@
     [tableView registerNib:[UINib nibWithNibName:@"BusinessPublishProjectTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     [tableView registerClass:[CommonTableViewCell class] forCellReuseIdentifier:@"threeCell"];
     
+    
+    [tableView registerNib:[UINib nibWithNibName:@"BusinessPublishProjectTheeTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"THREECELL"];
 }
 
 #pragma mark - 发布按钮
@@ -285,6 +289,7 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
                 
                 return cell;
                 
@@ -322,15 +327,11 @@
 
             }else{
                 
-                BusinessPublishProjectTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+                BusinessPublishProjectTheeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"THREECELL" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
                 
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                
-                cell.titleLabel.text = @"项目领域";
-                cell.contentLabel.text = @"请选择分类";
-                
                 
                 
                 return cell;
@@ -444,14 +445,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     ///跳转到选择照片页面
     if (indexPath.section==0&&indexPath.row==1) {
-        
+        BusinessPublishProjectTwoTableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
         float height = 200;
         
         selectedImageView = [[SelectedImageView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height) withSuperController:self];
-        //weakSelf(wSelf)
+        weakSelf(weakSelf);
         selectedImageView.callBackBlock = ^(UIImage * selectedImage){
             ///压缩图片，不能过大
             UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
@@ -464,8 +465,9 @@
             [[HttpClient sharedInstance]uploadJobMarketIconWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
                 NSArray * imageArr = (NSArray *)model.responseCommonDic;
                 if (imageArr &&imageArr.count>0) {
-                    publicProgectModel.businessCenterPublicProgectImage = [imageArr firstObject];
+                     publicProgectModel.businessCenterPublicProgectImage = [imageArr firstObject];
                 }
+                cell.showImageView.image = selectedImage;
             } withFaileBlock:^(NSError *error) {
                 NSLog(@"%@",error);
             }];
@@ -485,7 +487,7 @@
         [self.navigationController pushViewController:addProjectLeaderVC animated:YES];
     }
     
-    if (indexPath.section==2) {
+    if (indexPath.section==2 && indexPath.row == 1) {
 
         LTPickerView* pickerView = [LTPickerView new];
         pickerView.dataSource = businessCenterProgectCategoryTitleArr;//设置要显示的数据
@@ -497,7 +499,7 @@
             //obj:LTPickerView对象
             //str:选中的字符串
             //num:选中了第几行
-            BusinessPublishProjectTwoTableViewCell * smallCell = (BusinessPublishProjectTwoTableViewCell*)cell;
+            BusinessPublishProjectTheeTableViewCell * smallCell = [tableView cellForRowAtIndexPath:indexPath];
             NSLog(@"选择了第%d行的%@",num,str);
             publicProgectModel.businessCenterPublicProgectDetailField = [businessCenterProgectCategoryTitleArr objectAtIndex:num];
             publicProgectModel.businessCenterPublicProgectDetailFieldId = [[businessCenterProgectCategoryModelArr objectAtIndex:num] BusinessCenterProgectId ];

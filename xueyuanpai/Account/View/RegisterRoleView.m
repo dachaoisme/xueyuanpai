@@ -83,7 +83,6 @@
     [control removeFromSuperview];
     if (sender.tag == 10001) {
         if ([self.delegate respondsToSelector:@selector(registerRoleWithType:)]) {
-            [CommonUtils showToastWithStr:@"我是导师"];
             [self.delegate registerRoleWithType:RegisterRoleTypeTeacher];
         }
         
@@ -91,7 +90,6 @@
     }else{
         if ([self.delegate respondsToSelector:@selector(registerRoleWithType:)]) {
             [self.delegate registerRoleWithType:RegisterRoleOfStudent];
-            [CommonUtils showToastWithStr:@"我是学生"];
         }
         
     }

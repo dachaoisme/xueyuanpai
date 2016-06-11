@@ -291,8 +291,6 @@
 
 #pragma mark - 我的钱包按钮的跳转事件
 - (void)leftAction{
-   
-//    [CommonUtils showToastWithStr:@"我的钱包"];
     
     
     MyWalletViewController *walletVC = [[MyWalletViewController alloc] init];
@@ -304,9 +302,7 @@
 
 #pragma mark - 我的积分按钮的跳转事件
 - (void)rightAction{
-    
-//    [CommonUtils showToastWithStr:@"我的积分"];
-    
+        
     MineIntegralViewController *integralVC = [[MineIntegralViewController alloc] init];
     
     [self.navigationController pushViewController:integralVC animated:YES];

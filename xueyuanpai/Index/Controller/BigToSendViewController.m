@@ -207,7 +207,7 @@
 
 -(void)selectedImageIndex:(NSInteger)index
 {
-    [CommonUtils showToastWithStr:@"点击轮播图"];
+//    [CommonUtils showToastWithStr:@"点击轮播图"];
 }
 
 - (void)didReceiveMemoryWarning {

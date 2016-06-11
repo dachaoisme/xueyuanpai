@@ -271,7 +271,6 @@
         return;
     }
     
-    [CommonUtils showToastWithStr:@"发布"];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setObject:_timeBankSubmitModel.timeBankSubmitTitle forKey:@"title"];

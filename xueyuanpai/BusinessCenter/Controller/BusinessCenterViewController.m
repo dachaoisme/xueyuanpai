@@ -332,18 +332,20 @@
         
         //根据不同的身份跳转不同的详情
         
-        if ([UserAccountManager sharedInstance].userRole == UserInfoRoleStudent) {
+        if ([UserAccountManager sharedInstance].userRole == UserInfoRoleTeacher) {
             
-            //跳转项目详情
-            BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
+
+            
+            //跳转导师项目详情
+            BussinessProjectTeacherDetailViewController *projectVC = [[BussinessProjectTeacherDetailViewController alloc] init];
             BusinessCenterProgectModel * businessCenterProgectModel = [businessProjectModelListArr objectAtIndex:indexPath.row -1];
             projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
             [self.navigationController pushViewController:projectVC animated:YES];
 
         }else{
-        
-            //跳转导师项目详情
-            BussinessProjectTeacherDetailViewController *projectVC = [[BussinessProjectTeacherDetailViewController alloc] init];
+            
+            //跳转项目详情
+            BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
             BusinessCenterProgectModel * businessCenterProgectModel = [businessProjectModelListArr objectAtIndex:indexPath.row -1];
             projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
             [self.navigationController pushViewController:projectVC animated:YES];

@@ -89,7 +89,6 @@
 #pragma mark - 提交按钮
 - (void)commitAction{
     
-    [CommonUtils showToastWithStr:@"提交"];
     
     UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
     NSData   *oldImageData = UIImagePNGRepresentation(oldImage);

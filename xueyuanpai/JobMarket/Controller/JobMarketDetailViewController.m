@@ -75,7 +75,6 @@
     if (yesIsCollection==YES) {
         return;
     }
-    [CommonUtils showToastWithStr:@"收藏"];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.jobMarketId forKey:@"obj_id"];

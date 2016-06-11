@@ -492,7 +492,6 @@ static NSString *Identifier = @"photoCollectionViewCell";
 #pragma mark - 确认提交按钮响应方法
 - (void)commitAction{
     
-    [CommonUtils showToastWithStr:@"确认提交"];
     NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
     for (int i = 0; i<self.pictureImages.count; i++) {
         UIImage *img = [self.pictureImages objectAtIndex:i];

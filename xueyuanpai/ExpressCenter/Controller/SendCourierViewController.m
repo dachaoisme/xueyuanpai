@@ -101,9 +101,6 @@
 #pragma mark - 发送取件请求
 - (void)sendTakeRequest{
     
-//    [CommonUtils showToastWithStr:@"发送取件请求"];
-
-    
     [self requestSendCourier];
 }
 
