@@ -32,7 +32,7 @@
         
         self.timeBankId                = [dic stringForKey:@"id"];
         self.timeBankUsername          = [dic stringForKey:@"username"];
-        self.timeBankIcon              = [CommonUtils getEffectiveUrlWithUrl:[dic stringForKey:@"icon"] withType:1];
+        self.timeBankIcon              = [dic stringForKey:@"icon"] ;
         self.timeBankTitle             = [dic stringForKey:@"title"];
         self.timeBankAppointmentTime   = [dic stringForKey:@"appointment_time"];
         self.timeBankArea              = [dic stringForKey:@"area"];
