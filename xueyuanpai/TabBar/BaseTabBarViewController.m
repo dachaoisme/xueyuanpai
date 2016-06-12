@@ -12,7 +12,11 @@
 #import "IndexViewController.h"
 #import "LoginViewController.h"
 @interface BaseTabBarViewController ()
-
+{
+    IndexViewController *IndexVC;
+    BusinessCenterViewController *BusinessCenterVC;
+    ExpressCenterViewController *ExpressCenterVC;
+}
 @end
 
 @implementation BaseTabBarViewController
@@ -21,13 +25,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabBar.hidden = YES;
-    IndexViewController *IndexVC = [[IndexViewController alloc] init];
+    IndexVC = [[IndexViewController alloc] init];
     UINavigationController * IndexNavVC=[[UINavigationController alloc] initWithRootViewController:IndexVC];
     
-    BusinessCenterViewController *BusinessCenterVC = [[BusinessCenterViewController alloc] init];
+    BusinessCenterVC = [[BusinessCenterViewController alloc] init];
     UINavigationController * BusinessCenterNavVC=[[UINavigationController alloc] initWithRootViewController:BusinessCenterVC];
     
-    ExpressCenterViewController *ExpressCenterVC = [[ExpressCenterViewController alloc] init];
+    ExpressCenterVC = [[ExpressCenterViewController alloc] init];
     UINavigationController *ExpressCenterNavVC = [[UINavigationController alloc] initWithRootViewController:ExpressCenterVC];
     
     [self setViewControllers:[NSArray arrayWithObjects:
@@ -97,10 +101,24 @@
 -(void)tabBarSelected:(NSInteger)index
 {
 
-    self.selectedIndex=index;
-    [_baseTabBarView setSelected:index];
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    app.navController=(UINavigationController*)self.selectedViewController;
+    if ([UserAccountManager sharedInstance].isLogin==NO) {
+        if (self.selectedIndex==0) {
+            LoginViewController * loginVC = [[LoginViewController alloc]init];
+            [IndexVC.navigationController pushViewController:loginVC  animated:loginVC];
+        }else if (self.selectedIndex==1){
+            LoginViewController * loginVC = [[LoginViewController alloc]init];
+            [BusinessCenterVC.navigationController pushViewController:loginVC  animated:loginVC];
+        }else{
+            
+        }
+        
+    }else{
+        self.selectedIndex=index;
+        [_baseTabBarView setSelected:index];
+        AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+        app.navController=(UINavigationController*)self.selectedViewController;
+    }
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
