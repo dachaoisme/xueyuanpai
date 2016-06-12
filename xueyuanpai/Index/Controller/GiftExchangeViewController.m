@@ -32,7 +32,6 @@
     [self setTitle:@"积分兑换"];
     self.view.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     self.totalPoint = [UserAccountManager sharedInstance].userUsablePoints;
-    self.mallModel.indexMallPoints = @"10";
     [self setcontentView];
 }
 
@@ -258,6 +257,14 @@
      user_id int  必需    用户序号
      number  int  必需    兑换数量     >0
      */
+    if ([[UserAccountManager sharedInstance].userUsablePoints integerValue]<[self.mallModel.indexMallPoints integerValue]) {
+        [CommonUtils showToastWithStr:@"积分不足"];
+        return;
+    }
+    if ([centerTextField.text integerValue]<=0) {
+        [CommonUtils showToastWithStr:@"您为选择份数"];
+        return;
+    }
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:self.mallModel.indexMallId forKey:@"good_id"];
     [dic setObject:needPointValueLable.text forKey:@"points"];
