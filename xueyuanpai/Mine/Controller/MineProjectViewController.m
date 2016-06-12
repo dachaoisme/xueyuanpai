@@ -67,7 +67,7 @@
     
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     BusinessCenterProgectModel * model = [projectModelListArr objectAtIndex:indexPath.row];
-    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterProgectImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterProgectImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
     cell.titleLabel.text = model.businessCenterProgectTitle;
     cell.contentLabel.text = model.businessCenterProgectBrief;
     

@@ -16,7 +16,7 @@
     if (self) {
         
         self.jobMarketId           = [dic stringForKey:@"id"];
-        self.jobMarketIdThumbUrl   =[CommonUtils getEffectiveUrlWithUrl:[dic stringForKey:@"thumbUrl"] withType:1] ;
+        self.jobMarketIdThumbUrl   =[dic stringForKey:@"thumbUrl"];
         self.jobMarketTitle        = [dic stringForKey:@"title"];
         self.jobMarketOriginPrice  = [dic stringForKey:@"origin_price"];
         self.jobMarketSalePrice    = [dic stringForKey:@"sale_price"];
