@@ -104,10 +104,10 @@
     if ([UserAccountManager sharedInstance].isLogin==NO) {
         if (self.selectedIndex==0) {
             LoginViewController * loginVC = [[LoginViewController alloc]init];
-            [IndexVC.navigationController pushViewController:loginVC  animated:loginVC];
+            [IndexVC.navigationController pushViewController:loginVC  animated:YES];
         }else if (self.selectedIndex==1){
             LoginViewController * loginVC = [[LoginViewController alloc]init];
-            [BusinessCenterVC.navigationController pushViewController:loginVC  animated:loginVC];
+            [BusinessCenterVC.navigationController pushViewController:loginVC  animated:YES];
         }else{
             
         }
