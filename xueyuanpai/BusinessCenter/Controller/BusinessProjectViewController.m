@@ -13,6 +13,8 @@
 
 #import "BussinessProjectTeacherDetailViewController.h"
 
+#import "LoginViewController.h"
+
 @interface BusinessProjectViewController ()<UITableViewDataSource,UITableViewDelegate,LDCPullDownMenuViewDelegate,UISearchBarDelegate>
 {
     NSString * keyword;
@@ -139,27 +141,39 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //根据不同的身份跳转不同的详情
-    
-    if ([UserAccountManager sharedInstance].userRole == UserInfoRoleStudent) {
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
         
-        //跳转项目详情
-        BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
-        BusinessCenterProgectModel * businessCenterProgectModel = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
-        projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
-        [self.navigationController pushViewController:projectVC animated:YES];
+        //根据不同的身份跳转不同的详情
+        
+        if ([UserAccountManager sharedInstance].userRole == UserInfoRoleStudent) {
+            
+            //跳转项目详情
+            BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
+            BusinessCenterProgectModel * businessCenterProgectModel = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
+            projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
+            [self.navigationController pushViewController:projectVC animated:YES];
+            
+            
+        }else{
+            
+            //跳转导师项目详情
+            BussinessProjectTeacherDetailViewController *projectVC = [[BussinessProjectTeacherDetailViewController alloc] init];
+            BusinessCenterProgectModel * businessCenterProgectModel = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
+            projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
+            [self.navigationController pushViewController:projectVC animated:YES];
+            
+            
+        }
 
-        
     }else{
         
-        //跳转导师项目详情
-        BussinessProjectTeacherDetailViewController *projectVC = [[BussinessProjectTeacherDetailViewController alloc] init];
-        BusinessCenterProgectModel * businessCenterProgectModel = [businessCenterProgectModelListArr objectAtIndex:indexPath.row];
-        projectVC.projectId = businessCenterProgectModel.businessCenterProgectId;
-        [self.navigationController pushViewController:projectVC animated:YES];
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
         
-               
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
+
+    
 
     
 }

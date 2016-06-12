@@ -11,6 +11,8 @@
 #import "BusinessCenterTableViewCell.h"
 #import "BusinessClassDetailViewController.h"
 
+#import "LoginViewController.h"
+
 @interface BusinessClassRoomViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -89,14 +91,25 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     
-    //创业讲堂
-    BusinessClassDetailViewController *detailVC = [[BusinessClassDetailViewController alloc] init];
-    
-    BusinessCenterSchoolRoomModel * model = [businessCenterClassRoomModelListArr objectAtIndex:indexPath.row];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        //创业讲堂
+        BusinessClassDetailViewController *detailVC = [[BusinessClassDetailViewController alloc] init];
+        
+        BusinessCenterSchoolRoomModel * model = [businessCenterClassRoomModelListArr objectAtIndex:indexPath.row];
+        
+        detailVC.model = model;
+        
+        [self.navigationController pushViewController:detailVC animated:YES];
 
-    detailVC.model = model;
+    }else{
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
+    }
+
     
-    [self.navigationController pushViewController:detailVC animated:YES];
     
     
 }
