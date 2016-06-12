@@ -106,7 +106,7 @@
             NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
             if (status==1) {
                 ///已收藏
-                [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
                 yesIsCollection = YES;
             }else{
                 ///未收藏

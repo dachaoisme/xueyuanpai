@@ -16,6 +16,8 @@
     BusinessCenterTutorDetailModel *tutorDetailModel;
 }
 @property(nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
 @end
 
 @implementation BusinessTeacherDetailViewController
@@ -53,6 +55,7 @@
     //收藏按钮
     UIBarButtonItem * favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
     self.navigationItem.rightBarButtonItems = @[favoriteButtonItem,shareButtonItem];
+    self.favoriteButtonItem = favoriteButtonItem;
     
     
 }
@@ -74,6 +77,8 @@
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"收藏成功"];
+            
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
