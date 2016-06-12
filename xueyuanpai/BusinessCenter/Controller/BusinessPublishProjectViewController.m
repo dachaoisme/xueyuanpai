@@ -303,6 +303,7 @@
             cell.textLabel.font = [UIFont systemFontOfSize:14];
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
             cell.textLabel.text = @"添加负责人信息";
             
