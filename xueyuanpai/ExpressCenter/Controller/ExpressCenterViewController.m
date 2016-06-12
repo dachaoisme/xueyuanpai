@@ -46,6 +46,10 @@
 
 
 
+@property (nonatomic,strong)NSString *count;
+
+
+
 
 @end
 
@@ -222,6 +226,8 @@
     [[HttpClient sharedInstance]expressCenterGetExpressPeopleWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSString * expressPeopleCount = [model.responseCommonDic objectForKey:@"count"];
         
+        self.count = expressPeopleCount;
+        
         _showNumberCourier.text = [NSString stringWithFormat:@"本校有%@个快递员正在接单",expressPeopleCount];
         NSLog(@"%@",expressPeopleCount);
     } withFaileBlock:^(NSError *error) {
@@ -301,9 +307,17 @@
 #pragma mark - 我要发快递按钮的响应方法
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
     
-    [self.navigationController pushViewController:sendVC animated:YES];
+    if ([self.count intValue] > 0) {
+        SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
+        
+        [self.navigationController pushViewController:sendVC animated:YES];
+
+    }else{
+        
+        [CommonUtils showToastWithStr:@"暂无快递员分配"];
+    }
+    
 
     
 }
