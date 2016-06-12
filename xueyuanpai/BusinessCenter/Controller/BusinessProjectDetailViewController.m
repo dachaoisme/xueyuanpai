@@ -84,7 +84,7 @@
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"收藏成功"];
-            [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
