@@ -8,6 +8,8 @@
 
 #import "UinversitySocietyRecruitmentViewController.h"
 
+#import "LoginViewController.h"
+
 @interface UinversitySocietyRecruitmentViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     int pageSize;
@@ -110,9 +112,21 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     
-    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc] init];
-    detailVC.model = [communityNewArray objectAtIndex:indexPath.row];
-    [self.superViewController.navigationController pushViewController:detailVC animated:YES];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc] init];
+        detailVC.model = [communityNewArray objectAtIndex:indexPath.row];
+        [self.superViewController.navigationController pushViewController:detailVC animated:YES];
+    }else{
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.superViewController.navigationController pushViewController:loginVC animated:YES];
+        
+    }
+
+    
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
