@@ -48,6 +48,8 @@
     
     self.view.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     self.title = @"创业项目";
+    pageNo = 1;
+    pageSize = 10;
     businessCenterProgectModelListArr      = [NSMutableArray array];
     businessCenterProgectCategoryModelArr  = [NSMutableArray array];
     businessCenterProgectCategoryTitleArr  = [NSMutableArray array];
@@ -107,6 +109,8 @@
     //注册cell
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -260,9 +264,6 @@
      sort         int    非必需    排序          默认1  1最新发布 2点击最多 3申领最多 （客户端组装排序文字）
      
      */
-    pageNo = 1;
-    pageSize = 10;
-    [businessCenterProgectModelListArr removeAllObjects];
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
@@ -272,22 +273,34 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterGetProgectListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 BusinessCenterProgectModel * model = [[BusinessCenterProgectModel alloc]initWithDic:smallDic];
                 [businessCenterProgectModelListArr  addObject:model];
             }
-           
+            if (pageNo>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
         }else{
             
         }
          [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
     }];
     
 }
+-(void)requestMoreData
+{
+    pageNo = pageNo +1;
+    [self requestToGetBusinessProgectList];
+}
+
+
 
 #pragma mark - 搜索
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
@@ -360,6 +373,7 @@
         
     }
     ///清楚之前旧数据
+    pageNo = 1;
     [businessCenterProgectModelListArr removeAllObjects];
     [self requestToGetBusinessProgectList];
 }

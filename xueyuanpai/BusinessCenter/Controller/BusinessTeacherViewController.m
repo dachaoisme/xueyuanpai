@@ -17,6 +17,8 @@
 {
     NSString * keyword;
     NSMutableArray * tutorStarModelListArr;
+    int pageNo ;
+    int pageSize ;
 }
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -38,7 +40,8 @@
     
     self.title = @"创业导师";
     tutorStarModelListArr = [NSMutableArray array];
-    
+    pageNo=1;
+    pageSize=10;
     [self createLeftBackNavBtn];
     
     [self createTableView];
@@ -91,7 +94,7 @@
     //注册cell
     [tableView registerNib:[UINib nibWithNibName:@"BusinessTeacherTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
-    
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -182,21 +185,29 @@
 #pragma mark - 请求数据 创业导师
 -(void)requestToGetBusinessTeachersList
 {
-    int pageNo = 1;
-    int pageSize = 10;
+
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
-    [dic setValue:keyword forKey:@"keyword"];
+    if (keyword.length>0) {
+        [dic setValue:keyword forKey:@"keyword"];
+    }
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterGetTeachersListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 BusinessCenterTutorModel * model = [[BusinessCenterTutorModel alloc]initWithDic:smallDic];
                 [tutorStarModelListArr  addObject:model];
+            }
+            ///处理上拉加载更多逻辑
+            if (pageNo>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
             }
             [self.tableView reloadData];
         }else{
@@ -204,8 +215,14 @@
         }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
     }];
     
+}
+-(void)requestMoreData
+{
+    pageNo = pageNo+1;
+    [self requestToGetBusinessTeachersList];
 }
 /*
  #pragma mark - Navigation
