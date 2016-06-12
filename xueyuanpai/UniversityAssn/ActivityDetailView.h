@@ -27,7 +27,9 @@
 @property (nonatomic,strong)UILabel *locationLable;
 
 ///显示详情的lable
-@property (nonatomic,strong)UILabel *detailLabel;
+//@property (nonatomic,strong)UILabel *detailLabel;
+
+@property (nonatomic,strong)UIWebView *webView;
 
 
 

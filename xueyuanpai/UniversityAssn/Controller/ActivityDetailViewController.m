@@ -77,7 +77,8 @@
     _detailView.locationLable.text = _model.place;
     
     
-    _detailView.detailLabel.text = _model.content;
+    //显示富文本的内容
+    [_detailView.webView loadHTMLString:_model.content baseURL:nil];
     
 }
 

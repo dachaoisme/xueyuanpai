@@ -8,6 +8,8 @@
 
 #import "UinversityHotActivityViewController.h"
 
+#import "LoginViewController.h"
+
 @interface UinversityHotActivityViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     int pageSize;
@@ -100,23 +102,36 @@
         HotActivityModel *model = [hotActivityDataArray objectAtIndex:indexPath.row];
         
         [cell bindModel:model];
+        
+        
+        
+
     }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return 280;
+    return 280 ;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    
-    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc] init];
-    detailVC.model = [hotActivityDataArray objectAtIndex:indexPath.row];
-    [self.superViewController.navigationController pushViewController:detailVC animated:YES];
+//    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc] init];
+        detailVC.model = [hotActivityDataArray objectAtIndex:indexPath.row];
+        [self.superViewController.navigationController pushViewController:detailVC animated:YES];
+//    }else{
+//        
+//        LoginViewController *loginVC = [[LoginViewController alloc] init];
+//        
+//        [self.superViewController.navigationController pushViewController:loginVC animated:YES];
+//        
+//    }
+
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

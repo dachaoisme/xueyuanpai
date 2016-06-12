@@ -23,8 +23,6 @@
 ///显示食堂位置的lable
 @property (nonatomic,strong)UILabel *locationLable;
 
-//显示详情的lable
-@property (nonatomic,strong)UILabel *detailLabel;
 @end
 
 @implementation HotActivityTableViewCell
@@ -109,6 +107,7 @@
     self.timeLabel.text = model.createTime;
     self.locationLable.text = model.place;
     self.detailLabel.text = model.brief;
+    
     
 }
 

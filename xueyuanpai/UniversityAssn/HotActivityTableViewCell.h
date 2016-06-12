@@ -11,6 +11,10 @@
 @class HotActivityModel;
 @interface HotActivityTableViewCell : UITableViewCell
 
+//显示详情的lable
+@property (nonatomic,strong)UILabel *detailLabel;
+
+
 - (void)bindModel:(HotActivityModel *)model;
 
 @end

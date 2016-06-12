@@ -84,14 +84,23 @@
     [bottomScrollView addSubview:locationLable];
     self.locationLable = locationLable;
 
-    //显示详情的lable
-    UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(locationLable.frame) + 20, [[UIScreen mainScreen] bounds].size.width - 20, 100)];
-    detailLabel.font = [UIFont systemFontOfSize:14.0];
-    detailLabel.numberOfLines = 0;
-    detailLabel.text = @"你好";
-    detailLabel.textColor = [CommonUtils colorWithHex:@"666666"];
-    [bottomScrollView addSubview:detailLabel];
-    self.detailLabel = detailLabel;
+//    //显示详情的lable
+//    UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(locationLable.frame) + 20, [[UIScreen mainScreen] bounds].size.width - 20, 100)];
+//    detailLabel.font = [UIFont systemFontOfSize:14.0];
+//    detailLabel.numberOfLines = 0;
+//    detailLabel.text = @"你好";
+//    detailLabel.textColor = [CommonUtils colorWithHex:@"666666"];
+//    [bottomScrollView addSubview:detailLabel];
+//    self.detailLabel = detailLabel;
+    
+    
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(locationLable.frame) + 20, [[UIScreen mainScreen] bounds].size.width - 20, 100)];
+    webView.scrollView.backgroundColor = [UIColor whiteColor];
+    webView.backgroundColor = [UIColor whiteColor];
+    [bottomScrollView addSubview:webView];
+    webView.scrollView.scrollEnabled = NO;
+    self.webView = webView;
+    
 
     
     //图片
@@ -105,22 +114,24 @@
 - (void)adjustSubviewsWithContent:(NSString *)content
 {
     //计算活动内容的高度
-    CGRect contentRect = [content boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 20, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12.0]} context:nil];
+    CGRect contentRect = [content boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 20, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0]} context:nil];
     
-    CGFloat height = TopHeight+contentRect.size.height+100;
+    CGFloat height = TopHeight+contentRect.size.height;
     
     if (height < self.bounds.size.height) {
         
-        height = self.bounds.size.height + 100;
+        height = self.bounds.size.height;
     }
     
     _bottomScrollView.contentSize = CGSizeMake([[UIScreen mainScreen] bounds].size.width , height);
     
     
     
-    CGRect contentViewRect = _detailLabel.frame;
+    CGRect contentViewRect = _webView.frame;
     contentViewRect.size.height = contentRect.size.height;
-    _detailLabel.frame = contentViewRect;
+    _webView.frame = contentViewRect;
+    
+  
     
     
 }
