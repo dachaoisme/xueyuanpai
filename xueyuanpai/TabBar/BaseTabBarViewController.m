@@ -101,7 +101,7 @@
 -(void)tabBarSelected:(NSInteger)index
 {
 
-    if ([UserAccountManager sharedInstance].isLogin==NO) {
+    if ([UserAccountManager sharedInstance].isLogin==NO &&index==2) {
         if (self.selectedIndex==0) {
             LoginViewController * loginVC = [[LoginViewController alloc]init];
             [IndexVC.navigationController pushViewController:loginVC  animated:YES];
@@ -111,7 +111,6 @@
         }else{
             
         }
-        
     }else{
         self.selectedIndex=index;
         [_baseTabBarView setSelected:index];
