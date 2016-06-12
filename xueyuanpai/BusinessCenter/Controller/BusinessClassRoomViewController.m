@@ -57,6 +57,7 @@
     //注册cell
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -103,30 +104,41 @@
 
 -(void)requestToGetBusinessCompetitionList
 {
-    pageNo = 1;
-    pageSize = 10;
-    
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterGetSchoolRoomListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 BusinessCenterSchoolRoomModel * model = [[BusinessCenterSchoolRoomModel alloc]initWithDic:smallDic];
                 [businessCenterClassRoomModelListArr  addObject:model];
             }
+            if (pageNo>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+                
+            }
             [self.tableView reloadData];
         }else{
-            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self.tableView.footer endRefreshing];
         }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
     
 }
+-(void)requestMoreData
+{
+    pageNo = pageNo +1;
+    [self requestToGetBusinessCompetitionList];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

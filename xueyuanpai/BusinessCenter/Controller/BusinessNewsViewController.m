@@ -34,7 +34,8 @@
     businessCenterModelListArr  = [NSMutableArray array];
     
     self.title = @"创业新闻";
-    
+    pageNo = 1;
+    pageSize = 10;
     
     [self createLeftBackNavBtn];
     
@@ -56,6 +57,8 @@
     //注册cell
     
     [_tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -105,20 +108,24 @@
 
 -(void)requestToGetBusinessNewsList
 {
-    pageNo = 1;
-    pageSize = 10;
-    
+
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 BusinessCenterNewsModel * model = [[BusinessCenterNewsModel alloc]initWithDic:smallDic];
                 [businessCenterModelListArr  addObject:model];
+            }
+            ///处理上拉加载更多逻辑
+            if (pageNo>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
             }
             [self.tableView reloadData];
         }else{
@@ -126,11 +133,15 @@
         }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
     }];
     
 }
 
-
+-(void)requestMoreData
+{
+    pageNo = pageNo+1;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
