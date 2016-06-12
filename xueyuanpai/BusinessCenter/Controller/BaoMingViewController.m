@@ -57,14 +57,26 @@
     self.tableView = tableView;
     
     //设置tableView的footView
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(15, 15, SCREEN_WIDTH - 30, 48);
-    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
-    [button setTitle:@"提交" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    tableView.tableFooterView = button;
-
+    //发布按钮的创建
+    
+    float space = 16;
+    float btnHeight = 44;
+    float footViewHeight = 48;
+    float btnWidth = SCREEN_WIDTH - 30;
+    
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setTitle:@"提交" forState:UIControlStateNormal];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
+    submitBtn.layer.cornerRadius = 10.0;
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [submitBtn addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:submitBtn];
+    
+    self.tableView.tableFooterView = backGroundView;
     
     
     //注册cell
