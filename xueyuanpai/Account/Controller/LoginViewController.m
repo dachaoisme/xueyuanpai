@@ -260,7 +260,7 @@
             [CommonUtils showToastWithStr:@"登陆成功"];
 
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
