@@ -309,11 +309,23 @@
             
         }
     }else{
-        IndexMallModel * model = obj;
-        GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
-        giftDetailVC.mallModel = model;
         
-        [self.navigationController pushViewController:giftDetailVC animated:YES];
+        if ([UserAccountManager sharedInstance].isLogin==YES) {
+            
+            IndexMallModel * model = obj;
+            GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
+            giftDetailVC.mallModel = model;
+            
+            [self.navigationController pushViewController:giftDetailVC animated:YES];
+        }else{
+            
+            LoginViewController *loginVC = [[LoginViewController alloc] init];
+            
+            [self.navigationController pushViewController:loginVC animated:YES];
+            
+        }
+
+        
     }
 }
 #pragma mark - 点击banner图
@@ -325,8 +337,20 @@
 -(void)getMoreIntegralMall
 {
     
-    BigToSendViewController *bigToSendVC = [[BigToSendViewController alloc] init];
-    [self.navigationController pushViewController:bigToSendVC animated:YES];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        BigToSendViewController *bigToSendVC = [[BigToSendViewController alloc] init];
+        [self.navigationController pushViewController:bigToSendVC animated:YES];
+
+    }else{
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
+    }
+
+    
 }
 #pragma mark - 我的
 -(void)leftItemActionWithBtn:(UIButton *)sender
@@ -355,7 +379,7 @@
     //需要先判断是否已经登陆
     if (yesLogin) {
         //收件箱界面
-//        [CommonUtils showToastWithStr:@"收件箱"];
+        [CommonUtils showToastWithStr:@"收件箱"];
     }else{
         //进入登陆注册页面
         

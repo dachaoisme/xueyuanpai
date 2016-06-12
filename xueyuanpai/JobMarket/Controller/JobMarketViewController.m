@@ -14,6 +14,8 @@
 #import "JobMarketDetailViewController.h"
 #import "PublishInformationViewController.h"
 
+#import "LoginViewController.h"
+
 @interface JobMarketViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate>
 {
     NSMutableArray * jobMarketConditionModelArr;
@@ -258,11 +260,23 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    //跳转跳槽市场详情
-    JobMarketModel * model = [jobMarketModelListArr objectAtIndex:indexPath.row];
-    JobMarketDetailViewController *jobMarketVC = [[JobMarketDetailViewController alloc] init];
-    jobMarketVC.jobMarketId =model.jobMarketId;
-    [self.navigationController pushViewController:jobMarketVC animated:YES];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        //跳转跳槽市场详情
+        JobMarketModel * model = [jobMarketModelListArr objectAtIndex:indexPath.row];
+        JobMarketDetailViewController *jobMarketVC = [[JobMarketDetailViewController alloc] init];
+        jobMarketVC.jobMarketId =model.jobMarketId;
+        [self.navigationController pushViewController:jobMarketVC animated:YES];
+
+    }else{
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
+    }
+
+    
     
     
     NSLog(@"section:%ld,row:%ld",(long)indexPath.section,(long)indexPath.row);
