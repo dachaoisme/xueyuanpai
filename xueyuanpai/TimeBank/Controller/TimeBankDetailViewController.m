@@ -58,6 +58,7 @@
     [self createSendCommentView];
     //请求数据
     [self requestToGetTimeBankDetail];
+    [self requestToCommentList];
     [self requestToaddScanViewNum];
     [self checkoutIsCollectionOrNot];
 }
@@ -347,7 +348,6 @@
         if (model.responseCode == ResponseCodeSuccess) {
             NSDictionary * dataDic = model.responseCommonDic ;
             detailModel = [[TimeBankDetailModel alloc]initWithDic:dataDic];
-            [self requestToCommentList];
             
             [self.tableView reloadData];
         }else{
