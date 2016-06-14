@@ -117,7 +117,7 @@
                 
                 IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
                 [bannerItemArray addObject:model];
-                [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:1]];
+                [bannerImageArray addObject:model.IndexBannerPicUrl];
             }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
@@ -226,11 +226,20 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        float width = (SCREEN_WIDTH-2*15-30*3)/4;
-        return CGSizeMake(width,60);
+//        float width = (SCREEN_WIDTH-2*15-30*3)/4;
+//        return CGSizeMake(width,60);
+        
+        return CGSizeMake(60,60);
     }else{
-        float width = (SCREEN_WIDTH-2*15-15)/2;
-        return CGSizeMake(width, 140);
+//        float width = (SCREEN_WIDTH-2*15-15)/2;
+//        return CGSizeMake(width, 220);
+        
+        if (SCREEN_WIDTH == 320) {
+            return CGSizeMake(120, 220);
+        }else{
+            return CGSizeMake(160, 220);
+        }
+        
     }
 }
 
@@ -250,14 +259,19 @@
 
 }
 
-// 设置最小列间距，也就是左行与右一行的中间最小间隔
+ //设置最小列间距，也就是左行与右一行的中间最小间隔
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     if (section == 0) {
-        return 30;
+        
+        if (SCREEN_WIDTH == 320) {
+            return 10;
+        }else{
+            return 30;
+        }
 
     }else{
-        return 15;
+        return 10;
     }
 }
 //返回分区个数

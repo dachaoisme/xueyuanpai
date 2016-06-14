@@ -79,6 +79,7 @@
     [self.view.layer removeAllAnimations];
     [_disPlayLink invalidate];
     _disPlayLink = nil;
+    
 }
 
 

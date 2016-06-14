@@ -69,7 +69,7 @@
 
 - (void)bindModel:(HotActivityModel *)model{
     
-    [self.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.logoUrl withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    [self.showImageView sd_setImageWithURL:[NSURL URLWithString:model.logoUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
     self.showTitleLable.text = model.title;
     self.detailLabel.text = model.brief;
     

@@ -18,7 +18,7 @@
     
     self.nameLabel.text = model.expressCenterExpressInfoExpressPeopleName;
     
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.expressCenterExpressInfoExpressPeopleImg withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:model.expressCenterExpressInfoExpressPeopleImg] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
     
     self.timeLabel.text = model.expressCenterExpressInfoCreateTime;
     

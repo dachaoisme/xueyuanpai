@@ -22,8 +22,8 @@
 ///存储图片的数组
 @property (nonatomic,strong)NSMutableArray *imageArray;
 
-///计算cell的高度
-@property (nonatomic,assign)CGFloat height;
+@property (nonatomic,strong)SchoolShufflingView *myHeaderView;
+
 
 @end
 
@@ -126,6 +126,20 @@
     self.tableView = tableView;
     
     
+    //创建headerView
+    //初始化轮播图[复用校园招聘轮播视图的封装]
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 150)];
+    
+    self.myHeaderView =  [[SchoolShufflingView alloc] initWithFrame:backGroundView.bounds];
+    _myHeaderView.delegate = self;
+
+    
+    [backGroundView addSubview:_myHeaderView];
+    
+    self.tableView.tableHeaderView = backGroundView;
+    
+    
+    
     //注册第一个区里的cell
     [tableView registerClass:[JobMarketDetailOneStyleTableViewCell class] forCellReuseIdentifier:@"oneCell"];
     
@@ -141,17 +155,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    
-    switch (section) {
-        case 0:
-            return 3;
-            break;
-            
-        default:
-            return 2;
-            break;
-    }
-    
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -159,7 +163,7 @@
     switch (indexPath.section) {
         case 0:{
             
-            if (indexPath.row == 1) {
+            if (indexPath.row == 0) {
                 JobMarketDetailOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
@@ -209,18 +213,20 @@
                 
             }else{
                 
-//               CGSize textSize =  [CommonUtils getTextSizeWithText:jobMarketDetailModel.jobMarketDetailDescription WithFont:14 WithTextWidth:SCREEN_WIDTH];
-//                _height = textSize.height;
-                
-                cell.textLabel.text = jobMarketDetailModel.jobMarketDetailDescription;
-                cell.textLabel.numberOfLines = 0;
-                
-                CGRect frame = CGRectMake(15, 5, SCREEN_WIDTH, _height);
-                
-                cell.textLabel.frame = frame;
-                
+
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
                 cell.textLabel.font = [UIFont systemFontOfSize:14];
+                
+                
+                NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[jobMarketDetailModel.jobMarketDetailDescription dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+                
+
+                cell.textLabel.attributedText = attrStr;
+                cell.textLabel.numberOfLines = 0;
+                
+                
+                [cell.textLabel sizeToFit];
+              
                
                 return cell;
             }
@@ -252,9 +258,8 @@
                 return 45;
             }else{
                 
-                CGSize textSize =  [CommonUtils getTextSizeWithText:jobMarketDetailModel.jobMarketDetailDescription WithFont:16 WithTextWidth:SCREEN_WIDTH-36];
-                _height = textSize.height;
-                return _height;
+                //计算文本高度
+                return  [self textHeight:jobMarketDetailModel.jobMarketDetailDescription];
             }
         }
             
@@ -274,7 +279,7 @@
     
     if (indexPath.section == 0) {
         
-        if (indexPath.row == 2) {
+        if (indexPath.row == 1) {
             
             //跳转打电话界面
             
@@ -284,44 +289,9 @@
     }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    
-    if (section == 0) {
-        
-        //初始化轮播图[复用校园招聘轮播视图的封装]
-        SchoolShufflingView *schoolShufflingView = [[SchoolShufflingView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 100)];
-        
-        schoolShufflingView.delegate = self;
-        
-//        //仅用来测试布局用的
-//        NSString *path1 = @"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg";
-//        NSString *path2 = @"http://www.qqpk.cn/Article/UploadFiles/201111/2011112212072571.jpg";
-//        NSArray *pathArray = [NSArray arrayWithObjects:path1,path2, nil];
-        
-        
-        if (_imageArray.count > 0) {
-            schoolShufflingView.imageArray = _imageArray;
-
-        }
-        return schoolShufflingView;
-
-    }else{
-        
-        UIView *view = nil;
-        
-        return view;
-    }
-    
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    if (section == 0) {
-        return 75;
-    }else{
-        
         return 10;
-    }
     
     
 }
@@ -353,6 +323,12 @@
             
             [_imageArray addObjectsFromArray:jobMarketDetailModel.jobMarketDetailImageArr];
             
+            
+            if (_imageArray.count > 0) {
+                _myHeaderView.imageArray = _imageArray;
+        
+            }
+            
             [self.tableView reloadData];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
@@ -363,6 +339,16 @@
     
 }
 
+
+
+//自适应撑高
+//计算字符串的frame
+- (CGFloat)textHeight:(NSString *)string{
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:8]} context:nil];
+    //返回计算好的高度
+    return rect.size.height;
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

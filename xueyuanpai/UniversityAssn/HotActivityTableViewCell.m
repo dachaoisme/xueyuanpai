@@ -102,7 +102,7 @@
 #pragma mark - 处理model数据
 - (void)bindModel:(HotActivityModel *)model{
     
-    [self.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.logoUrl withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder.png"]];
+    [self.showImageView sd_setImageWithURL:[NSURL URLWithString:model.logoUrl] placeholderImage:[UIImage imageNamed:@"placeHoder.png"]];
     self.titleLable.text = model.title;
     self.timeLabel.text = model.createTime;
     self.locationLable.text = model.place;

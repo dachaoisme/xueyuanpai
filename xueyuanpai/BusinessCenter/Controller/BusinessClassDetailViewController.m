@@ -155,7 +155,7 @@
         
         cell.contentLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailContent;
         
-        [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_model.businessCenterSchoolRoomImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+        [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:_model.businessCenterSchoolRoomImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
         
         
         return cell;

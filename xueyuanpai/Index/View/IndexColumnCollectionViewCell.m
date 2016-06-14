@@ -23,7 +23,7 @@
 
 -(void)setContentView
 {
-    UIImageView * columnImageView = [UIFactory imageView:CGRectMake(0, 0, 45, 45) viewMode:UIViewContentModeScaleAspectFill image:nil];
+    UIImageView * columnImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
     [self addSubview:columnImageView];
     self.columnImageView = columnImageView;
     
@@ -39,6 +39,7 @@
 
 - (void)layoutSubviews{
     
+   
     
     
 }
@@ -48,16 +49,16 @@
     
     if ([model.indexColumnsId intValue] == 1) {
         
-        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexColumnsPicUrl withType:1]] placeholderImage:[UIImage imageNamed:@"home_icon_community"]];
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_community"]];
     }else if ([model.indexColumnsId intValue] == 2) {
         
-        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexColumnsPicUrl withType:1]] placeholderImage:[UIImage imageNamed:@"home_icon_timebank"]];
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_timebank"]];
     }else if ([model.indexColumnsId intValue] == 3) {
         
-        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexColumnsPicUrl withType:1]] placeholderImage:[UIImage imageNamed:@"home_icon_market"]];
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_market"]];
     }else if ([model.indexColumnsId intValue] == 4) {
         
-        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.indexColumnsPicUrl withType:1]] placeholderImage:[UIImage imageNamed:@"home_icon_recruit"]];
+        [self.columnImageView sd_setImageWithURL:[NSURL URLWithString:model.indexColumnsPicUrl] placeholderImage:[UIImage imageNamed:@"home_icon_recruit"]];
     }
 
 

@@ -175,7 +175,7 @@
 
                 
                 //头像
-                [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserIcon withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+                [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserIcon] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
                 
                 //姓名
                 cell.nameLabel.text = businessCenterProgectDetailModel.businessCenterProgectDetailUserModel.businessCenterProgectDetailUserRealName;

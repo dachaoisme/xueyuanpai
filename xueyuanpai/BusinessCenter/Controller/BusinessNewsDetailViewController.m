@@ -117,7 +117,7 @@
             
             cell.contentLabel.text = _newsModel.businessCenterNewsContent;
             
-            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_newsModel.businessCenterNewsImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.businessCenterNewsImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
             
             
             
@@ -154,7 +154,7 @@
             
             cell.contentLabel.text = _competationModel.businessCenterCompetitionContent;
             
-            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:_competationModel.businessCenterCompetitionImage withType:1]] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+            [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:_competationModel.businessCenterCompetitionImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
             
 
             

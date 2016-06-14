@@ -72,7 +72,7 @@
                 
                 IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
                 [bannerItemArray addObject:model];
-                [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:1]];
+                [bannerImageArray addObject:model.IndexBannerPicUrl];
             }
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];

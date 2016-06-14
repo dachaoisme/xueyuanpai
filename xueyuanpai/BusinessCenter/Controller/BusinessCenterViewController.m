@@ -242,7 +242,7 @@
             
             BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row - 1];
             
-            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterTutorImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterTutorImage ] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
             
             
             cell.nameLabel.text = model.businessCenterTutorUserName;
@@ -272,7 +272,7 @@
             
             BusinessCenterProgectModel * model = [businessProjectModelListArr objectAtIndex:indexPath.row - 1];
             
-            [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterProgectImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+            [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterProgectImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
 
             cell.titleLabel.text = model.businessCenterProgectTitle;
             cell.contentLabel.text = model.businessCenterProgectBrief;

@@ -106,7 +106,7 @@
                 
                 IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
                 [bannerItemArray addObject:model];
-                [bannerImageArray addObject:[CommonUtils getEffectiveUrlWithUrl:model.IndexBannerPicUrl withType:1]];
+                [bannerImageArray addObject:model.IndexBannerPicUrl];
                 //[bannerImageArray addObject:@"http://imgk.zol.com.cn/samsung/4600/a4599073_s.jpg"];
 
             }

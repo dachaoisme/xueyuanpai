@@ -80,7 +80,7 @@
     
     BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
     
-    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterNewsImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder.png"]];
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterNewsImage] placeholderImage:[UIImage imageNamed:@"placeHoder.png"]];
     
     cell.titleLabel.text = model.businessCenterNewsTitle;
     

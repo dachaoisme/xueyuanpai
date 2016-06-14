@@ -116,7 +116,7 @@
     BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row];
 
 
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterTutorImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterTutorImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
 
     cell.nameLabel.text = model.businessCenterTutorUserName;
 

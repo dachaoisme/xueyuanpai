@@ -79,7 +79,7 @@
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     BusinessCenterCompetitionModel * model = [businessCenterCompetitionModelListArr objectAtIndex:indexPath.row];
     
-    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterCompetitionImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterCompetitionImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
     
     
     cell.titleLabel.text = model.businessCenterCompetitionTitle;

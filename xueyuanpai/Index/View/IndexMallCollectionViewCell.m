@@ -23,23 +23,40 @@
 
 -(void)setContentView
 {
-    UIImageView * mallImageView = [UIFactory imageView:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-40) viewMode:UIViewContentModeScaleAspectFill image:nil];
+    UIImageView * mallImageView = [[UIImageView alloc] init];
     [self addSubview:mallImageView];
     self.mallImageView = mallImageView;
     
     UILabel * mallTitileLable = [UIFactory label:12*3 color:@"333333" align:NSTextAlignmentLeft];
     mallTitileLable.font = [UIFont systemFontOfSize:12];
-    mallTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallImageView.frame) + 10, CGRectGetWidth(mallImageView.frame), 20) ;
+
     [self addSubview:mallTitileLable];
     self.mallTitileLable = mallTitileLable;
     
     UILabel * mallIntegralTitileLable = [UIFactory label:12*3 color:@"333333" align:NSTextAlignmentLeft];
     mallIntegralTitileLable.font = [UIFont systemFontOfSize:12];
-    mallIntegralTitileLable.frame = CGRectMake(0, CGRectGetMaxY(mallTitileLable.frame), CGRectGetWidth(mallTitileLable.frame), 20) ;
     [self addSubview:mallIntegralTitileLable];
     self.mallIntegralTitileLable = mallIntegralTitileLable;
     
 }
+
+- (void)layoutSubviews{
+    
+    if (SCREEN_WIDTH == 320) {
+        self.mallImageView.frame = CGRectMake(0, 0,150, 160);
+    }else{
+        self.mallImageView.frame = CGRectMake(0, 0,160, 160);
+
+    }
+    self.mallTitileLable.frame = CGRectMake(0, CGRectGetMaxY(_mallImageView.frame) + 10, CGRectGetWidth(_mallImageView.frame), 20) ;
+    
+    _mallIntegralTitileLable.frame = CGRectMake(0, CGRectGetMaxY(_mallTitileLable.frame), CGRectGetWidth(_mallTitileLable.frame), 20) ;
+
+    
+}
+
+
+
 -(void)setContentViewWithModel:(IndexMallModel *)model
 {
     [self.mallImageView sd_setImageWithURL:[NSURL URLWithString:model.indexMallThumbUrl] placeholderImage:[UIImage imageNamed:@"2.jpg"]];//[NSURL URLWithString:@"https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/1839353/pilsner.jpg"]];

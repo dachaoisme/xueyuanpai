@@ -140,7 +140,7 @@
         
         BusinessTeacherOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         
-        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:tutorDetailModel.businessCenterTutorDetailImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:tutorDetailModel.businessCenterTutorDetailImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
         
         cell.nameLabel.text =  tutorDetailModel.businessCenterTutorDetailRealName;
         

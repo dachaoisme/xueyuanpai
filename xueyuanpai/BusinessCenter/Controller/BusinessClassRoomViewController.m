@@ -78,7 +78,7 @@
     BusinessCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     BusinessCenterSchoolRoomModel * model = [businessCenterClassRoomModelListArr objectAtIndex:indexPath.row];
     
-    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:[CommonUtils getEffectiveUrlWithUrl:model.businessCenterSchoolRoomImage withType:1]] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterSchoolRoomImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
     
     cell.titleLabel.text = model.businessCenterSchoolRoomTitle;
     
