@@ -16,15 +16,14 @@
 
 
 #import <CoreLocation/CoreLocation.h>
+
+#import "RadarView.h"
+
 @interface ExpressCenterViewController ()<CLLocationManagerDelegate>
 {
-    CALayer *_layer;
-    CAAnimationGroup *_animaTionGroup;
-    CADisplayLink *_disPlayLink;
-    
     ExpressCenterPeopleModel * expressCenterPeopleModel;
-
     
+    UIView *backGroundView;
 }
 
 ///显示接单数量的控件视图
@@ -48,7 +47,8 @@
 
 @property (nonatomic,strong)NSString *count;
 
-
+///点的坐标的数组
+@property (nonatomic, strong) NSArray *pointsArray;
 
 
 @end
@@ -60,14 +60,10 @@
     [super viewWillAppear:animated];
     [self theTabBarHidden:NO];
     
-    [self.view.layer removeAllAnimations];
-    [_disPlayLink invalidate];
-    _disPlayLink = nil;
+    [_radarView removeFromSuperview];
 
+    [self createAnimationView];
     
-    _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
-    _disPlayLink.frameInterval = 40;
-    [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
 
 }
@@ -75,10 +71,21 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    
+    [_radarView removeFromSuperview];
 
-    [self.view.layer removeAllAnimations];
-    [_disPlayLink invalidate];
-    _disPlayLink = nil;
+
+    
+}
+
+- (void)createAnimationView{
+    //添加动画视图
+    RadarView *radarView = [[RadarView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 90, SCREEN_HEIGHT/2 - 90, 160, 160)];
+    radarView.backgroundColor = [UIColor clearColor];
+    
+    backGroundView.center = radarView.center;
+    [self.view addSubview:radarView];
+    
     
 }
 
@@ -240,21 +247,21 @@
 - (void)createCenterView{
     
     //SCREEN_WIDTH - 95*2
-    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 90, SCREEN_HEIGHT/2 - 90, 180, 180)];
+    backGroundView = [[UIView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 110, SCREEN_HEIGHT/2 - 110, 220, 220)];
     
     backGroundView.backgroundColor = [UIColor whiteColor];
-    backGroundView.layer.cornerRadius = 89;
+    backGroundView.layer.cornerRadius = 110;
     backGroundView.layer.masksToBounds = YES;
     [self.view addSubview:backGroundView];
     
     
     //创建wifi图片
-    UIImageView *wifiImageView = [[UIImageView alloc] initWithFrame:CGRectMake(90 - 20, 15, 40, 30)];
+    UIImageView *wifiImageView = [[UIImageView alloc] initWithFrame:CGRectMake(110 - 20, 40, 40, 30)];
     wifiImageView.image = [UIImage imageNamed:@"deliver_icon_signal"];
     [backGroundView addSubview:wifiImageView];
     
     //创建显示label
-    UILabel *showTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, CGRectGetMaxY(wifiImageView.frame), 120, 56)];
+    UILabel *showTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(wifiImageView.frame), 120, 56)];
     showTextLabel.text = @"我要发快递";
     showTextLabel.textAlignment = NSTextAlignmentCenter;
     showTextLabel.numberOfLines = 0;
@@ -263,7 +270,7 @@
     
     
     //本校有多少个快递员正在接单
-    UILabel *showNumberCourier = [[UILabel alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(showTextLabel.frame), 80, 30)];
+    UILabel *showNumberCourier = [[UILabel alloc] initWithFrame:CGRectMake(70, CGRectGetMaxY(showTextLabel.frame), 80, 30)];
     showNumberCourier.textAlignment = NSTextAlignmentCenter;
     showNumberCourier.numberOfLines = 0;
     showNumberCourier.textColor = [CommonUtils  colorWithHex:@"5f746c"];
@@ -297,31 +304,56 @@
     recordButton.layer.masksToBounds = YES;
     [self.view addSubview:recordButton];
     
-    _disPlayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(delayAnimation)];
-    _disPlayLink.frameInterval = 40;
-    [_disPlayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-    
-
-    
 }
 
 #pragma mark - 我要发快递按钮的响应方法
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
+    XHRadarView *radarView = [[XHRadarView alloc] initWithFrame:self.view.bounds];
+    radarView.frame = self.view.frame;
+    radarView.dataSource = self;
+    radarView.delegate = self;
+    radarView.radius = 200;
+    radarView.backgroundImage = [UIImage imageNamed:@"radar_background"];
+    radarView.labelText = @"正在搜索附近的目标";
+    radarView.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+    [self.view addSubview:radarView];
+    _radarView = radarView;
     
-    if ([self.count intValue] > 0) {
-        SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
-        
-        [self.navigationController pushViewController:sendVC animated:YES];
+    UIImageView *avatarView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.center.x-39, self.view.center.y-39, 78, 78)];
+    avatarView.layer.cornerRadius = 39;
+    avatarView.layer.masksToBounds = YES;
+    
+    [avatarView setImage:[UIImage imageNamed:@"avatar"]];
+    [_radarView addSubview:avatarView];
+    [_radarView bringSubviewToFront:avatarView];
+    
+    //目标点位置
+    _pointsArray = @[
+                     @[@6, @90],
+                     @[@-140, @108],
+                     @[@-83, @98],
+                     @[@-25, @142],
+                     @[@60, @111],
+                     @[@-111, @96],
+                     @[@150, @145],
+                     @[@25, @144],
+                     @[@-55, @110],
+                     @[@95, @109],
+                     @[@170, @180],
+                     @[@125, @112],
+                     @[@-150, @145],
+                     @[@-7, @160],
+                     ];
+    
+    [self.radarView scan];
+    [self startUpdatingRadar];
 
-    }else{
-        
-        [CommonUtils showToastWithStr:@"暂无快递员分配"];
-    }
     
 
     
 }
+
 
 
 #pragma mark - 发快递记录按钮的响应方法
@@ -342,54 +374,56 @@
     
 }
 
-#pragma mark - 动画效果
-- (void)delayAnimation
-{
-    [self startAnimation];
+
+
+#pragma mark - Custom Methods
+- (void)startUpdatingRadar {
+    typeof(self) __weak weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        weakSelf.radarView.labelText = [NSString stringWithFormat:@"搜索已完成，共找到%lu个目标", (unsigned long)[weakSelf.count intValue]];
+        [weakSelf.radarView show];
+    });
 }
 
-- (void)startAnimation
-{
-    CALayer *layer = [[CALayer alloc] init];
-    layer.cornerRadius = [UIScreen mainScreen].bounds.size.width/2;
-    layer.frame = CGRectMake(0, 0, layer.cornerRadius * 2, layer.cornerRadius * 2);
-    layer.position = self.view.layer.position;
-    UIColor *color = [UIColor whiteColor];
-    layer.backgroundColor = color.CGColor;
-    [self.view.layer addSublayer:layer];
+#pragma mark - XHRadarViewDataSource
+- (NSInteger)numberOfSectionsInRadarView:(XHRadarView *)radarView {
+    return 4;
+}
+- (NSInteger)numberOfPointsInRadarView:(XHRadarView *)radarView {
+    return [self.count intValue];
+}
+- (UIView *)radarView:(XHRadarView *)radarView viewForIndex:(NSUInteger)index {
+    UIView *pointView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 25)];
     
-    CAMediaTimingFunction *defaultCurve = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
-    
-    _animaTionGroup = [CAAnimationGroup animation];
-    _animaTionGroup.delegate = self;
-    _animaTionGroup.duration = 2;
-    _animaTionGroup.removedOnCompletion = YES;
-    _animaTionGroup.timingFunction = defaultCurve;
-    
-    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale.xy"];
-    scaleAnimation.fromValue = @0.0;
-    scaleAnimation.toValue = @1.0;
-    scaleAnimation.duration = 2;
-    
-    CAKeyframeAnimation *opencityAnimation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
-    opencityAnimation.duration = 2;
-    opencityAnimation.values = @[@0.8,@0.4,@0];
-    opencityAnimation.keyTimes = @[@0,@0.5,@1];
-    opencityAnimation.removedOnCompletion = YES;
-    
-    NSArray *animations = @[scaleAnimation,opencityAnimation];
-    _animaTionGroup.animations = animations;
-    [layer addAnimation:_animaTionGroup forKey:nil];
-    
-    [self performSelector:@selector(removeLayer:) withObject:layer afterDelay:1.5];
+    //设置搜索目标图片
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [imageView setImage:[UIImage imageNamed:@"signup_student"]];
+    [pointView addSubview:imageView];
+    return pointView;
+}
+- (CGPoint)radarView:(XHRadarView *)radarView positionForIndex:(NSUInteger)index {
+    NSArray *point = [self.pointsArray objectAtIndex:index];
+    return CGPointMake([point[0] floatValue], [point[1] floatValue]);
 }
 
-- (void)removeLayer:(CALayer *)layer
-{
-    [layer removeFromSuperlayer];
+#pragma mark - XHRadarViewDelegate
+
+- (void)radarView:(XHRadarView *)radarView didSelectItemAtIndex:(NSUInteger)index {
+    NSLog(@"didSelectItemAtIndex:%lu", (unsigned long)index);
+    
+    
+     if ([self.count intValue] > 0) {
+        SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
+
+        [self.navigationController pushViewController:sendVC animated:YES];
+
+    }else{
+        
+        [CommonUtils showToastWithStr:@"暂无快递员分配"];
+    }
+
+    
 }
-
-
 
 
 - (void)didReceiveMemoryWarning {

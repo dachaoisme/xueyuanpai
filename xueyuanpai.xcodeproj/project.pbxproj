@@ -642,6 +642,11 @@
 		DDE8C2331CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE8C2311CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib */; };
 		DDE8F62B1CFD8E8600680214 /* JobMarketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8F62A1CFD8E8600680214 /* JobMarketDetailViewController.m */; };
 		DDE8F62E1CFD8EC000680214 /* JobMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8F62D1CFD8EC000680214 /* JobMarketViewController.m */; };
+		DDEB257C1D101AC700EF6CE3 /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEB257B1D101AC700EF6CE3 /* RadarView.m */; };
+		DDEB25841D1027CB00EF6CE3 /* XHRadarIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEB257F1D1027CB00EF6CE3 /* XHRadarIndicatorView.m */; };
+		DDEB25851D1027CB00EF6CE3 /* XHRadarPointView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEB25811D1027CB00EF6CE3 /* XHRadarPointView.m */; };
+		DDEB25861D1027CB00EF6CE3 /* XHRadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDEB25831D1027CB00EF6CE3 /* XHRadarView.m */; };
+		DDEB258A1D10302400EF6CE3 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = DDEB25891D10302400EF6CE3 /* point.png */; };
 		E993E0049F3F51C845C25B59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3EE12099BB224ECB4817B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -1523,6 +1528,15 @@
 		DDE8F62A1CFD8E8600680214 /* JobMarketDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobMarketDetailViewController.m; sourceTree = "<group>"; };
 		DDE8F62C1CFD8EC000680214 /* JobMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarketViewController.h; sourceTree = "<group>"; };
 		DDE8F62D1CFD8EC000680214 /* JobMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobMarketViewController.m; sourceTree = "<group>"; };
+		DDEB257A1D101AC700EF6CE3 /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarView.h; sourceTree = "<group>"; };
+		DDEB257B1D101AC700EF6CE3 /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarView.m; sourceTree = "<group>"; };
+		DDEB257E1D1027CB00EF6CE3 /* XHRadarIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHRadarIndicatorView.h; sourceTree = "<group>"; };
+		DDEB257F1D1027CB00EF6CE3 /* XHRadarIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHRadarIndicatorView.m; sourceTree = "<group>"; };
+		DDEB25801D1027CB00EF6CE3 /* XHRadarPointView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHRadarPointView.h; sourceTree = "<group>"; };
+		DDEB25811D1027CB00EF6CE3 /* XHRadarPointView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHRadarPointView.m; sourceTree = "<group>"; };
+		DDEB25821D1027CB00EF6CE3 /* XHRadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHRadarView.h; sourceTree = "<group>"; };
+		DDEB25831D1027CB00EF6CE3 /* XHRadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHRadarView.m; sourceTree = "<group>"; };
+		DDEB25891D10302400EF6CE3 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
 		FFF3EE12099BB224ECB4817B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -2145,6 +2159,7 @@
 				DDCD70CF1D06F325009FBE9A /* 2.jpg */,
 				DDAB05AF1D026421007A6027 /* placeHoder.png */,
 				DD41278E1CF1860400227066 /* test.jpg */,
+				DDEB25891D10302400EF6CE3 /* point.png */,
 				58F67BA51CD9863400D55BE0 /* AppDelegate.h */,
 				58F67BA61CD9863400D55BE0 /* AppDelegate.m */,
 				58F67BD71CD990A200D55BE0 /* BaseViewController.h */,
@@ -2904,6 +2919,9 @@
 				DDCD713F1D0A99F2009FBE9A /* CourierNoticeTableViewCell.h */,
 				DDCD71401D0A99F2009FBE9A /* CourierNoticeTableViewCell.m */,
 				DDCD71411D0A99F2009FBE9A /* CourierNoticeTableViewCell.xib */,
+				DDEB257A1D101AC700EF6CE3 /* RadarView.h */,
+				DDEB257B1D101AC700EF6CE3 /* RadarView.m */,
+				DDEB257D1D1027CB00EF6CE3 /* XHRadarView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -3091,6 +3109,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		DDEB257D1D1027CB00EF6CE3 /* XHRadarView */ = {
+			isa = PBXGroup;
+			children = (
+				DDEB257E1D1027CB00EF6CE3 /* XHRadarIndicatorView.h */,
+				DDEB257F1D1027CB00EF6CE3 /* XHRadarIndicatorView.m */,
+				DDEB25801D1027CB00EF6CE3 /* XHRadarPointView.h */,
+				DDEB25811D1027CB00EF6CE3 /* XHRadarPointView.m */,
+				DDEB25821D1027CB00EF6CE3 /* XHRadarView.h */,
+				DDEB25831D1027CB00EF6CE3 /* XHRadarView.m */,
+			);
+			path = XHRadarView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3217,6 +3248,7 @@
 				DD41277F1CF0552F00227066 /* page_end_owl@2x.png in Resources */,
 				DD0B1EBF1CFEE51000C4BAB2 /* gender_male@2x.png in Resources */,
 				58070FA71CF6E80200F03F6C /* timebank_filter_all_hl@3x.png in Resources */,
+				DDEB258A1D10302400EF6CE3 /* point.png in Resources */,
 				DDAB05D11D03B40F007A6027 /* BusinessProjectDetailThreeTableViewCell.xib in Resources */,
 				58A944921CE277C600DAD398 /* input_icon_search@3x.png in Resources */,
 				58A944A01CE277C600DAD398 /* signup_teacher@2x.png in Resources */,
@@ -3748,6 +3780,7 @@
 				DD13CE1B1D003116000A69FE /* BusinessClassDetailViewController.m in Sources */,
 				DD13CE121D002A14000A69FE /* BusinessNewsDetailOneStleTableViewCell.m in Sources */,
 				DDAB43BD1D05802C00FADB3E /* MineFriendsViewController.m in Sources */,
+				DDEB25861D1027CB00EF6CE3 /* XHRadarView.m in Sources */,
 				DDAB05FA1D0483D7007A6027 /* BusinessTeacherTableViewCell.m in Sources */,
 				DDCD705D1D05B2D1009FBE9A /* MineCollectionViewController.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
@@ -3815,6 +3848,7 @@
 				58A944C31CE3E0B000DAD398 /* AddStudentInfoViewController.m in Sources */,
 				5874A3FB1CF1AEE400CE9FC9 /* AddTeacherInfoTableViewCell.m in Sources */,
 				58A944AB1CE27A5300DAD398 /* RegisterViewController.m in Sources */,
+				DDEB25851D1027CB00EF6CE3 /* XHRadarPointView.m in Sources */,
 				DDD0BD841CF97AE300073290 /* RecruitmentTwoStyleTableViewCell.m in Sources */,
 				DDAB058E1D01AF18007A6027 /* BusinessProjectViewController.m in Sources */,
 				58F67C2F1CD9CF9500D55BE0 /* MJRefreshGifFooter.m in Sources */,
@@ -3837,6 +3871,7 @@
 				587FF9DE1CF2F8F300AD2131 /* IQToolbar.m in Sources */,
 				DDD0BDAF1CFA75E800073290 /* PositionTwoTableViewCell.m in Sources */,
 				DDCD71141D093A73009FBE9A /* SelectSchoolViewController.m in Sources */,
+				DDEB25841D1027CB00EF6CE3 /* XHRadarIndicatorView.m in Sources */,
 				DDAB05B81D033601007A6027 /* BusinessGameViewController.m in Sources */,
 				58F67C321CD9CF9500D55BE0 /* MJRefreshLegendFooter.m in Sources */,
 				583D10291CE173100010F9D8 /* HttpCommonModel.m in Sources */,
@@ -3856,6 +3891,7 @@
 				58F67BFD1CD990A200D55BE0 /* IndexViewController.m in Sources */,
 				DDCD71251D09B363009FBE9A /* EditTeacherProfileTableViewCell.m in Sources */,
 				DDD3E5371CF458AF001B579E /* SchoolShufflingView.m in Sources */,
+				DDEB257C1D101AC700EF6CE3 /* RadarView.m in Sources */,
 				DDAB05D51D03B5A4007A6027 /* BusinessProjectDetailFourTableViewCell.m in Sources */,
 				58F67C2E1CD9CF9500D55BE0 /* MJRefreshFooter.m in Sources */,
 				5874A3F81CF172A000CE9FC9 /* CollegeModel.m in Sources */,

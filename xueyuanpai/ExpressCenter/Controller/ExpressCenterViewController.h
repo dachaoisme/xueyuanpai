@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 #import "ExpressCenterModel.h"
-@interface ExpressCenterViewController : BaseViewController
+
+#import "XHRadarView.h"
+@interface ExpressCenterViewController : BaseViewController<XHRadarViewDataSource, XHRadarViewDelegate>
+
+@property (nonatomic, strong) XHRadarView *radarView;
 
 @end

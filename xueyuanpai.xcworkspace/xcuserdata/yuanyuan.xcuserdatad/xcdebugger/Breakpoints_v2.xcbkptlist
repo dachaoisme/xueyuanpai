@@ -42,7 +42,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487593985.674711"
+                  timestampString = "487601225.601574"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "382"
@@ -57,7 +57,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487593985.67614"
+                  timestampString = "487601225.602354"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -72,7 +72,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487593985.6767"
+                  timestampString = "487601225.602609"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -87,7 +87,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/TimeBank/Controller/TimeBankDetailViewController.m"
-                  timestampString = "487593985.677247"
+                  timestampString = "487601225.602814"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "382"
@@ -152,7 +152,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/Mine/Controller/EditProfileViewController.m"
-                  timestampString = "487593985.685172"
+                  timestampString = "487601225.608673"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
@@ -167,7 +167,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/Mine/Controller/EditProfileViewController.m"
-                  timestampString = "487593985.685827"
+                  timestampString = "487601225.609134"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
@@ -190,22 +190,6 @@
             startingLineNumber = "138"
             endingLineNumber = "138"
             landmarkName = "-commitAction"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/ExpressCenter/Controller/SendCourierViewController.m"
-            timestampString = "487349936.900981"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
