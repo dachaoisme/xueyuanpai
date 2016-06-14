@@ -66,19 +66,22 @@
 
 -(void)setWithContentModel:(IndexMallModel *)mallModel
 {
-    goodsLabel.text = mallModel.indexMallTitle;
+    if (mallModel != nil) {
+        goodsLabel.text = mallModel.indexMallTitle;
+        
+        NSMutableAttributedString *hintString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@积分",mallModel.indexMallPoints]];
+        
+        NSRange range1=[[hintString string]rangeOfString:mallModel.indexMallPoints];
+        
+        UIColor *color = [CommonUtils colorWithHex:@"ff6478"];
+        [hintString addAttribute:NSForegroundColorAttributeName value:color range:range1];
+        
+        jiFenLabel.attributedText = hintString;
+        
+        //礼品的剩余份数没写
+        shengYuNumberLabel.text = @"剩余123份";
+    }
     
-    NSMutableAttributedString *hintString=[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@积分",mallModel.indexMallPoints]];
-    
-    NSRange range1=[[hintString string]rangeOfString:mallModel.indexMallPoints];
-    
-    UIColor *color = [CommonUtils colorWithHex:@"ff6478"];
-    [hintString addAttribute:NSForegroundColorAttributeName value:color range:range1];
-    
-    jiFenLabel.attributedText = hintString;
-    
-    //礼品的剩余份数没写
-    shengYuNumberLabel.text = @"剩余123份";
 }
 
 - (void)awakeFromNib {

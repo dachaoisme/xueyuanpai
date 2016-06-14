@@ -356,14 +356,8 @@
     
     [self.radarView scan];
     [self startUpdatingRadar];
-
-    
-
     
 }
-
-
-
 #pragma mark - 发快递记录按钮的响应方法
 - (void)sendRecordAction{
     

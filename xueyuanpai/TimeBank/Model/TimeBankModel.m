@@ -158,12 +158,12 @@
     self = [super init];
     if (self) {
         
-        self.timeBankCommentId           = @"id";
-        self.timeBankCommentUserId       = @"user_id";
-        self.timeBankCommentUserName     = @"username";
-        self.timeBankCommentIcon         = @"icon";
-        self.timeBankCommentContent      = @"content";
-        self.timeBankCommentCreateTime   = @"create_at";
+        self.timeBankCommentId           = [dic stringForKey:@"id"];
+        self.timeBankCommentUserId       = [dic stringForKey:@"user_id"];
+        self.timeBankCommentUserName     = [dic stringForKey:@"username"];
+        self.timeBankCommentIcon         = [dic stringForKey:@"icon"];
+        self.timeBankCommentContent      = [dic stringForKey:@"content"];
+        self.timeBankCommentCreateTime   = [dic stringForKey:@"create_at"];
     }
     return self;
 }
