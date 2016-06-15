@@ -226,19 +226,19 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-//        float width = (SCREEN_WIDTH-2*15-30*3)/4;
-//        return CGSizeMake(width,60);
+        float width = (SCREEN_WIDTH-2*15-30*3)/4;
+        return CGSizeMake(width,60);
         
-        return CGSizeMake(60,60);
+//        return CGSizeMake(60,60);
     }else{
-//        float width = (SCREEN_WIDTH-2*15-15)/2;
-//        return CGSizeMake(width, 220);
+        float width = (SCREEN_WIDTH-2*15-15)/2;
+        return CGSizeMake(width, 220);
         
-        if (SCREEN_WIDTH == 320) {
-            return CGSizeMake(120, 220);
-        }else{
-            return CGSizeMake(160, 220);
-        }
+//        if (SCREEN_WIDTH == 320) {
+//            return CGSizeMake(120, 220);
+//        }else{
+//            return CGSizeMake(160, 220);
+//        }
         
     }
 }
@@ -263,15 +263,11 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     if (section == 0) {
-        
-        if (SCREEN_WIDTH == 320) {
-            return 10;
-        }else{
             return 30;
-        }
+        
 
     }else{
-        return 10;
+        return 15;
     }
 }
 //返回分区个数
