@@ -40,8 +40,6 @@
     NSMutableArray * columnItemArray;
     NSMutableArray * mallItemArray;
     
-    NSMutableArray * bigDataArray;
-
 }
 @end
 
@@ -64,7 +62,6 @@
     [self setTitle:@"首页"];
     [self creatLeftNavWithImageName:@"nav_icon_profile"];
     [self creatRightNavWithImageName:@"nav_icon_msg"];
-    bigDataArray     = [NSMutableArray array];
     bannerItemArray  = [NSMutableArray array];
     bannerImageArray = [NSMutableArray array];
     columnItemArray  = [NSMutableArray array];
@@ -72,7 +69,8 @@
     [self createCollectionView];
     
     [self requestBannerData];
-    
+    [self requestColumnsData];
+    [self requestMallData];
 }
 -(void)createCollectionView
 {
@@ -122,13 +120,7 @@
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
-        
-        [self requestColumnsData];
-
-        
-//        [theCollectionView reloadData];
-        
-        
+        [theCollectionView reloadData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
@@ -149,14 +141,10 @@
                 IndexColumnsModel * model = [[IndexColumnsModel alloc]initWithDic:dic];
                 [columnItemArray addObject:model];
             }
-            [bigDataArray addObject:columnItemArray];
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
-        
-        [self requestMallData];
-        
-//        [theCollectionView reloadData];
+        [theCollectionView reloadData];
         
     } withFaileBlock:^(NSError *error) {
         
@@ -179,7 +167,6 @@
                 IndexMallModel * model = [[IndexMallModel alloc]initWithDic:dic];
                 [mallItemArray addObject:model];
             }
-            [bigDataArray addObject:mallItemArray];
         }else{
             
             [CommonUtils showToastWithStr:responseModel.responseMsg];
@@ -209,8 +196,6 @@
 }
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
     //此处是headerView
     if (kind == UICollectionElementKindSectionHeader) {
         if (indexPath.section == 0) {
@@ -236,16 +221,9 @@
         float width = (SCREEN_WIDTH-2*15-30*3)/4;
         return CGSizeMake(width,60);
         
-//        return CGSizeMake(60,60);
     }else{
         float width = (SCREEN_WIDTH-2*15-15)/2;
         return CGSizeMake(width, 220);
-        
-//        if (SCREEN_WIDTH == 320) {
-//            return CGSizeMake(120, 220);
-//        }else{
-//            return CGSizeMake(160, 220);
-//        }
         
     }
 }
@@ -262,8 +240,6 @@
         return UIEdgeInsetsMake(5, 15, 5, 15);
         
     }
-    
-
 }
 
  //设置最小列间距，也就是左行与右一行的中间最小间隔
@@ -271,39 +247,43 @@
     
     if (section == 0) {
             return 30;
-        
-
     }else{
         return 15;
     }
 }
 //返回分区个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return bigDataArray.count;
+    
+    return 2;
 }
 //返回每个分区的item个数
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return [[bigDataArray objectAtIndex:section] count];
+    if (section==0) {
+        return columnItemArray.count;
+    }else{
+        return mallItemArray.count;
+    }
 }
 //返回每个item
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    id obj = [[bigDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    if ([obj isKindOfClass:[IndexColumnsModel class]]) {
+    
+    if (indexPath.section==0) {
+        IndexColumnsModel * model = [columnItemArray objectAtIndex:indexPath.row];
         IndexColumnCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellColumnId" forIndexPath:indexPath];
-        [cell setContentViewWithModel:obj];
+        [cell setContentViewWithModel:model];
         return cell;
     }else{
+        IndexMallModel * model  =[mallItemArray objectAtIndex:indexPath.row];
         IndexMallCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellMallId" forIndexPath:indexPath];
-        [cell setContentViewWithModel:obj];
+        [cell setContentViewWithModel:model];
         return cell;
     }
-//    UICollectionViewCell * cell  = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellid" forIndexPath:indexPath];
     
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id obj = [[bigDataArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    if ([obj isKindOfClass:[IndexColumnsModel class]]) {
+    if (indexPath.section==0) {
+        IndexColumnsModel * model = [columnItemArray objectAtIndex:indexPath.row];
         if (indexPath.row==0) {
             //大学社团
             UniversityAssnViewController  *universityAssnVC = [[UniversityAssnViewController alloc]init];
@@ -322,14 +302,10 @@
             //校园招聘
             SchoolRecruitmentViewController *schoolVC = [[SchoolRecruitmentViewController alloc] init];
             [self.navigationController pushViewController:schoolVC animated:YES];
-            
-            
         }
     }else{
-        
+        IndexMallModel * model  =[mallItemArray objectAtIndex:indexPath.row];
         if ([UserAccountManager sharedInstance].isLogin==YES) {
-            
-            IndexMallModel * model = obj;
             GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
             giftDetailVC.mallModel = model;
             
@@ -341,8 +317,6 @@
             [self.navigationController pushViewController:loginVC animated:YES];
             
         }
-
-        
     }
 }
 #pragma mark - 点击banner图
@@ -366,7 +340,6 @@
         [self.navigationController pushViewController:loginVC animated:YES];
         
     }
-
     
 }
 #pragma mark - 我的
