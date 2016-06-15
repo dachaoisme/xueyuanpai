@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 
+#import "JPUSHService.h"
+#import <AdSupport/AdSupport.h>
+
+
 @interface AppDelegate ()
 
 @end
@@ -29,8 +33,75 @@
     [_window makeKeyAndVisible];
     
     
+    //极光推送方法
+    [self jpushAction:launchOptions];
+    
+    
     
     return YES;
+}
+
+- (void)jpushAction:(NSDictionary *)launchOptions{
+    
+    NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+    
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        //可以添加自定义categories
+        [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                          UIUserNotificationTypeSound |
+                                                          UIUserNotificationTypeAlert)
+                                              categories:nil];
+    } else {
+        //categories 必须为nil
+        [JPUSHService registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                          UIRemoteNotificationTypeSound |
+                                                          UIRemoteNotificationTypeAlert)
+                                              categories:nil];
+    }
+    
+    //如不需要使用IDFA，advertisingIdentifier 可为nil
+    [JPUSHService setupWithOption:launchOptions appKey:appKey
+                          channel:channel
+                 apsForProduction:isProduction
+            advertisingIdentifier:nil];
+
+}
+
+
+#pragma mark - 注册token
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    /// Required -    DeviceToken
+     NSLog(@"%@", [NSString stringWithFormat:@"Device Token: %@", deviceToken]);
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+#pragma mark - 处理用户信息
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:
+(NSDictionary *)userInfo {
+    // Required,For systems with less than or equal to iOS6
+    [JPUSHService handleRemoteNotification:userInfo];
+    
+    NSLog(@"++++++userInfo = %@",userInfo);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:
+(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    // IOS 7 Support Required
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error
+          );
+}
+
++ (void)setupWithOption:(NSDictionary *)launchingOption
+                 appKey:(NSString *)appKey
+                channel:(NSString *)channel
+       apsForProduction:(BOOL)isProduction{
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
