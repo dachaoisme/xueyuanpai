@@ -11,8 +11,12 @@
 #import "JPUSHService.h"
 #import <AdSupport/AdSupport.h>
 
+#import "CustomIOS7AlertView.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<CustomIOS7AlertViewDelegate>
+
+///推送消息
+@property (nonatomic,strong)NSString *message;
 
 @end
 
@@ -83,7 +87,59 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     //集成完毕待测试
     NSLog(@"++++++userInfo = %@",userInfo);
+    
+    self.message  = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = [UIApplication sharedApplication].applicationIconBadgeNumber = [[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
+    
+    if (application.applicationState == UIApplicationStateActive) {
+        
+        
+        CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
+        //自定义AlertView
+        [alertView setContainerView:[self createView]];
+        [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"关闭", nil]];
+        [alertView setBackgroundColor:[UIColor clearColor]];
+        [alertView setDelegate:self];
+        [alertView setUseMotionEffects:true];
+        [alertView show];
+        
+    }
+
 }
+
+#pragma mark - 提交小票成功提醒框的内容
+- (UIView* )createView
+{
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 290, 220/2)];
+    customView.backgroundColor = [CommonUtils colorWithHex:@"ffffff"];
+    
+    UILabel *lableShowSuess = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 210, 40)];
+    lableShowSuess.backgroundColor = [UIColor clearColor];
+    lableShowSuess.textAlignment = NSTextAlignmentCenter;
+    lableShowSuess.textColor = [CommonUtils colorWithHex:@"00beaf"];
+    lableShowSuess.font = [UIFont systemFontOfSize:22];
+    lableShowSuess.text = @"推送消息";
+    [customView addSubview:lableShowSuess];
+    
+    UILabel * labelShowMessage = [[UILabel alloc] initWithFrame:CGRectMake(45/2, 40, 250, 60)];
+    labelShowMessage.numberOfLines = 0;
+    labelShowMessage.textColor = [UIColor blackColor];
+    labelShowMessage.font = [UIFont systemFontOfSize:30/2];
+    labelShowMessage.alpha = 0.7;
+    labelShowMessage.text = self.message;
+    [customView addSubview:labelShowMessage];
+    return customView;
+    
+}
+
+#pragma mark - CustomIOS7AlertViewDelegate
+- (void)customIOS7dialogButtonTouchUpInside: (CustomIOS7AlertView *)alertView clickedButtonAtIndex: (NSInteger)buttonIndex
+{
+       [alertView close];
+    
+}
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:
 (NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
