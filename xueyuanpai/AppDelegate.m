@@ -81,6 +81,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
     
+    //集成完毕待测试
     NSLog(@"++++++userInfo = %@",userInfo);
 }
 

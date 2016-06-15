@@ -72,7 +72,7 @@
     [self createCollectionView];
     
     [self requestBannerData];
-    //[self requestColumnsData];
+    
 }
 -(void)createCollectionView
 {
@@ -123,8 +123,11 @@
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
         
-        //[theCollectionView reloadData];
         [self requestColumnsData];
+
+        
+//        [theCollectionView reloadData];
+        
         
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -150,10 +153,13 @@
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
+        
         [self requestMallData];
-        //[theCollectionView reloadData];
+        
+//        [theCollectionView reloadData];
         
     } withFaileBlock:^(NSError *error) {
+        
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
     
@@ -175,6 +181,7 @@
             }
             [bigDataArray addObject:mallItemArray];
         }else{
+            
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
         
