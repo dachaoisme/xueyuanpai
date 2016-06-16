@@ -59,7 +59,7 @@
         
         successBlock(model);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [CommonUtils showToastWithStr:@"请检查您的网络"];
+        
         failBlock(error);
     }];
    
@@ -98,7 +98,7 @@
         successBlock(model);
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         //NSLog(@"%@", error);
-        [CommonUtils showToastWithStr:@"请检查您的网络"];
+        
         failBlock(error);
     }];
 }
