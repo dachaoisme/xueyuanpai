@@ -219,11 +219,11 @@
 {
     if (indexPath.section==0) {
         float width = (SCREEN_WIDTH-2*15-30*3)/4;
-        return CGSizeMake(width,60);
+        return CGSizeMake(width,width);
         
     }else{
         float width = (SCREEN_WIDTH-2*15-15)/2;
-        return CGSizeMake(width, 220);
+        return CGSizeMake(width, width+40);
         
     }
 }
