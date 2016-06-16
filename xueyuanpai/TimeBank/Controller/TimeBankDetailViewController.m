@@ -176,7 +176,10 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.timeBankId forKey:@"obj_id"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfTimeBank] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
         if (model.responseCode == ResponseCodeSuccess) {
             NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
             if (status==1) {

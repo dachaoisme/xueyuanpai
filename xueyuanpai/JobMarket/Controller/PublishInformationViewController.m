@@ -566,7 +566,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:publishJobMarketModel.publicJobMarketTitle forKey:@"title"];
     [dic setValue:publishJobMarketModel.publicJobMarketImages forKey:@"images"];
-    [dic setValue:publishJobMarketModel.publicJobMarketCategoryId forKey:@"cat_id"];
+    [dic setObject:publishJobMarketModel.publicJobMarketCategoryId forKey:@"cat_id"];
     [dic setValue:publishJobMarketModel.publicJobMarketSalePrice  forKey:@"sale_price"];
     [dic setValue:publishJobMarketModel.publicJobMarketOriginPrice forKey:@"origin_price"];
     [dic setValue:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];

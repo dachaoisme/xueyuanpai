@@ -113,6 +113,8 @@
     switch ([model.timeBankDetailStat intValue]) {
         case 0:{
             NSLog(@"未申请");
+            [_activityContentButton setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+            _activityContentButton.userInteractionEnabled = YES;
         }
             break;
         case 1:{

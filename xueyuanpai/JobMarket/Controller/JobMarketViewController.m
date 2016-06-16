@@ -69,6 +69,12 @@
     [self createFlowLayout];
 
     [self requestToGetConditionsCategory];
+    
+    
+    //添加请求数据列表
+    [self requestToGetJobMarketList];
+
+    
 }
 
 #pragma mark - 导航栏右侧按钮响应方法
@@ -145,6 +151,11 @@
     searchBar.text = @"";
     [searchBar resignFirstResponder];
     [self requestToGetJobMarketList];
+    
+    
+    
+    
+
 }
 #pragma mark - 创建flowLayout
 - (void)createFlowLayout{
@@ -189,8 +200,13 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
-    [dic setObject:jobMarketCategoryParam forKey:@"cat_id"];
-    [dic setObject:jobMarketSortParam forKey:@"sort"];
+    if (jobMarketCategoryParam.length > 0) {
+        [dic setObject:jobMarketCategoryParam forKey:@"cat_id"];
+
+    }
+    if (jobMarketSortParam.length > 0) {
+        [dic setObject:jobMarketSortParam forKey:@"sort"];
+    }
     if (searchKeyWord.length>0) {
         [dic setObject:searchKeyWord forKey:@"keyword"];
     }
@@ -372,8 +388,16 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
-    [dic setObject:jobMarketCategoryParam forKey:@"cat_id"];
-    [dic setObject:jobMarketSortParam forKey:@"sort"];
+    
+    if (jobMarketSortParam.length>0) {
+       [dic setObject:jobMarketSortParam forKey:@"sort"];
+    }
+    
+    if (jobMarketCategoryParam.length > 0) {
+        [dic setObject:jobMarketCategoryParam forKey:@"cat_id"];
+
+    }
+    
     if (searchKeyWord.length>0) {
         [dic setObject:searchKeyWord forKey:@"keyword"];
     }

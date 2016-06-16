@@ -104,7 +104,7 @@ typedef NS_ENUM(NSInteger, SchoolRecruitmentType){
 
 #pragma mark - 我的
 
-///我的收藏：1项目2时间银行3二手物品4兑换礼品5导师
+///我的收藏：1项目2时间银行3二手物品4兑换礼品5导师 6社团活动 7 创业新闻 8 创业大赛
 typedef NS_ENUM(NSInteger, MineType){
     
     ///创业项目
@@ -117,6 +117,13 @@ typedef NS_ENUM(NSInteger, MineType){
     MineTypeOfGiftExchange        ,
     ///tutor导师
     MineTypeOfTutor               ,
+    ///社团活动
+    MineTypeOfUniversityAssnActivity,
+    ///创业新闻
+    MineTypeOfBusinessNews,
+    ///创业大赛
+    MineTypeOfBusinessCompetition,
+    
     
 };
 ///// 我的时间银行：0 未申请 1 已申请 2 已通过 3 过期 4 完成

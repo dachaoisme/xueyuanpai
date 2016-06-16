@@ -79,7 +79,7 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.jobMarketId forKey:@"obj_id"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfJobMarket] forKey:@"type"];
-    [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+   [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
             if (status==1) {

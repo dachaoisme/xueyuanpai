@@ -11,8 +11,18 @@
 #import "ActivityDetailView.h"
 #import "HotActivityModel.h"
 @interface ActivityDetailViewController ()
+{
+    ///是否收藏
+    BOOL yesIsCollection;
+
+}
 
 @property (nonatomic,strong)ActivityDetailView *detailView;
+
+
+@property (nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
+
+
 
 @end
 
@@ -24,6 +34,8 @@
     self.title = @"活动详情";
     
     [self createLeftBackNavBtn];
+    yesIsCollection = NO;
+
     
     ActivityDetailView *detailView = [[ActivityDetailView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.view addSubview:detailView];
@@ -36,6 +48,9 @@
     //刷新数据
     [self refreshData];
     
+    [self checkoutIsCollectionOrNot];
+
+    
 }
 
 #pragma mark - 设置分享按钮
@@ -46,6 +61,7 @@
     //收藏按钮
     UIBarButtonItem * favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
     self.navigationItem.rightBarButtonItems = @[favoriteButtonItem,shareButtonItem];
+    self.favoriteButtonItem = favoriteButtonItem;
     
     
 }
@@ -59,9 +75,61 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    [CommonUtils showToastWithStr:@"收藏"];
     
+    //活动详情收藏按钮接口
+    if (yesIsCollection==YES) {
+        return;
+    }
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.model.hotActivityID forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfUniversityAssnActivity] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"收藏成功"];
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
+-(void)checkoutIsCollectionOrNot
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.model.hotActivityID forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfUniversityAssnActivity] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                yesIsCollection = NO;
+
+                
+            }
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+
 
 
 #pragma mark - 显示数据

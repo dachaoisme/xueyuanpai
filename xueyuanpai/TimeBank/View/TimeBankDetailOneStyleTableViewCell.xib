@@ -81,7 +81,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="48" id="ldO-qx-HXb"/>
                         </constraints>
-                        <state key="normal" title="我要申请">
+                        <state key="normal" title="我要赴约">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>

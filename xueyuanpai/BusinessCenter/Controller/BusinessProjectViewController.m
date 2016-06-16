@@ -268,7 +268,7 @@
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [dic setValue:keyword forKey:@"keyword"];
-    [dic setValue:categoryParam forKey:@"cat_id"];
+    [dic setObject:categoryParam forKey:@"cat_id"];
     [dic setValue:sortParam  forKey:@"sort"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]businessCenterGetProgectListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
