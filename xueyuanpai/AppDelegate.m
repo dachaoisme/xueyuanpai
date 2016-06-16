@@ -25,8 +25,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    //极光推送方法
+    [self jpushAction:launchOptions];
     
     [[UserAccountManager sharedInstance]getUserInfo];
     
@@ -36,16 +40,12 @@
     
     [_window makeKeyAndVisible];
     
-    
-    //极光推送方法
-    [self jpushAction:launchOptions];
-    
-    
-    
+
     return YES;
 }
 
 - (void)jpushAction:(NSDictionary *)launchOptions{
+    
     
     NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
@@ -67,7 +67,7 @@
     [JPUSHService setupWithOption:launchOptions appKey:appKey
                           channel:channel
                  apsForProduction:isProduction
-            advertisingIdentifier:nil];
+            advertisingIdentifier:advertisingId];
 
 }
 
