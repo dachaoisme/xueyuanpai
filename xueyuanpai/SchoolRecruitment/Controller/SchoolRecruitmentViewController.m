@@ -57,6 +57,8 @@
     [self createTableView];
     
     [self requestBannerData];
+    
+    [self requestListData];
 }
 
 #pragma mark - 右侧导航栏按钮响应方法
@@ -141,7 +143,7 @@
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
-        [self requestListData];
+        
         //[theCollectionView reloadData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

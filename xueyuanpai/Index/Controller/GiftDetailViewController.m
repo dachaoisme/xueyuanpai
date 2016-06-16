@@ -118,6 +118,7 @@
         
     }];
 }
+
 -(void)checkoutIsCollectionOrNot
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
@@ -128,12 +129,16 @@
         [dic setValue:self.giftDetailId forKey:@"obj_id"];
     }
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfGiftExchange] forKey:@"type"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
         if (model.responseCode == ResponseCodeSuccess) {
             NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
             if (status==1) {
                 ///已收藏
-                [_favoriteButtonItem setImage:[UIImage imageNamed:@"nav_icon_fav_full"]];
+                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
                 yesIsCollection = YES;
             }else{
                 ///未收藏

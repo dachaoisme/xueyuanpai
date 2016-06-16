@@ -12,6 +12,13 @@
 #import "BusinessNewsDetailTwoStyleTableViewCell.h"
 
 @interface BusinessNewsDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    BOOL yesIsCollection;
+
+}
+
+@property(nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
+
 
 @end
 
@@ -23,10 +30,14 @@
     
     [self createLeftBackNavBtn];
     
+    yesIsCollection = NO;
+    
     [self p_setupShareButtonItem];
     
     
     [self createTableView];
+    
+    [self checkoutIsCollectionOrNot];
 }
 
 #pragma mark - 设置分享按钮
@@ -37,6 +48,7 @@
     //收藏按钮
     UIBarButtonItem * favoriteButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(didClickFavoriteButtonItemAction:)];
     self.navigationItem.rightBarButtonItems = @[favoriteButtonItem,shareButtonItem];
+    self.favoriteButtonItem = favoriteButtonItem;
     
     
 }
@@ -51,7 +63,75 @@
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
     [CommonUtils showToastWithStr:@"收藏"];
+    if (yesIsCollection==YES) {
+        return;
+    }
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    if ([self.title isEqualToString:@"新闻详情"]) {
+        [dic setValue:_newsModel.businessCenterNewsId forKey:@"obj_id"];
+    }else{
+        [dic setValue:_competationModel.businessCenterCompetitionId forKey:@"obj_id"];
+    }
     
+    if ([self.title isEqualToString:@"新闻详情"]) {
+        [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessNews] forKey:@"type"];
+    }else{
+         [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessCompetition] forKey:@"type"];
+    }
+   
+    [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+
+-(void)checkoutIsCollectionOrNot
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    if ([self.title isEqualToString:@"新闻详情"]) {
+        [dic setValue:_newsModel.businessCenterNewsId forKey:@"obj_id"];
+    }else{
+        [dic setValue:_competationModel.businessCenterCompetitionId forKey:@"obj_id"];
+    }
+    
+    if ([self.title isEqualToString:@"新闻详情"]) {
+        [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessNews] forKey:@"type"];
+    }else{
+        [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessCompetition] forKey:@"type"];
+    }
+
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 
 
