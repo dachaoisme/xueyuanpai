@@ -30,14 +30,18 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>NSIncludesSubdomains</key>
-			<true/>
 			<key>NSExceptionAllowsInsecureHTTPLoads</key>
+			<true/>
+			<key>NSIncludesSubdomains</key>
 			<true/>
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>是否允许学院派获取您的位置</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

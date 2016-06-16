@@ -39,6 +39,7 @@
     NSMutableArray * bannerImageArray;
     NSMutableArray * columnItemArray;
     NSMutableArray * mallItemArray;
+    IndexCollectionReusableView *headReusableView;
     
 }
 @end
@@ -199,9 +200,11 @@
     //此处是headerView
     if (kind == UICollectionElementKindSectionHeader) {
         if (indexPath.section == 0) {
-            IndexCollectionReusableView *headReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-            
-            headReusableView.delegate = self;
+            if (!headReusableView) {
+                headReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+                
+                headReusableView.delegate = self;
+            }
             headReusableView.imageArray = bannerImageArray;
             return headReusableView;
         }else{

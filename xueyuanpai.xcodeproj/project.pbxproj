@@ -3230,6 +3230,11 @@
 					58F67B9E1CD9863400D55BE0 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = H67PRMBBCW;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					58F67BB71CD9863400D55BE0 = {
 						CreatedOnToolsVersion = 7.3;

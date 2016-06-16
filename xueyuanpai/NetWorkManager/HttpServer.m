@@ -98,6 +98,7 @@
         successBlock(model);
     } failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
         //NSLog(@"%@", error);
+
         [CommonUtils showToastWithStr:@"请求数据失败"];
         failBlock(error);
     }];
