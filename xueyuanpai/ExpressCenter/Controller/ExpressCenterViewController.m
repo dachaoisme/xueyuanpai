@@ -269,6 +269,7 @@
     [backGroundView addSubview:showTextLabel];
     
     
+    
     //本校有多少个快递员正在接单
     UILabel *showNumberCourier = [[UILabel alloc] initWithFrame:CGRectMake(70, CGRectGetMaxY(showTextLabel.frame), 80, 30)];
     showNumberCourier.textAlignment = NSTextAlignmentCenter;
