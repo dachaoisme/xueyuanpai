@@ -42,7 +42,7 @@
 ///根据关键字查询学校
 #define METHOD_OF_COLLEGE_SEARCH         @"v1/college/search?"
 ///用户头像上传
-#define METHOD_OF_UPLOAD                 @"v1/user/upload?"
+#define METHOD_OF_UPLOAD                 @"v1/user/upload/"
 
 ///大学社团：热门活动
 #define METHOD_OF_UNIVERSITY_ACTIVITY    @"v1/association/hot?"

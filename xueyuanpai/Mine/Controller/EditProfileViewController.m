@@ -61,6 +61,8 @@
     
     [self createLeftBackNavBtn];
     
+    [self setInitNickName];
+    
     [self setContentView];
     
     [self createTableView];
@@ -68,7 +70,21 @@
     //创建提交按钮
     [self createCommitButton];
 }
+-(void)setInitNickName
+{
+    if ([UserAccountManager sharedInstance].userSex == UserInfoSexMan) {
+        
+        self.sexStr = @"男";
+        
+    }else if ([UserAccountManager sharedInstance].userSex == UserInfoSexWoman){
+        
+        self.sexStr = @"女";
+    }else{
+        
+        self.sexStr = @"未知";
+    }
 
+}
 #pragma mark - 创建提交按钮
 - (void)createCommitButton{
     
@@ -227,18 +243,8 @@
         if (indexPath.row == 1) {
             
             cell.titleLabel.text = @"性别";
+            cell.contentLabel.text = self.sexStr;
             
-            if ([UserAccountManager sharedInstance].userSex == UserInfoSexMan) {
-                
-                cell.contentLabel.text = @"男";
-                
-            }else if ([UserAccountManager sharedInstance].userSex == UserInfoSexWoman){
-                
-                cell.contentLabel.text = @"女";
-            }else{
-                
-                cell.contentLabel.text = @"未知";
-            }
             
         }else if (indexPath.row == 2) {
             
@@ -262,7 +268,56 @@
     }
     
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    __weak typeof(self)weakSelf = self;
+    
+    if (indexPath.row == 1) {
+        
+        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        //选择性别
+        float height = 200;
+        
+        SelectedSexView * selectedView = [[SelectedSexView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
+        selectedView.callBackBlock = ^(NSString * sex){
+            [CommonUtils showToastWithStr:sex];
+            cell.contentLabel.text = sex;
+            self.sexStr = sex;
+            
+        };
+        [[UIApplication sharedApplication].delegate.window addSubview:selectedView];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+    }else if (indexPath.row == 2){
+        
+        //选择生日
+    }else if (indexPath.row == 3){
+        
+        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        //选择学校
+        SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
+        schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
+            
+            cell.contentLabel.text = collegeModel.collegeName;
+            
+            
+            weakSelf.school = collegeModel.collegeName;
+            
+            theCollegeModel = collegeModel;
+            
+        };
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        
+        [self.navigationController pushViewController:schollVC animated:YES];
+        
+    }else if (indexPath.row == 4){
+        //选择年级
+        
+    }
+    
+    
+}
 #pragma mark - 从相册中选择图片
 
 -(void)selectedImageFromPhotoAlbum:(UIButton *)sender
@@ -276,7 +331,6 @@
         
         [wSelf.headImageSelectedBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
         [wSelf.headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
-        //需要把图片上传到服务器
         //需要把图片上传到服务器
         UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
         //需要把图片上传到服务器
@@ -296,60 +350,7 @@
     
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    __weak typeof(self)weakSelf = self;
-    
-    if (indexPath.row == 1) {
-        
-        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        //选择性别
-        float height = 200;
-        
-        SelectedSexView * selectedView = [[SelectedSexView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height)];
-        selectedView.callBackBlock = ^(NSString * sex){
-            [CommonUtils showToastWithStr:sex];
-            
 
-            
-            cell.contentLabel.text = sex;
-            
-            self.sexStr = sex;
-            
-        };
-        [[UIApplication sharedApplication].delegate.window addSubview:selectedView];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-    }else if (indexPath.row == 2){
-        
-        //选择生日
-    }else if (indexPath.row == 3){
-        
-         EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        //选择学校
-        SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
-        schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
-            
-            cell.contentLabel.text = collegeModel.collegeName;
-
-            
-            weakSelf.school = collegeModel.collegeName;
-            
-            theCollegeModel = collegeModel;
-
-        };
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        
-        [self.navigationController pushViewController:schollVC animated:YES];
-        
-    }else if (indexPath.row == 4){
-        //选择年级
-        
-    }
-    
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
