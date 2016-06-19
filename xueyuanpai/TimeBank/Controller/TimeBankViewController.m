@@ -266,7 +266,7 @@
     [[HttpClient sharedInstance]timeBankGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [self.tableView.footer endRefreshing];
-        if (responseModel.responseCode == ResponseCodeSuccess) {
+        if (responseModel.responseCode == ResponseCodeSuccess && responseModel.responseCommonDic.count > 0) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 TimeBankModel * model = [[TimeBankModel alloc]initWithDic:smallDic];

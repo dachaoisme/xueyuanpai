@@ -36,38 +36,6 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "487605589.949281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "487605611.084578"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
@@ -116,7 +84,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/BusinessCenter/Controller/BusinessProjectViewController.m"
-                  timestampString = "487782155.021925"
+                  timestampString = "488043008.49768"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "191"
@@ -131,7 +99,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/BusinessCenter/Controller/BusinessProjectViewController.m"
-                  timestampString = "487782155.022268"
+                  timestampString = "488043008.498037"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "191"
@@ -164,7 +132,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/NetWorkManager/HttpClient.m"
-                  timestampString = "487782155.024112"
+                  timestampString = "488043008.499615"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "147"
@@ -179,7 +147,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E9%87%8D%E8%A6%81%E6%96%87%E4%BB%B6/xueyuanpai/NetWorkManager/HttpClient.m"
-                  timestampString = "487782155.024483"
+                  timestampString = "488043008.500005"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "147"

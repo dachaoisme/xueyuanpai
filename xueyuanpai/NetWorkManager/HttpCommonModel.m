@@ -33,6 +33,7 @@
 {
     self = [super init];
     if (self) {
+        
         self.responseCurrentPage    = [dic stringForKey:@"page"];
         self.responsePageTotalCount = [dic stringForKey:@"cnt"];
         self.responsePageLength     = [dic stringForKey:@"len"];

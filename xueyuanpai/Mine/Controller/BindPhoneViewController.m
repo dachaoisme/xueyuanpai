@@ -54,7 +54,7 @@
     UIButton *sendMessageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     sendMessageButton.frame = CGRectMake(SCREEN_WIDTH - 100, 10, 100, 20);
     [sendMessageButton setTitle:@"发送验证码" forState:UIControlStateNormal];
-    [sendMessageButton setFont:[UIFont systemFontOfSize:14]];
+    sendMessageButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [sendMessageButton setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
     [sendMessageButton addTarget:self action:@selector(sendMessageAction) forControlEvents:UIControlEventTouchUpInside];
     [backGroundView addSubview:sendMessageButton];

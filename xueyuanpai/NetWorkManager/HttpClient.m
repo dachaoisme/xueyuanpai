@@ -225,7 +225,10 @@
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_BANK_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         //Pages
-        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        HttpResponsePageModel * pageModel = nil;
+        if (model.responseCode == ResponseCodeSuccess && model.responseCommonDic.count > 0) {
+            pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        }
         NSDictionary * listDic = model.responseCommonDic;
         successBlock(model,pageModel,listDic);
     } withFailBlock:^(NSError *error) {

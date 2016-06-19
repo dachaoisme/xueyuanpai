@@ -71,7 +71,7 @@
             urlStr = self.pics[i - 1];
         }
         [imageView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"1.jpg"]];
-        //[self loadImage:urlStr imageView:imageView];
+//        [self loadImage:urlStr imageView:imageView];
         [self setVFrame:i imageView:imageView];
         [_imgScrollView addSubview:imageView];
     }
@@ -113,7 +113,10 @@
         self.pageControl.currentPage++;
         _curIndex++;
     }
-    CGFloat x = (_curIndex + 1) * self.imgScrollView.frame.size.width;
+    
+    //self.imgScrollView.frame.size.width
+    
+    CGFloat x = (_curIndex + 1) * SCREEN_WIDTH;
     [UIView animateWithDuration:0.5 animations:^{
         _imgScrollView.contentOffset = CGPointMake(x, 0);
     } completion:^(BOOL finished) {
@@ -156,7 +159,7 @@
 #pragma mark 添加计时器
 - (void)addTimer{
     if (self.pics.count != 1) {
-        self.time = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+        self.time = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
     }
 }
 #pragma mark 下载图片
@@ -167,7 +170,7 @@
     if (url == nil) {
         return;
     }
-    //[imgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"test"]];
+//    [imgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"test"]];
 //    dispatch_queue_t queue =dispatch_queue_create("loadImage",NULL);
 //    dispatch_async(queue, ^{
 //        if ([self getImageWithName:[self md5:urlStr]] != nil) {
