@@ -72,7 +72,8 @@
 @property(nonatomic,strong)NSString *timeBankSubmitPayWay;
 @property(nonatomic,strong)NSString *timeBankSubmitDescription;
 @property(nonatomic,strong)NSString *timeBankSubmitPrice;
-
+@property(nonatomic,strong)NSString *timeBankSubmitPoints;
+@property(nonatomic,strong)NSString *timeBankSubmitIcon;
 -(id)initWithDic:(NSDictionary *)dic;
 @end
 

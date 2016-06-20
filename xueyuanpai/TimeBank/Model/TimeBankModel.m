@@ -88,15 +88,17 @@
     self = [super init];
     if (self) {
         
-        self.timeBankSubmitTitle        = @"";
-        self.timeBankSubmitType         = @"";
-        self.timeBankSubmitTime         = @"";
-        self.timeBankSubmitNoon         = @"";
-        self.timeBankSubmitAdress       = @"";
-        self.timeBankSubmitPerson       = @"";
-        self.timeBankSubmitPayWay       = @"";
-        self.timeBankSubmitDescription  = @"";
-        self.timeBankSubmitPrice        = @"";
+        self.timeBankSubmitTitle        = dic?[dic stringForKey:@"title"]:@"";
+        self.timeBankSubmitType         = dic?[dic stringForKey:@"category_id"]:@"";
+        self.timeBankSubmitTime         = dic?[dic stringForKey:@"appointment_time"]:@"";
+        self.timeBankSubmitNoon         = dic?[dic stringForKey:@"noon"]:@"";
+        self.timeBankSubmitAdress       = dic?[dic stringForKey:@"area"]:@"";
+        self.timeBankSubmitPerson       = dic?[dic stringForKey:@"number"]:@"";
+        self.timeBankSubmitPayWay       = dic?[dic stringForKey:@"payway"]:@"";
+        self.timeBankSubmitDescription  = dic?[dic stringForKey:@"brief"]:@"";
+        self.timeBankSubmitPrice        = dic?[dic stringForKey:@"price"]:@"";
+        self.timeBankSubmitIcon         = dic?[dic stringForKey:@"icon"]:@"";
+        self.timeBankSubmitPoints       = dic?[dic stringForKey:@"points"]:@"";
     }
     return self;
 }
