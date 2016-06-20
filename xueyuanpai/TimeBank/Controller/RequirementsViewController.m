@@ -47,7 +47,10 @@
 @property (nonatomic,strong)NSArray *noonArr;
 @property (nonatomic,strong)NSArray *yearArr;
 @property (nonatomic,strong)NSArray *monthArr;
+///配置请求参数的mole
 @property (nonatomic,strong)TimeBankSubmitModel *timeBankSubmitModel;
+///发布成功以后，返回的model
+@property (nonatomic,strong)TimeBankSubmitModel *timeBankSubmitSuccessModel;
 @end
 
 @implementation RequirementsViewController
@@ -311,7 +314,7 @@
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"发布时间银行成功"];
-            
+            self.timeBankSubmitSuccessModel = [[TimeBankSubmitModel alloc]initWithDic:model.responseCommonDic];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -468,8 +471,8 @@
     return 1;
 }
 #pragma mark - 输入框代理方法
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
     if (textField.tag == 1000) {
         ///标题
         _timeBankSubmitModel.timeBankSubmitTitle = textField.text;
@@ -477,18 +480,14 @@
         
         ///地址
         _timeBankSubmitModel.timeBankSubmitAdress = textField.text;
-
+        
     }
-    
-    return YES;
 }
 
 #pragma mark - textView代理方法
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
     _timeBankSubmitModel.timeBankSubmitDescription = textView.text;
-    
-    return YES;
 }
 
 #pragma mark - RequirementTwoTableViewCellDelegate
