@@ -34,6 +34,9 @@
     UIButton    *leftReduceBtn;///减号
     UILabel     *centerLabel;///中间显示金额的
     UIButton    *rightAddBtn;///加号
+    
+    
+    int countMoney; ///计算金额的
 
     
 
@@ -607,8 +610,8 @@
     [stepperView addSubview:leftReduceBtn];
     //中间输入框
     centerLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(leftReduceBtn.frame), 0, width/3, height)];
+    countMoney = 0;
     centerLabel.text = @"0元";
-    [centerLabel addPreviousNextDoneOnKeyboardWithTarget:self previousAction:nil nextAction:nil doneAction:@selector(doneAction:)];
     centerLabel.font = [UIFont systemFontOfSize:12];
     centerLabel.textAlignment = NSTextAlignmentCenter;
     [centerLabel setFrame:CGRectMake(width/3, 0, width/3, height)];
@@ -633,14 +636,24 @@
 #pragma mark - 按钮加减号响应的方法
 - (void)changeBuyTicketNumWithBtn:(UIButton *)sender{
     
-    [CommonUtils showToastWithStr:@"+号和-号的响应事件"];
-}
-
-
-
-
--(void)doneAction:(UITextField *)textField
-{
+    
+    if (sender.tag == 10001) {
+        if (countMoney > 0) {
+            countMoney = countMoney-1;
+        }else{
+            countMoney = 0;
+        }
+    }else{
+        
+        countMoney = countMoney + 1;
+    }
+    
+//    [CommonUtils showToastWithStr:@"+号和-号的响应事件"];
+    
+    
+    _timeBankSubmitModel.timeBankSubmitPrice = [NSString stringWithFormat:@"%d",countMoney];
+    centerLabel.text = [NSString stringWithFormat:@"%d元",countMoney];
+    
 }
 
 - (void)didReceiveMemoryWarning {

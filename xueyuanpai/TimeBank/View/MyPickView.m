@@ -73,9 +73,10 @@
     [self addSubview:toolView];
     
     UIButton * cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [cancelBtn setFrame:CGRectMake(16, 0, screenWidth/3, 60)];
-    [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [cancelBtn setFrame:CGRectMake(0, 0, screenWidth/3, 60)];
+    [cancelBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
     cancelBtn.tag = 10001;
+    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [cancelBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     [toolView addSubview:cancelBtn];
@@ -83,16 +84,19 @@
     UIButton * selectedTimeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [selectedTimeBtn setFrame:CGRectMake(screenWidth/3, 0, screenWidth/3, 60)];
     [selectedTimeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    selectedTimeBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [selectedTimeBtn setTitle:@"请选择时间" forState:UIControlStateNormal];
     [toolView addSubview:selectedTimeBtn];
     
     
     UIButton * sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sureBtn setFrame:CGRectMake(CGRectGetWidth(toolView.frame)-screenWidth/3-16, 0, screenWidth/3, 60)];
+    [sureBtn setFrame:CGRectMake(CGRectGetWidth(toolView.frame)-screenWidth/3, 0, screenWidth/3, 60)];
     sureBtn.tag = 10002;
     [sureBtn addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    [sureBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [sureBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    sureBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+
     [toolView addSubview:sureBtn];
     
     
