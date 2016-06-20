@@ -57,7 +57,7 @@
     [self createTableView];
     
     [self requestBannerData];
-    
+    [self requestColumnsData];
     [self requestListData];
 }
 
@@ -115,8 +115,8 @@
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
-        //[self.tableView reloadData];
-        [self requestColumnsData];
+        [self.tableView reloadData];
+        //[self requestColumnsData];
         
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -144,7 +144,7 @@
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
         
-        //[theCollectionView reloadData];
+        [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];

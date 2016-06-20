@@ -4096,7 +4096,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "be9baf11-7a0a-4b71-b463-8128ba2122be";
 			};
 			name = Debug;
 		};
