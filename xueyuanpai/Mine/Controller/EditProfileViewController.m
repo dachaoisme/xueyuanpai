@@ -339,7 +339,7 @@
         NSData * imageData = UIImagePNGRepresentation(scaleImg);
         [imageDic setObject:imageData forKey:@"Users[file]"];
         [[HttpClient sharedInstance]uploadImageWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
-            avatarImageUploaded = [dic objectForKey:@"picUrl"];
+            avatarImageUploaded = [model.responseCommonDic objectForKey:@"picUrl"];
             
         } withFaileBlock:^(NSError *error) {
             [CommonUtils showToastWithStr:@"图片上传失败"];
