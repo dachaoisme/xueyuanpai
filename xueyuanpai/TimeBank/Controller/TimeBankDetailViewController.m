@@ -7,11 +7,8 @@
 //
 
 #import "TimeBankDetailViewController.h"
-
 #import "TimeBankDetailOneStyleTableViewCell.h"
-
 #import "TimeBankDetailTwoStyleTableViewCell.h"
-
 #import "TimeBankDetailThreeTableViewCell.h"
 
 @interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TimeBankDetailOneStyleTableViewCellDelegate,TimeBankDetailTwoStyleTableViewCellDelegate>
@@ -24,6 +21,8 @@
     NSMutableArray * timeBankCommentListArr;
     
     BOOL yesIsCollection ;
+    NSInteger pageSize;
+    NSInteger pageNum;
 }
 @property (nonatomic,strong)UITableView * tableView;
 
@@ -45,6 +44,8 @@
     
     [self setTitle:@"时间银行详情"];
     yesIsCollection = NO;
+    pageSize=10;
+    pageNum=1;
     [self createLeftBackNavBtn];
     
 
@@ -122,7 +123,7 @@
     [tableView registerNib:[UINib nibWithNibName:@"TimeBankDetailThreeTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
     
     
-    
+    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreCommentList)];
 }
 
 #pragma mark - 设置分享按钮
@@ -440,9 +441,12 @@
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:self.timeBankId forKey:@"bank_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNum] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankCommentListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
         ///获取查询条件
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
@@ -452,7 +456,11 @@
                 
                 [timeBankCommentListArr addObject:commentModel];
             }
-            
+            ///处理上拉加载更多逻辑
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
             
             [self.tableView reloadData];
             
@@ -461,10 +469,15 @@
         }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [self.tableView.footer endRefreshing];
     }];
     
 }
-
+-(void)requestMoreCommentList
+{
+    pageNum = pageNum+1;
+    [self requestToCommentList];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
