@@ -299,8 +299,6 @@
 -(void)submit:(UIButton *)sender
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:@"1" forKey:@"page"];
-    [dic setObject:@"10" forKey:@"size"];
     //关键字
     if (keyWordsTextField.text.length>0) {
         [dic setObject:keyWordsTextField.text forKey:@"keyword"];

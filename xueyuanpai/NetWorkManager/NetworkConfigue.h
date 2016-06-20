@@ -86,7 +86,7 @@
 #define METHOD_TIME_SCHOOL_RECRUITEMENT_Detail         @"v1/recruitment/detail?"
 
 ///跳蚤市场:跳蚤市场分类接口
-#define METHOD_JOB_MARKET_CONDITION_CATEGORY           @"v1/fleamarket/category?"
+#define METHOD_JOB_MARKET_CONDITION_CATEGORY           @"v1/fleamarket/category/"
 ///跳蚤市场:跳蚤市场列表接口
 #define METHOD_JOB_MARKET_LIST                         @"v1/fleamarket/list?"
 ///跳蚤市场:跳蚤市场上传照片接口

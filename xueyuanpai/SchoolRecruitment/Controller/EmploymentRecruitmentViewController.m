@@ -32,7 +32,7 @@
     [self requestListData];
     [self createLeftBackNavBtn];
     
-    
+    [self createTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -84,7 +84,11 @@
                 SchoolRecruitmentModel * model = [[SchoolRecruitmentModel alloc]initWithDic:dic];
                 [schoolRecruitmentListArray addObject:model];
             }
-            [self createTableView];
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+                //说明是最后一张
+                self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+            }
+            [self.tableView reloadData];
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
