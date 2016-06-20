@@ -198,7 +198,7 @@
                 
                 cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_market"];
                 
-                cell.contentLabel.text = @"我的跳槽市场";
+                cell.contentLabel.text = @"我的跳蚤市场";
 
                 
                 break;

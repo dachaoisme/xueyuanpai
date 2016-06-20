@@ -48,7 +48,7 @@
     
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
-    self.title = @"跳槽市场";
+    self.title = @"跳蚤市场";
     
     [self theTabBarHidden:YES];
     

@@ -42,7 +42,7 @@
     
     self.imageArray = [NSMutableArray array];
     
-    self.title = @"跳槽市场详情";
+    self.title = @"跳蚤市场详情";
     yesIsCollection = NO;
     //返回
     [self createLeftBackNavBtn];

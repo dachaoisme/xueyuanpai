@@ -502,13 +502,19 @@ static NSString *Identifier = @"photoCollectionViewCell";
         [imageDic setObject:imageData forKey:key];
     }
     
+    if (self.pictureImages.count == 0){
+        [CommonUtils showToastWithStr:@"请添加照片"];
+        return;
+    }    
     [[HttpClient sharedInstance]uploadJobMarketIconWithParams:imageDic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode==ResponseCodeSuccess) {
             NSArray  *imageArr =(NSArray *)model.responseCommonDic;
             uploadImageStr = [imageArr componentsJoinedByString:@";"];
             publishJobMarketModel.publicJobMarketImages = uploadImageStr;
+            
             [self requestToPublish];
+
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -533,9 +539,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
     if (publishJobMarketModel.publicJobMarketTitle.length<=0) {
         [CommonUtils showToastWithStr:@"请输入标题"];
         return;
-    }
-    
-    else if (publishJobMarketModel.publicJobMarketImages.length<=0){
+    }else if (publishJobMarketModel.publicJobMarketImages.length<=0){
         [CommonUtils showToastWithStr:@"请添加照片"];
         return;
     }

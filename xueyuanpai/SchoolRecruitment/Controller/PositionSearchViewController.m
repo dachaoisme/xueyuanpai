@@ -59,10 +59,10 @@
     keyWordsTextField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(keyWordsLable.frame), 0, centerWidth, height)];
     keyWordsTextField.backgroundColor = [UIColor whiteColor];
     keyWordsTextField.font = [UIFont systemFontOfSize:14];
-    keyWordsTextField.textAlignment = NSTextAlignmentRight;
+//    keyWordsTextField.textAlignment = NSTextAlignmentRight;
     keyWordsTextField.delegate = self;
     keyWordsTextField.tag = 10001;
-    keyWordsTextField.placeholder = @"请输入职位名称或者公司名称)";
+    keyWordsTextField.placeholder = @"(请输入职位名称或者公司名称)";
     [keyWordsView addSubview:keyWordsTextField];
     ///工作性质
     UIView * jobPropertyView = [UIFactory viewWithFrame:CGRectMake(0, CGRectGetMaxY(keyWordsView.frame), SCREEN_WIDTH, height) backgroundColor:@"ffffff"];
@@ -169,8 +169,8 @@
     [submitBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
     [submitBtn setFrame:CGRectMake(space, CGRectGetMaxY(sexView.frame)+space, SCREEN_WIDTH-2*space, height)];
     [submitBtn addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
-    [submitBtn setTitle:@"提交并注册" forState:UIControlStateNormal];
-    submitBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [submitBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [self.view addSubview:submitBtn];
     
 }
