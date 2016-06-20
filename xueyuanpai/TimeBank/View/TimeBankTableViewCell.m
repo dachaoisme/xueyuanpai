@@ -64,9 +64,13 @@
     _timeBankCategoryLable.text  = model.timeBankPayway;
    
     
-    
     _timeBankAdressLable.text    = model.timeBankArea;
-    _timeBankDetailLable.text    = model.timeBankBrief;
+    
+    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[model.timeBankBrief dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    
+    
+    _timeBankDetailLable.attributedText = attrStr;
+//    _timeBankDetailLable.text    = model.timeBankBrief;
     _timeBankNickNameLable.text  = model.timeBankUsername;
     if ([model.timeBankSex intValue]== SexOfManType) {
         ///男

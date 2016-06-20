@@ -11,10 +11,14 @@
 #import "JobMarketDetailOneStyleTableViewCell.h"
 #import "JobMarkDetailTwoStyleTableViewCell.h"
 
+#import "UILabel+VerticalAlign.h"
+
+
 @interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate,JobMarkDetailTwoStyleTableViewCellDelegate>
 {
     JobMarketDetailModel * jobMarketDetailModel;
     BOOL yesIsCollection ;
+    
 }
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
@@ -23,6 +27,9 @@
 @property (nonatomic,strong)NSMutableArray *imageArray;
 
 @property (nonatomic,strong)SchoolShufflingView *myHeaderView;
+
+
+@property (nonatomic,strong)NSAttributedString * attrStr;
 
 
 @end
@@ -218,15 +225,12 @@
                 cell.textLabel.font = [UIFont systemFontOfSize:14];
                 
                 
-                NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[jobMarketDetailModel.jobMarketDetailDescription dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+                self.attrStr = [[NSAttributedString alloc] initWithData:[jobMarketDetailModel.jobMarketDetailDescription dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
                 
 
-                cell.textLabel.attributedText = attrStr;
+                cell.textLabel.attributedText = _attrStr;
                 cell.textLabel.numberOfLines = 0;
-                
-                
-                [cell.textLabel sizeToFit];
-              
+
                
                 return cell;
             }
@@ -259,7 +263,7 @@
             }else{
                 
                 //计算文本高度
-                return  [self textHeight:jobMarketDetailModel.jobMarketDetailDescription];
+                return  [self textHeight:[self.attrStr string]];
             }
         }
             
@@ -344,11 +348,12 @@
 //自适应撑高
 //计算字符串的frame
 - (CGFloat)textHeight:(NSString *)string{
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:8]} context:nil];
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 20, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20]} context:nil];
     //返回计算好的高度
     return rect.size.height;
     
 }
+
 
 
 - (void)didReceiveMemoryWarning {

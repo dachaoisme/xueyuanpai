@@ -227,8 +227,13 @@
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell3"];
             }
             cell.introduceLabel.text = @"兑换方法";
+            
+            NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[self.mallModel.indexMallExchangemethod dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+            
+            
+            cell.detailContentLabel.attributedText = attrStr;
 
-            cell.detailContentLabel.text = self.mallModel.indexMallExchangemethod;
+//            cell.detailContentLabel.text = self.mallModel.indexMallExchangemethod;
 
             
             return cell;
