@@ -7,6 +7,7 @@
 //
 
 #import "TimeBankTableViewCell.h"
+#import "UIImage+ChangeImageColor.h"
 
 @interface TimeBankTableViewCell ()
 
@@ -80,9 +81,14 @@
     
     if ([model.timeBankStat intValue]== TimeBankStateUnApply) {
         [_timeBankStateBtn setTitle:@"未申请" forState:UIControlStateNormal];
-        [_timeBankStateBtn setHidden:YES];
+        
+        UIImage *image = [[UIImage imageNamed:@"disable_tag"] imageWithTintColor:[CommonUtils colorWithHex:@"00beaf"]];
+        
+        [_timeBankStateBtn setBackgroundImage:image forState:UIControlStateNormal];
+        [_timeBankStateBtn setHidden:NO];
     }else if ([model.timeBankStat intValue]== TimeBankStateAlreadyApply){
         [_timeBankStateBtn setTitle:@"已申请" forState:UIControlStateNormal];
+         [_timeBankStateBtn setBackgroundImage:[UIImage imageNamed:@"disable_tag"] forState:UIControlStateNormal];
         [_timeBankStateBtn setHidden:NO];
     }else if ([model.timeBankStat intValue]== TimeBankStateAlreadyPass){
         [_timeBankStateBtn setTitle:@"已通过" forState:UIControlStateNormal];
