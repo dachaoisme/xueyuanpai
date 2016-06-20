@@ -374,6 +374,7 @@
 		DD13CE1F1D003526000A69FE /* BusinessClassDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13CE1D1D003526000A69FE /* BusinessClassDetailTableViewCell.m */; };
 		DD13CE201D003526000A69FE /* BusinessClassDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD13CE1E1D003526000A69FE /* BusinessClassDetailTableViewCell.xib */; };
 		DD13CE231D003CC3000A69FE /* BaoMingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD13CE221D003CC3000A69FE /* BaoMingViewController.m */; };
+		DD1957C41D17C8D200FF01F0 /* RequirementsSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957C31D17C8D200FF01F0 /* RequirementsSuccessViewController.m */; };
 		DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */; };
 		DD4127551CF0552F00227066 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127251CF0552E00227066 /* arrow@2x.png */; };
 		DD4127561CF0552F00227066 /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127261CF0552E00227066 /* arrow@3x.png */; };
@@ -1153,6 +1154,8 @@
 		DD13CE1E1D003526000A69FE /* BusinessClassDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessClassDetailTableViewCell.xib; sourceTree = "<group>"; };
 		DD13CE211D003CC3000A69FE /* BaoMingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaoMingViewController.h; sourceTree = "<group>"; };
 		DD13CE221D003CC3000A69FE /* BaoMingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoMingViewController.m; sourceTree = "<group>"; };
+		DD1957C21D17C8D200FF01F0 /* RequirementsSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementsSuccessViewController.h; sourceTree = "<group>"; };
+		DD1957C31D17C8D200FF01F0 /* RequirementsSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementsSuccessViewController.m; sourceTree = "<group>"; };
 		DD4127211CF043DF00227066 /* UniversityAssnHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniversityAssnHeaderView.h; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.h; sourceTree = SOURCE_ROOT; };
 		DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UniversityAssnHeaderView.m; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.m; sourceTree = SOURCE_ROOT; };
 		DD4127251CF0552E00227066 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
@@ -2087,6 +2090,8 @@
 				58898E4E1CFAD0790007D9B3 /* TimeBankDetailViewController.m */,
 				58F211651CF9A0E800926FB9 /* RequirementsViewController.h */,
 				58F211661CF9A0E800926FB9 /* RequirementsViewController.m */,
+				DD1957C21D17C8D200FF01F0 /* RequirementsSuccessViewController.h */,
+				DD1957C31D17C8D200FF01F0 /* RequirementsSuccessViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3938,6 +3943,7 @@
 				58898E4F1CFAD0790007D9B3 /* TimeBankDetailViewController.m in Sources */,
 				5874A4041CF2458D00CE9FC9 /* UITextView+TopView.m in Sources */,
 				DDD0BD8E1CF9A43C00073290 /* SchoolRecruitmentModel.m in Sources */,
+				DD1957C41D17C8D200FF01F0 /* RequirementsSuccessViewController.m in Sources */,
 				DDAB05BB1D033649007A6027 /* BusinessClassRoomViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
