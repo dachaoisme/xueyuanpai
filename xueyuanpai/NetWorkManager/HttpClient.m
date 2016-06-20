@@ -262,7 +262,7 @@
 }
 - (void)timeBankProjectWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
-    [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_BANK_APPLY_PASS withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+    [[HttpServer sharedInstance]getWithMethod:METHOD_TIME_BANK_APPLY_APPOINTMENT withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         successBlock(model);
     } withFailBlock:^(NSError *error) {
         failBlock(error);

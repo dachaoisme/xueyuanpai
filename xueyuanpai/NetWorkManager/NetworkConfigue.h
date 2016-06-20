@@ -72,7 +72,7 @@
 ///时间银行:上传用户头像
 #define METHOD_TIME_BANK_ADD_UPLOAD           @"v1/timebank/upload/"
 ///时间银行:申请赴约接口
-#define METHOD_TIME_BANK_APPLY_APPOINTMENT    @"v1/timebank/apply/"
+#define METHOD_TIME_BANK_APPLY_APPOINTMENT    @"v1/timebank/apply?"
 ///时间银行:申领通过接口
 #define METHOD_TIME_BANK_APPLY_PASS           @"v1/timebank/verified/"
 ///时间银行:详情接口

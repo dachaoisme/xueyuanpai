@@ -375,9 +375,7 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
-            NSDictionary * dataDic = [model.responseCommonDic objectForKey:@"data"];
-            NSString * userId = [dataDic stringForKey:@"user_id"];
-            NSString * timeBankId = [dataDic stringForKey:@"tb_id"];
+            
             [CommonUtils showToastWithStr:@"申领状态成功"];
             
         }else{
