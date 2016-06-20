@@ -8,6 +8,8 @@
 
 #import "RequirementsSuccessViewController.h"
 
+#import "TimeBankViewController.h"
+
 @interface RequirementsSuccessViewController ()
 
 @end
@@ -38,7 +40,7 @@
     
     //成功积分显示
     UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.center.x - 25, imageView.center.y - 10, 50, 20)];
-    moneyLabel.text = @"+20";
+    moneyLabel.text = [NSString stringWithFormat:@"+%@",_points];
     moneyLabel.textColor = [UIColor colorWithRed:254/255.0 green:189/255.0 blue:47/255.0 alpha:1];
     moneyLabel.textAlignment = NSTextAlignmentCenter;
     moneyLabel.font = [UIFont systemFontOfSize:16];
@@ -49,7 +51,7 @@
     UILabel *alertLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(imageView.frame) - 25, CGRectGetMaxY(imageView.frame) + 20, CGRectGetWidth(imageView.frame) + 50, 50)];
     alertLabel.numberOfLines = 0;
     alertLabel.font = [UIFont systemFontOfSize:16];
-    alertLabel.text = [NSString stringWithFormat:@"时间银行需求发布成功 恭喜你获得%d积分",20];
+    alertLabel.text = [NSString stringWithFormat:@"时间银行需求发布成功 恭喜你获得%@积分",_points];
     alertLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:alertLabel];
     
@@ -99,7 +101,20 @@
 #pragma mark - 返回按钮的响应方法
 - (void)backAction{
     
-    [self.navigationController popViewControllerAnimated:YES];
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[TimeBankViewController class]]) {
+            
+            TimeBankViewController *timeBankVC = (TimeBankViewController *)controller;
+            
+            [self.navigationController popToViewController:timeBankVC animated:YES];
+            
+            
+        }
+
+    }
+    
+    
+    
     
 }
 

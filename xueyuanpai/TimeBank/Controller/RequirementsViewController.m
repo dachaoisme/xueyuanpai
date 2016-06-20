@@ -314,8 +314,12 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"发布时间银行成功"];
+//            [CommonUtils showToastWithStr:@"发布时间银行成功"];
             self.timeBankSubmitSuccessModel = [[TimeBankSubmitModel alloc]initWithDic:model.responseCommonDic];
+            
+            RequirementsSuccessViewController *successVC = [[RequirementsSuccessViewController alloc] init];
+            successVC.points = self.timeBankSubmitSuccessModel.timeBankSubmitPoints;
+            [self.navigationController pushViewController:successVC animated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }

@@ -10,4 +10,7 @@
 
 @interface RequirementsSuccessViewController : BaseViewController
 
+///积分
+@property (nonatomic,strong)NSString *points;
+
 @end
