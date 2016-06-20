@@ -18,6 +18,9 @@
 #import "TimeBankModel.h"
 #import "LTPickerView.h"
 #import "MyPickView.h"
+
+#import "IQUIView+IQKeyboardToolbar.h"
+
 @interface RequirementsViewController ()<UITableViewDelegate,UITableViewDataSource,RequirementTwoTableViewCellDelegate,MyPickViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     SelectedImageView   *selectedImageView;
@@ -26,6 +29,12 @@
     NSMutableArray      *timeBankConditionCategoryTitleArr;
     NSMutableArray      *timeBankPayWayModelArr;
     NSMutableArray      *timeBankPayWayTitleArr;
+    
+    
+    UIButton    *leftReduceBtn;///减号
+    UILabel     *centerLabel;///中间显示金额的
+    UIButton    *rightAddBtn;///加号
+
     
 
 }
@@ -412,6 +421,12 @@
             cell.showTextLabel.text = @"付款方式";
             cell.tag = TimeBankSubmitPayWayTag;
             cell.delegate = self;
+            
+            
+            //添加 +和-视图
+            UIView * rduceAndAddView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-120, 0, 100,44)];
+            [cell addSubview:rduceAndAddView];
+            [self setStepperViewContentViewWithStepperView:rduceAndAddView];
             return cell;
 
         }
@@ -577,6 +592,57 @@
     
     
 }
+
+-(void)setStepperViewContentViewWithStepperView:(UIView *)stepperView
+{
+    float height = stepperView.frame.size.height;
+    float width = stepperView.frame.size.width;
+    //左侧减号
+    leftReduceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftReduceBtn setImage:[UIImage imageNamed:@"bigpie_order_minus"] forState:UIControlStateNormal];
+    [leftReduceBtn setImage:[UIImage imageNamed:@"bigpie_order_minus_press"] forState:UIControlStateHighlighted];
+    [leftReduceBtn setFrame:CGRectMake(0, 0, width/3, height)];
+    leftReduceBtn.tag = 10001;
+    [leftReduceBtn addTarget:self action:@selector(changeBuyTicketNumWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [stepperView addSubview:leftReduceBtn];
+    //中间输入框
+    centerLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(leftReduceBtn.frame), 0, width/3, height)];
+    centerLabel.text = @"0元";
+    [centerLabel addPreviousNextDoneOnKeyboardWithTarget:self previousAction:nil nextAction:nil doneAction:@selector(doneAction:)];
+    centerLabel.font = [UIFont systemFontOfSize:12];
+    centerLabel.textAlignment = NSTextAlignmentCenter;
+    [centerLabel setFrame:CGRectMake(width/3, 0, width/3, height)];
+    [stepperView addSubview:centerLabel];
+    //右侧加号按钮
+    rightAddBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    if ([self.totalPoint integerValue]>=[self.mallModel.indexMallPoints integerValue]) {
+//        [rightAddBtn setImage:[UIImage imageNamed:@"bigpie_order_add"] forState:UIControlStateNormal];
+//    }else{
+//        [rightAddBtn setImage:[UIImage imageNamed:@"bigpie_order_add_disable"] forState:UIControlStateNormal];
+//    }
+    [rightAddBtn setImage:[UIImage imageNamed:@"bigpie_order_add"] forState:UIControlStateNormal];
+    [rightAddBtn setImage:[UIImage imageNamed:@"bigpie_order_add_press"] forState:UIControlStateHighlighted];
+    rightAddBtn.tag = 10002;
+    [rightAddBtn addTarget:self action:@selector(changeBuyTicketNumWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [rightAddBtn setFrame:CGRectMake(width/3*2, 0, width/3, height)];
+    [stepperView addSubview:rightAddBtn];
+    
+}
+
+
+#pragma mark - 按钮加减号响应的方法
+- (void)changeBuyTicketNumWithBtn:(UIButton *)sender{
+    
+    [CommonUtils showToastWithStr:@"+号和-号的响应事件"];
+}
+
+
+
+
+-(void)doneAction:(UITextField *)textField
+{
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
