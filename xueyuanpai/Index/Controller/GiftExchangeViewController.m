@@ -110,7 +110,7 @@
     needPointValueLable.text = @"0";
     [needPointView addSubview:needPointValueLable];
     
-    [UIFactory showLineInView:needPointView color:@"333333" rect:CGRectMake(space, CGRectGetHeight(needPointView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
+    [UIFactory showLineInView:needPointView color:@"e5e5e5" rect:CGRectMake(space, CGRectGetHeight(needPointView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
     
     //剩余积分
     UIView * residualPointView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(needPointView.frame), SCREEN_WIDTH,height)];
@@ -126,7 +126,7 @@
     residualPointValueLable.text =self.totalPoint;
     [residualPointView addSubview:residualPointValueLable];
     
-    [UIFactory showLineInView:residualPointView color:@"333333" rect:CGRectMake(space, CGRectGetHeight(residualPointView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
+    [UIFactory showLineInView:residualPointView color:@"e5e5e5" rect:CGRectMake(space, CGRectGetHeight(residualPointView.frame)-0.5,CGRectGetWidth(headView.frame)-2*space , 0.5)];
     
     
     UIButton * exchangeBtn = [UIButton buttonWithType:UIButtonTypeCustom];

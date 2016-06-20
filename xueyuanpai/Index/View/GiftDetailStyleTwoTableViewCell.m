@@ -15,7 +15,11 @@
     
     if (self) {
         
-        UILabel *introduceLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(10, 18, 5, 15)];
+        view.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+        [self.contentView addSubview:view];
+        
+        UILabel *introduceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(view.frame) + 5, 10, 300, 30)];
         introduceLabel.font = [UIFont systemFontOfSize:14];
         [self.contentView addSubview:introduceLabel];
         self.introduceLabel = introduceLabel;
@@ -24,7 +28,7 @@
         
         UILabel *detailContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(introduceLabel.frame) + 5, [[UIScreen mainScreen] bounds].size.width - 20, 30)];
         detailContentLabel.textColor = [CommonUtils colorWithHex:@"c2c3c4"];
-        detailContentLabel.font = [UIFont systemFontOfSize:14];
+        detailContentLabel.font = [UIFont systemFontOfSize:12];
         [self.contentView addSubview:detailContentLabel];
         
         self.detailContentLabel = detailContentLabel;

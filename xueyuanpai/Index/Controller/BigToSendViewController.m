@@ -39,7 +39,20 @@
     
     self.title = @"大派送";
     
-    [self creatRightNavWithImageName:@"bigpi_icon_coin"];
+    
+    UIButton *rightItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightItemButton setTitle:[UserAccountManager sharedInstance].userUsablePoints forState:UIControlStateNormal];
+    [rightItemButton setImage:[UIImage imageNamed:@"bigpi_icon_coin"] forState:UIControlStateNormal];
+    rightItemButton.frame     = CGRectMake(0, 0, 40, 40);
+
+    [rightItemButton setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+    
+    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightItemButton];
+    self.navigationItem.rightBarButtonItem = rightItem;
+
+    
+    
+//    [self creatRightNavWithImageName:@"bigpi_icon_coin"];
     
     //设置文字
 //    [self creatRightNavWithTitle:[UserAccountManager sharedInstance].usablePoints];

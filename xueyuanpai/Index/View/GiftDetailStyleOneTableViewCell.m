@@ -27,7 +27,7 @@
         goodsLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
 //        goodsLabel.backgroundColor = [UIColor redColor];
         goodsLabel.text = @"海飞丝新品试用套装";
-        goodsLabel.font = [UIFont systemFontOfSize:16];
+        goodsLabel.font = [UIFont systemFontOfSize:14];
         [self.contentView addSubview:goodsLabel];
         
         
@@ -47,9 +47,9 @@
         NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",title]];
         [str addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:r1];
         [str addAttribute:NSForegroundColorAttributeName value:[CommonUtils colorWithHex:@"c2c3c4"] range:r2];
-        [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue" size:18.0] range:r1];
+        [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:r1];
         
-        [str addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Courier-BoldOblique" size:12] range:r2];
+        [str addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:r2];
         jiFenLabel.attributedText = str;
         
         
@@ -77,9 +77,10 @@
         [hintString addAttribute:NSForegroundColorAttributeName value:color range:range1];
         
         jiFenLabel.attributedText = hintString;
+        jiFenLabel.font = [UIFont systemFontOfSize:14];
         
         //礼品的剩余份数没写
-        shengYuNumberLabel.text = @"剩余123份";
+        shengYuNumberLabel.text = [NSString stringWithFormat:@"剩余%@份",mallModel.indexMallleftNumber];
     }
     
 }

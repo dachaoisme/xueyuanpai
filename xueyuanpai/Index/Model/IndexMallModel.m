@@ -17,6 +17,8 @@
 "points":"q"   //积分
  "college_name":"\u5317\u4eac\u5e08\u8303\u5927\u5b66",//所在学校
  "description":"xcxzz", //礼品描述
+ "leftnum":10,  //剩余份数
+
  "exchangemethod":"czzzc" //兑换方法
 */
 
@@ -31,6 +33,7 @@
         self.indexMallPoints    = [dic stringForKey:@"points"];
         self.indexMallCollegeName = [dic stringForKey:@"college_name"];
         self.indexMallDescription = [dic stringForKey:@"description"];
+        self.indexMallleftNumber = [dic stringForKey:@"leftnum"];
         self.indexMallExchangemethod = [dic stringForKey:@"exchangemethod"];
     }
     

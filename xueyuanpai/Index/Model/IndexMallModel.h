@@ -17,6 +17,7 @@
  "points":"q"   //积分
  ,"college_name":"\u5317\u4eac\u5e08\u8303\u5927\u5b66",//所在学校
  "description":"xcxzz", //礼品描述
+  "leftnum":10,  //剩余份数
  "exchangemethod":"czzzc" //兑换方法
  */
 
@@ -26,6 +27,7 @@
 @property(nonatomic,strong)NSString * indexMallPoints;
 @property(nonatomic,strong)NSString * indexMallCollegeName;
 @property(nonatomic,strong)NSString * indexMallDescription;
+@property(nonatomic,strong)NSString * indexMallleftNumber;
 @property(nonatomic,strong)NSString * indexMallExchangemethod;
 
 -(id)initWithDic:(NSDictionary *)dic;

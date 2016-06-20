@@ -180,10 +180,12 @@
     switch (indexPath.row) {
         case 0:{
             GiftDetailStyleOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleOneTableViewCell0"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (!cell) {
                 cell = [[GiftDetailStyleOneTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleOneTableViewCell0"];
             }
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             [cell setWithContentModel:self.mallModel];
             return cell;
 
@@ -192,12 +194,12 @@
             
         case 1:{
             GiftDetailStyleTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleTwoTableViewCell1"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
             if (!cell) {
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell1"];
             }
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             cell.introduceLabel.text = @"适用学校";
             cell.detailContentLabel.text = self.mallModel.indexMallCollegeName ;
             return cell;
@@ -206,11 +208,12 @@
             break;
         case 2:{
             GiftDetailStyleTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleTwoTableViewCell2"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
             if (!cell) {
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell2"];
             }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             cell.introduceLabel.text = @"礼品描述";
 
             cell.detailContentLabel.text = self.mallModel.indexMallDescription;
@@ -221,11 +224,12 @@
             break;
         case 3:{
             GiftDetailStyleTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GiftDetailStyleTwoTableViewCell3"];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
             if (!cell) {
                 cell = [[GiftDetailStyleTwoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GiftDetailStyleTwoTableViewCell3"];
             }
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             cell.introduceLabel.text = @"兑换方法";
             
             NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[self.mallModel.indexMallExchangemethod dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
