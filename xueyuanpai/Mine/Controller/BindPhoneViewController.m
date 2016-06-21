@@ -9,7 +9,22 @@
 #import "BindPhoneViewController.h"
 
 @interface BindPhoneViewController ()
-
+{
+    UITextField *phoneTextField;
+    UITextField *checkingMessageTextField;
+    UITextField *inputPasswordTextField;
+    UIButton    *submitAndRegisterBtn;
+    
+    NSInteger    timerCount;
+    NSTimer     *sendTimer;
+    UIButton    *sendMessageBtn;
+    
+    UIView      *schoolView ;
+    UIButton    *schoolBtn;
+    UIImageView *schoolArrowImageView;
+    
+    CollegeModel * theCollegeModel;
+}
 @end
 
 @implementation BindPhoneViewController
@@ -51,13 +66,13 @@
     
     
     //发送验证码
-    UIButton *sendMessageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    sendMessageButton.frame = CGRectMake(SCREEN_WIDTH - 100, 10, 100, 20);
-    [sendMessageButton setTitle:@"发送验证码" forState:UIControlStateNormal];
-    sendMessageButton.titleLabel.font = [UIFont systemFontOfSize:14];
-    [sendMessageButton setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
-    [sendMessageButton addTarget:self action:@selector(sendMessageAction) forControlEvents:UIControlEventTouchUpInside];
-    [backGroundView addSubview:sendMessageButton];
+    sendMessageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    sendMessageBtn.frame = CGRectMake(SCREEN_WIDTH - 100, 10, 100, 20);
+    [sendMessageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
+    sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [sendMessageBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+    [sendMessageBtn addTarget:self action:@selector(sendMessageAction) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:sendMessageBtn];
     
     
     
@@ -89,10 +104,57 @@
 }
 
 #pragma mark - 发送验证码
+-(void)sendmessage:(UIButton *)sender
+{
+    
+    NSString * phoneNum = phoneTextField.text;
+    if (!(phoneNum.length==11 && [CommonUtils checkPhoneNumIsAvailableWithPhoneNumString:phoneNum])) {
+        [CommonUtils showToastWithStr:@"请输入有效手机号"];
+        return;
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:phoneNum forKey:@"mobile"];
+    [[HttpClient sharedInstance]registerOfSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"发送成功"];
+            //请求成功了，才改变发送按钮的倒计时
+            [self startTimer];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        
+    }];
+    
+    
+}
+
 - (void)sendMessageAction{
     
     [CommonUtils showToastWithStr:@"发送短信验证码"];
+    
+
+NSMutableDictionary * params = [NSMutableDictionary dictionary];
+[params setObject:phoneTextField.text forKey:@"mobile"];
+[params setObject:checkingMessageTextField.text forKey:@"captcha"];
+
+[[HttpClient sharedInstance]registerAndSubmitWithParams:params withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+    if (responseModel.responseCode == ResponseCodeSuccess) {
+        NSString * userId = [listDic objectForKey:@"user_id"];
+        
+        
+    }else{
+        [CommonUtils showToastWithStr:responseModel.responseMsg];
+    }
+} withFaileBlock:^(NSError *error) {
+    
+}];
 }
+
 
 #pragma mark - 确定按钮的响应方法
 - (void)makeSureAction{
@@ -101,7 +163,37 @@
 }
 
 
-
+-(void)startTimer
+{
+    timerCount = 60;
+    sendTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                 target:self
+                                               selector:@selector(countTimer:)
+                                               userInfo:nil
+                                                repeats:YES];
+    
+    sendMessageBtn.userInteractionEnabled = NO;
+    [sendMessageBtn setTitle:@"60" forState:UIControlStateNormal];
+}
+-(void)countTimer:(NSTimer*)timer
+{
+    timerCount = timerCount-1;
+    NSString * btnTittle = [NSString stringWithFormat:@"%lds",(long)timerCount];
+    [sendMessageBtn setTitle:btnTittle forState:UIControlStateNormal];
+    if (timerCount <= 0) {
+        [self killTimer];
+    }
+}
+- (void)killTimer{
+    sendMessageBtn.userInteractionEnabled = YES;
+    [sendMessageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
+    
+    if(sendTimer)
+    {
+        [sendTimer invalidate];
+        sendTimer = nil;
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

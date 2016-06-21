@@ -12,4 +12,5 @@
 
 @property(nonatomic,strong)NSString * userId;
 @property(nonatomic,strong)NSString * telephoneNum;
+@property(nonatomic,assign)RegisterRoleType registerRoleType;
 @end

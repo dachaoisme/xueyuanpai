@@ -10,4 +10,5 @@
 
 @interface ForgetPasswordViewController : BaseViewController
 
+@property(nonatomic,assign)RegisterRoleType registerRoleType;
 @end

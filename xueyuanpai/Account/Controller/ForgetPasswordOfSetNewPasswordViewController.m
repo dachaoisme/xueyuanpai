@@ -83,7 +83,7 @@
         if (model.responseCode == ResponseCodeSuccess) {
             NSDictionary * userInfoDic = [model.responseCommonDic objectForKey:@"data"];
             //若成功，应该是返回主页面，并且是已经登录状态
-            [[UserAccountManager sharedInstance]loginWithUserPhoneNum:[UserAccountManager sharedInstance].userMobile andPassWord:inputPasswordTextField.text];
+            [[UserAccountManager sharedInstance]loginWithUserPhoneNum:[UserAccountManager sharedInstance].userMobile andPassWord:inputPasswordTextField.text withUserRole:self.registerRoleType];
         }else{
             //验证失败
             [CommonUtils showToastWithStr:model.responseMsg];

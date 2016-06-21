@@ -102,6 +102,6 @@
  */
 -(void)exitLogin;
 
--(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord;
+-(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord withUserRole:(RegisterRoleType)role;
 
 @end
