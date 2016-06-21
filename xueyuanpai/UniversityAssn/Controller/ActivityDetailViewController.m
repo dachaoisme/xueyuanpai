@@ -78,8 +78,14 @@
     
     //活动详情收藏按钮接口
     if (yesIsCollection==YES) {
-        return;
+        [self cancelCollection];
+    }else{
+        [self addCollection];
     }
+    
+}
+-(void)addCollection
+{
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.model.hotActivityID forKey:@"obj_id"];
@@ -90,8 +96,29 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"收藏成功"];
             [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = YES;
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+-(void)cancelCollection
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.model.hotActivityID forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfUniversityAssnActivity] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] cancelCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = NO;
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }

@@ -62,10 +62,16 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    [CommonUtils showToastWithStr:@"收藏"];
     if (yesIsCollection==YES) {
-        return;
+        [self cancelCollection];
+    }else{
+        [self addCollection];
     }
+    
+}
+
+-(void)addCollection
+{
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     if ([self.title isEqualToString:@"新闻详情"]) {
@@ -77,24 +83,50 @@
     if ([self.title isEqualToString:@"新闻详情"]) {
         [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessNews] forKey:@"type"];
     }else{
-         [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessCompetition] forKey:@"type"];
+        [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessCompetition] forKey:@"type"];
     }
-   
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (model.responseCode == ResponseCodeSuccess) {
-            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
-            if (status==1) {
-                ///已收藏
-                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-                yesIsCollection = YES;
-            }else{
-                ///未收藏
-            }
+            ///已收藏
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = YES;
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
     } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+-(void)cancelCollection
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    if ([self.title isEqualToString:@"新闻详情"]) {
+        [dic setValue:_newsModel.businessCenterNewsId forKey:@"obj_id"];
+    }else{
+        [dic setValue:_competationModel.businessCenterCompetitionId forKey:@"obj_id"];
+    }
+    
+    if ([self.title isEqualToString:@"新闻详情"]) {
+        [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessNews] forKey:@"type"];
+    }else{
+        [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfBusinessCompetition] forKey:@"type"];
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] cancelCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
+        if (model.responseCode == ResponseCodeSuccess) {
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = NO;
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
 }
 

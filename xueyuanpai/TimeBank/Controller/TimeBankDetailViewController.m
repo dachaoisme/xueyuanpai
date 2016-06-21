@@ -148,29 +148,55 @@
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
     if (yesIsCollection==YES) {
-        return;
+        [self cancelCollection];
+    }else{
+        [self addCollection];
     }
+    
+}
+
+-(void)addCollection
+{
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.timeBankId forKey:@"obj_id"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfTimeBank] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (model.responseCode == ResponseCodeSuccess) {
-            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
-            if (status==1) {
-                ///已收藏
-                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-                yesIsCollection = YES;
-            }else{
-                ///未收藏
-            }
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = YES;
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
     } withFaileBlock:^(NSError *error) {
-        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
 }
+-(void)cancelCollection
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.timeBankId forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfTimeBank] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] cancelCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = NO;
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+
+
 -(void)checkoutIsCollectionOrNot
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];

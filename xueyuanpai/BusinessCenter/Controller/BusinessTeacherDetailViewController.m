@@ -14,6 +14,7 @@
 @interface BusinessTeacherDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     BusinessCenterTutorDetailModel *tutorDetailModel;
+    BOOL yesIsCollection;
 }
 @property(nonatomic,strong)UITableView *tableView;
 
@@ -35,7 +36,7 @@
     
     
     self.title = @"导师详情";
-    
+    yesIsCollection = NO;
     
     [self createLeftBackNavBtn];
     
@@ -45,6 +46,7 @@
     [self createTableView];
     
     [self requestToGetBusinessTutorDetail];
+    [self checkoutIsCollectionOrNot];
 }
 
 #pragma mark - 设置分享按钮
@@ -69,24 +71,80 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    [CommonUtils showToastWithStr:@"收藏"];
+    if (yesIsCollection==YES) {
+        [self cancelCollection];
+    }else{
+        [self addCollection];
+    }
+    
+}
+
+-(void)addCollection
+{
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.teacherId forKey:@"obj_id"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfTutor] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"收藏成功"];
             
             [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
     } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+-(void)cancelCollection
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.teacherId forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfTutor] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance] cancelCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
+        if (model.responseCode == ResponseCodeSuccess) {
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = NO;
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
 }
 
+
+-(void)checkoutIsCollectionOrNot
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.teacherId forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfTutor] forKey:@"type"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]checkCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            NSInteger status = [[model.responseCommonDic objectForKey:@"stat"] integerValue];
+            if (status==1) {
+                ///已收藏
+                [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+                yesIsCollection = YES;
+            }else{
+                ///未收藏
+            }
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
 
 #pragma mark - 创建tableView
 - (void)createTableView{
