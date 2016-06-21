@@ -198,6 +198,7 @@
         
         BusinessTeacherOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:tutorDetailModel.businessCenterTutorDetailImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
         
         cell.nameLabel.text =  tutorDetailModel.businessCenterTutorDetailRealName;
@@ -209,7 +210,8 @@
     }else if (indexPath.section == 1){
         
         BusinessTeacherTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         switch (indexPath.row) {
             case 0:
                 
@@ -249,7 +251,8 @@
         
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
         if (indexPath.section == 2) {
             
             cell.textLabel.text = [NSString stringWithFormat:@"已申领%@个项目",tutorDetailModel.businessCenterTutorDetailExperience];
@@ -285,11 +288,6 @@
             
         }
 
-        
-        
-
-
-        
         return cell;
     }
 }
@@ -307,7 +305,7 @@
         return 100;
     }else{
         
-        return 45;
+        return 49;
     }
     
     

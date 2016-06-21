@@ -379,6 +379,10 @@
 		DD1957CA1D190EFE00FF01F0 /* PublishInformationSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957C91D190EFE00FF01F0 /* PublishInformationSuccessViewController.m */; };
 		DD1957CD1D196A5B00FF01F0 /* BaoMingSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957CC1D196A5B00FF01F0 /* BaoMingSuccessViewController.m */; };
 		DD1957D31D19785300FF01F0 /* BusinessPublishProjectSuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957D21D19785300FF01F0 /* BusinessPublishProjectSuccessViewController.m */; };
+		DD1957D61D19A6C300FF01F0 /* BusinessCenterTeacherView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957D51D19A6C300FF01F0 /* BusinessCenterTeacherView.m */; };
+		DD1957DE1D19A7B500FF01F0 /* OTPageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957D91D19A7B500FF01F0 /* OTPageScrollView.m */; };
+		DD1957DF1D19A7B500FF01F0 /* OTPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957DB1D19A7B500FF01F0 /* OTPageView.m */; };
+		DD1957E01D19A7B500FF01F0 /* OTPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957DD1D19A7B500FF01F0 /* OTPageCell.m */; };
 		DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */; };
 		DD4127551CF0552F00227066 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127251CF0552E00227066 /* arrow@2x.png */; };
 		DD4127561CF0552F00227066 /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127261CF0552E00227066 /* arrow@3x.png */; };
@@ -464,8 +468,6 @@
 		DD8388F91D0D5E720009B558 /* login_logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD8388F71D0D5E720009B558 /* login_logo@3x.png */; };
 		DDAB058E1D01AF18007A6027 /* BusinessProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */; };
 		DDAB05911D01BF6A007A6027 /* BusinessCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */; };
-		DDAB059B1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05991D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m */; };
-		DDAB059C1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB059A1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib */; };
 		DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB059E1D01D252007A6027 /* BusinessTeacherDetailViewController.m */; };
 		DDAB05A41D01D429007A6027 /* BusinessTeacherOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05A21D01D429007A6027 /* BusinessTeacherOneTableViewCell.m */; };
 		DDAB05A51D01D429007A6027 /* BusinessTeacherOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB05A31D01D429007A6027 /* BusinessTeacherOneTableViewCell.xib */; };
@@ -1166,6 +1168,14 @@
 		DD1957CC1D196A5B00FF01F0 /* BaoMingSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaoMingSuccessViewController.m; sourceTree = "<group>"; };
 		DD1957D11D19785300FF01F0 /* BusinessPublishProjectSuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectSuccessViewController.h; sourceTree = "<group>"; };
 		DD1957D21D19785300FF01F0 /* BusinessPublishProjectSuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessPublishProjectSuccessViewController.m; sourceTree = "<group>"; };
+		DD1957D41D19A6C300FF01F0 /* BusinessCenterTeacherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterTeacherView.h; sourceTree = "<group>"; };
+		DD1957D51D19A6C300FF01F0 /* BusinessCenterTeacherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterTeacherView.m; sourceTree = "<group>"; };
+		DD1957D81D19A7B500FF01F0 /* OTPageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPageScrollView.h; sourceTree = "<group>"; };
+		DD1957D91D19A7B500FF01F0 /* OTPageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPageScrollView.m; sourceTree = "<group>"; };
+		DD1957DA1D19A7B500FF01F0 /* OTPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPageView.h; sourceTree = "<group>"; };
+		DD1957DB1D19A7B500FF01F0 /* OTPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPageView.m; sourceTree = "<group>"; };
+		DD1957DC1D19A7B500FF01F0 /* OTPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OTPageCell.h; sourceTree = "<group>"; };
+		DD1957DD1D19A7B500FF01F0 /* OTPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OTPageCell.m; sourceTree = "<group>"; };
 		DD4127211CF043DF00227066 /* UniversityAssnHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniversityAssnHeaderView.h; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.h; sourceTree = SOURCE_ROOT; };
 		DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UniversityAssnHeaderView.m; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.m; sourceTree = SOURCE_ROOT; };
 		DD4127251CF0552E00227066 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
@@ -1269,9 +1279,6 @@
 		DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessProjectViewController.m; sourceTree = "<group>"; };
 		DDAB058F1D01BF6A007A6027 /* BusinessCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterViewController.h; sourceTree = "<group>"; };
 		DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterViewController.m; sourceTree = "<group>"; };
-		DDAB05981D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterTwoStyleTableViewCell.h; sourceTree = "<group>"; };
-		DDAB05991D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCenterTwoStyleTableViewCell.m; sourceTree = "<group>"; };
-		DDAB059A1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessCenterTwoStyleTableViewCell.xib; sourceTree = "<group>"; };
 		DDAB059D1D01D252007A6027 /* BusinessTeacherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTeacherDetailViewController.h; sourceTree = "<group>"; };
 		DDAB059E1D01D252007A6027 /* BusinessTeacherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTeacherDetailViewController.m; sourceTree = "<group>"; };
 		DDAB05A11D01D429007A6027 /* BusinessTeacherOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTeacherOneTableViewCell.h; sourceTree = "<group>"; };
@@ -2421,6 +2428,7 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				DD1957D71D19A79100FF01F0 /* TeacherScrollView */,
 				DD48B7481D10F7C800E012E4 /* lib */,
 				DDAB05ED1D04576F007A6027 /* PlaceholderTextView */,
 				58898E421CFA89C90007D9B3 /* LTPickerView */,
@@ -2698,6 +2706,19 @@
 			path = BusinessColumnDetailCell;
 			sourceTree = "<group>";
 		};
+		DD1957D71D19A79100FF01F0 /* TeacherScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DD1957D81D19A7B500FF01F0 /* OTPageScrollView.h */,
+				DD1957D91D19A7B500FF01F0 /* OTPageScrollView.m */,
+				DD1957DA1D19A7B500FF01F0 /* OTPageView.h */,
+				DD1957DB1D19A7B500FF01F0 /* OTPageView.m */,
+				DD1957DC1D19A7B500FF01F0 /* OTPageCell.h */,
+				DD1957DD1D19A7B500FF01F0 /* OTPageCell.m */,
+			);
+			path = TeacherScrollView;
+			sourceTree = "<group>";
+		};
 		DD4127241CF0552E00227066 /* University */ = {
 			isa = PBXGroup;
 			children = (
@@ -2767,9 +2788,8 @@
 			children = (
 				DDCD70FC1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.h */,
 				DDCD70FD1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m */,
-				DDAB05981D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.h */,
-				DDAB05991D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m */,
-				DDAB059A1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib */,
+				DD1957D41D19A6C300FF01F0 /* BusinessCenterTeacherView.h */,
+				DD1957D51D19A6C300FF01F0 /* BusinessCenterTeacherView.m */,
 			);
 			path = BusinessCenterCell;
 			sourceTree = "<group>";
@@ -3550,7 +3570,6 @@
 				DD0B1EC21CFEE51000C4BAB2 /* hire_btn_contact@3x.png in Resources */,
 				DD0B1EE61CFEE51000C4BAB2 /* pic_check_full@3x.png in Resources */,
 				DD13CDC21D00186D000A69FE /* startup_filter_culture@3x.png in Resources */,
-				DDAB059C1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.xib in Resources */,
 				DD13CDDA1D00186D000A69FE /* startup_filter_media@3x.png in Resources */,
 				58070FB21CF6E80200F03F6C /* timebank_filter_female_hl@2x.png in Resources */,
 				DD13CDD41D00186D000A69FE /* startup_filter_internet_hl@3x.png in Resources */,
@@ -3764,6 +3783,7 @@
 				DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
 				DD4127CC1CF2F98F00227066 /* ParallaxHeaderView.m in Sources */,
+				DD1957DF1D19A7B500FF01F0 /* OTPageView.m in Sources */,
 				DDAB05C61D03B154007A6027 /* BusinessProjectDetailOneTableViewCell.m in Sources */,
 				DDCD71421D0A99F2009FBE9A /* CourierNoticeTableViewCell.m in Sources */,
 				DDD0BDA31CFA536300073290 /* PositionInforViewController.m in Sources */,
@@ -3787,6 +3807,7 @@
 				DD4127B31CF251C600227066 /* BigToSendViewController.m in Sources */,
 				DD1957C71D18248E00FF01F0 /* UILabel+VerticalAlign.m in Sources */,
 				DDAB43B71D057A5C00FADB3E /* MineJobMarketViewController.m in Sources */,
+				DD1957DE1D19A7B500FF01F0 /* OTPageScrollView.m in Sources */,
 				DD13CE1B1D003116000A69FE /* BusinessClassDetailViewController.m in Sources */,
 				DD13CE121D002A14000A69FE /* BusinessNewsDetailOneStleTableViewCell.m in Sources */,
 				DDAB43BD1D05802C00FADB3E /* MineFriendsViewController.m in Sources */,
@@ -3848,7 +3869,6 @@
 				DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */,
 				587FF9DB1CF2F8F300AD2131 /* IQBarButtonItem.m in Sources */,
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
-				DDAB059B1D01C7C1007A6027 /* BusinessCenterTwoStyleTableViewCell.m in Sources */,
 				587FF9DD1CF2F8F300AD2131 /* IQTitleBarButtonItem.m in Sources */,
 				DDCD70711D0679A5009FBE9A /* MineIntegralTableViewCell.m in Sources */,
 				58F67BFF1CD990A200D55BE0 /* HttpModel.m in Sources */,
@@ -3861,6 +3881,7 @@
 				58A944C31CE3E0B000DAD398 /* AddStudentInfoViewController.m in Sources */,
 				5874A3FB1CF1AEE400CE9FC9 /* AddTeacherInfoTableViewCell.m in Sources */,
 				58A944AB1CE27A5300DAD398 /* RegisterViewController.m in Sources */,
+				DD1957E01D19A7B500FF01F0 /* OTPageCell.m in Sources */,
 				DDEB25851D1027CB00EF6CE3 /* XHRadarPointView.m in Sources */,
 				DDD0BD841CF97AE300073290 /* RecruitmentTwoStyleTableViewCell.m in Sources */,
 				DDAB058E1D01AF18007A6027 /* BusinessProjectViewController.m in Sources */,
@@ -3880,6 +3901,7 @@
 				DDCD712E1D0A5181009FBE9A /* BussinessProjectTeacherDetailViewController.m in Sources */,
 				DD13CE0E1D0028F0000A69FE /* BusinessNewsDetailViewController.m in Sources */,
 				587FF9D61CF2F8F300AD2131 /* IQUIViewController+Additions.m in Sources */,
+				DD1957D61D19A6C300FF01F0 /* BusinessCenterTeacherView.m in Sources */,
 				DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */,
 				DDAB05D01D03B40F007A6027 /* BusinessProjectDetailThreeTableViewCell.m in Sources */,
 				587FF9DE1CF2F8F300AD2131 /* IQToolbar.m in Sources */,

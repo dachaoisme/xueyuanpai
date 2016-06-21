@@ -83,7 +83,7 @@
 
 #pragma mark - 创建tableView
 - (void)createTableView{
-    float height = 36;
+    float height = 0;
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, height ,SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
