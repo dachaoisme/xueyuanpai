@@ -235,16 +235,18 @@
     
     [[HttpClient sharedInstance]registerAndSubmitWithParams:params withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
         if (responseModel.responseCode == ResponseCodeSuccess) {
-            NSString * userId = [listDic objectForKey:@"user_id"];
+            NSString * userId = [listDic stringForKey:@"user_id"];
             
             if (self.registerRoleType == RegisterRoleOfStudent) {
     
+                
+                
                 //学生->跳转到设置用户资料界面，直接登录成功
                 AddStudentInfoViewController * studentInfoVC = [[AddStudentInfoViewController alloc]init];
                 studentInfoVC.userId = userId;
                 [self.navigationController pushViewController:studentInfoVC animated:YES];
                 //保存学生的用户信息
-                [[UserAccountManager sharedInstance]loginWithUserPhoneNum:phoneTextField.text andPassWord:inputPasswordTextField.text];
+                [[UserAccountManager sharedInstance]loginWithUserPhoneNum:phoneTextField.text andPassWord:inputPasswordTextField.text withUserRole:self.registerRoleType];
                 
             }else{
                 //教师->跳转到设置教师的用户资料界面，设置成功以后，返回登录页，因为需要审核

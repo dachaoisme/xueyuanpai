@@ -195,7 +195,7 @@
         [CommonUtils showToastWithStr:@"请选择大学"];
         return;
     }
-    if (![UserAccountManager sharedInstance].userId) {
+    if (self.userId.length<=0) {
         [CommonUtils showToastWithStr:@"用户注册未成功"];
         return;
     }
@@ -209,17 +209,18 @@
     
     NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
     
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:nickNameTextField.text forKey:@"nickname"];
-    [dic setObject:theCollegeModel.collegeID forKey:@"college_id"];
-    [dic setObject:[[sexBtn titleForState:UIControlStateNormal] isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
-    [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
+    [dic setValue:self.userId forKey:@"user_id"];
+    [dic setValue:nickNameTextField.text forKey:@"nickname"];
+    [dic setValue:theCollegeModel.collegeID forKey:@"college_id"];
+    [dic setValue:[[sexBtn titleForState:UIControlStateNormal] isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
+    [dic setValue:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
     
-    [[HttpClient sharedInstance]updateStudentInfoWithParams:nil withSuccessBlock:^(HttpResponseCodeModel *model) {
+    [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"用户资料更新成功"];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
-            [CommonUtils showToastWithStr:@"用户资料更新失败"];
+            [CommonUtils showToastWithStr:model.responseMsg];
         }
     } withFaileBlock:^(NSError *error) {
         

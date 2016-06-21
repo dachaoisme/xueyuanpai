@@ -153,6 +153,7 @@
             ForgetPasswordOfSetNewPasswordViewController * forgetPasswordOfSetNewPasswordVC = [[ForgetPasswordOfSetNewPasswordViewController alloc] init];
             forgetPasswordOfSetNewPasswordVC.userId = userId;
             forgetPasswordOfSetNewPasswordVC.telephoneNum = phoneTextField.text;
+            forgetPasswordOfSetNewPasswordVC.registerRoleType = self.registerRoleType;
             [self.navigationController pushViewController:forgetPasswordOfSetNewPasswordVC animated:YES];
             
         }else{

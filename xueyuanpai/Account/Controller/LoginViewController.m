@@ -231,6 +231,7 @@
 -(void)forgetPasswordAccount:(UIButton *)sender
 {
     ForgetPasswordViewController * forgetPasswordVC = [[ForgetPasswordViewController alloc]init];
+    forgetPasswordVC.registerRoleType = personalAccountBtn.selected?RegisterRoleOfStudent:RegisterRoleTypeTeacher;
     [self.navigationController pushViewController:forgetPasswordVC animated:YES];
 }
 #pragma mark - 登陆
