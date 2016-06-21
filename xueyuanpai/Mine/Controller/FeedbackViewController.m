@@ -90,6 +90,8 @@
         if (model.responseCode ==ResponseCodeSuccess) {
             ///反馈成功
             [CommonUtils showToastWithStr:@"反馈成功"];
+            
+            
             [self.navigationController popViewControllerAnimated:YES];
         }else{
             ///反馈失败

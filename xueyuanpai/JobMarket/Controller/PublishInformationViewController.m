@@ -15,6 +15,8 @@
 
 #import "CommonTableViewCell.h"
 
+#import "PublishInformationSuccessViewController.h"
+
 static NSString *Identifier = @"photoCollectionViewCell";
 
 @interface PublishInformationViewController ()<UICollectionViewDataSource,PhotoSelectorCellDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate,UITextViewDelegate>
@@ -28,6 +30,9 @@ static NSString *Identifier = @"photoCollectionViewCell";
 
 @property (nonatomic, strong) NSMutableArray* pictureImages;
 @property (nonatomic, strong) UICollectionView* photoCollectionView;
+
+
+@property (nonatomic,strong)UILabel *footViewAlertLabel;
 
 
 @end
@@ -415,9 +420,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
         alertLabel.text = @"已选0张，可选5张";
         alertLabel.font = [UIFont systemFontOfSize:14];
         alertLabel.textColor = [CommonUtils colorWithHex:@"3f4446"];
-        
-        
         [footView addSubview:alertLabel];
+        self.footViewAlertLabel = alertLabel;
         
         //返回footView
         return footView;
@@ -502,6 +506,8 @@ static NSString *Identifier = @"photoCollectionViewCell";
         [imageDic setObject:imageData forKey:key];
     }
     
+    self.footViewAlertLabel.text = [NSString stringWithFormat:@"已选%lu张，可选5张",(unsigned long)self.pictureImages.count];
+    
     if (self.pictureImages.count == 0){
         [CommonUtils showToastWithStr:@"请添加照片"];
         return;
@@ -583,7 +589,16 @@ static NSString *Identifier = @"photoCollectionViewCell";
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"发布跳蚤市场成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            NSDictionary *responseCommonDic = model.responseCommonDic;
+            
+            PublishInformationSuccessViewController *publishSuccessVC = [[PublishInformationSuccessViewController alloc] init];
+            
+            publishSuccessVC.points = responseCommonDic?[responseCommonDic stringForKey:@"points"]:@"";
+            
+            //此刻跳转分为有积分和无积分
+            [self.navigationController pushViewController:publishSuccessVC animated:YES];
+            
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
