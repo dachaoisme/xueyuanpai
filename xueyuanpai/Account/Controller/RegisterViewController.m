@@ -196,7 +196,8 @@
     [self.navigationController pushViewController:schollVC animated:YES];
 }
 -(void)submitAndRegister:(UIButton *)sender
-{    
+{
+    
     /*
      
      参数:
@@ -214,6 +215,7 @@
 //        [CommonUtils showToastWithStr:@"请输入有效手机号"];
 //        return;
 //    }
+    
     if (inputPasswordTextField.text.length<=0) {
         [CommonUtils showToastWithStr:@"请输入密码"];
         return;
@@ -260,6 +262,7 @@
     } withFaileBlock:^(NSError *error) {
         
     }];
+    
 }
 
 #pragma mark - 倒计时相关

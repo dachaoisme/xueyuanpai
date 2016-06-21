@@ -115,7 +115,7 @@
     //    float height = 44;
     //    float width = SCREEN_WIDTH-2*space;
     //    float arrowWidth = 20;
-    ///选择头像
+    ///
     _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_submitBtn setTitle:@"提交审核" forState:UIControlStateNormal];
     [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -140,13 +140,16 @@
         
         [wSelf.headImageSelectedBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
         [wSelf.headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
+        
+        ///压缩图片，不能过大
+        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
         //需要把图片上传到服务器
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
-        NSData * imageData = UIImagePNGRepresentation(selectedImage);
+        NSData * imageData = UIImagePNGRepresentation(scaleImg);
         [imageDic setObject:imageData forKey:@"Users[file]"];
         [[HttpClient sharedInstance]uploadImageWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
-            avatarImageUploaded = [dic objectForKey:@"picUrl"];
+            avatarImageUploaded = [model.responseCommonDic objectForKey:@"picUrl"];
         } withFaileBlock:^(NSError *error) {
             
         }];
@@ -194,6 +197,7 @@
         if (!cell) {
             cell = [[AddTeacherInfoTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = self;
         }
         cell.tag = indexPath.row;
         cell.titleLable.text = [[dataArr objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
@@ -243,19 +247,17 @@
 }
 
 #pragma mark - 文本输入框的代理方法
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
     if (textView.tag == 123) {
         //擅长领域
-        goodAtField = text;
+        goodAtField = textView.text;
     }else{
         
         //导师背景
-        teacherBackground = text;
-
+        teacherBackground = textView.text;
+        
     }
-    
-    return YES;
 }
 
 #pragma mark - AddTeacherInfoTableViewCellDelegate,AddTeacherInfoTypeTwoTableViewCellDelegate
@@ -309,30 +311,30 @@
     
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.userId forKey:@"user_id"];
     if (name&&name.length>0) {
-        [dic setObject:name forKey:@"realname"];
+        [dic setValue:name forKey:@"realname"];
     }
     if (identityNum&&identityNum.length>0) {
-        [dic setObject:identityNum forKey:@"idcard"];
+        [dic setValue:identityNum forKey:@"idcard"];
     }
     if (workUnit&&workUnit.length>0) {
-        [dic setObject:workUnit forKey:@"company"];
+        [dic setValue:workUnit forKey:@"company"];
     }
     if (job&&job.length>0) {
-        [dic setObject:job forKey:@"job"];
+        [dic setValue:job forKey:@"job"];
     }
     if (telephoneNum&&telephoneNum.length>0) {
-        [dic setObject:telephoneNum forKey:@"telphone"];
+        [dic setValue:telephoneNum forKey:@"telphone"];
     }
     if (goodAtField&&goodAtField.length>0) {
-        [dic setObject:goodAtField forKey:@"skillful"];
+        [dic setValue:goodAtField forKey:@"skillful"];
     }
     if (teacherBackground&&teacherBackground.length>0) {
-        [dic setObject:teacherBackground forKey:@"tutorbackground"];
+        [dic setValue:teacherBackground forKey:@"tutorbackground"];
     }
     if (avatarImageUploaded&&avatarImageUploaded.length>0) {
-        [dic setObject:avatarImageUploaded forKey:@"icon"];
+        [dic setValue:avatarImageUploaded forKey:@"icon"];
     }
     
     [[HttpClient sharedInstance]updateTeacherInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
