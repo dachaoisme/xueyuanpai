@@ -128,7 +128,8 @@
         twoCell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         twoCell.titleLabel.text = @"学校";
-        twoCell.contentLabel.text = @"吉林长春大学";
+        twoCell.contentLabel.text = [UserAccountManager sharedInstance].userCollegeName;
+        
         
         self.schoolStr = twoCell.contentLabel.text;
         
@@ -193,27 +194,23 @@
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
             //报名成功
-            [CommonUtils showToastWithStr:model.responseMsg];
+//            [CommonUtils showToastWithStr:model.responseMsg];
             
-#warning 后台缺少返回积分项
         
             //跳转成功界面
             BaoMingSuccessViewController *successVC = [[BaoMingSuccessViewController alloc] init];
             
+            NSDictionary *responseCommonDic = model.responseCommonDic;
+            successVC.points = responseCommonDic?[responseCommonDic stringForKey:@"points"]:@"";
+            
             [self.navigationController pushViewController:successVC animated:YES];
             
             
-            
-            
+    
         }else{
             
             [CommonUtils showToastWithStr:model.responseMsg];
 
-            
-            //跳转成功界面
-            BaoMingSuccessViewController *successVC = [[BaoMingSuccessViewController alloc] init];
-            
-            [self.navigationController pushViewController:successVC animated:YES];
         }
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

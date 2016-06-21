@@ -227,7 +227,14 @@
             
             
             
-            cell.contentLabel.text = _newsModel.businessCenterNewsContent;
+            NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[_newsModel.businessCenterNewsContent dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+            
+            
+            cell.contentLabel.attributedText = attrStr;
+            
+            
+            
+//            cell.contentLabel.text = _newsModel.businessCenterNewsContent;
             
             [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.businessCenterNewsImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
             
@@ -262,9 +269,15 @@
             BusinessNewsDetailTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
+
+            
+            NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[ _competationModel.businessCenterCompetitionContent dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
             
             
-            cell.contentLabel.text = _competationModel.businessCenterCompetitionContent;
+            cell.contentLabel.attributedText = attrStr;
+            
+//            cell.contentLabel.text = _competationModel.businessCenterCompetitionContent;
+
             
             [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:_competationModel.businessCenterCompetitionImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
             
@@ -285,8 +298,29 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+//    if ([self.title isEqualToString:@"新闻详情"]) {
+//        
+//        if (indexPath.section == 1) {
+//            
+//            return <#expression#>
+//        }
+//    }else{
+//        
+//    }
+    
     return 100;
 }
+
+
+//自适应撑高
+//计算字符串的frame
+- (CGFloat)textHeight:(NSString *)string{
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 10, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
+    //返回计算好的高度
+    return rect.size.height;
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

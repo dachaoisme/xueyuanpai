@@ -1,5 +1,5 @@
 //
-//  BaoMingSuccessViewController.h
+//  BusinessPublishProjectSuccessViewController.h
 //  xueyuanpai
 //
 //  Created by 王园园 on 16/6/21.
@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface BaoMingSuccessViewController : BaseViewController
+@interface BusinessPublishProjectSuccessViewController : BaseViewController
 
 ///积分
 @property (nonatomic,strong)NSString *points;

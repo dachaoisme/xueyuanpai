@@ -282,9 +282,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
         
         switch (indexPath.row) {
             case 0:{
-                
-#warning 数据没从接口显示
-               
+                               
                 PublishInformationTwoStyleTableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 twoCell.selectionStyle = UITableViewCellSelectionStyleNone;
 
