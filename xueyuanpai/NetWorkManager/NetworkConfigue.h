@@ -34,7 +34,7 @@
 ///校验验证码和手机号--->修改密码
 #define METHOD_OF_CHECKING_MESSAGE       @"v1/user/validatecaptcha?"
 ///修改密码
-#define METHOD_OF_UPDATE_PASSWORD        @"v1/user/v1/user/updatepasswd?"
+#define METHOD_OF_UPDATE_PASSWORD        @"v1/user/updatepasswd?"
 ///更新个人资料
 #define METHOD_OF_UPDATE_STUDENT_INFO    @"v1/user/updatestudentinfo?"
 ///更新导师资料

@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488207662.021738"
+            filePath = "xueyuanpai/Account/Controller/ForgetPasswordViewController.m"
+            timestampString = "488221843.154866"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "-submit:"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-sure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488207663.622137"
+            filePath = "xueyuanpai/Account/Controller/ForgetPasswordViewController.m"
+            timestampString = "488221844.66848"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
-            landmarkName = "-submit:"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-sure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,43 +41,75 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488207674.023623"
+            filePath = "xueyuanpai/Account/Controller/ForgetPasswordViewController.m"
+            timestampString = "488221846.34254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "-submit:"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-sure:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/Account/Controller/ForgetPasswordViewController.m"
+            timestampString = "488221847.953717"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-sure:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/Account/Controller/ForgetPasswordOfSetNewPasswordViewController.m"
+            timestampString = "488221929.251451"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-sure:"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[AddStudentInfoViewController submit:]"
+                  symbolName = "-[ForgetPasswordOfSetNewPasswordViewController sure:]"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-                  timestampString = "488211572.336309"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Account/Controller/ForgetPasswordOfSetNewPasswordViewController.m"
+                  timestampString = "488222953.244589"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "218"
-                  endingLineNumber = "218"
-                  offsetFromSymbolStart = "1620">
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "429">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__39-[AddStudentInfoViewController submit:]_block_invoke"
+                  symbolName = "__53-[ForgetPasswordOfSetNewPasswordViewController sure:]_block_invoke"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-                  timestampString = "488211572.33666"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Account/Controller/ForgetPasswordOfSetNewPasswordViewController.m"
+                  timestampString = "488222953.244886"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "218"
-                  endingLineNumber = "218"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
                   offsetFromSymbolStart = "36">
                </Location>
             </Locations>
@@ -89,13 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488208043.165018"
+            filePath = "xueyuanpai/Account/Controller/ForgetPasswordOfSetNewPasswordViewController.m"
+            timestampString = "488221932.409018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-submit:"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-sure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,221 +137,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "488208178.990824"
+            filePath = "xueyuanpai/Account/Controller/ForgetPasswordOfSetNewPasswordViewController.m"
+            timestampString = "488222953.094469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "488210727.226032"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "488208189.310864"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "488208192.096621"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488208230.656752"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-submit:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488208244.29443"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "-submit:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488208249.066931"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "-submit:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "488208330.238176"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "488208589.253687"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "236"
-            endingLineNumber = "236"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[RegisterViewController submitAndRegister:]"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Account/Controller/RegisterViewController.m"
-                  timestampString = "488211572.351389"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "236"
-                  endingLineNumber = "236"
-                  offsetFromSymbolStart = "1105">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__44-[RegisterViewController submitAndRegister:]_block_invoke"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Account/Controller/RegisterViewController.m"
-                  timestampString = "488211572.351681"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "236"
-                  endingLineNumber = "236"
-                  offsetFromSymbolStart = "70">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/RegisterViewController.m"
-            timestampString = "488210727.226032"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "247"
-            endingLineNumber = "247"
-            landmarkName = "-submitAndRegister:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488210178.248459"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Account/Controller/AddStudentInfoViewController.m"
-            timestampString = "488210360.253028"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "-submit:"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-sure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -330,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/UserAccountManager/UserAccountManager.m"
-            timestampString = "488210556.964746"
+            timestampString = "488222208.960361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -346,7 +170,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/UserAccountManager/UserAccountManager.m"
-                  timestampString = "488211572.355541"
+                  timestampString = "488222953.248125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "104"
@@ -361,7 +185,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/UserAccountManager/UserAccountManager.m"
-                  timestampString = "488211572.355887"
+                  timestampString = "488222953.248423"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "104"
@@ -378,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/UserAccountManager/UserAccountManager.m"
-            timestampString = "488210559.428846"
+            timestampString = "488222212.889669"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-loginWithUserPhoneNum:andPassWord:withUserRole:"
             landmarkType = "5">
          </BreakpointContent>
@@ -394,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/UserAccountManager/UserAccountManager.m"
-            timestampString = "488210560.767305"
+            timestampString = "488222646.071488"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
@@ -410,12 +234,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/UserAccountManager/UserAccountManager.m"
-            timestampString = "488210561.505421"
+            timestampString = "488222647.654521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-loginWithUserPhoneNum:andPassWord:withUserRole:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/UserAccountManager/UserAccountManager.m"
+            timestampString = "488223083.40012"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-getUserInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
