@@ -133,13 +133,15 @@
         
         [wSelf.headImageSelectedBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
         [wSelf.headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
+        ///压缩图片，不能过大
+        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
         //需要把图片上传到服务器
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
-        NSData * imageData = UIImagePNGRepresentation(selectedImage);
+        NSData * imageData = UIImagePNGRepresentation(scaleImg);
         [imageDic setObject:imageData forKey:@"Users[file]"];
         [[HttpClient sharedInstance]uploadImageWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
-            avatarImageUploaded = [dic objectForKey:@"picUrl"];
+            avatarImageUploaded = [model.responseCommonDic objectForKey:@"picUrl"];
         } withFaileBlock:^(NSError *error) {
             
         }];

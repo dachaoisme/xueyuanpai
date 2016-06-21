@@ -86,6 +86,12 @@
 {
     [_textView resignFirstResponder];
 }
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([self.delegate respondsToSelector:@selector(updateInputInfoTypeTwoWithIndex:withTextFieldText:)]) {
+        [self.delegate updateInputInfoTypeTwoWithIndex:self.tag withTextFieldText:textView.text];
+    }
+}
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     return YES;

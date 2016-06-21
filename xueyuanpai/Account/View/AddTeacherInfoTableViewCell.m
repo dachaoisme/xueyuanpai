@@ -65,13 +65,13 @@
     [self.contentView addSubview:tipsLable];
     
 }
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+-(void)textFieldDidEndEditing:(UITextField *)textField
 {
     if ([self.delegate respondsToSelector:@selector(updateInputInfoWithIndex:withTextFieldText:)]) {
-        [self.delegate updateInputInfoWithIndex:textField.tag withTextFieldText:string];
+        [self.delegate updateInputInfoWithIndex:self.tag withTextFieldText:textField.text];
     }
-    return YES;
 }
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
