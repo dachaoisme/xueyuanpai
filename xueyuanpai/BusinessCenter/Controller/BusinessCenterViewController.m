@@ -11,7 +11,6 @@
 #import "SchoolColumnView.h"
 
 #import "BusinessCenterOneStyleTableViewCell.h"
-#import "BusinessCenterTwoStyleTableViewCell.h"
 #import "BusinessCenterTableViewCell.h"
 
 #import "BusinessNewsViewController.h"
@@ -31,8 +30,13 @@
 #import "LoginViewController.h"
 
 
+#import "OTPageScrollView.h"
+#import "OTPageView.h"
 
-@interface BusinessCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+
+
+@interface BusinessCenterViewController ()<UITableViewDelegate,UITableViewDataSource,OTPageScrollViewDataSource,OTPageScrollViewDelegate>
 
 {
     NSMutableArray * tutorStarModelListArr;
@@ -99,10 +103,9 @@
     //注册cell
     
     
-    
     [tableView registerClass:[BusinessCenterOneStyleTableViewCell class] forCellReuseIdentifier:@"oneCell"];
     
-    [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
+    [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"twoCell"];
     
     [tableView registerNib:[UINib nibWithNibName:@"BusinessCenterTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
     
@@ -211,7 +214,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 0) {
-        return tutorStarModelListArr.count + 1;
+        return 2;
     }else  {
         return businessProjectModelListArr.count + 1;
     }
@@ -220,49 +223,46 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section == 0) {
+    
+    if (indexPath.row == 0) {
+        BusinessCenterOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         
-        if (indexPath.row == 0) {
-            BusinessCenterOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        
+        if (indexPath.section == 0) {
             cell.titleLabel.text = @"明星导师";
-
-            
-            
-            return cell;
-
+ 
         }else{
             
-            BusinessCenterTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            
-            BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row - 1];
-            
-            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterTutorImage ] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
-            
-            
-            cell.nameLabel.text = model.businessCenterTutorUserName;
-            
-            cell.introduceLabel.text = model.businessCenterTutorJob;
-
-            
-            return cell;
-        }
-
-    }else {
-        
-        if (indexPath.row == 0) {
-            BusinessCenterOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
             cell.titleLabel.text = @"创业项目";
+
+        }
+        return cell;
+
+
+    }else{
+        
+        if (indexPath.section == 0) {
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell"];
+            
+            
+            OTPageView *PScrollView = [[OTPageView alloc] initWithFrame:CGRectMake(0, 10, [[UIScreen mainScreen] bounds].size.width, 170)];
+            PScrollView.pageScrollView.dataSource = self;
+            PScrollView.pageScrollView.delegate = self;
+            //两个视图之间的间隔
+            PScrollView.pageScrollView.padding = 30;
+            PScrollView.pageScrollView.leftRightOffset = 0;
+            //设置显示在屏幕中的位置
+            PScrollView.pageScrollView.frame = CGRectMake(-10, 0, 150, 150);
+            PScrollView.backgroundColor = [UIColor whiteColor];
+            [PScrollView.pageScrollView reloadData];
+            [cell.contentView addSubview:PScrollView];
             
             
             return cell;
+
             
         }else{
             
@@ -273,31 +273,56 @@
             BusinessCenterProgectModel * model = [businessProjectModelListArr objectAtIndex:indexPath.row - 1];
             
             [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterProgectImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
-
+            
             cell.titleLabel.text = model.businessCenterProgectTitle;
             cell.contentLabel.text = model.businessCenterProgectBrief;
             
             
             return cell;
+
+            
         }
         
     }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0) {
-        return 45;
-    }else{
-        
-        if (indexPath.section == 0) {
-            return 200;
-        }else{
+    switch (indexPath.section) {
+        case 0:{
             
-            return 115;
+            if (indexPath.row == 0) {
+                
+                return 45;
+            }else{
+                return 170;
+
+            }
+            
         }
-        
+            break;
+        case 1:{
+            
+            if (indexPath.row == 0) {
+                
+                return 45;
+            }else{
+                return 115;
+                
+            }
+
+        }
+            break;
+
+            
+        default:
+            
+            return 49;
+            break;
     }
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -318,13 +343,6 @@
         [self.navigationController pushViewController:teacherVC animated:YES];
         
         
-    }else if (indexPath.section == 0 && indexPath.row > 0) {
-        
-        //跳转导师详情
-        BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:indexPath.row-1];
-        BusinessTeacherDetailViewController *teacherVC = [[BusinessTeacherDetailViewController alloc] init];
-        teacherVC.teacherId = model.businessCenterTutorId;
-        [self.navigationController pushViewController:teacherVC animated:YES];
     }else if (indexPath.section == 1 && indexPath.row == 0) {
         BusinessProjectViewController *projectVC = [[BusinessProjectViewController alloc] init];
         [self.navigationController pushViewController:projectVC animated:YES];
@@ -437,6 +455,84 @@
     }];
     
 }
+
+
+#pragma mark - 导师滚动视图
+- (NSInteger)numberOfPageInPageScrollView:(OTPageScrollView*)pageScrollView{
+    return tutorStarModelListArr.count;
+}
+
+- (UIView*)pageScrollView:(OTPageScrollView*)pageScrollView viewForRowAtIndex:(int)index{
+    UIView *cell = [[UIView alloc] initWithFrame:CGRectMake(0, 10, 100, 150)];
+    cell.backgroundColor = [UIColor whiteColor];
+    ;
+    
+    
+    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+    [cell addSubview:headImageView];
+    
+    
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 102, 52, 21)];
+    nameLabel.font = [UIFont systemFontOfSize:14];
+    nameLabel.textAlignment = NSTextAlignmentRight;
+    [cell addSubview:nameLabel];
+    
+    
+    UIImageView *makeSureImageView = [[UIImageView alloc] initWithFrame:CGRectMake(57, 107, 12, 12)];
+    makeSureImageView.image = [UIImage imageNamed:@"startup_vip"];
+    [cell addSubview:makeSureImageView];
+    
+    
+    
+    UILabel *introduceLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 121, 84, 21)];
+    introduceLabel.textColor = [UIColor lightGrayColor];
+    introduceLabel.font = [UIFont systemFontOfSize:14];
+    introduceLabel.textAlignment = NSTextAlignmentCenter;
+    [cell addSubview:introduceLabel];
+    
+    
+    
+    BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:index];
+
+    [headImageView sd_setImageWithURL:[NSURL URLWithString:model.businessCenterTutorImage ] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+
+
+    nameLabel.text = model.businessCenterTutorUserName;
+
+   introduceLabel.text = model.businessCenterTutorJob;
+
+
+    
+
+    return cell;
+    
+    
+    
+    
+}
+
+- (CGSize)sizeCellForPageScrollView:(OTPageScrollView*)pageScrollView
+{
+    return CGSizeMake(100, 150);
+}
+
+- (void)pageScrollView:(OTPageScrollView *)pageScrollView didTapPageAtIndex:(NSInteger)index{
+//    NSLog(@"click cell at %ld",index);
+    
+    //跳转导师详情
+    BusinessCenterTutorModel * model = [tutorStarModelListArr objectAtIndex:index];
+    BusinessTeacherDetailViewController *teacherVC = [[BusinessTeacherDetailViewController alloc] init];
+    teacherVC.teacherId = model.businessCenterTutorId;
+    [self.navigationController pushViewController:teacherVC animated:YES];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger index = scrollView.contentOffset.x / scrollView.frame.size.width;
+    NSLog(@"click cell at %ld",index);
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
