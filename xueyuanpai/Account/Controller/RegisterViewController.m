@@ -9,6 +9,8 @@
 #import "RegisterViewController.h"
 #import "AddStudentInfoViewController.h"
 #import "AddTeacherViewController.h"
+#import "CollegeModel.h"
+#import "SelectedSchollViewController.h"
 @interface RegisterViewController ()<UITextFieldDelegate>
 {
     UITextField *phoneTextField;
@@ -16,9 +18,15 @@
     UITextField *inputPasswordTextField;
     UIButton    *submitAndRegisterBtn;
     
-    NSInteger     timerCount;
+    NSInteger    timerCount;
     NSTimer     *sendTimer;
     UIButton    *sendMessageBtn;
+    
+    UIView      *schoolView ;
+    UIButton    *schoolBtn;
+    UIImageView *schoolArrowImageView;
+    
+    CollegeModel * theCollegeModel;
 }
 @end
 
@@ -45,7 +53,7 @@
 
     
     //创建背景视图
-    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+topSpace, width, 3 * height)];
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+topSpace, width, 4 * height)];
     backGroundView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:backGroundView];
     
@@ -113,6 +121,26 @@
     inputPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [backGroundView addSubview:inputPasswordTextField];
     
+    ///选择学校
+    float arrowWidth = 20;
+    schoolView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(inputPasswordTextField.frame)+15, SCREEN_WIDTH, height-30)];
+    [schoolView setBackgroundColor:[UIColor whiteColor]];
+    [backGroundView addSubview:schoolView];
+    schoolBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    schoolBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [schoolBtn setFrame:CGRectMake(leftSpace, 0, width-arrowWidth-leftSpace, height)];
+    [schoolBtn setTitle:@"请选择学校" forState:UIControlStateNormal];
+    [schoolBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    schoolBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [schoolBtn addTarget:self action:@selector(selectedSchool:) forControlEvents:UIControlEventTouchUpInside];
+    [schoolView addSubview:schoolBtn];
+    schoolArrowImageView = [UIFactory imageView:CGRectMake(CGRectGetMaxX(schoolBtn.frame), 0, arrowWidth, height) viewMode:UIViewContentModeCenter image:@"arrow"];
+    [schoolArrowImageView setBackgroundColor:[UIColor whiteColor]];
+    [schoolView addSubview:schoolArrowImageView];
+    
+    UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(15, 48 * 3, SCREEN_WIDTH, 1)];
+    lineView2.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [backGroundView addSubview:lineView2];
     
     //提交并注册
     submitAndRegisterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -125,6 +153,8 @@
     [submitAndRegisterBtn setTitle:@"提交并注册" forState:UIControlStateNormal];
     submitAndRegisterBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:submitAndRegisterBtn];
+    
+    
 }
 -(void)sendmessage:(UIButton *)sender
 {
@@ -154,6 +184,17 @@
     
     
 }
+#pragma mark - 选择学校
+-(void)selectedSchool:(UIButton *)sender
+{
+    SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
+    schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
+        [schoolBtn setTitle:collegeModel.collegeName forState:UIControlStateNormal];
+        theCollegeModel = collegeModel;
+        [schoolBtn setTitle:theCollegeModel.collegeName forState:UIControlStateNormal];
+    };
+    [self.navigationController pushViewController:schollVC animated:YES];
+}
 -(void)submitAndRegister:(UIButton *)sender
 {    
     /*
@@ -169,12 +210,28 @@
     
     //如果是学生，则注册成功，则返回登录页面
     //如果是导师，则注册成功后，跳转到设置资料页面？
-    
+//    if ([CommonUtils checkPhoneNumIsAvailableWithPhoneNumString:phoneTextField.text]) {
+//        [CommonUtils showToastWithStr:@"请输入有效手机号"];
+//        return;
+//    }
+    if (inputPasswordTextField.text.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入密码"];
+        return;
+    }
+    if (checkingMessageTextField.text.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入验证码"];
+        return;
+    }
+    if (!(theCollegeModel &&theCollegeModel.collegeID.length>0)) {
+        [CommonUtils showToastWithStr:@"请选择大学"];
+        return;
+    }
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params setObject:phoneTextField.text forKey:@"mobile"];
     [params setObject:self.registerRoleType==RegisterRoleOfStudent?@"1":@"2" forKey:@"role"];
     [params setObject:inputPasswordTextField.text forKey:@"passwd"];
     [params setObject:checkingMessageTextField.text forKey:@"captcha"];
+    [params setObject:theCollegeModel.collegeID forKey:@"college_id"];
     
     [[HttpClient sharedInstance]registerAndSubmitWithParams:params withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
         if (responseModel.responseCode == ResponseCodeSuccess) {
@@ -195,9 +252,6 @@
                 teacherInfoVC.userId = userId;
                 [self.navigationController pushViewController:teacherInfoVC animated:YES];
             }
-            
-            
-            
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
