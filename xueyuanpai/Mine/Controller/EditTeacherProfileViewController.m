@@ -17,7 +17,7 @@
 
 
 
-@interface EditTeacherProfileViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface EditTeacherProfileViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 
 {
     SelectedImageView *selectedImageView;
@@ -28,6 +28,26 @@
 @property (nonatomic,strong)UIButton *headImageSelectedBtn;
 
 @property (nonatomic,strong)UITableView *tableView;
+
+///真实姓名
+@property (nonatomic,strong)NSString *realname;
+///身份证
+@property (nonatomic,strong)NSString *idcard;
+///工作单位
+@property (nonatomic,strong)NSString *company;
+///职务
+@property (nonatomic,strong)NSString *job;
+///联系电话
+@property (nonatomic,strong)NSString *telphone;
+///邮箱
+@property (nonatomic,strong)NSString *email;
+///擅长领域
+@property (nonatomic,strong)NSString *skillful;
+///导师背景
+@property (nonatomic,strong)NSString *tutorbackground;
+
+
+
 
 
 @end
@@ -135,6 +155,8 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.contentLabel.text = [UserAccountManager sharedInstance].userRealName;
                 
+                self.realname = [UserAccountManager sharedInstance].userRealName;
+
                 return cell;
                 
                 
@@ -148,7 +170,9 @@
                 cell.titleLabel.text = @"身份证号";
                 cell.contentLabel.text = [UserAccountManager sharedInstance].userIdCard;
                 
+                self.idcard =  [UserAccountManager sharedInstance].userIdCard;
                 
+
 
                 return cell;
                 
@@ -160,8 +184,11 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
                 cell.titleLabel.text = @"工作单位";
+                cell.contentTextField.delegate = self;
                 cell.contentTextField.text = [UserAccountManager sharedInstance].userCompany;
+                cell.contentTextField.tag = 100;
                 
+                self.company = [UserAccountManager sharedInstance].userCompany;
                 return cell;
                 
             }
@@ -173,6 +200,12 @@
 
                 cell.titleLabel.text = @"职务";
                 cell.contentTextField.text = [UserAccountManager sharedInstance].userJob;
+                cell.contentTextField.delegate = self;
+
+                cell.contentTextField.tag = 101;
+                self.job = [UserAccountManager sharedInstance].userJob;
+
+
                 
                 return cell;
                 
@@ -183,8 +216,16 @@
                 EditTeacherTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
+                cell.contentTextField.delegate = self;
+
                 cell.titleLabel.text = @"联系电话";
                 cell.contentTextField.text = [UserAccountManager sharedInstance].userMobile;
+                
+                cell.contentTextField.tag = 102;
+                self.telphone = [UserAccountManager sharedInstance].userMobile;
+                
+
+
                 
                 return cell;
 
@@ -194,9 +235,15 @@
                 EditTeacherTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
+                cell.contentTextField.delegate = self;
+
                 cell.titleLabel.text = @"邮箱";
                 cell.contentTextField.text = [UserAccountManager sharedInstance].userEmail;
                 
+                cell.contentTextField.tag = 103;
+                self.email = [UserAccountManager sharedInstance].userEmail;
+
+
                 return cell;
                 
             }
@@ -215,6 +262,10 @@
         cell.titleLabel.text = @"擅长辅导领域";
         
         cell.textView.text = [UserAccountManager sharedInstance].userSkillful;
+        cell.textView.tag = 1000;
+        cell.textView.delegate = self;
+        self.skillful = [UserAccountManager sharedInstance].userTutorbackground;
+
         
         
         return cell;
@@ -228,6 +279,10 @@
         cell.titleLabel.text = @"导师背景";
         
         cell.textView.text = [UserAccountManager sharedInstance].userTutorbackground;
+        cell.textView.tag = 1001;
+        cell.textView.delegate = self;
+
+        self.tutorbackground = [UserAccountManager sharedInstance].userTutorbackground;
         
         
         return cell;
@@ -247,6 +302,35 @@
         
         return 100;
     }
+}
+
+#pragma mark - textField代理方法
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if (textField.tag == 100) {
+        
+        self.company = string;
+
+    }else if (textField.tag == 101){
+        self.job = string;
+    }else if (textField.tag == 102){
+        self.telphone = string;
+    }else if (textField.tag == 103){
+        self.email = string;
+    }
+    
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    if (textView.tag == 1000) {
+        self.skillful = text;
+    }else{
+        self.tutorbackground = text;
+    }
+    
+    return YES;
 }
 
 
@@ -311,13 +395,7 @@
 #pragma mark - 提交按钮
 - (void)commitAction{
     
-    [CommonUtils showToastWithStr:@"提交"];
-}
-
-
-#pragma mark - 提交的接口响应
--(void)submit
-{
+    
     /*
      user_id int    必需    用户序号
      realname   string    非必需    真实姓名
@@ -331,48 +409,49 @@
      icon string   非必需     头像
      */
     
-    /*
-    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    if (name&&name.length>0) {
-        [dic setObject:name forKey:@"realname"];
-    }
-    if (identityNum&&identityNum.length>0) {
-        [dic setObject:identityNum forKey:@"idcard"];
-    }
-    if (workUnit&&workUnit.length>0) {
-        [dic setObject:workUnit forKey:@"company"];
-    }
-    if (job&&job.length>0) {
-        [dic setObject:job forKey:@"job"];
-    }
-    if (telephoneNum&&telephoneNum.length>0) {
-        [dic setObject:telephoneNum forKey:@"telphone"];
-    }
-    if (goodAtField&&goodAtField.length>0) {
-        [dic setObject:goodAtField forKey:@"skillful"];
-    }
-    if (teacherBackground&&teacherBackground.length>0) {
-        [dic setObject:teacherBackground forKey:@"tutorbackground"];
-    }
-    if (avatarImageUploaded&&avatarImageUploaded.length>0) {
-        [dic setObject:avatarImageUploaded forKey:@"icon"];
-    }
     
-    [[HttpClient sharedInstance]updateTeacherInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        //更新导师资料
-        if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"提交审核成功"];
-            [self.navigationController popToRootViewControllerAnimated:YES];
-        }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }
-    } withFaileBlock:^(NSError *error) {
-        
-    }];
+     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+     if (_realname&&_realname.length>0) {
+     [dic setObject:_realname forKey:@"realname"];
+     }
+     if (_idcard&&_idcard.length>0) {
+     [dic setObject:_idcard forKey:@"idcard"];
+     }
+     if (_company&&_company.length>0) {
+     [dic setObject:_company forKey:@"company"];
+     }
+     if (_job&&_job.length>0) {
+     [dic setObject:_job forKey:@"job"];
+     }
+     if (_telphone&&_telphone.length>0) {
+     [dic setObject:_telphone forKey:@"telphone"];
+     }
+     if (_skillful&&_skillful.length>0) {
+     [dic setObject:_skillful forKey:@"skillful"];
+     }
+     if (_tutorbackground&&_tutorbackground.length>0) {
+     [dic setObject:_tutorbackground forKey:@"tutorbackground"];
+     }
+     if (avatarImageUploaded&&avatarImageUploaded.length>0) {
+     [dic setObject:avatarImageUploaded forKey:@"icon"];
+     }
      
-     */
+     [[HttpClient sharedInstance]updateTeacherInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+     //更新导师资料
+     if (model.responseCode == ResponseCodeSuccess) {
+         [CommonUtils showToastWithStr:@"提交审核成功"];
+         [self.navigationController popToRootViewControllerAnimated:YES];
+     }else{
+         [CommonUtils showToastWithStr:model.responseMsg];
+     }
+     } withFaileBlock:^(NSError *error) {
+     
+     }];
+    
+
 }
+
 
 
 

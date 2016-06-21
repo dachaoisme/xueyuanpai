@@ -15,6 +15,8 @@
 
 #import "LoginViewController.h"
 
+#import "BusinessPublishProjectViewController.h"
+
 @interface BusinessProjectViewController ()<UITableViewDataSource,UITableViewDelegate,LDCPullDownMenuViewDelegate,UISearchBarDelegate>
 {
     NSString * keyword;
@@ -48,6 +50,7 @@
     
     self.view.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     self.title = @"创业项目";
+    [self creatRightNavWithTitle:@"发布项目"];
     pageNo = 1;
     pageSize = 10;
     businessCenterProgectModelListArr      = [NSMutableArray array];
@@ -66,6 +69,16 @@
     [self requestToGetConditionsCategory];
     
 }
+
+#pragma mark - 导航栏右侧按钮的响应方法
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    
+    BusinessPublishProjectViewController *publishProjectVC = [[BusinessPublishProjectViewController alloc] init];
+    
+    [self.navigationController pushViewController:publishProjectVC animated:YES];
+}
+
 
 #pragma mark - 创建搜索按钮
 - (void)createSearchBar{

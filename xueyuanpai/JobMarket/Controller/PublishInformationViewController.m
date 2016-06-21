@@ -467,6 +467,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
+
     
     [self presentViewController:picker animated:YES completion:nil];
 }
@@ -487,7 +488,9 @@ static NSString *Identifier = @"photoCollectionViewCell";
     UIImage *newImage = [image imageWithScale:[UIScreen mainScreen].bounds.size.width];
     
     [self.pictureImages addObject:newImage];
+    
     [self.photoCollectionView reloadData];
+
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 

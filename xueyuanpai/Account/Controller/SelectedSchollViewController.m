@@ -21,6 +21,7 @@
 
 @implementation SelectedSchollViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -30,6 +31,9 @@
     dataArr = [NSMutableArray array];
     pageCount = 10;
     page = 1;
+    
+    [self requestDataWithText:@""];
+
 }
 
 -(void)initContentView
@@ -92,8 +96,8 @@
     page = 1;
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:searchText forKey:@"name"];
-    [dic setObject:[NSString stringWithFormat:@"%d",pageCount] forKey:@"size"];
-    [dic setObject:[NSString stringWithFormat:@"%d",page] forKey:@"page"];
+//    [dic setObject:[NSString stringWithFormat:@"%d",pageCount] forKey:@"size"];
+//    [dic setObject:[NSString stringWithFormat:@"%d",page] forKey:@"page"];
     [[HttpClient sharedInstance]searchCollegeWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         NSArray * dicArr = [ListDic objectForKey:@"lists"];
         for (NSDictionary * dic in dicArr) {

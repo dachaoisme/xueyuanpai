@@ -106,30 +106,30 @@
 - (void)commitAction{
     
     
-    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
-    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
-    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
-    NSData   *newImageData = UIImagePNGRepresentation(newImage);
-    if ([oldImageData isEqualToData:newImageData]) {
-        [CommonUtils showToastWithStr:@"请选择头像"];
-        return;
-    }
-    if (avatarImageUploaded.length<=0) {
-        [CommonUtils showToastWithStr:@"请选择头像"];
-        return;
-    }
-    if (_nickName.length>10 || _nickName.length<4) {
-        [CommonUtils showToastWithStr:@"请输入4-10个字符"];
-        return;
-    }
-    if (_sexStr.length<=0 ) {
-        [CommonUtils showToastWithStr:@"请选择性别"];
-        return;
-    }
-    if (_school.length<=0) {
-        [CommonUtils showToastWithStr:@"请选择大学"];
-        return;
-    }
+//    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
+//    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
+//    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
+//    NSData   *newImageData = UIImagePNGRepresentation(newImage);
+//    if ([oldImageData isEqualToData:newImageData]) {
+//        [CommonUtils showToastWithStr:@"请选择头像"];
+//        return;
+//    }
+//    if (avatarImageUploaded.length<=0) {
+//        [CommonUtils showToastWithStr:@"请选择头像"];
+//        return;
+//    }
+//    if (_nickName.length>10 || _nickName.length<4) {
+//        [CommonUtils showToastWithStr:@"请输入4-10个字符"];
+//        return;
+//    }
+//    if (_sexStr.length<=0 ) {
+//        [CommonUtils showToastWithStr:@"请选择性别"];
+//        return;
+//    }
+//    if (_school.length<=0) {
+//        [CommonUtils showToastWithStr:@"请选择大学"];
+//        return;
+//    }
     if (![UserAccountManager sharedInstance].userId) {
         [CommonUtils showToastWithStr:@"用户注册未成功"];
         return;
@@ -145,12 +145,12 @@
     NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
     
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:self.nickName forKey:@"nickname"];
-    [dic setObject:theCollegeModel.collegeID forKey:@"college_id"];
+    [dic setObject:self.nickName?self.nickName:[UserAccountManager sharedInstance].userNickname forKey:@"nickname"];
+    [dic setObject:theCollegeModel.collegeID?theCollegeModel.collegeID:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
     [dic setObject:[_sexStr isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
-//    [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
+    [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
     
-    [[HttpClient sharedInstance]updateStudentInfoWithParams:nil withSuccessBlock:^(HttpResponseCodeModel *model) {
+    [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"用户资料更新成功"];
         }else{
@@ -158,6 +158,8 @@
         }
     } withFaileBlock:^(NSError *error) {
         
+        [CommonUtils showToastWithStr:@"用户资料更新失败"];
+
     }];
 }
 
@@ -211,7 +213,15 @@
 #pragma mark - textField的代理方法
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     
-    self.nickName = textField.text;
+    if (textField.tag == 10000) {
+        
+        self.nickName = textField.text;
+
+    }else{
+        
+        self.grade = textField.text;
+    }
+    
     
     return YES;
 }
@@ -229,11 +239,22 @@
         EditProfileTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
         cell.selectionStyle  = UITableViewCellSelectionStyleNone;
         cell.inputTextField.delegate = self;
+        cell.inputTextField.tag = 10000;
         
         cell.inputTextField.text = [UserAccountManager sharedInstance].userNickname;
                 
         return cell;
         
+    }else if (indexPath.row == 4){
+        EditProfileTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
+        cell.inputTextField.delegate = self;
+        cell.inputTextField.tag = 10001;
+
+        cell.titleLabel.text = @"年级";
+        cell.inputTextField.placeholder = @"请输入";
+        
+        return cell;
     }else{
         
         EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -255,11 +276,6 @@
             
             cell.titleLabel.text = @"学校";
             cell.contentLabel.text = [UserAccountManager sharedInstance].userCollegeName;
-            
-        }else if (indexPath.row == 4) {
-            
-            cell.titleLabel.text = @"年级";
-            cell.contentLabel.text = @"";
             
         }
         return cell;
@@ -291,12 +307,15 @@
     }else if (indexPath.row == 2){
         
         //选择生日
+        [CommonUtils showToastWithStr:@"选择生日"];
     }else if (indexPath.row == 3){
         
         EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
         //选择学校
         SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
         schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
+            cell.titleLabel.text = @"年级";
+
             
             cell.contentLabel.text = collegeModel.collegeName;
             
@@ -312,7 +331,7 @@
         [self.navigationController pushViewController:schollVC animated:YES];
         
     }else if (indexPath.row == 4){
-        //选择年级
+        
         
     }
     
