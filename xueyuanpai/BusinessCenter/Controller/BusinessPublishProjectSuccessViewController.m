@@ -1,19 +1,20 @@
 //
-//  PublishInformationSuccessViewController.m
+//  BusinessPublishProjectSuccessViewController.m
 //  xueyuanpai
 //
 //  Created by 王园园 on 16/6/21.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "PublishInformationSuccessViewController.h"
+#import "BusinessPublishProjectSuccessViewController.h"
 
-#import "JobMarketViewController.h"
-@interface PublishInformationSuccessViewController ()
+#import "BusinessCenterViewController.h"
+
+@interface BusinessPublishProjectSuccessViewController ()
 
 @end
 
-@implementation PublishInformationSuccessViewController
+@implementation BusinessPublishProjectSuccessViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +39,7 @@
     
     //成功积分显示
     UILabel *moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.center.x - 25, imageView.center.y - 10, 50, 20)];
-//    moneyLabel.text = [NSString stringWithFormat:@"+%@",_points];
+    //    moneyLabel.text = [NSString stringWithFormat:@"+%@",_points];
     moneyLabel.textColor = [UIColor colorWithRed:254/255.0 green:189/255.0 blue:47/255.0 alpha:1];
     moneyLabel.textAlignment = NSTextAlignmentCenter;
     moneyLabel.font = [UIFont systemFontOfSize:16];
@@ -50,7 +51,7 @@
     UILabel *alertLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(imageView.frame) - 25, CGRectGetMaxY(imageView.frame) + 20, CGRectGetWidth(imageView.frame) + 50, 50)];
     alertLabel.numberOfLines = 0;
     alertLabel.font = [UIFont systemFontOfSize:16];
-    alertLabel.text = [NSString stringWithFormat:@"时间银行需求发布成功 恭喜你获得%@积分",_points];
+    alertLabel.text = [NSString stringWithFormat:@"创业项目发布成功 恭喜你获得%@积分",_points];
     alertLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:alertLabel];
     
@@ -70,7 +71,7 @@
     backButton.frame = CGRectMake(20, CGRectGetMaxY(alertTwoLabel.frame) + 30, (SCREEN_WIDTH - 20*3)/2, 40);
     backButton.layer.cornerRadius = 6;
     backButton.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
-    [backButton setTitle:@"返回跳蚤市场" forState:UIControlStateNormal];
+    [backButton setTitle:@"返回创业中心" forState:UIControlStateNormal];
     [backButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     backButton.titleLabel.font = [UIFont systemFontOfSize:14];
     [backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
@@ -98,14 +99,14 @@
         imageView.image =[UIImage imageNamed:@"success_no_score"];
         moneyLabel.hidden = YES;
         
-        alertLabel.text = @"二手物品发布成功";
+        alertLabel.text = @"创业项目发布成功";
         
     }else{
         
         imageView.image =[UIImage imageNamed:@"success_add_score"];
         moneyLabel.hidden = NO;
         
-        alertLabel.text = [NSString stringWithFormat:@"时间银行需求发布成功 恭喜你获得%@积分",_points];
+        alertLabel.text = [NSString stringWithFormat:@"创业项目发布成功 恭喜你获得%@积分",_points];
     }
 }
 
@@ -114,19 +115,16 @@
 - (void)backAction{
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
-        if ([controller isKindOfClass:[JobMarketViewController class]]) {
+        if ([controller isKindOfClass:[BusinessCenterViewController class]]) {
             
-            JobMarketViewController *jobMarketVC = (JobMarketViewController *)controller;
+            BusinessCenterViewController *businessCenterVC = (BusinessCenterViewController *)controller;
             
-            [self.navigationController popToViewController:jobMarketVC animated:YES];
+            [self.navigationController popToViewController:businessCenterVC animated:YES];
             
             
         }
         
     }
-    
-    
-    
     
 }
 

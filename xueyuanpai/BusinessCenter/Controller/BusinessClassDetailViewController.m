@@ -153,7 +153,12 @@
         cell.locationLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailPlace;
         
         
-        cell.contentLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailContent;
+        NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[ schoolRoomDetailModel.businessCenterSchoolRoomDetailContent dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+        
+        
+        cell.contentLabel.attributedText = attrStr;
+
+//        cell.contentLabel.text = schoolRoomDetailModel.businessCenterSchoolRoomDetailContent;
         
         [cell.detailImageView sd_setImageWithURL:[NSURL URLWithString:_model.businessCenterSchoolRoomImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
         

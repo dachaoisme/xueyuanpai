@@ -17,6 +17,8 @@
 
 #import "BusinessPublishProjectTheeTableViewCell.h"
 
+#import "BusinessPublishProjectSuccessViewController.h"
+
 @interface BusinessPublishProjectViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,UITextViewDelegate>
 {
     BusinessCenterPublicProgectModel * publicProgectModel;
@@ -204,8 +206,15 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"发布项目成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+            
+//            [CommonUtils showToastWithStr:@"发布项目成功"];
+            
+            BusinessPublishProjectSuccessViewController *publishSuccessVC = [[BusinessPublishProjectSuccessViewController alloc] init];
+            NSDictionary *responseCommonDic = model.responseCommonDic;
+             publishSuccessVC.points = responseCommonDic?[responseCommonDic stringForKey:@"points"]:@"";
+            
+            [self.navigationController pushViewController:publishSuccessVC animated:YES];
+            
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
