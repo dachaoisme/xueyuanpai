@@ -164,6 +164,8 @@
 		58898E4F1CFAD0790007D9B3 /* TimeBankDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E4E1CFAD0790007D9B3 /* TimeBankDetailViewController.m */; };
 		58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898E511CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m */; };
 		58898E541CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898E521CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib */; };
+		589DD4D91D1AB957007B4311 /* BannerLunBoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 589DD4D81D1AB957007B4311 /* BannerLunBoView.m */; };
+		589DD4DF1D1ABDE4007B4311 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 589DD4DE1D1ABDE4007B4311 /* NSTimer+Addition.m */; };
 		58A9448B1CE277C600DAD398 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944741CE277C600DAD398 /* avatar@2x.png */; };
 		58A9448C1CE277C600DAD398 /* avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944751CE277C600DAD398 /* avatar@3x.png */; };
 		58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58A944761CE277C600DAD398 /* avatar_change@2x.png */; };
@@ -872,6 +874,10 @@
 		58898E501CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankDetailOneStyleTableViewCell.h; sourceTree = "<group>"; };
 		58898E511CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankDetailOneStyleTableViewCell.m; sourceTree = "<group>"; };
 		58898E521CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimeBankDetailOneStyleTableViewCell.xib; sourceTree = "<group>"; };
+		589DD4D71D1AB957007B4311 /* BannerLunBoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerLunBoView.h; sourceTree = "<group>"; };
+		589DD4D81D1AB957007B4311 /* BannerLunBoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerLunBoView.m; sourceTree = "<group>"; };
+		589DD4DD1D1ABDE4007B4311 /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
+		589DD4DE1D1ABDE4007B4311 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
 		58A944741CE277C600DAD398 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
 		58A944751CE277C600DAD398 /* avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@3x.png"; sourceTree = "<group>"; };
 		58A944761CE277C600DAD398 /* avatar_change@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar_change@2x.png"; sourceTree = "<group>"; };
@@ -1997,6 +2003,17 @@
 			path = LTPickerView;
 			sourceTree = "<group>";
 		};
+		589DD4D61D1AB957007B4311 /* BannerLunBoView */ = {
+			isa = PBXGroup;
+			children = (
+				589DD4DD1D1ABDE4007B4311 /* NSTimer+Addition.h */,
+				589DD4DE1D1ABDE4007B4311 /* NSTimer+Addition.m */,
+				589DD4D71D1AB957007B4311 /* BannerLunBoView.h */,
+				589DD4D81D1AB957007B4311 /* BannerLunBoView.m */,
+			);
+			path = BannerLunBoView;
+			sourceTree = "<group>";
+		};
 		58A944731CE277C600DAD398 /* account */ = {
 			isa = PBXGroup;
 			children = (
@@ -2440,6 +2457,7 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				589DD4D61D1AB957007B4311 /* BannerLunBoView */,
 				5802D5AA1D1A2DED00BBB7C4 /* ZHpickView */,
 				DD1957D71D19A79100FF01F0 /* TeacherScrollView */,
 				DD48B7481D10F7C800E012E4 /* lib */,
@@ -3810,6 +3828,7 @@
 				DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				5874A3FE1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m in Sources */,
+				589DD4DF1D1ABDE4007B4311 /* NSTimer+Addition.m in Sources */,
 				DD13CE1F1D003526000A69FE /* BusinessClassDetailTableViewCell.m in Sources */,
 				58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */,
 				DD13CE051D0022D5000A69FE /* BusinessNewsViewController.m in Sources */,
@@ -3955,6 +3974,7 @@
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
 				DDCD70751D069AA2009FBE9A /* ExchangeGiftsViewController.m in Sources */,
 				DDAB43B11D056AA100FADB3E /* FeedbackViewController.m in Sources */,
+				589DD4D91D1AB957007B4311 /* BannerLunBoView.m in Sources */,
 				DDCD708F1D06A8C2009FBE9A /* TopUpTwoTableViewCell.m in Sources */,
 				DDD0BE6E1CFC3C8600073290 /* JobMarketCollectionViewCell.m in Sources */,
 				DDCD70831D06A4E4009FBE9A /* TopUpViewController.m in Sources */,
