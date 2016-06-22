@@ -229,8 +229,9 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section==0) {
-        float width = (SCREEN_WIDTH-2*15-30*3)/4;
-        return CGSizeMake(width,width);
+        float width = 45;//(SCREEN_WIDTH-2*15-30*3)/4;
+        float height = 93;
+        return CGSizeMake(width,height);
         
     }else{
         float width = (SCREEN_WIDTH-2*15-15)/2;
@@ -244,7 +245,8 @@
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     if (section==0) {
-        return UIEdgeInsetsMake(15, 15, 15, 15);
+        float widthSpace = (SCREEN_WIDTH-45*4)/5;
+        return UIEdgeInsetsMake(0, widthSpace , 0, widthSpace);
         
     }else{
         
@@ -257,7 +259,8 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     if (section == 0) {
-            return 30;
+        float width = (SCREEN_WIDTH-45*4)/5/2;
+            return width;
     }else{
         return 15;
     }

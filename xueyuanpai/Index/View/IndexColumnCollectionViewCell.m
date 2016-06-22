@@ -23,13 +23,13 @@
 
 -(void)setContentView
 {
-    UIImageView * columnImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
+    UIImageView * columnImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 13.5, 45, 45)];
     [self addSubview:columnImageView];
     self.columnImageView = columnImageView;
     
     UILabel * columnTitileLable = [UIFactory label:10*3 color:@"333333" align:NSTextAlignmentCenter];
     columnTitileLable.font = [UIFont systemFontOfSize:12];
-    columnTitileLable.frame = CGRectMake(0, CGRectGetMaxY(columnImageView.frame) + 7, CGRectGetWidth(columnImageView.frame) + 3, 15) ;
+    columnTitileLable.frame = CGRectMake(0, CGRectGetMaxY(columnImageView.frame), CGRectGetWidth(columnImageView.frame) + 3, 34.5) ;
     [self addSubview:columnTitileLable];
     self.columnTitileLable = columnTitileLable;
     
