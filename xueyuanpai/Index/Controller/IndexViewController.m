@@ -205,7 +205,10 @@
                 
                 headReusableView.delegate = self;
             }
-            headReusableView.imageArray = bannerImageArray;
+            if (headReusableView.imageArray.count<=0) {
+                headReusableView.imageArray = bannerImageArray;
+            }
+            
             return headReusableView;
         }else{
             IndexIntegralMallCollectionReusableView *headReusableView2 = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView2" forIndexPath:indexPath];
