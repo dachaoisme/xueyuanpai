@@ -458,10 +458,6 @@
 		DD48B75D1D10F95300E012E4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B75C1D10F95300E012E4 /* libz.tbd */; };
 		DD48B7621D10FE5700E012E4 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7611D10FE5700E012E4 /* PushConfig.plist */; };
 		DD48B7641D11019000E012E4 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7631D11019000E012E4 /* sound.caf */; };
-		DD48B7691D11753600E012E4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7651D11753600E012E4 /* Default-568h@2x.png */; };
-		DD48B76A1D11753600E012E4 /* Default-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7661D11753600E012E4 /* Default-667h@2x.png */; };
-		DD48B76B1D11753600E012E4 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7671D11753600E012E4 /* Default-736h@3x.png */; };
-		DD48B76C1D11753600E012E4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7681D11753600E012E4 /* Default@2x.png */; };
 		DD48B7811D117EC700E012E4 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */; };
 		DD48B7DA1D139DD700E012E4 /* RegisterRoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD48B7D91D139DD700E012E4 /* RegisterRoleView.m */; };
 		DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */; };
@@ -1269,10 +1265,6 @@
 		DD48B75C1D10F95300E012E4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DD48B7611D10FE5700E012E4 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		DD48B7631D11019000E012E4 /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.caf; sourceTree = "<group>"; };
-		DD48B7651D11753600E012E4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		DD48B7661D11753600E012E4 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
-		DD48B7671D11753600E012E4 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
-		DD48B7681D11753600E012E4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DD48B77F1D117EC700E012E4 /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
 		DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
 		DD48B7D81D139DD700E012E4 /* RegisterRoleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRoleView.h; sourceTree = "<group>"; };
@@ -1699,10 +1691,6 @@
 		582998691CDB29CF004A05FB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				DD48B7651D11753600E012E4 /* Default-568h@2x.png */,
-				DD48B7661D11753600E012E4 /* Default-667h@2x.png */,
-				DD48B7671D11753600E012E4 /* Default-736h@3x.png */,
-				DD48B7681D11753600E012E4 /* Default@2x.png */,
 				DDCD70931D06BA1D009FBE9A /* Courier */,
 				DDAB43601D05531A00FADB3E /* Mine */,
 				DD13CD621D00186D000A69FE /* BusinessCenter */,
@@ -3492,7 +3480,6 @@
 				DDAB439E1D0555E500FADB3E /* MineTwoStyleTableViewCell.xib in Resources */,
 				DD13CDEA1D00186D000A69FE /* success_no_score@3x.png in Resources */,
 				DD4127721CF0552F00227066 /* hire_icon_partime@3x.png in Resources */,
-				DD48B76C1D11753600E012E4 /* Default@2x.png in Resources */,
 				58070FDA1CF6E80200F03F6C /* timebank_icon_user@2x.png in Resources */,
 				DD0B1EB81CFEE51000C4BAB2 /* arrow@3x.png in Resources */,
 				5874A3E71CF1249400CE9FC9 /* tab_icon_package@3x.png in Resources */,
@@ -3643,7 +3630,6 @@
 				DDCD712B1D09B677009FBE9A /* EditTeacherTwoTableViewCell.xib in Resources */,
 				DD8388F91D0D5E720009B558 /* login_logo@3x.png in Resources */,
 				58070FB11CF6E80200F03F6C /* timebank_filter_chat@3x.png in Resources */,
-				DD48B76A1D11753600E012E4 /* Default-667h@2x.png in Resources */,
 				DD0B1EE31CFEE51000C4BAB2 /* pic_check_empty@2x.png in Resources */,
 				5874A3E61CF1249400CE9FC9 /* tab_icon_package@2x.png in Resources */,
 				DD13CDDB1D00186D000A69FE /* startup_filter_media_hl@2x.png in Resources */,
@@ -3660,7 +3646,6 @@
 				58070FAB1CF6E80200F03F6C /* timebank_filter_chair_hl@3x.png in Resources */,
 				DDCD70AE1D06BA1D009FBE9A /* deliver_icon_signal@2x.png in Resources */,
 				58A944961CE277C600DAD398 /* login_password@2x.png in Resources */,
-				DD48B76B1D11753600E012E4 /* Default-736h@3x.png in Resources */,
 				DD13CDDF1D00186D000A69FE /* startup_icon_lecture@2x.png in Resources */,
 				5874A3D61CF1249400CE9FC9 /* home_popup_gift@2x.png in Resources */,
 				DD0B1E421CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.xib in Resources */,
@@ -3682,7 +3667,6 @@
 				DDCD71331D0A5741009FBE9A /* BusinessProjectDetailFiveTableViewCell.xib in Resources */,
 				DD13CDE61D00186D000A69FE /* starup_vip@3x.png in Resources */,
 				58070FE01CF6E80200F03F6C /* toast_fail@2x.png in Resources */,
-				DD48B7691D11753600E012E4 /* Default-568h@2x.png in Resources */,
 				DDAB43791D05531A00FADB3E /* about_logo@2x.png in Resources */,
 				5874A3E11CF1249400CE9FC9 /* tab_icon_creativity@3x.png in Resources */,
 				DD0B1ECC1CFEE51000C4BAB2 /* market_filter_book@3x.png in Resources */,
@@ -4134,7 +4118,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "67fb3fb5-7346-48eb-ab6b-610a8ed64628";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -4145,7 +4129,7 @@
 			baseConfigurationReference = 4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jin Liang (YAU277YZ77)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jin Liang (YAU277YZ77)";
 				ENABLE_BITCODE = NO;
@@ -4169,7 +4153,7 @@
 			baseConfigurationReference = 36407C657FF7263B21131FEB /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing MFtour International Travel Service Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing MFtour International Travel Service Co., Ltd.";
 				ENABLE_BITCODE = NO;
