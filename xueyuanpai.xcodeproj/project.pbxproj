@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5802D5AD1D1A2DED00BBB7C4 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802D5AC1D1A2DED00BBB7C4 /* ZHPickView.m */; };
 		58070F941CF6E80200F03F6C /* disable_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F441CF6E80200F03F6C /* disable_tag@2x.png */; };
 		58070F951CF6E80200F03F6C /* disable_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F451CF6E80200F03F6C /* disable_tag@3x.png */; };
 		58070F961CF6E80200F03F6C /* filter_arrow_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F461CF6E80200F03F6C /* filter_arrow_hl@2x.png */; };
@@ -669,6 +670,8 @@
 /* Begin PBXFileReference section */
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		5802D5AB1D1A2DED00BBB7C4 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
+		5802D5AC1D1A2DED00BBB7C4 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
 		58070F441CF6E80200F03F6C /* disable_tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disable_tag@2x.png"; sourceTree = "<group>"; };
 		58070F451CF6E80200F03F6C /* disable_tag@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disable_tag@3x.png"; sourceTree = "<group>"; };
 		58070F461CF6E80200F03F6C /* filter_arrow_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "filter_arrow_hl@2x.png"; sourceTree = "<group>"; };
@@ -1593,6 +1596,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		5802D5AA1D1A2DED00BBB7C4 /* ZHpickView */ = {
+			isa = PBXGroup;
+			children = (
+				5802D5AB1D1A2DED00BBB7C4 /* ZHPickView.h */,
+				5802D5AC1D1A2DED00BBB7C4 /* ZHPickView.m */,
+			);
+			path = ZHpickView;
+			sourceTree = "<group>";
+		};
 		58070EA31CF6E7B000F03F6C /* TimeBank */ = {
 			isa = PBXGroup;
 			children = (
@@ -2428,6 +2440,7 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				5802D5AA1D1A2DED00BBB7C4 /* ZHpickView */,
 				DD1957D71D19A79100FF01F0 /* TeacherScrollView */,
 				DD48B7481D10F7C800E012E4 /* lib */,
 				DDAB05ED1D04576F007A6027 /* PlaceholderTextView */,
@@ -3829,6 +3842,7 @@
 				DDE8F62B1CFD8E8600680214 /* JobMarketDetailViewController.m in Sources */,
 				DDCD706D1D066542009FBE9A /* MineIntegralViewController.m in Sources */,
 				581ABF1E1CE0DAEA00B933D7 /* IndexCollectionReusableView.m in Sources */,
+				5802D5AD1D1A2DED00BBB7C4 /* ZHPickView.m in Sources */,
 				DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */,
 				DDCD71211D09B1DF009FBE9A /* EditTeacherProfileViewController.m in Sources */,
 				587FF9DA1CF2F8F300AD2131 /* IQTextView.m in Sources */,

@@ -15,14 +15,16 @@
 #import "SelectedSexView.h"
 
 #import "SelectedSchollViewController.h"
-
-@interface EditProfileViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+#import "ZHPickView.h"
+@interface EditProfileViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ZHPickViewDelegate>
 
 {
     SelectedImageView *selectedImageView;
     NSString          *avatarImageUploaded;
     
     CollegeModel *theCollegeModel;
+    ZHPickView *pickview;
+    
 }
 
 ///选择头像的按钮
@@ -100,67 +102,6 @@
     [self.view addSubview:button];
 
     
-}
-
-#pragma mark - 提交按钮
-- (void)commitAction{
-    
-    
-//    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
-//    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
-//    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
-//    NSData   *newImageData = UIImagePNGRepresentation(newImage);
-//    if ([oldImageData isEqualToData:newImageData]) {
-//        [CommonUtils showToastWithStr:@"请选择头像"];
-//        return;
-//    }
-//    if (avatarImageUploaded.length<=0) {
-//        [CommonUtils showToastWithStr:@"请选择头像"];
-//        return;
-//    }
-//    if (_nickName.length>10 || _nickName.length<4) {
-//        [CommonUtils showToastWithStr:@"请输入4-10个字符"];
-//        return;
-//    }
-//    if (_sexStr.length<=0 ) {
-//        [CommonUtils showToastWithStr:@"请选择性别"];
-//        return;
-//    }
-//    if (_school.length<=0) {
-//        [CommonUtils showToastWithStr:@"请选择大学"];
-//        return;
-//    }
-    if (![UserAccountManager sharedInstance].userId) {
-        [CommonUtils showToastWithStr:@"用户注册未成功"];
-        return;
-    }
-    /*
-     user_id int    必需    用户序号
-     nickname   string    非必需    昵称
-     college_id int    非必需     学校序号
-     sex        int    非必需    性别 1男  0 女
-     icon string       非必需     头像
-     */
-    
-    NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
-    
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:self.nickName?self.nickName:[UserAccountManager sharedInstance].userNickname forKey:@"nickname"];
-    [dic setObject:theCollegeModel.collegeID?theCollegeModel.collegeID:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
-    [dic setObject:[_sexStr isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
-    [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
-    
-    [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"用户资料更新成功"];
-        }else{
-            [CommonUtils showToastWithStr:@"用户资料更新失败"];
-        }
-    } withFaileBlock:^(NSError *error) {
-        
-        [CommonUtils showToastWithStr:@"用户资料更新失败"];
-
-    }];
 }
 
 #pragma mark - 创建tableView
@@ -270,12 +211,12 @@
         }else if (indexPath.row == 2) {
             
             cell.titleLabel.text = @"生日";
-            cell.contentLabel.text = @"";
+            cell.contentLabel.text = self.birthdayStr;
             
         }else if (indexPath.row == 3) {
             
             cell.titleLabel.text = @"学校";
-            cell.contentLabel.text = [UserAccountManager sharedInstance].userCollegeName;
+            cell.contentLabel.text = theCollegeModel.collegeName.length>0?theCollegeModel.collegeName: [UserAccountManager sharedInstance].userCollegeName;
             
         }
         return cell;
@@ -308,6 +249,11 @@
         
         //选择生日
         [CommonUtils showToastWithStr:@"选择生日"];
+        NSDate *date=[NSDate dateWithTimeIntervalSinceNow:9000000];
+        pickview=[[ZHPickView alloc] initDatePickWithDate:date datePickerMode:UIDatePickerModeDate isHaveNavControler:NO];
+        pickview.delegate=self;
+        
+        [pickview show];
     }else if (indexPath.row == 3){
         
         EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
@@ -337,6 +283,15 @@
     
     
 }
+#pragma mark ZhpickVIewDelegate
+
+-(void)toobarDonBtnHaveClick:(ZHPickView *)pickView resultString:(NSString *)resultString withDate:(NSDate *)resultDate{
+    
+    
+    self.birthdayStr=resultString;
+    [self.tableView reloadData];
+}
+
 #pragma mark - 从相册中选择图片
 
 -(void)selectedImageFromPhotoAlbum:(UIButton *)sender
@@ -368,6 +323,67 @@
     [[UIApplication sharedApplication].delegate.window addSubview:selectedImageView];
     
 }
+#pragma mark - 提交按钮
+- (void)commitAction{
+    
+    
+    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
+    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
+    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
+    NSData   *newImageData = UIImagePNGRepresentation(newImage);
+    if ([oldImageData isEqualToData:newImageData]) {
+        [CommonUtils showToastWithStr:@"请选择头像"];
+        return;
+    }
+    if (avatarImageUploaded.length<=0) {
+        [CommonUtils showToastWithStr:@"请选择头像"];
+        return;
+    }
+    if (_nickName.length>10 || _nickName.length<4) {
+        [CommonUtils showToastWithStr:@"请输入4-10个字符"];
+        return;
+    }
+    if (_sexStr.length<=0 ) {
+        [CommonUtils showToastWithStr:@"请选择性别"];
+        return;
+    }
+    if (_school.length<=0) {
+        [CommonUtils showToastWithStr:@"请选择大学"];
+        return;
+    }
+    if (![UserAccountManager sharedInstance].userId) {
+        [CommonUtils showToastWithStr:@"用户注册未成功"];
+        return;
+    }
+    /*
+     user_id int    必需    用户序号
+     nickname   string    非必需    昵称
+     college_id int    非必需     学校序号
+     sex        int    非必需    性别 1男  0 女
+     icon string       非必需     头像
+     */
+    
+    NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
+    
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:self.nickName?self.nickName:[UserAccountManager sharedInstance].userNickname forKey:@"nickname"];
+    [dic setObject:theCollegeModel.collegeID?theCollegeModel.collegeID:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
+    [dic setObject:[_sexStr isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
+    [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
+    
+    [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+        [CommonUtils showToastWithStr:@"用户资料更新失败"];
+        
+    }];
+}
+
 
 
 
