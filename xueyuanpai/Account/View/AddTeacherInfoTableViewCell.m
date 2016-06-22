@@ -44,6 +44,7 @@
     
     //请输入手机号
     titleTextField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_titleLable.frame),0, centerWidth, height)];
+    titleTextField.returnKeyType = UIReturnKeyDone;
     titleTextField.tag = self.tag;
     titleTextField.delegate = self;
     titleTextField.textColor = [CommonUtils colorWithHex:@"c7c7cb"];

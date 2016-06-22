@@ -66,6 +66,7 @@
     phoneTextField.font = [UIFont systemFontOfSize:14];
     phoneTextField.borderStyle   = UITextBorderStyleNone;
     phoneTextField.placeholder   = @"请输入手机号";
+    phoneTextField.returnKeyType = UIReturnKeyDone;
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     phoneTextField.adjustsFontSizeToFitWidth = YES;
     phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -93,7 +94,7 @@
     checkingMessageTextField.tag = 2;
     checkingMessageTextField.delegate = self;
     checkingMessageTextField.font = [UIFont systemFontOfSize:14];
-
+    checkingMessageTextField.returnKeyType = UIReturnKeyDone;
     [checkingMessageTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
     checkingMessageTextField.textAlignment = NSTextAlignmentLeft;
     checkingMessageTextField.borderStyle = UITextBorderStyleNone;
@@ -110,6 +111,7 @@
     
     //请输入密码
     inputPasswordTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(lineView1.frame) + 15, width, height - 30)];
+    inputPasswordTextField.returnKeyType = UIReturnKeyDone;
     inputPasswordTextField.tag = 2;
     inputPasswordTextField.delegate = self;
     [inputPasswordTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
@@ -296,6 +298,12 @@
         [sendTimer invalidate];
         sendTimer = nil;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

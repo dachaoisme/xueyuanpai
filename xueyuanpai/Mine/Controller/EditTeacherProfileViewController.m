@@ -263,8 +263,10 @@
         
         cell.textView.text = [UserAccountManager sharedInstance].userSkillful;
         cell.textView.tag = 1000;
+        cell.textView.returnKeyType = UIReturnKeyDone;
         cell.textView.delegate = self;
         self.skillful = [UserAccountManager sharedInstance].userTutorbackground;
+
 
         
         
@@ -280,6 +282,7 @@
         
         cell.textView.text = [UserAccountManager sharedInstance].userTutorbackground;
         cell.textView.tag = 1001;
+        cell.textView.returnKeyType = UIReturnKeyDone;
         cell.textView.delegate = self;
 
         self.tutorbackground = [UserAccountManager sharedInstance].userTutorbackground;
@@ -293,6 +296,7 @@
    
     
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -319,6 +323,14 @@
         self.email = string;
     }
     
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;{
+    
+    [textField resignFirstResponder];
+    
     return YES;
 }
 
@@ -329,6 +341,13 @@
     }else{
         self.tutorbackground = text;
     }
+    
+    
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+
     
     return YES;
 }

@@ -72,6 +72,7 @@
     nickNameTextField.delegate = self;
     nickNameTextField.placeholder = @"设置昵称(4-10个字符)";
     nickNameTextField.font = [UIFont systemFontOfSize:14];
+    nickNameTextField.returnKeyType = UIReturnKeyDone;
     [nickNameView addSubview:nickNameTextField];
     
     ///选择性别

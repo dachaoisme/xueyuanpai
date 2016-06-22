@@ -72,6 +72,7 @@
     phoneTextField.delegate = self;
     phoneTextField.textAlignment = NSTextAlignmentLeft;
     phoneTextField.borderStyle = UITextBorderStyleNone;
+    phoneTextField.returnKeyType = UIReturnKeyDone;
     phoneTextField.font = [UIFont systemFontOfSize:14];
     phoneTextField.placeholder = @"请输入手机号";
     phoneTextField.adjustsFontSizeToFitWidth = YES;
@@ -89,7 +90,7 @@
     passwordTextField.borderStyle = UITextBorderStyleNone;
     passwordTextField.placeholder = @"请输入密码";
     passwordTextField.font = [UIFont systemFontOfSize:14];
-
+    passwordTextField.returnKeyType = UIReturnKeyDone;
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     passwordTextField.adjustsFontSizeToFitWidth = YES;
     passwordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;

@@ -8,7 +8,7 @@
 
 #import "GiftExchangeViewController.h"
 #import "IQUIView+IQKeyboardToolbar.h"
-@interface GiftExchangeViewController ()
+@interface GiftExchangeViewController ()<UITextFieldDelegate>
 
 {
     ///共所需积分
@@ -156,10 +156,12 @@
     //中间输入框
     centerTextField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(leftReduceBtn.frame), 0, width/3, height)];
     centerTextField.text = @"0";
+    centerTextField.delegate = self;
     [centerTextField addPreviousNextDoneOnKeyboardWithTarget:self previousAction:nil nextAction:nil doneAction:@selector(doneAction:)];
     centerTextField.font = [UIFont systemFontOfSize:12];
     centerTextField.textAlignment = NSTextAlignmentCenter;
     centerTextField.keyboardType = UIKeyboardTypeNumberPad;
+    centerTextField.returnKeyType = UIReturnKeyDone;
     [centerTextField setFrame:CGRectMake(width/3, 0, width/3, height)];
     [stepperView addSubview:centerTextField];
     //右侧加号按钮

@@ -50,6 +50,7 @@
     phoneTextField.borderStyle   = UITextBorderStyleNone;
     phoneTextField.font = [UIFont systemFontOfSize:14];
     phoneTextField.placeholder   = @"请输入手机号";
+    phoneTextField.returnKeyType = UIReturnKeyDone;
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     phoneTextField.adjustsFontSizeToFitWidth = YES;
     phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -78,6 +79,7 @@
     checkingMessageTextField.borderStyle = UITextBorderStyleNone;
     checkingMessageTextField.placeholder = @"请输入验证码";
     checkingMessageTextField.adjustsFontSizeToFitWidth = YES;
+    checkingMessageTextField.returnKeyType = UIReturnKeyDone;
     checkingMessageTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [backgroundView addSubview:checkingMessageTextField];
     
@@ -196,6 +198,14 @@
         [sendTimer invalidate];
         sendTimer = nil;
     }
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

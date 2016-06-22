@@ -57,6 +57,7 @@
     keyWordsLable.text = @"关键字";
     [keyWordsView addSubview:keyWordsLable];
     keyWordsTextField = [[UITextField alloc]initWithFrame:CGRectMake(CGRectGetMaxX(keyWordsLable.frame), 0, centerWidth, height)];
+    keyWordsTextField.returnKeyType = UIReturnKeyDone;
     keyWordsTextField.backgroundColor = [UIColor whiteColor];
     keyWordsTextField.font = [UIFont systemFontOfSize:14];
 //    keyWordsTextField.textAlignment = NSTextAlignmentRight;
@@ -180,6 +181,12 @@
         //关键字
         
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 #pragma mark - 工作性质
 -(void)workProperty:(UIButton *)sender

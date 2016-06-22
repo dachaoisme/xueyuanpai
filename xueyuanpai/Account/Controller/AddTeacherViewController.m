@@ -213,6 +213,8 @@
         
         cell.titleLabel.text = @"擅长辅导领域";
         cell.textView.placehoderText = @"2-40个字符，多个领域以顿号隔开";
+        cell.textView.returnKeyType = UIReturnKeyDone;
+
         
         cell.tag = 123;
         
@@ -231,6 +233,8 @@
         
         cell.titleLabel.text = @"导师背景";
         cell.textView.placehoderText = @"2-300个字符";
+        cell.textView.returnKeyType = UIReturnKeyDone;
+
         
         cell.tag = 456;
         
@@ -258,6 +262,16 @@
         teacherBackground = textView.text;
         
     }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 #pragma mark - AddTeacherInfoTableViewCellDelegate,AddTeacherInfoTypeTwoTableViewCellDelegate

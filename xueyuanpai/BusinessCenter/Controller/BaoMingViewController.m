@@ -179,6 +179,13 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 #pragma mark - 请求创业讲堂详情数据
 -(void)requestToGetBusinessClassRoomDetail
 {

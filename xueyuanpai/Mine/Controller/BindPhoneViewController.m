@@ -8,7 +8,7 @@
 
 #import "BindPhoneViewController.h"
 
-@interface BindPhoneViewController ()
+@interface BindPhoneViewController ()<UITextFieldDelegate>
 {
     UITextField *phoneTextField;
     UITextField *checkingMessageTextField;
@@ -83,6 +83,8 @@
     
     
     UITextField *coderTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame), CGRectGetMaxY(phoneLabel.frame) + 20, 100, 20)];
+    coderTextField.returnKeyType = UIReturnKeyDone;
+    coderTextField.delegate = self;
     coderTextField.placeholder = @"请输入";
     coderTextField.font = [UIFont systemFontOfSize:14];
     [backGroundView addSubview:coderTextField];
@@ -155,6 +157,12 @@ NSMutableDictionary * params = [NSMutableDictionary dictionary];
 }];
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
 #pragma mark - 确定按钮的响应方法
 - (void)makeSureAction{

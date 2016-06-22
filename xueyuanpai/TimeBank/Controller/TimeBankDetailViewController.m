@@ -11,7 +11,7 @@
 #import "TimeBankDetailTwoStyleTableViewCell.h"
 #import "TimeBankDetailThreeTableViewCell.h"
 
-@interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TimeBankDetailOneStyleTableViewCellDelegate,TimeBankDetailTwoStyleTableViewCellDelegate>
+@interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TimeBankDetailOneStyleTableViewCellDelegate,TimeBankDetailTwoStyleTableViewCellDelegate,UITextFieldDelegate>
 {
     TimeBankDetailModel * detailModel;
     ///时间银行浏览次数
@@ -75,7 +75,9 @@
     self.commentView = commentView;
     
     UITextField *commentTextField = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, SCREEN_WIDTH - 100, 32)];
+    commentTextField.returnKeyType = UIReturnKeyDone;
     commentTextField.borderStyle = UITextBorderStyleRoundedRect;
+    commentTextField.delegate = self;
     [commentView addSubview:commentTextField];
     self.commentTextField = commentTextField;
     
@@ -317,8 +319,10 @@
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"你确定申请邀约吗？" message:@"\n\n" preferredStyle:UIAlertControllerStyleAlert];
         //这里就可以设置子控件的frame,但是alert的frame不可以设置
         UITextField * textField = [[UITextField alloc] initWithFrame:CGRectMake(15, 64, 240, 30)];//wight = 270;
+        textField.returnKeyType = UIReturnKeyDone;
         textField.placeholder = @"捎句话";
         textField.borderStyle = UITextBorderStyleRoundedRect;//设置边框的样式
+        textField.delegate = self;
         //添加子控件也是直接add
         [alert.view addSubview:textField];
         
@@ -497,6 +501,13 @@
     }];
     
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
 -(void)requestMoreCommentList
 {
     pageNum = pageNum+1;

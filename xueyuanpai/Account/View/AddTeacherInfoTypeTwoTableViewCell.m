@@ -65,7 +65,7 @@
     textView.font = [UIFont fontWithName:@"Arial" size:18.0];//设置字体名字和字体大小
     textView.delegate = self;//设置它的委托方法
     textView.backgroundColor = [UIColor whiteColor];//设置它的背景颜色
-    textView.returnKeyType = UIReturnKeyDefault;//返回键的类型
+    textView.returnKeyType = UIReturnKeyDone;
     textView.keyboardType = UIKeyboardTypeDefault;//键盘类型
     textView.scrollEnabled = YES;//是否可以拖动
     textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;//自适应高度
@@ -92,8 +92,12 @@
         [self.delegate updateInputInfoTypeTwoWithIndex:self.tag withTextFieldText:textView.text];
     }
 }
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
     return YES;
 }
 

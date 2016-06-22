@@ -45,6 +45,7 @@
     inputPasswordTextField.borderStyle = UITextBorderStyleNone;
     inputPasswordTextField.placeholder = @"请设置新密码";
     inputPasswordTextField.adjustsFontSizeToFitWidth = YES;
+    inputPasswordTextField.returnKeyType = UIReturnKeyDone;
     inputPasswordTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     [backgroundView addSubview:inputPasswordTextField];
     

@@ -335,6 +335,7 @@ static NSString *Identifier = @"photoCollectionViewCell";
         threeCell.textView.delegate = self;
         
         threeCell.textView.placehoderText = @"请输入";
+        threeCell.textView.returnKeyType = UIReturnKeyDone;
         
         
         
@@ -627,6 +628,23 @@ static NSString *Identifier = @"photoCollectionViewCell";
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     publishJobMarketModel.publicJobMarketDescription = textView.text;
+}
+
+#pragma mark - UITextView Delegate Methods
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {

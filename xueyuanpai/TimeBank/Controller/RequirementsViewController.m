@@ -452,6 +452,7 @@
             cell.rightLabel.hidden = YES;
             cell.textView.placehoderText = @"请输入";
             cell.textView.delegate = self;
+            cell.textView.returnKeyType = UIReturnKeyDone;
 
             return cell;
         }
@@ -489,11 +490,27 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
 #pragma mark - textView代理方法
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     _timeBankSubmitModel.timeBankSubmitDescription = textView.text;
 }
+#pragma mark - UITextView Delegate Methods
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 
 #pragma mark - RequirementTwoTableViewCellDelegate
 -(void)selectedContentWithwithTag:(NSInteger)tag withBtn:(UIButton *)sender

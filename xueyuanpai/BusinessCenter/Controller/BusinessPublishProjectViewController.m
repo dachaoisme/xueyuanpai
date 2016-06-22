@@ -366,6 +366,7 @@
                 cell.titleLabel.text = @"项目简介";
                 cell.rightLabel.text = @"50-500字";
                 cell.textView.placehoderText = @"请简单介绍项目";
+                cell.textView.returnKeyType = UIReturnKeyDone;
 
                 
             }else if (indexPath.section == 4) {
@@ -378,6 +379,8 @@
                 
                 cell.rightLabel.text = @"50-500字";
                 cell.textView.placehoderText = @"请简单描述项目成员";
+                cell.textView.returnKeyType = UIReturnKeyDone;
+
                 
 
             }else if (indexPath.section == 5) {
@@ -390,6 +393,8 @@
                 cell.rightLabel.text = @"50-500字";
 
                 cell.textView.placehoderText = @"请填写";
+                cell.textView.returnKeyType = UIReturnKeyDone;
+
 
 
 
@@ -404,6 +409,8 @@
 
                 
                 cell.textView.placehoderText = @"请填写";
+                cell.textView.returnKeyType = UIReturnKeyDone;
+
 
 
 
@@ -420,6 +427,11 @@
 
 
 #pragma mark - textField的代理方法
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField.tag == 100) {
@@ -432,6 +444,15 @@
     }
 }
 #pragma mark - textView的代理方法
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     if (textView.tag == 1000) {
