@@ -41,7 +41,8 @@
                               nil]];
     
     _baseTabBarView=[[BaseTabBarView alloc] init];
-    _baseTabBarView.frame=CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49);
+    _baseTabBarView.frame =CGRectMake(0, SCREEN_HEIGHT-49-21, SCREEN_WIDTH, 49+21);
+    _baseTabBarView.backgroundColor = [UIColor clearColor];
     _baseTabBarView.delegate=self;
     _baseTabBarView.titleArr=[[NSArray alloc] initWithObjects:
                        @"首页",
@@ -60,8 +61,16 @@
                         nil];
     
     [self.view addSubview:_baseTabBarView];
+//    UIImage * image = [UIImage imageNamed:@"tab_bg_round"];
+//    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-25, 0, 50, 21)];
+//    imageView.image = image;
+//    [_baseTabBarView addSubview:imageView];
+    
     [_baseTabBarView setContentView];
     [_baseTabBarView setSelected:0];
+    
+   
+    
     
     if ([UserAccountManager sharedInstance].userId.length<=0) {
         LoginViewController * loginVC = [[LoginViewController alloc]init];
@@ -76,20 +85,20 @@
 -(void)tabBarShow
 {
     _baseTabBarView.hidden=NO;
-    if (_baseTabBarView.frame.origin.x!=0 || _baseTabBarView.frame.origin.y!=self.view.bounds.size.height-49) {
+    if (_baseTabBarView.frame.origin.x!=0 || _baseTabBarView.frame.origin.y!=self.view.bounds.size.height-49-21) {
         [UIView animateWithDuration:0 animations:^{
-            _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height-49, SCREEN_WIDTH, 49);
+            _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height-49-21, SCREEN_WIDTH, 49+21);
         }];
     }
 }
 -(void)tabBarHiddenToBottom:(BOOL)toBottom
 {
-    if (_baseTabBarView.frame.origin.x==0 && _baseTabBarView.frame.origin.y==self.view.bounds.size.height-49) {
+    if (_baseTabBarView.frame.origin.x==0 && _baseTabBarView.frame.origin.y==self.view.bounds.size.height-49-21) {
         [UIView animateWithDuration:0 animations:^{
             if (toBottom) {
-                _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 49);
+                _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 49+21);
             }else
-                _baseTabBarView.frame=CGRectMake(-SCREEN_WIDTH, self.view.bounds.size.height-49, SCREEN_WIDTH, 49);
+                _baseTabBarView.frame=CGRectMake(-SCREEN_WIDTH, self.view.bounds.size.height-49-21, SCREEN_WIDTH, 49+21);
         }completion:^(BOOL finished){
             if (finished) {
                 _baseTabBarView.hidden=YES;

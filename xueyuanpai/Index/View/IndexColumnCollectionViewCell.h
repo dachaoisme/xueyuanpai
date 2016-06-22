@@ -11,7 +11,12 @@
 
 ///四个按钮选项
 @interface IndexColumnCollectionViewCell : UICollectionViewCell
-
+{
+    
+    UIImageView * columnImageView;
+    UILabel * columnTitileLable;
+    
+}
 @property(nonatomic,strong)UIImageView * columnImageView;
 @property(nonatomic,strong)UILabel     * columnTitileLable;
 
