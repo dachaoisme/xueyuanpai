@@ -8,19 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-///轮播图
-
-@protocol IndexCollectionReusableViewDelegate <NSObject>
-
--(void)selectedImageIndex:(NSInteger)index;
-
-@end
-
-
 @interface IndexCollectionReusableView : UICollectionReusableView
 
-@property(nonatomic, assign)id<IndexCollectionReusableViewDelegate> delegate;
-@property(nonatomic, strong)NSArray * imageArray;
 
 
 @end

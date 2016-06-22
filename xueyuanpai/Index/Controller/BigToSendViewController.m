@@ -12,8 +12,8 @@
 #import "IndexCollectionReusableView.h"
 #import "GiftDetailViewController.h"
 #import "IndexBannerModel.h"
-
-@interface BigToSendViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,IndexCollectionReusableViewDelegate>
+#import "BannerLunBoView.h"
+@interface BigToSendViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
     UICollectionView * theCollectionView;
@@ -21,7 +21,7 @@
     NSMutableArray * bannerImageArray;
     NSMutableArray * mallItemArray;
 }
-
+@property(nonatomic,strong)BannerLunBoView * bannerView;
 @end
 
 @implementation BigToSendViewController
@@ -155,7 +155,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
 
-     return CGSizeMake(320, 150);
+     return CGSizeMake(320, 174);
     
 }
 - (UICollectionReusableView *) collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -165,8 +165,22 @@
     if (kind == UICollectionElementKindSectionHeader) {
             IndexCollectionReusableView *headReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
         
-        headReusableView.delegate = self;
-        headReusableView.imageArray = bannerImageArray;
+        self.bannerView = [[BannerLunBoView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 174) animationDuration:2.5];
+        self.bannerView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.1];
+        [headReusableView addSubview:self.bannerView];
+        self.bannerView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
+            return bannerImageArray[pageIndex];
+        };
+        
+        //得到pagecontro的数目
+        self.bannerView.totalPagesCount = ^NSInteger(void){
+            return bannerImageArray.count;
+        };
+        //点击事件的block
+        self.bannerView.TapActionBlock = ^void(NSInteger pageIndex){
+            
+        };
+        
         return headReusableView;
     }else{
         return nil;

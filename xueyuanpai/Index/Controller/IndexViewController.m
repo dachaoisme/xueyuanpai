@@ -30,7 +30,7 @@
 
 #import "BannerLunBoView.h"
 #import "TimeBankViewController.h"
-@interface IndexViewController ()<IndexCollectionReusableViewDelegate,IndexIntegralMallCollectionReusableViewDelegate>
+@interface IndexViewController ()<IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
     UICollectionView * theCollectionView;
@@ -201,7 +201,6 @@
                 self.bannerView = [[BannerLunBoView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 174) animationDuration:2.5];
                 self.bannerView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.1];
                 [headReusableView addSubview:self.bannerView];
-                headReusableView.delegate = self;
             }
             self.bannerView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
                 return bannerImageArray[pageIndex];
@@ -331,11 +330,7 @@
         }
     }
 }
-#pragma mark - 点击banner图
--(void)selectedImageIndex:(NSInteger)index
-{
-    NSLog(@"点击了第%ld张图片",(long)index+1);
-}
+
 #pragma mark - 查看更多积分
 -(void)getMoreIntegralMall
 {
