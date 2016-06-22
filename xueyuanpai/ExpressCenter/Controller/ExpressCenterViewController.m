@@ -51,6 +51,10 @@
 @property (nonatomic, strong) NSArray *pointsArray;
 
 
+///动画效果
+@property (nonatomic,strong)RadarView *animationRadarView;
+
+
 @end
 
 @implementation ExpressCenterViewController
@@ -72,6 +76,8 @@
 {
     [super viewWillDisappear:animated];
     
+    [_animationRadarView removeFromSuperview];
+    
     [_radarView removeFromSuperview];
 
 
@@ -85,6 +91,7 @@
     
     backGroundView.center = radarView.center;
     [self.view addSubview:radarView];
+    self.animationRadarView = radarView;
     
     
 }
@@ -309,6 +316,9 @@
 
 #pragma mark - 我要发快递按钮的响应方法
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    [_animationRadarView removeFromSuperview];
+
     
     XHRadarView *radarView = [[XHRadarView alloc] initWithFrame:self.view.bounds];
     radarView.frame = self.view.frame;

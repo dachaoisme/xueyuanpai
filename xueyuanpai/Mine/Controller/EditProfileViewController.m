@@ -327,30 +327,30 @@
 - (void)commitAction{
     
     
-    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
-    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
-    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
-    NSData   *newImageData = UIImagePNGRepresentation(newImage);
-    if ([oldImageData isEqualToData:newImageData]) {
-        [CommonUtils showToastWithStr:@"请选择头像"];
-        return;
-    }
-    if (avatarImageUploaded.length<=0) {
-        [CommonUtils showToastWithStr:@"请选择头像"];
-        return;
-    }
-    if (_nickName.length>10 || _nickName.length<4) {
-        [CommonUtils showToastWithStr:@"请输入4-10个字符"];
-        return;
-    }
-    if (_sexStr.length<=0 ) {
-        [CommonUtils showToastWithStr:@"请选择性别"];
-        return;
-    }
-    if (_school.length<=0) {
-        [CommonUtils showToastWithStr:@"请选择大学"];
-        return;
-    }
+//    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
+//    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
+//    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
+//    NSData   *newImageData = UIImagePNGRepresentation(newImage);
+//    if ([oldImageData isEqualToData:newImageData]) {
+//        [CommonUtils showToastWithStr:@"请选择头像"];
+//        return;
+//    }
+//    if (avatarImageUploaded.length<=0) {
+//        [CommonUtils showToastWithStr:@"请选择头像"];
+//        return;
+//    }
+//    if (_nickName.length>10 || _nickName.length<4) {
+//        [CommonUtils showToastWithStr:@"请输入4-10个字符"];
+//        return;
+//    }
+//    if (_sexStr.length<=0 ) {
+//        [CommonUtils showToastWithStr:@"请选择性别"];
+//        return;
+//    }
+//    if (_school.length<=0) {
+//        [CommonUtils showToastWithStr:@"请选择大学"];
+//        return;
+//    }
     if (![UserAccountManager sharedInstance].userId) {
         [CommonUtils showToastWithStr:@"用户注册未成功"];
         return;
@@ -371,8 +371,11 @@
     [dic setObject:[_sexStr isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
     [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"用户资料修改成功"];
+            
             [self.navigationController popViewControllerAnimated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
