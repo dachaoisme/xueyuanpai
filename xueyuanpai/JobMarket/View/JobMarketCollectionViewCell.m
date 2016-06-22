@@ -44,16 +44,18 @@
 - (void)createImageView{
     
     //创建imageView用于显示数据
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-47)];
+    UIImageView *imageView = [UIFactory imageView:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-40) viewMode:UIViewContentModeScaleToFill image:nil];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.layer.masksToBounds = YES;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     imageView.layer.masksToBounds = YES;
     imageView.image = [UIImage imageNamed:@"test1.jpg"];
-    [self.contentView addSubview:imageView];
+    [self addSubview:imageView];
     self.goodsImageView = imageView;
     
     
     //创建用于显示商品名称的Label
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageView.frame) + 5, CGRectGetWidth(self.frame), 30)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, CGRectGetMaxY(imageView.frame) + 10, CGRectGetWidth(imageView.frame), 20)];
     nameLabel.text = @"苹果产品";
     nameLabel.font = [UIFont systemFontOfSize:12];
     [self.contentView addSubview:nameLabel];
@@ -61,7 +63,7 @@
     
     
     //创建用于显示价格的label
-    UILabel *currentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame) + 5, 100, 17)];
+    UILabel *currentPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame), CGRectGetWidth(imageView.frame), 17)];
     currentPriceLabel.text = @"15555";
     currentPriceLabel.font = [UIFont systemFontOfSize:12];
     [currentPriceLabel setTextColor:[CommonUtils colorWithHex:@"ff6478"]];
@@ -71,7 +73,7 @@
     
     
     //创建用于显示弃用价格的label
-    UILabel *deprecatedPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, CGRectGetMinY(currentPriceLabel.frame), 100, 17)];
+    UILabel *deprecatedPriceLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, CGRectGetMinY(currentPriceLabel.frame), CGRectGetWidth(imageView.frame), 17)];
     deprecatedPriceLabel.text = @"1233";
     deprecatedPriceLabel.font = [UIFont systemFontOfSize:12];
     [deprecatedPriceLabel setTextColor:[CommonUtils colorWithHex:@"c7c6cb"]];
@@ -79,9 +81,6 @@
     self.deprecatedPriceLabel = deprecatedPriceLabel;
     
     
-//    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMinX(deprecatedPriceLabel.frame)+2, CGRectGetMinY(deprecatedPriceLabel.frame)+8, 40, 1)];
-//    lineView.backgroundColor = [CommonUtils colorWithHex:@"c7c6cb"];
-//    [self.contentView addSubview:lineView];
 
     
 }

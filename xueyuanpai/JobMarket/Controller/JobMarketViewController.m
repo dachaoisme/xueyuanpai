@@ -237,19 +237,27 @@
 #pragma mark - 实现UICollectionView的代理方法
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    float width = (SCREEN_WIDTH-2*10-20)/2;
-    return CGSizeMake(width,width+47);
+    
+    float width = (SCREEN_WIDTH-2*15-15)/2;
+    return CGSizeMake(width, width+40);
 }
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(10, 10, 10, 10);
+
+    
+    return UIEdgeInsetsMake(5, 15, 5, 15);
+
+
     
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 
-    return 20;
+    
+    return 15;
+
+    
     
 }
 //1.返回cell个数

@@ -259,7 +259,7 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     
     if (section == 0) {
-        float width = (SCREEN_WIDTH-45*4)/5/2;
+        float width = (SCREEN_WIDTH-45*4)/5;
             return width;
     }else{
         return 15;
