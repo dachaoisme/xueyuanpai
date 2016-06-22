@@ -426,7 +426,12 @@
     
     
      if ([self.count intValue] > 0) {
+         
+ 
+         
         SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
+         [_radarView removeFromSuperview];
+
 
         [self.navigationController pushViewController:sendVC animated:YES];
 
