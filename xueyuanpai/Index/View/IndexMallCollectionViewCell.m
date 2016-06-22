@@ -24,6 +24,8 @@
 -(void)setContentView
 {
     UIImageView * mallImageView = [UIFactory imageView:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-40) viewMode:UIViewContentModeScaleToFill image:nil];
+    mallImageView.contentMode = UIViewContentModeScaleAspectFill;
+    mallImageView.layer.masksToBounds = YES;
     [self addSubview:mallImageView];
     self.mallImageView = mallImageView;
     
