@@ -44,6 +44,8 @@
         
         //显示图片的imageView
         UIImageView *showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 150)];
+        showImageView.contentMode = UIViewContentModeScaleAspectFill;
+        showImageView.layer.masksToBounds = YES;
         [backGroundView addSubview:showImageView];
         self.showImageView = showImageView;
         

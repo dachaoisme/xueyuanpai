@@ -45,6 +45,8 @@
     
     //创建imageView用于显示数据
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame)-47)];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.layer.masksToBounds = YES;
     imageView.image = [UIImage imageNamed:@"test1.jpg"];
     [self.contentView addSubview:imageView];
     self.goodsImageView = imageView;
