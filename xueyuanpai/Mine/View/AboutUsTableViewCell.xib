@@ -39,9 +39,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="contentLabel" destination="52j-Gk-4XD" id="hV5-uo-KSy"/>
-                <outlet property="studyImageView" destination="D05-xd-Zjh" id="PGr-AH-tge"/>
-                <outlet property="titleLabel" destination="B9Z-hh-Pzb" id="oHK-Ct-3oK"/>
-                <outlet property="versionLabel" destination="B9Z-hh-Pzb" id="gza-rT-5y7"/>
+                <outlet property="studyImageView" destination="D05-xd-Zjh" id="1fb-Ve-Gg8"/>
+                <outlet property="versionLabel" destination="B9Z-hh-Pzb" id="R0T-gQ-LhJ"/>
             </connections>
             <point key="canvasLocation" x="339" y="304.5"/>
         </tableViewCell>

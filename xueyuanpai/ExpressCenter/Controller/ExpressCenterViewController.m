@@ -61,25 +61,27 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
     [self theTabBarHidden:NO];
     
-    [_radarView removeFromSuperview];
+    [self.radarView removeFromSuperview];
 
     [self createAnimationView];
-    
+
+
+    [super viewWillAppear:YES];
 
 
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-    [super viewWillDisappear:animated];
     
-    [_animationRadarView removeFromSuperview];
+    [self.animationRadarView removeFromSuperview];
     
-    [_radarView removeFromSuperview];
+    [self.radarView removeFromSuperview];
 
+
+    [super viewWillDisappear:YES];
 
     
 }
@@ -105,6 +107,7 @@
     self.view.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
     
     [self createCenterView];
+
     
     [self requestExpressPeopleCount];
 
@@ -385,10 +388,38 @@
 
 #pragma mark - Custom Methods
 - (void)startUpdatingRadar {
+    
+    self.view.userInteractionEnabled = NO;
+    
     typeof(self) __weak weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         weakSelf.radarView.labelText = [NSString stringWithFormat:@"搜索已完成，共找到%lu个目标", (unsigned long)[weakSelf.count intValue]];
-        [weakSelf.radarView show];
+        
+        
+        if ([self.count intValue] > 0) {
+
+            
+            SendCourierViewController *sendVC = [[SendCourierViewController alloc] init];
+            [_radarView removeFromSuperview];
+            
+            
+            [self.navigationController pushViewController:sendVC animated:YES];
+            
+        }else{
+            
+            self.view.userInteractionEnabled = YES;
+            [weakSelf.animationRadarView removeFromSuperview];
+
+            
+            weakSelf.radarView.hidden = YES;
+            
+            [weakSelf createAnimationView];
+            
+            
+//            [CommonUtils showToastWithStr:@"暂无快递员分配"];
+        }
+
+//        [weakSelf.radarView show];
     });
 }
 
@@ -399,19 +430,19 @@
 - (NSInteger)numberOfPointsInRadarView:(XHRadarView *)radarView {
     return [self.count intValue];
 }
-- (UIView *)radarView:(XHRadarView *)radarView viewForIndex:(NSUInteger)index {
-    UIView *pointView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 25)];
-    
-    //设置搜索目标图片
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    [imageView setImage:[UIImage imageNamed:@"signup_student"]];
-    [pointView addSubview:imageView];
-    return pointView;
-}
-- (CGPoint)radarView:(XHRadarView *)radarView positionForIndex:(NSUInteger)index {
-    NSArray *point = [self.pointsArray objectAtIndex:index];
-    return CGPointMake([point[0] floatValue], [point[1] floatValue]);
-}
+//- (UIView *)radarView:(XHRadarView *)radarView viewForIndex:(NSUInteger)index {
+//    UIView *pointView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 25)];
+//    
+//    //设置搜索目标图片
+//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    [imageView setImage:[UIImage imageNamed:@"signup_student"]];
+//    [pointView addSubview:imageView];
+//    return pointView;
+//}
+//- (CGPoint)radarView:(XHRadarView *)radarView positionForIndex:(NSUInteger)index {
+//    NSArray *point = [self.pointsArray objectAtIndex:index];
+//    return CGPointMake([point[0] floatValue], [point[1] floatValue]);
+//}
 
 #pragma mark - XHRadarViewDelegate
 

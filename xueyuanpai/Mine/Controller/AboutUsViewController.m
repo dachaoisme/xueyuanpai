@@ -10,15 +10,22 @@
 
 #import "AboutUsTableViewCell.h"
 
-@interface AboutUsViewController ()<UITableViewDataSource,UITableViewDelegate>
-
-@property (nonatomic,strong)UITableView *tableView;
+@interface AboutUsViewController ()
 
 
 @property (nonatomic,strong)NSDictionary *dataDic;
 
 
 @property (nonatomic,strong)UIButton *callButton;
+
+///学习图片
+@property (nonatomic,strong)UIImageView *studyImageView;
+
+///标题
+@property (nonatomic,strong)UILabel *titleLabel ;
+
+///内容
+@property (nonatomic,strong)UILabel *contentLabel;
 
 @end
 
@@ -34,11 +41,51 @@
     
     [self createLeftBackNavBtn];
     
-    [self createTableView];
+    [self createView];
     
     [self requestCallInformation];
 
     
+}
+
+#pragma mark - 创建View
+- (void)createView{
+    
+    UIImageView *studyImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 30, NAV_TOP_HEIGHT+20, 60, 60)];
+    studyImageView.image = [UIImage imageNamed:@"about_logo"];
+    [self.view addSubview:studyImageView];
+    self.studyImageView = studyImageView;
+    
+    
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 50, CGRectGetMaxY(studyImageView.frame), 100, 30)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:titleLabel];
+    self.titleLabel = titleLabel;
+    
+    
+    
+    UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(titleLabel.frame), SCREEN_WIDTH - 30, 50)];
+    contentLabel.numberOfLines = 0;
+    contentLabel.font = [UIFont systemFontOfSize:14];
+    [self.view addSubview:contentLabel];
+    self.contentLabel = contentLabel;
+    
+    
+    
+    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setFrame:CGRectMake(15, CGRectGetMaxY(contentLabel.frame), SCREEN_WIDTH - 30,48)];
+    submitBtn.layer.cornerRadius = 10.0;
+    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [submitBtn addTarget:self action:@selector(contactAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:submitBtn];
+    self.callButton = submitBtn;
+
+    
+
 }
 
 #pragma mark - 请求关于我们详情信息
@@ -70,17 +117,29 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (model.responseCode ==ResponseCodeSuccess) {
             ///请求成功
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             
             self.dataDic = model.responseCommonDic;
         
             NSString *phoneNumber = [self.dataDic objectForKey:@"telphone"];
 
             [self.callButton setTitle:[NSString stringWithFormat:@"联系我们%@",phoneNumber] forState:UIControlStateNormal];
+            
+            
+            self.titleLabel.text = [self.dataDic objectForKey:@"title"];
+            
 
+            NSString *content = [self.dataDic objectForKey:@"content"];
             
-            [self.tableView reloadData];
+            self.contentLabel.frame =   CGRectMake(15, CGRectGetMaxY(_titleLabel.frame), SCREEN_WIDTH - 30, [self textHeight:[self.dataDic objectForKey:@"content"]]);
             
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[content dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+            self.contentLabel.attributedText = attrStr;
+
+            [self.callButton setFrame:CGRectMake(15, CGRectGetMaxY(_contentLabel.frame), SCREEN_WIDTH - 30,48)];
+
 
         }else{
             ///反馈失败
@@ -96,47 +155,6 @@
     
 }
 
-#pragma mark - 创建tableView
-- (void)createTableView{
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
-    
-    tableView.tableHeaderView.hidden = YES;
-    
-    //注册cell
-    [tableView registerNib:[UINib nibWithNibName:@"AboutUsTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
-    
-    
-    
-    //拨打电话按钮
-    
-    float space = 16;
-    float btnHeight = 44;
-    float footViewHeight = 48;
-    float btnWidth = SCREEN_WIDTH - 30;
-    
-    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, footViewHeight)];
-    
-    UIButton *submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [submitBtn setTitle:@"确定提交" forState:UIControlStateNormal];
-    [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
-    [submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
-    submitBtn.layer.cornerRadius = 10.0;
-    submitBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [submitBtn addTarget:self action:@selector(contactAction) forControlEvents:UIControlEventTouchUpInside];
-    [backGroundView addSubview:submitBtn];
-    
-    self.callButton = submitBtn;
-    
-    self.tableView.tableFooterView = backGroundView;
-
-}
-
 #pragma mark - 联系我们按钮
 - (void)contactAction{
     
@@ -145,51 +163,6 @@
     [CommonUtils callServiceWithTelephoneNum:phoneNumber];
     
 }
-
-
-#pragma mark - tableView代理方法
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return  50+[self textHeight:[self.dataDic objectForKey:@"content"]];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 0;
-}
-
-
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    AboutUsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-    
-    cell.titleLabel.text = [self.dataDic objectForKey:@"title"];
-    
-
-    
-    NSString *content = [self.dataDic objectForKey:@"content"];
-//    cell.contentLabel.text = [self.dataDic objectForKey:@"content"];
-    
-    cell.contentLabel.frame = CGRectMake(10, 100, SCREEN_WIDTH - 20, [self textHeight:[self.dataDic objectForKey:@"content"]]);
-    
-    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[content dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
-    
-    
-    cell.contentLabel.attributedText = attrStr;
-    
-    
-    return cell;
-    
-}
-
 
 //自适应撑高
 //计算字符串的frame

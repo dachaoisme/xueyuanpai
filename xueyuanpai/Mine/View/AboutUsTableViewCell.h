@@ -10,12 +10,15 @@
 
 @interface AboutUsTableViewCell : UITableViewCell
 
-///标题
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-
-
 ///内容
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
+///学习图片
+@property (weak, nonatomic) IBOutlet UIImageView *studyImageView;
+
+///版本label
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+
 
 
 @end
