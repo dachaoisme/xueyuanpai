@@ -27,6 +27,7 @@
 ///选择头像的按钮
 @property (nonatomic,strong)UIButton *headImageSelectedBtn;
 
+
 @property (nonatomic,strong)UITableView *tableView;
 
 ///真实姓名
@@ -56,28 +57,77 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading
     
     
     self.title = @"认证导师资料";
     [self createLeftBackNavBtn];
     
-    
     //设置头像
-    [self setContentView];
-    
     [self createTableView];
+
+    [self setContentView];
     
     [self createCommitButton];
 
 }
 
+#pragma mark - 设置修改头像视图
+-(void)setContentView
+{
+    
+   
+    float headImageheight = 60;
+    float headImageWidth = 60;
+
+    
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120)];
+    
+    backGroundView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
+
+    ///选择头像
+    _headImageSelectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_headImageSelectedBtn setBackgroundImage:[UIImage imageNamed:@"avatar"] forState:UIControlStateNormal];
+    [_headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
+    [_headImageSelectedBtn setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
+    [_headImageSelectedBtn setFrame:CGRectMake((SCREEN_WIDTH-headImageWidth)/2, 120/2 - 30, headImageWidth,headImageheight)];
+    
+    _headImageSelectedBtn.layer.cornerRadius = 30;
+    _headImageSelectedBtn.layer.masksToBounds = YES;
+    
+    [_headImageSelectedBtn addTarget:self action:@selector(selectedImageFromPhotoAlbum:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [backGroundView addSubview:_headImageSelectedBtn];
+    
+    
+    //设置头像
+    if ([UserAccountManager sharedInstance].userIcon.length > 0) {
+        NSURL *imageUrl = [NSURL URLWithString:[UserAccountManager sharedInstance].userIcon];
+        
+        UIImageView *imageView = [[UIImageView alloc] init];
+        
+        [imageView sd_setImageWithURL:imageUrl];
+        
+        UIImage *image = imageView.image;
+        
+        [_headImageSelectedBtn setImage:image forState:UIControlStateNormal];
+    }
+    
+    
+    
+    self.tableView.tableHeaderView = backGroundView;
+    
+}
+
+
 #pragma mark - 创建tableView
 - (void)createTableView{
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, SCREEN_HEIGHT -150) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0 , SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
+
     [self.view addSubview:tableView];
     self.tableView = tableView;
     //注册cell
@@ -93,47 +143,12 @@
 }
 
 
-#pragma mark - 设置修改头像视图
--(void)setContentView
-{
-    float space = 16;
-    float headImageheight = 60;
-    float headImageWidth = 60;
-    ///选择头像
-    _headImageSelectedBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_headImageSelectedBtn setBackgroundImage:[UIImage imageNamed:@"avatar"] forState:UIControlStateNormal];
-    [_headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
-    [_headImageSelectedBtn setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
-    [_headImageSelectedBtn setFrame:CGRectMake((SCREEN_WIDTH-headImageWidth)/2, space+NAV_TOP_HEIGHT, headImageWidth,headImageheight)];
-    
-    _headImageSelectedBtn.layer.cornerRadius = 30;
-    _headImageSelectedBtn.layer.masksToBounds = YES;
-    
-    [_headImageSelectedBtn addTarget:self action:@selector(selectedImageFromPhotoAlbum:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:_headImageSelectedBtn];
-    
-    
-    if ([UserAccountManager sharedInstance].userIcon.length > 0) {
-        NSURL *imageUrl = [NSURL URLWithString:[UserAccountManager sharedInstance].userIcon];
-        
-        [_headImageSelectedBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]] forState:UIControlStateNormal];
-    }
-    
-    
-    
-}
-
 #pragma mark - tableView代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
     return 3;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 10;
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
@@ -326,6 +341,7 @@
     
     return YES;
 }
+
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;{
     

@@ -99,7 +99,7 @@
 #pragma mark - 创建tableView
 - (void)createTableView{
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -175,9 +175,15 @@
     
 
     
-    cell.contentLabel.text = [self.dataDic objectForKey:@"content"];
+    NSString *content = [self.dataDic objectForKey:@"content"];
+//    cell.contentLabel.text = [self.dataDic objectForKey:@"content"];
     
     cell.contentLabel.frame = CGRectMake(10, 100, SCREEN_WIDTH - 20, [self textHeight:[self.dataDic objectForKey:@"content"]]);
+    
+    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[content dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    
+    
+    cell.contentLabel.attributedText = attrStr;
     
     
     return cell;

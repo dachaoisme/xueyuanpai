@@ -192,14 +192,22 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    return CGSizeMake(140, 140);
+    float width = (SCREEN_WIDTH-2*15-15)/2;
+    return CGSizeMake(width, width+40);
 
 }
 
 //定义每个UICollectionView 的 margin
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(10, (SCREEN_WIDTH-140*2)/3, 5, (SCREEN_WIDTH-140*2)/3);
+    return UIEdgeInsetsMake(5, 15, 5, 15);
+
+}
+//设置最小列间距，也就是左行与右一行的中间最小间隔
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 15;
+    
 }
 
 //返回分区个数

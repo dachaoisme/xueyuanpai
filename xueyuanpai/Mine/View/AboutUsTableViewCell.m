@@ -8,10 +8,28 @@
 
 #import "AboutUsTableViewCell.h"
 
+@interface AboutUsTableViewCell ()
+
+
+///学习图片
+@property (weak, nonatomic) IBOutlet UIImageView *studyImageView;
+
+///版本label
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+
+
+
+
+@end
+
 @implementation AboutUsTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    self.studyImageView.frame = CGRectMake(SCREEN_WIDTH/2 - 30, 20, 60, 60);
+    
+    self.versionLabel.frame = CGRectMake(SCREEN_WIDTH/2 - 50, CGRectGetMaxY(self.studyImageView.frame), 100, 100);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
