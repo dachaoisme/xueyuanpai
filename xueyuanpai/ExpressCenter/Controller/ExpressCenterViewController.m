@@ -325,13 +325,7 @@
     radarView.dataSource = self;
     radarView.delegate = self;
     
-    if (SCREEN_WIDTH == 320) {
-        
-        radarView.radius = 150;
-
-    }else{
-        radarView.radius = 200;
-    }
+    radarView.radius = SCREEN_WIDTH / 2;
     
     radarView.backgroundImage = [UIImage imageNamed:@"radar_background"];
     radarView.labelText = @"正在搜索附近的目标";
