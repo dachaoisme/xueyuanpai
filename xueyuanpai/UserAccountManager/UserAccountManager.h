@@ -103,5 +103,6 @@
 -(void)exitLogin;
 
 -(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord withUserRole:(RegisterRoleType)role;
-
+///极光推送tag
+-(void)setJpushTags;
 @end
