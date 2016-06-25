@@ -4142,9 +4142,9 @@
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/lib",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.college.courier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4495c0e1-285e-4735-a2e9-5abf74470b33";
+				PROVISIONING_PROFILE = "414d205a-3cdf-4a8e-96a9-68e62f399d6e";
 			};
 			name = Debug;
 		};
@@ -4165,9 +4165,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.college.courier;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "647875e1-f2ba-460c-be48-6e94cf13553f";
+				PROVISIONING_PROFILE = "67fb3fb5-7346-48eb-ab6b-610a8ed64628";
 			};
 			name = Release;
 		};
