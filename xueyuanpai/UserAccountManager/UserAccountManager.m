@@ -7,7 +7,7 @@
 //
 
 #import "UserAccountManager.h"
-
+#import "JPUSHService.h"
 @implementation UserAccountManager
 
 + (instancetype)sharedInstance
@@ -83,6 +83,8 @@
     
     if (self.userId && self.userId.length>0) {
         self.isLogin = YES;
+        ///设置别名
+        [self setJpushTags];
     }else{
         self.isLogin = NO;
     }
@@ -103,12 +105,27 @@
     [dic setObject:[NSString stringWithFormat:@"%ld",(long)role] forKey:@"role"];
     [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-        [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
+        
+            [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
+        
     } withFaileBlock:^(NSError *error) {
         
     }];
+}
+-(void)setJpushTags
+{
+    //设置tags和别名
+    NSString * tag = [NSString stringWithFormat:@"user%@",self.userId];
+    NSSet  *set = [NSSet setWithObject:tag];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [JPUSHService setTags:set alias:tag fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+            NSLog(@"%d----%@---",iResCode,iAlias);
+            [CommonUtils showToastWithStr:[NSString stringWithFormat:@"注册别名成功:%@",iAlias]];
+        }];
+    });
+   
 }
 @end
