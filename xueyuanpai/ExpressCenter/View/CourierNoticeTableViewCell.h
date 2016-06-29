@@ -9,5 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface CourierNoticeTableViewCell : UITableViewCell
+///左侧图片
+@property (weak, nonatomic) IBOutlet UIImageView *leftImageView;
+
+
+///显示内容
+@property (weak, nonatomic) IBOutlet UILabel *contentLable;
+
+///时间
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+
+
 
 @end

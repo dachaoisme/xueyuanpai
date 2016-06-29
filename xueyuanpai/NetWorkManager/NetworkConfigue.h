@@ -157,4 +157,13 @@
 ///快递中心：我的发快递历史记录接口
 #define METHOD_EXPRESS_CENTER_EXPRESS_HISTORY                     @"v1/express/history?"
 
+
+#pragma mark - 消息
+///系统未读消息数目
+#define SYSTEM_MESSAGE_UNREAD_COUNT                               @"v1/message/syscnt?"
+///系统消息设置为已读
+#define SYSTEM_MESSAGE_STATUES                                    @"v1/message/setread?"
+
+
+
 #endif /* NetworkConfigue_h */

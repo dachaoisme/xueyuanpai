@@ -337,6 +337,12 @@
 		DD0F42831D22702500115B96 /* timebank_bubble_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42651D22702500115B96 /* timebank_bubble_arrow@2x.png */; };
 		DD0F42841D22702500115B96 /* timebank_bubble_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42661D22702500115B96 /* timebank_bubble_arrow@3x.png */; };
 		DD0F42871D22705D00115B96 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F42861D22705D00115B96 /* MessageTableViewCell.m */; };
+		DD0F42911D239D5800115B96 /* PPDragDropBadgeView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42891D239D5800115B96 /* PPDragDropBadgeView.bundle */; };
+		DD0F42921D239D5800115B96 /* PPDragDropBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F428B1D239D5800115B96 /* PPDragDropBadgeView.m */; };
+		DD0F42931D239D5800115B96 /* PRTween.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F428E1D239D5800115B96 /* PRTween.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD0F42941D239D5800115B96 /* PRTweenTimingFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F42901D239D5800115B96 /* PRTweenTimingFunctions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DD0F42971D23B7A200115B96 /* SystemMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F42961D23B7A200115B96 /* SystemMessageListViewController.m */; };
+		DD0F429A1D23BDE400115B96 /* SystemMessageListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F42991D23BDE400115B96 /* SystemMessageListModel.m */; };
 		DD13CDAD1D00186D000A69FE /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13CD631D00186D000A69FE /* arrow@2x.png */; };
 		DD13CDAE1D00186D000A69FE /* arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13CD641D00186D000A69FE /* arrow@3x.png */; };
 		DD13CDB31D00186D000A69FE /* input_icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD13CD691D00186D000A69FE /* input_icon_search@2x.png */; };
@@ -1155,6 +1161,17 @@
 		DD0F42661D22702500115B96 /* timebank_bubble_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebank_bubble_arrow@3x.png"; sourceTree = "<group>"; };
 		DD0F42851D22705D00115B96 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		DD0F42861D22705D00115B96 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
+		DD0F42891D239D5800115B96 /* PPDragDropBadgeView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PPDragDropBadgeView.bundle; sourceTree = "<group>"; };
+		DD0F428A1D239D5800115B96 /* PPDragDropBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPDragDropBadgeView.h; sourceTree = "<group>"; };
+		DD0F428B1D239D5800115B96 /* PPDragDropBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPDragDropBadgeView.m; sourceTree = "<group>"; };
+		DD0F428D1D239D5800115B96 /* PRTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRTween.h; sourceTree = "<group>"; };
+		DD0F428E1D239D5800115B96 /* PRTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTween.m; sourceTree = "<group>"; };
+		DD0F428F1D239D5800115B96 /* PRTweenTimingFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRTweenTimingFunctions.h; sourceTree = "<group>"; };
+		DD0F42901D239D5800115B96 /* PRTweenTimingFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PRTweenTimingFunctions.m; sourceTree = "<group>"; };
+		DD0F42951D23B7A200115B96 /* SystemMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMessageListViewController.h; sourceTree = "<group>"; };
+		DD0F42961D23B7A200115B96 /* SystemMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMessageListViewController.m; sourceTree = "<group>"; };
+		DD0F42981D23BDE400115B96 /* SystemMessageListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMessageListModel.h; sourceTree = "<group>"; };
+		DD0F42991D23BDE400115B96 /* SystemMessageListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMessageListModel.m; sourceTree = "<group>"; };
 		DD13CD631D00186D000A69FE /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		DD13CD641D00186D000A69FE /* arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@3x.png"; sourceTree = "<group>"; };
 		DD13CD691D00186D000A69FE /* input_icon_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "input_icon_search@2x.png"; sourceTree = "<group>"; };
@@ -2446,6 +2463,8 @@
 				58F67BEE1CD990A200D55BE0 /* IndexViewController.m */,
 				DD0F42451D226D0E00115B96 /* MessageViewController.h */,
 				DD0F42461D226D0E00115B96 /* MessageViewController.m */,
+				DD0F42951D23B7A200115B96 /* SystemMessageListViewController.h */,
+				DD0F42961D23B7A200115B96 /* SystemMessageListViewController.m */,
 				DD4127B11CF251C600227066 /* BigToSendViewController.h */,
 				DD4127B21CF251C600227066 /* BigToSendViewController.m */,
 				DD4127C71CF2F35D00227066 /* GiftDetailViewController.h */,
@@ -2465,6 +2484,8 @@
 				58C27AA91CE208440036D105 /* IndexColumnsModel.m */,
 				58C27AAB1CE20ABC0036D105 /* IndexMallModel.h */,
 				58C27AAC1CE20ABC0036D105 /* IndexMallModel.m */,
+				DD0F42981D23BDE400115B96 /* SystemMessageListModel.h */,
+				DD0F42991D23BDE400115B96 /* SystemMessageListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2472,6 +2493,7 @@
 		58F67BF01CD990A200D55BE0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DD0F42881D239D5800115B96 /* PPDragDropBadgeView */,
 				DD4127CA1CF2F98F00227066 /* ParallaxHeaderView.h */,
 				DD4127CB1CF2F98F00227066 /* ParallaxHeaderView.m */,
 				58BA78D31CDCE191000C71D3 /* IndexScrollView.h */,
@@ -2747,6 +2769,28 @@
 				DD0F42661D22702500115B96 /* timebank_bubble_arrow@3x.png */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		DD0F42881D239D5800115B96 /* PPDragDropBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				DD0F42891D239D5800115B96 /* PPDragDropBadgeView.bundle */,
+				DD0F428A1D239D5800115B96 /* PPDragDropBadgeView.h */,
+				DD0F428B1D239D5800115B96 /* PPDragDropBadgeView.m */,
+				DD0F428C1D239D5800115B96 /* PRTween */,
+			);
+			path = PPDragDropBadgeView;
+			sourceTree = "<group>";
+		};
+		DD0F428C1D239D5800115B96 /* PRTween */ = {
+			isa = PBXGroup;
+			children = (
+				DD0F428D1D239D5800115B96 /* PRTween.h */,
+				DD0F428E1D239D5800115B96 /* PRTween.m */,
+				DD0F428F1D239D5800115B96 /* PRTweenTimingFunctions.h */,
+				DD0F42901D239D5800115B96 /* PRTweenTimingFunctions.m */,
+			);
+			path = PRTween;
 			sourceTree = "<group>";
 		};
 		DD13CD621D00186D000A69FE /* BusinessCenter */ = {
@@ -3862,6 +3906,7 @@
 				DD0F42711D22702500115B96 /* msg_icon_deliver@2x.png in Resources */,
 				DD4127831CF0552F00227066 /* shetuan_icon_time@2x.png in Resources */,
 				DD13CDEF1D00186D000A69FE /* timebank_filter_hot@2x.png in Resources */,
+				DD0F42911D239D5800115B96 /* PPDragDropBadgeView.bundle in Resources */,
 				58070F9B1CF6E80200F03F6C /* gender_female@3x.png in Resources */,
 				DD0B1ECE1CFEE51000C4BAB2 /* market_filter_book_hl@3x.png in Resources */,
 				DD4127641CF0552F00227066 /* bigpie_order_minus_press@3x.png in Resources */,
@@ -4047,6 +4092,7 @@
 				58F67C341CD9CF9500D55BE0 /* UIScrollView+MJExtension.m in Sources */,
 				DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */,
 				587FF9DB1CF2F8F300AD2131 /* IQBarButtonItem.m in Sources */,
+				DD0F42941D239D5800115B96 /* PRTweenTimingFunctions.m in Sources */,
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
 				587FF9DD1CF2F8F300AD2131 /* IQTitleBarButtonItem.m in Sources */,
 				DDCD70711D0679A5009FBE9A /* MineIntegralTableViewCell.m in Sources */,
@@ -4075,6 +4121,8 @@
 				58898E401CFA5A280007D9B3 /* RequirementTwoTableViewCell.m in Sources */,
 				DDCD71061D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.m in Sources */,
 				DDCD70FE1D0879BE009FBE9A /* BusinessCenterOneStyleTableViewCell.m in Sources */,
+				DD0F42921D239D5800115B96 /* PPDragDropBadgeView.m in Sources */,
+				DD0F42931D239D5800115B96 /* PRTween.m in Sources */,
 				58898E461CFA89C90007D9B3 /* LTPickerView.m in Sources */,
 				58A944C61CE3E0C200DAD398 /* AddTeacherViewController.m in Sources */,
 				58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */,
@@ -4085,6 +4133,7 @@
 				DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */,
 				DDAB05D01D03B40F007A6027 /* BusinessProjectDetailThreeTableViewCell.m in Sources */,
 				587FF9DE1CF2F8F300AD2131 /* IQToolbar.m in Sources */,
+				DD0F429A1D23BDE400115B96 /* SystemMessageListModel.m in Sources */,
 				DDD0BDAF1CFA75E800073290 /* PositionTwoTableViewCell.m in Sources */,
 				DDCD71141D093A73009FBE9A /* SelectSchoolViewController.m in Sources */,
 				DDEB25841D1027CB00EF6CE3 /* XHRadarIndicatorView.m in Sources */,
@@ -4141,6 +4190,7 @@
 				58F80A071D09336C0099DCCD /* UinversityStarSocietyViewController.m in Sources */,
 				DD0B1E6C1CFEDD1800C4BAB2 /* PhotoSelectorCell.m in Sources */,
 				58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */,
+				DD0F42971D23B7A200115B96 /* SystemMessageListViewController.m in Sources */,
 				DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */,
 				DDAB05F01D04576F007A6027 /* JKPlaceholderTextView.m in Sources */,
 				DDCD706A1D0658D6009FBE9A /* MineOneStyleTableViewCell.m in Sources */,

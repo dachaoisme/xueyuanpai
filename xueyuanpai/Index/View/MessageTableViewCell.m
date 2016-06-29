@@ -40,6 +40,13 @@
     
     
     
+    self.badgeView = [[PPDragDropBadgeView alloc] initWithFrame:CGRectMake(self.bounds.size.width-50, 20, 25, 25) dragdropCompletion:^{
+        NSLog(@"TableViewCell drag done.");
+    }];
+    
+    self.badgeView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    [self addSubview:self.badgeView];
+
     
 }
 

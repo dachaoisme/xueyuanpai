@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "PPDragDropBadgeView.h"
+
+
 @interface MessageTableViewCell : UITableViewCell
 
 ///左侧图片
@@ -15,5 +18,10 @@
 
 ///内容lable
 @property (nonatomic,strong)UILabel *contentLabel;
+
+@property (nonatomic, strong) PPDragDropBadgeView* badgeView;
+
+
+
 
 @end
