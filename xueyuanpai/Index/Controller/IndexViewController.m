@@ -30,6 +30,8 @@
 
 #import "BannerLunBoView.h"
 #import "TimeBankViewController.h"
+
+#import "MessageViewController.h"
 @interface IndexViewController ()<IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -379,7 +381,13 @@
     //需要先判断是否已经登陆
     if (yesLogin) {
         //收件箱界面
-        [CommonUtils showToastWithStr:@"收件箱"];
+//        [CommonUtils showToastWithStr:@"收件箱"];
+        
+        
+        MessageViewController *messageVC = [[MessageViewController alloc] init];
+        [self.navigationController pushViewController:messageVC animated:YES];
+        
+        
     }else{
         //进入登陆注册页面
         

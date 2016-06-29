@@ -71,7 +71,7 @@
     [sendMessageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
     sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [sendMessageBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
-    [sendMessageBtn addTarget:self action:@selector(sendMessageAction) forControlEvents:UIControlEventTouchUpInside];
+    [sendMessageBtn addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
     [backGroundView addSubview:sendMessageBtn];
     
     
@@ -96,7 +96,7 @@
     button.frame = CGRectMake(15, CGRectGetMaxY(backGroundView.frame) + 10, SCREEN_WIDTH - 30, 48);
     button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
     [button setTitle:@"确定" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(makeSureAction) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(sendMessageAction) forControlEvents:UIControlEventTouchUpInside];
     button.layer.cornerRadius = 10.0;
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
@@ -137,24 +137,24 @@
 
 - (void)sendMessageAction{
     
-    [CommonUtils showToastWithStr:@"发送短信验证码"];
+//    [CommonUtils showToastWithStr:@"发送短信验证码"];
     
 
-NSMutableDictionary * params = [NSMutableDictionary dictionary];
-[params setObject:phoneTextField.text forKey:@"mobile"];
-[params setObject:checkingMessageTextField.text forKey:@"captcha"];
+    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+    [params setObject:phoneTextField.text forKey:@"mobile"];
+    [params setObject:checkingMessageTextField.text forKey:@"captcha"];
 
-[[HttpClient sharedInstance]registerAndSubmitWithParams:params withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
-    if (responseModel.responseCode == ResponseCodeSuccess) {
-        NSString * userId = [listDic objectForKey:@"user_id"];
+    [[HttpClient sharedInstance]registerAndSubmitWithParams:params withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            NSString * userId = [listDic objectForKey:@"user_id"];
+            
+            
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
         
-        
-    }else{
-        [CommonUtils showToastWithStr:responseModel.responseMsg];
-    }
-} withFaileBlock:^(NSError *error) {
-    
-}];
+    }];
 }
 
 

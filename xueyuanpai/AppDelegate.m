@@ -12,6 +12,7 @@
 #import <AdSupport/AdSupport.h>
 
 #import "CustomIOS7AlertView.h"
+#import "EMSDK.h"
 
 @interface AppDelegate ()<CustomIOS7AlertViewDelegate>
 
@@ -33,6 +34,9 @@
     //极光推送方法
     [self jpushAction:launchOptions];
     
+    //环信SDK
+    [self huanXinAction];
+    
     [[UserAccountManager sharedInstance]getUserInfo];
     
     BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
@@ -45,6 +49,16 @@
     return YES;
 }
 
+#pragma mark - 环信
+- (void)huanXinAction{
+    //AppKey:注册的AppKey，详细见下面注释。
+    //apnsCertName:推送证书名（不需要加后缀），详细见下面注释。
+    EMOptions *options = [EMOptions optionsWithAppkey:@"xueyuanpai2016#xueyuanpai"];
+//    options.apnsCertName = @"istore_dev";
+    [[EMClient sharedClient] initializeSDKWithOptions:options];
+}
+
+#pragma mark - 极光推送
 - (void)jpushAction:(NSDictionary *)launchOptions{
     
     
@@ -167,13 +181,20 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
+// APP进入后台
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [[EMClient sharedClient] applicationDidEnterBackground:application];
+
 }
 
+// APP将要从后台返回
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[EMClient sharedClient] applicationWillEnterForeground:application];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
