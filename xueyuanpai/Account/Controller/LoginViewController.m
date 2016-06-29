@@ -10,6 +10,8 @@
 #import "RegisterViewController.h"
 #import "RegisterRoleView.h"
 #import "ForgetPasswordViewController.h"
+
+
 @interface LoginViewController ()<RegisterRoleViewDelegate>
 {
     UITextField *phoneTextField;
@@ -257,18 +259,34 @@
     [dic setObject:phoneTextField.text forKey:@"mobile"];
     [dic setObject:passwordTextField.text forKey:@"passwd"];
     [dic setObject:personalAccountBtn.selected?@"1":@"2" forKey:@"role"];
+    
+    
     [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"登陆成功"];
-
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            //登陆的时候,先进行环信登陆判断,然后再进行密码判断
+            EMError *error = [[EMClient sharedClient] loginWithUsername:phoneTextField.text password:passwordTextField.text];
+            if (!error) {
+                
+                //环信登陆成功
+                [self.navigationController popViewControllerAnimated:YES];
+
+            }
+
+    
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
     } withFaileBlock:^(NSError *error) {
         
     }];
+
+        
+    
+
+    
     
 }
 #pragma mark - 注册

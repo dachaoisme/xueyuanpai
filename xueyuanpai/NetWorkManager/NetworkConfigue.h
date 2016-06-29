@@ -163,6 +163,8 @@
 #define SYSTEM_MESSAGE_UNREAD_COUNT                               @"v1/message/syscnt?"
 ///系统消息设置为已读
 #define SYSTEM_MESSAGE_STATUES                                    @"v1/message/setread?"
+///系统消息列表
+#define SYSTEM_MESSAGE_LIST                                       @"v1/message/system?"
 
 
 

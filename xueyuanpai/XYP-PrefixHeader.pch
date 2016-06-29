@@ -41,3 +41,7 @@
 #import "MJRefresh.h"
 #import "IQKeyboardManager.h"
 #endif /* XYP_PrefixHeader_pch */
+
+///环信
+#import "EMSDK.h"
+

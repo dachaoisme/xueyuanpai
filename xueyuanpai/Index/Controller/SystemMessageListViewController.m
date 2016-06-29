@@ -112,7 +112,7 @@
     
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [paramsDic setObject:_message_id forKey:@"msg_id"];
+    [paramsDic setObject:_message_id.length > 0?_message_id:@"" forKey:@"msg_id"];
     [[HttpClient sharedInstance] setSystemMessageStatusWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
