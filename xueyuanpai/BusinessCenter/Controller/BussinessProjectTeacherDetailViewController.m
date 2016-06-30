@@ -15,6 +15,8 @@
 
 #import "BusinessProjectDetailFiveTableViewCell.h"
 
+#import "LoginViewController.h"
+
 
 @interface BussinessProjectTeacherDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailFiveTableViewCellDelegate>
 {
@@ -74,24 +76,66 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    if (yesIsCollection==YES) {
-        return;
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        //活动详情收藏按钮接口
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
+        
+        
+    }else{
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
+
+    
+}
+
+- (void)addCollection{
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.projectId forKey:@"obj_id"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfProject] forKey:@"type"];
     [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"收藏成功"];
             [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav_full"]imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = YES;
+
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
     } withFaileBlock:^(NSError *error) {
         
     }];
+
+    
 }
+
+- (void)cancelCollection{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:self.projectId forKey:@"obj_id"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)MineTypeOfProject] forKey:@"type"];
+    [[HttpClient sharedInstance] addCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            [_favoriteButtonItem setImage:[[UIImage imageNamed:@"nav_icon_fav"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+            yesIsCollection = NO;
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+
+}
+
 -(void)checkoutIsCollectionOrNot
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];

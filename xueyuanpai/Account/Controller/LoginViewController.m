@@ -270,10 +270,12 @@
             EMError *error = [[EMClient sharedClient] loginWithUsername:phoneTextField.text password:passwordTextField.text];
             if (!error) {
                 
-                //环信登陆成功
-                [self.navigationController popViewControllerAnimated:YES];
+                NSLog(@"环信登陆成功");
 
             }
+            //环信登陆成功
+            [self.navigationController popViewControllerAnimated:YES];
+
 
     
         }else{

@@ -14,6 +14,8 @@
 #import "BusinessProjectDetailThreeTableViewCell.h"
 #import "BusinessProjectDetailFourTableViewCell.h"
 
+#import "LoginViewController.h"
+
 @interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     BusinessCenterProgectDetailModel * businessCenterProgectDetailModel;
@@ -72,10 +74,22 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    if (yesIsCollection==YES) {
-        [self cancelCollection];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        //活动详情收藏按钮接口
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
+        
+        
     }else{
-        [self addCollection];
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
     
 }

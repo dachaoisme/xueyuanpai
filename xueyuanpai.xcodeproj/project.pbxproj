@@ -431,10 +431,6 @@
 		DD4127641CF0552F00227066 /* bigpie_order_minus_press@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127341CF0552E00227066 /* bigpie_order_minus_press@3x.png */; };
 		DD4127651CF0552F00227066 /* bigpie_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127351CF0552E00227066 /* bigpie_success@2x.png */; };
 		DD4127661CF0552F00227066 /* bigpie_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127361CF0552E00227066 /* bigpie_success@3x.png */; };
-		DD4127671CF0552F00227066 /* hire_btn_contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127371CF0552E00227066 /* hire_btn_contact@2x.png */; };
-		DD4127681CF0552F00227066 /* hire_btn_contact@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127381CF0552E00227066 /* hire_btn_contact@3x.png */; };
-		DD4127691CF0552F00227066 /* hire_btn_contact_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127391CF0552E00227066 /* hire_btn_contact_press@2x.png */; };
-		DD41276A1CF0552F00227066 /* hire_btn_contact_press@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD41273A1CF0552E00227066 /* hire_btn_contact_press@3x.png */; };
 		DD41276B1CF0552F00227066 /* hire_company_verify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD41273B1CF0552E00227066 /* hire_company_verify@2x.png */; };
 		DD41276C1CF0552F00227066 /* hire_company_verify@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD41273C1CF0552E00227066 /* hire_company_verify@3x.png */; };
 		DD41276D1CF0552F00227066 /* hire_icon_intern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD41273D1CF0552E00227066 /* hire_icon_intern@2x.png */; };
@@ -1263,10 +1259,6 @@
 		DD4127341CF0552E00227066 /* bigpie_order_minus_press@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigpie_order_minus_press@3x.png"; sourceTree = "<group>"; };
 		DD4127351CF0552E00227066 /* bigpie_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigpie_success@2x.png"; sourceTree = "<group>"; };
 		DD4127361CF0552E00227066 /* bigpie_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigpie_success@3x.png"; sourceTree = "<group>"; };
-		DD4127371CF0552E00227066 /* hire_btn_contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_btn_contact@2x.png"; sourceTree = "<group>"; };
-		DD4127381CF0552E00227066 /* hire_btn_contact@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_btn_contact@3x.png"; sourceTree = "<group>"; };
-		DD4127391CF0552E00227066 /* hire_btn_contact_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_btn_contact_press@2x.png"; sourceTree = "<group>"; };
-		DD41273A1CF0552E00227066 /* hire_btn_contact_press@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_btn_contact_press@3x.png"; sourceTree = "<group>"; };
 		DD41273B1CF0552E00227066 /* hire_company_verify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_company_verify@2x.png"; sourceTree = "<group>"; };
 		DD41273C1CF0552E00227066 /* hire_company_verify@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_company_verify@3x.png"; sourceTree = "<group>"; };
 		DD41273D1CF0552E00227066 /* hire_icon_intern@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hire_icon_intern@2x.png"; sourceTree = "<group>"; };
@@ -2896,10 +2888,6 @@
 				DD4127341CF0552E00227066 /* bigpie_order_minus_press@3x.png */,
 				DD4127351CF0552E00227066 /* bigpie_success@2x.png */,
 				DD4127361CF0552E00227066 /* bigpie_success@3x.png */,
-				DD4127371CF0552E00227066 /* hire_btn_contact@2x.png */,
-				DD4127381CF0552E00227066 /* hire_btn_contact@3x.png */,
-				DD4127391CF0552E00227066 /* hire_btn_contact_press@2x.png */,
-				DD41273A1CF0552E00227066 /* hire_btn_contact_press@3x.png */,
 				DD41273B1CF0552E00227066 /* hire_company_verify@2x.png */,
 				DD41273C1CF0552E00227066 /* hire_company_verify@3x.png */,
 				DD41273D1CF0552E00227066 /* hire_icon_intern@2x.png */,
@@ -3490,7 +3478,6 @@
 				DD13CDD11D00186D000A69FE /* startup_filter_internet@2x.png in Resources */,
 				DD0B1F001CFEFB6200C4BAB2 /* PublishInformationOneStyleTableViewCell.xib in Resources */,
 				58070FDC1CF6E80200F03F6C /* timebank_status_done@2x.png in Resources */,
-				DD4127681CF0552F00227066 /* hire_btn_contact@3x.png in Resources */,
 				58070FDE1CF6E80200F03F6C /* timebank_status_time@2x.png in Resources */,
 				DDAB43871D05531A00FADB3E /* profile_icon_friends@2x.png in Resources */,
 				58070FAF1CF6E80200F03F6C /* timebank_filter_chat_hl@3x.png in Resources */,
@@ -3548,7 +3535,6 @@
 				DD4127581CF0552F00227066 /* bigpi_icon_coin@3x.png in Resources */,
 				DD13CDC51D00186D000A69FE /* startup_filter_design@2x.png in Resources */,
 				58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */,
-				DD4127671CF0552F00227066 /* hire_btn_contact@2x.png in Resources */,
 				DD8387D11D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.xib in Resources */,
 				DD41276C1CF0552F00227066 /* hire_company_verify@3x.png in Resources */,
 				DD4127701CF0552F00227066 /* hire_icon_job@3x.png in Resources */,
@@ -3567,7 +3553,6 @@
 				58A944B51CE32A9500DAD398 /* forgetPassword@3x.png in Resources */,
 				DDD0BDBA1CFA7A8700073290 /* PositionInforFourTableViewCell.xib in Resources */,
 				58070FBD1CF6E80200F03F6C /* timebank_filter_hot@3x.png in Resources */,
-				DD41276A1CF0552F00227066 /* hire_btn_contact_press@3x.png in Resources */,
 				DDAB43A61D055D7600FADB3E /* MineSettingTableViewCell.xib in Resources */,
 				DD13CDAE1D00186D000A69FE /* arrow@3x.png in Resources */,
 				DDCD71111D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib in Resources */,
@@ -3592,7 +3577,6 @@
 				DD41276B1CF0552F00227066 /* hire_company_verify@2x.png in Resources */,
 				58070FAE1CF6E80200F03F6C /* timebank_filter_chat_hl@2x.png in Resources */,
 				DD4127561CF0552F00227066 /* arrow@3x.png in Resources */,
-				DD4127691CF0552F00227066 /* hire_btn_contact_press@2x.png in Resources */,
 				DDAB05CC1D03B24C007A6027 /* BusinessProjectDetailTwoTableViewCell.xib in Resources */,
 				58A9448D1CE277C600DAD398 /* avatar_change@2x.png in Resources */,
 				DD0B1ED21CFEE51000C4BAB2 /* market_filter_clothing_hl@3x.png in Resources */,

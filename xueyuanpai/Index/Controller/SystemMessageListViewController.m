@@ -23,9 +23,6 @@
 
 @property (nonatomic,strong)UITableView *tableView;
 
-///消息的id
-@property (nonatomic,strong)NSString *message_id;
-
 @end
 
 @implementation SystemMessageListViewController
@@ -67,7 +64,6 @@
             for (NSDictionary * dic in [ListDic objectForKey:@"lists"] ) {
                 
                 SystemMessageListModel * model = [[SystemMessageListModel alloc]initWithDic:dic];
-                self.message_id = model.messageID;
                 [_messageListArray addObject:model];
             }
             
@@ -83,7 +79,6 @@
             [CommonUtils showToastWithStr:responseModel.responseMsg];
         }
         
-        [self requestReadMessage];
         
 
     } withFaileBlock:^(NSError *error) {
@@ -103,16 +98,28 @@
 }
 
 #pragma mark - 将消息标记为已读
-- (void)requestReadMessage{
+- (void)requestReadMessage:(NSString *)messageID{
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [paramsDic setObject:_message_id.length > 0?_message_id:@"" forKey:@"msg_id"];
+    [paramsDic setObject:messageID.length > 0?messageID:@"" forKey:@"msg_id"];
     [[HttpClient sharedInstance] setSystemMessageStatusWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
+        
+        
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+
+        
         
         
     } withFaileBlock:^(NSError *error) {
@@ -148,7 +155,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     CourierNoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     SystemMessageListModel *model = [_messageListArray objectAtIndex:indexPath.row];
     
@@ -159,6 +165,15 @@
     cell.timeLabel.text = model.messageCreateTime;
     
     return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    SystemMessageListModel * model = [_messageListArray objectAtIndex:indexPath.row];
+    [self requestReadMessage:model.messageID];
+
+    
     
 }
 

@@ -461,15 +461,23 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
+            
             [CommonUtils showToastWithStr:@"评论成功"];
+            [timeBankCommentListArr removeAllObjects];
+            
+            [self requestToCommentList];
             
             
+        
             self.commentTextField.text = @"";
             [self.commentTextField resignFirstResponder];
             
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
+        
+        [self.tableView reloadData];
+        
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];

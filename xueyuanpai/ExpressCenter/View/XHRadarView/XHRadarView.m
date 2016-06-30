@@ -14,8 +14,8 @@
 #define RADAR_DEFAULT_SECTIONS_NUM 3
 #define RADAR_DEFAULT_RADIUS 100.f
 #define RADAR_ROTATE_SPEED 60.0f
-#define INDICATOR_START_COLOR [UIColor colorWithRed:20.0/255.0 green:120.0/255.0 blue:40.0/255.0 alpha:1]
-#define INDICATOR_END_COLOR [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0]
+#define INDICATOR_START_COLOR [UIColor colorWithRed:49.0/255.0 green:39.0/255.0 blue:54.0/255.0 alpha:0.3]
+#define INDICATOR_END_COLOR [UIColor colorWithRed:49.0/255.0 green:39.0/255.0 blue:54.0/255.0 alpha:0]
 #define INDICATOR_ANGLE 240.0
 #define INDICATOR_CLOCKWISE YES
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
