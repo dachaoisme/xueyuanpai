@@ -48,8 +48,6 @@
     
     [self checkoutIsCollectionOrNot];
     
-#warning 判定是否有导师逻辑暂未处理，个人中心逻辑页面搭建完毕之后继续
-    
     
 }
 

@@ -321,38 +321,18 @@
         }
     }else{
         IndexMallModel * model  =[mallItemArray objectAtIndex:indexPath.row];
-        if ([UserAccountManager sharedInstance].isLogin==YES) {
-            GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
-            giftDetailVC.mallModel = model;
-            
-            [self.navigationController pushViewController:giftDetailVC animated:YES];
-        }else{
-            
-            LoginViewController *loginVC = [[LoginViewController alloc] init];
-            
-            [self.navigationController pushViewController:loginVC animated:YES];
-            
-        }
+        GiftDetailViewController *giftDetailVC = [[GiftDetailViewController alloc] init];
+        giftDetailVC.mallModel = model;
+        
+        [self.navigationController pushViewController:giftDetailVC animated:YES];
     }
 }
 
 #pragma mark - 查看更多积分
 -(void)getMoreIntegralMall
 {
-    
-    if ([UserAccountManager sharedInstance].isLogin==YES) {
-        
-        BigToSendViewController *bigToSendVC = [[BigToSendViewController alloc] init];
-        [self.navigationController pushViewController:bigToSendVC animated:YES];
-
-    }else{
-        
-        LoginViewController *loginVC = [[LoginViewController alloc] init];
-        
-        [self.navigationController pushViewController:loginVC animated:YES];
-        
-    }
-    
+    BigToSendViewController *bigToSendVC = [[BigToSendViewController alloc] init];
+    [self.navigationController pushViewController:bigToSendVC animated:YES];
 }
 #pragma mark - 我的
 -(void)leftItemActionWithBtn:(UIButton *)sender

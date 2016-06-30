@@ -12,6 +12,8 @@
 #import "GiftDetailStyleOneTableViewCell.h"
 #import "GiftDetailStyleTwoTableViewCell.h"
 #import "GiftExchangeViewController.h"
+
+#import "LoginViewController.h"
 #define kExchangeButtonHeight 50
 
 @interface GiftDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -89,12 +91,20 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    if (yesIsCollection==YES) {
-        [self cancelCollection];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
     }else{
-        [self addCollection];
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
-    
+
 }
 
 -(void)addCollection

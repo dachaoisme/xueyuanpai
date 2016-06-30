@@ -114,18 +114,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
-    if ([UserAccountManager sharedInstance].isLogin==YES) {
-        
-        ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc] init];
-        detailVC.model = [startCommunityArray objectAtIndex:indexPath.row];
-        [self.superViewController.navigationController pushViewController:detailVC animated:YES];
-    }else{
-        
-        LoginViewController *loginVC = [[LoginViewController alloc] init];
-        
-        [self.superViewController.navigationController pushViewController:loginVC animated:YES];
-        
-    }
+    
+    ActivityDetailViewController *detailVC = [[ActivityDetailViewController alloc] init];
+    detailVC.model = [startCommunityArray objectAtIndex:indexPath.row];
+    [self.superViewController.navigationController pushViewController:detailVC animated:YES];
 
 
     

@@ -8,6 +8,8 @@
 
 #import "GiftExchangeViewController.h"
 #import "IQUIView+IQKeyboardToolbar.h"
+
+#import "LoginViewController.h"
 @interface GiftExchangeViewController ()<UITextFieldDelegate>
 
 {
@@ -259,29 +261,43 @@
      user_id int  必需    用户序号
      number  int  必需    兑换数量     >0
      */
-    if ([[UserAccountManager sharedInstance].userUsablePoints integerValue]<[self.mallModel.indexMallPoints integerValue]) {
-        [CommonUtils showToastWithStr:@"积分不足"];
-        return;
-    }
-    if ([centerTextField.text integerValue]<=0) {
-        [CommonUtils showToastWithStr:@"您为选择份数"];
-        return;
-    }
-    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.mallModel.indexMallId forKey:@"good_id"];
-    [dic setObject:needPointValueLable.text forKey:@"points"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:centerTextField.text forKey:@"number"];
     
-    [[HttpClient sharedInstance]exchangeGiftWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        if (model.responseCode==ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"兑换成功"];
-        }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }
-    } withFaileBlock:^(NSError *error) {
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
         
-    }];
+        if ([[UserAccountManager sharedInstance].userUsablePoints integerValue]<[self.mallModel.indexMallPoints integerValue]) {
+            [CommonUtils showToastWithStr:@"积分不足"];
+            return;
+        }
+        if ([centerTextField.text integerValue]<=0) {
+            [CommonUtils showToastWithStr:@"您为选择份数"];
+            return;
+        }
+        NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+        [dic setObject:self.mallModel.indexMallId forKey:@"good_id"];
+        [dic setObject:needPointValueLable.text forKey:@"points"];
+        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+        [dic setObject:centerTextField.text forKey:@"number"];
+        
+        [[HttpClient sharedInstance]exchangeGiftWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+            if (model.responseCode==ResponseCodeSuccess) {
+                [CommonUtils showToastWithStr:@"兑换成功"];
+            }else{
+                [CommonUtils showToastWithStr:model.responseMsg];
+            }
+        } withFaileBlock:^(NSError *error) {
+            
+        }];
+
+        
+    }else{
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
+    }
+    
+    
     
     
 }

@@ -11,13 +11,20 @@
 #import "BusinessNewsDetailOneStleTableViewCell.h"
 #import "BusinessNewsDetailTwoStyleTableViewCell.h"
 
-@interface BusinessNewsDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "LoginViewController.h"
+
+
+#import "BusinessNewsDetailView.h"
+
+@interface BusinessNewsDetailViewController ()
 {
     BOOL yesIsCollection;
 
 }
 
 @property(nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
+
+@property(nonatomic,strong)BusinessNewsDetailView *detailView;
 
 
 @end
@@ -34,10 +41,19 @@
     
     [self p_setupShareButtonItem];
     
-    
-    [self createTableView];
-    
+    //检查收藏按钮状态
     [self checkoutIsCollectionOrNot];
+    
+    
+    BusinessNewsDetailView *detailView = [[BusinessNewsDetailView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAV_TOP_HEIGHT)];
+    [self.view addSubview:detailView];
+    self.detailView = detailView;
+    //刷新数据
+    [self refreshData];
+
+
+    
+    
 }
 
 #pragma mark - 设置分享按钮
@@ -62,12 +78,21 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    if (yesIsCollection==YES) {
-        [self cancelCollection];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
+        
     }else{
-        [self addCollection];
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
-    
 }
 
 -(void)addCollection
@@ -168,38 +193,7 @@
 
 
 
-#pragma mark - 创建tableView
-- (void)createTableView{
-    
-    UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
-    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    
-    //注册cell
-    [tableView registerNib:[UINib nibWithNibName:@"BusinessNewsDetailOneStleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
-    
-    //BusinessNewsDetailTwoStyleTableViewCell.h
-
-    [tableView registerNib:[UINib nibWithNibName:@"BusinessNewsDetailTwoStyleTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
-}
-
-#pragma mark - tableView代理方法
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    
-    return 2;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 1;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 1;
-}
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
@@ -295,31 +289,46 @@
     
     
 }
+ */
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+#pragma mark - 显示数据
+- (void)refreshData{
     
-//    if ([self.title isEqualToString:@"新闻详情"]) {
-//        
-//        if (indexPath.section == 1) {
-//            
-//            return <#expression#>
-//        }
-//    }else{
-//        
-//    }
+    if ([self.title isEqualToString:@"新闻详情"]) {
+        
+        [_detailView adjustSubviewsWithContent:_newsModel.businessCenterNewsContent];
+        
+        
+        _detailView.titleLabel.text =  _newsModel.businessCenterNewsTitle;
+        _detailView.authorLable.text = [NSString stringWithFormat:@"作者 %@  %@",_newsModel.businessCenterNewsAuthor,_newsModel.businessCenterNewsCreateTime];
+        
+        
+        //显示富文本的内容
+        [_detailView.webView loadHTMLString:_newsModel.businessCenterNewsContent baseURL:nil];
+        
+        
+        [_detailView.activityImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.businessCenterNewsImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+
+    }else{
+        [_detailView adjustSubviewsWithContent:_competationModel.businessCenterCompetitionContent];
+        
+        
+        _detailView.titleLabel.text =  _competationModel.businessCenterCompetitionTitle;
+        _detailView.authorLable.text = [NSString stringWithFormat:@"作者 %@  %@",_competationModel.businessCenterCompetitionAuthor,_competationModel.businessCenterCompetitionCreateTime];
+        
+        
+        //显示富文本的内容
+        [_detailView.webView loadHTMLString:_competationModel.businessCenterCompetitionContent baseURL:nil];
+        
+        
+        [_detailView.activityImageView sd_setImageWithURL:[NSURL URLWithString:_competationModel.businessCenterCompetitionImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+    }
+
     
-    return 100;
+    
 }
 
 
-//自适应撑高
-//计算字符串的frame
-- (CGFloat)textHeight:(NSString *)string{
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 10, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
-    //返回计算好的高度
-    return rect.size.height;
-    
-}
 
 
 - (void)didReceiveMemoryWarning {

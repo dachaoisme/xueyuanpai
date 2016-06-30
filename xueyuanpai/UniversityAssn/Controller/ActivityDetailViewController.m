@@ -10,6 +10,8 @@
 
 #import "ActivityDetailView.h"
 #import "HotActivityModel.h"
+
+#import "LoginViewController.h"
 @interface ActivityDetailViewController ()
 {
     ///是否收藏
@@ -76,12 +78,25 @@
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
     
-    //活动详情收藏按钮接口
-    if (yesIsCollection==YES) {
-        [self cancelCollection];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        //活动详情收藏按钮接口
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
+
+
     }else{
-        [self addCollection];
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
+
+    
     
 }
 -(void)addCollection

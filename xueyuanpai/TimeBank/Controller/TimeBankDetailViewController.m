@@ -11,6 +11,8 @@
 #import "TimeBankDetailTwoStyleTableViewCell.h"
 #import "TimeBankDetailThreeTableViewCell.h"
 
+#import "LoginViewController.h"
+
 @interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TimeBankDetailOneStyleTableViewCellDelegate,TimeBankDetailTwoStyleTableViewCellDelegate,UITextFieldDelegate>
 {
     TimeBankDetailModel * detailModel;
@@ -149,12 +151,21 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    if (yesIsCollection==YES) {
-        [self cancelCollection];
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
+        
     }else{
-        [self addCollection];
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
-    
 }
 
 -(void)addCollection

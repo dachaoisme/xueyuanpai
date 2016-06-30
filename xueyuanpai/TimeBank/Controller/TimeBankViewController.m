@@ -344,22 +344,11 @@
 
     TimeBankModel * model = [timeBankModelListArr objectAtIndex:indexPath.row];
     
-    if ([UserAccountManager sharedInstance].isLogin==YES) {
-        
-        //点击进入时间银行详情
-        TimeBankDetailViewController *detailVC = [[TimeBankDetailViewController alloc] init];
-        detailVC.timeBankId = model.timeBankId;
-        [self.navigationController pushViewController:detailVC animated:YES];
-        
-
-    }else{
-        
-        LoginViewController *loginVC = [[LoginViewController alloc] init];
-        
-        [self.navigationController pushViewController:loginVC animated:YES];
-        
-    }
-
+    
+    //点击进入时间银行详情
+    TimeBankDetailViewController *detailVC = [[TimeBankDetailViewController alloc] init];
+    detailVC.timeBankId = model.timeBankId;
+    [self.navigationController pushViewController:detailVC animated:YES];
     
     
 }

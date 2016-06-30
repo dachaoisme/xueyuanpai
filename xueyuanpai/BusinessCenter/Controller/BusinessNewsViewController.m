@@ -94,26 +94,18 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     
-    if ([UserAccountManager sharedInstance].isLogin==YES) {
-        
-        //创业新闻
-        BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
-        
-        detailVC.title = @"新闻详情";
-        BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
-        
-        detailVC.newsModel = model;
-        
-        
-        [self.navigationController pushViewController:detailVC animated:YES];
+    
+    //创业新闻
+    BusinessNewsDetailViewController *detailVC = [[BusinessNewsDetailViewController alloc] init];
+    
+    detailVC.title = @"新闻详情";
+    BusinessCenterNewsModel * model = [businessCenterModelListArr objectAtIndex:indexPath.row];
+    
+    detailVC.newsModel = model;
+    
+    
+    [self.navigationController pushViewController:detailVC animated:YES];
 
-    }else{
-        
-        LoginViewController *loginVC = [[LoginViewController alloc] init];
-        
-        [self.navigationController pushViewController:loginVC animated:YES];
-        
-    }
 
     
 

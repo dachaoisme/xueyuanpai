@@ -14,6 +14,8 @@
 
 #import "PositionInforViewController.h"
 #import "ComponeyInforViewController.h"
+
+#import "LoginViewController.h"
 @interface RecruitmentDetailViewController ()<UniversityAssnHeaderViewDelegate>
 {
     ///请求数据的model类
@@ -52,10 +54,10 @@
     [self createHeadView];
     
     
-    [self p_setupShareButtonItem];
+//    [self p_setupShareButtonItem];
     
     
-    [self checkoutIsCollectionOrNot];
+//    [self checkoutIsCollectionOrNot];
     
 }
 
@@ -82,9 +84,30 @@
 {
 //    [CommonUtils showToastWithStr:@"收藏"];
     
-    if (yesIsCollection==YES) {
-        return;
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
+        
+    }else{
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
+
+}
+
+- (void)cancelCollection{
+    
+}
+
+- (void)addCollection{
+    
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:self.jobId forKey:@"obj_id"];
@@ -103,7 +126,10 @@
     } withFaileBlock:^(NSError *error) {
         
     }];
+
+    
 }
+
 -(void)checkoutIsCollectionOrNot
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];

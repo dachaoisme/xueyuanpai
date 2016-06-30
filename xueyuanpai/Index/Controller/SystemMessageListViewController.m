@@ -38,7 +38,7 @@
     pageSize = 10;
 
     
-    self.title = @"快递通知";
+    self.title = @"系统通知";
     
     [self createLeftBackNavBtn];
     
@@ -93,9 +93,6 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
     }];
-
-    
-    
     
 }
 

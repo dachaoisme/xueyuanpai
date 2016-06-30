@@ -12,6 +12,7 @@
 #import "JobMarkDetailTwoStyleTableViewCell.h"
 
 #import "UILabel+VerticalAlign.h"
+#import "LoginViewController.h"
 
 
 @interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate,JobMarkDetailTwoStyleTableViewCellDelegate>
@@ -79,10 +80,21 @@
 #pragma mark - 收藏按钮
 - (void)didClickFavoriteButtonItemAction:(UIBarButtonItem *)buttonItem
 {
-    if (yesIsCollection==YES) {
-        [self cancelCollection];
+    
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        if (yesIsCollection==YES) {
+            [self cancelCollection];
+        }else{
+            [self addCollection];
+        }
+        
     }else{
-        [self addCollection];
+        
+        LoginViewController *loginVC = [[LoginViewController alloc] init];
+        
+        [self.navigationController pushViewController:loginVC animated:YES];
+        
     }
     
 }
