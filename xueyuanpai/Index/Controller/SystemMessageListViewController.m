@@ -107,8 +107,6 @@
     [paramsDic setObject:messageID.length > 0?messageID:@"" forKey:@"msg_id"];
     [[HttpClient sharedInstance] setSystemMessageStatusWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
-        
-        
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
         if (model.responseCode == ResponseCodeSuccess) {

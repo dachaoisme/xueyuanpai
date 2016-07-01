@@ -14,6 +14,20 @@
 #import "CustomIOS7AlertView.h"
 #import "EMSDK.h"
 
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+
+//微信SDK头文件
+#import "WXApi.h"
+
+//新浪微博SDK头文件
+#import "WeiboSDK.h"
+
+
 @interface AppDelegate ()<CustomIOS7AlertViewDelegate>
 
 ///推送消息
@@ -37,6 +51,9 @@
     //环信SDK
     [self huanXinAction];
     
+    //shareSDK分享
+    [self shareContent];
+    
     [[UserAccountManager sharedInstance]getUserInfo];
     
     BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
@@ -47,6 +64,58 @@
     
 
     return YES;
+}
+
+#pragma mark - 分享
+- (void)shareContent{
+    [ShareSDK registerApp:@"147b23b109e2a"
+     
+          activePlatforms:@[@(SSDKPlatformTypeSinaWeibo),
+                            @(SSDKPlatformTypeWechat),
+                            @(SSDKPlatformTypeQQ),]
+                 onImport:^(SSDKPlatformType platformType)
+     {
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
+             case SSDKPlatformTypeSinaWeibo:
+                 [ShareSDKConnector connectWeibo:[WeiboSDK class]];
+                 break;
+             default:
+                 break;
+         }
+     }
+          onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
+     {
+         
+         switch (platformType)
+         {
+             case SSDKPlatformTypeSinaWeibo:
+                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
+                 [appInfo SSDKSetupSinaWeiboByAppKey:@"3921700954"
+                                           appSecret:@"04b48b094faeb16683c32669824ebdad"
+                                         redirectUri:@"http://www.sharesdk.cn"
+                                            authType:SSDKAuthTypeBoth];
+                 break;
+             case SSDKPlatformTypeWechat:
+                 [appInfo SSDKSetupWeChatByAppId:@"wxdc1e388c3822c80b"
+                                       appSecret:@"a393c1527aaccb95f3a4c88d6d1455f6"];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [appInfo SSDKSetupQQByAppId:@"100424468"
+                                      appKey:@"c7394704798a158208a74ab60104f0ba"
+                                    authType:SSDKAuthTypeBoth];
+                 break;
+             default:
+                 break;
+         }
+     }];
+
 }
 
 #pragma mark - 环信

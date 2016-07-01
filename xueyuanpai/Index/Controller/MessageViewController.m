@@ -12,6 +12,9 @@
 #import "PPDragDropBadgeView.h"
 
 #import "SystemMessageListViewController.h"
+#import "CourierNoticeViewController.h"
+#import "BusinessCenterMessageListViewController.h"
+#import "OnSiteMessageListViewController.h"
 
 
 @interface MessageViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -130,6 +133,27 @@
         SystemMessageListViewController *systemMessageListVC = [[SystemMessageListViewController alloc] init];
         
         [self.navigationController pushViewController:systemMessageListVC animated:YES];
+    }else if (indexPath.row == 1){
+        
+        //跳转快递消息
+        CourierNoticeViewController *courierNoticeVC = [[CourierNoticeViewController alloc] init];
+        [self.navigationController pushViewController:courierNoticeVC animated:YES];
+        
+        
+    }else if (indexPath.row == 2){
+        //跳转创业消息
+        BusinessCenterMessageListViewController *businessCenterMessageVC = [[BusinessCenterMessageListViewController alloc] init];
+        
+        [self.navigationController pushViewController:businessCenterMessageVC animated:YES];
+        
+        
+        
+    }else if (indexPath.row == 3){
+        //站内消息
+        OnSiteMessageListViewController *onsiteMessageVC = [[OnSiteMessageListViewController alloc] init];
+        [self.navigationController pushViewController:onsiteMessageVC animated:YES];
+        
+        
     }
 }
 

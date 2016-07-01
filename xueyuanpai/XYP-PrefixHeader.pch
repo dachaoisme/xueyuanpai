@@ -45,3 +45,8 @@
 ///环信
 #import "EMSDK.h"
 
+//分享
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+
+
