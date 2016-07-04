@@ -712,6 +712,18 @@
     }];
 }
 
+///快递消息或者消息通知记录
+- (void)receivedNotificationAndExpressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,pageModel,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
 #pragma mark - 消息相关
 ///系统未读消息数

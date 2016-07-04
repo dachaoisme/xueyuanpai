@@ -156,7 +156,8 @@
 #define METHOD_EXPRESS_CENTER_CANCEL_EXPRESS                      @"v1/express/cancel?"
 ///快递中心：我的发快递历史记录接口
 #define METHOD_EXPRESS_CENTER_EXPRESS_HISTORY                     @"v1/express/history?"
-
+///快递中心：快递通知列表以及消息记录
+#define METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST                @"v1/message/express?"
 
 #pragma mark - 消息
 ///系统未读消息数目
