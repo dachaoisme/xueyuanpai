@@ -106,6 +106,36 @@
 }
 
 
+#pragma mark - 将消息标记为已读
+- (void)requestReadMessage:(NSString *)messageID{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
+    [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [paramsDic setObject:messageID.length > 0?messageID:@"" forKey:@"msg_id"];
+    [[HttpClient sharedInstance] setSystemMessageStatusWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        
+        
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
