@@ -34,7 +34,7 @@
     
     self.title = @"创业消息";
     pageNum = 1;
-    pageNum = 10;
+    pageSize = 10;
     modelArray = [NSMutableArray array];
     [self createLeftBackNavBtn];
     

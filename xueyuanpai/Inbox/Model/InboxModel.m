@@ -31,3 +31,25 @@
 }
 
 @end
+
+@implementation InboxInsideMessageModel
+
+-(id)initWithDic:(NSDictionary *)dic
+{
+
+    self = [super init];
+    if (self) {
+        
+        self.inboxInsideMessageId           = [dic stringForKey:@"msg_id"];
+        self.inboxInsideMessageTitle        = [dic stringForKey:@"title"];
+        self.inboxInsideMessageMsg          = [dic stringForKey:@"msg"];
+        self.inboxInsideMessageExtra        = [dic stringForKey:@"extra"];
+        self.inboxInsideMessageIsRead       = [dic stringForKey:@"is_read"];
+        self.inboxInsideMessageCreateTime   = [dic stringForKey:@"create_at"];
+    }
+    
+    return self;
+}
+
+@end
+

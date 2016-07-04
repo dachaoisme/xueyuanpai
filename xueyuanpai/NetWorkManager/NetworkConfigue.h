@@ -169,5 +169,7 @@
 #define SYSTEM_PROGECT_MSG_LIST                                   @"v1/message/project?"
 ///消息：快递通知列表以及消息记录
 #define METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST                @"v1/message/express?"
+///消息：站内消息
+#define METHOD_EXPRESS_CENTER_INBOX_INSIDE_MESSAGE_LIST           @"v1/message/all?"
 
 #endif /* NetworkConfigue_h */
