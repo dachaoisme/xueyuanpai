@@ -64,7 +64,12 @@
     tableView.delegate = self;
     [self.view addSubview:tableView];
     
-    self.showImageHeaderView = [ParallaxHeaderView parallaxHeaderViewWithImage:[UIImage imageNamed:@"2.jpg"] forSize:CGSizeMake(tableView.frame.size.width, 200)];
+    UIImageView *imageView = [[UIImageView alloc] init];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:self.mallModel.indexMallThumbUrl] placeholderImage:[UIImage imageNamed:@"2.jpg"]];
+    
+    self.showImageHeaderView = [ParallaxHeaderView parallaxHeaderViewWithImage:imageView.image forSize:CGSizeMake(tableView.frame.size.width, 200)];
+    
+    
     [tableView setTableHeaderView:self.showImageHeaderView];
 
     
