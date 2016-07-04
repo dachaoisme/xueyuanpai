@@ -96,12 +96,20 @@
         [_timeBankStateBtn setHidden:NO];
     }else if ([model.timeBankStat intValue]== TimeBankStateAlreadyPass){
         [_timeBankStateBtn setTitle:@"已通过" forState:UIControlStateNormal];
+        
+        UIImage *image = [[UIImage imageNamed:@"disable_tag"] imageWithTintColor:[CommonUtils colorWithHex:@"00beaf"]];
+        
+        [_timeBankStateBtn setBackgroundImage:image forState:UIControlStateNormal];
         [_timeBankStateBtn setHidden:NO];
     }else if ([model.timeBankStat intValue]== TimeBankStateAlreadyOverdue){
         [_timeBankStateBtn setTitle:@"已过期" forState:UIControlStateNormal];
         [_timeBankStateBtn setHidden:NO];
     }else if ([model.timeBankStat intValue]== TimeBankStateAlreadyComplete){
         [_timeBankStateBtn setTitle:@"已完成" forState:UIControlStateNormal];
+        
+        UIImage *image = [[UIImage imageNamed:@"disable_tag"] imageWithTintColor:[CommonUtils colorWithHex:@"00beaf"]];
+        
+        [_timeBankStateBtn setBackgroundImage:image forState:UIControlStateNormal];
         [_timeBankStateBtn setHidden:NO];
     }else{
         [_timeBankStateBtn setHidden:YES];

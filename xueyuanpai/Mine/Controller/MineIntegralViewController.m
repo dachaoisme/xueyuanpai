@@ -191,7 +191,11 @@
         MinePointModel  *model = [pointModelListArr objectAtIndex:indexPath.row-1];
         cell.titleLabel.text = model.minePointMsg;
         cell.dateLabel.text = model.minePointCreateTime;
-        cell.integralLabel.text = model.minePointNumber;
+        if ([model.minePointNumber intValue] > 0) {
+            cell.integralLabel.text = [NSString stringWithFormat:@"+%@",model.minePointNumber];
+
+        }
+        cell.integralLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
         return cell;
     }
 }
@@ -227,8 +231,8 @@
             totalPoint = [responseModel.responseCommonDic stringForKey:@"exchange"];
             ///剩余积分
             remainderPoints = [responseModel.responseCommonDic stringForKey:@"integralLeft"];
-            moneyLabel.text = totalPoint;
-            integralLabel.text = remainderPoints;
+            integralLabel.text = totalPoint;
+            moneyLabel.text = remainderPoints;
             
             ///处理上拉加载更多逻辑
             if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
