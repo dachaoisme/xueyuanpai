@@ -8,10 +8,13 @@
 
 #import "TimeBankDetailThreeTableViewCell.h"
 
+
+
 @implementation TimeBankDetailThreeTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
+    
 }
 
 - (void)bindModel:(TimeBankCommentModel *)model{
@@ -26,8 +29,21 @@
     self.timeLabel.text = model.timeBankCommentCreateTime;
     
     
+}
+
+
+
+- (IBAction)replyAction:(id)sender {
+    
+    if ([_delegate respondsToSelector:@selector(replyCommentAction:)]) {
+        
+        [_delegate replyCommentAction:sender];
+    }
+    
     
 }
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

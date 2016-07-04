@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "TimeBankModel.h"
 
+@protocol TimeBankDetailThreeTableViewCellDelegate <NSObject>
+
+- (void)replyCommentAction:(id)sender;
+
+@end
+
 @interface TimeBankDetailThreeTableViewCell : UITableViewCell
 
 ///头像
@@ -23,10 +29,11 @@
 ///时间
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+///回复按钮
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
 
 
-
-
+@property (nonatomic,assign)id<TimeBankDetailThreeTableViewCellDelegate>delegate;
 
 - (void)bindModel:(TimeBankCommentModel *)model;
 

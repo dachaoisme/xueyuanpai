@@ -13,7 +13,7 @@
 
 #import "LoginViewController.h"
 
-@interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TimeBankDetailOneStyleTableViewCellDelegate,TimeBankDetailTwoStyleTableViewCellDelegate,UITextFieldDelegate>
+@interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TimeBankDetailOneStyleTableViewCellDelegate,TimeBankDetailTwoStyleTableViewCellDelegate,TimeBankDetailThreeTableViewCellDelegate,UITextFieldDelegate>
 {
     TimeBankDetailModel * detailModel;
     ///时间银行浏览次数
@@ -339,6 +339,8 @@
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
+            cell.delegate = self;
+            
             
             TimeBankCommentModel *model = [timeBankCommentListArr objectAtIndex:indexPath.row - 1];
             
@@ -417,6 +419,13 @@
         //以modal的方式来弹出
         [self presentViewController:alert animated:YES completion:^{ }];
     }
+}
+
+#pragma mark - 回复评论
+- (void)replyCommentAction:(id)sender{
+    
+    _commentView.hidden = NO;
+    [self.commentTextField becomeFirstResponder];
 }
 
 
