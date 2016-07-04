@@ -73,3 +73,28 @@
 -(id)initWithDic:(NSDictionary *)dic;
 @end
 
+#pragma mark - 发送的快递信息model
+@interface ExpressCenterReceiveMessageModel : NSObject
+/*
+ {
+ "msg_id": 3,
+ "title": "快递消息",
+ "msg": "请到学校门口取件",
+ "is_read": 0,
+ "create_at": "2016-07-01 06:08:34"
+ }
+ */
+///快件Id
+@property(nonatomic,strong)NSString *ExpressCenterReceiveMessageId;
+///快件消息title
+@property(nonatomic,strong)NSString *ExpressCenterReceiveMessageTitle;
+///快件消息消息
+@property(nonatomic,strong)NSString *ExpressCenterReceiveMessageMsg;
+///快件消息是否已读
+@property(nonatomic,assign)BOOL      yesExpressCenterReceiveMessageIsRead;
+///快件消息时间
+@property(nonatomic,strong)NSString *ExpressCenterReceiveMessageTime;
+
+
+-(id)initWithDic:(NSDictionary *)dic;
+@end

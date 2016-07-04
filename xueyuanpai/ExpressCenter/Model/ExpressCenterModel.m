@@ -64,3 +64,22 @@
 
 @end
 
+
+
+@implementation ExpressCenterReceiveMessageModel
+
+-(id)initWithDic:(NSDictionary *)dic
+{
+    self = [super init];
+    if (self) {
+        self.ExpressCenterReceiveMessageId              = [dic stringForKey:@"msg_id"];
+        self.ExpressCenterReceiveMessageTitle           = [dic stringForKey:@"title"];
+        self.ExpressCenterReceiveMessageMsg             = [dic stringForKey:@"msg"];
+        self.yesExpressCenterReceiveMessageIsRead       = [[dic stringForKey:@"is_read"] boolValue];
+        self.ExpressCenterReceiveMessageTime            = [dic stringForKey:@"create_at"];
+    }
+    return self;
+}
+
+@end
+
