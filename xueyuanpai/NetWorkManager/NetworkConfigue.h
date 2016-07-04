@@ -156,17 +156,18 @@
 #define METHOD_EXPRESS_CENTER_CANCEL_EXPRESS                      @"v1/express/cancel?"
 ///快递中心：我的发快递历史记录接口
 #define METHOD_EXPRESS_CENTER_EXPRESS_HISTORY                     @"v1/express/history?"
-///快递中心：快递通知列表以及消息记录
-#define METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST                @"v1/message/express?"
+
 
 #pragma mark - 消息
-///系统未读消息数目
+///消息：系统未读消息数目
 #define SYSTEM_MESSAGE_UNREAD_COUNT                               @"v1/message/syscnt?"
-///系统消息设置为已读
+///消息：系统消息设置为已读
 #define SYSTEM_MESSAGE_STATUES                                    @"v1/message/setread?"
-///系统消息列表
+///消息：系统消息列表
 #define SYSTEM_MESSAGE_LIST                                       @"v1/message/system?"
-
-
+///消息：创业项目消息
+#define SYSTEM_PROGECT_MSG_LIST                                   @"v1/message/project?"
+///消息：快递通知列表以及消息记录
+#define METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST                @"v1/message/express?"
 
 #endif /* NetworkConfigue_h */

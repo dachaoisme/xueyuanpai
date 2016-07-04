@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "InboxModel.h"
 @interface BusinessCenterMessageDetailViewController : BaseViewController
 
+@property(nonatomic,strong)InboxProgectModel * inboxProgectModel;
 @end

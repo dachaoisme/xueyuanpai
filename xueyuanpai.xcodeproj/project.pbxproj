@@ -87,6 +87,7 @@
 		58070FE21CF6E80200F03F6C /* toast_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F921CF6E80200F03F6C /* toast_success@2x.png */; };
 		58070FE31CF6E80200F03F6C /* toast_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F931CF6E80200F03F6C /* toast_success@3x.png */; };
 		581ABF1E1CE0DAEA00B933D7 /* IndexCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 581ABF1D1CE0DAEA00B933D7 /* IndexCollectionReusableView.m */; };
+		581AC6691D2A5B0700DAA433 /* InboxModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 581AC6681D2A5B0700DAA433 /* InboxModel.m */; };
 		582998731CDB2D66004A05FB /* v_uc_act.png in Resources */ = {isa = PBXBuildFile; fileRef = 582998721CDB2D66004A05FB /* v_uc_act.png */; };
 		5829987A1CDB4486004A05FB /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582998791CDB4486004A05FB /* MineViewController.m */; };
 		583D10291CE173100010F9D8 /* HttpCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D10281CE173100010F9D8 /* HttpCommonModel.m */; };
@@ -796,6 +797,8 @@
 		58070F931CF6E80200F03F6C /* toast_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toast_success@3x.png"; sourceTree = "<group>"; };
 		581ABF1C1CE0DAEA00B933D7 /* IndexCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexCollectionReusableView.h; sourceTree = "<group>"; };
 		581ABF1D1CE0DAEA00B933D7 /* IndexCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexCollectionReusableView.m; sourceTree = "<group>"; };
+		581AC6671D2A5B0700DAA433 /* InboxModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InboxModel.h; sourceTree = "<group>"; };
+		581AC6681D2A5B0700DAA433 /* InboxModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InboxModel.m; sourceTree = "<group>"; };
 		582998721CDB2D66004A05FB /* v_uc_act.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v_uc_act.png; sourceTree = "<group>"; };
 		582998781CDB4486004A05FB /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		582998791CDB4486004A05FB /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
@@ -1922,6 +1925,8 @@
 		5829987E1CDC3DCC004A05FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				581AC6671D2A5B0700DAA433 /* InboxModel.h */,
+				581AC6681D2A5B0700DAA433 /* InboxModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4148,6 +4153,7 @@
 				DD13CE1B1D003116000A69FE /* BusinessClassDetailViewController.m in Sources */,
 				DD13CE121D002A14000A69FE /* BusinessNewsDetailOneStleTableViewCell.m in Sources */,
 				DDAB43BD1D05802C00FADB3E /* MineFriendsViewController.m in Sources */,
+				581AC6691D2A5B0700DAA433 /* InboxModel.m in Sources */,
 				DDEB25861D1027CB00EF6CE3 /* XHRadarView.m in Sources */,
 				DDAB05FA1D0483D7007A6027 /* BusinessTeacherTableViewCell.m in Sources */,
 				DDCD705D1D05B2D1009FBE9A /* MineCollectionViewController.m in Sources */,
