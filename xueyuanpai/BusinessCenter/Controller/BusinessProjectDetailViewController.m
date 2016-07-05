@@ -593,7 +593,7 @@
 - (void)sendChatMessage:(id)sender{
    
     
-    EMError *error = [[EMClient sharedClient].contactManager addContact:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone message:@"我想加您为好友"];
+    EMError *error = [[EMClient sharedClient].contactManager addContact:@"13601394332" message:@"我想加您为好友"];
     if (!error) {
         NSLog(@"添加成功");
     }
