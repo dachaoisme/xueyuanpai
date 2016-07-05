@@ -126,4 +126,8 @@
 ///是否是后台调起
 #define APPLICATIONWILLENTERFOREGROUND @"applicationWillEnterForeground"
 
+
+///设置未读消息
+#define kUnReadMessage @"unReadMessageCount"
+
 #endif /* ConfigDefine_h */

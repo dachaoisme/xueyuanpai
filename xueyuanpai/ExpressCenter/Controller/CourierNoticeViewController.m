@@ -26,7 +26,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     
     [self theTabBarHidden:YES];
+    self.callback();
+
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

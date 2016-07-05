@@ -747,6 +747,16 @@
         failBlock(error);
     }];
 }
+///系统消息详情
+- (void)getSystemMessageDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_MESSAGE_Detail withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
 
 ///创业项目消息列表数据
 - (void)getProgectMessageListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
@@ -763,7 +773,7 @@
 ///快递消息或者消息通知记录
 - (void)receivedNotificationAndExpressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
-    [[HttpServer sharedInstance]getWithMethod:SYSTEM_PROGECT_MSG_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+    [[HttpServer sharedInstance]getWithMethod:METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         //Pages
         HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
         NSDictionary * listDic = model.responseCommonDic;
@@ -785,4 +795,17 @@
         failBlock(error);
     }];
 }
+
+
+///删除消息
+- (void)deleteMessageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_MESSAGE_Delete withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+
 @end

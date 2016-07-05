@@ -39,6 +39,14 @@
     [self requestData];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    self.callback();
+}
+
+
 - (void)createTableView{
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
@@ -86,6 +94,65 @@
     
     return 120;
 }
+
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    
+    [super setEditing:editing animated:animated];
+    
+    [self.tableView setEditing:editing animated:animated];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        if (indexPath.row < modelArray.count) {
+            
+            InboxInsideMessageModel * model = [modelArray objectAtIndex:indexPath.row];
+            
+            [self requestDeleteMessage:model.inboxInsideMessageId];
+            
+            [modelArray removeObjectAtIndex:indexPath.row];
+            
+            
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+}
+
+
+#pragma mark - 删除消息接口
+- (void)requestDeleteMessage:(NSString *)message_id{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
+    [paramsDic setObject:message_id forKey:@"msg_id"];
+    [[HttpClient sharedInstance] deleteMessageWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            [CommonUtils showToastWithStr:@"删除成功"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+    }];
+    
+    
+}
+
+
 
 #pragma mark - 请求消息列表数据
 - (void)requestData{

@@ -165,11 +165,16 @@
 #define SYSTEM_MESSAGE_STATUES                                    @"v1/message/setread?"
 ///消息：系统消息列表
 #define SYSTEM_MESSAGE_LIST                                       @"v1/message/system?"
+///消息：系统消息详情
+#define SYSTEM_MESSAGE_Detail                                     @"v1/message/usermessagedetail?"
 ///消息：创业项目消息
 #define SYSTEM_PROGECT_MSG_LIST                                   @"v1/message/project?"
 ///消息：快递通知列表以及消息记录
 #define METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST                @"v1/message/express?"
 ///消息：站内消息
 #define METHOD_EXPRESS_CENTER_INBOX_INSIDE_MESSAGE_LIST           @"v1/message/all?"
+
+///消息：删除消息
+#define SYSTEM_MESSAGE_Delete                                     @"v1/message/dell?"
 
 #endif /* NetworkConfigue_h */

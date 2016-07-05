@@ -11,6 +11,8 @@
 
 #import "SystemMessageListModel.h"
 
+#import "SystemMessageDetailViewController.h"
+
 
 @interface SystemMessageListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -42,6 +44,14 @@
     [self createTableView];
     
     [self requestSystemMessageData];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+
+    self.callback();
 }
 
 #pragma mark - 请求消息列表数据
@@ -170,14 +180,73 @@
     
     SystemMessageListModel * model = [_messageListArray objectAtIndex:indexPath.row];
     [self requestReadMessage:model.messageID];
-
     
+    SystemMessageDetailViewController *detailVC = [[SystemMessageDetailViewController alloc] init];
+    detailVC.messageID = model.messageID;
+    [self.navigationController pushViewController:detailVC animated:YES];
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 120;
+}
+
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    
+    [super setEditing:editing animated:animated];
+    
+    [self.tableView setEditing:editing animated:animated];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        if (indexPath.row < _messageListArray.count) {
+            
+            SystemMessageListModel * model = [_messageListArray objectAtIndex:indexPath.row];
+
+            [self requestDeleteMessage:model.messageID];
+            
+            [_messageListArray removeObjectAtIndex:indexPath.row];
+            
+            
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+}
+
+
+#pragma mark - 删除消息接口
+- (void)requestDeleteMessage:(NSString *)message_id{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
+    [paramsDic setObject:message_id forKey:@"msg_id"];
+    [[HttpClient sharedInstance] deleteMessageWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            [CommonUtils showToastWithStr:@"删除成功"];
+
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+    }];
+
+    
 }
 
 

@@ -10,4 +10,7 @@
 
 @interface OnSiteMessageListViewController : BaseViewController
 
+@property(nonatomic,copy)void (^callback)();
+
+
 @end

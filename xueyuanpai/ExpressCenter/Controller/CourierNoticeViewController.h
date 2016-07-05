@@ -10,4 +10,7 @@
 
 @interface CourierNoticeViewController : BaseViewController
 
+@property(nonatomic,copy)void (^callback)();
+
+
 @end

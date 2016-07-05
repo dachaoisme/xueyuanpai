@@ -10,4 +10,7 @@
 
 @interface BusinessCenterMessageListViewController : BaseViewController
 
+@property(nonatomic,copy)void (^callback)();
+
+
 @end

@@ -10,4 +10,5 @@
 
 @interface SystemMessageListViewController : BaseViewController
 
+@property(nonatomic,copy)void (^callback)();
 @end
