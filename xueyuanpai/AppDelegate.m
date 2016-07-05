@@ -28,7 +28,7 @@
 #import "WeiboSDK.h"
 
 
-@interface AppDelegate ()<CustomIOS7AlertViewDelegate>
+@interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate>
 
 ///推送消息
 @property (nonatomic,strong)NSString *message;
@@ -228,42 +228,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
 }
 
-/*!
- *  用户A发送加用户B为好友的申请，用户B会收到这个回调
- *
- *  @param aUsername   用户名
- *  @param aMessage    附属信息
- */
-- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername
-                                       message:(NSString *)aMessage{
-    
-    
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"收到来自%@的请求", aUsername] message:aMessage preferredStyle:(UIAlertControllerStyleAlert)];
-    
-    UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"好" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
-        
-        // 同意好友请求的方法
-        EMError *error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:@"8001"];
-        if (!error) {
-            NSLog(@"发送同意成功");
-        }
-    }];
-    
-    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"滚" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-        // 拒绝好友请求的方法
-        EMError *error = [[EMClient sharedClient].contactManager declineInvitationForUsername:@"8001"];
-        if (!error) {
-            NSLog(@"发送拒绝成功");
-        }
-    }];
-    
-    [alertController addAction:acceptAction];
-    [alertController addAction:rejectAction];
-    
-    [self.navController presentViewController:alertController animated:YES completion:nil];
-
-}
-
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:
 (NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
@@ -317,6 +281,108 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - 环信相关内容
+
+/*!
+ *  用户A发送加用户B为好友的申请，用户B会收到这个回调
+ *
+ *  @param aUsername   用户名
+ *  @param aMessage    附属信息
+ */
+- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername
+                                       message:(NSString *)aMessage{
+    
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"收到来自%@的请求", aUsername] message:aMessage preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"好" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
+        
+        // 同意好友请求的方法
+        EMError *error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:aUsername];
+        if (!error) {
+            NSLog(@"发送同意成功");
+        }
+    }];
+    
+    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"滚" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        // 拒绝好友请求的方法
+        EMError *error = [[EMClient sharedClient].contactManager declineInvitationForUsername:aUsername];
+        if (!error) {
+            NSLog(@"发送拒绝成功");
+        }
+    }];
+    
+    [alertController addAction:acceptAction];
+    [alertController addAction:rejectAction];
+    
+    [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
+    
+}
+
+//获取当前屏幕显示的viewcontroller
+- (UIViewController *)getCurrentVC
+{
+    UIViewController *result = nil;
+    
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    if (window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows)
+        {
+            if (tmpWin.windowLevel == UIWindowLevelNormal)
+            {
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    
+    UIView *frontView = [[window subviews] objectAtIndex:0];
+    id nextResponder = [frontView nextResponder];
+    
+    if ([nextResponder isKindOfClass:[UIViewController class]])
+        result = nextResponder;
+    else
+        result = window.rootViewController;
+    
+    return result;
+}
+
+/*!
+ @method
+ @brief 用户A发送加用户B为好友的申请，用户B同意后，用户A会收到这个回调
+ */
+- (void)didReceiveAgreedFromUsername:(NSString *)aUsername{
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@同意你添加好友", aUsername] message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
+        
+    }];
+    
+    [alertController addAction:acceptAction];
+    [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
+
+}
+
+/*!
+ @method
+ @brief 用户A发送加用户B为好友的申请，用户B拒绝后，用户A会收到这个回调
+ */
+- (void)didReceiveDeclinedFromUsername:(NSString *)aUsername{
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@拒绝了你添加好友", aUsername] message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"滚" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    [alertController addAction:rejectAction];
+    [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
+
+    
 }
 
 @end
