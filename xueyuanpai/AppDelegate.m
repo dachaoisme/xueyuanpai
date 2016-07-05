@@ -27,7 +27,6 @@
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
 
-
 @interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate>
 
 ///推送消息
@@ -376,7 +375,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@拒绝了你添加好友", aUsername] message:nil preferredStyle:(UIAlertControllerStyleAlert)];
     
-    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"滚" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
     }];
     
     [alertController addAction:rejectAction];

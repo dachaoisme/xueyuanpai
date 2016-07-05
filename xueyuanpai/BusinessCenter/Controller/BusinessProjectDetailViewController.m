@@ -23,6 +23,9 @@
 }
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
+
+
+@property(nonatomic,strong) NSArray *userlist;
 @end
 
 @implementation BusinessProjectDetailViewController
@@ -30,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.userlist = [NSArray array];
     
     //学生查看到的项目详情
     
@@ -51,6 +55,14 @@
     [self checkoutIsCollectionOrNot];
     
     
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    EMError *error = nil;
+    _userlist = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
+    if (!error) {
+        NSLog(@"获取成功 -- %@",_userlist);
+    }
 }
 
 #pragma mark - 设置分享按钮
@@ -591,13 +603,19 @@
 
 #pragma mark - 发私信
 - (void)sendChatMessage:(id)sender{
-   
     
-    EMError *error = [[EMClient sharedClient].contactManager addContact:@"13601394332" message:@"我想加您为好友"];
-    if (!error) {
-        NSLog(@"添加成功");
+    
+    if ([_userlist containsObject:@"18511870286"]) {
+        
+        NSLog(@"跳转聊天视图页面");
+        
+    }else{
+        EMError *error = [[EMClient sharedClient].contactManager addContact:@"13601394332" message:@"我想加您为好友"];
+        if (!error) {
+            NSLog(@"添加成功");
+        }
+
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {
