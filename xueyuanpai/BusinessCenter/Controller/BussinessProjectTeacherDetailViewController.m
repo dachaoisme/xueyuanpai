@@ -18,7 +18,7 @@
 #import "LoginViewController.h"
 
 
-@interface BussinessProjectTeacherDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailFiveTableViewCellDelegate>
+@interface BussinessProjectTeacherDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailTwoTableViewCellDelegate,BusinessProjectDetailFiveTableViewCellDelegate>
 {
     BusinessCenterProgectDetailModel * businessCenterProgectDetailModel;
     BOOL yesIsCollection;
@@ -299,6 +299,7 @@
                 
                 BusinessProjectDetailTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.delegate = self;
                 
                 
                 //头像
@@ -651,6 +652,19 @@
 
     
 }
+
+#pragma mark - 发私信
+- (void)sendChatMessage:(id)sender{
+    
+   
+    ///缺少消息列表界面
+    EMError *error = [[EMClient sharedClient].contactManager addContact:@"13601394332" message:@"我想加您为好友"];
+    if (!error) {
+        NSLog(@"添加成功");
+    }
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {

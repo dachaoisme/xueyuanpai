@@ -16,7 +16,7 @@
 
 #import "LoginViewController.h"
 
-@interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailTwoTableViewCellDelegate>
 {
     BusinessCenterProgectDetailModel * businessCenterProgectDetailModel;
     BOOL yesIsCollection;
@@ -247,8 +247,6 @@
     
     switch (indexPath.section) {
         case 0:{
-            
-            
             if (indexPath.row == 0) {
                 
                 BusinessProjectDetailOneTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
@@ -266,6 +264,7 @@
                 
                 BusinessProjectDetailTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.delegate = self;
 
                 
                 //头像
@@ -587,6 +586,17 @@
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
+    
+}
+
+#pragma mark - 发私信
+- (void)sendChatMessage:(id)sender{
+   
+    
+    EMError *error = [[EMClient sharedClient].contactManager addContact:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone message:@"我想加您为好友"];
+    if (!error) {
+        NSLog(@"添加成功");
+    }
     
 }
 

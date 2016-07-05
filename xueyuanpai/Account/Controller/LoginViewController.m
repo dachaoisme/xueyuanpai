@@ -266,14 +266,7 @@
             [CommonUtils showToastWithStr:@"登陆成功"];
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
             
-            //登陆的时候,先进行环信登陆判断,然后再进行密码判断
-            EMError *error = [[EMClient sharedClient] loginWithUsername:phoneTextField.text password:passwordTextField.text];
-            if (!error) {
-                
-                NSLog(@"环信登陆成功");
-
-            }
-            //环信登陆成功
+            
             [self.navigationController popViewControllerAnimated:YES];
 
 

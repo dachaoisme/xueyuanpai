@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseTabBarViewController.h"
+#import <EMClient.h>
 
 //极光推送
 static NSString *appKey = @"79dba290d82b3e915deb7a4f";
@@ -15,7 +16,7 @@ static NSString *channel = @"Publish channel";
 static BOOL isProduction = FALSE;
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,EMClientDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) BaseTabBarViewController *mainTabBar;

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol  BusinessProjectDetailTwoTableViewCellDelegate <NSObject>
+
+- (void)sendChatMessage:(id)sender;
+
+@end
+
 @interface BusinessProjectDetailTwoTableViewCell : UITableViewCell
 
 ///头像
@@ -24,5 +30,8 @@
 
 ///发送消息按钮
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageButton;
+
+
+@property (strong,nonatomic)id<BusinessProjectDetailTwoTableViewCellDelegate>delegate;
 
 @end

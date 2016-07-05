@@ -56,6 +56,10 @@
     
     [[UserAccountManager sharedInstance]getUserInfo];
     
+    
+    //注册好友回调
+    [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
+    
     BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
     _mainTabBar=mainVC;
     _window.rootViewController=mainVC;
@@ -222,6 +226,42 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 {
        [alertView close];
     
+}
+
+/*!
+ *  用户A发送加用户B为好友的申请，用户B会收到这个回调
+ *
+ *  @param aUsername   用户名
+ *  @param aMessage    附属信息
+ */
+- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername
+                                       message:(NSString *)aMessage{
+    
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"收到来自%@的请求", aUsername] message:aMessage preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"好" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
+        
+        // 同意好友请求的方法
+        EMError *error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:@"8001"];
+        if (!error) {
+            NSLog(@"发送同意成功");
+        }
+    }];
+    
+    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"滚" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        // 拒绝好友请求的方法
+        EMError *error = [[EMClient sharedClient].contactManager declineInvitationForUsername:@"8001"];
+        if (!error) {
+            NSLog(@"发送拒绝成功");
+        }
+    }];
+    
+    [alertController addAction:acceptAction];
+    [alertController addAction:rejectAction];
+    
+    [self.navController presentViewController:alertController animated:YES completion:nil];
+
 }
 
 
