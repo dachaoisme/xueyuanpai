@@ -64,7 +64,6 @@
     
     
     
-    
     BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
     _mainTabBar=mainVC;
     _window.rootViewController=mainVC;
@@ -132,7 +131,7 @@
     //AppKey:注册的AppKey，详细见下面注释。
     //apnsCertName:推送证书名（不需要加后缀），详细见下面注释。
     EMOptions *options = [EMOptions optionsWithAppkey:@"xueyuanpai2016#xueyuanpai"];
-//    options.apnsCertName = @"istore_dev";
+    options.apnsCertName = @"XueYuanPai_Push_Develop";
     [[EMClient sharedClient] initializeSDKWithOptions:options];
 }
 

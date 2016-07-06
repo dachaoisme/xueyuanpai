@@ -43,6 +43,9 @@
 @property (nonatomic) BOOL isKicked;
 @property (nonatomic) BOOL isPlayingAudio;
 
+@property (nonatomic) NSMutableDictionary *emotionDic;
+
+
 @end
 
 @implementation EaseMessageViewController
@@ -81,6 +84,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor colorWithRed:248 / 255.0 green:248 / 255.0 blue:248 / 255.0 alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     
     //初始化页面
     CGFloat chatbarHeight = [EaseChatToolbar defaultHeight];
@@ -125,10 +129,15 @@
     [[EaseChatBarMoreView appearance] setMoreViewBackgroundColor:[UIColor colorWithRed:240 / 255.0 green:242 / 255.0 blue:247 / 255.0 alpha:1.0]];
     
     [self tableViewDidTriggerHeaderRefresh];
+    
+    //设置表情列表
+    [self setupEmotion];
+
 }
 
 - (void)setupEmotion
 {
+    /*
     if ([self.dataSource respondsToSelector:@selector(emotionFormessageViewController:)]) {
         NSArray* emotionManagers = [self.dataSource emotionFormessageViewController:self];
         [self.faceView setEmotionManagers:emotionManagers];
@@ -142,6 +151,32 @@
         EaseEmotionManager *manager= [[EaseEmotionManager alloc] initWithType:EMEmotionDefault emotionRow:3 emotionCol:7 emotions:emotions tagImage:[UIImage imageNamed:emotion.emotionId]];
         [self.faceView setEmotionManagers:@[manager]];
     }
+     
+     */
+    
+    
+    NSMutableArray *emotions = [NSMutableArray array];
+    for (NSString *name in [EaseEmoji allEmoji]) {
+        EaseEmotion *emotion = [[EaseEmotion alloc] initWithName:@"" emotionId:name emotionThumbnail:name emotionOriginal:name emotionOriginalURL:@"" emotionType:EMEmotionDefault];
+        [emotions addObject:emotion];
+    }
+    EaseEmotion *temp = [emotions objectAtIndex:0];
+    EaseEmotionManager *managerDefault = [[EaseEmotionManager alloc] initWithType:EMEmotionDefault emotionRow:3 emotionCol:7 emotions:emotions tagImage:[UIImage imageNamed:temp.emotionId]];
+    
+    NSMutableArray *emotionGifs = [NSMutableArray array];
+    _emotionDic = [NSMutableDictionary dictionary];
+    NSArray *names = @[@"icon_002",@"icon_007",@"icon_010",@"icon_012",@"icon_013",@"icon_018",@"icon_019",@"icon_020",@"icon_021",@"icon_022",@"icon_024",@"icon_027",@"icon_029",@"icon_030",@"icon_035",@"icon_040"];
+    int index = 0;
+    for (NSString *name in names) {
+        index++;
+        EaseEmotion *emotion = [[EaseEmotion alloc] initWithName:[NSString stringWithFormat:@"[示例%d]",index] emotionId:[NSString stringWithFormat:@"em%d",(1000 + index)] emotionThumbnail:[NSString stringWithFormat:@"%@_cover",name] emotionOriginal:[NSString stringWithFormat:@"%@",name] emotionOriginalURL:@"" emotionType:EMEmotionGif];
+        [emotionGifs addObject:emotion];
+        [_emotionDic setObject:emotion forKey:[NSString stringWithFormat:@"em%d",(1000 + index)]];
+    }
+    EaseEmotionManager *managerGif= [[EaseEmotionManager alloc] initWithType:EMEmotionGif emotionRow:2 emotionCol:4 emotions:emotionGifs tagImage:[UIImage imageNamed:@"icon_002_cover"]];
+    [self.faceView setEmotionManagers:@[managerDefault,managerGif]];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -1814,6 +1849,8 @@
         }
     }
 }
+
+
 
 
 @end

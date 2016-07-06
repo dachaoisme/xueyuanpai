@@ -67,8 +67,8 @@
     if (_showRefreshHeader != showRefreshHeader) {
         _showRefreshHeader = showRefreshHeader;
         if (_showRefreshHeader) {
-//            __weak EaseRefreshTableViewController *weakSelf = self;
-//            self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            __weak EaseRefreshTableViewController *weakSelf = self;
+//            self.tableView.header = [mj headerWithRefreshingBlock:^{
 //                [weakSelf tableViewDidTriggerHeaderRefresh];
 //                [weakSelf.tableView.header beginRefreshing];
 //            }];

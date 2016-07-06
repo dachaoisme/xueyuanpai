@@ -281,7 +281,7 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
  @param viewController 当前消息视图
  @result
  */
-- (NSArray*)emotionFormessageViewController:(EaseMessageViewController *)viewController;
+//- (NSArray*)emotionFormessageViewController:(EaseMessageViewController *)viewController;
 
 /*!
  @method

@@ -361,7 +361,7 @@
     
     if ([self.title isEqualToString:@"新闻详情"]) {
         
-        [_detailView adjustSubviewsWithContent:_newsModel.businessCenterNewsContent];
+//        [_detailView adjustSubviewsWithContent:_newsModel.businessCenterNewsContent];
         
         
         _detailView.titleLabel.text =  _newsModel.businessCenterNewsTitle;
@@ -375,7 +375,7 @@
         [_detailView.activityImageView sd_setImageWithURL:[NSURL URLWithString:_newsModel.businessCenterNewsImage] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
 
     }else{
-        [_detailView adjustSubviewsWithContent:_competationModel.businessCenterCompetitionContent];
+//        [_detailView adjustSubviewsWithContent:_competationModel.businessCenterCompetitionContent];
         
         
         _detailView.titleLabel.text =  _competationModel.businessCenterCompetitionTitle;

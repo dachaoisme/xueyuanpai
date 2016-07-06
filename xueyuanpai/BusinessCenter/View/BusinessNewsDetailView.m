@@ -37,10 +37,16 @@
 - (void)p_setupSubviews
 {
     //scrollView
-    UIScrollView *bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.bounds.size.height)];
+//    UIScrollView *bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.bounds.size.height)];
+//    //    _bottomScrollView.backgroundColor = [UIColor cyanColor];
+//    [self addSubview:bottomScrollView];
+//    self.bottomScrollView = bottomScrollView;
+    
+    
+    UIView *bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.bounds.size.height)];
     //    _bottomScrollView.backgroundColor = [UIColor cyanColor];
     [self addSubview:bottomScrollView];
-    self.bottomScrollView = bottomScrollView;
+//    self.bottomScrollView = bottomScrollView;
     
     //标题
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, SCREEN_WIDTH - 20, 60)];
@@ -60,21 +66,24 @@
     self.authorLable = authorLable;
     
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(authorLable.frame) + 20, [[UIScreen mainScreen] bounds].size.width - 30, 100)];
+    //图片
+    UIImageView *activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(authorLable.frame), SCREEN_WIDTH - 30, 130)];
+    activityImageView.image = [UIImage imageNamed:@"placeHoder.png"];
+    [bottomScrollView addSubview:activityImageView];
+    self.activityImageView = activityImageView;
+    
+    
+    
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(activityImageView.frame) + 20, [[UIScreen mainScreen] bounds].size.width - 30, SCREEN_HEIGHT - TopHeight)];
     webView.scrollView.backgroundColor = [UIColor whiteColor];
     webView.backgroundColor = [UIColor whiteColor];
     [bottomScrollView addSubview:webView];
-    webView.scrollView.scrollEnabled = NO;
+    webView.scrollView.scrollEnabled = YES;
     self.webView = webView;
     
     
     
-    //图片
-    UIImageView *activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(webView.frame), SCREEN_WIDTH - 30, 130)];
-    activityImageView.image = [UIImage imageNamed:@"placeHoder.png"];
-    [_bottomScrollView addSubview:activityImageView];
-    self.activityImageView = activityImageView;
-    
+   
     
 }
 
