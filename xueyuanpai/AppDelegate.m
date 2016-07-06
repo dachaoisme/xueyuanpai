@@ -27,6 +27,9 @@
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
 
+//#import "EaseUI.h"
+
+
 @interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate>
 
 ///推送消息
@@ -58,6 +61,9 @@
     
     //注册好友回调
     [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
+    
+    
+    
     
     BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
     _mainTabBar=mainVC;

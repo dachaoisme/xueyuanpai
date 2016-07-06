@@ -16,6 +16,8 @@
 
 #import "LoginViewController.h"
 
+//#import "EaseUI.h"
+
 @interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailTwoTableViewCellDelegate>
 {
     BusinessCenterProgectDetailModel * businessCenterProgectDetailModel;
@@ -605,9 +607,12 @@
 - (void)sendChatMessage:(id)sender{
     
     
-    if ([_userlist containsObject:@"18511870286"]) {
+    if ([_userlist containsObject:@"13601394332"]) {
         
         NSLog(@"跳转聊天视图页面");
+        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"18511870286" conversationType:EMConversationTypeChat];
+        
+        [self.navigationController pushViewController:chatController animated:YES];
         
     }else{
         EMError *error = [[EMClient sharedClient].contactManager addContact:@"13601394332" message:@"我想加您为好友"];

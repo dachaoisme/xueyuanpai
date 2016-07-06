@@ -175,6 +175,6 @@
 #define METHOD_EXPRESS_CENTER_INBOX_INSIDE_MESSAGE_LIST           @"v1/message/all?"
 
 ///消息：删除消息
-#define SYSTEM_MESSAGE_Delete                                     @"v1/message/dell?"
+#define SYSTEM_MESSAGE_Delete                                     @"v1/message/del?"
 
 #endif /* NetworkConfigue_h */
