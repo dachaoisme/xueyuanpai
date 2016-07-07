@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol  TopUpTwoTableViewCellDelegate <NSObject>
+
+- (void)payStyleAction:(id)sender;
+
+@end
+
 @interface TopUpTwoTableViewCell : UITableViewCell
 
 ///支付图片
@@ -18,6 +24,9 @@
 
 ///支付状态按钮
 @property (weak, nonatomic) IBOutlet UIButton *payStatusButton;
+
+
+@property (assign,nonatomic)id<TopUpTwoTableViewCellDelegate>delegate;
 
 
 

@@ -14,6 +14,16 @@
     // Initialization code
 }
 
+#pragma mark - 支付方式
+- (IBAction)payStatusAction:(id)sender {
+    
+    if ([_delegate respondsToSelector:@selector(payStyleAction:)]) {
+        
+        [_delegate payStyleAction:sender];
+    }
+}
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

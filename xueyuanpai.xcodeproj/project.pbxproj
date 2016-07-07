@@ -716,7 +716,7 @@
 		DDB28E941D2CF787004C8F70 /* icon_035_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E741D2CF787004C8F70 /* icon_035_cover.png */; };
 		DDB28E951D2CF787004C8F70 /* icon_040.gif in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E751D2CF787004C8F70 /* icon_040.gif */; };
 		DDB28E961D2CF787004C8F70 /* icon_040_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E761D2CF787004C8F70 /* icon_040_cover.png */; };
-		DDB28F691D2DE9CD004C8F70 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB28F681D2DE9CD004C8F70 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DDB28F6E1D2E259B004C8F70 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB28F6B1D2E259B004C8F70 /* libWeChatSDK.a */; };
 		DDB67AD01D266FC6009049A8 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB67ACF1D266FC6009049A8 /* share.png */; };
 		DDCD705A1D05AE09009FBE9A /* MineBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70591D05AE09009FBE9A /* MineBankViewController.m */; };
 		DDCD705D1D05B2D1009FBE9A /* MineCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD705C1D05B2D1009FBE9A /* MineCollectionViewController.m */; };
@@ -1880,8 +1880,9 @@
 		DDB28E741D2CF787004C8F70 /* icon_035_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_035_cover.png; sourceTree = "<group>"; };
 		DDB28E751D2CF787004C8F70 /* icon_040.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = icon_040.gif; sourceTree = "<group>"; };
 		DDB28E761D2CF787004C8F70 /* icon_040_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_040_cover.png; sourceTree = "<group>"; };
-		DDB28F671D2DE9CD004C8F70 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		DDB28F681D2DE9CD004C8F70 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		DDB28F6B1D2E259B004C8F70 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		DDB28F6C1D2E259B004C8F70 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		DDB28F6D1D2E259B004C8F70 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		DDB67ACF1D266FC6009049A8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		DDCD70581D05AE09009FBE9A /* MineBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineBankViewController.h; sourceTree = "<group>"; };
 		DDCD70591D05AE09009FBE9A /* MineBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineBankViewController.m; sourceTree = "<group>"; };
@@ -2078,6 +2079,7 @@
 				DD48B75B1D10F94300E012E4 /* Security.framework in Frameworks */,
 				DDB28DEB1D2C8A7E004C8F70 /* libopencore-amrwb.a in Frameworks */,
 				DD48B7591D10F93A00E012E4 /* UIKit.framework in Frameworks */,
+				DDB28F6E1D2E259B004C8F70 /* libWeChatSDK.a in Frameworks */,
 				DD48B7571D10F93100E012E4 /* Foundation.framework in Frameworks */,
 				DD48B7551D10F92500E012E4 /* CoreGraphics.framework in Frameworks */,
 				DD48B7531D10F91600E012E4 /* SystemConfiguration.framework in Frameworks */,
@@ -2985,8 +2987,7 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
-				DDB28F671D2DE9CD004C8F70 /* JSONKit.h */,
-				DDB28F681D2DE9CD004C8F70 /* JSONKit.m */,
+				DDB28F6A1D2E259B004C8F70 /* SDKExport */,
 				DDB28CB91D2C8A7E004C8F70 /* EaseUI */,
 				DDAC26AC1D26649100B7EAB7 /* ShareSDK */,
 				589DD4D61D1AB957007B4311 /* BannerLunBoView */,
@@ -4191,6 +4192,16 @@
 			path = DirectMessages;
 			sourceTree = "<group>";
 		};
+		DDB28F6A1D2E259B004C8F70 /* SDKExport */ = {
+			isa = PBXGroup;
+			children = (
+				DDB28F6B1D2E259B004C8F70 /* libWeChatSDK.a */,
+				DDB28F6C1D2E259B004C8F70 /* WXApi.h */,
+				DDB28F6D1D2E259B004C8F70 /* WXApiObject.h */,
+			);
+			path = SDKExport;
+			sourceTree = "<group>";
+		};
 		DDCD70911D06B684009FBE9A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -5347,7 +5358,6 @@
 				DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				DDAB05C11D03A747007A6027 /* BusinessProjectDetailViewController.m in Sources */,
-				DDB28F691D2DE9CD004C8F70 /* JSONKit.m in Sources */,
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
 				DDCD71011D092D8F009FBE9A /* AddProjectLeaderViewController.m in Sources */,
 				DDB28E171D2C8A7E004C8F70 /* UIImageView+EMHighlightedWebCache.m in Sources */,
@@ -5540,6 +5550,7 @@
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/SDKExport",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
@@ -5576,6 +5587,7 @@
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/SDKExport",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";

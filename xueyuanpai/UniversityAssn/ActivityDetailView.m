@@ -8,7 +8,7 @@
 
 #import "ActivityDetailView.h"
 
-#define TopHeight  300
+#define TopHeight  430
 
 @interface ActivityDetailView ()
 
@@ -41,8 +41,14 @@
     [self addSubview:bottomScrollView];
     self.bottomScrollView = bottomScrollView;
     
+    //UIImageView
+    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150)];
+    [bottomScrollView addSubview:headImageView];
+    self.activityImageView = headImageView;
+    
+    
     //标题
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, SCREEN_WIDTH - 20, 60)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(headImageView.frame) + 10, SCREEN_WIDTH - 20, 60)];
     titleLabel.text = @"情暖人间，人家打的的设计费呢";
     titleLabel.numberOfLines = 0;
     titleLabel.textColor = [CommonUtils colorWithHex:@"333333"];
@@ -114,7 +120,7 @@
 - (void)adjustSubviewsWithContent:(NSString *)content
 {
     //计算活动内容的高度
-    CGRect contentRect = [content boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 20, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13.0]} context:nil];
+    CGRect contentRect = [content boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 20, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0]} context:nil];
     
     CGFloat height = TopHeight+contentRect.size.height;
     

@@ -671,6 +671,19 @@
         failBlock(error);
     }];
 }
+
+
+///个人中心-微信支付
+- (void)weiXinPayWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
+    
+    [[HttpServer sharedInstance]getWithMethod:WEIXIN_PAY_STYLE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+
 #pragma mark - 收藏相关
 ///添加收藏
 - (void)addCollectionWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock

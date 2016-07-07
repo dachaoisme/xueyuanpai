@@ -228,6 +228,7 @@
     [_detailView adjustSubviewsWithContent:_model.content];
     
     
+    [_detailView.activityImageView sd_setImageWithURL:[NSURL URLWithString:_model.logoUrl] placeholderImage:[UIImage imageNamed:@"placeHoder.png"]];
     _detailView.titleLabel.text = _model.title;
     _detailView.authorLable.text = [NSString stringWithFormat:@"作者 %@  %@",_model.author,_model.createTime];
     

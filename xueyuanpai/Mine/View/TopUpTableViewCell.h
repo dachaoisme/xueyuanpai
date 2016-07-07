@@ -10,6 +10,10 @@
 
 @interface TopUpTableViewCell : UITableViewCell
 
+///输入框
+@property (weak, nonatomic) IBOutlet UITextField *inputTextField;
+
+
 ///标题
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 

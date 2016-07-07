@@ -16,6 +16,9 @@
 #define baseBackgroundUrlType1 @"http://114.215.111.210/"
 #define baseBackgroundUrlType2 @"http://114.215.111.210/backend/web/"
 
+///支付地址
+#define WeiXinPayStyleUrl   @"http://114.215.111.210/api/web/test/weixin"
+
 #pragma mark - 首页相关
 ///轮播图
 #define METHOD_OF_BANNER    @"v1/focus/index?"
@@ -147,6 +150,9 @@
 
 ///个人中心：关于我们
 #define METHOD_MINE_ABOUT_US                                @"v1/aboutus/index?"
+
+///个人中心：微信支付
+#define WEIXIN_PAY_STYLE                                    @"test/weixin?"
 
 ///收藏相关-添加收藏
 #define METHOD_COLLECTION_ADD                                 @"v1/mark/add?"

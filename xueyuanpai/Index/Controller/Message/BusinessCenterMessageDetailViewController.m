@@ -8,8 +8,6 @@
 
 #import "BusinessCenterMessageDetailViewController.h"
 
-#import "JSONKit.h"
-
 @interface BusinessCenterMessageDetailViewController ()
 
 @end

@@ -54,6 +54,12 @@
 #import <ShareSDKUI/ShareSDK+SSUI.h>
 
 
+//微信支付相关
+#import "WXApi.h"
+
+
+
+
 #import "EaseUI.h"
 
 #endif /* XYP_PrefixHeader_pch */

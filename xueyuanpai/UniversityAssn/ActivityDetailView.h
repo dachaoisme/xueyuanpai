@@ -32,6 +32,9 @@
 @property (nonatomic,strong)UIWebView *webView;
 
 
+@property (nonatomic,strong)UIImageView *activityImageView;
+
+
 
 
 //根据活动内容调整scrollView和contextLabel的高度

@@ -12,7 +12,7 @@
 #import "TopUpTwoTableViewCell.h"
 
 
-@interface WithdrawalViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface WithdrawalViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TopUpTwoTableViewCellDelegate>
 
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -95,7 +95,8 @@
     if (indexPath.section == 0) {
         
         TopUpTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-        cell.titleLabel.text = @"充值金额";
+        cell.titleLabel.text = @"提现金额";
+        cell.inputTextField.delegate = self;
         
         return cell;
         
@@ -104,8 +105,10 @@
         if (indexPath.row == 0) {
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-            cell.textLabel.text = @"支付方式";
+            cell.textLabel.text = @"提现到";
             cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             cell.textLabel.textColor = [UIColor lightGrayColor];
             
@@ -114,6 +117,9 @@
             
         }else if(indexPath.row == 1){
             TopUpTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+            cell.delegate = self;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             
             cell.payImageView.image = [UIImage imageNamed:@"acount_icon_wechat"];
             cell.payWay.text = @"微信支付";
@@ -122,7 +128,9 @@
             return cell;
         }else {
             TopUpTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+            cell.delegate = self;
             cell.payImageView.image = [UIImage imageNamed:@"acount_icon_alipay"];
             cell.payWay.text = @"支付宝支付";
             [cell.payStatusButton setBackgroundImage:[UIImage imageNamed:@"pay_checkbox_empty"] forState:UIControlStateNormal];
@@ -149,6 +157,32 @@
         
         return 48;
     }
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+
+#pragma mark - 支付响应的方法
+- (void)payStyleAction:(id)sender{
+    
+    UIButton *button=(UIButton *)sender;
+    [button setSelected:!button.selected];
+    
+    if (button.selected) {
+        [button setImage:[[UIImage imageNamed:@"pay_checkbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal]; //被勾选中的图片
+    }else {
+        
+        [button setImage:[[UIImage imageNamed:@"pay_checkbox_empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];　//未被勾选中的图片
+    }
+    
+    
+    
 }
 
 

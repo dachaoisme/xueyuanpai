@@ -30,7 +30,7 @@
 //#import "EaseUI.h"
 
 
-@interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate>
+@interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate,WXApiDelegate>
 
 ///推送消息
 @property (nonatomic,strong)NSString *message;
@@ -63,6 +63,10 @@
     [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
     
     
+    //微信支付
+    [WXApi registerApp:@"wx31cb0dc3d4e9d04f" withDescription:@"学院派"];
+    
+
     
     BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
     _mainTabBar=mainVC;
@@ -389,5 +393,35 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
     
 }
+
+
+#pragma mark - 支付相关内容
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+- (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+- (void)onResp:(BaseResp *)resp
+{
+    if ([resp isKindOfClass:[PayResp class]]) {
+        
+        NSString *strTitle = [NSString stringWithFormat:@"支付结果"];
+        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
+                                                        message:strMsg
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        
+    }
+}
+
 
 @end

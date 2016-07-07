@@ -43,13 +43,22 @@
 //    self.bottomScrollView = bottomScrollView;
     
     
+
+    
     UIView *bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.bounds.size.height)];
     //    _bottomScrollView.backgroundColor = [UIColor cyanColor];
     [self addSubview:bottomScrollView];
 //    self.bottomScrollView = bottomScrollView;
     
+    //图片
+    UIImageView *activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 130)];
+    activityImageView.image = [UIImage imageNamed:@"placeHoder.png"];
+    [bottomScrollView addSubview:activityImageView];
+    self.activityImageView = activityImageView;
+
+    
     //标题
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, SCREEN_WIDTH - 20, 60)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(activityImageView.frame) + 10, SCREEN_WIDTH - 20, 60)];
     titleLabel.text = @"情暖人间，人家打的的设计费呢";
     titleLabel.numberOfLines = 0;
     titleLabel.textColor = [CommonUtils colorWithHex:@"333333"];
@@ -66,15 +75,10 @@
     self.authorLable = authorLable;
     
     
-    //图片
-    UIImageView *activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(authorLable.frame), SCREEN_WIDTH - 30, 130)];
-    activityImageView.image = [UIImage imageNamed:@"placeHoder.png"];
-    [bottomScrollView addSubview:activityImageView];
-    self.activityImageView = activityImageView;
     
     
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(activityImageView.frame) + 20, [[UIScreen mainScreen] bounds].size.width - 30, SCREEN_HEIGHT - TopHeight)];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(authorLable.frame) + 20, [[UIScreen mainScreen] bounds].size.width - 30, SCREEN_HEIGHT - TopHeight)];
     webView.scrollView.backgroundColor = [UIColor whiteColor];
     webView.backgroundColor = [UIColor whiteColor];
     [bottomScrollView addSubview:webView];

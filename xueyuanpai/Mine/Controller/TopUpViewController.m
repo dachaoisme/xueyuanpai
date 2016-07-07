@@ -11,9 +11,13 @@
 #import "TopUpTableViewCell.h"
 #import "TopUpTwoTableViewCell.h"
 
-@interface TopUpViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+
+@interface TopUpViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TopUpTwoTableViewCellDelegate>
 @property (nonatomic,strong)UITableView *tableView;
+
+///充值金额
+@property (nonatomic,strong)NSString *topUpMoney;
 
 
 @end
@@ -73,7 +77,94 @@
 
 #pragma mark - 充值
 - (void)topUpAction{
-    [CommonUtils showToastWithStr:@"充值"];
+//    [CommonUtils showToastWithStr:@"充值"];
+    
+    /*
+     参数:
+     title 标题
+     order_sn 订单号
+     total_fee  费用
+     body 内容
+     */
+    
+    
+    /*
+     {
+     "appid": "wx31cb0dc3d4e9d04f",
+     "sign": "CBC8ED76DAE175945BD70A1BF0D8A93D",
+     "partnerid": "1359503002",
+     "prepayid": "wx20160707172745e8325a4b3c0344570306",
+     "package": "Sign=WXPay",
+     "timestamp": 1467883665,
+     "noncestr": "XmKA5GTCV3e7KihHRWgTHqrjdwT3nD",
+     "total_fee": 1
+     }
+     */
+    
+    
+    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@?total_fee=%@",WeiXinPayStyleUrl,_topUpMoney];
+    
+    NSLog(@"--- GetAccessTokenUrl: %@", getAccessTokenUrl);
+    NSURLRequest *reuqest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:getAccessTokenUrl]];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    [NSURLConnection sendAsynchronousRequest:reuqest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        if (!connectionError) {
+            
+
+            //得到接口返回的字典数据
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            
+            //处理微信回调数据
+            PayReq *request = [[PayReq alloc] init];
+            request.partnerId = [dic objectForKey:@"partnerid"];
+            request.prepayId= [dic objectForKey:@"prepayid"];
+            request.package = [dic objectForKey:@"package"];
+            request.nonceStr= [dic objectForKey:@"noncestr"];
+            request.timeStamp= [[dic objectForKey:@"timestamp"] intValue];
+            request.sign= [dic objectForKey:@"sign"];
+            [WXApi sendReq:request];
+            
+            
+            
+        }else{
+            [CommonUtils showToastWithStr:@"请求失败"];
+        }
+        
+        
+    }];
+
+    
+    
+    /*
+    [[HttpClient sharedInstance]weiXinPayWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        
+//        if (model.responseCode ==ResponseCodeSuccess) {
+//            ///请求成功
+//            //
+//            
+//            
+//            
+//            
+//        }else{
+//            ///反馈失败
+//            [CommonUtils showToastWithStr:model.responseMsg];
+//        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+
+        
+    }];
+     */
+
+    
+    
 }
 
 #pragma mark - tableView代理方法
@@ -97,6 +188,8 @@
     if (indexPath.section == 0) {
         
         TopUpTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+        cell.titleLabel.text = @"提现金额";
+        cell.inputTextField.delegate = self;
         
         
         return cell;
@@ -106,7 +199,8 @@
         if (indexPath.row == 0) {
             
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-            cell.textLabel.text = @"提现到";
+            cell.textLabel.text = @"支付方式";
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.font = [UIFont systemFontOfSize:14];
             
             cell.textLabel.textColor = [UIColor lightGrayColor];
@@ -116,33 +210,29 @@
             
         }else if(indexPath.row == 1){
             TopUpTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.payImageView.image = [UIImage imageNamed:@"acount_icon_wechat"];
             cell.payWay.text = @"微信支付";
-            [cell.payStatusButton setBackgroundImage:[UIImage imageNamed:@"pay_checkbox"] forState:UIControlStateNormal];
-            
+            cell.payWay.tag = 100;
+            [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            cell.delegate = self;
             return cell;
         }else {
             TopUpTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.payImageView.image = [UIImage imageNamed:@"acount_icon_alipay"];
             cell.payWay.text = @"支付宝支付";
-            [cell.payStatusButton setBackgroundImage:[UIImage imageNamed:@"pay_checkbox_empty"] forState:UIControlStateNormal];
+            cell.payWay.tag = 101;
+            cell.delegate = self;
+            [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox_empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
             
-
             
             return cell;
         }
 
         
     }
-    
-    
-    
-    
-    
 }
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.row == 0) {
@@ -154,9 +244,34 @@
 }
 
 
+#pragma mark - 支付响应的方法
+- (void)payStyleAction:(id)sender{
+    
+    UIButton *button=(UIButton *)sender;
+    [button setSelected:!button.selected];
+    
+    if (button.selected) {
+        [button setImage:[[UIImage imageNamed:@"pay_checkbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal]; //被勾选中的图片
+    }else {
+        
+        [button setImage:[[UIImage imageNamed:@"pay_checkbox_empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];　//未被勾选中的图片
+    }
+    
+    
+    
+}
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
 
-
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    self.topUpMoney = textField.text;
+}
 
 
 

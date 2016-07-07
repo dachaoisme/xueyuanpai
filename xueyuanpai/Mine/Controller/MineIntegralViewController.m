@@ -70,6 +70,10 @@
     [tableView registerClass:[MineIntegralTableViewCell class] forCellReuseIdentifier:@"oneCell"];
     [tableView registerNib:[UINib nibWithNibName:@"MineIntegralTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     [self createTableViewHeaderView];
+    
+    
+    [tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+
 }
 
 - (void)createTableViewHeaderView{
