@@ -607,17 +607,19 @@
 - (void)sendChatMessage:(id)sender{
     
     
-    if ([_userlist containsObject:@"13601394332"]) {
+    if ([_userlist containsObject:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone]) {
         
         NSLog(@"跳转聊天视图页面");
-        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"18511870286" conversationType:EMConversationTypeChat];
+        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:[UserAccountManager sharedInstance].userMobile conversationType:EMConversationTypeChat];
         
         [self.navigationController pushViewController:chatController animated:YES];
         
     }else{
-        EMError *error = [[EMClient sharedClient].contactManager addContact:@"13601394332" message:@"我想加您为好友"];
+        EMError *error = [[EMClient sharedClient].contactManager addContact:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone message:@"我想加您为好友"];
         if (!error) {
             NSLog(@"添加成功");
+            
+            [CommonUtils showToastWithStr:@"好友申请已发出，请耐心等候回复" WithTime:2];
         }
 
     }

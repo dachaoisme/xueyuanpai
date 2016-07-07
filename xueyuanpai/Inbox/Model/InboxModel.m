@@ -53,3 +53,25 @@
 
 @end
 
+@implementation TimeBankMessageModel
+
+-(id)initWithDic:(NSDictionary *)dic
+{
+    
+    self = [super init];
+    if (self) {
+        
+        self.timeBankMessageId           = [dic stringForKey:@"msg_id"];
+        self.timeBankMessageTitle        = [dic stringForKey:@"title"];
+        self.timeBankMessageMsg          = [dic stringForKey:@"msg"];
+        self.timeBankMessageExtra        = [dic stringForKey:@"extra"];
+        self.timeBankMessageIsRead       = [dic stringForKey:@"is_read"];
+        self.timeBankMessageCreateTime   = [dic stringForKey:@"create_at"];
+    }
+    
+    return self;
+}
+
+
+@end
+

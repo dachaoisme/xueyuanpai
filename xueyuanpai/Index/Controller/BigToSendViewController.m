@@ -43,7 +43,7 @@
     UIButton *rightItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightItemButton setTitle:[UserAccountManager sharedInstance].userUsablePoints forState:UIControlStateNormal];
     [rightItemButton setImage:[UIImage imageNamed:@"bigpi_icon_coin"] forState:UIControlStateNormal];
-    rightItemButton.frame     = CGRectMake(0, 0, 40, 40);
+    rightItemButton.frame     = CGRectMake(0, 0, 60, 40);
 
     [rightItemButton setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
     

@@ -496,6 +496,7 @@
 		DD8B99D61D2148C200A0C862 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8B99D51D2148C200A0C862 /* libc++.tbd */; };
 		DD8B99D81D2148DD00A0C862 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8B99D71D2148DD00A0C862 /* libstdc++.6.0.9.tbd */; };
 		DD8B99DA1D2148EF00A0C862 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DD8B99D91D2148EF00A0C862 /* libsqlite3.tbd */; };
+		DD8F59BB1D2DB2AB004C0827 /* TimeBankMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F59BA1D2DB2AB004C0827 /* TimeBankMessageListViewController.m */; };
 		DDAB058E1D01AF18007A6027 /* BusinessProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */; };
 		DDAB05911D01BF6A007A6027 /* BusinessCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */; };
 		DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB059E1D01D252007A6027 /* BusinessTeacherDetailViewController.m */; };
@@ -715,6 +716,7 @@
 		DDB28E941D2CF787004C8F70 /* icon_035_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E741D2CF787004C8F70 /* icon_035_cover.png */; };
 		DDB28E951D2CF787004C8F70 /* icon_040.gif in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E751D2CF787004C8F70 /* icon_040.gif */; };
 		DDB28E961D2CF787004C8F70 /* icon_040_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E761D2CF787004C8F70 /* icon_040_cover.png */; };
+		DDB28F691D2DE9CD004C8F70 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB28F681D2DE9CD004C8F70 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DDB67AD01D266FC6009049A8 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB67ACF1D266FC6009049A8 /* share.png */; };
 		DDCD705A1D05AE09009FBE9A /* MineBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70591D05AE09009FBE9A /* MineBankViewController.m */; };
 		DDCD705D1D05B2D1009FBE9A /* MineCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD705C1D05B2D1009FBE9A /* MineCollectionViewController.m */; };
@@ -1496,6 +1498,8 @@
 		DD8B99D51D2148C200A0C862 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		DD8B99D71D2148DD00A0C862 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		DD8B99D91D2148EF00A0C862 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		DD8F59B91D2DB2AB004C0827 /* TimeBankMessageListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankMessageListViewController.h; sourceTree = "<group>"; };
+		DD8F59BA1D2DB2AB004C0827 /* TimeBankMessageListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankMessageListViewController.m; sourceTree = "<group>"; };
 		DDAB058C1D01AF18007A6027 /* BusinessProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessProjectViewController.h; sourceTree = "<group>"; };
 		DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessProjectViewController.m; sourceTree = "<group>"; };
 		DDAB058F1D01BF6A007A6027 /* BusinessCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterViewController.h; sourceTree = "<group>"; };
@@ -1876,6 +1880,8 @@
 		DDB28E741D2CF787004C8F70 /* icon_035_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_035_cover.png; sourceTree = "<group>"; };
 		DDB28E751D2CF787004C8F70 /* icon_040.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = icon_040.gif; sourceTree = "<group>"; };
 		DDB28E761D2CF787004C8F70 /* icon_040_cover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_040_cover.png; sourceTree = "<group>"; };
+		DDB28F671D2DE9CD004C8F70 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		DDB28F681D2DE9CD004C8F70 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		DDB67ACF1D266FC6009049A8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		DDCD70581D05AE09009FBE9A /* MineBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineBankViewController.h; sourceTree = "<group>"; };
 		DDCD70591D05AE09009FBE9A /* MineBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineBankViewController.m; sourceTree = "<group>"; };
@@ -2979,6 +2985,8 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				DDB28F671D2DE9CD004C8F70 /* JSONKit.h */,
+				DDB28F681D2DE9CD004C8F70 /* JSONKit.m */,
 				DDB28CB91D2C8A7E004C8F70 /* EaseUI */,
 				DDAC26AC1D26649100B7EAB7 /* ShareSDK */,
 				589DD4D61D1AB957007B4311 /* BannerLunBoView */,
@@ -3566,6 +3574,8 @@
 				DDAC26A41D26189D00B7EAB7 /* BusinessCenterMessageDetailViewController.m */,
 				DDAC26A91D2659A100B7EAB7 /* OnSiteMessageListViewController.h */,
 				DDAC26AA1D2659A100B7EAB7 /* OnSiteMessageListViewController.m */,
+				DD8F59B91D2DB2AB004C0827 /* TimeBankMessageListViewController.h */,
+				DD8F59BA1D2DB2AB004C0827 /* TimeBankMessageListViewController.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -5282,6 +5292,7 @@
 				58C27AAD1CE20ABC0036D105 /* IndexMallModel.m in Sources */,
 				DD0B1E3D1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m in Sources */,
 				DDAB05A41D01D429007A6027 /* BusinessTeacherOneTableViewCell.m in Sources */,
+				DD8F59BB1D2DB2AB004C0827 /* TimeBankMessageListViewController.m in Sources */,
 				DDCD70861D06A509009FBE9A /* WithdrawalViewController.m in Sources */,
 				DDAB43AD1D05659200FADB3E /* AboutUsTableViewCell.m in Sources */,
 				DDB28E2F1D2C8A7E004C8F70 /* UIViewController+DismissKeyboard.m in Sources */,
@@ -5336,6 +5347,7 @@
 				DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				DDAB05C11D03A747007A6027 /* BusinessProjectDetailViewController.m in Sources */,
+				DDB28F691D2DE9CD004C8F70 /* JSONKit.m in Sources */,
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
 				DDCD71011D092D8F009FBE9A /* AddProjectLeaderViewController.m in Sources */,
 				DDB28E171D2C8A7E004C8F70 /* UIImageView+EMHighlightedWebCache.m in Sources */,

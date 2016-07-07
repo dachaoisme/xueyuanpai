@@ -19,6 +19,14 @@
     self.sendMessageButton.layer.cornerRadius = 5;
 }
 
+- (IBAction)sendMessageAction:(id)sender {
+    
+    if ([_delegate respondsToSelector:@selector(sendMessage:)]) {
+        [_delegate sendMessage:sender];
+    }
+}
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

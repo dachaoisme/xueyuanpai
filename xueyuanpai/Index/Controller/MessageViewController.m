@@ -15,6 +15,7 @@
 #import "CourierNoticeViewController.h"
 #import "BusinessCenterMessageListViewController.h"
 #import "OnSiteMessageListViewController.h"
+#import "TimeBankMessageListViewController.h"
 
 
 @interface MessageViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -87,7 +88,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -155,7 +156,24 @@
 
 
         
+    }else if (indexPath.row == 4) {
+        cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_mail"];
+        cell.contentLabel.text = @"时间银行消息";
+        
+        if ([self.onSiteMessageCount intValue] > 0) {
+            //设置消息数目的
+            cell.badgeView.text = [NSString stringWithFormat:@"%@", self.onSiteMessageCount];
+            
+        }else{
+            
+            cell.badgeView.hidden = YES;
+        }
+        
+        
+        
+        
     }
+
 
     return cell;
 }
@@ -214,6 +232,18 @@
 
         [self.navigationController pushViewController:onsiteMessageVC animated:YES];
         
+        
+    }else if (indexPath.row == 4){
+        
+        //跳转时间银行消息
+        TimeBankMessageListViewController *timeBankMessageVC = [[TimeBankMessageListViewController alloc] init];
+        timeBankMessageVC.callback = ^(){
+            self.onSiteMessageCount = @"0";
+            [tableView reloadData];
+            
+            
+        };
+        [self.navigationController pushViewController:timeBankMessageVC animated:YES];
         
     }
 }

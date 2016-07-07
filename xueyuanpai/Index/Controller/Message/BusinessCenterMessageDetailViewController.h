@@ -11,4 +11,7 @@
 @interface BusinessCenterMessageDetailViewController : BaseViewController
 
 @property(nonatomic,strong)InboxProgectModel * inboxProgectModel;
+
+
+@property(nonatomic,strong)TimeBankMessageModel *timeBankMessageModel;
 @end

@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/BaseViewController.m"
-            timestampString = "489407167.259509"
+            filePath = "xueyuanpai/AppDelegate.m"
+            timestampString = "489545370.337525"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "-leftItemActionWithBtn:"
+            startingLineNumber = "368"
+            endingLineNumber = "368"
+            landmarkName = "-didReceiveAgreedFromUsername:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,62 +83,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/BusinessCenter/Controller/BusinessProjectDetailViewController.m"
-            timestampString = "489499870.516277"
+            filePath = "xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
+            timestampString = "489555920.104144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "613"
-            endingLineNumber = "613"
-            landmarkName = "-sendChatMessage:"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "-requestTimeBankRefuseAction"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/BusinessCenter/Controller/BusinessProjectDetailViewController.m"
-            timestampString = "489499872.454628"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
-            landmarkName = "-sendChatMessage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/ThirdPart/EaseUI/EMUIKit/ViewController/EaseUsersListViewController.m"
-            timestampString = "489499943.099794"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/MineViewController.m"
-            timestampString = "489500210.765745"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BusinessCenterMessageDetailViewController requestTimeBankRefuseAction]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuanyuan/Desktop/%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
+                  timestampString = "489556491.953246"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "878">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__72-[BusinessCenterMessageDetailViewController requestTimeBankRefuseAction]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuanyuan/Desktop/%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
+                  timestampString = "489556491.953528"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

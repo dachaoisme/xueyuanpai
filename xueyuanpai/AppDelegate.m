@@ -365,6 +365,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
     UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
         
+        [[self getCurrentVC] dismissViewControllerAnimated:alertController completion:nil];
     }];
     
     [alertController addAction:acceptAction];

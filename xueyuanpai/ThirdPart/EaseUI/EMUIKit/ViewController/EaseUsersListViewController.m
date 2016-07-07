@@ -37,7 +37,41 @@
     // Do any additional setup after loading the view.
     
     [self tableViewDidTriggerHeaderRefresh];
+    
+    self.title = @"我的好友列表";
+    
+    [self createLeftBackNavBtn];
 }
+
+- (void)createLeftBackNavBtn
+{
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:[UIImage imageNamed:@"nav_icon_back"] forState:UIControlStateNormal];
+    //[button setTitle:@"返回" forState:UIControlStateNormal];
+    [button setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
+    [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(doNavEventBack:) forControlEvents:UIControlEventTouchUpInside];
+    button.frame = CGRectMake(20, 0, 65, 44);
+    
+    //    UILabel *la = [[UILabel alloc] initWithFrame:CGRectMake(12, 7, 35, 30)];
+    //    la.text = @"返回";
+    //    la.textColor = [UIColor whiteColor];
+    //    la.font = [UIFont systemFontOfSize:15];
+    //    [button addSubview:la];
+    
+    UIBarButtonItem * menuButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = menuButton;
+}
+
+- (void)doNavEventBack:(id)sender
+{
+    NSArray * arr = self.navigationController.childViewControllers;
+    if (arr && [arr count] > 1) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

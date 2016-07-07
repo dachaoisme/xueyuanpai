@@ -13,7 +13,7 @@
 
 #import "LoginViewController.h"
 
-@interface BusinessTeacherDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface BusinessTeacherDetailViewController ()<UITableViewDataSource,UITableViewDelegate,BusinessTeacherOneTableViewCellDelegate>
 {
     BusinessCenterTutorDetailModel *tutorDetailModel;
     BOOL yesIsCollection;
@@ -21,6 +21,9 @@
 @property(nonatomic,strong)UITableView *tableView;
 
 @property (nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
+
+@property(nonatomic,strong) NSArray *userlist;
+
 @end
 
 @implementation BusinessTeacherDetailViewController
@@ -29,6 +32,13 @@
 {
     [super viewWillAppear:animated];
     [self theTabBarHidden:YES];
+    
+    EMError *error = nil;
+    _userlist = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
+    if (!error) {
+        NSLog(@"获取成功 -- %@",_userlist);
+    }
+
 }
 
 
@@ -264,6 +274,7 @@
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:tutorDetailModel.businessCenterTutorDetailImage] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
         
         cell.nameLabel.text =  tutorDetailModel.businessCenterTutorDetailRealName;
+        cell.delegate = self;
         
         cell.jobLabel.text = tutorDetailModel.businessCenterTutorDetailJob;
         
@@ -396,6 +407,29 @@
     }];
     
 }
+
+
+#pragma mark - 发私信
+- (void)sendMessage:(id)sender{
+    
+    if ([_userlist containsObject:tutorDetailModel.businessCenterTutorDetailTelephone]) {
+        
+        NSLog(@"跳转聊天视图页面");
+        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:[UserAccountManager sharedInstance].userMobile conversationType:EMConversationTypeChat];
+        
+        [self.navigationController pushViewController:chatController animated:YES];
+        
+    }else{
+        EMError *error = [[EMClient sharedClient].contactManager addContact:tutorDetailModel.businessCenterTutorDetailTelephone message:@"我想加您为好友"];
+        if (!error) {
+            NSLog(@"添加成功");
+            
+            [CommonUtils showToastWithStr:@"好友申请已发出，请耐心等候回复" WithTime:2];
+        }
+        
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

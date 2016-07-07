@@ -52,3 +52,31 @@
 
 -(id)initWithDic:(NSDictionary *)dic;
 @end
+
+///时间银行消息
+@interface TimeBankMessageModel : NSObject
+
+/*
+ {
+ "msg_id": 9,
+ "title": "正在申请赴约北大湖边散步",
+ "msg": "123123",
+ "extra": "\"{\\\"apply_user_id\\\":\\\"11\\\",\\\"tb_id\\\":\\\"24\\\"}\"",
+ "is_read": 0,
+ "create_at": "2016-07-02 03:31:29"
+ },
+ */
+
+@property(nonatomic,strong)NSString *timeBankMessageId;
+@property(nonatomic,strong)NSString *timeBankMessageTitle;
+@property(nonatomic,strong)NSString *timeBankMessageMsg;
+@property(nonatomic,strong)NSString *timeBankMessageExtra;
+@property(nonatomic,strong)NSString *timeBankMessageIsRead;
+@property(nonatomic,strong)NSString *timeBankMessageCreateTime;
+
+-(id)initWithDic:(NSDictionary *)dic;
+
+
+
+
+@end

@@ -27,6 +27,10 @@
 @property(nonatomic,strong)UIBarButtonItem * favoriteButtonItem;
 
 
+@property(nonatomic,strong) NSArray *userlist;
+
+
+
 @end
 
 @implementation BussinessProjectTeacherDetailViewController
@@ -254,8 +258,34 @@
 #pragma mark - 申领项目按钮响应方法
 - (void)applyProject{
     
-    [CommonUtils showToastWithStr:@"申领项目"];
+//    [CommonUtils showToastWithStr:@"申领项目"];
+    
+    [self requestToApply];
 }
+
+#pragma mark - 申领项目
+-(void)requestToApply
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:_projectId forKey:@"project_id"];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]businessCenterApplyProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        ///获取查询条件
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            [CommonUtils showToastWithStr:@"申领项目成功"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+    
+}
+
 
 #pragma mark - tableView的代理方法
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -653,15 +683,35 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    EMError *error = nil;
+    _userlist = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
+    if (!error) {
+        NSLog(@"获取成功 -- %@",_userlist);
+    }
+}
+
+
 #pragma mark - 发私信
 - (void)sendChatMessage:(id)sender{
     
-   
-    ///缺少消息列表界面
-    EMError *error = [[EMClient sharedClient].contactManager addContact:@"13601394332" message:@"我想加您为好友"];
-    if (!error) {
-        NSLog(@"添加成功");
+    if ([_userlist containsObject:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone]) {
+        
+        NSLog(@"跳转聊天视图页面");
+        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:[UserAccountManager sharedInstance].userMobile conversationType:EMConversationTypeChat];
+        
+        [self.navigationController pushViewController:chatController animated:YES];
+        
+    }else{
+        EMError *error = [[EMClient sharedClient].contactManager addContact:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone message:@"我想加您为好友"];
+        if (!error) {
+            NSLog(@"添加成功");
+            
+            [CommonUtils showToastWithStr:@"好友申请已发出，请耐心等候回复" WithTime:2];
+        }
+        
     }
+
     
 }
 

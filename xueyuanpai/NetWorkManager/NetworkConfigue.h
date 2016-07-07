@@ -11,10 +11,10 @@
 
 #pragma mark - 服务器地址相关
 ///api的地址
-#define baseApiUrl        @"http://123.56.27.124/api/web/"
+#define baseApiUrl        @"http://114.215.111.210/api/web/"
 ///后台管理系统图片的地址
-#define baseBackgroundUrlType1 @"http://123.56.27.124"
-#define baseBackgroundUrlType2 @"http://123.56.27.124/backend/web/"
+#define baseBackgroundUrlType1 @"http://114.215.111.210/"
+#define baseBackgroundUrlType2 @"http://114.215.111.210/backend/web/"
 
 #pragma mark - 首页相关
 ///轮播图
@@ -74,7 +74,10 @@
 ///时间银行:申请赴约接口
 #define METHOD_TIME_BANK_APPLY_APPOINTMENT    @"v1/timebank/apply?"
 ///时间银行:申领通过接口
-#define METHOD_TIME_BANK_APPLY_PASS           @"v1/timebank/verified/"
+#define METHOD_TIME_BANK_APPLY_PASS           @"v1/timebank/verified/?"
+///时间银行：申领拒绝接口
+#define METHOD_TIME_BANK_APPLY_REFUSED        @"v1/timebank/reject/?"
+
 ///时间银行:详情接口
 #define METHOD_TIME_BANK_APPLY_DETAIL         @"v1/timebank/detail?"
 ///时间银行:增加浏览数接口
@@ -118,6 +121,14 @@
 #define METHOD_BUSINESS_CENTER_PROGECT_DETAIL                  @"v1/project/detail?"
 ///创业中心:添加创业项目
 #define METHOD_BUSINESS_CENTER_PROGECT_CREATE                  @"v1/project/create?"
+///创业项目：申领接口
+#define METHOD_BUSINESS_CENTER_APPLY_APPOINTMENT               @"v1/project/apply/?"
+///创业项目:申领通过接口
+#define METHOD_BUSINESS_CENTER_APPLY_PASS                      @"v1/project/verified/?"
+///创业项目：申领拒绝接口
+#define METHOD_BUSINESS_CENTER_REFUSED                         @"v1/project/reject/?"
+
+
 
 ///个人中心:我的项目
 #define METHOD_MINE_PROGECT_LIST                               @"v1/my/project?"
@@ -173,6 +184,8 @@
 #define METHOD_EXPRESS_CENTER_EXPRESS_RECEIVE_LIST                @"v1/message/express?"
 ///消息：站内消息
 #define METHOD_EXPRESS_CENTER_INBOX_INSIDE_MESSAGE_LIST           @"v1/message/all?"
+///消息：时间银行申请与拒绝
+#define METHOD_EXPRESS_CENTER_TIME_BANK_MESSAGE_LIST              @"v1/message/timebank?"
 
 ///消息：删除消息
 #define SYSTEM_MESSAGE_Delete                                     @"v1/message/del?"

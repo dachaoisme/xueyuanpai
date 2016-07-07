@@ -1,38 +1,36 @@
 //
-//  BusinessCenterMessageListViewController.m
+//  TimeBankMessageListViewController.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/7/1.
+//  Created by 王园园 on 16/7/7.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BusinessCenterMessageListViewController.h"
+#import "TimeBankMessageListViewController.h"
 #import "CourierNoticeTableViewCell.h"
 #import "InboxModel.h"
 #import "BusinessCenterMessageDetailViewController.h"
 
 
-@interface BusinessCenterMessageListViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+@interface TimeBankMessageListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     int pageSize;
     int pageNum;
     NSMutableArray * modelArray;
 }
-
 @property (nonatomic,strong)UITableView *tableView;
-
-
 
 @end
 
-@implementation BusinessCenterMessageListViewController
+@implementation TimeBankMessageListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"创业消息";
+    self.title = @"站内消息";
+    [self createLeftBackNavBtn];
+    
     pageNum = 1;
     pageSize = 10;
     modelArray = [NSMutableArray array];
@@ -41,7 +39,6 @@
     [self createTableView];
     
     [self requestData];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -77,29 +74,31 @@
     
     CourierNoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    InboxProgectModel *model = [modelArray objectAtIndex:indexPath.row];
+    TimeBankMessageModel *model = [modelArray objectAtIndex:indexPath.row];
     cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_xueyuanpai"];
-    cell.contentLable.text = model.inboxProgectMessageMsg;
-    cell.timeLabel.text = model.inboxProgectMessageCreateTime;
+    cell.contentLable.text = model.timeBankMessageMsg;
+    cell.timeLabel.text = model.timeBankMessageCreateTime;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
+    
     BusinessCenterMessageDetailViewController *messageDetailVC = [[BusinessCenterMessageDetailViewController alloc] init];
-    InboxProgectModel * model = [modelArray objectAtIndex:indexPath.row];
-    messageDetailVC.inboxProgectModel = model;
-    messageDetailVC.title =  @"创业项目申领";
-    [self.navigationController pushViewController:messageDetailVC animated:YES];
+    TimeBankMessageModel * model = [modelArray objectAtIndex:indexPath.row];
 
+    messageDetailVC.title = @"时间银行申请";
+    messageDetailVC.timeBankMessageModel =model;
+    [self.navigationController pushViewController:messageDetailVC animated:YES];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 120;
 }
+
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated{
     
@@ -114,9 +113,9 @@
         
         if (indexPath.row < modelArray.count) {
             
-            InboxProgectModel * model = [modelArray objectAtIndex:indexPath.row];
+            TimeBankMessageModel * model = [modelArray objectAtIndex:indexPath.row];
             
-            [self requestDeleteMessage:model.inboxProgectMessageId];
+            [self requestDeleteMessage:model.timeBankMessageId];
             
             [modelArray removeObjectAtIndex:indexPath.row];
             
@@ -169,7 +168,7 @@
     [paramsDic setValue:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     
     
-    [[HttpClient sharedInstance] getProgectMessageListWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+    [[HttpClient sharedInstance] getTimeBankMessageListWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [self.tableView.footer endRefreshing];
         
@@ -178,7 +177,7 @@
             
             for (NSDictionary * dic in [ListDic objectForKey:@"lists"] ) {
                 
-                InboxProgectModel * model = [[InboxProgectModel alloc]initWithDic:dic];
+                TimeBankMessageModel * model = [[TimeBankMessageModel alloc]initWithDic:dic];
                 [modelArray addObject:model];
             }
             ///处理上拉加载更多逻辑
@@ -204,42 +203,6 @@
 {
     pageNum = pageNum+1;
     [self requestData];
-}
-
-
-
-
-
-
-#pragma mark - 将消息标记为已读
-- (void)requestReadMessage:(NSString *)messageID{
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
-    [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [paramsDic setObject:messageID.length > 0?messageID:@"" forKey:@"msg_id"];
-    [[HttpClient sharedInstance] setSystemMessageStatusWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        
-        if (model.responseCode == ResponseCodeSuccess) {
-            
-            
-            
-        }else{
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }
-        
-        
-        
-        
-    } withFaileBlock:^(NSError *error) {
-        
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        
-    }];
-    
 }
 
 

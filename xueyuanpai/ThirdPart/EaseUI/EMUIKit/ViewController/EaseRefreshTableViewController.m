@@ -68,10 +68,11 @@
         _showRefreshHeader = showRefreshHeader;
         if (_showRefreshHeader) {
             __weak EaseRefreshTableViewController *weakSelf = self;
-//            self.tableView.header = [mj headerWithRefreshingBlock:^{
-//                [weakSelf tableViewDidTriggerHeaderRefresh];
-//                [weakSelf.tableView.header beginRefreshing];
-//            }];
+            [self.tableView addLegendHeaderWithRefreshingBlock:^{
+                [weakSelf tableViewDidTriggerHeaderRefresh];
+                [weakSelf.tableView.header beginRefreshing];
+            }];
+            
 //                        header.updatedTimeHidden = YES;
         }
         else{
@@ -85,11 +86,12 @@
     if (_showRefreshFooter != showRefreshFooter) {
         _showRefreshFooter = showRefreshFooter;
         if (_showRefreshFooter) {
-//            __weak EaseRefreshTableViewController *weakSelf = self;
-//            self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-//                [weakSelf tableViewDidTriggerFooterRefresh];
-//                [weakSelf.tableView.mj_footer beginRefreshing];
-//            }];
+            __weak EaseRefreshTableViewController *weakSelf = self;
+            [self.tableView addLegendFooterWithRefreshingBlock:^{
+                [weakSelf tableViewDidTriggerFooterRefresh];
+                [weakSelf.tableView.footer beginRefreshing];
+            }];
+            
         }
         else{
             //            [self.tableView removeFooter];
@@ -201,7 +203,7 @@
             [weakSelf.tableView.header endRefreshing];
         }
         else{
-            [weakSelf.tableView.header endRefreshing];
+            [weakSelf.tableView.footer endRefreshing];
         }
     });
 }

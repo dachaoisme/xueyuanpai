@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BusinessTeacherOneTableViewCellDelegate <NSObject>
+
+- (void)sendMessage:(id)sender;
+
+@end
+
 @interface BusinessTeacherOneTableViewCell : UITableViewCell
 
 ///头像
@@ -21,6 +27,9 @@
 
 ///发私信按钮
 @property (weak, nonatomic) IBOutlet UIButton *sendMessageButton;
+
+
+@property (assign,nonatomic)id<BusinessTeacherOneTableViewCellDelegate>delegate;
 
 
 @end
