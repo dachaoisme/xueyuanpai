@@ -1,33 +1,37 @@
 //
-//  BindPhoneViewController.m
-//  xueyuanpai
+//  BindPhoneLastViewController.m
+//  kuaidiyuan
 //
-//  Created by 王园园 on 16/6/6.
+//  Created by 王园园 on 16/6/19.
 //  Copyright © 2016年 lidachao. All rights reserved.
 //
 
-#import "BindPhoneViewController.h"
-
 #import "BindPhoneLastViewController.h"
 
-@interface BindPhoneViewController ()<UITextFieldDelegate>
+@interface BindPhoneLastViewController ()<UITextFieldDelegate>
+
 {
     NSInteger    timerCount;
     NSTimer     *sendTimer;
     UIButton    *sendMessageBtn;
     
-    CollegeModel * theCollegeModel;
-    
-    UITextField *coderTextField;
 }
+
+
+
+///新手机号输入框
+@property (nonatomic,strong)UITextField *phoneTextField;
+
+///验证码输入框
+@property (nonatomic,strong) UITextField *coderTextField;
+
 @end
 
-@implementation BindPhoneViewController
+@implementation BindPhoneLastViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     
@@ -42,22 +46,25 @@
 - (void)bindPhoneView{
     
     
-    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + 10, SCREEN_WIDTH, 97)];
+    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT + 10, SCREEN_WIDTH, 90)];
     
     backGroundView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:backGroundView];
     
     
     UILabel *bindLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 60, 20)];
-    bindLabel.text = @"已绑定";
+    bindLabel.text = @"新手机号";
     bindLabel.font = [UIFont systemFontOfSize:14];
     [backGroundView addSubview:bindLabel];
     
     
-    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(bindLabel.frame), 10, 100, 20)];
-    phoneLabel.text = [UserAccountManager sharedInstance].userMobile;
-    phoneLabel.font = [UIFont systemFontOfSize:14];
-    [backGroundView addSubview:phoneLabel];
+    //新手机号输入框
+    UITextField *phoneTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(bindLabel.frame), 10, 100, 20)];
+    phoneTextField.placeholder = @"请输入";
+    phoneTextField.returnKeyType = UIReturnKeyDone;
+    phoneTextField.font = [UIFont systemFontOfSize:14];
+    [backGroundView addSubview:phoneTextField];
+    self.phoneTextField = phoneTextField;
     
     
     //发送验证码
@@ -66,25 +73,32 @@
     [sendMessageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
     sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [sendMessageBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
-    [sendMessageBtn addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
+    [sendMessageBtn addTarget:self action:@selector(sendMessageAction) forControlEvents:UIControlEventTouchUpInside];
     [backGroundView addSubview:sendMessageBtn];
     
     
     
-    UILabel *codeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(phoneLabel.frame) + 20, 60, 20)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(phoneTextField.frame) + 12, SCREEN_WIDTH, 1)];
+    lineView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [backGroundView addSubview:lineView];
+    
+    
+    
+    UILabel *codeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(phoneTextField.frame) + 26, 60, 20)];
     codeLabel.text = @"验证码";
     codeLabel.font = [UIFont systemFontOfSize:14];
     [backGroundView addSubview:codeLabel];
     
     
-    coderTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame), CGRectGetMaxY(phoneLabel.frame) + 20, 100, 20)];
-    coderTextField.returnKeyType = UIReturnKeyDone;
-    coderTextField.delegate = self;
+    UITextField *coderTextField = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(codeLabel.frame), CGRectGetMaxY(phoneTextField.frame) + 26, 100, 20)];
     coderTextField.placeholder = @"请输入";
+    coderTextField.returnKeyType = UIReturnKeyDone;
     coderTextField.font = [UIFont systemFontOfSize:14];
     [backGroundView addSubview:coderTextField];
-
-
+    self.coderTextField = coderTextField;
+    
+    
+    
     
     //确定按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -96,19 +110,27 @@
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [self.view addSubview:button];
-
     
+    
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - 发送验证码
--(void)sendmessage:(UIButton *)sender
-{
+- (void)sendMessageAction{
     
-    NSString * phoneNum = [UserAccountManager sharedInstance].userMobile;
-    
+    //    [CommonUtils showToastWithStr:@"发送短信验证码"];
+    NSString * phoneNum = _phoneTextField.text;
+
+    if (!(phoneNum.length==11 && [CommonUtils checkPhoneNumIsAvailableWithPhoneNumString:phoneNum])) {
+        [CommonUtils showToastWithStr:@"请输入有效手机号"];
+        return;
+    }
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:phoneNum forKey:@"mobile"];
-
     [[HttpClient sharedInstance]registerOfSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode == ResponseCodeSuccess) {
@@ -122,53 +144,10 @@
     } withFaileBlock:^(NSError *error) {
         
         
-    }];
-    
-    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    
-    return YES;
-}
-
-#pragma mark - 确定按钮的响应方法
-- (void)makeSureAction{
-    
-//    [CommonUtils showToastWithStr:@"确定"];
-    
-    
-    NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    NSString * phoneNum = [UserAccountManager sharedInstance].userMobile;
-    
-    [params setObject:phoneNum forKey:@"mobile"];
-    [params setObject:coderTextField.text forKey:@"code"];
-    
-    [[HttpClient sharedInstance] checkSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
-        
-        if (model.responseCode == ResponseCodeSuccess) {
-            
-            
-            //跳转输入新手机号页面
-            BindPhoneLastViewController *bindPhoneLastVC = [[BindPhoneLastViewController alloc] init];
-            [self.navigationController pushViewController:bindPhoneLastVC animated:YES];
-            
-            
-            
-            
-        }else{
-            
-            [CommonUtils showToastWithStr:model.responseMsg];
-        }
-        
-        
-    } withFaileBlock:^(NSError *error) {
         
     }];
-
+    
 }
-
 
 -(void)startTimer
 {
@@ -201,6 +180,49 @@
         sendTimer = nil;
     }
 }
+
+#pragma mark - 确定按钮的响应方法
+- (void)makeSureAction{
+    
+//    [CommonUtils showToastWithStr:@"确定"];
+    
+    
+    
+    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+    NSString * phoneNum = _phoneTextField.text;
+    
+    if (!(phoneNum.length==11 && [CommonUtils checkPhoneNumIsAvailableWithPhoneNumString:phoneNum])) {
+        [CommonUtils showToastWithStr:@"请输入有效手机号"];
+        return;
+    }
+    [params setObject:[UserAccountManager sharedInstance].userId
+               forKey:@"id"];
+    [params setObject:phoneNum forKey:@"mobile"];
+    [params setObject:_coderTextField.text forKey:@"code"];
+    
+    [[HttpClient sharedInstance] changeBindPhoneNumberWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            
+        }else{
+            
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+
+    
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

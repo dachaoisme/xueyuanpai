@@ -46,6 +46,10 @@
 #define METHOD_OF_COLLEGE_SEARCH         @"v1/college/search?"
 ///用户头像上传
 #define METHOD_OF_UPLOAD                 @"v1/user/upload/"
+///绑定手机号
+#define CHECK_PHONE_CODE                 @"v1/courier/validatetel?"
+///修改手机号绑定
+#define BIND_PHONE_NUMBER                @"v1/courier/updatetel?"
 
 ///大学社团：热门活动
 #define METHOD_OF_UNIVERSITY_ACTIVITY    @"v1/association/hot?"
