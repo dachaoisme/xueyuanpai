@@ -84,12 +84,12 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
-                  timestampString = "489583738.800195"
+                  timestampString = "489654304.838328"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "299"
                   endingLineNumber = "299"
-                  offsetFromSymbolStart = "904">
+                  offsetFromSymbolStart = "878">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -99,12 +99,12 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yuanyuan/Desktop/%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
-                  timestampString = "489583738.800531"
+                  timestampString = "489654304.838592"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "299"
                   endingLineNumber = "299"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>

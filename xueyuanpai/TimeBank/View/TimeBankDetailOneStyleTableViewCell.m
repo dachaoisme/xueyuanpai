@@ -38,8 +38,24 @@
     
     _activityContentLabel.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
 
+    
+    //添加头像的点击事件
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHeadImageView:)];
+    [self.headImageView addGestureRecognizer:tapGesture];
+
 
 }
+#pragma mark - 添加头像的点击事件
+- (void)clickHeadImageView:(UITapGestureRecognizer *)gesture{
+    
+    if ([_delegate respondsToSelector:@selector(clickHeadImageViewAction:)]) {
+        [_delegate clickHeadImageViewAction:gesture];
+    }
+    
+}
+
+
+
 
 
 #pragma mark - 赴约button按钮的响应方法
@@ -101,7 +117,7 @@
     self.moneyLabel.text = [NSString stringWithFormat:@"￥%@",model.timeBankDetailPrice];
     
     
-    self.activityContentLabel.text = model.timeBankDetailContent;
+    self.activityContentLabel.text = model.timeBankDetailIdBrief;
     
     
     /*

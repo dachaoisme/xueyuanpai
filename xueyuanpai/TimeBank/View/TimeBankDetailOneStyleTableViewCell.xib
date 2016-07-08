@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="352"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeHoder.png" translatesAutoresizingMaskIntoConstraints="NO" id="aSv-3L-ywG">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeHoder.png" translatesAutoresizingMaskIntoConstraints="NO" id="aSv-3L-ywG">
                         <rect key="frame" x="8" y="8" width="80" height="80"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timebank_icon_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="P1k-hh-wZh">

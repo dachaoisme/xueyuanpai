@@ -13,6 +13,7 @@
 
 #import "UILabel+VerticalAlign.h"
 #import "LoginViewController.h"
+#import "MyHomePageByPhoneNumberViewController.h"
 
 
 @interface JobMarketDetailViewController ()<UITableViewDataSource,UITableViewDelegate,SchoolShufflingViewDelegate,JobMarkDetailTwoStyleTableViewCellDelegate>
@@ -367,16 +368,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     
-    if (indexPath.section == 0) {
-        
-        if (indexPath.row == 1) {
-            
-            //跳转打电话界面
-            
-            [CommonUtils callServiceWithTelephoneNum:jobMarketDetailModel.jobMarketDetailMobile];
-            
-        }
-    }
+//    if (indexPath.section == 0) {
+//        
+//        if (indexPath.row == 1) {
+//            
+//            //跳转打电话界面
+//            
+//            [CommonUtils callServiceWithTelephoneNum:jobMarketDetailModel.jobMarketDetailMobile];
+//            
+//        }
+//    }
 }
 
 
@@ -390,6 +391,16 @@
 - (void)callAction{
     
      [CommonUtils callServiceWithTelephoneNum:jobMarketDetailModel.jobMarketDetailMobile];
+}
+
+#pragma mark - 添加头像的点击事件
+- (void)clickHeadImageViewAction:(id)sender{
+    
+    MyHomePageByPhoneNumberViewController *homePageVC = [[MyHomePageByPhoneNumberViewController alloc] init];
+    
+    homePageVC.telePhoneNumber = jobMarketDetailModel.jobMarketDetailMobile;
+    
+    [self.navigationController pushViewController:homePageVC animated:YES];
 }
 
 #pragma mark - 点击banner图

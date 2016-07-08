@@ -10,8 +10,8 @@
 #import "TimeBankDetailOneStyleTableViewCell.h"
 #import "TimeBankDetailTwoStyleTableViewCell.h"
 #import "TimeBankDetailThreeTableViewCell.h"
-
 #import "LoginViewController.h"
+#import "MyHomePageViewController.h"
 
 @interface TimeBankDetailViewController ()<UITableViewDataSource,UITableViewDelegate,TimeBankDetailOneStyleTableViewCellDelegate,TimeBankDetailTwoStyleTableViewCellDelegate,TimeBankDetailThreeTableViewCellDelegate,UITextFieldDelegate>
 {
@@ -306,15 +306,13 @@
     
     if (indexPath.section == 0) {
         TimeBankDetailOneStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = self;
-
-        
         [cell bindModel:detailModel];
         
+                
 
         
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         return cell;
 
@@ -589,6 +587,19 @@
     pageNum = pageNum+1;
     [self requestToCommentList];
 }
+
+
+#pragma mark - 点击头像响应事件
+- (void)clickHeadImageViewAction:(id)sender{
+    
+//    [CommonUtils showToastWithStr:@"点击头像响应"];
+    
+    MyHomePageViewController *myHomePageVC = [[MyHomePageViewController alloc] init];
+    myHomePageVC.currentUserId = detailModel.timeBankCurrentUserID;
+    [self.navigationController pushViewController:myHomePageVC animated:YES];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

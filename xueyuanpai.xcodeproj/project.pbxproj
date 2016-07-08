@@ -718,6 +718,10 @@
 		DDB28E961D2CF787004C8F70 /* icon_040_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E761D2CF787004C8F70 /* icon_040_cover.png */; };
 		DDB28F6E1D2E259B004C8F70 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB28F6B1D2E259B004C8F70 /* libWeChatSDK.a */; };
 		DDB67AD01D266FC6009049A8 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB67ACF1D266FC6009049A8 /* share.png */; };
+		DDBFD1D21D2F367900E15DCF /* MyHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1D11D2F367900E15DCF /* MyHomePageViewController.m */; };
+		DDBFD1D51D2F418C00E15DCF /* MyHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1D41D2F418C00E15DCF /* MyHomePageModel.m */; };
+		DDBFD1D81D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1D71D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m */; };
+		DDBFD1DB1D2F7ADD00E15DCF /* ShufflingDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1DA1D2F7ADD00E15DCF /* ShufflingDetailViewController.m */; };
 		DDCD705A1D05AE09009FBE9A /* MineBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD70591D05AE09009FBE9A /* MineBankViewController.m */; };
 		DDCD705D1D05B2D1009FBE9A /* MineCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD705C1D05B2D1009FBE9A /* MineCollectionViewController.m */; };
 		DDCD70601D05BA40009FBE9A /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD705F1D05BA40009FBE9A /* EditProfileViewController.m */; };
@@ -1884,6 +1888,14 @@
 		DDB28F6C1D2E259B004C8F70 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		DDB28F6D1D2E259B004C8F70 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		DDB67ACF1D266FC6009049A8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		DDBFD1D01D2F367900E15DCF /* MyHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHomePageViewController.h; sourceTree = "<group>"; };
+		DDBFD1D11D2F367900E15DCF /* MyHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHomePageViewController.m; sourceTree = "<group>"; };
+		DDBFD1D31D2F418C00E15DCF /* MyHomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHomePageModel.h; sourceTree = "<group>"; };
+		DDBFD1D41D2F418C00E15DCF /* MyHomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHomePageModel.m; sourceTree = "<group>"; };
+		DDBFD1D61D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHomePageByPhoneNumberViewController.h; sourceTree = "<group>"; };
+		DDBFD1D71D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHomePageByPhoneNumberViewController.m; sourceTree = "<group>"; };
+		DDBFD1D91D2F7ADD00E15DCF /* ShufflingDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShufflingDetailViewController.h; sourceTree = "<group>"; };
+		DDBFD1DA1D2F7ADD00E15DCF /* ShufflingDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShufflingDetailViewController.m; sourceTree = "<group>"; };
 		DDCD70581D05AE09009FBE9A /* MineBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineBankViewController.h; sourceTree = "<group>"; };
 		DDCD70591D05AE09009FBE9A /* MineBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineBankViewController.m; sourceTree = "<group>"; };
 		DDCD705B1D05B2D1009FBE9A /* MineCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineCollectionViewController.h; sourceTree = "<group>"; };
@@ -2735,6 +2747,9 @@
 				DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */,
 				DD48B77F1D117EC700E012E4 /* CustomIOS7AlertView.h */,
 				DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */,
+				DDBFD1D91D2F7ADD00E15DCF /* ShufflingDetailViewController.h */,
+				DDBFD1DA1D2F7ADD00E15DCF /* ShufflingDetailViewController.m */,
+				DDBFD1CC1D2F361B00E15DCF /* MyHomePage */,
 				583D65C51CDA78F700830BBE /* TabBar */,
 				DDD0BE651CFC2AA200073290 /* JobMarket */,
 				DDD3E52E1CF44DF6001B579E /* SchoolRecruitment */,
@@ -2800,7 +2815,6 @@
 		58F67BDA1CD990A200D55BE0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				DDB28E9D1D2D2831004C8F70 /* DirectMessages */,
 				DDAB058F1D01BF6A007A6027 /* BusinessCenterViewController.h */,
 				DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */,
 				DDAB05D71D042EE4007A6027 /* BusinessPublishProjectViewController.h */,
@@ -4185,13 +4199,6 @@
 			path = emotion;
 			sourceTree = "<group>";
 		};
-		DDB28E9D1D2D2831004C8F70 /* DirectMessages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DirectMessages;
-			sourceTree = "<group>";
-		};
 		DDB28F6A1D2E259B004C8F70 /* SDKExport */ = {
 			isa = PBXGroup;
 			children = (
@@ -4200,6 +4207,43 @@
 				DDB28F6D1D2E259B004C8F70 /* WXApiObject.h */,
 			);
 			path = SDKExport;
+			sourceTree = "<group>";
+		};
+		DDBFD1CC1D2F361B00E15DCF /* MyHomePage */ = {
+			isa = PBXGroup;
+			children = (
+				DDBFD1CF1D2F366200E15DCF /* Model */,
+				DDBFD1CE1D2F364E00E15DCF /* View */,
+				DDBFD1CD1D2F364000E15DCF /* Controller */,
+			);
+			path = MyHomePage;
+			sourceTree = "<group>";
+		};
+		DDBFD1CD1D2F364000E15DCF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DDBFD1D01D2F367900E15DCF /* MyHomePageViewController.h */,
+				DDBFD1D11D2F367900E15DCF /* MyHomePageViewController.m */,
+				DDBFD1D61D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.h */,
+				DDBFD1D71D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DDBFD1CE1D2F364E00E15DCF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDBFD1CF1D2F366200E15DCF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DDBFD1D31D2F418C00E15DCF /* MyHomePageModel.h */,
+				DDBFD1D41D2F418C00E15DCF /* MyHomePageModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		DDCD70911D06B684009FBE9A /* View */ = {
@@ -5107,6 +5151,7 @@
 				DDB28E501D2C8A7E004C8F70 /* EaseFaceView.m in Sources */,
 				DDB28E141D2C8A7E004C8F70 /* UIImage+EMGIF.m in Sources */,
 				DDCD708A1D06A7E2009FBE9A /* TopUpTableViewCell.m in Sources */,
+				DDBFD1D81D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m in Sources */,
 				DDCD711D1D09AA36009FBE9A /* EditProfileTwoTableViewCell.m in Sources */,
 				DD1957D31D19785300FF01F0 /* BusinessPublishProjectSuccessViewController.m in Sources */,
 				DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */,
@@ -5131,6 +5176,7 @@
 				DDB28E311D2C8A7E004C8F70 /* EaseChineseToPinyin.m in Sources */,
 				DDB28E241D2C8A7E004C8F70 /* PSTGridLayoutItem.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
+				DDBFD1D51D2F418C00E15DCF /* MyHomePageModel.m in Sources */,
 				DD4127B31CF251C600227066 /* BigToSendViewController.m in Sources */,
 				DD1957C71D18248E00FF01F0 /* UILabel+VerticalAlign.m in Sources */,
 				DDB28E121D2C8A7E004C8F70 /* NSData+EMImageContentType.m in Sources */,
@@ -5304,6 +5350,7 @@
 				DD0B1E3D1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m in Sources */,
 				DDAB05A41D01D429007A6027 /* BusinessTeacherOneTableViewCell.m in Sources */,
 				DD8F59BB1D2DB2AB004C0827 /* TimeBankMessageListViewController.m in Sources */,
+				DDBFD1D21D2F367900E15DCF /* MyHomePageViewController.m in Sources */,
 				DDCD70861D06A509009FBE9A /* WithdrawalViewController.m in Sources */,
 				DDAB43AD1D05659200FADB3E /* AboutUsTableViewCell.m in Sources */,
 				DDB28E2F1D2C8A7E004C8F70 /* UIViewController+DismissKeyboard.m in Sources */,
@@ -5347,6 +5394,7 @@
 				DDB28E101D2C8A7E004C8F70 /* EMSDWebImagePrefetcher.m in Sources */,
 				DDAB43BA1D057D9200FADB3E /* MineProjectViewController.m in Sources */,
 				DD41281E1CF3427400227066 /* ActivityDetailViewController.m in Sources */,
+				DDBFD1DB1D2F7ADD00E15DCF /* ShufflingDetailViewController.m in Sources */,
 				5874A3F21CF1405100CE9FC9 /* SelectedImageView.m in Sources */,
 				DDCD712A1D09B677009FBE9A /* EditTeacherTwoTableViewCell.m in Sources */,
 				DDB28DE01D2C8A7E004C8F70 /* EMAudioPlayerUtil.m in Sources */,

@@ -16,6 +16,7 @@
 #import "BusinessProjectDetailFiveTableViewCell.h"
 
 #import "LoginViewController.h"
+#import "MyHomePageByPhoneNumberViewController.h"
 
 
 @interface BussinessProjectTeacherDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailTwoTableViewCellDelegate,BusinessProjectDetailFiveTableViewCellDelegate>
@@ -714,6 +715,19 @@
 
     
 }
+
+//点击头像的响应事件
+- (void)clickHeadImageViewAction:(id)sender{
+    
+    MyHomePageByPhoneNumberViewController *myHomePageVC = [[MyHomePageByPhoneNumberViewController alloc] init];
+    myHomePageVC.telePhoneNumber = businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone;
+    
+    [self.navigationController pushViewController:myHomePageVC animated:YES];
+    
+    
+    
+}
+
 
 
 

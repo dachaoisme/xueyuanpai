@@ -19,6 +19,9 @@
 
 #import "RadarView.h"
 
+#import "PPDragDropBadgeView.h"
+
+
 @interface ExpressCenterViewController ()<CLLocationManagerDelegate>
 {
     ExpressCenterPeopleModel * expressCenterPeopleModel;
@@ -53,6 +56,9 @@
 
 ///动画效果
 @property (nonatomic,strong)RadarView *animationRadarView;
+
+///未读消息视图
+@property (nonatomic,strong)PPDragDropBadgeView *bageView;
 
 
 @end
@@ -110,6 +116,9 @@
 
     
     [self requestExpressPeopleCount];
+    
+    //请求快递消息未读数量
+    [self requestUnReadCourierMessage];
 
     
     
@@ -303,6 +312,15 @@
     [self.view addSubview:noticeButton];
     
     
+    PPDragDropBadgeView *bageView = [[PPDragDropBadgeView alloc] initWithFrame:CGRectMake(CGRectGetWidth(noticeButton.frame) - 10, 5, 10, 10) dragdropCompletion:^{
+        NSLog(@"TableViewCell drag done.");
+    }];
+    
+    bageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    [noticeButton addSubview:bageView];
+    self.bageView = bageView;
+    
+    
     UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
     recordButton.frame = CGRectMake(SCREEN_WIDTH - 15 - 135, SCREEN_HEIGHT - 109, 135, 40);
     recordButton.backgroundColor = [UIColor whiteColor];
@@ -379,7 +397,11 @@
 - (void)noticeButtonAction{
     
     CourierNoticeViewController *courierNoticeVC = [[CourierNoticeViewController alloc] init];
-    
+    courierNoticeVC.callback = ^(){
+        self.bageView.text = @"0";
+        
+    };
+
     [self.navigationController pushViewController:courierNoticeVC animated:YES];
     
 }
@@ -467,6 +489,38 @@
 
     
 }
+
+#pragma mark - 请求快递消息未读消息数目
+///发送快递记录
+-(void)requestUnReadCourierMessage
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    ///发快递序号
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:@"1" forKey:@"page"];
+    [dic setValue:@"10" forKey:@"size"];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HttpClient sharedInstance]receivedNotificationAndExpressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (responseModel.responseCode == ResponseCodeSuccess) {
+            
+            self.bageView.text = [responseModel.responseCommonDic stringForKey:@"unreadcnt"];
+            
+            
+            
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    }];
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -13,6 +13,8 @@
 #import "GiftDetailViewController.h"
 #import "IndexBannerModel.h"
 #import "BannerLunBoView.h"
+#import "ShufflingDetailViewController.h"
+
 @interface BigToSendViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -177,8 +179,10 @@
             return bannerImageArray.count;
         };
         //点击事件的block
+        __weak typeof(self)weakSelf = self;
         self.bannerView.TapActionBlock = ^void(NSInteger pageIndex){
-            
+            ShufflingDetailViewController *detailVC = [[ShufflingDetailViewController alloc] init];
+            [weakSelf.navigationController pushViewController:detailVC animated:YES];
         };
         
         return headReusableView;
@@ -240,10 +244,15 @@
 }
 
 
--(void)selectedImageIndex:(NSInteger)index
-{
-//    [CommonUtils showToastWithStr:@"点击轮播图"];
-}
+//-(void)selectedImageIndex:(NSInteger)index
+//{
+////    [CommonUtils showToastWithStr:@"点击轮播图"];
+//    
+//    ShufflingDetailViewController *detailVC = [[ShufflingDetailViewController alloc] init];
+//    [self.navigationController pushViewController:detailVC animated:YES];
+//    
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

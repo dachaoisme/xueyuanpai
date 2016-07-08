@@ -294,7 +294,10 @@
 #pragma mark - 点击banner图
 -(void)selectedImageIndex:(NSInteger)index
 {
-    NSLog(@"点击了第%ld张图片",(long)index+1);
+//    NSLog(@"点击了第%ld张图片",(long)index+1);
+    
+    
+
 }
 
 #pragma mark - 轮播图下方三个小按钮点击响应的方法

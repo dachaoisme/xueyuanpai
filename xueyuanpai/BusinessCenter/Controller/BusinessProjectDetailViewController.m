@@ -16,6 +16,8 @@
 
 #import "LoginViewController.h"
 
+#import "MyHomePageByPhoneNumberViewController.h"
+
 //#import "EaseUI.h"
 
 @interface BusinessProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource,BusinessProjectDetailTwoTableViewCellDelegate>
@@ -620,9 +622,24 @@
             NSLog(@"添加成功");
             
             [CommonUtils showToastWithStr:@"好友申请已发出，请耐心等候回复" WithTime:2];
+        }else{
+            [CommonUtils showToastWithStr:error.description WithTime:2];
+
         }
 
     }
+}
+
+//点击头像的响应事件
+- (void)clickHeadImageViewAction:(id)sender{
+    
+    MyHomePageByPhoneNumberViewController *myHomePageVC = [[MyHomePageByPhoneNumberViewController alloc] init];
+    myHomePageVC.telePhoneNumber = businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone;
+    
+    [self.navigationController pushViewController:myHomePageVC animated:YES];
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

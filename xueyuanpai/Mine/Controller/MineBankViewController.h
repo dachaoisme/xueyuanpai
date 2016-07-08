@@ -10,4 +10,8 @@
 
 @interface MineBankViewController : BaseViewController
 
+///当前用户id
+@property (nonatomic,strong)NSString *user_id;
+
+
 @end

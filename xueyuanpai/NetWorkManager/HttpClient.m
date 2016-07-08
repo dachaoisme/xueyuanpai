@@ -684,6 +684,29 @@
 }
 
 
+
+///个人中心-个人主页
+- (void)myHomePageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
+    
+    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_HOME_PAGE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+///个人主页-通过手机号获取
+- (void)myHomePageByMobileWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
+    
+    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_HOME_PAGE_BY_MOBILE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+
+
 #pragma mark - 收藏相关
 ///添加收藏
 - (void)addCollectionWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock

@@ -83,6 +83,8 @@
 
 ///序号
 @property(nonatomic,strong)NSString *timeBankDetailId;
+///当前用户的ID
+@property(nonatomic,strong)NSString *timeBankCurrentUserID;
 ///用户名
 @property(nonatomic,strong)NSString *timeBankDetailUserName;
 ///性别

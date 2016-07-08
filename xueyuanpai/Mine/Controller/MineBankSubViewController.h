@@ -13,4 +13,6 @@
 @interface MineBankSubViewController : BaseViewController
 @property(nonatomic,assign)MineTimeBankStatus mineTimeBankStatus;
 @property(nonatomic,strong)BaseViewController * superViewController;
+
+
 @end

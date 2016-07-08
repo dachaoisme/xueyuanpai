@@ -154,6 +154,12 @@
 ///个人中心：微信支付
 #define WEIXIN_PAY_STYLE                                    @"test/weixin?"
 
+///个人中心：个人主页
+#define METHOD_MINE_HOME_PAGE                               @"v1/user/userinfo?"
+///个人中心：个人主页通过手机号获取
+#define METHOD_MINE_HOME_PAGE_BY_MOBILE                     @"v1/user/getuserinfobymobile?"
+
+
 ///收藏相关-添加收藏
 #define METHOD_COLLECTION_ADD                                 @"v1/mark/add?"
 ///收藏相关-取消收藏

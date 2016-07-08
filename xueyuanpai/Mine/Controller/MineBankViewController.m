@@ -33,6 +33,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //将传过来的userID存储起来
+    NSUserDefaults *accountDefaults = [NSUserDefaults standardUserDefaults];
+    
+    [accountDefaults setObject:self.user_id forKey:@"timeBank_user_id"];
+    
+
+    
     
     self.title = @"我的时间银行";
     
@@ -99,6 +106,7 @@
                 timeBankCompleteVC.view.hidden = YES;
                 timeBankCompleteVC.superViewController = self;
                 timeBankCompleteVC.mineTimeBankStatus = MineTimeBankCompleteStatus;
+
                 [self.view addSubview:timeBankCompleteVC.view];
             }
             timeBankAlreadyApplyVC.view.hidden = YES;

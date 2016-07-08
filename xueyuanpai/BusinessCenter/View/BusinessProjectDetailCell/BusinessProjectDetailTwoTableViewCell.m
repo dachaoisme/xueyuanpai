@@ -17,6 +17,12 @@
     [self.sendMessageButton setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
     
     self.sendMessageButton.layer.cornerRadius = 5;
+    
+    
+    //添加头像的点击事件
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHeadImageView:)];
+    [self.headImageView addGestureRecognizer:tapGesture];
+    
 }
 
 
@@ -25,6 +31,15 @@
     if ([self.delegate respondsToSelector:@selector(sendChatMessage:)]) {
         [self.delegate sendChatMessage:sender];
     }
+}
+
+#pragma mark - 添加头像的点击事件
+- (void)clickHeadImageView:(UITapGestureRecognizer *)gesture{
+    
+    if ([_delegate respondsToSelector:@selector(clickHeadImageViewAction:)]) {
+        [_delegate clickHeadImageViewAction:gesture];
+    }
+    
 }
 
 

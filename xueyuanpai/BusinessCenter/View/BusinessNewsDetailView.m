@@ -37,18 +37,11 @@
 - (void)p_setupSubviews
 {
     //scrollView
-//    UIScrollView *bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.bounds.size.height)];
-//    //    _bottomScrollView.backgroundColor = [UIColor cyanColor];
-//    [self addSubview:bottomScrollView];
-//    self.bottomScrollView = bottomScrollView;
-    
-    
-
-    
-    UIView *bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.bounds.size.height)];
+    UIScrollView *bottomScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.bounds.size.height)];
     //    _bottomScrollView.backgroundColor = [UIColor cyanColor];
     [self addSubview:bottomScrollView];
-//    self.bottomScrollView = bottomScrollView;
+    self.bottomScrollView = bottomScrollView;
+    
     
     //图片
     UIImageView *activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 130)];
@@ -82,7 +75,8 @@
     webView.scrollView.backgroundColor = [UIColor whiteColor];
     webView.backgroundColor = [UIColor whiteColor];
     [bottomScrollView addSubview:webView];
-    webView.scrollView.scrollEnabled = YES;
+    webView.scrollView.scrollEnabled = NO;
+    [webView sizeToFit];
     self.webView = webView;
     
     
@@ -95,7 +89,7 @@
 - (void)adjustSubviewsWithContent:(NSString *)content
 {
     //计算活动内容的高度
-    CGRect contentRect = [content boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:20.0]} context:nil];
+    CGRect contentRect = [content boundingRectWithSize:CGSizeMake([[UIScreen mainScreen] bounds].size.width - 30, 1000000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18.0]} context:nil];
     
     CGFloat height = TopHeight+contentRect.size.height;
     
@@ -111,11 +105,6 @@
     CGRect contentViewRect = _webView.frame;
     contentViewRect.size.height = contentRect.size.height + 20;
     _webView.frame = contentViewRect;
-    
-    //修改图片的frame
-    CGRect activityImageViewRect = _activityImageView.frame;
-    activityImageViewRect.origin.y = CGRectGetMaxY(_webView.frame) + 30;
-    _activityImageView.frame = activityImageViewRect;
     
     
     

@@ -15,6 +15,9 @@
 //打电话
 - (void)callAction;
 
+//点击头像的响应事件
+- (void)clickHeadImageViewAction:(id)sender;
+
 @end
 
 @interface JobMarkDetailTwoStyleTableViewCell : UITableViewCell

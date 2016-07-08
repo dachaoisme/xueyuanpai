@@ -12,6 +12,9 @@
 
 - (void)sendChatMessage:(id)sender;
 
+//点击头像的响应事件
+- (void)clickHeadImageViewAction:(id)sender;
+
 @end
 
 @interface BusinessProjectDetailTwoTableViewCell : UITableViewCell

@@ -113,24 +113,43 @@
     UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 35, 20, 70, 70)];
     headImageView.layer.cornerRadius = 35;
     headImageView.layer.masksToBounds = YES;
-    [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"test.jpg"]];
+    [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"avatar"]];
     [headBackGroundView addSubview:headImageView];
     
     
     //姓名
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40, CGRectGetMaxY(headImageView.frame), 80, 20)];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2, CGRectGetMaxY(headImageView.frame), 180, 20)];
     nameLabel.font = [UIFont systemFontOfSize:14];
-    nameLabel.textAlignment = NSTextAlignmentCenter;
+    nameLabel.textAlignment = NSTextAlignmentLeft;
     nameLabel.text = [UserAccountManager sharedInstance].userNickname;
     [headBackGroundView addSubview:nameLabel];
+    
+    //性别
+    UIImageView *sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame) - 20, CGRectGetMinY(nameLabel.frame), 12, 12)];
+    if ([UserAccountManager sharedInstance].userSex == SexOfManType) {
+        ///男
+        [sexImageView setImage:[UIImage imageNamed:@"gender_male"]];
+    }else{
+        ///女
+        [sexImageView setImage:[UIImage imageNamed:@"gender_female"]];
+    }
+    [headBackGroundView addSubview:sexImageView];
+
     
     //工作职称
     UILabel *jobNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40, CGRectGetMaxY(nameLabel.frame), 80, 17)];
     jobNameLabel.font = [UIFont systemFontOfSize:14];
-    
     jobNameLabel.textAlignment = NSTextAlignmentCenter;
     
-    jobNameLabel.text = [UserAccountManager sharedInstance].userJob;
+    if ([UserAccountManager sharedInstance].userRole  == UserInfoRoleStudent) {
+        //学生
+        jobNameLabel.text = [UserAccountManager sharedInstance].userCollegeName;
+        
+    } else {
+        //老师
+        jobNameLabel.text = [UserAccountManager sharedInstance].userJob;
+        
+    }
     jobNameLabel.textColor = [UIColor lightGrayColor];
     
     [headBackGroundView addSubview:jobNameLabel];
@@ -252,6 +271,7 @@
     if (indexPath.row == 1) {
         //跳转我的项目
         MineProjectViewController *projectVC = [[MineProjectViewController alloc] init];
+        projectVC.user_id = [UserAccountManager sharedInstance].userId;
         [self.navigationController pushViewController:projectVC animated:YES];
         
         
@@ -259,6 +279,8 @@
         
         //跳转我的时间银行
         MineBankViewController *bankVC = [[MineBankViewController alloc] init];
+        bankVC.user_id = [UserAccountManager sharedInstance].userId;
+
         [self.navigationController pushViewController:bankVC animated:YES];
         
         
@@ -266,6 +288,7 @@
         
         //跳转跳槽市场界面
         MineJobMarketViewController *jobMarketVC = [[MineJobMarketViewController alloc] init];
+        jobMarketVC.user_id = [UserAccountManager sharedInstance].userId;
         [self.navigationController pushViewController:jobMarketVC animated:YES];
     }else if (indexPath.row == 4) {
         

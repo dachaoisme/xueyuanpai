@@ -15,6 +15,10 @@
 //获取按钮的状态
 - (void)getActivityContentButtonStatus;
 
+
+//点击头像的响应事件
+- (void)clickHeadImageViewAction:(id)sender;
+
 @end
 
 

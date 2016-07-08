@@ -132,6 +132,7 @@
     if (self) {
         
         self.timeBankDetailId               = [dic stringForKey:@"id"];
+        self.timeBankCurrentUserID          = [dic stringForKey:@"user_id"];
         self.timeBankDetailUserName         = [dic stringForKey:@"username"];
         self.timeBankDetailSex              = [dic stringForKey:@"sex"];
         self.timeBankDetailPrice            = [dic stringForKey:@"price"];

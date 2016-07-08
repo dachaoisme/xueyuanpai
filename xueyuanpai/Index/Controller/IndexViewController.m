@@ -32,6 +32,8 @@
 #import "TimeBankViewController.h"
 
 #import "MessageViewController.h"
+
+#import "ShufflingDetailViewController.h"
 @interface IndexViewController ()<IndexIntegralMallCollectionReusableViewDelegate>
 {
     UICollectionViewFlowLayout * theCollectionLayout;
@@ -213,8 +215,12 @@
                 return bannerImageArray.count;
             };
             //点击事件的block
+            
+            __weak typeof(self)weakSelf = self;
             self.bannerView.TapActionBlock = ^void(NSInteger pageIndex){
-                
+                ShufflingDetailViewController *detailVC = [[ShufflingDetailViewController alloc] init];
+                [weakSelf.navigationController pushViewController:detailVC animated:YES];
+
             };
             return headReusableView;
         }else{

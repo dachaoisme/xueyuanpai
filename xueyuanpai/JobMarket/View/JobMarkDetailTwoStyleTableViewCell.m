@@ -18,6 +18,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    
+    //添加头像的点击事件
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickHeadImageView:)];
+    [self.headImageView addGestureRecognizer:tapGesture];
 }
 
 
@@ -35,7 +39,17 @@
     self.phoneNumberLabel.text = model.jobMarketDetailMobile;
 }
 
-#pragma mark -
+
+#pragma mark - 添加头像的点击事件
+- (void)clickHeadImageView:(UITapGestureRecognizer *)gesture{
+    
+    if ([_delegate respondsToSelector:@selector(clickHeadImageViewAction:)]) {
+        [_delegate clickHeadImageViewAction:gesture];
+    }
+    
+}
+
+#pragma mark -打电话
 
 - (IBAction)callAction:(id)sender {
     

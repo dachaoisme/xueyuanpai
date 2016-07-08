@@ -101,9 +101,13 @@
      }
      */
     
-    
+    if (_topUpMoney.length == 0) {
+
+        _topUpMoney = @"0.01";
+        
+    }
     NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@?total_fee=%@",WeiXinPayStyleUrl,_topUpMoney];
-    
+
     NSLog(@"--- GetAccessTokenUrl: %@", getAccessTokenUrl);
     NSURLRequest *reuqest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:getAccessTokenUrl]];
     
