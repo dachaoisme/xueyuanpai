@@ -35,14 +35,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-            timestampString = "489662979.455233"
+            filePath = "xueyuanpai/NetWorkManager/HttpClient.m"
+            timestampString = "489810847.761615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "-sendmessage:"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-changeBindPhoneNumberWithParams:withSuccessBlock:withFaileBlock:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HttpClient changeBindPhoneNumberWithParams:withSuccessBlock:withFaileBlock:]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuanyuan/Desktop/%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/NetWorkManager/HttpClient.m"
+                  timestampString = "489811003.812867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__78-[HttpClient changeBindPhoneNumberWithParams:withSuccessBlock:withFaileBlock:]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuanyuan/Desktop/%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/NetWorkManager/HttpClient.m"
+                  timestampString = "489811003.813434"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -51,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-            timestampString = "489662980.638987"
+            filePath = "xueyuanpai/NetWorkManager/HttpServer.m"
+            timestampString = "489810852.338371"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-sendmessage:"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-getWithMethod:withParams:withSuccess:withFailBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

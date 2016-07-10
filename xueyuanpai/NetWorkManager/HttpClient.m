@@ -158,7 +158,7 @@
 ///绑定手机号
 - (void)checkSendMessageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
-    [[HttpServer sharedInstance]getWithMethod:CHECK_PHONE_CODE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_CHECKING_MESSAGE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         successBlock(model);
     } withFailBlock:^(NSError *error) {
         failBlock(error);
