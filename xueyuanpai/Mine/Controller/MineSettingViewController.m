@@ -15,7 +15,9 @@
 #import "AboutUsViewController.h"
 
 @interface MineSettingViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    NSString * netDownloadUrl;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -173,6 +175,9 @@
             FeedbackViewController *feedVC = [[FeedbackViewController alloc] init];
             [self.navigationController pushViewController:feedVC animated:YES];
             
+        }else if (indexPath.row == 2) {
+            //检查更新
+            [self appstoreUpDate];
         }else if (indexPath.row == 3) {
             //跳转关于我们界面
             AboutUsViewController *aboutUsVC = [[AboutUsViewController alloc] init];
@@ -181,7 +186,37 @@
         }
     }
 }
-
+-(void)appstoreUpDate
+{
+    //获取版本号
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [[HttpClient sharedInstance]checkUpdateWithParams:params withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        if (responseModel.responseCode==ResponseCodeSuccess) {
+            NSString * netNewVersion = [responseModel.responseCommonDic objectForKey:@"ios_version"];
+            netDownloadUrl = [responseModel.responseCommonDic objectForKey:@"ios_download_url"];
+            NSString *currentAppVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            if ([netNewVersion floatValue]>[currentAppVersion floatValue]) {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"更新" message:[NSString stringWithFormat:@"发现新的app版本%@",netNewVersion] delegate:self cancelButtonTitle:@"暂不更新" otherButtonTitles:@"立即更新", nil];
+                [alertView show];
+            }else{
+                [CommonUtils showToastWithStr:@"已经是最新版本哦"];
+            }
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+   
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:netDownloadUrl]];
+        exit(0);
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

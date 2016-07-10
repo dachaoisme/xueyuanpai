@@ -737,6 +737,18 @@
     }];
 }
 
+/**
+ *  @brief  检查自动更新
+ */
+- (void)checkUpdateWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_CHECK_UPDATE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
 
 #pragma mark - 收藏相关

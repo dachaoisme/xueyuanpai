@@ -136,7 +136,7 @@
 #define METHOD_BUSINESS_CENTER_REFUSED                         @"v1/project/reject/?"
 
 
-
+#pragma mark - 个人中心“我的”
 ///个人中心:我的项目
 #define METHOD_MINE_PROGECT_LIST                               @"v1/my/project?"
 ///个人中心:我的跳蚤市场
@@ -151,7 +151,8 @@
 #define METHOD_MINE_WALLET_LIST                               @"v1/my/wallet?"
 ///个人中心：意见反馈
 #define METHOD_MINE_FEED_BACK                               @"v1/feedback/add/?"
-
+///个人中心：检查自动更新
+#define METHOD_MINE_CHECK_UPDATE                            @"v1/system/checkforupdate/?"
 ///个人中心：关于我们
 #define METHOD_MINE_ABOUT_US                                @"v1/aboutus/index?"
 ///个人中心：更新用户所属学校
