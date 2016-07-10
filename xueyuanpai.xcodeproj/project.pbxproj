@@ -485,6 +485,7 @@
 		DD48B7641D11019000E012E4 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7631D11019000E012E4 /* sound.caf */; };
 		DD48B7811D117EC700E012E4 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */; };
 		DD48B7DA1D139DD700E012E4 /* RegisterRoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD48B7D91D139DD700E012E4 /* RegisterRoleView.m */; };
+		DD52F49C1D31E14500C6A9CC /* BindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD52F49A1D31E14500C6A9CC /* BindPhoneViewController.m */; };
 		DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */; };
 		DD8387D01D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8387CE1D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.m */; };
 		DD8387D11D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD8387CF1D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.xib */; };
@@ -559,7 +560,6 @@
 		DDAB43AD1D05659200FADB3E /* AboutUsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43AB1D05659200FADB3E /* AboutUsTableViewCell.m */; };
 		DDAB43AE1D05659200FADB3E /* AboutUsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDAB43AC1D05659200FADB3E /* AboutUsTableViewCell.xib */; };
 		DDAB43B11D056AA100FADB3E /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43B01D056AA100FADB3E /* FeedbackViewController.m */; };
-		DDAB43B41D05717500FADB3E /* BindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43B31D05717500FADB3E /* BindPhoneViewController.m */; };
 		DDAB43B71D057A5C00FADB3E /* MineJobMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43B61D057A5C00FADB3E /* MineJobMarketViewController.m */; };
 		DDAB43BA1D057D9200FADB3E /* MineProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43B91D057D9200FADB3E /* MineProjectViewController.m */; };
 		DDAB43BD1D05802C00FADB3E /* MineFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB43BC1D05802C00FADB3E /* MineFriendsViewController.m */; };
@@ -1489,6 +1489,8 @@
 		DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
 		DD48B7D81D139DD700E012E4 /* RegisterRoleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRoleView.h; sourceTree = "<group>"; };
 		DD48B7D91D139DD700E012E4 /* RegisterRoleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRoleView.m; sourceTree = "<group>"; };
+		DD52F49A1D31E14500C6A9CC /* BindPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindPhoneViewController.m; sourceTree = "<group>"; };
+		DD52F49B1D31E14500C6A9CC /* BindPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindPhoneViewController.h; sourceTree = "<group>"; };
 		DD82A8531D04E715009E3671 /* BusinessTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTeacherViewController.h; sourceTree = "<group>"; };
 		DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTeacherViewController.m; sourceTree = "<group>"; };
 		DD8387CD1D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessPublishProjectTheeTableViewCell.h; sourceTree = "<group>"; };
@@ -1590,8 +1592,6 @@
 		DDAB43AC1D05659200FADB3E /* AboutUsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsTableViewCell.xib; sourceTree = "<group>"; };
 		DDAB43AF1D056AA100FADB3E /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
 		DDAB43B01D056AA100FADB3E /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
-		DDAB43B21D05717500FADB3E /* BindPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindPhoneViewController.h; sourceTree = "<group>"; };
-		DDAB43B31D05717500FADB3E /* BindPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindPhoneViewController.m; sourceTree = "<group>"; };
 		DDAB43B51D057A5C00FADB3E /* MineJobMarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineJobMarketViewController.h; sourceTree = "<group>"; };
 		DDAB43B61D057A5C00FADB3E /* MineJobMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineJobMarketViewController.m; sourceTree = "<group>"; };
 		DDAB43B81D057D9200FADB3E /* MineProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineProjectViewController.h; sourceTree = "<group>"; };
@@ -2285,8 +2285,8 @@
 				58C40DF81D05C0D50061C174 /* MineCollectionSubViewController.m */,
 				DDAB439F1D055BA000FADB3E /* MineSettingViewController.h */,
 				DDAB43A01D055BA000FADB3E /* MineSettingViewController.m */,
-				DDAB43B21D05717500FADB3E /* BindPhoneViewController.h */,
-				DDAB43B31D05717500FADB3E /* BindPhoneViewController.m */,
+				DD52F49B1D31E14500C6A9CC /* BindPhoneViewController.h */,
+				DD52F49A1D31E14500C6A9CC /* BindPhoneViewController.m */,
 				DDEAF8661D2FA3100041A89E /* BindPhoneLastViewController.h */,
 				DDEAF8671D2FA3100041A89E /* BindPhoneLastViewController.m */,
 				DDAB43A71D05653200FADB3E /* AboutUsViewController.h */,
@@ -5253,7 +5253,6 @@
 				DDCD70BA1D06C30D009FBE9A /* SendCourierViewController.m in Sources */,
 				DDCD707C1D069C54009FBE9A /* ExchangeGiftsTableViewCell.m in Sources */,
 				DDB28DE11D2C8A7E004C8F70 /* EMAudioRecorderUtil.m in Sources */,
-				DDAB43B41D05717500FADB3E /* BindPhoneViewController.m in Sources */,
 				DD27DB611D2BDF74007F5917 /* SystemMessageDetailViewController.m in Sources */,
 				DDCD70661D05C20D009FBE9A /* EditProfileTableViewCell.m in Sources */,
 				DDAB05D91D042EE4007A6027 /* BusinessPublishProjectViewController.m in Sources */,
@@ -5294,6 +5293,7 @@
 				DDB28E331D2C8A7E004C8F70 /* EaseMessageReadManager.m in Sources */,
 				DDB28E2E1D2C8A7E004C8F70 /* NSString+Valid.m in Sources */,
 				DDB28E3B1D2C8A7E004C8F70 /* EaseMessageViewController.m in Sources */,
+				DD52F49C1D31E14500C6A9CC /* BindPhoneViewController.m in Sources */,
 				5874A3FB1CF1AEE400CE9FC9 /* AddTeacherInfoTableViewCell.m in Sources */,
 				58A944AB1CE27A5300DAD398 /* RegisterViewController.m in Sources */,
 				DDB28E461D2C8A7E004C8F70 /* EaseBubbleView+Image.m in Sources */,

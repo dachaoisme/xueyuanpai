@@ -19,6 +19,9 @@
     CollegeModel * theCollegeModel;
     
     UITextField *coderTextField;
+    
+    
+    NSString *phoneCoder;
 }
 @end
 
@@ -127,6 +130,11 @@
     
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    phoneCoder = textField.text;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
     
@@ -138,6 +146,8 @@
     
 //    [CommonUtils showToastWithStr:@"确定"];
     
+    phoneCoder = coderTextField.text;
+    
     if (coderTextField.text.length <= 0) {
         [CommonUtils showToastWithStr:@"请输入有效的验证码"];
         return;
@@ -147,7 +157,7 @@
     NSString * phoneNum = [UserAccountManager sharedInstance].userMobile;
     
     [params setObject:phoneNum forKey:@"mobile"];
-    [params setObject:coderTextField.text forKey:@"code"];
+    [params setValue: phoneCoder forKey:@"code"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
@@ -156,17 +166,17 @@
 
         
         if (model.responseCode == ResponseCodeSuccess) {
-            
+        
             
             //跳转输入新手机号页面
             BindPhoneLastViewController *bindPhoneLastVC = [[BindPhoneLastViewController alloc] init];
             [self.navigationController pushViewController:bindPhoneLastVC animated:YES];
-            
+        
         }else{
             
             [CommonUtils showToastWithStr:model.responseMsg];
         }
-        
+     
         
     } withFaileBlock:^(NSError *error) {
         
