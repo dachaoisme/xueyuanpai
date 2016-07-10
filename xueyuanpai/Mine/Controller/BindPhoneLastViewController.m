@@ -131,6 +131,7 @@
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:phoneNum forKey:@"mobile"];
+    
     [[HttpClient sharedInstance]registerOfSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode == ResponseCodeSuccess) {
@@ -199,8 +200,11 @@
                forKey:@"id"];
     [params setObject:phoneNum forKey:@"mobile"];
     [params setObject:_coderTextField.text forKey:@"code"];
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [[HttpClient sharedInstance] changeBindPhoneNumberWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         
         if (model.responseCode == ResponseCodeSuccess) {
             
@@ -215,6 +219,9 @@
         
         
     } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         
     }];
 

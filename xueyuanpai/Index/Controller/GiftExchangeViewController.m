@@ -277,14 +277,18 @@
         [dic setObject:needPointValueLable.text forKey:@"points"];
         [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
         [dic setObject:centerTextField.text forKey:@"number"];
-        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
         [[HttpClient sharedInstance]exchangeGiftWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             if (model.responseCode==ResponseCodeSuccess) {
                 [CommonUtils showToastWithStr:@"兑换成功"];
             }else{
                 [CommonUtils showToastWithStr:model.responseMsg];
             }
         } withFaileBlock:^(NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             
         }];
 

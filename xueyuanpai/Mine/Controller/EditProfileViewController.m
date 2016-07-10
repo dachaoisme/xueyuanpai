@@ -264,10 +264,12 @@
     }else if (indexPath.row == 3){
         
         EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
         //选择学校
         SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
         schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
-            cell.titleLabel.text = @"年级";
+            cell.titleLabel.text = @"学校";
 
             
             cell.contentLabel.text = collegeModel.collegeName;
@@ -283,11 +285,7 @@
         
         [self.navigationController pushViewController:schollVC animated:YES];
         
-    }else if (indexPath.row == 4){
-        
-        
     }
-    
     
 }
 #pragma mark ZhpickVIewDelegate

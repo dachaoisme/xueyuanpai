@@ -154,6 +154,8 @@
 
 ///个人中心：关于我们
 #define METHOD_MINE_ABOUT_US                                @"v1/aboutus/index?"
+///个人中心：更新用户所属学校
+#define METHOD_MINE_USER_USCHOOL                            @"v1/user/updatecollege?"
 
 ///个人中心：微信支付
 #define WEIXIN_PAY_STYLE                                    @"test/weixin?"

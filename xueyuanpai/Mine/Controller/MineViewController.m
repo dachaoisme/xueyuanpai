@@ -27,12 +27,17 @@
 #import "EditProfileViewController.h"
 
 #import "EditTeacherProfileViewController.h"
+#import "SelectedSchollViewController.h"
+
 
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,MineOneStyleTableViewCellDelegate>
 
 
 @property (nonatomic,strong)UITableView *tableView;
+
+///展示地理位置的lable
+@property (nonatomic,strong) UILabel *showLocationLable;
 
 @end
 
@@ -58,6 +63,9 @@
     
     [self createTableView];
     
+    
+    //添加切换学校视图
+    [self changeSchoolView];
     
 }
 
@@ -85,6 +93,111 @@
     
     
     
+}
+
+#pragma mark - 添加切换学校视图
+- (void)changeSchoolView{
+    UIView *schoolShowView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 40, SCREEN_WIDTH, 50)];
+    schoolShowView.layer.borderWidth = 1;
+    schoolShowView.layer.borderColor = [CommonUtils colorWithHex:@"999999"].CGColor;
+    schoolShowView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:schoolShowView];
+    
+    
+    //定位信息的显示  deliver_icon_location
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 16, 16)];
+    imageView.image = [UIImage imageNamed:@"shetuan_icon_location"];
+    [schoolShowView addSubview:imageView];
+    
+    
+    UILabel *showLocationLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame) + 5,10, SCREEN_WIDTH - CGRectGetMaxX(imageView.frame) - 15, 20)];
+    showLocationLable.text = [UserAccountManager sharedInstance].userCollegeName;
+    showLocationLable.font = [UIFont systemFontOfSize:14];
+    [schoolShowView addSubview:showLocationLable];
+    self.showLocationLable = showLocationLable;
+    
+    
+    
+    //切换的按钮
+    UILabel *changeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 70, 10, 50, 20)];
+    changeLabel.font = [UIFont systemFontOfSize:14];
+    changeLabel.text = @"切换";
+    changeLabel.textAlignment = NSTextAlignmentCenter;
+    changeLabel.textColor = [CommonUtils colorWithHex:@"00beaf"];
+    changeLabel.layer.borderColor = [CommonUtils colorWithHex:@"00beaf"].CGColor;
+    changeLabel.layer.borderWidth = 1;
+    changeLabel.layer.cornerRadius = 3;
+    changeLabel.layer.masksToBounds = YES;
+    [schoolShowView addSubview:changeLabel];
+    
+    
+    
+    //添加点击事件
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeSchoolAction)];
+    
+    [schoolShowView addGestureRecognizer:tapGesture];
+    
+    
+    
+}
+
+#pragma mark - 修改学校
+- (void)changeSchoolAction{
+    
+    SelectedSchollViewController *selectedSchoolVC = [[SelectedSchollViewController alloc] init];
+    
+    __weak typeof(self)weakSelf = self;
+    selectedSchoolVC.callBackBlock = ^(CollegeModel *collegeModel) {
+        
+        //修改存储本地的学校
+        [[NSUserDefaults standardUserDefaults] setObject:collegeModel.collegeName forKey:@"college_name"];
+        
+
+        
+        weakSelf.showLocationLable.text = collegeModel.collegeName;
+        
+        
+        [weakSelf requestSchoolName:collegeModel.collegeID];
+        
+    };
+    [self.navigationController pushViewController:selectedSchoolVC animated:YES];
+    
+
+}
+
+- (void)requestSchoolName:(NSString *)collegeID{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    
+    if (collegeID.length > 0) {
+        [dic setValue:collegeID forKey:@"college_id"];
+
+    }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[HttpClient sharedInstance]updateUserSchoolWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (model.responseCode ==ResponseCodeSuccess) {
+
+            [CommonUtils showToastWithStr:@"切换成功"];
+            
+            if (model.responseCommonDic.count > 0) {
+                
+                //修改用户id和积分数
+                [[NSUserDefaults standardUserDefaults] setObject:[model.responseCommonDic objectForKey:@"user_id"] forKey:@"user_id"];
+                
+                [[NSUserDefaults standardUserDefaults] setObject:[model.responseCommonDic objectForKey:@"points"] forKey:@"points"];
+                
+            }
+
+        }else{
+
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    }];
+
 }
 
 

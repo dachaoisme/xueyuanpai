@@ -11,8 +11,8 @@
 @interface SelectedSchollViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSMutableArray * dataArr;
-    NSInteger page;
-    NSInteger pageCount;
+    NSInteger pageNum;
+    NSInteger pageSize;
     NSString * searchContent;
 }
 @property(nonatomic,strong)UITableView    *tableView;
@@ -29,8 +29,9 @@
     [self createLeftBackNavBtn];
     [self initContentView];
     dataArr = [NSMutableArray array];
-    pageCount = 10;
-    page = 1;
+    pageNum = 1;
+    pageSize = 10;
+
     
     [self requestDataWithText:@""];
 
@@ -49,7 +50,7 @@
     //初始化tableView
     CGRect rc = self.view.bounds;
     rc.origin.y = 0;
-    rc.size.height = SCREEN_HEIGHT-NAV_TOP_HEIGHT;
+    rc.size.height = SCREEN_HEIGHT;
     
     UITableView * tableView    = [[UITableView alloc]initWithFrame:rc style:UITableViewStylePlain];
     tableView.separatorColor  = [CommonUtils colorWithHex:@"eeeeee"];
@@ -61,6 +62,8 @@
     
     //设置头视图
     self.tableView.tableHeaderView = searchBar;
+    
+    [self.tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
@@ -89,21 +92,31 @@
     [self requestDataWithText:searchText];
 }
 
+-(void)requestMoreData
+{
+    pageNum = pageNum+1;
+    [self requestDataWithText:@""];
+}
+
 -(void)requestDataWithText:(NSString *)searchText
 {
-    [dataArr removeAllObjects];
+//    [dataArr removeAllObjects];
     searchContent = searchText;
-    page = 1;
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:searchText forKey:@"name"];
-//    [dic setObject:[NSString stringWithFormat:@"%d",pageCount] forKey:@"size"];
-//    [dic setObject:[NSString stringWithFormat:@"%d",page] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNum] forKey:@"page"];
     [[HttpClient sharedInstance]searchCollegeWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         NSArray * dicArr = [ListDic objectForKey:@"lists"];
         for (NSDictionary * dic in dicArr) {
             CollegeModel *collegeModel = [[CollegeModel alloc] initWithDic:dic];
             [dataArr addObject:collegeModel];
         }
+        if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+
         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         

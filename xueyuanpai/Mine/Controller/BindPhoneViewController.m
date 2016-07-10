@@ -138,14 +138,22 @@
     
 //    [CommonUtils showToastWithStr:@"确定"];
     
-    
+    if (coderTextField.text.length <= 0) {
+        [CommonUtils showToastWithStr:@"请输入有效的验证码"];
+        return;
+    }
+
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     NSString * phoneNum = [UserAccountManager sharedInstance].userMobile;
     
     [params setObject:phoneNum forKey:@"mobile"];
     [params setObject:coderTextField.text forKey:@"code"];
     
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [[HttpClient sharedInstance] checkSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         
         if (model.responseCode == ResponseCodeSuccess) {
             
@@ -154,9 +162,6 @@
             BindPhoneLastViewController *bindPhoneLastVC = [[BindPhoneLastViewController alloc] init];
             [self.navigationController pushViewController:bindPhoneLastVC animated:YES];
             
-            
-            
-            
         }else{
             
             [CommonUtils showToastWithStr:model.responseMsg];
@@ -164,6 +169,8 @@
         
         
     } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
     }];
 

@@ -771,7 +771,6 @@
 		DDCD71071D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD71051D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib */; };
 		DDCD71101D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD710E1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m */; };
 		DDCD71111D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD710F1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib */; };
-		DDCD71141D093A73009FBE9A /* SelectSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71131D093A73009FBE9A /* SelectSchoolViewController.m */; };
 		DDCD711D1D09AA36009FBE9A /* EditProfileTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD711B1D09AA36009FBE9A /* EditProfileTwoTableViewCell.m */; };
 		DDCD711E1D09AA36009FBE9A /* EditProfileTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDCD711C1D09AA36009FBE9A /* EditProfileTwoTableViewCell.xib */; };
 		DDCD71211D09B1DF009FBE9A /* EditTeacherProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDCD71201D09B1DF009FBE9A /* EditTeacherProfileViewController.m */; };
@@ -1969,8 +1968,6 @@
 		DDCD710D1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddProjectLeaderTwoTableViewCell.h; sourceTree = "<group>"; };
 		DDCD710E1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddProjectLeaderTwoTableViewCell.m; sourceTree = "<group>"; };
 		DDCD710F1D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProjectLeaderTwoTableViewCell.xib; sourceTree = "<group>"; };
-		DDCD71121D093A73009FBE9A /* SelectSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectSchoolViewController.h; sourceTree = "<group>"; };
-		DDCD71131D093A73009FBE9A /* SelectSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectSchoolViewController.m; sourceTree = "<group>"; };
 		DDCD711A1D09AA36009FBE9A /* EditProfileTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileTwoTableViewCell.h; sourceTree = "<group>"; };
 		DDCD711B1D09AA36009FBE9A /* EditProfileTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileTwoTableViewCell.m; sourceTree = "<group>"; };
 		DDCD711C1D09AA36009FBE9A /* EditProfileTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileTwoTableViewCell.xib; sourceTree = "<group>"; };
@@ -2828,8 +2825,6 @@
 				DD1957D21D19785300FF01F0 /* BusinessPublishProjectSuccessViewController.m */,
 				DDCD70FF1D092D8F009FBE9A /* AddProjectLeaderViewController.h */,
 				DDCD71001D092D8F009FBE9A /* AddProjectLeaderViewController.m */,
-				DDCD71121D093A73009FBE9A /* SelectSchoolViewController.h */,
-				DDCD71131D093A73009FBE9A /* SelectSchoolViewController.m */,
 				DD82A8531D04E715009E3671 /* BusinessTeacherViewController.h */,
 				DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */,
 				DDAB059D1D01D252007A6027 /* BusinessTeacherDetailViewController.h */,
@@ -5343,7 +5338,6 @@
 				DD0F429A1D23BDE400115B96 /* SystemMessageListModel.m in Sources */,
 				DDB28E491D2C8A7E004C8F70 /* EaseBubbleView+Video.m in Sources */,
 				DDD0BDAF1CFA75E800073290 /* PositionTwoTableViewCell.m in Sources */,
-				DDCD71141D093A73009FBE9A /* SelectSchoolViewController.m in Sources */,
 				DDEB25841D1027CB00EF6CE3 /* XHRadarIndicatorView.m in Sources */,
 				DDAB05B81D033601007A6027 /* BusinessGameViewController.m in Sources */,
 				58F67C321CD9CF9500D55BE0 /* MJRefreshLegendFooter.m in Sources */,
