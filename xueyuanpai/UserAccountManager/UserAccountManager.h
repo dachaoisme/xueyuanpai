@@ -103,6 +103,8 @@
 -(void)exitLogin;
 
 -(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord withUserRole:(RegisterRoleType)role;
+///根据手机号获取用户信息
+-(void)getUserInfoWithUserPhoneNum:(NSString *)phoneNum;
 ///极光推送tag
 -(void)setJpushTags;
 @end

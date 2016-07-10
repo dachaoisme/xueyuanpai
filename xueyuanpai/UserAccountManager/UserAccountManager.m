@@ -136,4 +136,20 @@
     });
    
 }
+-(void)getUserInfoWithUserPhoneNum:(NSString *)phoneNum
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.userTelphone forKey:@"mobile"];
+    [[HttpClient sharedInstance]myHomePageByMobileWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 @end

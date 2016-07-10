@@ -476,6 +476,7 @@
      //更新导师资料
      if (model.responseCode == ResponseCodeSuccess) {
          [CommonUtils showToastWithStr:@"提交审核成功"];
+         [[UserAccountManager sharedInstance]getUserInfoWithUserPhoneNum:[UserAccountManager sharedInstance].userMobile];
          [self.navigationController popToRootViewControllerAnimated:YES];
      }else{
          [CommonUtils showToastWithStr:model.responseMsg];

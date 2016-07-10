@@ -380,7 +380,7 @@
     [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"用户资料修改成功"];
-            
+            [[UserAccountManager sharedInstance]getUserInfoWithUserPhoneNum:[UserAccountManager sharedInstance].userMobile];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
