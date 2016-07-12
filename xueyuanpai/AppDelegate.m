@@ -420,6 +420,10 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                                               otherButtonTitles:nil, nil];
         [alert show];
         
+        if (resp.errCode==WXSuccess) {
+            //发送一个通知，让服务器更改订单状态
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_WXSUCCESS_PAY object:nil];
+        }
     }
 }
 

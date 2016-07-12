@@ -17,7 +17,7 @@
 #define baseBackgroundUrlType2 @"http://114.215.111.210/backend/web/"
 
 ///支付地址
-#define WeiXinPayStyleUrl   @"http://114.215.111.210/api/web/test/weixin"
+#define WeiXinPayStyleUrl   @"http://114.215.111.210/api/web/v1/pay/weixin/"
 
 #pragma mark - 首页相关
 ///轮播图
@@ -207,4 +207,9 @@
 ///消息：删除消息
 #define SYSTEM_MESSAGE_Delete                                     @"v1/message/del?"
 
+#pragma mark - 充值&支付相关
+///支付:微信支付回调
+#define SYSTEM_WXPAY_CALLBACK                                     @"/v1/pay/weixinnotify/?"
+///支付:获取支付宝回调链接
+#define SYSTEM_ALIPAY_CALLBACK                                     @"/v1/pay/alipaynotifyurl/?"
 #endif /* NetworkConfigue_h */

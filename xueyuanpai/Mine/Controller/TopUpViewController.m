@@ -14,6 +14,11 @@
 
 
 @interface TopUpViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TopUpTwoTableViewCellDelegate>
+{
+    NSString * prepayId;
+    PayMethod payMethod;
+    NSString * aLiNotifyUrl;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 ///充值金额
@@ -34,8 +39,8 @@
     [self createLeftBackNavBtn];
     
     [self createTableView];
-    
-    
+    payMethod = PayMethodWx;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateWXPaySuccess) name:NOTI_WXSUCCESS_PAY object:nil];
     
 }
 
@@ -47,7 +52,6 @@
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     self.tableView = tableView;
-    
     
     UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 80)];
     
@@ -64,113 +68,13 @@
 
     self.tableView.tableFooterView = backGroundView;
     
-    
-    
     //注册cell
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [tableView registerNib:[UINib nibWithNibName:@"TopUpTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
     
     [tableView registerNib:[UINib nibWithNibName:@"TopUpTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     
-   
 }
-
-#pragma mark - 充值
-- (void)topUpAction{
-//    [CommonUtils showToastWithStr:@"充值"];
-    
-    /*
-     参数:
-     title 标题
-     order_sn 订单号
-     total_fee  费用
-     body 内容
-     */
-    
-    
-    /*
-     {
-     "appid": "wx31cb0dc3d4e9d04f",
-     "sign": "CBC8ED76DAE175945BD70A1BF0D8A93D",
-     "partnerid": "1359503002",
-     "prepayid": "wx20160707172745e8325a4b3c0344570306",
-     "package": "Sign=WXPay",
-     "timestamp": 1467883665,
-     "noncestr": "XmKA5GTCV3e7KihHRWgTHqrjdwT3nD",
-     "total_fee": 1
-     }
-     */
-    
-    if (_topUpMoney.length == 0) {
-
-        _topUpMoney = @"0.01";
-        
-    }
-    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@?total_fee=%@",WeiXinPayStyleUrl,_topUpMoney];
-
-    NSLog(@"--- GetAccessTokenUrl: %@", getAccessTokenUrl);
-    NSURLRequest *reuqest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:getAccessTokenUrl]];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-    [NSURLConnection sendAsynchronousRequest:reuqest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-
-        if (!connectionError) {
-            
-
-            //得到接口返回的字典数据
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-            
-            //处理微信回调数据
-            PayReq *request = [[PayReq alloc] init];
-            request.partnerId = [dic objectForKey:@"partnerid"];
-            request.prepayId= [dic objectForKey:@"prepayid"];
-            request.package = [dic objectForKey:@"package"];
-            request.nonceStr= [dic objectForKey:@"noncestr"];
-            request.timeStamp= [[dic objectForKey:@"timestamp"] intValue];
-            request.sign= [dic objectForKey:@"sign"];
-            [WXApi sendReq:request];
-            
-            
-            
-        }else{
-            [CommonUtils showToastWithStr:@"请求失败"];
-        }
-        
-        
-    }];
-
-    
-    
-    /*
-    [[HttpClient sharedInstance]weiXinPayWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        
-//        if (model.responseCode ==ResponseCodeSuccess) {
-//            ///请求成功
-//            //
-//            
-//            
-//            
-//            
-//        }else{
-//            ///反馈失败
-//            [CommonUtils showToastWithStr:model.responseMsg];
-//        }
-    } withFaileBlock:^(NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-
-        
-    }];
-     */
-
-    
-    
-}
-
 #pragma mark - tableView代理方法
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -194,7 +98,7 @@
         TopUpTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         cell.titleLabel.text = @"提现金额";
         cell.inputTextField.delegate = self;
-        
+        cell.inputTextField.text = _topUpMoney;
         
         return cell;
         
@@ -218,7 +122,13 @@
             cell.payImageView.image = [UIImage imageNamed:@"acount_icon_wechat"];
             cell.payWay.text = @"微信支付";
             cell.payWay.tag = 100;
-            [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            cell.payStatusButton.tag = 100;
+            if (payMethod == PayMethodWx) {
+                [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }else{
+                [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox_empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }
+            
             cell.delegate = self;
             return cell;
         }else {
@@ -227,13 +137,17 @@
             cell.payImageView.image = [UIImage imageNamed:@"acount_icon_alipay"];
             cell.payWay.text = @"支付宝支付";
             cell.payWay.tag = 101;
+            cell.payStatusButton.tag = 101;
             cell.delegate = self;
-            [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox_empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
-            
+            if (payMethod == PayMethodALi) {
+                [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }else{
+                [cell.payStatusButton setBackgroundImage:[[UIImage imageNamed:@"pay_checkbox_empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
+            }
             
             return cell;
         }
-
+        
         
     }
 }
@@ -246,25 +160,31 @@
         return 48;
     }
 }
-
-
-#pragma mark - 支付响应的方法
+#pragma mark - 支付响应的方法TopUpTwoTableViewCellDelegate
 - (void)payStyleAction:(id)sender{
     
     UIButton *button=(UIButton *)sender;
-    [button setSelected:!button.selected];
-    
-    if (button.selected) {
-        [button setImage:[[UIImage imageNamed:@"pay_checkbox"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal]; //被勾选中的图片
-    }else {
+    if (button.tag==100) {
+        ///微信
+        if (payMethod==PayMethodWx) {
+            
+        }else{
+            payMethod=PayMethodWx;
+        }
+    }else if (button.tag==101){
+        ///支付宝
+        if (payMethod==PayMethodWx) {
+            payMethod=PayMethodALi;
+        }else{
+            
+        }
+    }else{
         
-        [button setImage:[[UIImage imageNamed:@"pay_checkbox_empty"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];　//未被勾选中的图片
     }
     
-    
-    
+    [self.tableView reloadData];
 }
-
+#pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     [textField resignFirstResponder];
@@ -277,7 +197,107 @@
     self.topUpMoney = textField.text;
 }
 
+#pragma mark - 充值
+- (void)topUpAction{
+    
+    if (payMethod==PayMethodWx) {
+        [self wxpay];
+    }else if (payMethod==PayMethodALi){
+        [self aLipay];
+    }else{
+        
+    }
 
+}
+-(void)wxpay
+{
+    //    [CommonUtils showToastWithStr:@"充值"];
+    
+    /*
+     参数:
+     title 标题
+     order_sn 订单号
+     total_fee  费用
+     body 内容
+     */
+    /*
+     {
+     "appid": "wx31cb0dc3d4e9d04f",
+     "sign": "CBC8ED76DAE175945BD70A1BF0D8A93D",
+     "partnerid": "1359503002",
+     "prepayid": "wx20160707172745e8325a4b3c0344570306",
+     "package": "Sign=WXPay",
+     "timestamp": 1467883665,
+     "noncestr": "XmKA5GTCV3e7KihHRWgTHqrjdwT3nD",
+     "total_fee": 1
+     }
+     */
+    
+    if (_topUpMoney.length == 0) {
+        
+        _topUpMoney = @"0.01";
+        
+    }
+    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@?total_fee=%@&user_id=%@&title=学院派",WeiXinPayStyleUrl,_topUpMoney,[UserAccountManager sharedInstance ].userId];
+    
+    NSLog(@"--- GetAccessTokenUrl: %@", getAccessTokenUrl);
+    NSURLRequest *reuqest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:getAccessTokenUrl]];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [NSURLConnection sendAsynchronousRequest:reuqest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (!connectionError) {
+            
+            
+            //得到接口返回的字典数据
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            
+            //处理微信回调数据
+            PayReq *request = [[PayReq alloc] init];
+            request.partnerId = [dic objectForKey:@"partnerid"];
+            request.prepayId= [dic objectForKey:@"prepayid"];
+            request.package = [dic objectForKey:@"package"];
+            request.nonceStr= [dic objectForKey:@"noncestr"];
+            request.timeStamp= [[dic objectForKey:@"timestamp"] intValue];
+            request.sign= [dic objectForKey:@"sign"];
+            [WXApi sendReq:request];
+            
+            prepayId = request.prepayId;
+        }else{
+            [CommonUtils showToastWithStr:@"请求失败"];
+        }
+        
+        
+    }];
+}
+-(void)aLipay
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [[HttpClient sharedInstance] aLiPayCallBackUrlWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            aLiNotifyUrl = [model.responseCommonDic objectForKey:@"notify_url"];
+        }
+        ///获取到支付宝支付回调地址以后，就调取支付宝SDK进行支付
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+#pragma mark - 微信支付成功以后，需要手动调取后台，把订单状态改成已支付状态
+-(void)updateWXPaySuccess
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:prepayId forKey:@"prepayid"];
+    [[HttpClient sharedInstance] wxPayCallBackWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

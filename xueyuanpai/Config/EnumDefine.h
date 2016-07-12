@@ -158,4 +158,13 @@ typedef NS_ENUM(NSInteger, UserInfoSex){
     UserInfoSexWoman         =0,
     
 };
+
+typedef NS_ENUM(NSInteger, PayMethod){
+    
+    ///微信
+    PayMethodWx           =1,
+    ///支付宝
+    PayMethodALi         =0,
+    
+};
 #endif /* EnumDefine_h */

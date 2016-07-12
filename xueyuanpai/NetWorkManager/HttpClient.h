@@ -393,6 +393,11 @@
 ///删除消息
 - (void)deleteMessageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
+#pragma mark - 充值相关
+///支付成功后，微信回调后台接口。
+- (void)wxPayCallBackWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+///支付宝支付前，需要获取到回调链接
+- (void)aLiPayCallBackUrlWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 @end
 
 

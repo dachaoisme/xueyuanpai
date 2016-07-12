@@ -951,5 +951,23 @@
     }];
 }
 
-
+#pragma mark - 充值相关
+///获取微信支付成功后，回调一下，改变订单状态
+- (void)wxPayCallBackWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_WXPAY_CALLBACK withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+///支付宝支付前，需要获取到用户的地址
+- (void)aLiPayCallBackUrlWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_ALIPAY_CALLBACK withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 @end
