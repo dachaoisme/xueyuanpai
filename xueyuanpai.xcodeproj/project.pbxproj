@@ -206,6 +206,7 @@
 		58C688271D03A91600E8B4AA /* BusinessCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C688261D03A91600E8B4AA /* BusinessCenterModel.m */; };
 		58CF089C1CE1DE45008334E8 /* IndexBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */; };
 		58D396511D025EFC0066EA05 /* JobMarketModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D396501D025EFC0066EA05 /* JobMarketModel.m */; };
+		58D9B2BA1D39E65000C4D6FA /* PayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D9B2B91D39E65000C4D6FA /* PayOrder.m */; };
 		58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */; };
 		58E029011CF45E04006A2E74 /* TimeBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E029001CF45E04006A2E74 /* TimeBankViewController.m */; };
 		58F211671CF9A0E800926FB9 /* RequirementsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F211661CF9A0E800926FB9 /* RequirementsViewController.m */; };
@@ -1116,6 +1117,8 @@
 		58CF089B1CE1DE45008334E8 /* IndexBannerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexBannerModel.m; sourceTree = "<group>"; };
 		58D3964F1D025EFC0066EA05 /* JobMarketModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarketModel.h; sourceTree = "<group>"; };
 		58D396501D025EFC0066EA05 /* JobMarketModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobMarketModel.m; sourceTree = "<group>"; };
+		58D9B2B81D39E65000C4D6FA /* PayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayOrder.h; sourceTree = "<group>"; };
+		58D9B2B91D39E65000C4D6FA /* PayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayOrder.m; sourceTree = "<group>"; };
 		58E028F81CF3442B006A2E74 /* GiftExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GiftExchangeViewController.h; sourceTree = "<group>"; };
 		58E028F91CF3442B006A2E74 /* GiftExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GiftExchangeViewController.m; sourceTree = "<group>"; };
 		58E028FF1CF45E04006A2E74 /* TimeBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankViewController.h; sourceTree = "<group>"; };
@@ -2646,6 +2649,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		58D9B2B71D39E62500C4D6FA /* PayManager */ = {
+			isa = PBXGroup;
+			children = (
+				58D9B2B81D39E65000C4D6FA /* PayOrder.h */,
+				58D9B2B91D39E65000C4D6FA /* PayOrder.m */,
+			);
+			path = PayManager;
+			sourceTree = "<group>";
+		};
 		58E028FB1CF45DB7006A2E74 /* TimeBank */ = {
 			isa = PBXGroup;
 			children = (
@@ -2751,6 +2763,7 @@
 				DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */,
 				DDBFD1D91D2F7ADD00E15DCF /* ShufflingDetailViewController.h */,
 				DDBFD1DA1D2F7ADD00E15DCF /* ShufflingDetailViewController.m */,
+				58D9B2B71D39E62500C4D6FA /* PayManager */,
 				DDBFD1CC1D2F361B00E15DCF /* MyHomePage */,
 				583D65C51CDA78F700830BBE /* TabBar */,
 				DDD0BE651CFC2AA200073290 /* JobMarket */,
@@ -5141,6 +5154,7 @@
 				DDB28E041D2C8A7E004C8F70 /* MWPhoto.m in Sources */,
 				DDAB05C61D03B154007A6027 /* BusinessProjectDetailOneTableViewCell.m in Sources */,
 				DDB28DE91D2C8A7E004C8F70 /* EMVoiceConverter.mm in Sources */,
+				58D9B2BA1D39E65000C4D6FA /* PayOrder.m in Sources */,
 				DDCD71421D0A99F2009FBE9A /* CourierNoticeTableViewCell.m in Sources */,
 				DDD0BDA31CFA536300073290 /* PositionInforViewController.m in Sources */,
 				DDB28E371D2C8A7E004C8F70 /* EaseEmotionManager.m in Sources */,

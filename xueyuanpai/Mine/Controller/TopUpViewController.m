@@ -7,10 +7,9 @@
 //
 
 #import "TopUpViewController.h"
-
 #import "TopUpTableViewCell.h"
 #import "TopUpTwoTableViewCell.h"
-
+#import "PayOrder.h"
 
 
 @interface TopUpViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TopUpTwoTableViewCellDelegate>
@@ -284,6 +283,133 @@
         
     }];
 }
+
+//- (void)doAliPay:(NSString*)orderStr withMoneyOfALiToPay:(NSString *)moneyOfALiToPay
+//{
+//    /*
+//     *商户的唯一的parnter和seller。
+//     *签约后，支付宝会为每个商户分配一个唯一的 parnter 和 seller。
+//     */
+//    
+//    /*============================================================================*/
+//    /*=======================需要填写商户app申请的===================================*/
+//    /*============================================================================*/
+//    //成都的支付宝账户
+//    NSString *partner = @"2088121827402724";
+//    NSString *seller = @"cdcw@mftour.cn";
+//    NSString * privateKey = @"MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMu6OI7POoohKkNjaz0GxUxtU1vtSfW9cDLdZPWF2yTqLFOE7Y8wqTxFRAkF76lMKrkEKUqs+KGoASKsu3GAhdkIMCOGr1QeU7/XqKYp7afuzqAy2MGGG8GPsOE5D7KtKn2dJMXbHvK5Qm7gQmQFqRyb+sju/47tX+ao3nHmhZcVAgMBAAECgYEAoT4MUYtWi8jgCGIBmFVphqnolhNivCppSPjNVT3SSo9E8f19gB1FdLxlsraODvKHxdOzUrVAO8Ia0/TejmDojYnVNUuWZMNUCv9zEQMcwcSSExZMFrfhOseHuZE2pnMUSHb/CM/N3FMrVSOeTXnsR6YLg0GzQqH30wkGVcr6xakCQQDw+8ZsWXLCE/5ve8npg18BS4v2NeVzvY4RLa0v9EMxGPmX4A+QrzHI8e+3+fz8IQfl6fAFzzKhorEkMF5g5JL7AkEA2Gwg2O7RNonarcOnnpWDx+8+zEzhNGmobh/bmSGi0vzCdQdG53fgcPt/WZ63rklsSJo5HatonlN6RjhxCCDhLwJAOOndpP1DIx8Bumar+yBxsaab+ZwlAr7D7L6y5l5z+AaD/CCIzIzz3xd0nCjIXOuYJ+6mJ1kWBiKcX4Wk5JFXPQJBAJMOxjMh899PRNyV+iv0BJuyocVI6C4pLV3HH/ypsm4Tej7zNubJuiSLgDlxc/ZlxcJ/qRfUBT6wEoHskEGptdkCQC0a0SgKRwPacVUWHVfd8BfQPpzgLRsO4en6URpJg25VPEyJLS8IledXY8fkPxz8nbCCe48DcWDhxnZ286hdKuk=";
+//    
+//    /*============================================================================*/
+//    /*============================================================================*/
+//    /*============================================================================*/
+//    
+//    //partner和seller获取失败,提示
+//    if ([partner length] == 0 ||
+//        [seller length] == 0 ||
+//        [privateKey length] == 0)
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+//                                                        message:@"缺少partner或者seller或者私钥。"
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"确定"
+//                                              otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
+//    
+//    
+//    /*
+//     *生成订单信息及签名
+//     */
+//    //将商品信息赋予AlixPayOrder的成员变量
+//    PayOrder * order = [[PayOrder alloc] init];
+//    order.partner = partner;
+//    order.seller = seller;
+//    //    order.tradeNO = [self.order_info objectForKey:@"orderId"];//[self generateTradeNO]; //订单ID（由商家自行制定）
+//    //    NSString * orderId=[self.order_info objectForKey:@"orderId"];
+//    //    if (orderId == nil) {
+//    //        orderId=[self.order_info objectForKey:@"orderID"];
+//    //    }
+//#warning 这个为何没有订单号
+//    //order.tradeNO=self.orderId;
+//    
+//    order.productName = @"学院派产品";//商品标题
+//    order.productDescription = @"学院派";//商品描述
+//    order.amount = moneyOfALiToPay;
+//    order.notifyURL = orderStr;//回调URL
+//    
+//    order.service = @"mobile.securitypay.pay";
+//    order.paymentType = @"1";
+//    order.inputCharset = @"utf-8";
+//    order.itBPay = @"30m";
+//    order.showUrl = @"m.alipay.com";
+//    
+//    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+//    NSString *appScheme = @"alipayshanghu";//@"alisdkdemo";
+//    
+//    //将商品信息拼接成字符串
+//    NSString *orderSpec = [order description];
+//    NSLog(@"orderSpec = %@",orderSpec);
+//    
+//    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+//    id<DataSigner> signer = CreateRSADataSigner(privateKey);
+//    NSString * signedString = [signer signString:orderSpec];
+//    
+//    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+//    NSString * orderString = nil;
+//    if (signedString != nil) {
+//        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+//                       orderSpec, signedString, @"RSA"];
+//        
+//        [[AlipaySDK defaultService] payOrder:orderString
+//                                  fromScheme:appScheme
+//                                    callback:^(NSDictionary *resultDic) {
+//                                        int statusCode = [[resultDic objectForKey:@"resultStatus"] intValue];
+//                                        switch (statusCode) {
+//                                                
+//                                            case PayStatusCancel:
+//                                            {
+//                                                //取消付款
+//                                                MFLog(@"用户取消支付");
+//                                                [self payFailAlert];
+//                                            }
+//                                                break;
+//                                                
+//                                            case PayStatusSuccess:
+//                                            {
+//                                                MFLog(@"支付成功");
+//                                                [self paySuccessAlert];
+//                                            }
+//                                                break;
+//                                                
+//                                            case PayStatusUnusual:
+//                                            {
+//                                                MFLog(@"系统异常");
+//                                                [self payFailAlert];
+//                                            }
+//                                                break;
+//                                                
+//                                            case PayStatusNetError:
+//                                            {
+//                                                MFLog(@"网络异常");
+//                                                [self payFailAlert];
+//                                            }
+//                                                break;
+//                                                
+//                                            case PayStatusParamError:
+//                                                
+//                                            {
+//                                                MFLog(@"订单参数错误");
+//                                                [self payFailAlert];
+//                                            }
+//                                                break;
+//                                        }
+//                                        
+//                                        
+//                                    }];
+//    }
+//}
+
 #pragma mark - 微信支付成功以后，需要手动调取后台，把订单状态改成已支付状态
 -(void)updateWXPaySuccess
 {

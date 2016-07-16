@@ -211,5 +211,5 @@
 ///支付:微信支付回调
 #define SYSTEM_WXPAY_CALLBACK                                     @"/v1/pay/weixinnotify/?"
 ///支付:获取支付宝回调链接
-#define SYSTEM_ALIPAY_CALLBACK                                     @"/v1/pay/alipaynotifyurl/?"
+#define SYSTEM_ALIPAY_CALLBACK                                     @"/v1/pay/alipaynotifyurl?"
 #endif /* NetworkConfigue_h */
