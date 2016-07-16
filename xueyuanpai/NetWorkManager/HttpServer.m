@@ -26,6 +26,12 @@
 {
     NSMutableString *tempUrl =[NSMutableString stringWithString:baseApiUrl];// baseUrl ;
     [tempUrl appendString:methond];
+    //获取当前时间apptime
+    NSString *appCurrentTimeString = [NSString stringWithFormat:@"%ld", time(NULL)];//转为字符型
+    //加密MD5KEY
+    NSString * md5key = @"8409-4E89-A81A-B7FF-u(#d";
+    NSString *sign = [[CommonUtils md5:[appCurrentTimeString stringByAppendingString:md5key]] uppercaseString];
+    [tempUrl appendString:[NSString stringWithFormat:@"?apptime=%@&sign=%@",appCurrentTimeString,sign]];
     // 1.创建AFN管理者
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -69,12 +75,23 @@
     //url
     NSMutableString *tempUrl =[NSMutableString stringWithString:baseApiUrl];// baseUrl ;
     [tempUrl appendString:methond];
-    for (int i = 0; i<[dic allKeys].count; i++) {
+    //获取当前时间apptime
+    NSString *appCurrentTimeString = [NSString stringWithFormat:@"%ld", time(NULL)];//转为字符型
+    //加密MD5KEY
+    NSString * md5key = @"8409-4E89-A81A-B7FF-u(#d";
+    NSString *sign = [[CommonUtils md5:[appCurrentTimeString stringByAppendingString:md5key]] uppercaseString];
+    
+    NSMutableDictionary * mutDic = [NSMutableDictionary dictionary];
+    [mutDic addEntriesFromDictionary:dic];
+    [mutDic setObject:appCurrentTimeString forKey:@"apptime"];
+    [mutDic setObject:sign forKey:@"sign"];
+    
+    for (int i = 0; i<[mutDic allKeys].count; i++) {
         
-        NSString * key = [[dic allKeys]objectAtIndex:i];
-        NSString * value = [dic objectForKey:key];
+        NSString * key = [[mutDic allKeys]objectAtIndex:i];
+        NSString * value = [mutDic objectForKey:key];
         
-        if (i == [dic allKeys].count-1) {
+        if (i == [mutDic allKeys].count-1) {
             NSString * str = [NSString stringWithFormat:@"%@=%@",key,value];
             [tempUrl appendString:str];
         }else{
