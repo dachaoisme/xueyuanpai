@@ -167,4 +167,13 @@ typedef NS_ENUM(NSInteger, PayMethod){
     PayMethodALi         =0,
     
 };
+typedef enum{
+    
+    PayStatusSuccess = 9000,//支付成功
+    PayStatusUnusual = 4000,   //系统异常
+    PayStatusParamError = 4001,//订单参数错误
+    PayStatusCancel = 6001,//用户取消支付
+    PayStatusNetError = 6002//网络连接异常
+    
+}PayStatus;
 #endif /* EnumDefine_h */

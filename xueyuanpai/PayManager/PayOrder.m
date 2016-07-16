@@ -11,27 +11,26 @@
 @implementation PayOrder
 
 - (NSString *)description {
-    
     NSMutableString * discription = [NSMutableString string];
     if (self.partner) {
         [discription appendFormat:@"partner=\"%@\"", self.partner];
     }
     
-    if (self.seller) {
-        [discription appendFormat:@"&seller_id=\"%@\"", self.seller];
+    if (self.sellerID) {
+        [discription appendFormat:@"&seller_id=\"%@\"", self.sellerID];
     }
-    if (self.tradeNO) {
-        [discription appendFormat:@"&out_trade_no=\"%@\"", self.tradeNO];
+    if (self.outTradeNO) {
+        [discription appendFormat:@"&out_trade_no=\"%@\"", self.outTradeNO];
     }
-    if (self.productName) {
-        [discription appendFormat:@"&subject=\"%@\"", self.productName];
+    if (self.subject) {
+        [discription appendFormat:@"&subject=\"%@\"", self.subject];
     }
     
-    if (self.productDescription) {
-        [discription appendFormat:@"&body=\"%@\"", self.productDescription];
+    if (self.body) {
+        [discription appendFormat:@"&body=\"%@\"", self.body];
     }
-    if (self.amount) {
-        [discription appendFormat:@"&total_fee=\"%@\"", self.amount];
+    if (self.totalFee) {
+        [discription appendFormat:@"&total_fee=\"%@\"", self.totalFee];
     }
     if (self.notifyURL) {
         [discription appendFormat:@"&notify_url=\"%@\"", self.notifyURL];
@@ -50,19 +49,15 @@
     if (self.itBPay) {
         [discription appendFormat:@"&it_b_pay=\"%@\"",self.itBPay];//30m
     }
-    if (self.showUrl) {
-        [discription appendFormat:@"&show_url=\"%@\"",self.showUrl];//m.alipay.com
-    }
-    if (self.rsaDate) {
-        [discription appendFormat:@"&sign_date=\"%@\"",self.rsaDate];
+    if (self.showURL) {
+        [discription appendFormat:@"&show_url=\"%@\"",self.showURL];//m.alipay.com
     }
     if (self.appID) {
         [discription appendFormat:@"&app_id=\"%@\"",self.appID];
     }
-    for (NSString * key in [self.extraParams allKeys]) {
-        [discription appendFormat:@"&%@=\"%@\"", key, [self.extraParams objectForKey:key]];
+    for (NSString * key in [self.outContext allKeys]) {
+        [discription appendFormat:@"&%@=\"%@\"", key, [self.outContext objectForKey:key]];
     }
     return discription;
 }
-
 @end
