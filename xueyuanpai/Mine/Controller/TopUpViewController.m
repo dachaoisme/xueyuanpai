@@ -41,7 +41,7 @@
     
     [self createTableView];
     payMethod = PayMethodWx;
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateWXPaySuccess) name:NOTI_WXSUCCESS_PAY object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateWXPaySuccessWithNotification:) name:NOTI_WXSUCCESS_PAY object:nil];
     
 }
 
@@ -216,10 +216,11 @@
     
     /*
      参数:
-     title 标题
-     order_sn 订单号
-     total_fee  费用
-     body 内容
+     user_id             int       必需      当前用户序号
+     title                string 必需 标题
+     order_sn             string 订单号
+     total_fee             float 费用
+     body                  string 内容
      */
     /*
      {
@@ -239,9 +240,16 @@
         _topUpMoney = @"0.01";
         
     }
-    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@?total_fee=%@&user_id=%@&title=学院派",WeiXinPayStyleUrl,_topUpMoney,[UserAccountManager sharedInstance ].userId];
+    //获取当前时间apptime
+    NSString *appCurrentTimeString = [NSString stringWithFormat:@"%ld", time(NULL)];//转为字符型
+    //加密MD5KEY
+    NSString * md5key = @"8409-4E89-A81A-B7FF-u(#d";
+    NSString *sign = [[CommonUtils md5:[appCurrentTimeString stringByAppendingString:md5key]] uppercaseString];
+    NSString *title = @"学院派";
+    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@?total_fee=%@&user_id=%@&title=%@&apptime=%@&sign=%@",WeiXinPayStyleUrl,_topUpMoney,[UserAccountManager sharedInstance ].userId,[title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],appCurrentTimeString,sign];
     
     NSLog(@"--- GetAccessTokenUrl: %@", getAccessTokenUrl);
+    
     NSURLRequest *reuqest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:getAccessTokenUrl]];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -275,17 +283,16 @@
 }
 -(void)aLipay
 {
-    [self doAliPay:aLiNotifyUrl withMoneyOfALiToPay:_topUpMoney];
-//    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-//    [[HttpClient sharedInstance] aLiPayCallBackUrlWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-//        if (model.responseCode == ResponseCodeSuccess) {
-//            aLiNotifyUrl = [model.responseCommonDic objectForKey:@"notify_url"];
-//            [self doAliPay:aLiNotifyUrl withMoneyOfALiToPay:_topUpMoney];
-//        }
-//        ///获取到支付宝支付回调地址以后，就调取支付宝SDK进行支付
-//    } withFaileBlock:^(NSError *error) {
-//        
-//    }];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [[HttpClient sharedInstance] aLiPayCallBackUrlWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            aLiNotifyUrl = [model.responseCommonDic objectForKey:@"notify_url"];
+            [self doAliPay:aLiNotifyUrl withMoneyOfALiToPay:_topUpMoney];
+        }
+        ///获取到支付宝支付回调地址以后，就调取支付宝SDK进行支付
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 
 - (void)doAliPay:(NSString*)callBackUrl withMoneyOfALiToPay:(NSString *)moneyOfALiToPay
@@ -408,7 +415,27 @@
 }
 
 #pragma mark - 微信支付成功以后，需要手动调取后台，把订单状态改成已支付状态
--(void)updateWXPaySuccess
+-(void)updateWXPaySuccessWithNotification:(NSNotification *)notification
+{
+    int errorCode = [[notification object] intValue];
+    switch (errorCode) {
+        case WXSuccess:
+            //strMsg = @"支付结果：成功！";
+            //NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+            [CommonUtils showToastWithStr:@"支付成功"];
+            [self changeWXPayStatus];
+            break;
+            
+        default:
+            //strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+            //NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+            [CommonUtils showToastWithStr:@"支付失败"];
+            break;
+    }
+    
+   
+}
+-(void)changeWXPayStatus
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
@@ -421,7 +448,6 @@
         
     }];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

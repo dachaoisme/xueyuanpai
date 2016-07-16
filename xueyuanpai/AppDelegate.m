@@ -23,7 +23,8 @@
 
 //微信SDK头文件
 #import "WXApi.h"
-
+///支付宝
+#import <AlipaySDK/AlipaySDK.h>
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
 
@@ -398,34 +399,60 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 #pragma mark - 支付相关内容
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
-    return [WXApi handleOpenURL:url delegate:self];
+    [self returnWithOpenUrlHandle:url];
+    return YES;
 }
 
 - (BOOL) application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [WXApi handleOpenURL:url delegate:self];
+    
+    [self returnWithOpenUrlHandle:url];
+    return YES;
+    
 }
-
-- (void)onResp:(BaseResp *)resp
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary*)options
 {
-    if ([resp isKindOfClass:[PayResp class]]) {
+    [self returnWithOpenUrlHandle:url];
+    return YES;
+}
+-(void)returnWithOpenUrlHandle:(NSURL *)url
+{
+    if([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
+        [[AlipaySDK defaultService]
+         processOrderWithPaymentResult:url
+         standbyCallback:^(NSDictionary *resultDic) {
+             MFLog(@"result = %@", resultDic);
+         }];
+    }else if ([url.host isEqualToString:@"pay"]){
+        [WXApi handleOpenURL:url delegate:self];
         
-        NSString *strTitle = [NSString stringWithFormat:@"支付结果"];
-        NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
-                                                        message:strMsg
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-        
-        if (resp.errCode==WXSuccess) {
-            //发送一个通知，让服务器更改订单状态
-            [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_WXSUCCESS_PAY object:nil];
-        }
     }
 }
-
+- (void)onResp:(BaseResp *)resp
+{
+    if([resp isKindOfClass:[PayResp class]]){
+        switch (resp.errCode) {
+            case WXSuccess:
+                //strMsg = @"支付结果：成功！";
+                //NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                [self sendPayResultNotificationWithErrorCode:resp.errCode];
+                break;
+                
+            default:
+                //strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                //NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                [self sendPayResultNotificationWithErrorCode:resp.errCode];
+                break;
+        }
+    }
+   
+}
+#pragma mark - 微信支付结果通知
+-(void)sendPayResultNotificationWithErrorCode:(int)errorCode
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_WXSUCCESS_PAY object:[NSNumber numberWithInt:errorCode]];
+}
 
 @end
