@@ -367,7 +367,7 @@
     order.showURL = @"m.alipay.com";
     
     //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
-    NSString *appScheme = @"alipayshanghu";
+    NSString *appScheme = @"xueyuanpaiAli";
     
     //将商品信息拼接成字符串
     NSString *orderSpec = [order description];
@@ -393,24 +393,28 @@
                                             case PayStatusCancel:
                                             {
                                                 //取消付款
+                                                [CommonUtils showToastWithStr:@"支付失败"];
                                                 MFLog(@"用户取消支付");
                                             }
                                                 break;
                                                 
                                             case PayStatusSuccess:
                                             {
+                                                [CommonUtils showToastWithStr:@"支付成功"];
                                                 MFLog(@"支付成功");
                                             }
                                                 break;
                                                 
                                             case PayStatusUnusual:
                                             {
+                                                [CommonUtils showToastWithStr:@"支付失败"];
                                                 MFLog(@"系统异常");
                                             }
                                                 break;
                                                 
                                             case PayStatusNetError:
                                             {
+                                                [CommonUtils showToastWithStr:@"支付失败"];
                                                 MFLog(@"网络异常");
                                             }
                                                 break;
@@ -418,6 +422,7 @@
                                             case PayStatusParamError:
                                                 
                                             {
+                                                [CommonUtils showToastWithStr:@"支付失败"];
                                                 MFLog(@"订单参数错误");
                                             }
                                                 break;

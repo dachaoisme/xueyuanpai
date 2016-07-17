@@ -423,6 +423,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
          processOrderWithPaymentResult:url
          standbyCallback:^(NSDictionary *resultDic) {
              MFLog(@"result = %@", resultDic);
+             int statusCode = [[resultDic objectForKey:@"resultStatus"] intValue];
+             if(statusCode==PayStatusSuccess) {
+                 [CommonUtils showToastWithStr:@"支付成功"];
+             }
+             
          }];
     }else if ([url.host isEqualToString:@"pay"]){
         [WXApi handleOpenURL:url delegate:self];

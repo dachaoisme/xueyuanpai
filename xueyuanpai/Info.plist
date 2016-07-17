@@ -69,7 +69,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>alipayshanghu</string>
+				<string>xueyuanpaiAli</string>
 			</array>
 		</dict>
 	</array>
@@ -92,6 +92,8 @@
 		<string>sinaweibo</string>
 		<string>weixin</string>
 		<string>wechat</string>
+		<string>alipay</string>
+		<string>alipayshare</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
