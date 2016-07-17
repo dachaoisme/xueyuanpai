@@ -32,6 +32,8 @@
     int len = (int)[privateKey length];
     NSMutableString *result = [NSMutableString string];
     [result appendString:@"-----BEGIN PRIVATE KEY-----\n"];
+    //[result appendString:@"-----BEGIN RSA PRIVATE KEY-----\n"];
+
     int index = 0;
 	int count = 0;
     while (index < len) {
@@ -49,6 +51,7 @@
         index++;
     }
     [result appendString:@"\n-----END PRIVATE KEY-----"];
+    //[result appendString:@"\n-----END RSA PRIVATE KEY-----"];
     return result;
 }
 

@@ -283,14 +283,33 @@
 }
 -(void)aLipay
 {
-    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [[HttpClient sharedInstance] aLiPayCallBackUrlWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        if (model.responseCode == ResponseCodeSuccess) {
-            aLiNotifyUrl = [model.responseCommonDic objectForKey:@"notify_url"];
+    
+    //获取当前时间apptime
+    NSString *appCurrentTimeString = [NSString stringWithFormat:@"%ld", time(NULL)];//转为字符型
+    //加密MD5KEY
+    NSString * md5key = @"8409-4E89-A81A-B7FF-u(#d";
+    NSString *sign = [[CommonUtils md5:[appCurrentTimeString stringByAppendingString:md5key]] uppercaseString];
+    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@%@apptime=%@&sign=%@",baseApiUrl,SYSTEM_ALIPAY_CALLBACK,appCurrentTimeString,sign];
+    
+    NSLog(@"--- GetAccessTokenUrl: %@", getAccessTokenUrl);
+    
+    NSURLRequest *reuqest = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:getAccessTokenUrl]];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [NSURLConnection sendAsynchronousRequest:reuqest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        if (!connectionError) {
+            //得到接口返回的字典数据
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            aLiNotifyUrl = [dic objectForKey:@"notify_url"];
             [self doAliPay:aLiNotifyUrl withMoneyOfALiToPay:_topUpMoney];
+            
+        }else{
+            [CommonUtils showToastWithStr:@"请求失败"];
         }
-        ///获取到支付宝支付回调地址以后，就调取支付宝SDK进行支付
-    } withFaileBlock:^(NSError *error) {
+        
         
     }];
 }
@@ -306,14 +325,9 @@
     /*=======================需要填写商户app申请的===================================*/
     /*============================================================================*/
     //学院派的支付宝账户
-//    NSString *partner = @"2088221848035302";
-//    NSString *seller = @"ucpai_111@163.com";
-//    NSString * privateKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDS8uzq1OR1Qp807/nnPzk07cN2IBg/o7rulWrgeKV5fhqC23zQtOAflHzbrCCqDkWrTDfJ8pjmWHYqk76icfEeQFOXUaiBW7N/s12I3SOW+ulVpDhYSCzufMW9TOtDgq/3I1h0fpidzWZsH8Jy02TCl/0GdWyYYGSb4hbvuKZsYQIDAQAB";
-    
-    //成都的支付宝账户
-    NSString *partner = @"2088121827402724";
-    NSString *seller = @"cdcw@mftour.cn";
-    NSString * privateKey = @"MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAMu6OI7POoohKkNjaz0GxUxtU1vtSfW9cDLdZPWF2yTqLFOE7Y8wqTxFRAkF76lMKrkEKUqs+KGoASKsu3GAhdkIMCOGr1QeU7/XqKYp7afuzqAy2MGGG8GPsOE5D7KtKn2dJMXbHvK5Qm7gQmQFqRyb+sju/47tX+ao3nHmhZcVAgMBAAECgYEAoT4MUYtWi8jgCGIBmFVphqnolhNivCppSPjNVT3SSo9E8f19gB1FdLxlsraODvKHxdOzUrVAO8Ia0/TejmDojYnVNUuWZMNUCv9zEQMcwcSSExZMFrfhOseHuZE2pnMUSHb/CM/N3FMrVSOeTXnsR6YLg0GzQqH30wkGVcr6xakCQQDw+8ZsWXLCE/5ve8npg18BS4v2NeVzvY4RLa0v9EMxGPmX4A+QrzHI8e+3+fz8IQfl6fAFzzKhorEkMF5g5JL7AkEA2Gwg2O7RNonarcOnnpWDx+8+zEzhNGmobh/bmSGi0vzCdQdG53fgcPt/WZ63rklsSJo5HatonlN6RjhxCCDhLwJAOOndpP1DIx8Bumar+yBxsaab+ZwlAr7D7L6y5l5z+AaD/CCIzIzz3xd0nCjIXOuYJ+6mJ1kWBiKcX4Wk5JFXPQJBAJMOxjMh899PRNyV+iv0BJuyocVI6C4pLV3HH/ypsm4Tej7zNubJuiSLgDlxc/ZlxcJ/qRfUBT6wEoHskEGptdkCQC0a0SgKRwPacVUWHVfd8BfQPpzgLRsO4en6URpJg25VPEyJLS8IledXY8fkPxz8nbCCe48DcWDhxnZ286hdKuk=";
+    NSString *partner = @"2088221848035302";
+    NSString *seller = @"ucpai_111@163.com";
+    NSString * privateKey = @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALOtZYaiJK4VsCUSlUgYzKbMkfU5Bomoxq+4UgqKNNJJ4hvyapIJF6GP58kHK91vHSSMjEjkwcyzVOoqy7xLclIxz6D0DjlIsvMaFiOmQACfrLi/W5na9SLQTnMMsRnveJFtacGXSQzq0FLGgdy+ZTgyy3aRekQoJZQ7WisS7aUzAgMBAAECgYAl7tmcTucHibSiXwX9Lp8mJ9I4v01OCr/HoVZQu1TjgI2n8MnnAtxmU4dPvZ/ZI/g3GyUSzpjLqqCmv1o76oG71cWtJk4Z1/U+ofQZIv7UYQ481CdmopRzo2+xatSeehFxzB7J4KLJDNq8Szw1kDHDa6+HzBRDF+rPHy+Hgi/VoQJBAOiFxX3Z3ijtc8/LxskN3ec9/08e8qhTVVhS7CgCI2cBKWQMIatzqWlIl/1yw/6SW5ptRt1Dp9nzRAnoex7FKOcCQQDF0a9tHXvyRbVVC56HDIzaR9WXiCphbFOTmb6Agq5S4oBIaUgCGSaHTpKitmsKcCPEDZllsBN1PQ/9XbqUU9vVAkAPRTnDGhvM9Es2ylszuQVpuliaCZ5GD7L7Kfb4aauJiDn/qAxOBjqJ/4p7yp20ikgZzDNrNJZBagh93ha33prhAkEAg3DSWXRP2SkMVdgEm8NxC9DTUX5+eoFZ/ycW95jdb+FkT7j0ycAgY6OHt2nyMdtVSH2owXJ/W1UZfMZ8pPYbiQJAXE3zDb9BTk1ROWFwK9PVQ1t0qo9cwk79e20I9dvkJM4NHwciTj5nSpL6HqiaBBPHwld2q/gfAgPL3lWfOacUeQ==";
     
     /*============================================================================*/
     /*============================================================================*/
@@ -340,10 +354,10 @@
     PayOrder  *order = [[PayOrder alloc] init];
     order.partner = partner;
     order.sellerID = seller;
-    //order.outTradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.outTradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
     order.subject = @"学院派";//product.subject; //商品标题
-    //order.body = product.body; //商品描述
-    order.totalFee = [NSString stringWithFormat:@"%.2f",_topUpMoney]; //商品价格
+    order.body = @"学院派充值"; //商品描述
+    order.totalFee = [NSString stringWithFormat:@"%.2f",[_topUpMoney floatValue]]; //商品价格
     order.notifyURL = callBackUrl; //回调URL
     
     order.service = @"mobile.securitypay.pay";
@@ -447,6 +461,26 @@
     } withFaileBlock:^(NSError *error) {
         
     }];
+}
+
+#pragma mark -
+#pragma mark   ==============产生随机订单号==============
+
+
+- (NSString *)generateTradeNO
+{
+    static int kNumber = 15;
+    
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand((unsigned)time(0));
+    for (int i = 0; i < kNumber; i++)
+    {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneStr];
+    }
+    return resultStr;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
