@@ -101,7 +101,7 @@
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
         [shareParams SSDKSetupShareParamsByText:@""
                                          images:imageArray
-                                            url:[NSURL URLWithString:@"https://www.pgyer.com/hbV2"]
+                                            url:[NSURL URLWithString:SHARESDK_URL]
                                           title:@"礼品详情"
                                            type:SSDKContentTypeAuto];
         //2、分享（可以弹出我们的分享菜单和编辑界面）

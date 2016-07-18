@@ -212,4 +212,7 @@
 #define SYSTEM_WXPAY_CALLBACK                                     @"/v1/pay/weixinnotify/?"
 ///支付:获取支付宝回调链接
 #define SYSTEM_ALIPAY_CALLBACK                                     @"/v1/pay/alipaynotifyurl/?"
+
+
+#define SHARESDK_URL                                               @"http://fir.im/xueyuanpai"
 #endif /* NetworkConfigue_h */

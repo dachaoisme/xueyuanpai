@@ -100,7 +100,7 @@
         cell.titleLabel.text = @"提现金额";
         cell.inputTextField.delegate = self;
         cell.inputTextField.text = _topUpMoney;
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     }else{
