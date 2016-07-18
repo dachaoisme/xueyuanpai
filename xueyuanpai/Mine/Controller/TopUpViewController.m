@@ -237,9 +237,15 @@
     
     if (_topUpMoney.length == 0) {
         
-        _topUpMoney = @"0.01";
+        [CommonUtils showToastWithStr:@"请输入金额"];
         
     }
+    if ([_topUpMoney floatValue]<0.01) {
+        
+        [CommonUtils showToastWithStr:@"请输入金额至少一分钱"];
+        
+    }
+    
     //获取当前时间apptime
     NSString *appCurrentTimeString = [NSString stringWithFormat:@"%ld", time(NULL)];//转为字符型
     //加密MD5KEY
@@ -289,7 +295,7 @@
     //加密MD5KEY
     NSString * md5key = @"8409-4E89-A81A-B7FF-u(#d";
     NSString *sign = [[CommonUtils md5:[appCurrentTimeString stringByAppendingString:md5key]] uppercaseString];
-    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@%@apptime=%@&sign=%@",baseApiUrl,SYSTEM_ALIPAY_CALLBACK,appCurrentTimeString,sign];
+    NSString *getAccessTokenUrl = [NSString stringWithFormat:@"%@%@apptime=%@&sign=%@&user_id=%@",baseApiUrl,SYSTEM_ALIPAY_CALLBACK,appCurrentTimeString,sign,[UserAccountManager sharedInstance].userId];
     
     NSLog(@"--- GetAccessTokenUrl: %@", getAccessTokenUrl);
     
