@@ -65,6 +65,7 @@
     
     self.userId           = [userInfoDic stringForKey:@"user_id"];
     self.userUsablePoints = [userInfoDic stringForKey:@"points"];
+    self.userUsableMoney  = [userInfoDic stringForKey:@"money"];
     self.userRole         = [[userInfoDic stringForKey:@"role"] integerValue];
     self.userIcon         = [userInfoDic stringForKey:@"icon"];
     self.userNickname     = [userInfoDic stringForKey:@"nickname"];
@@ -139,7 +140,7 @@
 -(void)getUserInfoWithUserPhoneNum:(NSString *)phoneNum
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.userTelphone forKey:@"mobile"];
+    [dic setObject:self.userMobile forKey:@"mobile"];
     [[HttpClient sharedInstance]myHomePageByMobileWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             

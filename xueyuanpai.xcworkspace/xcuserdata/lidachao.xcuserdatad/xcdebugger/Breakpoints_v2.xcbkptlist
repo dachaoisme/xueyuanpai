@@ -86,16 +86,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/Mine/Controller/TopUpViewController.m"
-            timestampString = "490450018.441098"
+            timestampString = "490578310.572092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "355"
+            endingLineNumber = "355"
             landmarkName = "-doAliPay:withMoneyOfALiToPay:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/Mine/Controller/TopUpViewController.m"
+            timestampString = "490578310.572092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "316"
+            endingLineNumber = "316"
+            landmarkName = "-aLipay"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/Mine/Controller/TopUpViewController.m"
+            timestampString = "490578310.572092"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "-aLipay"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[TopUpViewController aLipay]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Mine/Controller/TopUpViewController.m"
+                  timestampString = "490576777.189768"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "780">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[TopUpViewController aLipay]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/Mine/Controller/TopUpViewController.m"
+                  timestampString = "490576777.18991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "306"
+                  endingLineNumber = "306"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/AppDelegate.m"
+            timestampString = "490576567.133028"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
+            landmarkName = "-returnWithOpenUrlHandle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +185,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/TopUpViewController.m"
-            timestampString = "490450018.441098"
+            filePath = "xueyuanpai/AppDelegate.m"
+            timestampString = "490578178.569592"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "390"
-            endingLineNumber = "390"
-            landmarkName = "-doAliPay:withMoneyOfALiToPay:"
+            startingLineNumber = "430"
+            endingLineNumber = "430"
+            landmarkName = "-returnWithOpenUrlHandle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -121,13 +201,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/TopUpViewController.m"
-            timestampString = "490450975.15545"
+            filePath = "xueyuanpai/UserAccountManager/UserAccountManager.m"
+            timestampString = "490579232.549709"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
-            landmarkName = "-doAliPay:withMoneyOfALiToPay:"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-getUserInfoWithUserPhoneNum:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UserAccountManager getUserInfoWithUserPhoneNum:]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/UserAccountManager/UserAccountManager.m"
+                  timestampString = "490579475.012499"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "183">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__50-[UserAccountManager getUserInfoWithUserPhoneNum:]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lidachao/Documents/%E7%A7%81%E4%BA%BA/%E6%9C%8B%E5%8F%8B/%E5%90%AF%E5%8A%A8/%E5%AD%A6%E9%99%A2%E6%B4%BE%E9%A1%B9%E7%9B%AE/%E5%AD%A6%E9%99%A2%E6%B4%BEgit/xueyuanpai/UserAccountManager/UserAccountManager.m"
+                  timestampString = "490579475.012704"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/UserAccountManager/UserAccountManager.m"
+            timestampString = "490579301.220086"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "-getUserInfo"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

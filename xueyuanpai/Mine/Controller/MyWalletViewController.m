@@ -36,6 +36,11 @@
 
 @implementation MyWalletViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self requestToGetMoneyList];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -50,7 +55,7 @@
     
     //创建底部视图
     [self createFootView];
-    [self requestToGetMoneyList];
+    
 }
 
 #pragma mark - 创建tableView

@@ -423,10 +423,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
          processOrderWithPaymentResult:url
          standbyCallback:^(NSDictionary *resultDic) {
              MFLog(@"result = %@", resultDic);
-             int statusCode = [[resultDic objectForKey:@"resultStatus"] intValue];
-             if(statusCode==PayStatusSuccess) {
-                 [CommonUtils showToastWithStr:@"支付成功"];
-             }
+             [self sendAliPayResultNotificationWithErrorCode:resultDic];
              
          }];
     }else if ([url.host isEqualToString:@"pay"]){
@@ -442,22 +439,27 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
             case WXSuccess:
                 //strMsg = @"支付结果：成功！";
                 //NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
-                [self sendPayResultNotificationWithErrorCode:resp.errCode];
+                [self sendWechatPayResultNotificationWithErrorCode:resp.errCode];
                 break;
                 
             default:
                 //strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 //NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
-                [self sendPayResultNotificationWithErrorCode:resp.errCode];
+                [self sendWechatPayResultNotificationWithErrorCode:resp.errCode];
                 break;
         }
     }
    
 }
 #pragma mark - 微信支付结果通知
--(void)sendPayResultNotificationWithErrorCode:(int)errorCode
+-(void)sendWechatPayResultNotificationWithErrorCode:(int)errorCode
 {
     [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_WXSUCCESS_PAY object:[NSNumber numberWithInt:errorCode]];
+}
+#pragma mark - 支付宝客户端支付结果通知
+-(void)sendAliPayResultNotificationWithErrorCode:(NSDictionary*)result
+{
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_ALISUCCESS_PAY object:result];
 }
 
 @end

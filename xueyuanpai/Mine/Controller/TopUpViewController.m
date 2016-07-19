@@ -42,6 +42,7 @@
     [self createTableView];
     payMethod = PayMethodWx;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateWXPaySuccessWithNotification:) name:NOTI_WXSUCCESS_PAY object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getALIPayResultWithNotification:) name:NOTI_ALISUCCESS_PAY object:nil];
     
 }
 
@@ -210,6 +211,7 @@
     }
 
 }
+#pragma mark - 微信支付相关
 -(void)wxpay
 {
     //    [CommonUtils showToastWithStr:@"充值"];
@@ -287,6 +289,7 @@
         
     }];
 }
+#pragma mark - 支付宝支付相关
 -(void)aLipay
 {
     
@@ -318,6 +321,24 @@
         
         
     }];
+}
+#pragma mark   ==============产生随机订单号==============
+
+
+- (NSString *)generateTradeNO
+{
+    static int kNumber = 15;
+    
+    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    NSMutableString *resultStr = [[NSMutableString alloc] init];
+    srand((unsigned)time(0));
+    for (int i = 0; i < kNumber; i++)
+    {
+        unsigned index = rand() % [sourceStr length];
+        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
+        [resultStr appendString:oneStr];
+    }
+    return resultStr;
 }
 
 - (void)doAliPay:(NSString*)callBackUrl withMoneyOfALiToPay:(NSString *)moneyOfALiToPay
@@ -393,47 +414,8 @@
         [[AlipaySDK defaultService] payOrder:orderString
                                   fromScheme:appScheme
                                     callback:^(NSDictionary *resultDic) {
-                                        int statusCode = [[resultDic objectForKey:@"resultStatus"] intValue];
-                                        switch (statusCode) {
-                                                
-                                            case PayStatusCancel:
-                                            {
-                                                //取消付款
-                                                [CommonUtils showToastWithStr:@"支付失败"];
-                                                MFLog(@"用户取消支付");
-                                            }
-                                                break;
-                                                
-                                            case PayStatusSuccess:
-                                            {
-                                                [CommonUtils showToastWithStr:@"支付成功"];
-                                                MFLog(@"支付成功");
-                                            }
-                                                break;
-                                                
-                                            case PayStatusUnusual:
-                                            {
-                                                [CommonUtils showToastWithStr:@"支付失败"];
-                                                MFLog(@"系统异常");
-                                            }
-                                                break;
-                                                
-                                            case PayStatusNetError:
-                                            {
-                                                [CommonUtils showToastWithStr:@"支付失败"];
-                                                MFLog(@"网络异常");
-                                            }
-                                                break;
-                                                
-                                            case PayStatusParamError:
-                                                
-                                            {
-                                                [CommonUtils showToastWithStr:@"支付失败"];
-                                                MFLog(@"订单参数错误");
-                                            }
-                                                break;
-                                        }
                                         
+                                        [self dealResultWithDictionary:resultDic];
                                         
                                     }];
     }
@@ -474,24 +456,60 @@
     }];
 }
 
-#pragma mark -
-#pragma mark   ==============产生随机订单号==============
-
-
-- (NSString *)generateTradeNO
+#pragma mark 支付宝支付成功以后，处理结果
+-(void)getALIPayResultWithNotification:(NSNotification *)notification
 {
-    static int kNumber = 15;
-    
-    NSString *sourceStr = @"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    NSMutableString *resultStr = [[NSMutableString alloc] init];
-    srand((unsigned)time(0));
-    for (int i = 0; i < kNumber; i++)
-    {
-        unsigned index = rand() % [sourceStr length];
-        NSString *oneStr = [sourceStr substringWithRange:NSMakeRange(index, 1)];
-        [resultStr appendString:oneStr];
+    NSDictionary *resultDic =[notification object];
+    [self dealResultWithDictionary:resultDic];
+}
+
+-(void)dealResultWithDictionary:(NSDictionary *)resultDic
+{
+    [self updateUseInfo];
+    int statusCode = [[resultDic objectForKey:@"resultStatus"] intValue];
+    switch (statusCode) {
+            
+        case PayStatusCancel:
+        {
+            //取消付款
+            [CommonUtils showToastWithStr:@"支付失败"];
+            MFLog(@"用户取消支付");
+        }
+            break;
+            
+        case PayStatusSuccess:
+        {
+            [CommonUtils showToastWithStr:@"支付成功"];
+            MFLog(@"支付成功");
+        }
+            break;
+            
+        case PayStatusUnusual:
+        {
+            [CommonUtils showToastWithStr:@"支付失败"];
+            MFLog(@"系统异常");
+        }
+            break;
+            
+        case PayStatusNetError:
+        {
+            [CommonUtils showToastWithStr:@"支付失败"];
+            MFLog(@"网络异常");
+        }
+            break;
+            
+        case PayStatusParamError:
+            
+        {
+            [CommonUtils showToastWithStr:@"支付失败"];
+            MFLog(@"订单参数错误");
+        }
+            break;
     }
-    return resultStr;
+}
+-(void)updateUseInfo
+{
+    [[UserAccountManager sharedInstance]getUserInfoWithUserPhoneNum:[UserAccountManager sharedInstance].userTelphone];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
