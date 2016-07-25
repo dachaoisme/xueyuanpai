@@ -49,6 +49,10 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:YES];
+    
+    if (self.tableView) {
+        [self.tableView reloadData];
+    }
 }
 
 - (void)viewDidLoad {

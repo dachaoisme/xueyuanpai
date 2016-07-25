@@ -5769,7 +5769,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8308bb44-49bb-480c-be37-8e1d5d551bc3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -5862,7 +5862,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8308bb44-49bb-480c-be37-8e1d5d551bc3";
 			};
 			name = Debug;
 		};

@@ -209,7 +209,7 @@
 
 #pragma mark - 充值&支付相关
 ///支付:微信支付回调
-#define SYSTEM_WXPAY_CALLBACK                                     @"/v1/pay/weixinnotify/?"
+#define SYSTEM_WXPAY_CALLBACK                                     @"v1/pay/weixinnotify/?"
 ///支付:获取支付宝回调链接
 #define SYSTEM_ALIPAY_CALLBACK                                     @"/v1/pay/alipaynotifyurl/?"
 

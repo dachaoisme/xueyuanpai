@@ -153,4 +153,20 @@
         
     }];
 }
+-(void)getUserInfoWithUserId:(NSString *)userid
+{
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]myHomePageWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 @end

@@ -98,7 +98,7 @@
     if (indexPath.section == 0) {
         
         TopUpTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-        cell.titleLabel.text = @"提现金额";
+        cell.titleLabel.text = @"充值金额";
         cell.inputTextField.delegate = self;
         cell.inputTextField.text = _topUpMoney;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -311,7 +311,7 @@
         
         if (!connectionError) {
             //得到接口返回的字典数据
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+            NSDictionary *dic = [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil] objectForKey:@"data"];
             aLiNotifyUrl = [dic objectForKey:@"notify_url"];
             [self doAliPay:aLiNotifyUrl withMoneyOfALiToPay:_topUpMoney];
             
@@ -354,8 +354,9 @@
     //学院派的支付宝账户
     NSString *partner = @"2088221848035302";
     NSString *seller = @"ucpai_111@163.com";
+    //pkcs格式
     NSString * privateKey = @"MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBALOtZYaiJK4VsCUSlUgYzKbMkfU5Bomoxq+4UgqKNNJJ4hvyapIJF6GP58kHK91vHSSMjEjkwcyzVOoqy7xLclIxz6D0DjlIsvMaFiOmQACfrLi/W5na9SLQTnMMsRnveJFtacGXSQzq0FLGgdy+ZTgyy3aRekQoJZQ7WisS7aUzAgMBAAECgYAl7tmcTucHibSiXwX9Lp8mJ9I4v01OCr/HoVZQu1TjgI2n8MnnAtxmU4dPvZ/ZI/g3GyUSzpjLqqCmv1o76oG71cWtJk4Z1/U+ofQZIv7UYQ481CdmopRzo2+xatSeehFxzB7J4KLJDNq8Szw1kDHDa6+HzBRDF+rPHy+Hgi/VoQJBAOiFxX3Z3ijtc8/LxskN3ec9/08e8qhTVVhS7CgCI2cBKWQMIatzqWlIl/1yw/6SW5ptRt1Dp9nzRAnoex7FKOcCQQDF0a9tHXvyRbVVC56HDIzaR9WXiCphbFOTmb6Agq5S4oBIaUgCGSaHTpKitmsKcCPEDZllsBN1PQ/9XbqUU9vVAkAPRTnDGhvM9Es2ylszuQVpuliaCZ5GD7L7Kfb4aauJiDn/qAxOBjqJ/4p7yp20ikgZzDNrNJZBagh93ha33prhAkEAg3DSWXRP2SkMVdgEm8NxC9DTUX5+eoFZ/ycW95jdb+FkT7j0ycAgY6OHt2nyMdtVSH2owXJ/W1UZfMZ8pPYbiQJAXE3zDb9BTk1ROWFwK9PVQ1t0qo9cwk79e20I9dvkJM4NHwciTj5nSpL6HqiaBBPHwld2q/gfAgPL3lWfOacUeQ==";
-    
+
     /*============================================================================*/
     /*============================================================================*/
     /*============================================================================*/
@@ -431,6 +432,7 @@
             //NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
             [CommonUtils showToastWithStr:@"支付成功"];
             [self changeWXPayStatus];
+            [self updateUseInfo];
             break;
             
         default:
@@ -509,7 +511,7 @@
 }
 -(void)updateUseInfo
 {
-    [[UserAccountManager sharedInstance]getUserInfoWithUserPhoneNum:[UserAccountManager sharedInstance].userTelphone];
+    [[UserAccountManager sharedInstance]getUserInfoWithUserId:[UserAccountManager sharedInstance].userId];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

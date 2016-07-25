@@ -102,7 +102,7 @@
     [backGroundView addSubview:myWalletLabel];
     
     //剩余积分
-    moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(myWalletLabel.frame), CGRectGetMaxY(myWalletLabel.frame)+10, CGRectGetWidth(myWalletLabel.frame), 42)];
+    moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(myWalletLabel.frame)+10, SCREEN_WIDTH - 20, 42)];
     moneyLabel.font = [UIFont systemFontOfSize:30];
     moneyLabel.text = @"0";
     moneyLabel.textAlignment = NSTextAlignmentCenter;
