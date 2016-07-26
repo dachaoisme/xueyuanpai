@@ -19,6 +19,7 @@
     NSString * prepayId;
     PayMethod payMethod;
     NSString * aLiNotifyUrl;
+    NSString * aLiOrderId;
 }
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -313,6 +314,7 @@
             //得到接口返回的字典数据
             NSDictionary *dic = [[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil] objectForKey:@"data"];
             aLiNotifyUrl = [dic objectForKey:@"notify_url"];
+            aLiOrderId = [dic objectForKey:@"order_sn"];
             [self doAliPay:aLiNotifyUrl withMoneyOfALiToPay:_topUpMoney];
             
         }else{
@@ -382,7 +384,7 @@
     PayOrder  *order = [[PayOrder alloc] init];
     order.partner = partner;
     order.sellerID = seller;
-    order.outTradeNO = [self generateTradeNO]; //订单ID（由商家自行制定）
+    order.outTradeNO = aLiOrderId;//[self generateTradeNO]; //订单ID（由商家自行制定）
     order.subject = @"学院派";//product.subject; //商品标题
     order.body = @"学院派充值"; //商品描述
     order.totalFee = [NSString stringWithFormat:@"%.2f",[_topUpMoney floatValue]]; //商品价格
