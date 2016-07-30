@@ -90,6 +90,10 @@
 		581AC6691D2A5B0700DAA433 /* InboxModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 581AC6681D2A5B0700DAA433 /* InboxModel.m */; };
 		582998731CDB2D66004A05FB /* v_uc_act.png in Resources */ = {isa = PBXBuildFile; fileRef = 582998721CDB2D66004A05FB /* v_uc_act.png */; };
 		5829987A1CDB4486004A05FB /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582998791CDB4486004A05FB /* MineViewController.m */; };
+		583B87931D4CB02900D888A6 /* WithdrawaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 583B87911D4CB02900D888A6 /* WithdrawaTableViewCell.m */; };
+		583B87941D4CB02900D888A6 /* WithdrawaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583B87921D4CB02900D888A6 /* WithdrawaTableViewCell.xib */; };
+		583B879A1D4CC60800D888A6 /* BankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 583B87991D4CC60800D888A6 /* BankModel.m */; };
+		583B879D1D4CCA8700D888A6 /* SelectedBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583B879C1D4CCA8700D888A6 /* SelectedBankViewController.m */; };
 		583D10291CE173100010F9D8 /* HttpCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D10281CE173100010F9D8 /* HttpCommonModel.m */; };
 		583D65C81CDA793A00830BBE /* BaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65C61CDA793A00830BBE /* BaseTabBarViewController.m */; };
 		583D65CB1CDA7B2800830BBE /* BaseTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 583D65CA1CDA7B2800830BBE /* BaseTabBarView.m */; };
@@ -951,6 +955,13 @@
 		582998721CDB2D66004A05FB /* v_uc_act.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v_uc_act.png; sourceTree = "<group>"; };
 		582998781CDB4486004A05FB /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		582998791CDB4486004A05FB /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		583B87901D4CB02900D888A6 /* WithdrawaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawaTableViewCell.h; sourceTree = "<group>"; };
+		583B87911D4CB02900D888A6 /* WithdrawaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawaTableViewCell.m; sourceTree = "<group>"; };
+		583B87921D4CB02900D888A6 /* WithdrawaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WithdrawaTableViewCell.xib; sourceTree = "<group>"; };
+		583B87981D4CC60800D888A6 /* BankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankModel.h; sourceTree = "<group>"; };
+		583B87991D4CC60800D888A6 /* BankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankModel.m; sourceTree = "<group>"; };
+		583B879B1D4CCA8700D888A6 /* SelectedBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedBankViewController.h; sourceTree = "<group>"; };
+		583B879C1D4CCA8700D888A6 /* SelectedBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedBankViewController.m; sourceTree = "<group>"; };
 		583D10271CE173100010F9D8 /* HttpCommonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCommonModel.h; sourceTree = "<group>"; };
 		583D10281CE173100010F9D8 /* HttpCommonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpCommonModel.m; sourceTree = "<group>"; };
 		583D65C61CDA793A00830BBE /* BaseTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarViewController.m; sourceTree = "<group>"; };
@@ -2377,6 +2388,8 @@
 				DDCD70821D06A4E4009FBE9A /* TopUpViewController.m */,
 				DDCD70841D06A509009FBE9A /* WithdrawalViewController.h */,
 				DDCD70851D06A509009FBE9A /* WithdrawalViewController.m */,
+				583B879B1D4CCA8700D888A6 /* SelectedBankViewController.h */,
+				583B879C1D4CCA8700D888A6 /* SelectedBankViewController.m */,
 				DDAB43B81D057D9200FADB3E /* MineProjectViewController.h */,
 				DDAB43B91D057D9200FADB3E /* MineProjectViewController.m */,
 				DDCD70581D05AE09009FBE9A /* MineBankViewController.h */,
@@ -3759,8 +3772,10 @@
 		DDAB43931D05545E00FADB3E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				58C40DF41D0579050061C174 /* MineModel.m */,
 				58C40DF51D0579050061C174 /* MineModel.h */,
+				58C40DF41D0579050061C174 /* MineModel.m */,
+				583B87981D4CC60800D888A6 /* BankModel.h */,
+				583B87991D4CC60800D888A6 /* BankModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3806,6 +3821,9 @@
 				DDCD708C1D06A8C2009FBE9A /* TopUpTwoTableViewCell.h */,
 				DDCD708D1D06A8C2009FBE9A /* TopUpTwoTableViewCell.m */,
 				DDCD708E1D06A8C2009FBE9A /* TopUpTwoTableViewCell.xib */,
+				583B87901D4CB02900D888A6 /* WithdrawaTableViewCell.h */,
+				583B87911D4CB02900D888A6 /* WithdrawaTableViewCell.m */,
+				583B87921D4CB02900D888A6 /* WithdrawaTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4850,6 +4868,7 @@
 				DDAC26D11D2664C700B7EAB7 /* ShareSDKUI.bundle in Resources */,
 				DDAB43AE1D05659200FADB3E /* AboutUsTableViewCell.xib in Resources */,
 				DD0B1EDF1CFEE51000C4BAB2 /* market_post_add_pic_press@2x.png in Resources */,
+				583B87941D4CB02900D888A6 /* WithdrawaTableViewCell.xib in Resources */,
 				58070FD41CF6E80200F03F6C /* timebank_filter_time@2x.png in Resources */,
 				DD13CDBA1D00186D000A69FE /* startup_filter_charity@3x.png in Resources */,
 				DDD0BDC51CFAB87200073290 /* hire_search_checkbox_empty@2x.png in Resources */,
@@ -5355,6 +5374,7 @@
 				583D65D41CDA824200830BBE /* BaseNavView.m in Sources */,
 				58D9B3231D39F21800C4D6FA /* openssl_wrapper.m in Sources */,
 				DDB28E421D2C8A7E004C8F70 /* EaseMessageCell.m in Sources */,
+				583B87931D4CB02900D888A6 /* WithdrawaTableViewCell.m in Sources */,
 				58C40DF91D05C0D50061C174 /* MineCollectionSubViewController.m in Sources */,
 				DDAB05E31D043EB7007A6027 /* BusinessPublishProjectTwoTableViewCell.m in Sources */,
 				5849FDC41CE47D6E0039AFC2 /* UserAccountManager.m in Sources */,
@@ -5388,6 +5408,7 @@
 				DDB28E4B1D2C8A7E004C8F70 /* EaseBubbleView.m in Sources */,
 				DDB28E381D2C8A7E004C8F70 /* FixFopen.c in Sources */,
 				DDB28E501D2C8A7E004C8F70 /* EaseFaceView.m in Sources */,
+				583B879A1D4CC60800D888A6 /* BankModel.m in Sources */,
 				DDB28E141D2C8A7E004C8F70 /* UIImage+EMGIF.m in Sources */,
 				DDCD708A1D06A7E2009FBE9A /* TopUpTableViewCell.m in Sources */,
 				DDBFD1D81D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m in Sources */,
@@ -5399,6 +5420,7 @@
 				DDCD705A1D05AE09009FBE9A /* MineBankViewController.m in Sources */,
 				DD4127C91CF2F35D00227066 /* GiftDetailViewController.m in Sources */,
 				DDD0BD7F1CF96DE100073290 /* RecruitmentOneStyleTableViewCell.m in Sources */,
+				583B879D1D4CCA8700D888A6 /* SelectedBankViewController.m in Sources */,
 				5849FDC71CE47F790039AFC2 /* UserDefaultsDataDeal.m in Sources */,
 				DDB28E2C1D2C8A7E004C8F70 /* NSDate+Category.m in Sources */,
 				5874A3FE1CF1C3C600CE9FC9 /* AddTeacherInfoTypeTwoTableViewCell.m in Sources */,

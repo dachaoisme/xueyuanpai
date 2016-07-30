@@ -207,12 +207,20 @@
 ///消息：删除消息
 #define SYSTEM_MESSAGE_Delete                                     @"v1/message/del?"
 
-#pragma mark - 充值&支付相关
+#pragma mark - 充值&支付&提现相关
 ///支付:微信支付回调
 #define SYSTEM_WXPAY_CALLBACK                                     @"v1/pay/weixinnotify/?"
 ///支付:获取支付宝回调链接
-#define SYSTEM_ALIPAY_CALLBACK                                     @"/v1/pay/alipaynotifyurl/?"
+#define SYSTEM_ALIPAY_CALLBACK                                    @"/v1/pay/alipaynotifyurl/?"
 
+///提现
+#define SYSTEM_GET_MONEY                                          @"v1/user/withdrawcash/?"
+///添加和更新用户信息
+#define SYSTEM_ADD_BANK                                           @"v1/user/addbank?"
+///查询某用户的银行卡信息接口
+#define SYSTEM_QUERY_BANK                                         @"v1/user/bank?"
+///银行列表接口
+#define SYSTEM_BANK_LIST                                          @"v1/bank/list?"
 
-#define SHARESDK_URL                                               @"http://fir.im/xueyuanpai"
+#define SHARESDK_URL                                              @"http://fir.im/xueyuanpai"
 #endif /* NetworkConfigue_h */

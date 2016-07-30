@@ -970,4 +970,51 @@
         failBlock(error);
     }];
 }
+
+
+#pragma mark - 提现相关
+///银行列表
+- (void)getBankListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_BANK_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,pageModel,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+///查询某用户的银行卡信息接口
+- (void)getUserBankListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_QUERY_BANK withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,pageModel,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+///添加或更新某用户的银行卡信息接口
+- (void)updateBackInfoWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_ADD_BANK withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+///提现接口
+- (void)getMoneyWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_GET_MONEY withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 @end

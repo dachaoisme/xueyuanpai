@@ -10,6 +10,9 @@
 
 @interface TopUpTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *yuanLabel;
+
+
 ///输入框
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 

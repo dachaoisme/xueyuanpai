@@ -176,4 +176,11 @@ typedef enum{
     PayStatusNetError = 6002//网络连接异常
     
 }PayStatus;
+
+typedef enum{
+    MethodGetMoney     = 1000, //提取金额
+    MethodUserName     = 1001, //姓名
+    MethodBankName     = 1002, //支行名称
+    MethodBankAdress   = 1003, //银行卡号
+}geGetMoey;
 #endif /* EnumDefine_h */
