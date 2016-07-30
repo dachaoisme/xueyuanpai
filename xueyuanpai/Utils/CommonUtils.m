@@ -713,6 +713,13 @@
     
     return effectiveUrl;
 }
+
++(void)setRootViewControllerInLoginVC:(BOOL)isLogin
+{
+    AppDelegate * appDelegate=(AppDelegate*)[UIApplication sharedApplication].delegate;
+    [appDelegate setRootViewController:isLogin];
+}
+
 @end
 
 

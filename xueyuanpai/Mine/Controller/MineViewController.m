@@ -254,7 +254,7 @@
 
     
     //工作职称
-    UILabel *jobNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 40, CGRectGetMaxY(nameLabel.frame), 80, 17)];
+    UILabel *jobNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame), SCREEN_WIDTH, 17)];
     jobNameLabel.font = [UIFont systemFontOfSize:14];
     jobNameLabel.textAlignment = NSTextAlignmentCenter;
     

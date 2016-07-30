@@ -23,5 +23,11 @@ static BOOL isProduction = FALSE;
 @property (strong, nonatomic) UINavigationController *navBar;
 @property (strong, nonatomic) UINavigationController *navController;
 
+/**
+ *  @brief  登陆成功以后，重新设置跟试图控制器
+ *
+ *  @return
+ */
+-(void)setRootViewController:(BOOL)isLogin;
 @end
 

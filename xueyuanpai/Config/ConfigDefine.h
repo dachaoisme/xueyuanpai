@@ -130,4 +130,7 @@
 ///设置未读消息
 #define kUnReadMessage @"unReadMessageCount"
 
+///是否是第一次进入
+#define NOTFISTOPEN          @"notfirstopen"
+
 #endif /* ConfigDefine_h */

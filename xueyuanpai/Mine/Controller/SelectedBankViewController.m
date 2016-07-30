@@ -144,8 +144,8 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellResuable];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    CollegeModel  *model = [dataArr objectAtIndex:indexPath.row];
-    cell.textLabel.text = model.collegeName;
+    BankListModel  *model = [dataArr objectAtIndex:indexPath.row];
+    cell.textLabel.text = model.bankName;
     return cell;
     
 }

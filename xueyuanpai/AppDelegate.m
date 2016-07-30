@@ -30,7 +30,7 @@
 
 //#import "EaseUI.h"
 
-
+#import "MFWelcomPageController.h"
 @interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate,WXApiDelegate>
 
 ///推送消息
@@ -68,17 +68,27 @@
     [WXApi registerApp:@"wx31cb0dc3d4e9d04f" withDescription:@"学院派"];
     
 
-    
-    BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
-    _mainTabBar=mainVC;
-    _window.rootViewController=mainVC;
-    
-    [_window makeKeyAndVisible];
-    
+    [self setRootViewController:YES];
 
     return YES;
 }
-
+-(void)setRootViewController:(BOOL)isLogin
+{
+    
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:NOTFISTOPEN]) {
+        //进去欢迎页面
+        MFWelcomPageController *pageController = [[MFWelcomPageController alloc] init];
+        self.window.rootViewController        = pageController;
+        [self.window makeKeyAndVisible];
+    }else{
+        BaseTabBarViewController *mainVC = [[BaseTabBarViewController alloc] init];
+        _mainTabBar=mainVC;
+        _window.rootViewController=mainVC;
+        
+        [_window makeKeyAndVisible];
+    }
+    
+}
 #pragma mark - 分享
 - (void)shareContent{
     [ShareSDK registerApp:@"147b23b109e2a"
