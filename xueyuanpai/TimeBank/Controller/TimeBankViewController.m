@@ -227,11 +227,11 @@
     pageSize = 10;
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
-    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
-    [dic setObject:timeBankCategoryParam forKey:@"cat_id"];
-    [dic setObject:timeBankSexParam forKey:@"sex"];
-    [dic setObject:timeBankSortParam forKey:@"sort"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setValue:timeBankCategoryParam forKey:@"cat_id"];
+    [dic setValue:timeBankSexParam forKey:@"sex"];
+    [dic setValue:timeBankSortParam forKey:@"sort"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -257,11 +257,11 @@
     pageNo = pageNo+1;
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
-    [dic setObject:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
-    [dic setObject:timeBankCategoryParam forKey:@"cat_id"];
-    [dic setObject:timeBankSexParam forKey:@"sex"];
-    [dic setObject:timeBankSortParam forKey:@"sort"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNo] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
+    [dic setValue:timeBankCategoryParam forKey:@"cat_id"];
+    [dic setValue:timeBankSexParam forKey:@"sex"];
+    [dic setValue:timeBankSortParam forKey:@"sort"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankGetListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

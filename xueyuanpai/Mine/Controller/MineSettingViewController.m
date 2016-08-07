@@ -130,7 +130,7 @@
             }
             case 1:{
                 cell.titleLabel.text = @"清除缓存";
-                cell.contentLabel.text = @"4M";
+                cell.contentLabel.text = [NSString stringWithFormat:@"%.2fM",[self folderSizeAtPath]];
                 break;
             }
             case 2:{
@@ -169,11 +169,41 @@
         
     }else if (indexPath.section == 1) {
         
+        MineSettingTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+        
         if (indexPath.row == 0) {
             
             //跳转意见反馈
             FeedbackViewController *feedVC = [[FeedbackViewController alloc] init];
             [self.navigationController pushViewController:feedVC animated:YES];
+            
+        }else if (indexPath.row == 1){
+            weakSelf(weakSelf);
+            NSString *message = [NSString stringWithFormat:@"缓存大小为：%.2f,确定要清理吗?",[self folderSizeAtPath]];
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:message preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                
+            }];
+            
+            UIAlertAction *otherAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                
+                
+                [weakSelf clearCache];
+                
+                
+                cell.contentLabel.hidden = YES;
+                
+                
+            }];
+            
+            // Add the actions.
+            [alertController addAction:cancelAction];
+            [alertController addAction:otherAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+
             
         }else if (indexPath.row == 2) {
             //检查更新
@@ -217,6 +247,39 @@
         exit(0);
     }
 }
+#pragma mark - 清除缓存
+-(float)folderSizeAtPath{
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    float folderSize;
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+
+    if ([fileManager fileExistsAtPath:path]) {
+        //SDWebImage框架自身计算缓存的实现
+        folderSize+=[[SDImageCache sharedImageCache] getSize]/1024.0/1024.0;
+        return folderSize;
+    }
+    return 0;
+}
+
+-(void)clearCache{
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+
+    if ([fileManager fileExistsAtPath:path]) {
+        NSArray *childerFiles=[fileManager subpathsAtPath:path];
+        for (NSString *fileName in childerFiles) {
+            //如有需要，加入条件，过滤掉不想删除的文件
+            NSString *absolutePath=[path stringByAppendingPathComponent:fileName];
+            [fileManager removeItemAtPath:absolutePath error:nil];
+        }
+    }
+    [[SDImageCache sharedImageCache] cleanDisk];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

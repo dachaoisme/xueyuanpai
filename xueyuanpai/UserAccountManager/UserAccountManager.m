@@ -34,7 +34,7 @@
             
         }
     }
-    [[NSUserDefaults standardUserDefaults]setObject:dic forKey:userInfoKey];
+    [[NSUserDefaults standardUserDefaults]setValue:dic forKey:userInfoKey];
     [[NSUserDefaults standardUserDefaults]synchronize];
     [self getUserInfo];
 }
@@ -109,9 +109,9 @@
 -(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord withUserRole:(RegisterRoleType)role
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:phoneNum forKey:@"mobile"];
-    [dic setObject:passWord forKey:@"passwd"];
-    [dic setObject:[NSString stringWithFormat:@"%ld",(long)role] forKey:@"role"];
+    [dic setValue:phoneNum forKey:@"mobile"];
+    [dic setValue:passWord forKey:@"passwd"];
+    [dic setValue:[NSString stringWithFormat:@"%ld",(long)role] forKey:@"role"];
     [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
         
@@ -140,7 +140,7 @@
 -(void)getUserInfoWithUserPhoneNum:(NSString *)phoneNum
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.userMobile forKey:@"mobile"];
+    [dic setValue:self.userMobile forKey:@"mobile"];
     [[HttpClient sharedInstance]myHomePageByMobileWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             
@@ -156,7 +156,7 @@
 -(void)getUserInfoWithUserId:(NSString *)userid
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.userId forKey:@"user_id"];
+    [dic setValue:self.userId forKey:@"user_id"];
     [[HttpClient sharedInstance]myHomePageWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             

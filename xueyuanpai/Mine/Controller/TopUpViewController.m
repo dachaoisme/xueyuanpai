@@ -449,8 +449,8 @@
 -(void)changeWXPayStatus
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:prepayId forKey:@"prepayid"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:prepayId forKey:@"prepayid"];
     [[HttpClient sharedInstance] wxPayCallBackWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             

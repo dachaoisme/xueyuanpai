@@ -42,7 +42,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
-    [paramsDic setObject:self.messageID forKey:@"msg_id"];
+    [paramsDic setValue:self.messageID forKey:@"msg_id"];
     [[HttpClient sharedInstance] getSystemMessageDetailWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 

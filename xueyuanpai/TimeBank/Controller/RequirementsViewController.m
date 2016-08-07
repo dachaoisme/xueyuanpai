@@ -123,7 +123,7 @@
                 NSArray * value = [model.responseCommonDic objectForKey:key];
                 NSMutableDictionary * dic = [NSMutableDictionary dictionary];
                 [dic setValue:key forKey:@"id"];
-                [dic setObject:value forKey:@"name"];
+                [dic setValue:value forKey:@"name"];
                 [timeBankPayWayTitleArr addObject:value];
                 TimeBankPayWayModel * payWaymodel = [[TimeBankPayWayModel alloc]initWithDic:dic];
                 [timeBankPayWayModelArr addObject:payWaymodel];
@@ -216,14 +216,14 @@
     weakSelf(wSelf)
     selectedImageView.callBackBlock = ^(UIImage * selectedImage){
         ///压缩图片，不能过大
-        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(400, 400) withImage:selectedImage];
+        UIImage * scaleImg = [CommonUtils imageByScalingAndCroppingForSize:CGSizeMake(200, 200) withImage:selectedImage];
         [wSelf.headImageSelectedBtn setBackgroundImage:selectedImage forState:UIControlStateNormal];
         [wSelf.headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_change"] forState:UIControlStateNormal];
         //需要把图片上传到服务器
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
         NSData * imageData = UIImagePNGRepresentation(scaleImg);
-        [imageDic setObject:imageData forKey:@"Timebank[file]"];
+        [imageDic setValue:imageData forKey:@"Timebank[file]"];
         [[HttpClient sharedInstance]uploadTimeBankIconWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
             avatarImageUploaded = [model.responseCommonDic objectForKey:@"picUrl"];
         } withFaileBlock:^(NSError *error) {
@@ -288,25 +288,25 @@
     }
     
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitTitle forKey:@"title"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitType forKey:@"category_id"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitTime forKey:@"appointment_time"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitTitle forKey:@"title"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitType forKey:@"category_id"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitTime forKey:@"appointment_time"];
     if ([_timeBankSubmitModel.timeBankSubmitNoon isEqualToString:@""]) {
-        [dic setObject:@"1"  forKey:@"noon"];
+        [dic setValue:@"1"  forKey:@"noon"];
     }else if ([_timeBankSubmitModel.timeBankSubmitNoon isEqualToString:@""]){
-        [dic setObject:@"2"  forKey:@"noon"];
+        [dic setValue:@"2"  forKey:@"noon"];
     }else{
-        [dic setObject:@"3"  forKey:@"noon"];
+        [dic setValue:@"3"  forKey:@"noon"];
     }
     
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitAdress forKey:@"area"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitPerson forKey:@"number"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitPayWay forKey:@"payway"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitPrice.length>0?_timeBankSubmitModel.timeBankSubmitPrice:@"0" forKey:@"price"];
-    [dic setObject:_timeBankSubmitModel.timeBankSubmitDescription forKey:@"brief"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitAdress forKey:@"area"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitPerson forKey:@"number"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitPayWay forKey:@"payway"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitPrice.length>0?_timeBankSubmitModel.timeBankSubmitPrice:@"0" forKey:@"price"];
+    [dic setValue:_timeBankSubmitModel.timeBankSubmitDescription forKey:@"brief"];
     if (avatarImageUploaded && avatarImageUploaded.length>0) {
-        [dic setObject:avatarImageUploaded forKey:@"icon"];
+        [dic setValue:avatarImageUploaded forKey:@"icon"];
     }
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];

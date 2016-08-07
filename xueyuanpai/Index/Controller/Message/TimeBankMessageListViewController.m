@@ -132,7 +132,7 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
-    [paramsDic setObject:message_id forKey:@"msg_id"];
+    [paramsDic setValue:message_id forKey:@"msg_id"];
     [[HttpClient sharedInstance] deleteMessageWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
@@ -163,7 +163,7 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
-    [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [paramsDic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [paramsDic setValue:[NSString stringWithFormat:@"%d",pageNum] forKey:@"page"];
     [paramsDic setValue:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     

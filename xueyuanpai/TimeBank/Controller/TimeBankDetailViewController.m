@@ -507,10 +507,10 @@
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     if ([UserAccountManager sharedInstance].userId) {
-        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     }
-    [dic setObject:self.timeBankId forKey:@"bank_id"];
-    [dic setObject:commentContent forKey:@"content"];
+    [dic setValue:self.timeBankId forKey:@"bank_id"];
+    [dic setValue:commentContent forKey:@"content"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]timeBankAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -542,7 +542,7 @@
 -(void)requestToCommentList
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.timeBankId forKey:@"bank_id"];
+    [dic setValue:self.timeBankId forKey:@"bank_id"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",(long)pageSize] forKey:@"size"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
