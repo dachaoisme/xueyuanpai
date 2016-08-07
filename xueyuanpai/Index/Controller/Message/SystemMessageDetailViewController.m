@@ -52,7 +52,7 @@
             self.detailView.titleLabel.text = [model.responseCommonDic objectForKey:@"title"];
             self.detailView.authorLable.text = [model.responseCommonDic objectForKey:@"create_at"];
             
-            [_detailView adjustSubviewsWithContent: [model.responseCommonDic objectForKey:@"msg"]];
+//            [_detailView adjustSubviewsWithContent: [model.responseCommonDic objectForKey:@"msg"]];
 
             [self.detailView.webView loadHTMLString: [model.responseCommonDic objectForKey:@"msg"] baseURL:nil];
             

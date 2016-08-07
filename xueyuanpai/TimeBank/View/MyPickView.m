@@ -132,19 +132,19 @@
     _myPickerView.dataSource=self;
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *dateComponents = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour  fromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+    NSDateComponents *dateComponents = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay  fromDate:[NSDate dateWithTimeIntervalSinceNow:0]];
     ///获取当前年、月、日、时
     _currentYear  =dateComponents.year;
     _currentMonth =dateComponents.month;
     _currentDay   =dateComponents.day;
-    _currentHour  =dateComponents.hour;
+    _currentHour  =0;
 
     //把当前年月日转换成 字符串获取当前的年，月，日，时
     _yearString      =[NSString stringWithFormat:@"%ld",dateComponents.year];
     _currentYearStr  =[NSString stringWithFormat:@"%ld",dateComponents.year];
     _currentMonthStr =[NSString stringWithFormat:@"%ld",dateComponents.month];
     _currentDayStr   =[NSString stringWithFormat:@"%ld",dateComponents.day];
-    _currentHourStr  =[NSString stringWithFormat:@"%ld",dateComponents.hour];
+    _currentHourStr  =[hourArr firstObject];
     
     NSDate *date     =[NSDate date];
     self.currentDays =[self getDaysNumOfMonth:date];
@@ -179,9 +179,9 @@
 //设置选中状态为当前时间
 -(void)SelectCurrentDate{
     [_myPickerView selectRow:_currentYear-1 inComponent:0 animated:YES];
-    [_myPickerView selectRow:_currentMonth-1 inComponent:0 animated:YES];
-    [_myPickerView selectRow:_currentDay-1 inComponent:1 animated:YES];
-    [_myPickerView selectRow:_currentHour inComponent:2 animated:YES];
+    [_myPickerView selectRow:_currentMonth-1 inComponent:1 animated:YES];
+    [_myPickerView selectRow:_currentDay-1 inComponent:2 animated:YES];
+    [_myPickerView selectRow:_currentHour inComponent:3 animated:YES];
     
     _yearString = _currentYearStr;
     _monthString=_currentMonthStr;
@@ -210,7 +210,7 @@
     NSDate *date;
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     
     date = [formatter dateFromString:string];
     

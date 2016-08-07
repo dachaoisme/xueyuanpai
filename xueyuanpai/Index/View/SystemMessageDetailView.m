@@ -8,7 +8,7 @@
 
 #import "SystemMessageDetailView.h"
 
-#define TopHeight  120
+#define TopHeight  160
 
 
 @interface SystemMessageDetailView ()
@@ -52,7 +52,7 @@
     self.titleLabel = titleLabel;
     
     
-    UILabel *authorLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(titleLabel.frame), CGRectGetMaxY(titleLabel.frame)+5, CGRectGetWidth(titleLabel.frame), 20)];
+    UILabel *authorLable = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(titleLabel.frame), CGRectGetMaxY(titleLabel.frame)+5, CGRectGetWidth(titleLabel.frame), 40)];
 //    authorLable.text = @"作者 叶圣陶  2015年10月";
     authorLable.font = [UIFont systemFontOfSize:12];
     authorLable.textColor = [CommonUtils colorWithHex:@"999999"];

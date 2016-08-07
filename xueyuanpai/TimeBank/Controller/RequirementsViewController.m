@@ -602,8 +602,7 @@
             NSString * noonDate = [weakSelf.noonArr objectAtIndex:weakSelf.myPic.selectedNoonIndex];
             weakSelf.timeBankSubmitModel.timeBankSubmitTime = selectedDate;
             weakSelf.timeBankSubmitModel.timeBankSubmitNoon = noonDate;
-            NSString * time = [NSString stringWithFormat:@"%@%@",selectedDate,noonDate];
-            [sender setTitle:time forState:UIControlStateNormal];
+            [sender setTitle:selectedDate forState:UIControlStateNormal];
             NSLog(@"selectedTime:%@;;noonDate:%@",selectedDate,noonDate);
         }
     };

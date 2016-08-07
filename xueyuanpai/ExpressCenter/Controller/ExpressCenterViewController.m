@@ -96,6 +96,7 @@
     //添加动画视图
     RadarView *radarView = [[RadarView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 90, SCREEN_HEIGHT/2 - 90, 160, 160)];
     radarView.backgroundColor = [UIColor clearColor];
+    radarView.userInteractionEnabled = NO;
     
     backGroundView.center = radarView.center;
     [self.view addSubview:radarView];
@@ -277,11 +278,13 @@
     //创建wifi图片
     UIImageView *wifiImageView = [[UIImageView alloc] initWithFrame:CGRectMake(110 - 20, 40, 40, 30)];
     wifiImageView.image = [UIImage imageNamed:@"deliver_icon_signal"];
+
     [backGroundView addSubview:wifiImageView];
     
     //创建显示label
     UILabel *showTextLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, CGRectGetMaxY(wifiImageView.frame), 120, 56)];
     showTextLabel.text = @"我要发快递";
+
     showTextLabel.textAlignment = NSTextAlignmentCenter;
     showTextLabel.numberOfLines = 0;
     showTextLabel.font = [UIFont systemFontOfSize:20];
@@ -291,12 +294,27 @@
     
     //本校有多少个快递员正在接单
     UILabel *showNumberCourier = [[UILabel alloc] initWithFrame:CGRectMake(70, CGRectGetMaxY(showTextLabel.frame), 80, 30)];
+
     showNumberCourier.textAlignment = NSTextAlignmentCenter;
     showNumberCourier.numberOfLines = 0;
     showNumberCourier.textColor = [CommonUtils  colorWithHex:@"5f746c"];
     showNumberCourier.font = [UIFont systemFontOfSize:10];
     [backGroundView addSubview:showNumberCourier];
+
     self.showNumberCourier = showNumberCourier;
+    
+    
+    //添加发快递的点击事件
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = backGroundView.bounds;
+    btn.backgroundColor = [UIColor clearColor];
+    [btn addTarget:self action:@selector(faKuaiDi) forControlEvents:UIControlEventTouchUpInside];
+    [backGroundView addSubview:btn];
+    
+    
+    
+
     
     
     UIButton *noticeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -333,11 +351,15 @@
     recordButton.layer.masksToBounds = YES;
     [self.view addSubview:recordButton];
     
+    
+    
+    
+    
 }
 
 #pragma mark - 我要发快递按钮的响应方法
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
+- (void)faKuaiDi{
+
     [_animationRadarView removeFromSuperview];
 
     
