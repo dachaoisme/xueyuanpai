@@ -22,6 +22,7 @@
     NSMutableArray * bannerItemArray;
     NSMutableArray * bannerImageArray;
     NSMutableArray * mallItemArray;
+    UIButton *rightItemButton;
 }
 @property(nonatomic,strong)BannerLunBoView * bannerView;
 @end
@@ -32,6 +33,9 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:YES];
+    if (rightItemButton ) {
+        [rightItemButton setTitle:[UserAccountManager sharedInstance].userUsablePoints forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidLoad {
@@ -42,7 +46,7 @@
     self.title = @"大派送";
     
     
-    UIButton *rightItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    rightItemButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightItemButton setTitle:[UserAccountManager sharedInstance].userUsablePoints forState:UIControlStateNormal];
     [rightItemButton setImage:[UIImage imageNamed:@"bigpi_icon_coin"] forState:UIControlStateNormal];
     rightItemButton.frame     = CGRectMake(0, 0, 60, 40);

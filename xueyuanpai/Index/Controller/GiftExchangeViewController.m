@@ -284,6 +284,7 @@
 
             if (model.responseCode==ResponseCodeSuccess) {
                 [CommonUtils showToastWithStr:@"兑换成功"];
+                [[UserAccountManager sharedInstance]getUserInfoWithUserId:[UserAccountManager sharedInstance].userId];
             }else{
                 [CommonUtils showToastWithStr:model.responseMsg];
             }
