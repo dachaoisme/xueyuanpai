@@ -55,7 +55,7 @@
     [self huanXinAction];
     
     //shareSDK分享
-    [self shareContent];
+    [self shareContent ];
     
     [[UserAccountManager sharedInstance]getUserInfo];
     
