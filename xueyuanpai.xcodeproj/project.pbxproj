@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */; };
+		166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */; };
+		166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0901E9A099F00B2B002 /* JMMineViewController.m */; };
 		5802D5AD1D1A2DED00BBB7C4 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802D5AC1D1A2DED00BBB7C4 /* ZHPickView.m */; };
 		58070F941CF6E80200F03F6C /* disable_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F441CF6E80200F03F6C /* disable_tag@2x.png */; };
 		58070F951CF6E80200F03F6C /* disable_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F451CF6E80200F03F6C /* disable_tag@3x.png */; };
@@ -876,6 +879,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewController.h; sourceTree = "<group>"; };
+		166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewController.m; sourceTree = "<group>"; };
+		166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanViewController.h; sourceTree = "<group>"; };
+		166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMKuaiDiYuanViewController.m; sourceTree = "<group>"; };
+		166DD08F1E9A099F00B2B002 /* JMMineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMineViewController.h; sourceTree = "<group>"; };
+		166DD0901E9A099F00B2B002 /* JMMineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMineViewController.m; sourceTree = "<group>"; };
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5802D5AB1D1A2DED00BBB7C4 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
@@ -2265,6 +2274,115 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		166DD07C1E9A08AE00B2B002 /* JMRelated */ = {
+			isa = PBXGroup;
+			children = (
+				166DD07D1E9A08ED00B2B002 /* JMIndex */,
+				166DD07E1E9A08ED00B2B002 /* JMKuaiDiYuan */,
+				166DD07F1E9A08ED00B2B002 /* JMMine */,
+			);
+			path = JMRelated;
+			sourceTree = "<group>";
+		};
+		166DD07D1E9A08ED00B2B002 /* JMIndex */ = {
+			isa = PBXGroup;
+			children = (
+				166DD0801E9A091D00B2B002 /* Controller */,
+				166DD0811E9A091D00B2B002 /* Model */,
+				166DD0821E9A091D00B2B002 /* View */,
+			);
+			path = JMIndex;
+			sourceTree = "<group>";
+		};
+		166DD07E1E9A08ED00B2B002 /* JMKuaiDiYuan */ = {
+			isa = PBXGroup;
+			children = (
+				166DD0831E9A094300B2B002 /* Controller */,
+				166DD0841E9A094300B2B002 /* Model */,
+				166DD0851E9A094300B2B002 /* View */,
+			);
+			path = JMKuaiDiYuan;
+			sourceTree = "<group>";
+		};
+		166DD07F1E9A08ED00B2B002 /* JMMine */ = {
+			isa = PBXGroup;
+			children = (
+				166DD0861E9A094D00B2B002 /* Controller */,
+				166DD0871E9A094D00B2B002 /* Model */,
+				166DD0881E9A094D00B2B002 /* View */,
+			);
+			path = JMMine;
+			sourceTree = "<group>";
+		};
+		166DD0801E9A091D00B2B002 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */,
+				166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		166DD0811E9A091D00B2B002 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		166DD0821E9A091D00B2B002 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		166DD0831E9A094300B2B002 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */,
+				166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		166DD0841E9A094300B2B002 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		166DD0851E9A094300B2B002 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		166DD0861E9A094D00B2B002 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				166DD08F1E9A099F00B2B002 /* JMMineViewController.h */,
+				166DD0901E9A099F00B2B002 /* JMMineViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		166DD0871E9A094D00B2B002 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		166DD0881E9A094D00B2B002 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1D8027684E9C39222E664835 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -3021,6 +3139,7 @@
 		58F67BA11CD9863400D55BE0 /* xueyuanpai */ = {
 			isa = PBXGroup;
 			children = (
+				166DD07C1E9A08AE00B2B002 /* JMRelated */,
 				DD48B7631D11019000E012E4 /* sound.caf */,
 				DDB67ACF1D266FC6009049A8 /* share.png */,
 				DDCD70CD1D06F31F009FBE9A /* 1.jpg */,
@@ -5550,6 +5669,7 @@
 				583B87A31D4CF3B100D888A6 /* MFWelcomPageController.m in Sources */,
 				DDB28E161D2C8A7E004C8F70 /* UIImage+EMWebP.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
+				166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */,
 				58F2116B1CF9AB7C00926FB9 /* RequirementTableViewCell.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */,
@@ -5591,6 +5711,7 @@
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
 				DDB28E511D2C8A7E004C8F70 /* EaseFacialView.m in Sources */,
 				587FF9DD1CF2F8F300AD2131 /* IQTitleBarButtonItem.m in Sources */,
+				166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */,
 				DDCD70711D0679A5009FBE9A /* MineIntegralTableViewCell.m in Sources */,
 				DDB28E3A1D2C8A7E004C8F70 /* EaseLocationViewController.m in Sources */,
 				58D9B3211D39F21800C4D6FA /* MD5DataSigner.m in Sources */,
@@ -5706,6 +5827,7 @@
 				DDD0BE6E1CFC3C8600073290 /* JobMarketCollectionViewCell.m in Sources */,
 				DDB28E321D2C8A7E004C8F70 /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
 				DDB28E191D2C8A7E004C8F70 /* UIView+EMWebCacheOperation.m in Sources */,
+				166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */,
 				DDCD70831D06A4E4009FBE9A /* TopUpViewController.m in Sources */,
 				DDB28E391D2C8A7E004C8F70 /* EaseConversationListViewController.m in Sources */,
 				DDB28E101D2C8A7E004C8F70 /* EMSDWebImagePrefetcher.m in Sources */,

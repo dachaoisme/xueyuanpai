@@ -7,15 +7,15 @@
 //
 
 #import "BaseTabBarViewController.h"
-#import "BusinessCenterViewController.h"
-#import "ExpressCenterViewController.h"
-#import "IndexViewController.h"
+#import "JMKuaiDiYuanViewController.h"
+#import "JMHomePageViewController.h"
+#import "JMMineViewController.h"
 #import "LoginViewController.h"
 @interface BaseTabBarViewController ()
 {
-    IndexViewController *IndexVC;
-    BusinessCenterViewController *BusinessCenterVC;
-    ExpressCenterViewController *ExpressCenterVC;
+    JMKuaiDiYuanViewController *kuaiDiVC;
+    JMHomePageViewController *homePageVC;
+    JMMineViewController *mineVC;
 }
 @end
 
@@ -25,19 +25,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.tabBar.hidden = YES;
-    IndexVC = [[IndexViewController alloc] init];
-    UINavigationController * IndexNavVC=[[UINavigationController alloc] initWithRootViewController:IndexVC];
+    kuaiDiVC = [[JMKuaiDiYuanViewController alloc] init];
+    UINavigationController * kuaiDiNavVC=[[UINavigationController alloc] initWithRootViewController:kuaiDiVC];
     
-    BusinessCenterVC = [[BusinessCenterViewController alloc] init];
-    UINavigationController * BusinessCenterNavVC=[[UINavigationController alloc] initWithRootViewController:BusinessCenterVC];
+    homePageVC = [[JMHomePageViewController alloc] init];
+    UINavigationController * homePageNavVC=[[UINavigationController alloc] initWithRootViewController:homePageVC];
     
-    ExpressCenterVC = [[ExpressCenterViewController alloc] init];
-    UINavigationController *ExpressCenterNavVC = [[UINavigationController alloc] initWithRootViewController:ExpressCenterVC];
+    mineVC = [[JMMineViewController alloc] init];
+    UINavigationController *mineNavVC = [[UINavigationController alloc] initWithRootViewController:mineVC];
     
     [self setViewControllers:[NSArray arrayWithObjects:
-                              IndexNavVC,
-                              BusinessCenterNavVC,
-                              ExpressCenterNavVC,
+                              kuaiDiNavVC,
+                              homePageNavVC,
+                              mineNavVC,
                               nil]];
     
     _baseTabBarView=[[BaseTabBarView alloc] init];
@@ -45,9 +45,9 @@
     _baseTabBarView.backgroundColor = [UIColor clearColor];
     _baseTabBarView.delegate=self;
     _baseTabBarView.titleArr=[[NSArray alloc] initWithObjects:
-                       @"首页",
-                       @"创业中心",
                        @"我的快递",
+                       @"集梦盒子",
+                       @"个人中心",
                        nil];
     _baseTabBarView.imgArr=[[NSArray alloc] initWithObjects:
                      @"tab_icon_home",
@@ -72,10 +72,10 @@
    
     
     
-    if ([UserAccountManager sharedInstance].userId.length<=0) {
-        LoginViewController * loginVC = [[LoginViewController alloc]init];
-        [IndexVC.navigationController pushViewController:loginVC animated:NO];
-    }
+//    if ([UserAccountManager sharedInstance].userId.length<=0) {
+//        LoginViewController * loginVC = [[LoginViewController alloc]init];
+//        [homePageVC.navigationController pushViewController:loginVC animated:NO];
+//    }
     
 }
 -(void)stateBarHidden
@@ -110,6 +110,11 @@
 -(void)tabBarSelected:(NSInteger)index
 {
 
+    self.selectedIndex=index;
+    [_baseTabBarView setSelected:index];
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    app.navController=(UINavigationController*)self.selectedViewController;
+    /*
     if ([UserAccountManager sharedInstance].isLogin==NO &&index==2) {
         if (self.selectedIndex==0) {
             LoginViewController * loginVC = [[LoginViewController alloc]init];
@@ -126,7 +131,7 @@
         AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         app.navController=(UINavigationController*)self.selectedViewController;
     }
-    
+    */
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
