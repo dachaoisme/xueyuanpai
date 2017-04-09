@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 
 
+//////学院派二期
+
+
+////////////////////学院派一期////////////////////
 //请求失败的时候的block
 typedef void(^XYPHttpErrorBlock)(NSError *error);
 //最基本数据model

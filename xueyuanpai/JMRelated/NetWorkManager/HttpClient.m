@@ -10,7 +10,8 @@
 
 @implementation HttpClient
 
-
+#pragma mark - 集梦盒子二期
+/////////////////////////////////////////集梦盒子二期/////////////////////////////////////////
 + (instancetype)sharedInstance {
     
     static HttpClient *instance = nil;
@@ -25,21 +26,27 @@
 /*
  *  @brief 获取首页轮播图
  */
-- (void)getBannerOfIndexWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+- (void)getBannerOfIndexWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_OF_BANNER withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         
-        //Pages
-        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        
         //banner对象
         NSDictionary * listDic = model.responseCommonDic ;
-        successBlock(model,pageModel,listDic);
+        successBlock(model,listDic);
         
     } withFailBlock:^(NSError *error) {
         failBlock(error);
     }];
 }
 
+
+
+
+#pragma mark - 学院派一期
+///// /////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////学院派一期/////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 /*
  *  @brief 获取首页栏目分类
  */

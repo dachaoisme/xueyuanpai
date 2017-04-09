@@ -12,24 +12,49 @@
 
 
 @interface HttpClient : NSObject
-
+/////////////////////////////////////////集梦盒子二期/////////////////////////////////////////
 /**
- *  @brief  单利初始化
- *
- *  @param
- *  @return
- */
+*  @brief  单利初始化
+*
+*  @param
+*  @return
+*/
 + (instancetype)sharedInstance;
 
 #pragma mark - 首页相关
 /**
- *  @brief  获取首页轮播图
- *
- *  @param
+*  @brief  获取首页轮播图
+*
+*  @param
  *
  *  @return
  */
-- (void)getBannerOfIndexWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+- (void)getBannerOfIndexWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///// /////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////学院派一期/////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+
 
 /**
  *  @brief  获取首页栏目分类

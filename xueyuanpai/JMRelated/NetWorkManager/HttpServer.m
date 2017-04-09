@@ -75,6 +75,7 @@
     //url
     NSMutableString *tempUrl =[NSMutableString stringWithString:baseApiUrl];// baseUrl ;
     [tempUrl appendString:methond];
+    /*
     //获取当前时间apptime
     NSString *appCurrentTimeString = [NSString stringWithFormat:@"%ld", time(NULL)];//转为字符型
     //加密MD5KEY
@@ -101,6 +102,9 @@
     }
     //编码
     NSString * urlStr = [tempUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+     */
+    //编码
+    NSString * urlStr = tempUrl;
     //2.管理器
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     //替换ContentType类型
@@ -108,7 +112,7 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/plain", nil];
     [manager setSecurityPolicy:[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey]];
     //3.请求
-    [manager GET:urlStr parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:urlStr parameters:dic success: ^(AFHTTPRequestOperation *operation, id responseObject) {
         //NSLog(@"GET --> %@, %@", responseObject, [NSThread currentThread]); //自动返回主线程
         HttpResponseCodeModel * model = [[HttpResponseCodeModel alloc]initWithDic:responseObject];
         

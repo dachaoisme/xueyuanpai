@@ -11,7 +11,7 @@
 
 #pragma mark - 服务器地址相关
 ///api的地址
-#define baseApiUrl        @"http://114.215.111.210/api/web/"
+#define baseApiUrl @"http://114.215.111.210:999/frontend/web/index.php?r="
 ///后台管理系统图片的地址
 #define baseBackgroundUrlType1 @"http://114.215.111.210/"
 #define baseBackgroundUrlType2 @"http://114.215.111.210/backend/web/"
@@ -19,9 +19,43 @@
 ///支付地址
 #define WeiXinPayStyleUrl   @"http://114.215.111.210/api/web/v1/pay/weixin/"
 
-#pragma mark - 首页相关
+
+/////////////////////////////////////////集梦盒子二期/////////////////////////////////////////
 ///轮播图
-#define METHOD_OF_BANNER    @"v1/focus/index?"
+#define METHOD_OF_BANNER    @"focus/index"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////学院派一期/////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+#pragma mark - 首页相关
+
 ///首页栏目
 #define METHOD_OF_COLUMNS   @"v1/columns/index?"
 ///首页大派送接口
@@ -223,4 +257,10 @@
 #define SYSTEM_BANK_LIST                                          @"v1/bank/list?"
 
 #define SHARESDK_URL                                              @"http://fir.im/xueyuanpai"
+
+
+
+
+
+
 #endif /* NetworkConfigue_h */

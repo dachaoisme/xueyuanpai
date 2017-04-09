@@ -82,27 +82,27 @@
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [[HttpClient sharedInstance]getBannerOfIndexWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
-        
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        if (responseModel.responseCode == ResponseCodeSuccess) {
-            
-            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
-                
-                IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
-                [bannerItemArray addObject:model];
-                [bannerImageArray addObject:model.IndexBannerPicUrl];
-            }
-        }else{
-            [CommonUtils showToastWithStr:responseModel.responseMsg];
-        }
-        
-        //[theCollectionView reloadData];
-        [self requestMallData];
-        
-    } withFaileBlock:^(NSError *error) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    }];
+//    [[HttpClient sharedInstance]getBannerOfIndexWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
+//        
+//        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//        if (responseModel.responseCode == ResponseCodeSuccess) {
+//            
+//            for (NSDictionary * dic in [listDic objectForKey:@"lists"] ) {
+//                
+//                IndexBannerModel * model = [[IndexBannerModel alloc]initWithDic:dic];
+//                [bannerItemArray addObject:model];
+//                [bannerImageArray addObject:model.IndexBannerPicUrl];
+//            }
+//        }else{
+//            [CommonUtils showToastWithStr:responseModel.responseMsg];
+//        }
+//        
+//        //[theCollectionView reloadData];
+//        [self requestMallData];
+//        
+//    } withFaileBlock:^(NSError *error) {
+//        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//    }];
     
 }
 

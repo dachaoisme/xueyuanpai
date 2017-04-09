@@ -111,7 +111,7 @@
     [dic setObject:@"1" forKey:@"type"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
+    /*
     [[HttpClient sharedInstance]getBannerOfIndexWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *listDic) {
         
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -130,7 +130,7 @@
     } withFaileBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
-    
+    */
 }
 //首页栏目分类
 -(void)requestColumnsData
