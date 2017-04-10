@@ -31,8 +31,12 @@
  */
 - (void)getBannerOfIndexWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
-
-
+/**
+ *  @brief  获取实训项目
+ *
+ *  @param
+ */
+- (void)getTrainProjectWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 
 

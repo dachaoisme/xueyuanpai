@@ -16,3 +16,13 @@
               };
 }
 @end
+
+@implementation JMTrainProjectModel
+
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{ @"trainProjectId" : @"id",
+              @"trainProjectDescription" : @"description"
+              };
+}
+@end

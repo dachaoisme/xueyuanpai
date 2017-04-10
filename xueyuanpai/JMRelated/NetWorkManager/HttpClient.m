@@ -40,7 +40,20 @@
     }];
 }
 
+- (void)getTrainProjectWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_PROJECT withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
 
 #pragma mark - 学院派一期

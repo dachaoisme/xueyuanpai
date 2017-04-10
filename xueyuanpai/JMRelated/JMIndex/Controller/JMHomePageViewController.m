@@ -18,6 +18,10 @@
     NSMutableArray *bannerTitleArray;
     NSMutableArray *bannerImageArray;
     NSMutableArray *bannerItemArray;
+    NSMutableArray *dataArray;
+    int currentPage;
+    int nextPage;
+    int pageSize;
 }
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -29,14 +33,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"首页";
-    
+    currentPage=nextPage=1;
+    pageSize=10;
     bannerTitleArray = [NSMutableArray array];
     bannerImageArray = [NSMutableArray array];
     bannerItemArray = [NSMutableArray array];
+    dataArray = [NSMutableArray array];
     //创建当前列表视图
     [self createTableView];
     
     [self requestBanner];
+    [self requestData];
 }
 -(void)requestBanner
 {
@@ -53,8 +60,31 @@
         
     }];
 }
-
-
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [dic setObject:@"0" forKey:@"status"];
+    [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMTrainProjectModel *model = [JMTrainProjectModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            [self.tableView reloadData];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
+}
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
@@ -71,6 +101,8 @@
     [_tableView registerClass:[JMHomePageTwoTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageTwoTypeTableViewCell"];
     
     [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+    
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -112,7 +144,7 @@
         return 1;
     }else{
         
-        return 3;
+        return dataArray.count+1;
 
     }
     

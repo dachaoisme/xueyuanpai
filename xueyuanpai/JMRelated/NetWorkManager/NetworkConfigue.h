@@ -23,7 +23,7 @@
 /////////////////////////////////////////集梦盒子二期/////////////////////////////////////////
 ///轮播图
 #define METHOD_OF_BANNER    @"focus/index"
-
+#define METHOD_OF_TRAIN_PROJECT    @"project/index"
 
 
 
