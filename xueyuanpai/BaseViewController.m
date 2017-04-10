@@ -24,6 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
     /*
     self.view.backgroundColor = LLColorBg;
     self.automaticallyAdjustsScrollViewInsets = NO;
