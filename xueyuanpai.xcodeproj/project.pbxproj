@@ -83,6 +83,7 @@
 		166DD16C1E9A0F7C00B2B002 /* WithdrawaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 166DD1391E9A0F7C00B2B002 /* WithdrawaTableViewCell.xib */; };
 		166DD1731E9A22E200B2B002 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD16F1E9A22E200B2B002 /* NSObject+YYModel.m */; };
 		166DD1741E9A22E200B2B002 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1711E9A22E200B2B002 /* YYClassInfo.m */; };
+		166DD1781E9BCF2D00B2B002 /* JMHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */; };
 		5802D5AD1D1A2DED00BBB7C4 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802D5AC1D1A2DED00BBB7C4 /* ZHPickView.m */; };
 		58070F941CF6E80200F03F6C /* disable_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F441CF6E80200F03F6C /* disable_tag@2x.png */; };
 		58070F951CF6E80200F03F6C /* disable_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F451CF6E80200F03F6C /* disable_tag@3x.png */; };
@@ -1032,6 +1033,8 @@
 		166DD1701E9A22E200B2B002 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
 		166DD1711E9A22E200B2B002 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
 		166DD1721E9A22E200B2B002 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
+		166DD1761E9BCF2D00B2B002 /* JMHomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageModel.h; sourceTree = "<group>"; };
+		166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageModel.m; sourceTree = "<group>"; };
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5802D5AB1D1A2DED00BBB7C4 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
@@ -2315,7 +2318,7 @@
 		166DD07D1E9A08ED00B2B002 /* JMIndex */ = {
 			isa = PBXGroup;
 			children = (
-				DD09B79C1E9B5B47001D1DB0 /* Model */,
+				166DD1751E9BCF2100B2B002 /* Model */,
 				DD09B79B1E9B5B3B001D1DB0 /* View */,
 				166DD0801E9A091D00B2B002 /* Controller */,
 			);
@@ -2640,6 +2643,15 @@
 				166DD1721E9A22E200B2B002 /* YYModel.h */,
 			);
 			path = YYModel;
+			sourceTree = "<group>";
+		};
+		166DD1751E9BCF2100B2B002 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				166DD1761E9BCF2D00B2B002 /* JMHomePageModel.h */,
+				166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		1D8027684E9C39222E664835 /* Pods */ = {
@@ -3600,13 +3612,6 @@
 				DD09B79D1E9B5B60001D1DB0 /* LunBoView */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		DD09B79C1E9B5B47001D1DB0 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		DD09B79D1E9B5B60001D1DB0 /* LunBoView */ = {
@@ -5610,6 +5615,7 @@
 				DD1957DF1D19A7B500FF01F0 /* OTPageView.m in Sources */,
 				DDB28E041D2C8A7E004C8F70 /* MWPhoto.m in Sources */,
 				DDAB05C61D03B154007A6027 /* BusinessProjectDetailOneTableViewCell.m in Sources */,
+				166DD1781E9BCF2D00B2B002 /* JMHomePageModel.m in Sources */,
 				166DD1441E9A0F7C00B2B002 /* MineCollectionSubViewController.m in Sources */,
 				DDB28DE91D2C8A7E004C8F70 /* EMVoiceConverter.mm in Sources */,
 				58D9B2BA1D39E65000C4D6FA /* PayOrder.m in Sources */,

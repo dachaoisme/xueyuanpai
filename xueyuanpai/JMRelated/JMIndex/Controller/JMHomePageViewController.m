@@ -12,9 +12,13 @@
 #import "JMHomePageOneTypeCellTableViewCell.h"
 #import "JMHomePageTwoTypeTableViewCell.h"
 #import "JMHomePageThreeTypeTableViewCell.h"
-
+#import "JMHomePageModel.h"
 @interface JMHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,JMHomePageOneTypeCellTableViewCellDelegate,JMHomePageTwoTypeTableViewCellDelegate>
-
+{
+    NSMutableArray *bannerTitleArray;
+    NSMutableArray *bannerImageArray;
+    NSMutableArray *bannerItemArray;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -26,7 +30,9 @@
     // Do any additional setup after loading the view.
     self.title = @"首页";
     
-    
+    bannerTitleArray = [NSMutableArray array];
+    bannerImageArray = [NSMutableArray array];
+    bannerItemArray = [NSMutableArray array];
     //创建当前列表视图
     [self createTableView];
     
@@ -35,7 +41,14 @@
 -(void)requestBanner
 {
     [[HttpClient sharedInstance]getBannerOfIndexWithParams:[NSDictionary dictionary] withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
-        
+        NSArray *listArr =(NSArray *)listDic;
+        for (int i=0; i<listArr.count; i++) {
+            JMHomePageModel *model = [JMHomePageModel yy_modelWithDictionary:[listArr objectAtIndex:i]];
+            [bannerTitleArray addObject:model.title];
+            [bannerImageArray addObject:model.picUrl];
+            [bannerItemArray addObject:model];
+            [_tableView reloadData];
+        }
     } withFaileBlock:^(NSError *error) {
         
     }];
@@ -66,17 +79,18 @@
     
     if (section == 0) {
         //获取轮播图片数组
-        NSArray *imageUrlArray = @[[UIImage imageNamed:@"1.jpg"],[UIImage imageNamed:@"2.jpg"]];
         
         BulkGoodsLunBoView *bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160) animationDuration:0];
         bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
-            return imageUrlArray[pageIndex];
+            return bannerImageArray[pageIndex];
         };
         
         bulkGoodsLunBoView.totalPagesCount = ^NSInteger(void){
-            return imageUrlArray.count;
+            return bannerImageArray.count;
         };
-        
+        bulkGoodsLunBoView.TapActionBlock = ^(NSInteger pageIndex) {
+            ///点击轮播图
+        };
         
         return bulkGoodsLunBoView;
 

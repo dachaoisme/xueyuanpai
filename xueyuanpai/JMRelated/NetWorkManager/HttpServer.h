@@ -20,9 +20,10 @@ typedef void(^XYPBaseBlock)(HttpResponseCodeModel *model);
 ///page数据mode
 typedef void(^XYPPagesBlock)(HttpResponsePageModel *pageModel);
 typedef void(^XYPNoneListBlock)(HttpResponseCodeModel *responseModel ,NSDictionary *listDic);
-//类似首页轮播图、分栏列表以及积分商城
+//类似分栏列表以及积分商城
 typedef void(^XYPCommonListBlock)(HttpResponseCodeModel *responseModel ,HttpResponsePageModel *pageModel,NSDictionary *ListDic);
-
+//类似首页轮播图、
+typedef void(^XYNormalListBlock)(HttpResponseCodeModel *responseModel ,NSArray *listArr);
 
 @interface HttpServer : NSObject
 
