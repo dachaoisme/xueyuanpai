@@ -319,6 +319,15 @@
 		58F80A0D1D0A495C0099DCCD /* ExpressCenterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F80A0C1D0A495C0099DCCD /* ExpressCenterModel.m */; };
 		58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */; };
 		58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996461CF598A700D67C63 /* TimeBankModel.m */; };
+		DD09B7A21E9B5B79001D1DB0 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B79F1E9B5B79001D1DB0 /* NSTimer+Addition.m */; };
+		DD09B7A31E9B5B79001D1DB0 /* BulkGoodsLunBoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7A11E9B5B79001D1DB0 /* BulkGoodsLunBoView.m */; };
+		DD09B7A61E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7A51E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */; };
+		DD09B7A91E9B6246001D1DB0 /* home_icon_chuangke.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7A81E9B6246001D1DB0 /* home_icon_chuangke.png */; };
+		DD09B7AB1E9B64D5001D1DB0 /* home_icon_kongjian.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7AA1E9B64D5001D1DB0 /* home_icon_kongjian.png */; };
+		DD09B7AE1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7AD1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */; };
+		DD09B7B01E9B89E4001D1DB0 /* list_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7AF1E9B89E4001D1DB0 /* list_arrow.png */; };
+		DD09B7B31E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7B21E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */; };
+		DD09B7B51E9B93D0001D1DB0 /* list_icon_weizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7B41E9B93D0001D1DB0 /* list_icon_weizhi.png */; };
 		DD0B1E3D1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1E3C1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m */; };
 		DD0B1E411CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1E3F1CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.m */; };
 		DD0B1E421CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0B1E401CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.xib */; };
@@ -1429,6 +1438,20 @@
 		58F996431CF5874900D67C63 /* LDCPullDownMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LDCPullDownMenuView.m; sourceTree = "<group>"; };
 		58F996451CF598A700D67C63 /* TimeBankModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeBankModel.h; sourceTree = "<group>"; };
 		58F996461CF598A700D67C63 /* TimeBankModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeBankModel.m; sourceTree = "<group>"; };
+		DD09B79E1E9B5B79001D1DB0 /* NSTimer+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+Addition.h"; sourceTree = "<group>"; };
+		DD09B79F1E9B5B79001D1DB0 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
+		DD09B7A01E9B5B79001D1DB0 /* BulkGoodsLunBoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkGoodsLunBoView.h; sourceTree = "<group>"; };
+		DD09B7A11E9B5B79001D1DB0 /* BulkGoodsLunBoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkGoodsLunBoView.m; sourceTree = "<group>"; };
+		DD09B7A41E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageOneTypeCellTableViewCell.h; sourceTree = "<group>"; };
+		DD09B7A51E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageOneTypeCellTableViewCell.m; sourceTree = "<group>"; };
+		DD09B7A81E9B6246001D1DB0 /* home_icon_chuangke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon_chuangke.png; sourceTree = "<group>"; };
+		DD09B7AA1E9B64D5001D1DB0 /* home_icon_kongjian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon_kongjian.png; sourceTree = "<group>"; };
+		DD09B7AC1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageTwoTypeTableViewCell.h; sourceTree = "<group>"; };
+		DD09B7AD1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageTwoTypeTableViewCell.m; sourceTree = "<group>"; };
+		DD09B7AF1E9B89E4001D1DB0 /* list_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_arrow.png; sourceTree = "<group>"; };
+		DD09B7B11E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageThreeTypeTableViewCell.h; sourceTree = "<group>"; };
+		DD09B7B21E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageThreeTypeTableViewCell.m; sourceTree = "<group>"; };
+		DD09B7B41E9B93D0001D1DB0 /* list_icon_weizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_icon_weizhi.png; sourceTree = "<group>"; };
 		DD0B1E3B1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarketDetailOneStyleTableViewCell.h; sourceTree = "<group>"; };
 		DD0B1E3C1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobMarketDetailOneStyleTableViewCell.m; sourceTree = "<group>"; };
 		DD0B1E3E1CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarkDetailTwoStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2276,6 +2299,7 @@
 		166DD07C1E9A08AE00B2B002 /* JMRelated */ = {
 			isa = PBXGroup;
 			children = (
+				DD09B7A71E9B6226001D1DB0 /* ImageResource */,
 				166DD0C41E9A0F4100B2B002 /* Config */,
 				166DD0CA1E9A0F4100B2B002 /* Inbox */,
 				166DD0CE1E9A0F4100B2B002 /* NetWorkManager */,
@@ -2291,9 +2315,9 @@
 		166DD07D1E9A08ED00B2B002 /* JMIndex */ = {
 			isa = PBXGroup;
 			children = (
+				DD09B79C1E9B5B47001D1DB0 /* Model */,
+				DD09B79B1E9B5B3B001D1DB0 /* View */,
 				166DD0801E9A091D00B2B002 /* Controller */,
-				166DD0811E9A091D00B2B002 /* Model */,
-				166DD0821E9A091D00B2B002 /* View */,
 			);
 			path = JMIndex;
 			sourceTree = "<group>";
@@ -2325,20 +2349,6 @@
 				166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		166DD0811E9A091D00B2B002 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		166DD0821E9A091D00B2B002 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		166DD0831E9A094300B2B002 /* Controller */ = {
@@ -3576,6 +3586,49 @@
 				FFF3EE12099BB224ECB4817B /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD09B79B1E9B5B3B001D1DB0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DD09B7A41E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.h */,
+				DD09B7A51E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */,
+				DD09B7AC1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.h */,
+				DD09B7AD1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */,
+				DD09B7B11E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.h */,
+				DD09B7B21E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */,
+				DD09B79D1E9B5B60001D1DB0 /* LunBoView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DD09B79C1E9B5B47001D1DB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DD09B79D1E9B5B60001D1DB0 /* LunBoView */ = {
+			isa = PBXGroup;
+			children = (
+				DD09B79E1E9B5B79001D1DB0 /* NSTimer+Addition.h */,
+				DD09B79F1E9B5B79001D1DB0 /* NSTimer+Addition.m */,
+				DD09B7A01E9B5B79001D1DB0 /* BulkGoodsLunBoView.h */,
+				DD09B7A11E9B5B79001D1DB0 /* BulkGoodsLunBoView.m */,
+			);
+			path = LunBoView;
+			sourceTree = "<group>";
+		};
+		DD09B7A71E9B6226001D1DB0 /* ImageResource */ = {
+			isa = PBXGroup;
+			children = (
+				DD09B7B41E9B93D0001D1DB0 /* list_icon_weizhi.png */,
+				DD09B7AF1E9B89E4001D1DB0 /* list_arrow.png */,
+				DD09B7AA1E9B64D5001D1DB0 /* home_icon_kongjian.png */,
+				DD09B7A81E9B6246001D1DB0 /* home_icon_chuangke.png */,
+			);
+			path = ImageResource;
 			sourceTree = "<group>";
 		};
 		DD0B1E431CFEDD1800C4BAB2 /* PhotoPicker */ = {
@@ -5209,6 +5262,7 @@
 				DDAB43861D05531A00FADB3E /* profile_icon_fav@3x.png in Resources */,
 				5874A3E91CF1249400CE9FC9 /* tab_icon_package_hl@3x.png in Resources */,
 				58D9B31C1D39F21800C4D6FA /* AlipaySDK.bundle in Resources */,
+				DD09B7A91E9B6246001D1DB0 /* home_icon_chuangke.png in Resources */,
 				DDCD71431D0A99F2009FBE9A /* CourierNoticeTableViewCell.xib in Resources */,
 				DD0F42781D22702500115B96 /* msg_icon_system@3x.png in Resources */,
 				58070FA01CF6E80200F03F6C /* timebank_add_comment@2x.png in Resources */,
@@ -5335,6 +5389,7 @@
 				58070FA31CF6E80200F03F6C /* timebank_bubble_arrow@3x.png in Resources */,
 				DDCD70A81D06BA1D009FBE9A /* deliver_icon_location@2x.png in Resources */,
 				DDB28E7B1D2CF787004C8F70 /* icon_010.gif in Resources */,
+				DD09B7B51E9B93D0001D1DB0 /* list_icon_weizhi.png in Resources */,
 				DDB28E781D2CF787004C8F70 /* icon_002_cover.png in Resources */,
 				DDAB438E1D05531A00FADB3E /* profile_icon_settings@3x.png in Resources */,
 				DDB28E771D2CF787004C8F70 /* icon_002.gif in Resources */,
@@ -5380,6 +5435,7 @@
 				DDD0BD9F1CFA4C5700073290 /* EmploymentRecruitmentTableViewCell.xib in Resources */,
 				58A944911CE277C600DAD398 /* input_icon_search@2x.png in Resources */,
 				DDB28E7A1D2CF787004C8F70 /* icon_007_cover.png in Resources */,
+				DD09B7B01E9B89E4001D1DB0 /* list_arrow.png in Resources */,
 				58070FAB1CF6E80200F03F6C /* timebank_filter_chair_hl@3x.png in Resources */,
 				DDCD70AE1D06BA1D009FBE9A /* deliver_icon_signal@2x.png in Resources */,
 				58A944961CE277C600DAD398 /* login_password@2x.png in Resources */,
@@ -5441,6 +5497,7 @@
 				DDB28E271D2C8A7E004C8F70 /* MWPhotoBrowser.bundle in Resources */,
 				DD13CDE51D00186D000A69FE /* startup_vip@2x.png in Resources */,
 				DD0B1EE11CFEE51000C4BAB2 /* market_post_pic_delete@2x.png in Resources */,
+				DD09B7AB1E9B64D5001D1DB0 /* home_icon_kongjian.png in Resources */,
 				58070FBE1CF6E80200F03F6C /* timebank_filter_male_hl@2x.png in Resources */,
 				DD0F42711D22702500115B96 /* msg_icon_deliver@2x.png in Resources */,
 				DD4127831CF0552F00227066 /* shetuan_icon_time@2x.png in Resources */,
@@ -5527,6 +5584,7 @@
 				DDD0BD891CF980E600073290 /* RecruitmentThreeStyleTableViewCell.m in Sources */,
 				58F80A0D1D0A495C0099DCCD /* ExpressCenterModel.m in Sources */,
 				58F67C301CD9CF9500D55BE0 /* MJRefreshGifHeader.m in Sources */,
+				DD09B7A21E9B5B79001D1DB0 /* NSTimer+Addition.m in Sources */,
 				587FF9DF1CF2F8F300AD2131 /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				583D65D41CDA824200830BBE /* BaseNavView.m in Sources */,
 				58D9B3231D39F21800C4D6FA /* openssl_wrapper.m in Sources */,
@@ -5662,6 +5720,7 @@
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */,
 				DDB28E031D2C8A7E004C8F70 /* MWGridViewController.m in Sources */,
+				DD09B7AE1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
 				DDB28E521D2C8A7E004C8F70 /* EaseChatBarMoreView.m in Sources */,
 				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
@@ -5785,6 +5844,7 @@
 				583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */,
 				DDB28E211D2C8A7E004C8F70 /* PSTCollectionViewLayout.m in Sources */,
 				DDB28E201D2C8A7E004C8F70 /* PSTCollectionViewItemKey.m in Sources */,
+				DD09B7A61E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m in Sources */,
 				58F67BFD1CD990A200D55BE0 /* IndexViewController.m in Sources */,
 				DDD3E5371CF458AF001B579E /* SchoolShufflingView.m in Sources */,
 				DDEB257C1D101AC700EF6CE3 /* RadarView.m in Sources */,
@@ -5806,6 +5866,7 @@
 				166DD1481E9A0F7C00B2B002 /* MineJobMarketViewController.m in Sources */,
 				166DD0D81E9A0F4100B2B002 /* InboxModel.m in Sources */,
 				166DD14D1E9A0F7C00B2B002 /* SelectedBankViewController.m in Sources */,
+				DD09B7B31E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m in Sources */,
 				166DD1691E9A0F7C00B2B002 /* TopUpTwoTableViewCell.m in Sources */,
 				166DD1431E9A0F7C00B2B002 /* MineBankViewController.m in Sources */,
 				DD0F42871D22705D00115B96 /* MessageTableViewCell.m in Sources */,
@@ -5858,6 +5919,7 @@
 				DDB28E1B1D2C8A7E004C8F70 /* PSTCollectionView.m in Sources */,
 				DDCD71101D09377B009FBE9A /* AddProjectLeaderTwoTableViewCell.m in Sources */,
 				DD4127871CF0561900227066 /* HotActivityTableViewCell.m in Sources */,
+				DD09B7A31E9B5B79001D1DB0 /* BulkGoodsLunBoView.m in Sources */,
 				DDB28E0D1D2C8A7E004C8F70 /* EMSDWebImageDownloader.m in Sources */,
 				58C27AB01CE20E6B0036D105 /* IndexColumnCollectionViewCell.m in Sources */,
 				DDB28E2D1D2C8A7E004C8F70 /* NSDateFormatter+Category.m in Sources */,
