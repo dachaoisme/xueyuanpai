@@ -10,5 +10,4 @@
 
 @interface RegisterViewController : BaseViewController
 
-@property(nonatomic,assign)RegisterRoleType registerRoleType;
 @end

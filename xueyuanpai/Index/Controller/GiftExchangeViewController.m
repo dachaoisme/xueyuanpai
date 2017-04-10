@@ -33,7 +33,7 @@
     [self createLeftBackNavBtn];
     [self setTitle:@"积分兑换"];
     self.view.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
-    self.totalPoint = [UserAccountManager sharedInstance].userUsablePoints;
+    //self.totalPoint = [UserAccountManager sharedInstance].userUsablePoints;
     [self setcontentView];
 }
 

@@ -87,24 +87,24 @@
         
         //根据不同的身份跳转不同的详情
         
-        if ([UserAccountManager sharedInstance].userRole == UserInfoRoleStudent) {
-            
-            //跳转项目详情
-            BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
-            
-            projectVC.projectId = mineStoreModel.mineStoreId;
-            [self.superViewController.navigationController pushViewController:projectVC animated:YES];
-
-            
-        }else{
-            
-            //跳转导师项目详情
-            BussinessProjectTeacherDetailViewController *projectVC = [[BussinessProjectTeacherDetailViewController alloc] init];
-            
-            projectVC.projectId = mineStoreModel.mineStoreId;
-            [self.superViewController.navigationController pushViewController:projectVC animated:YES];
-            
-        }
+//        if ([UserAccountManager sharedInstance].userRole == UserInfoRoleStudent) {
+//            
+//            //跳转项目详情
+//            BusinessProjectDetailViewController *projectVC = [[BusinessProjectDetailViewController alloc] init];
+//            
+//            projectVC.projectId = mineStoreModel.mineStoreId;
+//            [self.superViewController.navigationController pushViewController:projectVC animated:YES];
+//
+//            
+//        }else{
+//            
+//            //跳转导师项目详情
+//            BussinessProjectTeacherDetailViewController *projectVC = [[BussinessProjectTeacherDetailViewController alloc] init];
+//            
+//            projectVC.projectId = mineStoreModel.mineStoreId;
+//            [self.superViewController.navigationController pushViewController:projectVC animated:YES];
+//            
+//        }
         
     }else if (self.mineType == MineTypeOfTimeBank){
         //点击进入时间银行详情

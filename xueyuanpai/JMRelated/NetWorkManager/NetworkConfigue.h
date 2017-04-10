@@ -24,11 +24,14 @@
 ///轮播图
 #define METHOD_OF_BANNER    @"focus/index"
 #define METHOD_OF_TRAIN_PROJECT    @"project/index"
-
-
-
-
-
+///登录
+#define METHOD_OF_LOGIN                  @"/student/signin"
+///注册
+#define METHOD_OF_REGISTER               @"student/signup"
+///发送验证码
+#define METHOD_OF_SEND_MESSAGE           @"student/sendsms"
+///根据关键字查询学校
+#define METHOD_OF_COLLEGE_SEARCH         @"college/index"
 
 
 
@@ -62,12 +65,9 @@
 #define METHOD_OF_MALL      @"v1/mall/index?"
 
 #pragma mark - 用户相关
-///发送验证码
-#define METHOD_OF_SEND_MESSAGE           @"v1/user/sendmessage?"
-///登录
-#define METHOD_OF_LOGIN                  @"v1/user/signin?"
-///注册
-#define METHOD_OF_REGISTER               @"v1/user/signup?"
+
+
+
 ///校验验证码和手机号--->修改密码
 #define METHOD_OF_CHECKING_MESSAGE       @"v1/user/validatecaptcha?"
 ///修改密码
@@ -76,8 +76,7 @@
 #define METHOD_OF_UPDATE_STUDENT_INFO    @"v1/user/updatestudentinfo?"
 ///更新导师资料
 #define METHOD_OF_UPDATE_TEACHER_INFO    @"v1/user/updateteacherinfo?"
-///根据关键字查询学校
-#define METHOD_OF_COLLEGE_SEARCH         @"v1/college/search?"
+
 ///用户头像上传
 #define METHOD_OF_UPLOAD                 @"v1/user/upload/"
 ///修改手机号绑定

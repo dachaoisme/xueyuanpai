@@ -16,12 +16,9 @@
 {
     UITextField *phoneTextField;
     UITextField *passwordTextField;
-    UIButton    *personalAccountBtn;
-    UIButton    *teacherAccountBtn;
     UIButton    *loginBtn;
     UIButton    *registerBtn;
     UIButton    *justToLook;
-    RegisterRoleView * registerRoleAlertView;
 }
 @end
 
@@ -112,38 +109,6 @@
     passwordTextField.rightView = forgetPasswordBtn;
     
     
-    personalAccountBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [personalAccountBtn setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
-    personalAccountBtn.selected = YES;
-    personalAccountBtn.tag = 10001;
-    personalAccountBtn.layer.cornerRadius = 3.0;
-    [personalAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
-    [personalAccountBtn setImage: [UIImage imageNamed:@"login_type_check"] forState:UIControlStateSelected];
-    
-    [personalAccountBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateSelected];
-    [personalAccountBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, (SCREEN_WIDTH-smallSpace-2*leftSpace)/2, smallHeight)];
-    [personalAccountBtn setImageEdgeInsets:UIEdgeInsetsMake(smallHeight - 39/2, (SCREEN_WIDTH-smallSpace-2*leftSpace)/2 - 39/2, 0, 0)];
-    
-    [personalAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [personalAccountBtn setTitle:@"个人账号" forState:UIControlStateNormal];
-    personalAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [self.view addSubview:personalAccountBtn];
-    
-    teacherAccountBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [teacherAccountBtn setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
-    teacherAccountBtn.tag = 10002;
-    teacherAccountBtn.layer.cornerRadius = 3.0;
-    [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
-    [teacherAccountBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateSelected];
-    
-    [teacherAccountBtn setImage: [UIImage imageNamed:@"login_type_check"] forState:UIControlStateSelected];
-    [teacherAccountBtn setImageEdgeInsets:UIEdgeInsetsMake(smallHeight - 39/2, (SCREEN_WIDTH-smallSpace-2*leftSpace)/2 - 39/2, 0, 0)];
-    
-    [teacherAccountBtn setFrame:CGRectMake(CGRectGetMaxX(personalAccountBtn.frame)+smallSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, CGRectGetWidth(personalAccountBtn.frame), smallHeight)];
-    [teacherAccountBtn addTarget:self action:@selector(selectedLoginMethodWithBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [teacherAccountBtn setTitle:@"导师账号" forState:UIControlStateNormal];
-    teacherAccountBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [self.view addSubview:teacherAccountBtn];
     
     //登陆按钮
     loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -151,7 +116,7 @@
     loginBtn.tag = 10002;
     loginBtn.layer.cornerRadius = 5.0;
     [loginBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
-    [loginBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(personalAccountBtn.frame)+smallSpace, width, height)];
+    [loginBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, width, height)];
     [loginBtn addTarget:self action:@selector(loginAccount:) forControlEvents:UIControlEventTouchUpInside];
     [loginBtn setTitle:@"登陆" forState:UIControlStateNormal];
     loginBtn.layer.masksToBounds = YES;
@@ -212,29 +177,11 @@
         [passwordTextField resignFirstResponder];
     }
 }
-#pragma mark - 选择个人账号登录或者企业账号登陆
--(void)selectedLoginMethodWithBtn:(UIButton *)sender
-{
-    if (sender.tag == 10001) {
-        if (personalAccountBtn.selected) {
-        }else{
-            personalAccountBtn.selected = YES;
-            teacherAccountBtn.selected = NO;
-        }
-    }else{
-        if (teacherAccountBtn.selected) {
-        }else{
-            teacherAccountBtn.selected = YES;
-            personalAccountBtn.selected = NO;
-        }
-    }
-}
 
 #pragma mark - 忘记密码
 -(void)forgetPasswordAccount:(UIButton *)sender
 {
     ForgetPasswordViewController * forgetPasswordVC = [[ForgetPasswordViewController alloc]init];
-    forgetPasswordVC.registerRoleType = personalAccountBtn.selected?RegisterRoleOfStudent:RegisterRoleTypeTeacher;
     [self.navigationController pushViewController:forgetPasswordVC animated:YES];
 }
 #pragma mark - 登陆
@@ -252,13 +199,11 @@
     /*
   mobile  string    必需    手机号码
   passwd   string    必需    密码
-  role     string    必需    角色 1学生 2导师
   
   */
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:phoneTextField.text forKey:@"mobile"];
+    [dic setObject:phoneTextField.text forKey:@"telphone"];
     [dic setObject:passwordTextField.text forKey:@"passwd"];
-    [dic setObject:personalAccountBtn.selected?@"1":@"2" forKey:@"role"];
     
     
     [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
@@ -288,26 +233,14 @@
 -(void)registerAccount:(UIButton *)sender
 {
     
-    
-    if (registerRoleAlertView) {
-        registerRoleAlertView = nil;
-    }
-    registerRoleAlertView = [[RegisterRoleView alloc]initWithFrame:CGRectMake(35, self.view.center.y-75, SCREEN_WIDTH-35*2, 150) withSuperView:self.view];
-    registerRoleAlertView.delegate = self;
-    registerRoleAlertView.clipsToBounds = YES;
-    registerRoleAlertView.layer.cornerRadius = 10.0;
-    registerRoleAlertView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:registerRoleAlertView];
+    [self registerUser];
     
 }
--(void)registerRoleWithType:(RegisterRoleType)registerRoleType
+-(void)registerUser
 {
     
     RegisterViewController * registerVC = [[RegisterViewController alloc]init];
-    registerVC.registerRoleType = registerRoleType;
     [self.navigationController pushViewController:registerVC animated:YES];
-    [registerRoleAlertView removeFromSuperview];
-    registerRoleAlertView = nil;
 }
 #pragma mark - 随便看看
 -(void)justToLook:(UIButton *)sender

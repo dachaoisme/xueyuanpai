@@ -42,45 +42,27 @@
 {
     
     /*
-     "user_id": 4,//用户序号
-     "points": 0, //积分
-     "role": 1,  //1学生 2导师
-     "icon": "", //头像
-     "nickname": "答案的", //昵称
-     "mobile": "13718360863",//手机号码
-     "college_id": 1, //学校序号
-     "college_name": "北京大学",
-     "sex": 1,       //性别 1男 0女
-     "realname": "", //真实姓名
-     "idcard": 0,   //身份证号
-     "company": "", //工作单位
-     "job": "",    //职务
-     "telphone": "", //联系电话
-     "email": "",
-     "skillful": "",//擅长辅导领域
-     "tutorbackground": "" //导师背景
+     "college_id" = 1;
+     "create_time" = "2017-04-11 01:29:22";
+     icon = "";
+     id = 5;
+     nickname = "";
+     sex = 0;
+     telphone = 18511870285;
+     "update_time" = "2017-04-11 01:29:22";
      */
     NSString * userInfoKey = @"userInfo";
     NSDictionary * userInfoDic = [[NSUserDefaults standardUserDefaults] objectForKey:userInfoKey];
-    
-    self.userId           = [userInfoDic stringForKey:@"user_id"];
-    self.userUsablePoints = [userInfoDic stringForKey:@"points"];
-    self.userUsableMoney  = [userInfoDic stringForKey:@"money"];
-    self.userRole         = [[userInfoDic stringForKey:@"role"] integerValue];
-    self.userIcon         = [userInfoDic stringForKey:@"icon"];
-    self.userNickname     = [userInfoDic stringForKey:@"nickname"];
-    self.userMobile       = [userInfoDic stringForKey:@"mobile"];
     self.userCollegeId    = [userInfoDic stringForKey:@"college_id"];
-    self.userCollegeName  = [userInfoDic stringForKey:@"college_name"];
+    self.colledgeTime = [userInfoDic stringForKey:@""];
+    self.userIcon         = [userInfoDic stringForKey:@"icon"];
+    self.userId           = [userInfoDic stringForKey:@"user_id"];
+    self.userNickname     = [userInfoDic stringForKey:@"nickname"];
     self.userSex          = [[userInfoDic stringForKey:@"sex"] integerValue];
-    self.userRealName     = [userInfoDic stringForKey:@"realname"];
-    self.userIdCard       = [userInfoDic stringForKey:@"idcard"];
-    self.userCompany      = [userInfoDic stringForKey:@"company"];
-    self.userJob          = [userInfoDic stringForKey:@"job"];
     self.userTelphone     = [userInfoDic stringForKey:@"telphone"];
-    self.userEmail        = [userInfoDic stringForKey:@"email"];
-    self.userSkillful     = [userInfoDic stringForKey:@"skillful"];
-    self.userTutorbackground= [userInfoDic stringForKey:@"tutorbackground"];
+    self.updateTime     = [userInfoDic stringForKey:@"update_time"];
+    
+    
     
     if (self.userId && self.userId.length>0) {
         self.isLogin = YES;
@@ -91,7 +73,7 @@
     }
 
     //登陆的时候,先进行环信登陆判断,然后再进行密码判断
-    EMError *error = [[EMClient sharedClient] loginWithUsername:self.userMobile password:@"1"];
+    EMError *error = [[EMClient sharedClient] loginWithUsername:self.userTelphone password:@"1"];
     if (!error) {
         
         NSLog(@"环信登陆成功");
@@ -140,7 +122,7 @@
 -(void)getUserInfoWithUserPhoneNum:(NSString *)phoneNum
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:self.userMobile forKey:@"mobile"];
+    [dic setValue:self.userTelphone forKey:@"mobile"];
     [[HttpClient sharedInstance]myHomePageByMobileWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             

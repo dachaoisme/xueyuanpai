@@ -110,18 +110,13 @@
 -(void)tabBarSelected:(NSInteger)index
 {
 
-    self.selectedIndex=index;
-    [_baseTabBarView setSelected:index];
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    app.navController=(UINavigationController*)self.selectedViewController;
-    /*
     if ([UserAccountManager sharedInstance].isLogin==NO &&index==2) {
         if (self.selectedIndex==0) {
             LoginViewController * loginVC = [[LoginViewController alloc]init];
-            [IndexVC.navigationController pushViewController:loginVC  animated:YES];
+            [kuaiDiVC.navigationController pushViewController:loginVC  animated:YES];
         }else if (self.selectedIndex==1){
             LoginViewController * loginVC = [[LoginViewController alloc]init];
-            [BusinessCenterVC.navigationController pushViewController:loginVC  animated:YES];
+            [homePageVC.navigationController pushViewController:loginVC  animated:YES];
         }else{
             
         }
@@ -131,7 +126,7 @@
         AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         app.navController=(UINavigationController*)self.selectedViewController;
     }
-    */
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

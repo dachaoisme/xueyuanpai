@@ -156,7 +156,7 @@
     if ([_isFriend isEqualToString:@"1"]) {
         
         NSLog(@"跳转聊天视图页面");
-        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:[UserAccountManager sharedInstance].userMobile conversationType:EMConversationTypeChat];
+        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:[UserAccountManager sharedInstance].userTelphone conversationType:EMConversationTypeChat];
         
         [self.navigationController pushViewController:chatController animated:YES];
     }else{
@@ -179,7 +179,7 @@
         
     }else{
         
-        if ([[UserAccountManager sharedInstance].userMobile isEqualToString:_homePageModel.myHomePageMobile]) {
+        if ([[UserAccountManager sharedInstance].userTelphone isEqualToString:_homePageModel.myHomePageMobile]) {
             
             [CommonUtils showToastWithStr:@"自己不能添加自己为好友哦" WithTime:2];
             
