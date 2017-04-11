@@ -322,13 +322,15 @@
 		58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F996461CF598A700D67C63 /* TimeBankModel.m */; };
 		DD09B7A21E9B5B79001D1DB0 /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B79F1E9B5B79001D1DB0 /* NSTimer+Addition.m */; };
 		DD09B7A31E9B5B79001D1DB0 /* BulkGoodsLunBoView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7A11E9B5B79001D1DB0 /* BulkGoodsLunBoView.m */; };
-		DD09B7A61E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7A51E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */; };
 		DD09B7A91E9B6246001D1DB0 /* home_icon_chuangke.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7A81E9B6246001D1DB0 /* home_icon_chuangke.png */; };
 		DD09B7AB1E9B64D5001D1DB0 /* home_icon_kongjian.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7AA1E9B64D5001D1DB0 /* home_icon_kongjian.png */; };
-		DD09B7AE1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7AD1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */; };
 		DD09B7B01E9B89E4001D1DB0 /* list_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7AF1E9B89E4001D1DB0 /* list_arrow.png */; };
-		DD09B7B31E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7B21E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */; };
 		DD09B7B51E9B93D0001D1DB0 /* list_icon_weizhi.png in Resources */ = {isa = PBXBuildFile; fileRef = DD09B7B41E9B93D0001D1DB0 /* list_icon_weizhi.png */; };
+		DD09B7B81E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7B71E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m */; };
+		DD09B7C01E9CDCAE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7BB1E9CDCAE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */; };
+		DD09B7C11E9CDCAE001D1DB0 /* JMHomePageThreeTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7BD1E9CDCAE001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */; };
+		DD09B7C21E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7BF1E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */; };
+		DD09B7C71E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09B7C61E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.m */; };
 		DD0B1E3D1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1E3C1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m */; };
 		DD0B1E411CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0B1E3F1CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.m */; };
 		DD0B1E421CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD0B1E401CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.xib */; };
@@ -782,6 +784,7 @@
 		DDB28E961D2CF787004C8F70 /* icon_040_cover.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB28E761D2CF787004C8F70 /* icon_040_cover.png */; };
 		DDB28F6E1D2E259B004C8F70 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB28F6B1D2E259B004C8F70 /* libWeChatSDK.a */; };
 		DDB67AD01D266FC6009049A8 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB67ACF1D266FC6009049A8 /* share.png */; };
+		DDBA52F21E9D0C9000C189A4 /* HomePageDetailTwoTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBA52F11E9D0C9000C189A4 /* HomePageDetailTwoTypeTableViewCell.m */; };
 		DDBFD1D21D2F367900E15DCF /* MyHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1D11D2F367900E15DCF /* MyHomePageViewController.m */; };
 		DDBFD1D51D2F418C00E15DCF /* MyHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1D41D2F418C00E15DCF /* MyHomePageModel.m */; };
 		DDBFD1D81D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBFD1D71D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m */; };
@@ -1445,16 +1448,20 @@
 		DD09B79F1E9B5B79001D1DB0 /* NSTimer+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+Addition.m"; sourceTree = "<group>"; };
 		DD09B7A01E9B5B79001D1DB0 /* BulkGoodsLunBoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BulkGoodsLunBoView.h; sourceTree = "<group>"; };
 		DD09B7A11E9B5B79001D1DB0 /* BulkGoodsLunBoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BulkGoodsLunBoView.m; sourceTree = "<group>"; };
-		DD09B7A41E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageOneTypeCellTableViewCell.h; sourceTree = "<group>"; };
-		DD09B7A51E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageOneTypeCellTableViewCell.m; sourceTree = "<group>"; };
 		DD09B7A81E9B6246001D1DB0 /* home_icon_chuangke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon_chuangke.png; sourceTree = "<group>"; };
 		DD09B7AA1E9B64D5001D1DB0 /* home_icon_kongjian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_icon_kongjian.png; sourceTree = "<group>"; };
-		DD09B7AC1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageTwoTypeTableViewCell.h; sourceTree = "<group>"; };
-		DD09B7AD1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageTwoTypeTableViewCell.m; sourceTree = "<group>"; };
 		DD09B7AF1E9B89E4001D1DB0 /* list_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_arrow.png; sourceTree = "<group>"; };
-		DD09B7B11E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageThreeTypeTableViewCell.h; sourceTree = "<group>"; };
-		DD09B7B21E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageThreeTypeTableViewCell.m; sourceTree = "<group>"; };
 		DD09B7B41E9B93D0001D1DB0 /* list_icon_weizhi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_icon_weizhi.png; sourceTree = "<group>"; };
+		DD09B7B61E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewTrainingProjectDetailController.h; sourceTree = "<group>"; };
+		DD09B7B71E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewTrainingProjectDetailController.m; sourceTree = "<group>"; };
+		DD09B7BA1E9CDCAE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageOneTypeCellTableViewCell.h; sourceTree = "<group>"; };
+		DD09B7BB1E9CDCAE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageOneTypeCellTableViewCell.m; sourceTree = "<group>"; };
+		DD09B7BC1E9CDCAE001D1DB0 /* JMHomePageThreeTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageThreeTypeTableViewCell.h; sourceTree = "<group>"; };
+		DD09B7BD1E9CDCAE001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageThreeTypeTableViewCell.m; sourceTree = "<group>"; };
+		DD09B7BE1E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageTwoTypeTableViewCell.h; sourceTree = "<group>"; };
+		DD09B7BF1E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageTwoTypeTableViewCell.m; sourceTree = "<group>"; };
+		DD09B7C51E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageDetailOneTypeTableViewCell.h; sourceTree = "<group>"; };
+		DD09B7C61E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageDetailOneTypeTableViewCell.m; sourceTree = "<group>"; };
 		DD0B1E3B1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarketDetailOneStyleTableViewCell.h; sourceTree = "<group>"; };
 		DD0B1E3C1CFE968D00C4BAB2 /* JobMarketDetailOneStyleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobMarketDetailOneStyleTableViewCell.m; sourceTree = "<group>"; };
 		DD0B1E3E1CFEA05E00C4BAB2 /* JobMarkDetailTwoStyleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobMarkDetailTwoStyleTableViewCell.h; sourceTree = "<group>"; };
@@ -2109,6 +2116,8 @@
 		DDB28F6C1D2E259B004C8F70 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		DDB28F6D1D2E259B004C8F70 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		DDB67ACF1D266FC6009049A8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		DDBA52F01E9D0C9000C189A4 /* HomePageDetailTwoTypeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageDetailTwoTypeTableViewCell.h; sourceTree = "<group>"; };
+		DDBA52F11E9D0C9000C189A4 /* HomePageDetailTwoTypeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageDetailTwoTypeTableViewCell.m; sourceTree = "<group>"; };
 		DDBFD1D01D2F367900E15DCF /* MyHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHomePageViewController.h; sourceTree = "<group>"; };
 		DDBFD1D11D2F367900E15DCF /* MyHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHomePageViewController.m; sourceTree = "<group>"; };
 		DDBFD1D31D2F418C00E15DCF /* MyHomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHomePageModel.h; sourceTree = "<group>"; };
@@ -2350,6 +2359,8 @@
 			children = (
 				166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */,
 				166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */,
+				DD09B7B61E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.h */,
+				DD09B7B71E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3603,12 +3614,8 @@
 		DD09B79B1E9B5B3B001D1DB0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DD09B7A41E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.h */,
-				DD09B7A51E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */,
-				DD09B7AC1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.h */,
-				DD09B7AD1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */,
-				DD09B7B11E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.h */,
-				DD09B7B21E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */,
+				DD09B7C41E9CDCD1001D1DB0 /* HomePageDetailCell */,
+				DD09B7B91E9CDC6A001D1DB0 /* HomePageCell */,
 				DD09B79D1E9B5B60001D1DB0 /* LunBoView */,
 			);
 			path = View;
@@ -3634,6 +3641,30 @@
 				DD09B7A81E9B6246001D1DB0 /* home_icon_chuangke.png */,
 			);
 			path = ImageResource;
+			sourceTree = "<group>";
+		};
+		DD09B7B91E9CDC6A001D1DB0 /* HomePageCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD09B7BA1E9CDCAE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.h */,
+				DD09B7BB1E9CDCAE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m */,
+				DD09B7BC1E9CDCAE001D1DB0 /* JMHomePageThreeTypeTableViewCell.h */,
+				DD09B7BD1E9CDCAE001D1DB0 /* JMHomePageThreeTypeTableViewCell.m */,
+				DD09B7BE1E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.h */,
+				DD09B7BF1E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.m */,
+			);
+			path = HomePageCell;
+			sourceTree = "<group>";
+		};
+		DD09B7C41E9CDCD1001D1DB0 /* HomePageDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				DD09B7C51E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.h */,
+				DD09B7C61E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.m */,
+				DDBA52F01E9D0C9000C189A4 /* HomePageDetailTwoTypeTableViewCell.h */,
+				DDBA52F11E9D0C9000C189A4 /* HomePageDetailTwoTypeTableViewCell.m */,
+			);
+			path = HomePageDetailCell;
 			sourceTree = "<group>";
 		};
 		DD0B1E431CFEDD1800C4BAB2 /* PhotoPicker */ = {
@@ -5648,6 +5679,7 @@
 				DDB28E281D2C8A7E004C8F70 /* EaseSDKHelper.m in Sources */,
 				DD13CE1F1D003526000A69FE /* BusinessClassDetailTableViewCell.m in Sources */,
 				DDB28E0F1D2C8A7E004C8F70 /* EMSDWebImageManager.m in Sources */,
+				DD09B7C01E9CDCAE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m in Sources */,
 				58E028FA1CF3442B006A2E74 /* GiftExchangeViewController.m in Sources */,
 				DD13CE051D0022D5000A69FE /* BusinessNewsViewController.m in Sources */,
 				166DD1601E9A0F7C00B2B002 /* MineIntegralTableViewCell.m in Sources */,
@@ -5657,6 +5689,7 @@
 				DD41278D1CF170F400227066 /* HotActivityModel.m in Sources */,
 				DDAC26AB1D2659A100B7EAB7 /* OnSiteMessageListViewController.m in Sources */,
 				DD0B1F041CFF02ED00C4BAB2 /* PublishInformationTwoStyleTableViewCell.m in Sources */,
+				DD09B7C71E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.m in Sources */,
 				DDB28E311D2C8A7E004C8F70 /* EaseChineseToPinyin.m in Sources */,
 				DDB28E241D2C8A7E004C8F70 /* PSTGridLayoutItem.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
@@ -5723,10 +5756,11 @@
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
 				166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */,
 				58F2116B1CF9AB7C00926FB9 /* RequirementTableViewCell.m in Sources */,
+				DD09B7C11E9CDCAE001D1DB0 /* JMHomePageThreeTypeTableViewCell.m in Sources */,
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */,
 				DDB28E031D2C8A7E004C8F70 /* MWGridViewController.m in Sources */,
-				DD09B7AE1E9B834D001D1DB0 /* JMHomePageTwoTypeTableViewCell.m in Sources */,
+				DD09B7C21E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
 				DDB28E521D2C8A7E004C8F70 /* EaseChatBarMoreView.m in Sources */,
 				DD4127D21CF3040300227066 /* GiftDetailStyleTwoTableViewCell.m in Sources */,
@@ -5746,6 +5780,7 @@
 				166DD0C01E9A0E5000B2B002 /* SelectedImageView.m in Sources */,
 				DDAB05D91D042EE4007A6027 /* BusinessPublishProjectViewController.m in Sources */,
 				DDB28E051D2C8A7E004C8F70 /* MWPhotoBrowser.m in Sources */,
+				DD09B7B81E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
 				166DD14A1E9A0F7C00B2B002 /* MineSettingViewController.m in Sources */,
 				DD27DB641D2BE011007F5917 /* SystemMessageDetailView.m in Sources */,
@@ -5850,7 +5885,6 @@
 				583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */,
 				DDB28E211D2C8A7E004C8F70 /* PSTCollectionViewLayout.m in Sources */,
 				DDB28E201D2C8A7E004C8F70 /* PSTCollectionViewItemKey.m in Sources */,
-				DD09B7A61E9B5FFE001D1DB0 /* JMHomePageOneTypeCellTableViewCell.m in Sources */,
 				58F67BFD1CD990A200D55BE0 /* IndexViewController.m in Sources */,
 				DDD3E5371CF458AF001B579E /* SchoolShufflingView.m in Sources */,
 				DDEB257C1D101AC700EF6CE3 /* RadarView.m in Sources */,
@@ -5872,13 +5906,13 @@
 				166DD1481E9A0F7C00B2B002 /* MineJobMarketViewController.m in Sources */,
 				166DD0D81E9A0F4100B2B002 /* InboxModel.m in Sources */,
 				166DD14D1E9A0F7C00B2B002 /* SelectedBankViewController.m in Sources */,
-				DD09B7B31E9B8FCA001D1DB0 /* JMHomePageThreeTypeTableViewCell.m in Sources */,
 				166DD1691E9A0F7C00B2B002 /* TopUpTwoTableViewCell.m in Sources */,
 				166DD1431E9A0F7C00B2B002 /* MineBankViewController.m in Sources */,
 				DD0F42871D22705D00115B96 /* MessageTableViewCell.m in Sources */,
 				589DD4D91D1AB957007B4311 /* BannerLunBoView.m in Sources */,
 				DDD0BE6E1CFC3C8600073290 /* JobMarketCollectionViewCell.m in Sources */,
 				DDB28E321D2C8A7E004C8F70 /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
+				DDBA52F21E9D0C9000C189A4 /* HomePageDetailTwoTypeTableViewCell.m in Sources */,
 				DDB28E191D2C8A7E004C8F70 /* UIView+EMWebCacheOperation.m in Sources */,
 				166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */,
 				DDB28E391D2C8A7E004C8F70 /* EaseConversationListViewController.m in Sources */,

@@ -13,6 +13,9 @@
 #import "JMHomePageTwoTypeTableViewCell.h"
 #import "JMHomePageThreeTypeTableViewCell.h"
 #import "JMHomePageModel.h"
+
+
+#import "JMHomePageViewTrainingProjectDetailController.h"
 @interface JMHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,JMHomePageOneTypeCellTableViewCellDelegate,JMHomePageTwoTypeTableViewCellDelegate>
 {
     NSMutableArray *bannerTitleArray;
@@ -28,6 +31,14 @@
 @end
 
 @implementation JMHomePageViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self theTabBarHidden:NO];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -69,7 +80,16 @@
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     [dic setObject:@"0" forKey:@"status"];
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        
         NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMTrainProjectModel *model = [JMTrainProjectModel yy_modelWithDictionary:tempDic];
@@ -202,6 +222,22 @@
         }
         
     }
+}
+///点击跳转详情视图
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 1 && indexPath.row > 0) {
+        JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row-1];
+        
+        JMHomePageViewTrainingProjectDetailController *detailVC = [[JMHomePageViewTrainingProjectDetailController alloc] init];
+        detailVC.title = model.title;
+        [self.navigationController pushViewController:detailVC animated:YES];
+        
+        
+
+    }
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

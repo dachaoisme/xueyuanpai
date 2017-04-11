@@ -46,7 +46,7 @@
         
         UILabel *lab = [[UILabel alloc] init];
         [lab setFont:[UIFont systemFontOfSize:12]];
-        [lab setTextColor:[CommonUtils colorWithHex:@"5a5e60"]];
+        [lab setTextColor:[CommonUtils colorWithHex:@"787b7d"]];
         lab.translatesAutoresizingMaskIntoConstraints=NO;
         lab.textAlignment=NSTextAlignmentCenter;
         lab.text=[_titleArr objectAtIndex:i];
@@ -82,7 +82,7 @@
             tipView.layer.cornerRadius=5;
             tipView.clipsToBounds=YES;
             tipView.translatesAutoresizingMaskIntoConstraints=NO;
-            tipView.backgroundColor=[CommonUtils colorWithHex:@"ff4861"];
+            tipView.backgroundColor=[CommonUtils colorWithHex:@"787b7d"];
             tipView.hidden=YES;
             [self addSubview:tipView];
             
@@ -113,7 +113,7 @@
                 UIImageView * icon=(UIImageView*)[self viewWithTag:i+200];
                 icon.image=[UIImage imageNamed:[_imgArr objectAtIndex:i]];
                 UILabel * lab=(UILabel*)[self viewWithTag:10+i];
-                lab.textColor=[CommonUtils colorWithHex:@"5a5e60"];
+                lab.textColor=[CommonUtils colorWithHex:@"787b7d"];
             }
         }
     }
@@ -121,7 +121,7 @@
     UIImageView * icon=(UIImageView*)[self viewWithTag:index+200];
     icon.image=[UIImage imageNamed:[_imgSelArr objectAtIndex:selIndex]];
     UILabel * lab=(UILabel*)[self viewWithTag:10+selIndex];
-    lab.textColor=[CommonUtils colorWithHex:@"ff4861"];
+    lab.textColor=[CommonUtils colorWithHex:@"00c05c"];
 }
 -(void)setTipState
 {

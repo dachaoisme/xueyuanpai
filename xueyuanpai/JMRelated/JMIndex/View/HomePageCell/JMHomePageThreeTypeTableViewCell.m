@@ -61,8 +61,9 @@
     if (_locationBtn == nil) {
         
         _locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _locationBtn.frame = CGRectMake(CGRectGetMinX(_subtitleLabel.frame), CGRectGetMaxY(_subtitleLabel.frame) + 10, 50, 12);
+        _locationBtn.frame = CGRectMake(CGRectGetMinX(_subtitleLabel.frame), CGRectGetMaxY(_subtitleLabel.frame) + 10, 100, 12);
         [_locationBtn setImage:[UIImage imageNamed:@"list_icon_weizhi"] forState:UIControlStateNormal];
+        _locationBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_locationBtn setTitle:@"北京" forState:UIControlStateNormal];
         _locationBtn.titleLabel.font = [UIFont systemFontOfSize:11];
         [_locationBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
