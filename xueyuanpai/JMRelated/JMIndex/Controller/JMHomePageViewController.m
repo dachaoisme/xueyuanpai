@@ -164,10 +164,41 @@
             twoCell.delegate = self;
             return twoCell;
         }else{
-            
+            /*
+             ///左侧的图片
+             @property (nonatomic,strong)UIImageView *showImageView;
+             
+             ///标题
+             @property (nonatomic,strong)UILabel *titleLabel;
+             
+             ///副标题
+             @property (nonatomic,strong)UILabel *subtitleLabel;
+             
+             
+             ///定位信息显示的btn
+             @property (nonatomic,strong)UIButton *locationBtn;
+             
+             
+             ///正在招募的人数或者是否已经结束
+             @property (nonatomic,strong)UILabel *peopleNumberLabel;
+             
+             */
             JMHomePageThreeTypeTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+            JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row-1];
+            [threeCell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+            threeCell.titleLabel.text = model.title;
+            threeCell.subtitleLabel.text = model.trainProjectDescription;
+            [threeCell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
+            if ([model.status integerValue]==1) {
+                ///正在招募
+                threeCell.peopleNumberLabel.text = [NSString stringWithFormat:@"已招募%@",model.recruitment_number];
+            }else{
+                ///一结束
+                threeCell.peopleNumberLabel.text = @"已结束";
+            }
             
             return threeCell;
+            
         }
         
     }
