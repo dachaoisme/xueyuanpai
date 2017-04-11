@@ -54,9 +54,9 @@
     NSString * userInfoKey = @"userInfo";
     NSDictionary * userInfoDic = [[NSUserDefaults standardUserDefaults] objectForKey:userInfoKey];
     self.userCollegeId    = [userInfoDic stringForKey:@"college_id"];
-    self.colledgeTime = [userInfoDic stringForKey:@""];
+    self.colledgeTime = [userInfoDic stringForKey:@"create_time"];
     self.userIcon         = [userInfoDic stringForKey:@"icon"];
-    self.userId           = [userInfoDic stringForKey:@"user_id"];
+    self.userId           = [userInfoDic stringForKey:@"id"];
     self.userNickname     = [userInfoDic stringForKey:@"nickname"];
     self.userSex          = [[userInfoDic stringForKey:@"sex"] integerValue];
     self.userTelphone     = [userInfoDic stringForKey:@"telphone"];

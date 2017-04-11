@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/TabBar/BaseTabBarViewController.m"
-            timestampString = "513536332.885156"
+            timestampString = "513564203.558877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "-tabBarSelected:"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,7 +42,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/LoginViewController.m"
-                  timestampString = "513539417.10872"
+                  timestampString = "513564204.798861"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "209"
@@ -57,7 +57,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/LoginViewController.m"
-                  timestampString = "513539417.111727"
+                  timestampString = "513564204.803897"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "210"
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/Account/Controller/LoginViewController.m"
-            timestampString = "513537405.01456"
+            timestampString = "513564203.558877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "-loginAccount:"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,7 +170,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/RegisterViewController.m"
-                  timestampString = "513539417.142294"
+                  timestampString = "513564204.843058"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "172"
@@ -185,7 +185,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/RegisterViewController.m"
-                  timestampString = "513539417.145043"
+                  timestampString = "513564204.845455"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "174"
@@ -224,22 +224,6 @@
             startingLineNumber = "183"
             endingLineNumber = "183"
             landmarkName = "-sendmessage:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/UserAccountManager/UserAccountManager.m"
-            timestampString = "513538207.504342"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "-saveUserAccountWithUserInfoDic:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -314,7 +298,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/UserAccountManager/UserAccountManager.m"
-                  timestampString = "513539417.178671"
+                  timestampString = "513564204.880105"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "115"
@@ -329,7 +313,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/UserAccountManager/UserAccountManager.m"
-                  timestampString = "513539417.180585"
+                  timestampString = "513564204.881971"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -346,12 +330,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/Account/Controller/LoginViewController.m"
-            timestampString = "513538353.406653"
+            timestampString = "513564203.558877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "-loginAccount:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/TabBar/BaseTabBarViewController.m"
+            timestampString = "513564265.586292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-tabBarSelected:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/JMRelated/UserAccountManager/UserAccountManager.m"
+            timestampString = "513564311.933222"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-getUserInfo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

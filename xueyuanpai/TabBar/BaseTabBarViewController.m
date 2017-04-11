@@ -113,10 +113,17 @@
     if ([UserAccountManager sharedInstance].isLogin==NO &&index==2) {
         if (self.selectedIndex==0) {
             LoginViewController * loginVC = [[LoginViewController alloc]init];
-            [kuaiDiVC.navigationController pushViewController:loginVC  animated:YES];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+            [kuaiDiVC presentViewController:nav animated:YES completion:^{
+                
+            }];
         }else if (self.selectedIndex==1){
             LoginViewController * loginVC = [[LoginViewController alloc]init];
-            [homePageVC.navigationController pushViewController:loginVC  animated:YES];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+            [homePageVC presentViewController:nav animated:YES completion:^{
+                
+            }];
+            //[homePageVC.navigationController pushViewController:loginVC  animated:YES];
         }else{
             
         }

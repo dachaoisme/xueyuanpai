@@ -212,8 +212,10 @@
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
             
             
-            [self.navigationController popViewControllerAnimated:YES];
-
+            ///[self.navigationController popViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
 
     
         }else{
