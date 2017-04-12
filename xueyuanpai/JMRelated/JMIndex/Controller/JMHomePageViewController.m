@@ -16,6 +16,7 @@
 
 
 #import "JMHomePageViewTrainingProjectDetailController.h"
+#import "JMHomePageEndProjectDetailViewController.h"
 @interface JMHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,JMHomePageOneTypeCellTableViewCellDelegate,JMHomePageTwoTypeTableViewCellDelegate>
 {
     NSMutableArray *bannerTitleArray;
@@ -78,7 +79,6 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
-    [dic setObject:@"0" forKey:@"status"];
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];
@@ -227,11 +227,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 1 && indexPath.row > 0) {
-        JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row-1];
         
-        JMHomePageViewTrainingProjectDetailController *detailVC = [[JMHomePageViewTrainingProjectDetailController alloc] init];
-        detailVC.title = model.title;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        
+        if (indexPath.row == 1) {
+            
+            //未结束的项目的详情
+            JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row-1];
+            
+            JMHomePageViewTrainingProjectDetailController *detailVC = [[JMHomePageViewTrainingProjectDetailController alloc] init];
+            detailVC.title = model.title;
+            [self.navigationController pushViewController:detailVC animated:YES];
+            
+            
+        }else{
+
+            //已结束的项目的详情
+            JMHomePageEndProjectDetailViewController *endProject = [[JMHomePageEndProjectDetailViewController alloc] init];
+            
+            [self.navigationController pushViewController:endProject animated:YES];
+        }
+        
         
         
 

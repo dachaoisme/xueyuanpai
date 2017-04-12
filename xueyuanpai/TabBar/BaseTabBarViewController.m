@@ -42,7 +42,7 @@
     
     _baseTabBarView=[[BaseTabBarView alloc] init];
     _baseTabBarView.frame =CGRectMake(0, SCREEN_HEIGHT-49-21, SCREEN_WIDTH, 49+21);
-    _baseTabBarView.backgroundColor = [UIColor clearColor];
+    _baseTabBarView.backgroundColor = [CommonUtils colorWithHex:@"fafafa"];
     _baseTabBarView.delegate=self;
     _baseTabBarView.titleArr=[[NSArray alloc] initWithObjects:
                        @"我的快递",
@@ -51,12 +51,12 @@
                        nil];
     _baseTabBarView.imgArr=[[NSArray alloc] initWithObjects:
                      @"tab_icon_home",
-                     @"tab_icon_creativity",
+                     @"tab_icon_box",
                      @"tab_icon_package",
                      nil];
     _baseTabBarView.imgSelArr=[[NSArray alloc] initWithObjects:
                         @"tab_icon_home_hl",
-                        @"tab_icon_creativity",
+                        @"tab_icon_box_hl",
                         @"tab_icon_package_hl",
                         nil];
     

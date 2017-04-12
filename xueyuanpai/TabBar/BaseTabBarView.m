@@ -14,7 +14,7 @@
     self = [super init];
     if (self) {
         // Initialization code
-        self.backgroundColor=[CommonUtils colorWithHex:@"f7f7f7"];
+        self.backgroundColor=[CommonUtils colorWithHex:@"fafafa"];
         self.clipsToBounds=YES;
         
         
@@ -68,6 +68,7 @@
             [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[barButton]" options:0 metrics:nil views:views]];
         }
         
+        
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[icon(25)]" options:0 metrics:nil views:views]];
         [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[lab(barButton)]" options:0 metrics:nil views:views]];
         
@@ -77,20 +78,7 @@
         [self addConstraint:[NSLayoutConstraint constraintWithItem:icon attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:barButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
         [self addConstraint:[NSLayoutConstraint constraintWithItem:lab attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:barButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
         
-        if (i==4) {
-            tipView =[[UIView alloc] init];
-            tipView.layer.cornerRadius=5;
-            tipView.clipsToBounds=YES;
-            tipView.translatesAutoresizingMaskIntoConstraints=NO;
-            tipView.backgroundColor=[CommonUtils colorWithHex:@"787b7d"];
-            tipView.hidden=YES;
-            [self addSubview:tipView];
-            
-            [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[tipView(10)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(tipView)]];
-            [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[tipView(10)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(tipView)]];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:tipView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:icon attribute:NSLayoutAttributeRight multiplier:1.0 constant:0]];
-            [self addConstraint:[NSLayoutConstraint constraintWithItem:tipView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:icon attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
-        }
+
         
         lastView=barButton;
         selIndex=-1;
