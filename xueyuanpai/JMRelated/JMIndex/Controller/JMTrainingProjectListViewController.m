@@ -9,9 +9,16 @@
 #import "JMTrainingProjectListViewController.h"
 
 #import "JMHomePageThreeTypeTableViewCell.h"
-
+#import "JMHomePageModel.h"
+#import "JMHomePageViewTrainingProjectDetailController.h"
+#import "JMHomePageEndProjectDetailViewController.h"
 @interface JMTrainingProjectListViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    NSMutableArray *dataArray;
+    int currentPage;
+    int nextPage;
+    int pageSize;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -32,12 +39,47 @@
     
     
     self.title = @"实训项目列表";
-    
+    currentPage=nextPage=1;
+    pageSize=10;
+    dataArray = [NSMutableArray array];
     [self createLeftBackNavBtn];
-    
     [self createTableView];
+    [self requestData];
 }
-
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        currentPage=nextPage;
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMTrainProjectModel *model = [JMTrainProjectModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            
+        }
+        
+        if (currentPage==[pageModel.responsePageTotalCount intValue]) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
+}
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
@@ -47,14 +89,14 @@
     [self.view addSubview:_tableView];
     
     [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
-    
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
    
-    return 3;
+    return dataArray.count;
     
 }
 
@@ -62,7 +104,18 @@
     
     JMHomePageThreeTypeTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
     
-    
+    JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row];
+    [threeCell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    threeCell.titleLabel.text = model.title;
+    threeCell.subtitleLabel.text = model.trainProjectDescription;
+    [threeCell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
+    if ([model.status integerValue]==1) {
+        ///正在招募
+        threeCell.peopleNumberLabel.text = [NSString stringWithFormat:@"已招募%@",model.recruitment_number];
+    }else{
+        ///一结束
+        threeCell.peopleNumberLabel.text = @"已结束";
+    }
     return threeCell;
     
 }
@@ -78,7 +131,26 @@
     
     return 0.01;
 }
+//点击跳转详情视图
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row];
+    if ([model.status intValue]==1) {
+        ///正在招募
+        //未结束的项目的详情
+        
+        JMHomePageViewTrainingProjectDetailController *detailVC = [[JMHomePageViewTrainingProjectDetailController alloc] init];
+        detailVC.title = model.title;
+        detailVC.model = model;
+        [self.navigationController pushViewController:detailVC animated:YES];
+    }else{
+        //已结束的项目的详情
+        JMHomePageEndProjectDetailViewController *endProject = [[JMHomePageEndProjectDetailViewController alloc] init];
+        endProject.model = model;
+        [self.navigationController pushViewController:endProject animated:YES];
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
