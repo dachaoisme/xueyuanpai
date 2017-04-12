@@ -321,7 +321,7 @@
     //中间的报名按钮
     UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
-    [collectionBtn setTitle:self.model.content forState:UIControlStateNormal];
+    [collectionBtn setTitle:self.model.recruitment_number forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
     collectionBtn.layer.masksToBounds = YES;
