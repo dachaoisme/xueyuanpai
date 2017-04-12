@@ -15,7 +15,9 @@
 
 @interface JMHomePageEndProjectDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-
+{
+    JMTrainProjectDetailModel *detailModel;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -44,9 +46,23 @@
     //创建当前列表视图
     [self createTableView];
 
+    [self requestData];
+}
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.model.trainProjectId forKey:@"project_id"];
+    //[dic setObject:self.model.trainProjectId  forKey:@"project_id"];
+    [[HttpClient sharedInstance] getTrainProjectDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        detailModel = [JMTrainProjectDetailModel yy_modelWithDictionary:listDic];
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
     
 }
-
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
@@ -70,7 +86,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 2) {
-        return 3;
+        return detailModel.members.count;
         
     }else{
         
@@ -90,7 +106,9 @@
         case 0:{
             HomePageDetailOneTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomePageDetailOneTypeTableViewCell"];
             
-            
+            cell.titleLabel.text = detailModel.title;
+            [cell.locationBtn setTitle:detailModel.colllege_name forState:UIControlStateNormal];
+            cell.timeLabel.text = detailModel.create_time;
             return cell;
             
             
@@ -98,7 +116,8 @@
             break;
         case 1:{
             HomePageDetailTwoTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomePageDetailTwoTypeTableViewCell"];
-            
+            cell.showNatureBottomLabel.text = detailModel.type;
+            cell.showTimeBottomLabel.text  =detailModel.end_time;
             return cell;
             
             
@@ -119,6 +138,11 @@
             }else{
                 
                 HomePageEndProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomePageEndProjectTableViewCell"];
+
+                JMTrainProjectPeopleModel *model = [detailModel.members objectAtIndex:indexPath.row];
+                [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+                cell.nickNameLabel.text = model.name;
+                cell.inforLabel.text = model.job;
                 
                 return cell;
 

@@ -145,6 +145,8 @@
         };
         bulkGoodsLunBoView.TapActionBlock = ^(NSInteger pageIndex) {
             ///点击轮播图
+            JMHomePageModel *model = [bannerItemArray objectAtIndex:pageIndex];
+            
         };
         
         return bulkGoodsLunBoView;
