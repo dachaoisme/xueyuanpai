@@ -110,11 +110,7 @@
 -(void)tabBarSelected:(NSInteger)index
 {
 
-    self.selectedIndex=index;
-    [_baseTabBarView setSelected:index];
-    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    app.navController=(UINavigationController*)self.selectedViewController;
-    /*
+    
     if ([UserAccountManager sharedInstance].isLogin==NO &&index==2) {
         if (self.selectedIndex==0) {
             LoginViewController * loginVC = [[LoginViewController alloc]init];
@@ -138,7 +134,6 @@
         AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         app.navController=(UINavigationController*)self.selectedViewController;
     }
-    */
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
