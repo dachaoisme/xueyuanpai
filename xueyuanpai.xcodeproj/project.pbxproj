@@ -551,6 +551,7 @@
 		DD4644531E9E2E1000EAE186 /* JMSignUpTwoTypeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644521E9E2E1000EAE186 /* JMSignUpTwoTypeTableViewCell.m */; };
 		DD4644561E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644551E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m */; };
 		DD4644591E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644581E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m */; };
+		DD46445C1E9E497E00EAE186 /* JMTrainingProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */; };
 		DD48B74B1D10F7C800E012E4 /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B7491D10F7C800E012E4 /* jpush-ios-2.1.7.a */; };
 		DD48B74D1D10F8BA00E012E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B74C1D10F8BA00E012E4 /* CFNetwork.framework */; };
 		DD48B74F1D10F8C800E012E4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B74E1D10F8C800E012E4 /* CoreFoundation.framework */; };
@@ -1742,6 +1743,8 @@
 		DD4644551E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageEndProjectDetailViewController.m; sourceTree = "<group>"; };
 		DD4644571E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageEndProjectTableViewCell.h; sourceTree = "<group>"; };
 		DD4644581E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageEndProjectTableViewCell.m; sourceTree = "<group>"; };
+		DD46445A1E9E497E00EAE186 /* JMTrainingProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTrainingProjectListViewController.h; sourceTree = "<group>"; };
+		DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTrainingProjectListViewController.m; sourceTree = "<group>"; };
 		DD48B7491D10F7C800E012E4 /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
 		DD48B74A1D10F7C800E012E4 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		DD48B74C1D10F8BA00E012E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -2392,6 +2395,8 @@
 				DD09B7B71E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m */,
 				DD46444A1E9E2C0500EAE186 /* JMSignUpTrainingProjectViewController.h */,
 				DD46444B1E9E2C0500EAE186 /* JMSignUpTrainingProjectViewController.m */,
+				DD46445A1E9E497E00EAE186 /* JMTrainingProjectListViewController.h */,
+				DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5984,6 +5989,7 @@
 				587FF9D91CF2F8F300AD2131 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				DDCD71361D0A8497009FBE9A /* SendCourierReecordViewController.m in Sources */,
 				DD4644501E9E2DEB00EAE186 /* JMSignUpOneTypeTableViewCell.m in Sources */,
+				DD46445C1E9E497E00EAE186 /* JMTrainingProjectListViewController.m in Sources */,
 				166DD1631E9A0F7C00B2B002 /* MineSettingTableViewCell.m in Sources */,
 				587FF9D21CF2F8F300AD2131 /* IQNSArray+Sort.m in Sources */,
 				DDB28E2A1D2C8A7E004C8F70 /* EaseMessageModel.m in Sources */,

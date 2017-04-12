@@ -17,6 +17,8 @@
 
 #import "JMHomePageViewTrainingProjectDetailController.h"
 #import "JMHomePageEndProjectDetailViewController.h"
+
+#import "JMTrainingProjectListViewController.h"
 @interface JMHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,JMHomePageOneTypeCellTableViewCellDelegate,JMHomePageTwoTypeTableViewCellDelegate>
 {
     NSMutableArray *bannerTitleArray;
@@ -240,6 +242,7 @@
             
             
         }else{
+            
 
             //已结束的项目的详情
             JMHomePageEndProjectDetailViewController *endProject = [[JMHomePageEndProjectDetailViewController alloc] init];
@@ -322,7 +325,11 @@
 #pragma mark - 查看更多
 - (void)seeMoreProjectAction{
     
-    [CommonUtils showToastWithStr:@"查看更多"];
+//    [CommonUtils showToastWithStr:@"查看更多"];
+    
+    JMTrainingProjectListViewController *trainingProjectListVC = [[JMTrainingProjectListViewController alloc] init];
+    
+    [self.navigationController pushViewController:trainingProjectListVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
