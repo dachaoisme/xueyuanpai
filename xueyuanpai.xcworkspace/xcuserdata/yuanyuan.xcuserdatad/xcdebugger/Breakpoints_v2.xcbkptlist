@@ -27,6 +27,38 @@
             endingLineNumber = "299"
             landmarkName = "-requestTimeBankRefuseAction"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BusinessCenterMessageDetailViewController requestTimeBankRefuseAction]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuanyuan/Documents/%E6%96%B0%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
+                  timestampString = "513689508.627495"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299"
+                  offsetFromSymbolStart = "904">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__72-[BusinessCenterMessageDetailViewController requestTimeBankRefuseAction]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yuanyuan/Documents/%E6%96%B0%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
+                  timestampString = "513689508.630343"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "299"
+                  endingLineNumber = "299"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

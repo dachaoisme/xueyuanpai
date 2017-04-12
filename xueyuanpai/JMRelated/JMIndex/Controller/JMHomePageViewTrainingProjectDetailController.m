@@ -11,6 +11,8 @@
 #import "HomePageDetailOneTypeTableViewCell.h"
 #import "HomePageDetailTwoTypeTableViewCell.h"
 
+#import "JMSignUpTrainingProjectViewController.h"
+
 @interface JMHomePageViewTrainingProjectDetailController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong)UITableView *tableView;
@@ -31,19 +33,26 @@
     // Do any additional setup after loading the view.
     
     
+    ///未结束报名的实训项目详情
+    
+    
     //创建左侧按钮
     [self createLeftBackNavBtn];
     
     
     //创建当前列表视图
     [self createTableView];
+    
+    
+    //创建底部视图我要报名
+    [self createBottomView];
 
 }
 
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - NAV_TOP_HEIGHT) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -255,6 +264,85 @@
     return rect.size.height;
     
 }
+
+
+#pragma mark - 创建底部视图
+- (void)createBottomView{
+    
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)];
+    [self.view addSubview:bottomView];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
+    lineView.backgroundColor = [CommonUtils colorWithHex:@"cccccc"];
+    [bottomView addSubview:lineView];
+
+    
+    
+    //创建左侧点赞按钮
+    UIButton *zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
+    [zanBtn setTitle:@"4" forState:UIControlStateNormal];
+    zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
+    zanBtn.layer.cornerRadius = 4;
+    zanBtn.layer.masksToBounds = YES;
+    zanBtn.frame = CGRectMake(10, 10, 75, 30);
+    zanBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [zanBtn setTitleColor:[CommonUtils colorWithHex:@"35373a"] forState:UIControlStateNormal];
+    [zanBtn addTarget:self action:@selector(zanAction) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:zanBtn];
+    
+    CGFloat interval = (SCREEN_WIDTH - 20 - 75*2 - 108)/2;
+    
+    //中间的报名按钮
+    UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
+    [collectionBtn setTitle:@" 我要报名 34" forState:UIControlStateNormal];
+    collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
+    collectionBtn.layer.cornerRadius = 4;
+    collectionBtn.layer.masksToBounds = YES;
+    collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
+    [collectionBtn addTarget:self action:@selector(collectionAction) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:collectionBtn];
+    
+    
+    //右侧评论按钮
+    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
+    [commentBtn setTitle:@"4" forState:UIControlStateNormal];
+    commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
+    commentBtn.layer.cornerRadius = 4;
+    commentBtn.layer.masksToBounds = YES;
+    commentBtn.frame = CGRectMake(CGRectGetMaxX(collectionBtn.frame) + interval, 10, 75, 30);
+    commentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [commentBtn setTitleColor:[CommonUtils colorWithHex:@"35373a"] forState:UIControlStateNormal];
+    [commentBtn addTarget:self action:@selector(commentAction) forControlEvents:UIControlEventTouchUpInside];
+    [bottomView addSubview:commentBtn];
+
+    
+    
+    
+}
+
+#pragma mark - 点赞事件
+- (void)zanAction{
+    
+    [CommonUtils showToastWithStr:@"点赞"];
+}
+
+- (void)collectionAction{
+    
+//    [CommonUtils showToastWithStr:@"报名"];
+    
+    JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
+    [self.navigationController pushViewController:signUpAction animated:YES];
+}
+
+- (void)commentAction{
+    
+    [CommonUtils showToastWithStr:@"评论"];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
