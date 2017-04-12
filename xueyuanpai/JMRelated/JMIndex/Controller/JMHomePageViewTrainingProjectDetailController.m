@@ -305,6 +305,7 @@
     //创建左侧点赞按钮
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
+    [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
     [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
@@ -355,11 +356,16 @@
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]whetherAlreadyAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSDictionary *dic = model.responseCommonDic;
-        if ([dic objectForKey:@"is_liked"]) {
+        NSString *isLiked =[dic objectForKey:@"is_liked"];
+        if (isLiked &&[isLiked integerValue]==1) {
             ///1点赞过 0 没有
+            zanBtn.selected = YES;
+        }else{
+            zanBtn.selected = NO;
         }
-        if ([dic objectForKey:@"count"]){
-            [zanBtn setTitle:[dic objectForKey:@"count"] forState:UIControlStateNormal];
+        if ([dic valueForKey:@"count"]){
+            int zanCount = [[dic valueForKey:@"count"] intValue];
+            [zanBtn setTitle:[NSString stringWithFormat:@"%d",zanCount] forState:UIControlStateNormal];
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -373,7 +379,20 @@
     [dic setObject:self.model.trainProjectId forKey:@"project_id"];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainProjectAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        
+        if (model.responseCode ==ResponseCodeSuccess) {
+            if (zanBtn.isSelected==YES) {
+                zanBtn.selected =NO;
+                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]-1;
+                if (zanCount<0) {
+                    zanCount=0;
+                }
+                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+            }else{
+                zanBtn.selected = YES;
+                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]+1;
+                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+            }
+        }
     } withFaileBlock:^(NSError *error) {
         
     }];
@@ -389,6 +408,12 @@
 }
 #pragma mark - 评论
 - (void)commentAction{
+    
+    [self requestComment];
+}
+
+-(void)requestComment
+{
     /*
      entity_id   string 序号      必需
      entity_type string 类型     必需   可选项: project 创业项目  salon创业沙龙 course 创业课程
@@ -396,16 +421,22 @@
      content     string 评论内容
      
      */
+    
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [CommonUtils showToastWithStr:@"评论"];
+    [dic setObject:self.model.trainProjectId forKey:@"entity_id"];
+    [dic setObject:@"project" forKey:@"entity_type"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:@"这个项目很不错，我喜欢" forKey:@"content"];
+    
+    
     [[HttpClient sharedInstance]trainProjectAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        
+        if (model.responseCode==ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"评论成功"];
+        }
     } withFaileBlock:^(NSError *error) {
         
     }];
 }
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
