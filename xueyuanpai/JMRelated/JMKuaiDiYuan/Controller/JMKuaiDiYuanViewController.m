@@ -8,17 +8,112 @@
 
 #import "JMKuaiDiYuanViewController.h"
 
-@interface JMKuaiDiYuanViewController ()
+#import "SGSegmentedControl.h"
+#import "JMTrainingProjectListViewController.h"
+
+
+@interface JMKuaiDiYuanViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
+
+@property(nonatomic,strong)SGSegmentedControlBottomView *bottomSView;
+@property(nonatomic,strong)SGSegmentedControlDefault*topDefaultSView;
+@property(nonatomic,assign)NSInteger chooseIndex;
+
 
 @end
 
 @implementation JMKuaiDiYuanViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self theTabBarHidden:NO];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"快递员";
+    self.title = @"我的快递";
+    
+    
+    //创建顶部
+    [self setupScrollView];
+
 }
+
+#pragma mark - 设置一级导航栏滚动标题以及滚动controller相关
+- (void)setupScrollView
+{
+    
+    NSMutableArray *titleArr = [NSMutableArray arrayWithObjects:@"收取快递", @"寄出快递",nil];
+    
+    NSMutableArray *childVCArray = [NSMutableArray array];
+    UIViewController  *homePageVC = [[UIViewController alloc] init];
+    
+    [self addChildViewController:homePageVC];
+    UIViewController  *cityVC = [[UIViewController alloc] init];
+    [self addChildViewController:cityVC];
+    [childVCArray addObject:homePageVC];
+    [childVCArray addObject:cityVC];
+    
+    
+    [self initScrollViewTitleWithChildVCArray:childVCArray titleArray:titleArr];
+}
+- (void)initScrollViewTitleWithChildVCArray:(NSMutableArray *)childVCArray titleArray:(NSMutableArray *)titleArr
+{
+    
+    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, 50 ,self.view.frame.size.width, SCREEN_HEIGHT - TABBAR_HEIGHT - NAV_TOP_HEIGHT)];
+    _bottomSView.childViewController = childVCArray;
+    _bottomSView.backgroundColor = [UIColor clearColor];
+    _bottomSView.delegate = self;
+    [self.view addSubview:_bottomSView];
+    
+    
+    UIView *whiteBackGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, self.view.frame.size.width, 45)];
+    whiteBackGroundView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:whiteBackGroundView];
+    
+    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, 45) delegate:self childVcTitle:titleArr isScaleText:NO];
+    self.topDefaultSView.backgroundColor = [UIColor clearColor];
+    self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
+    self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];
+    self.topDefaultSView.indicatorColor = [CommonUtils colorWithHex:@"00c05c"];
+    [self.view addSubview:self.topDefaultSView];
+    
+    
+    
+    
+}
+///SGSegmentedControlDefault类型
+- (void)SGSegmentedControlDefault:(SGSegmentedControlDefault *)segmentedControlDefault didSelectTitleAtIndex:(NSInteger)index
+{
+    
+    
+    // 计算滚动的位置
+    CGFloat offsetX = index * self.view.frame.size.width;
+    
+    self.bottomSView.contentOffset = CGPointMake(offsetX, 0);
+    
+    [self.bottomSView showChildVCViewWithIndex:index outsideVC:self];
+    
+    self.chooseIndex = index;
+    
+    
+}
+
+#pragma mark - UIScrollViewDelegate  设置一级导航栏滚动标题以及滚动controller相关
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    // 计算滚动到哪一页
+    NSInteger index = scrollView.contentOffset.x / scrollView.frame.size.width;
+    // 1.添加子控制器view
+    [self.bottomSView showChildVCViewWithIndex:index outsideVC:self];
+    // 2.把对应的标题选中
+    [self.topDefaultSView changeThePositionOfTheSelectedBtnWithScrollView:scrollView];
+    self.chooseIndex = index;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

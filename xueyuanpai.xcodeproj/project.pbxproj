@@ -552,6 +552,13 @@
 		DD4644561E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644551E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m */; };
 		DD4644591E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644581E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m */; };
 		DD46445C1E9E497E00EAE186 /* JMTrainingProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */; };
+		DD4644881E9E944900EAE186 /* SGImageButton_Horizontal.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644791E9E944900EAE186 /* SGImageButton_Horizontal.m */; };
+		DD4644891E9E944900EAE186 /* SGImageButton_Vertical.m in Sources */ = {isa = PBXBuildFile; fileRef = DD46447B1E9E944900EAE186 /* SGImageButton_Vertical.m */; };
+		DD46448A1E9E944900EAE186 /* SGNavigationItemTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD46447D1E9E944900EAE186 /* SGNavigationItemTitleView.m */; };
+		DD46448B1E9E944900EAE186 /* SGSegmentedControlBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644801E9E944900EAE186 /* SGSegmentedControlBottomView.m */; };
+		DD46448C1E9E944900EAE186 /* SGSegmentedControlDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644821E9E944900EAE186 /* SGSegmentedControlDefault.m */; };
+		DD46448D1E9E944900EAE186 /* SGSegmentedControlStatic.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644851E9E944900EAE186 /* SGSegmentedControlStatic.m */; };
+		DD46448E1E9E944900EAE186 /* UIView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644871E9E944900EAE186 /* UIView+SGExtension.m */; };
 		DD48B74B1D10F7C800E012E4 /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B7491D10F7C800E012E4 /* jpush-ios-2.1.7.a */; };
 		DD48B74D1D10F8BA00E012E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B74C1D10F8BA00E012E4 /* CFNetwork.framework */; };
 		DD48B74F1D10F8C800E012E4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B74E1D10F8C800E012E4 /* CoreFoundation.framework */; };
@@ -1745,6 +1752,22 @@
 		DD4644581E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageEndProjectTableViewCell.m; sourceTree = "<group>"; };
 		DD46445A1E9E497E00EAE186 /* JMTrainingProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMTrainingProjectListViewController.h; sourceTree = "<group>"; };
 		DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMTrainingProjectListViewController.m; sourceTree = "<group>"; };
+		DD4644781E9E944900EAE186 /* SGImageButton_Horizontal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGImageButton_Horizontal.h; sourceTree = "<group>"; };
+		DD4644791E9E944900EAE186 /* SGImageButton_Horizontal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGImageButton_Horizontal.m; sourceTree = "<group>"; };
+		DD46447A1E9E944900EAE186 /* SGImageButton_Vertical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGImageButton_Vertical.h; sourceTree = "<group>"; };
+		DD46447B1E9E944900EAE186 /* SGImageButton_Vertical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGImageButton_Vertical.m; sourceTree = "<group>"; };
+		DD46447C1E9E944900EAE186 /* SGNavigationItemTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNavigationItemTitleView.h; sourceTree = "<group>"; };
+		DD46447D1E9E944900EAE186 /* SGNavigationItemTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGNavigationItemTitleView.m; sourceTree = "<group>"; };
+		DD46447E1E9E944900EAE186 /* SGSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSegmentedControl.h; sourceTree = "<group>"; };
+		DD46447F1E9E944900EAE186 /* SGSegmentedControlBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSegmentedControlBottomView.h; sourceTree = "<group>"; };
+		DD4644801E9E944900EAE186 /* SGSegmentedControlBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSegmentedControlBottomView.m; sourceTree = "<group>"; };
+		DD4644811E9E944900EAE186 /* SGSegmentedControlDefault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSegmentedControlDefault.h; sourceTree = "<group>"; };
+		DD4644821E9E944900EAE186 /* SGSegmentedControlDefault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSegmentedControlDefault.m; sourceTree = "<group>"; };
+		DD4644831E9E944900EAE186 /* SGSegmentedControlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSegmentedControlHelper.h; sourceTree = "<group>"; };
+		DD4644841E9E944900EAE186 /* SGSegmentedControlStatic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSegmentedControlStatic.h; sourceTree = "<group>"; };
+		DD4644851E9E944900EAE186 /* SGSegmentedControlStatic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSegmentedControlStatic.m; sourceTree = "<group>"; };
+		DD4644861E9E944900EAE186 /* UIView+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGExtension.h"; sourceTree = "<group>"; };
+		DD4644871E9E944900EAE186 /* UIView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGExtension.m"; sourceTree = "<group>"; };
 		DD48B7491D10F7C800E012E4 /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
 		DD48B74A1D10F7C800E012E4 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		DD48B74C1D10F8BA00E012E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -2341,6 +2364,7 @@
 		166DD07C1E9A08AE00B2B002 /* JMRelated */ = {
 			isa = PBXGroup;
 			children = (
+				DD4644761E9E944900EAE186 /* JMThird */,
 				DD09B7A71E9B6226001D1DB0 /* ImageResource */,
 				166DD0C41E9A0F4100B2B002 /* Config */,
 				166DD0CA1E9A0F4100B2B002 /* Inbox */,
@@ -4012,6 +4036,37 @@
 				DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */,
 			);
 			path = HomePageSingnUp;
+			sourceTree = "<group>";
+		};
+		DD4644761E9E944900EAE186 /* JMThird */ = {
+			isa = PBXGroup;
+			children = (
+				DD4644771E9E944900EAE186 /* SGSegmentedControl */,
+			);
+			path = JMThird;
+			sourceTree = "<group>";
+		};
+		DD4644771E9E944900EAE186 /* SGSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				DD4644781E9E944900EAE186 /* SGImageButton_Horizontal.h */,
+				DD4644791E9E944900EAE186 /* SGImageButton_Horizontal.m */,
+				DD46447A1E9E944900EAE186 /* SGImageButton_Vertical.h */,
+				DD46447B1E9E944900EAE186 /* SGImageButton_Vertical.m */,
+				DD46447C1E9E944900EAE186 /* SGNavigationItemTitleView.h */,
+				DD46447D1E9E944900EAE186 /* SGNavigationItemTitleView.m */,
+				DD46447E1E9E944900EAE186 /* SGSegmentedControl.h */,
+				DD46447F1E9E944900EAE186 /* SGSegmentedControlBottomView.h */,
+				DD4644801E9E944900EAE186 /* SGSegmentedControlBottomView.m */,
+				DD4644811E9E944900EAE186 /* SGSegmentedControlDefault.h */,
+				DD4644821E9E944900EAE186 /* SGSegmentedControlDefault.m */,
+				DD4644831E9E944900EAE186 /* SGSegmentedControlHelper.h */,
+				DD4644841E9E944900EAE186 /* SGSegmentedControlStatic.h */,
+				DD4644851E9E944900EAE186 /* SGSegmentedControlStatic.m */,
+				DD4644861E9E944900EAE186 /* UIView+SGExtension.h */,
+				DD4644871E9E944900EAE186 /* UIView+SGExtension.m */,
+			);
+			path = SGSegmentedControl;
 			sourceTree = "<group>";
 		};
 		DD48B7481D10F7C800E012E4 /* lib */ = {
@@ -5774,6 +5829,7 @@
 				166DD0C11E9A0E5000B2B002 /* SelectedPickView.m in Sources */,
 				DDAB05FA1D0483D7007A6027 /* BusinessTeacherTableViewCell.m in Sources */,
 				DDB28E301D2C8A7E004C8F70 /* UIViewController+HUD.m in Sources */,
+				DD46448C1E9E944900EAE186 /* SGSegmentedControlDefault.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
 				DDB28E4A1D2C8A7E004C8F70 /* EaseBubbleView+Voice.m in Sources */,
 				DDB28DE81D2C8A7E004C8F70 /* wav.mm in Sources */,
@@ -5814,6 +5870,7 @@
 				583B87A31D4CF3B100D888A6 /* MFWelcomPageController.m in Sources */,
 				166DD15E1E9A0F7C00B2B002 /* MineFriendsTableViewCell.m in Sources */,
 				166DD1471E9A0F7C00B2B002 /* MineIntegralViewController.m in Sources */,
+				DD46448B1E9E944900EAE186 /* SGSegmentedControlBottomView.m in Sources */,
 				DDB28E161D2C8A7E004C8F70 /* UIImage+EMWebP.m in Sources */,
 				166DD0B71E9A0E5000B2B002 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */,
 				58F67BA71CD9863400D55BE0 /* AppDelegate.m in Sources */,
@@ -5823,6 +5880,7 @@
 				58F67BA41CD9863400D55BE0 /* main.m in Sources */,
 				58F996441CF5874900D67C63 /* LDCPullDownMenuView.m in Sources */,
 				DDB28E031D2C8A7E004C8F70 /* MWGridViewController.m in Sources */,
+				DD4644891E9E944900EAE186 /* SGImageButton_Vertical.m in Sources */,
 				DD09B7C21E9CDCAE001D1DB0 /* JMHomePageTwoTypeTableViewCell.m in Sources */,
 				58F67C2A1CD9CF9500D55BE0 /* MBProgressHUD.m in Sources */,
 				DDB28E521D2C8A7E004C8F70 /* EaseChatBarMoreView.m in Sources */,
@@ -5859,6 +5917,7 @@
 				DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */,
 				587FF9DB1CF2F8F300AD2131 /* IQBarButtonItem.m in Sources */,
 				DD0F42941D239D5800115B96 /* PRTweenTimingFunctions.m in Sources */,
+				DD46448A1E9E944900EAE186 /* SGNavigationItemTitleView.m in Sources */,
 				58F67C2C1CD9CF9500D55BE0 /* MJRefreshComponent.m in Sources */,
 				DDB28E511D2C8A7E004C8F70 /* EaseFacialView.m in Sources */,
 				587FF9DD1CF2F8F300AD2131 /* IQTitleBarButtonItem.m in Sources */,
@@ -5987,6 +6046,7 @@
 				DDB28DE01D2C8A7E004C8F70 /* EMAudioPlayerUtil.m in Sources */,
 				DDB28E3D1D2C8A7E004C8F70 /* EaseUsersListViewController.m in Sources */,
 				587FF9D91CF2F8F300AD2131 /* IQKeyboardReturnKeyHandler.m in Sources */,
+				DD4644881E9E944900EAE186 /* SGImageButton_Horizontal.m in Sources */,
 				DDCD71361D0A8497009FBE9A /* SendCourierReecordViewController.m in Sources */,
 				DD4644501E9E2DEB00EAE186 /* JMSignUpOneTypeTableViewCell.m in Sources */,
 				DD46445C1E9E497E00EAE186 /* JMTrainingProjectListViewController.m in Sources */,
@@ -5996,6 +6056,7 @@
 				DDCD70D31D0808ED009FBE9A /* CommonTableViewCell.m in Sources */,
 				583D65CE1CDA7C8200830BBE /* UIFactory.m in Sources */,
 				166DD1501E9A0F7C00B2B002 /* BankModel.m in Sources */,
+				DD46448D1E9E944900EAE186 /* SGSegmentedControlStatic.m in Sources */,
 				DDAB05C11D03A747007A6027 /* BusinessProjectDetailViewController.m in Sources */,
 				166DD13A1E9A0F7C00B2B002 /* AboutUsViewController.m in Sources */,
 				58F211701CF9CD4600926FB9 /* TimeBankTableViewCell.m in Sources */,
@@ -6034,6 +6095,7 @@
 				166DD0BE1E9A0E5000B2B002 /* AddTeacherInfoTypeTwoTableViewCell.m in Sources */,
 				58487CDC1D00742000EE0E0D /* MyPickView.m in Sources */,
 				DDB28DE41D2C8A7E004C8F70 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
+				DD46448E1E9E944900EAE186 /* UIView+SGExtension.m in Sources */,
 				DDB28E471D2C8A7E004C8F70 /* EaseBubbleView+Location.m in Sources */,
 				58D9B3251D39F21800C4D6FA /* RSADataVerifier.m in Sources */,
 				DD4644531E9E2E1000EAE186 /* JMSignUpTwoTypeTableViewCell.m in Sources */,

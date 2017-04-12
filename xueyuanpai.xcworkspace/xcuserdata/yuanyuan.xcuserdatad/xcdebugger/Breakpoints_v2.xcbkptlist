@@ -19,78 +19,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
-            timestampString = "489578435.476949"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/JMHomePageViewTrainingProjectDetailController.m"
+            timestampString = "513705573.911513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
-            landmarkName = "-requestTimeBankRefuseAction"
-            landmarkType = "5">
+            startingLineNumber = "375"
+            endingLineNumber = "375"
+            landmarkName = "-zanAction"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[BusinessCenterMessageDetailViewController requestTimeBankRefuseAction]"
+                  symbolName = "-[JMHomePageViewTrainingProjectDetailController zanAction]"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yuanyuan/Documents/%E6%96%B0%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
-                  timestampString = "513690795.273608"
+                  urlString = "file:///Users/yuanyuan/Documents/%E6%96%B0%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/JMRelated/JMIndex/Controller/JMHomePageViewTrainingProjectDetailController.m"
+                  timestampString = "513709204.894146"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "299"
-                  endingLineNumber = "299"
-                  offsetFromSymbolStart = "904">
+                  startingLineNumber = "375"
+                  endingLineNumber = "375"
+                  offsetFromSymbolStart = "428">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__72-[BusinessCenterMessageDetailViewController requestTimeBankRefuseAction]_block_invoke"
+                  symbolName = "__58-[JMHomePageViewTrainingProjectDetailController zanAction]_block_invoke"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/yuanyuan/Documents/%E6%96%B0%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/Index/Controller/Message/BusinessCenterMessageDetailViewController.m"
-                  timestampString = "513690795.277347"
+                  urlString = "file:///Users/yuanyuan/Documents/%E6%96%B0%E5%AD%A6%E9%99%A2%E6%B4%BE/xueyuanpai/JMRelated/JMIndex/Controller/JMHomePageViewTrainingProjectDetailController.m"
+                  timestampString = "513709204.897781"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "299"
-                  endingLineNumber = "299"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "377"
+                  endingLineNumber = "377"
+                  offsetFromSymbolStart = "56">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/NetWorkManager/HttpClient.m"
-            timestampString = "489810847.761615"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "-changeBindPhoneNumberWithParams:withSuccessBlock:withFaileBlock:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/NetWorkManager/HttpServer.m"
-            timestampString = "489810852.338371"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-getWithMethod:withParams:withSuccess:withFailBlock:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

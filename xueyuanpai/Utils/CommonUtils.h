@@ -392,4 +392,12 @@
  */
 +(NSString *)getEffectiveUrlWithUrl:(NSString *)url withType:(NSInteger)type;
 
+
+
+
+
+///获取当前window的controller
++ (UIViewController *)getCurrentVC;
+
+
 @end
