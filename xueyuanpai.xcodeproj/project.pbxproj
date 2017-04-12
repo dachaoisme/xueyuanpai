@@ -5031,7 +5031,7 @@
 				TargetAttributes = {
 					58F67B9E1CD9863400D55BE0 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = H67PRMBBCW;
+						DevelopmentTeam = YNPUN7RMLF;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -6112,6 +6112,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jin Liang (YAU277YZ77)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jin Liang (YAU277YZ77)";
+				DEVELOPMENT_TEAM = YNPUN7RMLF;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6150,7 +6151,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8308bb44-49bb-480c-be37-8e1d5d551bc3";
+				PROVISIONING_PROFILE = "ec8f5550-daee-4e1c-8385-46b0950bd0df";
+				PROVISIONING_PROFILE_SPECIFIER = XYP_develop;
 			};
 			name = Debug;
 		};
@@ -6199,7 +6201,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67fb3fb5-7346-48eb-ab6b-610a8ed64628";
+				PROVISIONING_PROFILE = "000f5cae-fbd0-4740-8efb-b7de06d95611";
 			};
 			name = Release;
 		};
