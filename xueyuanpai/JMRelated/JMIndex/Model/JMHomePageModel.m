@@ -26,3 +26,27 @@
               };
 }
 @end
+
+////////////////实训项目相关
+@implementation JMTrainProjectPeopleModel
+
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{ @"trainProjectPeopleId" : @"id",
+              };
+}
+
+@end@implementation JMTrainProjectDetailModel
+
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{ @"trainProjectDetailId" : @"id",
+              @"trainProjectDescription":@"description"
+              };
+}
++ (NSDictionary *)modelContainerPropertyGenericClass
+{
+    return @{ @"members" : [JMTrainProjectPeopleModel class]
+              };
+}
+@end

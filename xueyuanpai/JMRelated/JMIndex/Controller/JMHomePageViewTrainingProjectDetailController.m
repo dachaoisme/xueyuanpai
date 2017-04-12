@@ -12,9 +12,13 @@
 #import "HomePageDetailTwoTypeTableViewCell.h"
 
 #import "JMSignUpTrainingProjectViewController.h"
-
+#import "JMHomePageModel.h"
 @interface JMHomePageViewTrainingProjectDetailController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    JMTrainProjectDetailModel *detailModel;
+    UIButton *zanBtn;
+    UIButton *commentBtn;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -44,8 +48,9 @@
     [self createTableView];
     
     
-    //创建底部视图我要报名
-    [self createBottomView];
+   
+    
+    [self requestData];
 
 }
 
@@ -66,7 +71,24 @@
     [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
 }
 
-
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.model.trainProjectId forKey:@"project_id"];
+    //[dic setObject:self.model.trainProjectId  forKey:@"project_id"];
+    [[HttpClient sharedInstance] getTrainProjectDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        detailModel = [JMTrainProjectDetailModel yy_modelWithDictionary:listDic];
+        //创建底部视图我要报名
+        [self createBottomView];
+        [self whetherAlreadyZan];
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 2 || section == 3) {
@@ -89,8 +111,9 @@
     switch (indexPath.section) {
         case 0:{
             HomePageDetailOneTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomePageDetailOneTypeTableViewCell"];
-            
-            
+            cell.titleLabel.text = detailModel.title;
+            [cell.locationBtn setTitle:detailModel.colllege_name forState:UIControlStateNormal];
+            cell.timeLabel.text = detailModel.create_time;
             return cell;
  
             
@@ -98,7 +121,8 @@
             break;
         case 1:{
             HomePageDetailTwoTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomePageDetailTwoTypeTableViewCell"];
-            
+            cell.showNatureBottomLabel.text = detailModel.type;
+            cell.showTimeBottomLabel.text  =detailModel.end_time;
             return cell;
             
             
@@ -126,7 +150,7 @@
             }else{
                 
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
-                NSString *showText = @"市场营销人员、铲平景丽";
+                NSString *showText = detailModel.job_name;
                 cell.textLabel.text =  showText;
                 cell.textLabel.numberOfLines = 0;
                 
@@ -161,7 +185,7 @@
             }else{
                 
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
-                NSString *showText = @"随着大学校园内掀起倡导的低碳环保热潮，高校学生教材及其他书籍的目前的处理方式已被大多人所关注。为了积极响应构建资源节约型、环境友好型社会的时代要求，减轻学生的经济负担，提高教材及其他书籍的循环利用，倡导绿色校园建设，建立一个高校二手书市场显得尤为重要。";
+                NSString *showText = detailModel.trainProjectDescription;
                 cell.textLabel.text =  showText;
                 cell.textLabel.numberOfLines = 0;
                 cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:showText]);
@@ -205,7 +229,7 @@
             }else{
                 
                 //根据文本信息多少调整cell的高度
-                NSString * string = @"市场营销人员、铲平景丽";
+                NSString * string = detailModel.job_name;
                 return [self textHeight:string];
                 
             }
@@ -222,7 +246,7 @@
             }else{
                 
                 //根据文本信息多少调整cell的高度
-                NSString * string = @"随着大学校园内掀起倡导的低碳环保热潮，高校学生教材及其他书籍的目前的处理方式已被大多人所关注。为了积极响应构建资源节约型、环境友好型社会的时代要求，减轻学生的经济负担，提高教材及其他书籍的循环利用，倡导绿色校园建设，建立一个高校二手书市场显得尤为重要。";
+                NSString * string = detailModel.trainProjectDescription;
                 return [self textHeight:string];
                 
             }
@@ -279,9 +303,9 @@
     
     
     //创建左侧点赞按钮
-    UIButton *zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
-    [zanBtn setTitle:@"4" forState:UIControlStateNormal];
+    [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -296,7 +320,7 @@
     //中间的报名按钮
     UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
-    [collectionBtn setTitle:@" 我要报名 34" forState:UIControlStateNormal];
+    [collectionBtn setTitle:self.model.content forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
     collectionBtn.layer.masksToBounds = YES;
@@ -307,9 +331,9 @@
     
     
     //右侧评论按钮
-    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
-    [commentBtn setTitle:@"4" forState:UIControlStateNormal];
+    [commentBtn setTitle:self.model.count_comment forState:UIControlStateNormal];
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
@@ -324,12 +348,38 @@
     
 }
 
+-(void)whetherAlreadyZan
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.model.trainProjectId forKey:@"project_id"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]whetherAlreadyAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSDictionary *dic = model.responseCommonDic;
+        if ([dic objectForKey:@"is_liked"]) {
+            ///1点赞过 0 没有
+        }
+        if ([dic objectForKey:@"count"]){
+            [zanBtn setTitle:[dic objectForKey:@"count"] forState:UIControlStateNormal];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 #pragma mark - 点赞事件
 - (void)zanAction{
     
     [CommonUtils showToastWithStr:@"点赞"];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.model.trainProjectId forKey:@"project_id"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]trainProjectAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
 }
-
+#pragma mark - 报名
 - (void)collectionAction{
     
 //    [CommonUtils showToastWithStr:@"报名"];
@@ -337,12 +387,23 @@
     JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
     [self.navigationController pushViewController:signUpAction animated:YES];
 }
-
+#pragma mark - 评论
 - (void)commentAction{
-    
+    /*
+     entity_id   string 序号      必需
+     entity_type string 类型     必需   可选项: project 创业项目  salon创业沙龙 course 创业课程
+     user_id      int   用户序号
+     content     string 评论内容
+     
+     */
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [CommonUtils showToastWithStr:@"评论"];
+    [[HttpClient sharedInstance]trainProjectAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
-
 
 
 - (void)didReceiveMemoryWarning {

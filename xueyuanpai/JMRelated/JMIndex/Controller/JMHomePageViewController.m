@@ -186,25 +186,7 @@
             twoCell.delegate = self;
             return twoCell;
         }else{
-            /*
-             ///左侧的图片
-             @property (nonatomic,strong)UIImageView *showImageView;
-             
-             ///标题
-             @property (nonatomic,strong)UILabel *titleLabel;
-             
-             ///副标题
-             @property (nonatomic,strong)UILabel *subtitleLabel;
-             
-             
-             ///定位信息显示的btn
-             @property (nonatomic,strong)UIButton *locationBtn;
-             
-             
-             ///正在招募的人数或者是否已经结束
-             @property (nonatomic,strong)UILabel *peopleNumberLabel;
-             
-             */
+
             JMHomePageThreeTypeTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
             JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row-1];
             [threeCell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
@@ -238,6 +220,7 @@
             
             JMHomePageViewTrainingProjectDetailController *detailVC = [[JMHomePageViewTrainingProjectDetailController alloc] init];
             detailVC.title = model.title;
+            detailVC.model = model;
             [self.navigationController pushViewController:detailVC animated:YES];
             
             

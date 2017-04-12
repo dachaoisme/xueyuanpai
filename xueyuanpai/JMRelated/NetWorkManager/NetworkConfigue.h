@@ -23,7 +23,20 @@
 /////////////////////////////////////////集梦盒子二期/////////////////////////////////////////
 ///轮播图
 #define METHOD_OF_BANNER    @"focus/index"
+///获取实训项目
 #define METHOD_OF_TRAIN_PROJECT    @"project/index"
+///获取实训项目详情
+#define METHOD_OF_TRAIN_PROJECT_DETAIL    @"project/detail"
+///添加评论
+#define METHOD_OF_ADD_COMMENT @"comment/create"
+///创业项目点赞
+#define METHOD_OF_ADD_FAVOURITE @"project/like"
+///创业项目是否已经点过赞
+#define METHOD_OF_WHETHER_FAVOURITE @"project/isliked"
+
+
+
+
 ///登录
 #define METHOD_OF_LOGIN                  @"/student/signin"
 ///注册

@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JMHomePageModel.h"
 @interface JMHomePageViewTrainingProjectDetailController : BaseViewController
 
+
+@property(nonatomic,strong)JMTrainProjectModel * model;
 @end
