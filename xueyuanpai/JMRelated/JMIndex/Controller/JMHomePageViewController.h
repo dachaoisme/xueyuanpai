@@ -10,4 +10,6 @@
 
 @interface JMHomePageViewController : BaseViewController
 
+/////////////////////实训项目首页/////////////////////
+
 @end

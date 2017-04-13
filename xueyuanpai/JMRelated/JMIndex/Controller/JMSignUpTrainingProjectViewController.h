@@ -10,4 +10,6 @@
 
 @interface JMSignUpTrainingProjectViewController : BaseViewController
 
+///////////////////////////报名实训项目///////////////////////////
+
 @end

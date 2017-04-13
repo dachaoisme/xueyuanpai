@@ -10,4 +10,6 @@
 
 @interface JMTrainingProjectListViewController : BaseViewController
 
+//////////////////////////////实训项目列表//////////////////////////////
+
 @end

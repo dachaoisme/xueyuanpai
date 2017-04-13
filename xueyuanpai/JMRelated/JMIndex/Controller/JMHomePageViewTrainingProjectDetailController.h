@@ -10,6 +10,7 @@
 #import "JMHomePageModel.h"
 @interface JMHomePageViewTrainingProjectDetailController : BaseViewController
 
+/////////////////////未结束报名的实训项目详情/////////////////////
 
 @property(nonatomic,strong)JMTrainProjectModel * model;
 @end
