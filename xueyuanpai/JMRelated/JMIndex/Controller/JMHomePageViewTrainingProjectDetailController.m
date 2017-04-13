@@ -393,7 +393,9 @@
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.model.trainProjectId forKey:@"project_id"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
     [[HttpClient sharedInstance]whetherAlreadyAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSDictionary *dic = model.responseCommonDic;
         NSString *isLiked =[dic objectForKey:@"is_liked"];
@@ -477,7 +479,10 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.model.trainProjectId forKey:@"entity_id"];
     [dic setObject:@"project" forKey:@"entity_type"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    
     [dic setObject:text forKey:@"content"];
     
     
