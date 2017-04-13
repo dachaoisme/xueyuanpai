@@ -13,13 +13,20 @@
 
 #import "JMSignUpTrainingProjectViewController.h"
 #import "JMHomePageModel.h"
-@interface JMHomePageViewTrainingProjectDetailController ()<UITableViewDelegate,UITableViewDataSource>
+
+#import "CommentInputView.h"
+
+@interface JMHomePageViewTrainingProjectDetailController ()<UITableViewDelegate,UITableViewDataSource,CommentInputViewDelegate>
 {
     JMTrainProjectDetailModel *detailModel;
     UIButton *zanBtn;
     UIButton *commentBtn;
 }
 @property (nonatomic,strong)UITableView *tableView;
+
+
+///评论视图
+@property (strong, nonatomic) CommentInputView *commentInputView;
 
 @end
 
@@ -30,7 +37,39 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:YES];
+    
+    
+    //添加评论视图的监听
+    [_commentInputView addNotify];
+    
+    [_commentInputView addObserver];
+    
+
 }
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    //[self theTabBarHidden:YES];
+    
+    [_commentInputView removeNotify];
+    
+    [_commentInputView removeObserver];
+    
+}
+
+#pragma mark - 创建评论视图
+-(void) initCommentInputView
+{
+    if (_commentInputView == nil) {
+        _commentInputView = [[CommentInputView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _commentInputView.hidden = YES;
+        _commentInputView.delegate = self;
+        [self.view addSubview:_commentInputView];
+    }
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,6 +87,7 @@
     [self createTableView];
     
     
+    [self initCommentInputView];
    
     
     [self requestData];
@@ -409,10 +449,22 @@
 #pragma mark - 评论
 - (void)commentAction{
     
-    [self requestComment];
+    _commentInputView.hidden = NO;
+
+    [_commentInputView show];
+
 }
 
--(void)requestComment
+#pragma mark - 点击发送请求的评论接口
+-(void) onCommentCreate:(long long ) commentId text:(NSString *) text{
+    
+    //请求评论接口
+    [self requestCommentWithContentText:text];
+    
+}
+
+
+-(void)requestCommentWithContentText:(NSString *)text
 {
     /*
      entity_id   string 序号      必需
@@ -426,7 +478,7 @@
     [dic setObject:self.model.trainProjectId forKey:@"entity_id"];
     [dic setObject:@"project" forKey:@"entity_type"];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:@"这个项目很不错，我喜欢" forKey:@"content"];
+    [dic setObject:text forKey:@"content"];
     
     
     [[HttpClient sharedInstance]trainProjectAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {

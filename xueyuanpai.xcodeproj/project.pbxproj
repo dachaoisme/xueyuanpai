@@ -915,6 +915,7 @@
 		DDF51A1B1E9F772C00E72DEC /* JMAddOrEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF51A1A1E9F772C00E72DEC /* JMAddOrEditViewController.m */; };
 		DDF51A1F1E9F77AC00E72DEC /* AddOrEditOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF51A1D1E9F77AC00E72DEC /* AddOrEditOneTableViewCell.m */; };
 		DDF51A201E9F77AC00E72DEC /* AddOrEditOneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF51A1E1E9F77AC00E72DEC /* AddOrEditOneTableViewCell.xib */; };
+		DDF51A241E9F919D00E72DEC /* CommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDF51A231E9F919D00E72DEC /* CommentInputView.m */; };
 		E993E0049F3F51C845C25B59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FFF3EE12099BB224ECB4817B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2365,6 +2366,8 @@
 		DDF51A1C1E9F77AC00E72DEC /* AddOrEditOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOrEditOneTableViewCell.h; sourceTree = "<group>"; };
 		DDF51A1D1E9F77AC00E72DEC /* AddOrEditOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOrEditOneTableViewCell.m; sourceTree = "<group>"; };
 		DDF51A1E1E9F77AC00E72DEC /* AddOrEditOneTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddOrEditOneTableViewCell.xib; sourceTree = "<group>"; };
+		DDF51A221E9F919D00E72DEC /* CommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputView.h; sourceTree = "<group>"; };
+		DDF51A231E9F919D00E72DEC /* CommentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInputView.m; sourceTree = "<group>"; };
 		FFF3EE12099BB224ECB4817B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -4117,6 +4120,7 @@
 		DD4644761E9E944900EAE186 /* JMThird */ = {
 			isa = PBXGroup;
 			children = (
+				DDF51A211E9F918C00E72DEC /* CommentInputView */,
 				DD4644771E9E944900EAE186 /* SGSegmentedControl */,
 			);
 			path = JMThird;
@@ -5173,6 +5177,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		DDF51A211E9F918C00E72DEC /* CommentInputView */ = {
+			isa = PBXGroup;
+			children = (
+				DDF51A221E9F919D00E72DEC /* CommentInputView.h */,
+				DDF51A231E9F919D00E72DEC /* CommentInputView.m */,
+			);
+			path = CommentInputView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -5903,6 +5916,7 @@
 				166DD1401E9A0F7C00B2B002 /* ExchangeGiftsViewController.m in Sources */,
 				DD1957D31D19785300FF01F0 /* BusinessPublishProjectSuccessViewController.m in Sources */,
 				DD41278A1CF068C200227066 /* StarCommunityTableViewCell.m in Sources */,
+				DDF51A241E9F919D00E72DEC /* CommentInputView.m in Sources */,
 				166DD13B1E9A0F7C00B2B002 /* BindPhoneLastViewController.m in Sources */,
 				58F67C361CD9CF9500D55BE0 /* UIView+MJExtension.m in Sources */,
 				DDB28E021D2C8A7E004C8F70 /* MWGridCell.m in Sources */,
