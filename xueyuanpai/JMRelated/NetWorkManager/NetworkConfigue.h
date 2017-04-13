@@ -33,8 +33,10 @@
 #define METHOD_OF_ADD_FAVOURITE @"project/like"
 ///创业项目是否已经点过赞
 #define METHOD_OF_WHETHER_FAVOURITE @"project/isliked"
-
-
+///获得岗位列表
+#define METHOD_OF_JOB_LIST @"project/jobs"
+///报名
+#define METHOD_OF_SIGN_UP @"user/partin"
 
 
 ///登录
@@ -45,7 +47,8 @@
 #define METHOD_OF_SEND_MESSAGE           @"student/sendsms"
 ///根据关键字查询学校
 #define METHOD_OF_COLLEGE_SEARCH         @"college/index"
-
+///时间银行:上传用户头像
+#define METHOD_OF_ADD_ICON_UPLOAD           @"student/upload/"
 
 
 
@@ -120,8 +123,7 @@
 #define METHOD_TIME_BANK_COMMENTS             @"v1/timebank/comments?"
 ///时间银行:添加评论接口
 #define METHOD_TIME_BANK_ADD_COMMENTS         @"v1/timebank/addcomment?"
-///时间银行:上传用户头像
-#define METHOD_TIME_BANK_ADD_UPLOAD           @"v1/timebank/upload/"
+
 ///时间银行:申请赴约接口
 #define METHOD_TIME_BANK_APPLY_APPOINTMENT    @"v1/timebank/apply?"
 ///时间银行:申领通过接口

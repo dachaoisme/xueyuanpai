@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16154FAF1E9FBFD700FB46AA /* JMJobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */; };
 		166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */; };
 		166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */; };
 		166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0901E9A099F00B2B002 /* JMMineViewController.m */; };
@@ -937,6 +938,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16154FAD1E9FBFD700FB46AA /* JMJobListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMJobListViewController.h; sourceTree = "<group>"; };
+		16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMJobListViewController.m; sourceTree = "<group>"; };
 		166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewController.h; sourceTree = "<group>"; };
 		166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewController.m; sourceTree = "<group>"; };
 		166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanViewController.h; sourceTree = "<group>"; };
@@ -2488,6 +2491,8 @@
 				DD46444B1E9E2C0500EAE186 /* JMSignUpTrainingProjectViewController.m */,
 				DD46445A1E9E497E00EAE186 /* JMTrainingProjectListViewController.h */,
 				DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */,
+				16154FAD1E9FBFD700FB46AA /* JMJobListViewController.h */,
+				16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6207,6 +6212,7 @@
 				DD0B1E6C1CFEDD1800C4BAB2 /* PhotoSelectorCell.m in Sources */,
 				58898E531CFAD1780007D9B3 /* TimeBankDetailOneStyleTableViewCell.m in Sources */,
 				166DD1421E9A0F7C00B2B002 /* MineBankSubViewController.m in Sources */,
+				16154FAF1E9FBFD700FB46AA /* JMJobListViewController.m in Sources */,
 				166DD0BA1E9A0E5000B2B002 /* RegisterViewController.m in Sources */,
 				DD0F42971D23B7A200115B96 /* SystemMessageListViewController.m in Sources */,
 				DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */,

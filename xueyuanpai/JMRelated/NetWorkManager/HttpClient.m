@@ -94,6 +94,24 @@
         failBlock(error);
     }];
 }
+///获取岗位列表
+- (void)jobListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_JOB_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+///报名
+- (void)signUpWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_SIGN_UP withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 ///登录
 - (void)loginWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
@@ -112,7 +130,20 @@
         failBlock(error);
     }];
 }
-
+///发布需求照片上传
+- (void)uploadIconWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]postWithMethod:METHOD_OF_ADD_ICON_UPLOAD withParams:params withUploadDic:uploadDic withSuccess:^(HttpResponseCodeModel *model) {
+        
+        successBlock(model);
+        
+    } withFailBlock:^(NSError *error) {
+        
+        failBlock(error);
+        
+    }];
+    
+}
 
 
 
@@ -414,20 +445,7 @@
         failBlock(error);
     }];
 }
-///时间银行，发布需求照片上传
-- (void)uploadTimeBankIconWithParams:(NSDictionary *)params withUploadDic:(NSDictionary *)uploadDic withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
-{
-    [[HttpServer sharedInstance]postWithMethod:METHOD_TIME_BANK_ADD_UPLOAD withParams:params withUploadDic:uploadDic withSuccess:^(HttpResponseCodeModel *model) {
-        
-        successBlock(model);
-        
-    } withFailBlock:^(NSError *error) {
-        
-        failBlock(error);
-        
-    }];
-    
-}
+
 
 #pragma mark - 大学招聘
 /*

@@ -85,7 +85,7 @@
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.leftTitleLabel.text = @"省市";
-            cell.rightContentLabel.text = @"请选择";
+            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
             
             return cell;
             

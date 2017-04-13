@@ -40,12 +40,13 @@
         
     }
     
-    if (_rightContentLabel == nil) {
-        _rightContentLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_leftTitleLabel.frame) + 6, 15, 100, 18)];
-        _rightContentLabel.font = [UIFont systemFontOfSize:14];
-        _rightContentLabel.text = @"请选择";
-        _rightContentLabel.textColor = [CommonUtils colorWithHex:@"c7c6cb"];
-        [self.contentView addSubview:_rightContentLabel];
+    if (_rightContentBtn == nil) {
+        _rightContentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_rightContentBtn setFrame:CGRectMake(CGRectGetMaxX(_leftTitleLabel.frame) + 6, 15, 100, 18)];
+        _rightContentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        [_rightContentBtn setTitleColor:[CommonUtils colorWithHex:@"c7c6cb"] forState:UIControlStateNormal];
+        [self.contentView addSubview:_rightContentBtn];
         
 
     }

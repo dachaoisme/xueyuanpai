@@ -16,6 +16,6 @@
 
 
 ///右侧的内容视图
-@property (nonatomic,strong)UILabel *rightContentLabel;
+@property (nonatomic,strong)UIButton *rightContentBtn;
 
 @end

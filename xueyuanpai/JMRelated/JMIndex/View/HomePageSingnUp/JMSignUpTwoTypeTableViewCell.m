@@ -61,7 +61,13 @@
     
     return YES;
 }
-
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    _rightTextFeild.tag = self.tag;
+    if ([self.delegate respondsToSelector:@selector(inputEndWithText:withRow:)]) {
+        [self.delegate inputEndWithText:textField.text withRow:textField.tag];
+    }
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

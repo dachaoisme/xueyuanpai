@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol JMSignUpTwoTypeTableViewCellDelegate <NSObject>
+
+-(void)inputEndWithText:(NSString *)text withRow:(NSInteger)row;
+
+@end
+
 @interface JMSignUpTwoTypeTableViewCell : UITableViewCell<UITextFieldDelegate>
 
 ///左侧的标题
@@ -16,5 +22,5 @@
 
 ///右侧的输入框
 @property (nonatomic,strong)UITextField *rightTextFeild;
-
+@property (nonatomic,assign)id<JMSignUpTwoTypeTableViewCellDelegate>delegate;
 @end

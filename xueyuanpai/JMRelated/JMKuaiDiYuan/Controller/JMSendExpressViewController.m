@@ -87,26 +87,25 @@
         if (indexPath.row == 0) {
             
             cell.leftTitleLabel.text = @"寄件人地址";
-            cell.rightContentLabel.text = @"请选择";
-
+            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
             
         }else{
             
             cell.leftTitleLabel.text = @"收件人地址";
-            cell.rightContentLabel.text = @"请选择";
+            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
 
         }
         
     }else if (indexPath.section == 1){
         
         cell.leftTitleLabel.text = @"选择站点";
-        cell.rightContentLabel.text = @"请选择";
+        [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
 
         
     }else{
         
         cell.leftTitleLabel.text = @"选择快递公司";
-        cell.rightContentLabel.text = @"请选择";
+        [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
         
     }
     

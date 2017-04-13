@@ -446,6 +446,7 @@
 //    [CommonUtils showToastWithStr:@"报名"];
     
     JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
+    signUpAction.trainProjectId = self.model.trainProjectId;
     [self.navigationController pushViewController:signUpAction animated:YES];
 }
 #pragma mark - 评论
