@@ -9,8 +9,11 @@
 #import "JMKuaiDiYuanViewController.h"
 
 #import "SGSegmentedControl.h"
-#import "JMTrainingProjectListViewController.h"
 
+#import "JMCollectCourierListViewController.h"
+#import "JMMailDeliveryViewController.h"
+
+#import "JMSendExpressViewController.h"
 
 @interface JMKuaiDiYuanViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
 
@@ -18,6 +21,8 @@
 @property(nonatomic,strong)SGSegmentedControlDefault*topDefaultSView;
 @property(nonatomic,assign)NSInteger chooseIndex;
 
+
+@property (nonatomic,strong)UIButton *sendExpressButton;
 
 @end
 
@@ -28,6 +33,18 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:NO];
+    
+    
+    _sendExpressButton.hidden = NO;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    
+    _sendExpressButton.hidden = YES;
+
 }
 
 
@@ -39,6 +56,9 @@
     
     //创建顶部
     [self setupScrollView];
+    
+    
+    [self initSendExpressButton];
 
 }
 
@@ -49,13 +69,18 @@
     NSMutableArray *titleArr = [NSMutableArray arrayWithObjects:@"收取快递", @"寄出快递",nil];
     
     NSMutableArray *childVCArray = [NSMutableArray array];
-    UIViewController  *homePageVC = [[UIViewController alloc] init];
     
-    [self addChildViewController:homePageVC];
-    UIViewController  *cityVC = [[UIViewController alloc] init];
-    [self addChildViewController:cityVC];
-    [childVCArray addObject:homePageVC];
-    [childVCArray addObject:cityVC];
+    //收取快递
+    JMCollectCourierListViewController  *collectCourierVC = [[JMCollectCourierListViewController alloc] init];
+    [self addChildViewController:collectCourierVC];
+    
+    
+    JMMailDeliveryViewController  *mailDeliveryVC = [[JMMailDeliveryViewController alloc] init];
+    [self addChildViewController:mailDeliveryVC];
+    
+    
+    [childVCArray addObject:collectCourierVC];
+    [childVCArray addObject:mailDeliveryVC];
     
     
     [self initScrollViewTitleWithChildVCArray:childVCArray titleArray:titleArr];
@@ -112,6 +137,38 @@
     // 2.把对应的标题选中
     [self.topDefaultSView changeThePositionOfTheSelectedBtnWithScrollView:scrollView];
     self.chooseIndex = index;
+}
+
+
+#pragma mark - 初始化我要发快递按钮
+- (void)initSendExpressButton{
+    
+    UIButton *sendExpressButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    sendExpressButton.frame = CGRectMake(SCREEN_WIDTH - 15 - 60, SCREEN_HEIGHT - NAV_TOP_HEIGHT - TABBAR_HEIGHT - 50, 60, 60);
+    sendExpressButton.layer.cornerRadius = 30;
+    sendExpressButton.layer.masksToBounds = YES;
+    sendExpressButton.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
+    [sendExpressButton setTitle:@"我要发快递" forState:UIControlStateNormal];
+    sendExpressButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    sendExpressButton.titleLabel.numberOfLines = 2;
+    sendExpressButton.titleLabel.font = [UIFont systemFontOfSize:12];
+    [sendExpressButton addTarget:self action:@selector(sendExpressAction) forControlEvents:UIControlEventTouchUpInside];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:sendExpressButton];
+    
+    self.sendExpressButton = sendExpressButton;
+    
+}
+
+- (void)sendExpressAction{
+    
+//    [CommonUtils showToastWithStr:@"发快递"];
+    
+    
+    //跳转寄快递页面
+    JMSendExpressViewController *sendExpressVC = [[JMSendExpressViewController alloc] init];
+    [self.navigationController pushViewController:sendExpressVC animated:YES];
+    
 }
 
 
