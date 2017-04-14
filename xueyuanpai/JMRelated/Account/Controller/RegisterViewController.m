@@ -77,7 +77,7 @@
     sendMessageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendMessageBtn.layer.cornerRadius = 3.0;
     [sendMessageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [sendMessageBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [sendMessageBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     [sendMessageBtn setFrame:CGRectMake(SCREEN_WIDTH - 80 - 15,  9, 80, 30)];
     [sendMessageBtn setContentMode:UIViewContentModeCenter];
     [sendMessageBtn addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
@@ -146,7 +146,7 @@
     
     //提交并注册
     submitAndRegisterBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [submitAndRegisterBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitAndRegisterBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     submitAndRegisterBtn.tag = 10002;
     submitAndRegisterBtn.layer.cornerRadius = 5.0;
     [submitAndRegisterBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];

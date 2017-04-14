@@ -101,7 +101,7 @@
     [UIFactory showLineInView:textFieldbackgroundView color:@"c2c3c4" rect:CGRectMake(0, CGRectGetMaxY(phoneTextField.frame), CGRectGetWidth(textFieldbackgroundView.frame), 0.5)];
     
     UIButton * forgetPasswordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [forgetPasswordBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+    [forgetPasswordBtn setTitleColor:[CommonUtils colorWithHex:@"00c05c"] forState:UIControlStateNormal];
     [forgetPasswordBtn setFrame:CGRectMake(0, 0, 50, 30)];
     [forgetPasswordBtn addTarget:self action:@selector(forgetPasswordAccount:) forControlEvents:UIControlEventTouchUpInside];
     [forgetPasswordBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
@@ -112,7 +112,7 @@
     
     //登陆按钮
     loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [loginBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [loginBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     loginBtn.tag = 10002;
     loginBtn.layer.cornerRadius = 5.0;
     [loginBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
@@ -130,7 +130,7 @@
     registerBtn.tag = 10002;
     registerBtn.layer.cornerRadius = 5.0;
     registerBtn.layer.masksToBounds = YES;
-    [registerBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+    [registerBtn setTitleColor:[CommonUtils colorWithHex:@"00c05c"] forState:UIControlStateNormal];
     [registerBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(loginBtn.frame)+smallSpace, width, height)];
     [registerBtn addTarget:self action:@selector(registerAccount:) forControlEvents:UIControlEventTouchUpInside];
     [registerBtn setTitle:@"注册" forState:UIControlStateNormal];

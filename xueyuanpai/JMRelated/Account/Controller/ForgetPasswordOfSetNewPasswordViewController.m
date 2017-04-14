@@ -52,7 +52,7 @@
     sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sureBtn.layer.cornerRadius = 3.0;
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [sureBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [sureBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     [sureBtn setFrame:CGRectMake(space, CGRectGetMaxY(backgroundView.frame)+space, width, height)];
     [sureBtn setContentMode:UIViewContentModeCenter];
     [sureBtn addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];

@@ -119,7 +119,7 @@
     _submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_submitBtn setTitle:@"提交审核" forState:UIControlStateNormal];
     [_submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [_submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     [_submitBtn setFrame:CGRectMake(space, space, btnWidth,btnHeight)];
     _submitBtn.layer.cornerRadius = 10.0;
 

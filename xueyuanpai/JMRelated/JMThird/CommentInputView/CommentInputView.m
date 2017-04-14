@@ -77,7 +77,7 @@
         
         //self.frame
         
-        _maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _maskView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
         [self addSubview:_maskView];
         _maskView.backgroundColor = [UIColor darkGrayColor];
         _maskView.alpha = 0.3;
@@ -89,7 +89,7 @@
     width = CGRectGetWidth(self.frame);
     height = InputViewHeight;
     x= 0;
-    y= CGRectGetHeight(self.frame)- height;
+    y= SCREEN_HEIGHT - height - NAV_TOP_HEIGHT;
     
     _inputView = [[UIView alloc] initWithFrame:CGRectMake(x, y, width, height)];
     _inputView.backgroundColor = [CommonUtils colorWithHex:@"F5F5F6"];
@@ -198,7 +198,7 @@
     _keyboardAnimationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     _keyboardAnimationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
     
-    [self changeInputViewOffsetY:(frame.origin.y - InputViewHeight) ];
+    [self changeInputViewOffsetY:(frame.origin.y) ];
     
 }
 

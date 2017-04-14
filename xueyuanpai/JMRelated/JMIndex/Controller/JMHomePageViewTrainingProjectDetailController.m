@@ -270,7 +270,7 @@
                 
                 //根据文本信息多少调整cell的高度
                 NSString * string = detailModel.job_name;
-                return [self textHeight:string];
+                return [self textHeight:string] + 30;
                 
             }
             
@@ -287,7 +287,7 @@
                 
                 //根据文本信息多少调整cell的高度
                 NSString * string = detailModel.trainProjectDescription;
-                return [self textHeight:string];
+                return [self textHeight:string] + 30;
                 
             }
 
@@ -416,7 +416,6 @@
 #pragma mark - 点赞事件
 - (void)zanAction{
     
-    [CommonUtils showToastWithStr:@"点赞"];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.model.trainProjectId forKey:@"project_id"];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];

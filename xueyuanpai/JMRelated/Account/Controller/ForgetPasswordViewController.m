@@ -61,7 +61,7 @@
     sendMessageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sendMessageBtn.layer.cornerRadius = 3.0;
     [sendMessageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [sendMessageBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [sendMessageBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     [sendMessageBtn setFrame:CGRectMake(0, 0, 80, 30)];
     [sendMessageBtn setContentMode:UIViewContentModeCenter];
     [sendMessageBtn addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
@@ -90,7 +90,7 @@
     sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     sureBtn.layer.cornerRadius = 10;
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [sureBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [sureBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     [sureBtn setFrame:CGRectMake(space, CGRectGetMaxY(backgroundView.frame)+space, width, height)];
     [sureBtn setContentMode:UIViewContentModeCenter];
     [sureBtn addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];

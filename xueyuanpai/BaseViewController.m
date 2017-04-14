@@ -198,7 +198,7 @@
     UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     userDefineLeftBtn.frame     = CGRectMake(-10, 0, 100, 40);
     [userDefineLeftBtn setTitle:title forState:UIControlStateNormal];
-    [userDefineLeftBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+    [userDefineLeftBtn setTitleColor:[CommonUtils colorWithHex:@"00c05c"] forState:UIControlStateNormal];
     userDefineLeftBtn.titleLabel.textAlignment = NSTextAlignmentRight;
     userDefineLeftBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [userDefineLeftBtn addTarget:self action:@selector(rightItemActionWithBtn:) forControlEvents:UIControlEventTouchUpInside];

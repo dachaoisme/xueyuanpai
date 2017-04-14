@@ -52,6 +52,16 @@
 
 @implementation EditProfileViewController
 
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self theTabBarHidden:YES];
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -93,12 +103,11 @@
     //确定按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(15, CGRectGetMaxY(self.tableView.frame) + 10, SCREEN_WIDTH - 30, 48);
-    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+    button.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     [button setTitle:@"提交" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
     button.layer.cornerRadius = 10.0;
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
     [self.view addSubview:button];
 
     

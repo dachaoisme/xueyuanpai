@@ -105,13 +105,13 @@
     ///提交
     submitBtn = [UIFactory button:nil sel:nil titleColor:@"f5f5f5" title:@"提交" fontSize:16 frame:CGRectMake(space, CGRectGetMaxY(schoolView.frame)+space, width, height)];
     [submitBtn addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
-    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00beaf"]];
+    [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     [self.view addSubview:submitBtn];
     ///稍后完善
-    unperfectBtn = [UIFactory button:nil sel:nil titleColor:@"00beaf" title:@"稍后完善" fontSize:16 frame:CGRectMake(space, CGRectGetMaxY(submitBtn.frame)+space, width, height)];
+    unperfectBtn = [UIFactory button:nil sel:nil titleColor:@"00c05c" title:@"稍后完善" fontSize:16 frame:CGRectMake(space, CGRectGetMaxY(submitBtn.frame)+space, width, height)];
     [unperfectBtn addTarget:self action:@selector(unperfect:) forControlEvents:UIControlEventTouchUpInside];
     [unperfectBtn setBackgroundColor:[CommonUtils colorWithHex:@"f5f5f5"]];
-    unperfectBtn.layer.borderColor = [CommonUtils colorWithHex:@"00beaf"].CGColor;
+    unperfectBtn.layer.borderColor = [CommonUtils colorWithHex:@"00c05c"].CGColor;
     unperfectBtn.layer.borderWidth = 0.5;
     [self.view addSubview:unperfectBtn];
     

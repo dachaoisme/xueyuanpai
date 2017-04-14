@@ -43,7 +43,6 @@
     
     if (_rightTextFeild == nil) {
         
-        
         _rightTextFeild = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_leftTitleLabel.frame) + 6, 15, 100, 18)];
         _rightTextFeild.font = [UIFont systemFontOfSize:14];
         _rightTextFeild.placeholder = @"请输入";

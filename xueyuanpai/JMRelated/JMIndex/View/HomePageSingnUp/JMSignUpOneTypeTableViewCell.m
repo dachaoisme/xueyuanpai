@@ -44,6 +44,7 @@
         _rightContentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_rightContentBtn setFrame:CGRectMake(CGRectGetMaxX(_leftTitleLabel.frame) + 6, 15, 100, 18)];
         _rightContentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _rightContentBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
         [_rightContentBtn setTitleColor:[CommonUtils colorWithHex:@"c7c6cb"] forState:UIControlStateNormal];
         [self.contentView addSubview:_rightContentBtn];

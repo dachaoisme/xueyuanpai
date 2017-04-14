@@ -44,7 +44,7 @@
     
     //添加左侧相关的视图
     UIImageView *leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 4, 32, 32)];
-    leftImageView.image = [UIImage imageNamed:@"placeHoder"];
+    leftImageView.image = [UIImage imageNamed:@"detail_icon_type"];
     leftImageView.layer.cornerRadius = 16;
     leftImageView.layer.masksToBounds = YES;
     [leftView addSubview:leftImageView];
@@ -73,9 +73,9 @@
     [self.contentView addSubview:rightView];
     
     
-    //添加左侧相关的视图
+    //添加右侧相关的视图
     UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 4, 32, 32)];
-    rightImageView.image = [UIImage imageNamed:@"placeHoder"];
+    rightImageView.image = [UIImage imageNamed:@"detail_icon_time"];
     rightImageView.layer.cornerRadius = 16;
     rightImageView.layer.masksToBounds = YES;
     [rightView addSubview:rightImageView];

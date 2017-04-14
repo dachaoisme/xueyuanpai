@@ -8,7 +8,7 @@
 
 #import "JMAddOrEditViewController.h"
 
-#import "AddOrEditOneTableViewCell.h"
+#import "JMSignUpTwoTypeTableViewCell.h"
 #import "JMSignUpOneTypeTableViewCell.h"
 
 @interface JMAddOrEditViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -40,8 +40,8 @@
     self.tableView = tableView;
     
     //注册cell
-    [tableView registerNib:[UINib nibWithNibName:@"AddOrEditOneTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"AddOrEditOneTableViewCell"];
-    
+//    [tableView registerNib:[UINib nibWithNibName:@"AddOrEditOneTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"AddOrEditOneTableViewCell"];
+    [tableView registerClass:[JMSignUpTwoTypeTableViewCell class] forCellReuseIdentifier:@"JMSignUpTwoTypeTableViewCell"];
     
     //注册cell
     [tableView registerClass:[JMSignUpOneTypeTableViewCell class] forCellReuseIdentifier:@"JMSignUpOneTypeTableViewCell"];
@@ -64,7 +64,7 @@
     
     if (indexPath.section == 0) {
         
-        AddOrEditOneTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"AddOrEditOneTableViewCell"];
+        JMSignUpTwoTypeTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"JMSignUpTwoTypeTableViewCell"];
         if (indexPath.row == 0) {
             
             cell.leftTitleLabel.text = @"姓名";
@@ -91,7 +91,7 @@
             
         }else{
             
-            AddOrEditOneTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"AddOrEditOneTableViewCell"];
+            JMSignUpTwoTypeTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"JMSignUpTwoTypeTableViewCell"];
             
             cell.leftTitleLabel.text = @"详细地址";
             

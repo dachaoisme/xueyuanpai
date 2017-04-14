@@ -9,6 +9,11 @@
 #import "JMMineViewController.h"
 #import "EditProfileViewController.h"
 #import "MineTwoStyleTableViewCell.h"
+
+
+#import "MineIntegralViewController.h"
+#import "JMMineProjectListViewController.h"
+#import "JMStartupProjectViewController.h"
 @interface JMMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -25,6 +30,8 @@
     
     [super viewWillAppear:animated];
     
+    [self theTabBarHidden:NO];
+    
 }
 
 - (void)viewDidLoad {
@@ -33,7 +40,7 @@
     //[self setUserDefineLeftReturnBtn];
     [self setTitle:@"我的"];
     
-    [self creatRightNavWithTitle:@"编辑认证资料"];
+    [self creatRightNavWithTitle:@"编辑个人资料"];
     
     [self createTableView];
     
@@ -145,7 +152,7 @@
 
             case 0:{
                 
-                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_timebank"];
+                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_coin"];
                 
                 cell.contentLabel.text = @"我的积分";
                 
@@ -153,7 +160,7 @@
             }
             case 1:{
                 
-                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_market"];
+                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_project"];
                 
                 cell.contentLabel.text = @"我的实训项目";
                 
@@ -162,7 +169,7 @@
             }
             case 2:{
                 
-                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_friends"];
+                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_lesson"];
                 
                 cell.contentLabel.text = @"我的创业课程";
                 
@@ -171,7 +178,7 @@
             }
             case 3:{
                 
-                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_friends"];
+                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_salong"];
                 
                 cell.contentLabel.text = @"我的沙龙活动";
                 
@@ -180,7 +187,7 @@
             }
             case 4:{
                 
-                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_friends"];
+                cell.oneImageView.image  = [UIImage imageNamed:@"profile_icon_settings"];
                 
                 cell.contentLabel.text = @"设置";
                 
@@ -203,26 +210,27 @@
     
     if (indexPath.row == 0) {
         //跳转我的积分
-//        MineProjectViewController *projectVC = [[MineProjectViewController alloc] init];
-//        projectVC.user_id = [UserAccountManager sharedInstance].userId;
-//        [self.navigationController pushViewController:projectVC animated:YES];
-        
+//        MineIntegralViewController *integralVC = [[MineIntegralViewController alloc] init];
+//        
+//        [self.navigationController pushViewController:integralVC animated:YES];
         
     }else if (indexPath.row == 1){
         
         //跳转我的实训项目
-//        MineBankViewController *bankVC = [[MineBankViewController alloc] init];
-//        bankVC.user_id = [UserAccountManager sharedInstance].userId;
-//        
-//        [self.navigationController pushViewController:bankVC animated:YES];
+        JMMineProjectListViewController *projectVC = [[JMMineProjectListViewController alloc] init];
+        
+        [self.navigationController pushViewController:projectVC animated:YES];
         
         
     }else if (indexPath.row == 2) {
         
         //我的创业课程
-//        MineJobMarketViewController *jobMarketVC = [[MineJobMarketViewController alloc] init];
-//        jobMarketVC.user_id = [UserAccountManager sharedInstance].userId;
-//        [self.navigationController pushViewController:jobMarketVC animated:YES];
+        JMStartupProjectViewController *startupProjectVC = [[JMStartupProjectViewController alloc] init];
+        
+        [self.navigationController pushViewController:startupProjectVC animated:YES];
+        
+        
+
     }else if (indexPath.row == 3) {
         
         //我的沙龙活动
