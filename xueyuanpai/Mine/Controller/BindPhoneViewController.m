@@ -58,7 +58,7 @@
     
     
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(bindLabel.frame), 10, 100, 20)];
-    phoneLabel.text = [UserAccountManager sharedInstance].userMobile;
+    phoneLabel.text = [UserAccountManager sharedInstance].userTelphone;
     phoneLabel.font = [UIFont systemFontOfSize:14];
     [backGroundView addSubview:phoneLabel];
     
@@ -107,10 +107,10 @@
 -(void)sendmessage:(UIButton *)sender
 {
     
-    NSString * phoneNum = [UserAccountManager sharedInstance].userMobile;
+    NSString * phoneNum = [UserAccountManager sharedInstance].userTelphone;
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:phoneNum forKey:@"mobile"];
+    [params setObject:phoneNum forKey:@"telphone"];
 
     [[HttpClient sharedInstance]registerOfSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
         
@@ -154,9 +154,9 @@
     }
 
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    NSString * phoneNum = [UserAccountManager sharedInstance].userMobile;
+    NSString * phoneNum = [UserAccountManager sharedInstance].userTelphone;
     
-    [params setObject:phoneNum forKey:@"mobile"];
+    [params setObject:phoneNum forKey:@"telphone"];
     [params setValue: phoneCoder forKey:@"code"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
