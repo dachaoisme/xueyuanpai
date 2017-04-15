@@ -68,7 +68,7 @@
     sendMessageBtn.frame = CGRectMake(SCREEN_WIDTH - 100, 10, 100, 20);
     [sendMessageBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
     sendMessageBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [sendMessageBtn setTitleColor:[CommonUtils colorWithHex:@"00beaf"] forState:UIControlStateNormal];
+    [sendMessageBtn setTitleColor:[CommonUtils colorWithHex:@"00c05c"] forState:UIControlStateNormal];
     [sendMessageBtn addTarget:self action:@selector(sendmessage:) forControlEvents:UIControlEventTouchUpInside];
     [backGroundView addSubview:sendMessageBtn];
     
@@ -92,7 +92,7 @@
     //确定按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(15, CGRectGetMaxY(backGroundView.frame) + 10, SCREEN_WIDTH - 30, 48);
-    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+    button.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     [button setTitle:@"确定" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(makeSureAction) forControlEvents:UIControlEventTouchUpInside];
     button.layer.cornerRadius = 10.0;

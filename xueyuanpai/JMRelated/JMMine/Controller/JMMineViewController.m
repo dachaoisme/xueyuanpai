@@ -14,6 +14,8 @@
 #import "MineIntegralViewController.h"
 #import "JMMineProjectListViewController.h"
 #import "JMStartupProjectViewController.h"
+#import "JMMineActivityListViewController.h"
+#import "MineSettingViewController.h"
 @interface JMMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -234,19 +236,16 @@
     }else if (indexPath.row == 3) {
         
         //我的沙龙活动
-        //        MineFriendsViewController *friendsVC = [[MineFriendsViewController alloc] init];
-        //
-        //        [self.navigationController pushViewController:friendsVC animated:YES];
+        JMMineActivityListViewController *activityListVC = [[JMMineActivityListViewController alloc] init];
+
+        [self.navigationController pushViewController:activityListVC animated:YES];
         
-        EaseUsersListViewController *listViewController = [[EaseUsersListViewController alloc] init];
-        [self.navigationController pushViewController:listViewController animated:YES];
         
     }else if (indexPath.row == 4) {
         
         //设置
-//        MineCollectionViewController *collectionVC = [[MineCollectionViewController alloc] init];
-//        
-//        [self.navigationController pushViewController:collectionVC animated:YES];
+        MineSettingViewController *settingVC = [[MineSettingViewController alloc] init];
+        [self.navigationController pushViewController:settingVC animated:YES];
         
     }
 }

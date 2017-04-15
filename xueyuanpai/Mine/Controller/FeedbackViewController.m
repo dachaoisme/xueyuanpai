@@ -65,7 +65,7 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(15, CGRectGetMaxY(textView1.frame) + 10, SCREEN_WIDTH - 30, 48);
-    button.backgroundColor = [CommonUtils colorWithHex:@"00beaf"];
+    button.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     [button setTitle:@"提交" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(commitAction) forControlEvents:UIControlEventTouchUpInside];
     button.layer.cornerRadius = 10.0;

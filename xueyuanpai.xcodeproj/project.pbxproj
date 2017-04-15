@@ -45,7 +45,6 @@
 		166DD1461E9A0F7C00B2B002 /* MineFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0F81E9A0F7C00B2B002 /* MineFriendsViewController.m */; };
 		166DD1481E9A0F7C00B2B002 /* MineJobMarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0FC1E9A0F7C00B2B002 /* MineJobMarketViewController.m */; };
 		166DD1491E9A0F7C00B2B002 /* MineProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0FE1E9A0F7C00B2B002 /* MineProjectViewController.m */; };
-		166DD14A1E9A0F7C00B2B002 /* MineSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1001E9A0F7C00B2B002 /* MineSettingViewController.m */; };
 		166DD14B1E9A0F7C00B2B002 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1021E9A0F7C00B2B002 /* MineViewController.m */; };
 		166DD14C1E9A0F7C00B2B002 /* MyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1041E9A0F7C00B2B002 /* MyWalletViewController.m */; };
 		166DD14D1E9A0F7C00B2B002 /* SelectedBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1061E9A0F7C00B2B002 /* SelectedBankViewController.m */; };
@@ -879,6 +878,9 @@
 		DDD794A71EA07B990024C4E6 /* MineIntegralViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794A61EA07B990024C4E6 /* MineIntegralViewController.m */; };
 		DDD794AA1EA07DF90024C4E6 /* JMMineProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794A91EA07DF90024C4E6 /* JMMineProjectListViewController.m */; };
 		DDD794AD1EA082A10024C4E6 /* JMStartupProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794AC1EA082A10024C4E6 /* JMStartupProjectViewController.m */; };
+		DDD794B01EA09AF70024C4E6 /* JMMineActivityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794AF1EA09AF70024C4E6 /* JMMineActivityListViewController.m */; };
+		DDD794B51EA09B7B0024C4E6 /* JMMineActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794B41EA09B7B0024C4E6 /* JMMineActivityTableViewCell.m */; };
+		DDD794B81EA116900024C4E6 /* MineSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794B71EA116900024C4E6 /* MineSettingViewController.m */; };
 		DDE8C2321CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8C2301CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m */; };
 		DDE8C2331CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE8C2311CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib */; };
 		DDE8F62B1CFD8E8600680214 /* JobMarketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8F62A1CFD8E8600680214 /* JobMarketDetailViewController.m */; };
@@ -1030,8 +1032,6 @@
 		166DD0FC1E9A0F7C00B2B002 /* MineJobMarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineJobMarketViewController.m; sourceTree = "<group>"; };
 		166DD0FD1E9A0F7C00B2B002 /* MineProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineProjectViewController.h; sourceTree = "<group>"; };
 		166DD0FE1E9A0F7C00B2B002 /* MineProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineProjectViewController.m; sourceTree = "<group>"; };
-		166DD0FF1E9A0F7C00B2B002 /* MineSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineSettingViewController.h; sourceTree = "<group>"; };
-		166DD1001E9A0F7C00B2B002 /* MineSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineSettingViewController.m; sourceTree = "<group>"; };
 		166DD1011E9A0F7C00B2B002 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		166DD1021E9A0F7C00B2B002 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		166DD1031E9A0F7C00B2B002 /* MyWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWalletViewController.h; sourceTree = "<group>"; };
@@ -2326,6 +2326,12 @@
 		DDD794A91EA07DF90024C4E6 /* JMMineProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMineProjectListViewController.m; sourceTree = "<group>"; };
 		DDD794AB1EA082A10024C4E6 /* JMStartupProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMStartupProjectViewController.h; sourceTree = "<group>"; };
 		DDD794AC1EA082A10024C4E6 /* JMStartupProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMStartupProjectViewController.m; sourceTree = "<group>"; };
+		DDD794AE1EA09AF70024C4E6 /* JMMineActivityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMineActivityListViewController.h; sourceTree = "<group>"; };
+		DDD794AF1EA09AF70024C4E6 /* JMMineActivityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMineActivityListViewController.m; sourceTree = "<group>"; };
+		DDD794B31EA09B7B0024C4E6 /* JMMineActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMineActivityTableViewCell.h; sourceTree = "<group>"; };
+		DDD794B41EA09B7B0024C4E6 /* JMMineActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMineActivityTableViewCell.m; sourceTree = "<group>"; };
+		DDD794B61EA116900024C4E6 /* MineSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineSettingViewController.h; sourceTree = "<group>"; };
+		DDD794B71EA116900024C4E6 /* MineSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineSettingViewController.m; sourceTree = "<group>"; };
 		DDE8C22F1CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolRecruitmentTableViewCell.h; sourceTree = "<group>"; };
 		DDE8C2301CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolRecruitmentTableViewCell.m; sourceTree = "<group>"; };
 		DDE8C2311CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolRecruitmentTableViewCell.xib; sourceTree = "<group>"; };
@@ -2492,9 +2498,9 @@
 		166DD07F1E9A08ED00B2B002 /* JMMine */ = {
 			isa = PBXGroup;
 			children = (
+				DDD794B21EA09B3E0024C4E6 /* Model */,
+				DDD794B11EA09B300024C4E6 /* View */,
 				166DD0861E9A094D00B2B002 /* Controller */,
-				166DD0871E9A094D00B2B002 /* Model */,
-				166DD0881E9A094D00B2B002 /* View */,
 			);
 			path = JMMine;
 			sourceTree = "<group>";
@@ -2548,24 +2554,14 @@
 				DDD794A91EA07DF90024C4E6 /* JMMineProjectListViewController.m */,
 				DDD794AB1EA082A10024C4E6 /* JMStartupProjectViewController.h */,
 				DDD794AC1EA082A10024C4E6 /* JMStartupProjectViewController.m */,
+				DDD794AE1EA09AF70024C4E6 /* JMMineActivityListViewController.h */,
+				DDD794AF1EA09AF70024C4E6 /* JMMineActivityListViewController.m */,
+				DDD794B61EA116900024C4E6 /* MineSettingViewController.h */,
+				DDD794B71EA116900024C4E6 /* MineSettingViewController.m */,
 				DDD794A51EA07B990024C4E6 /* MineIntegralViewController.h */,
 				DDD794A61EA07B990024C4E6 /* MineIntegralViewController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		166DD0871E9A094D00B2B002 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		166DD0881E9A094D00B2B002 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		166DD0921E9A0E5000B2B002 /* Account */ = {
@@ -2722,8 +2718,6 @@
 				166DD0FC1E9A0F7C00B2B002 /* MineJobMarketViewController.m */,
 				166DD0FD1E9A0F7C00B2B002 /* MineProjectViewController.h */,
 				166DD0FE1E9A0F7C00B2B002 /* MineProjectViewController.m */,
-				166DD0FF1E9A0F7C00B2B002 /* MineSettingViewController.h */,
-				166DD1001E9A0F7C00B2B002 /* MineSettingViewController.m */,
 				166DD1011E9A0F7C00B2B002 /* MineViewController.h */,
 				166DD1021E9A0F7C00B2B002 /* MineViewController.m */,
 				166DD1031E9A0F7C00B2B002 /* MyWalletViewController.h */,
@@ -5179,6 +5173,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		DDD794B11EA09B300024C4E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DDD794B31EA09B7B0024C4E6 /* JMMineActivityTableViewCell.h */,
+				DDD794B41EA09B7B0024C4E6 /* JMMineActivityTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DDD794B21EA09B3E0024C4E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		DDEB257D1D1027CB00EF6CE3 /* XHRadarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -6021,6 +6031,7 @@
 				DDB28E261D2C8A7E004C8F70 /* PSTGridLayoutSection.m in Sources */,
 				DDE958FA1D16F403000B4007 /* UIImage+ChangeImageColor.m in Sources */,
 				58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */,
+				DDD794B01EA09AF70024C4E6 /* JMMineActivityListViewController.m in Sources */,
 				58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */,
 				DDCD70CB1D06CA65009FBE9A /* SendCourierThreeTableViewCell.m in Sources */,
 				DDB28DE51D2C8A7E004C8F70 /* EMCDDeviceManager+Remind.m in Sources */,
@@ -6069,6 +6080,7 @@
 				DDAB05911D01BF6A007A6027 /* BusinessCenterViewController.m in Sources */,
 				58BA78D51CDCE191000C71D3 /* IndexScrollView.m in Sources */,
 				DDB28E091D2C8A7E004C8F70 /* DACircularProgressView.m in Sources */,
+				DDD794B51EA09B7B0024C4E6 /* JMMineActivityTableViewCell.m in Sources */,
 				166DD1741E9A22E200B2B002 /* YYClassInfo.m in Sources */,
 				DD1957CA1D190EFE00FF01F0 /* PublishInformationSuccessViewController.m in Sources */,
 				DDCD70BA1D06C30D009FBE9A /* SendCourierViewController.m in Sources */,
@@ -6084,7 +6096,6 @@
 				DD09B7B81E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m in Sources */,
 				58F67C371CD9CF9500D55BE0 /* NSDictionary+SafeExpectations.m in Sources */,
 				DDD794AD1EA082A10024C4E6 /* JMStartupProjectViewController.m in Sources */,
-				166DD14A1E9A0F7C00B2B002 /* MineSettingViewController.m in Sources */,
 				DD27DB641D2BE011007F5917 /* SystemMessageDetailView.m in Sources */,
 				58487CDF1D00748900EE0E0D /* PickerCell.m in Sources */,
 				DDD0BDC01CFA929800073290 /* PositionSearchViewController.m in Sources */,
@@ -6299,6 +6310,7 @@
 				166DD0C21E9A0E5000B2B002 /* SelectedSexView.m in Sources */,
 				DDAB05BB1D033649007A6027 /* BusinessClassRoomViewController.m in Sources */,
 				DDF519EA1E9F4C6A00E72DEC /* JMCollectCourierListTableViewCell.m in Sources */,
+				DDD794B81EA116900024C4E6 /* MineSettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
