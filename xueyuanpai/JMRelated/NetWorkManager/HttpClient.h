@@ -59,6 +59,24 @@
 - (void)getMineTrainCourseListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 ////我的-获取创业沙龙列表
 - (void)getMineTrainSalonListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+///根据关键字查询学校
+- (void)searchCollegeWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+///更新个人用户资料
+- (void)updateStudentInfoWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -133,24 +151,8 @@
  */
 
 - (void)changePasswordWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  根据关键字查询学校
- *
- *  @param
- *
- *  @return
- */
 
-- (void)searchCollegeWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  更新个人用户资料
- *
- *  @param
- *
- *  @return
- */
 
-- (void)updateStudentInfoWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 /**
  *  @brief  更新导师用户资料

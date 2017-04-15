@@ -212,7 +212,6 @@
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
             
             
-            ///[self.navigationController popViewControllerAnimated:YES];
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];
@@ -247,7 +246,9 @@
 #pragma mark - 随便看看
 -(void)justToLook:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

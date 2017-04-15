@@ -59,7 +59,8 @@
 #define METHOD_OF_COLLEGE_SEARCH         @"college/index"
 ///时间银行:上传用户头像
 #define METHOD_OF_ADD_ICON_UPLOAD           @"student/upload/"
-
+///更新个人资料
+#define METHOD_OF_UPDATE_STUDENT_INFO    @"student/updateuserinfo/"
 
 
 #define ENTITY_TYPE_PROJECT         @"project"  ///创业项目
@@ -97,8 +98,7 @@
 #define METHOD_OF_CHECKING_MESSAGE       @"v1/user/validatecaptcha?"
 ///修改密码
 #define METHOD_OF_UPDATE_PASSWORD        @"v1/user/updatepasswd?"
-///更新个人资料
-#define METHOD_OF_UPDATE_STUDENT_INFO    @"v1/user/updatestudentinfo?"
+
 ///更新导师资料
 #define METHOD_OF_UPDATE_TEACHER_INFO    @"v1/user/updateteacherinfo?"
 

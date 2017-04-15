@@ -109,7 +109,7 @@
     }
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:phoneNum forKey:@"mobile"];
+    [params setObject:phoneNum forKey:@"telphone"];
     [[HttpClient sharedInstance]registerOfSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode == ResponseCodeSuccess) {
@@ -146,7 +146,7 @@
      */
     //校验验证码
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:phoneTextField.text forKey:@"mobile"];
+    [dic setObject:phoneTextField.text forKey:@"telphone"];
     [dic setObject:checkingMessageTextField.text forKey:@"captcha"];
     [[HttpClient sharedInstance]validateTelephoneAndSecurityCodeWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {

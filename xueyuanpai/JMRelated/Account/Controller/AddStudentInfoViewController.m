@@ -141,7 +141,7 @@
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
         NSData * imageData = UIImagePNGRepresentation(scaleImg);
         [imageDic setObject:imageData forKey:@"Users[file]"];
-        [[HttpClient sharedInstance]uploadImageWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [[HttpClient sharedInstance]uploadIconWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
             avatarImageUploaded = [model.responseCommonDic objectForKey:@"picUrl"];
         } withFaileBlock:^(NSError *error) {
             
@@ -221,7 +221,9 @@
     [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }
@@ -233,7 +235,9 @@
 #pragma mark - 稍后完善
 -(void)unperfect:(UIButton *)sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
