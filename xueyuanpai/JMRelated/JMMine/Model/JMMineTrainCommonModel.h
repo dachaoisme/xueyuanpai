@@ -27,7 +27,7 @@
                  "count_mark": 0,
                  "college_id": 0
 
- 
+                "count_partin": 0 ///创业沙龙才有
  */
 
 @property(nonatomic,strong)NSString *user_id;
@@ -45,4 +45,5 @@
 @property(nonatomic,strong)NSString *count_comment;
 @property(nonatomic,strong)NSString *count_mark;
 @property(nonatomic,strong)NSString *college_id;
+@property(nonatomic,strong)NSString *count_partin;
 @end

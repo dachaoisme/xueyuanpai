@@ -9,9 +9,14 @@
 #import "JMMineActivityListViewController.h"
 
 #import "JMMineActivityTableViewCell.h"
-
+#import "JMMineTrainCommonModel.h"
 @interface JMMineActivityListViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    int currentPage;
+    int nextPage;
+    int pageSize;
+    NSMutableArray *dataArray;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -30,14 +35,50 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    currentPage=nextPage=1;
+    pageSize=10;
+    dataArray = [NSMutableArray array];
     self.title = @"我的沙龙活动";
     [self createLeftBackNavBtn];
     [self createTableView];
-    
+    [self requestData];
     
 }
-
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
+}
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]getMineTrainSalonListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMMineTrainCommonModel *model = [JMMineTrainCommonModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            
+        }
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        [self.tableView.footer endRefreshing];
+    }];
+}
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
@@ -48,7 +89,8 @@
     [self.view addSubview:_tableView];
     
     [_tableView registerClass:[JMMineActivityTableViewCell class] forCellReuseIdentifier:@"JMMineActivityTableViewCell"];
-    
+ 
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 
@@ -61,7 +103,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return dataArray.count;
 }
 
 
@@ -69,6 +111,11 @@
     
     JMMineActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMMineActivityTableViewCell"];
     
+    JMMineTrainCommonModel * model = [dataArray objectAtIndex:indexPath.section];
+    cell.titleLabel.text = model.name;
+    cell.subtitleLabel.text = model.job;
+    cell.dateLabel.text = model.create_time;
+    [cell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
     
     return cell;
     
