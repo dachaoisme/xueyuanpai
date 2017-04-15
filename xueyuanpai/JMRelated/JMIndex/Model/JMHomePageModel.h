@@ -103,6 +103,7 @@
      "create_time": "2017-03-19 11:29:17",
      "update_time": "2017-03-19 11:29:17",
      "colllege_name": "化工学院",
+    "is_signed": 1, //是否报名过  1报名过 0 未报名
      "members": [   //项目成员
      {
          "id": 3,
@@ -137,6 +138,7 @@
 @property(nonatomic,strong)NSString *create_time;
 @property(nonatomic,strong)NSString *update_time;
 @property(nonatomic,strong)NSString *colllege_name;
+@property(nonatomic,strong)NSString *is_signed;
 @property (nonatomic, strong) NSMutableArray<JMTrainProjectPeopleModel *> *members;
 @end
 

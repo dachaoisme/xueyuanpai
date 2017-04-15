@@ -361,7 +361,13 @@
     //中间的报名按钮
     UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
-    [collectionBtn setTitle:self.recruitment_number forState:UIControlStateNormal];
+    if ([detailModel.is_signed integerValue]==1) {
+        ///已经报过名
+        [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
+    }else{
+        [collectionBtn setTitle:[NSString stringWithFormat:@"我要报名 %@",self.recruitment_number] forState:UIControlStateNormal];
+    }
+    
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
     collectionBtn.layer.masksToBounds = YES;
