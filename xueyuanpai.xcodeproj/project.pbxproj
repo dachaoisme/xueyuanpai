@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		16154FAF1E9FBFD700FB46AA /* JMJobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */; };
 		16154FB31EA1BA0300FB46AA /* JMMineTrainCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FB21EA1BA0300FB46AA /* JMMineTrainCommonModel.m */; };
+		16154FB61EA24ED400FB46AA /* JMCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FB51EA24ED400FB46AA /* JMCourseModel.m */; };
+		16154FB91EA2537300FB46AA /* JMSalonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FB81EA2537300FB46AA /* JMSalonModel.m */; };
+		16154FBC1EA2559E00FB46AA /* JMCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FBB1EA2559E00FB46AA /* JMCourseViewController.m */; };
+		16154FBF1EA255B500FB46AA /* JMSalonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FBE1EA255B500FB46AA /* JMSalonViewController.m */; };
+		16154FC21EA2594700FB46AA /* JMCuangkeHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FC11EA2594700FB46AA /* JMCuangkeHomePageViewController.m */; };
+		16154FC51EA2596900FB46AA /* JMKongJianHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FC41EA2596900FB46AA /* JMKongJianHomePageViewController.m */; };
 		166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */; };
 		166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */; };
 		166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0901E9A099F00B2B002 /* JMMineViewController.m */; };
@@ -955,6 +961,18 @@
 		16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMJobListViewController.m; sourceTree = "<group>"; };
 		16154FB11EA1BA0300FB46AA /* JMMineTrainCommonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMineTrainCommonModel.h; sourceTree = "<group>"; };
 		16154FB21EA1BA0300FB46AA /* JMMineTrainCommonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMineTrainCommonModel.m; sourceTree = "<group>"; };
+		16154FB41EA24ED400FB46AA /* JMCourseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCourseModel.h; sourceTree = "<group>"; };
+		16154FB51EA24ED400FB46AA /* JMCourseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCourseModel.m; sourceTree = "<group>"; };
+		16154FB71EA2537300FB46AA /* JMSalonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSalonModel.h; sourceTree = "<group>"; };
+		16154FB81EA2537300FB46AA /* JMSalonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSalonModel.m; sourceTree = "<group>"; };
+		16154FBA1EA2559E00FB46AA /* JMCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCourseViewController.h; sourceTree = "<group>"; };
+		16154FBB1EA2559E00FB46AA /* JMCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCourseViewController.m; sourceTree = "<group>"; };
+		16154FBD1EA255B500FB46AA /* JMSalonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSalonViewController.h; sourceTree = "<group>"; };
+		16154FBE1EA255B500FB46AA /* JMSalonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSalonViewController.m; sourceTree = "<group>"; };
+		16154FC01EA2594700FB46AA /* JMCuangkeHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCuangkeHomePageViewController.h; sourceTree = "<group>"; };
+		16154FC11EA2594700FB46AA /* JMCuangkeHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCuangkeHomePageViewController.m; sourceTree = "<group>"; };
+		16154FC31EA2596900FB46AA /* JMKongJianHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKongJianHomePageViewController.h; sourceTree = "<group>"; };
+		16154FC41EA2596900FB46AA /* JMKongJianHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMKongJianHomePageViewController.m; sourceTree = "<group>"; };
 		166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewController.h; sourceTree = "<group>"; };
 		166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewController.m; sourceTree = "<group>"; };
 		166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanViewController.h; sourceTree = "<group>"; };
@@ -2522,6 +2540,10 @@
 			children = (
 				166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */,
 				166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */,
+				16154FC01EA2594700FB46AA /* JMCuangkeHomePageViewController.h */,
+				16154FC11EA2594700FB46AA /* JMCuangkeHomePageViewController.m */,
+				16154FC31EA2596900FB46AA /* JMKongJianHomePageViewController.h */,
+				16154FC41EA2596900FB46AA /* JMKongJianHomePageViewController.m */,
 				DD4644541E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.h */,
 				DD4644551E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m */,
 				DD09B7B61E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.h */,
@@ -2532,6 +2554,10 @@
 				DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */,
 				16154FAD1E9FBFD700FB46AA /* JMJobListViewController.h */,
 				16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */,
+				16154FBA1EA2559E00FB46AA /* JMCourseViewController.h */,
+				16154FBB1EA2559E00FB46AA /* JMCourseViewController.m */,
+				16154FBD1EA255B500FB46AA /* JMSalonViewController.h */,
+				16154FBE1EA255B500FB46AA /* JMSalonViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2820,6 +2846,10 @@
 			children = (
 				166DD1761E9BCF2D00B2B002 /* JMHomePageModel.h */,
 				166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */,
+				16154FB41EA24ED400FB46AA /* JMCourseModel.h */,
+				16154FB51EA24ED400FB46AA /* JMCourseModel.m */,
+				16154FB71EA2537300FB46AA /* JMSalonModel.h */,
+				16154FB81EA2537300FB46AA /* JMSalonModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6004,6 +6034,7 @@
 				DD09B7C71E9CDD0F001D1DB0 /* HomePageDetailOneTypeTableViewCell.m in Sources */,
 				DDB28E311D2C8A7E004C8F70 /* EaseChineseToPinyin.m in Sources */,
 				DDB28E241D2C8A7E004C8F70 /* PSTGridLayoutItem.m in Sources */,
+				16154FBF1EA255B500FB46AA /* JMSalonViewController.m in Sources */,
 				58C27AAA1CE208440036D105 /* IndexColumnsModel.m in Sources */,
 				DDF519F41E9F591A00E72DEC /* JMMailDeliveryOneTypeTableViewCell.m in Sources */,
 				DDBFD1D51D2F418C00E15DCF /* MyHomePageModel.m in Sources */,
@@ -6030,6 +6061,7 @@
 				DDB28E4A1D2C8A7E004C8F70 /* EaseBubbleView+Voice.m in Sources */,
 				DDB28DE81D2C8A7E004C8F70 /* wav.mm in Sources */,
 				166DD1511E9A0F7C00B2B002 /* MineModel.m in Sources */,
+				16154FC21EA2594700FB46AA /* JMCuangkeHomePageViewController.m in Sources */,
 				DDAB05A91D01D957007A6027 /* BusinessTeacherTwoTableViewCell.m in Sources */,
 				DDAB05B41D028051007A6027 /* TimeBankDetailThreeTableViewCell.m in Sources */,
 				DDD0BDAA1CFA735A00073290 /* PositionInforTableViewCell.m in Sources */,
@@ -6041,6 +6073,7 @@
 				DDCD70CB1D06CA65009FBE9A /* SendCourierThreeTableViewCell.m in Sources */,
 				DDB28DE51D2C8A7E004C8F70 /* EMCDDeviceManager+Remind.m in Sources */,
 				DDB28E341D2C8A7E004C8F70 /* EaseEmoji.m in Sources */,
+				16154FB91EA2537300FB46AA /* JMSalonModel.m in Sources */,
 				166DD14E1E9A0F7C00B2B002 /* TopUpViewController.m in Sources */,
 				DDD3E53A1CF49669001B579E /* SchoolColumnView.m in Sources */,
 				DDE8F62B1CFD8E8600680214 /* JobMarketDetailViewController.m in Sources */,
@@ -6066,6 +6099,7 @@
 				58F80A0A1D0934680099DCCD /* UinversitySocietyRecruitmentViewController.m in Sources */,
 				583B87A31D4CF3B100D888A6 /* MFWelcomPageController.m in Sources */,
 				166DD15E1E9A0F7C00B2B002 /* MineFriendsTableViewCell.m in Sources */,
+				16154FC51EA2596900FB46AA /* JMKongJianHomePageViewController.m in Sources */,
 				DD46448B1E9E944900EAE186 /* SGSegmentedControlBottomView.m in Sources */,
 				DDB28E161D2C8A7E004C8F70 /* UIImage+EMWebP.m in Sources */,
 				166DD0B71E9A0E5000B2B002 /* ForgetPasswordOfSetNewPasswordViewController.m in Sources */,
@@ -6231,6 +6265,7 @@
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
 				DDB28E231D2C8A7E004C8F70 /* PSTGridLayoutInfo.m in Sources */,
 				166DD1481E9A0F7C00B2B002 /* MineJobMarketViewController.m in Sources */,
+				16154FB61EA24ED400FB46AA /* JMCourseModel.m in Sources */,
 				166DD0D81E9A0F4100B2B002 /* InboxModel.m in Sources */,
 				166DD14D1E9A0F7C00B2B002 /* SelectedBankViewController.m in Sources */,
 				166DD1691E9A0F7C00B2B002 /* TopUpTwoTableViewCell.m in Sources */,
@@ -6245,6 +6280,7 @@
 				DDB28E391D2C8A7E004C8F70 /* EaseConversationListViewController.m in Sources */,
 				DDB28E101D2C8A7E004C8F70 /* EMSDWebImagePrefetcher.m in Sources */,
 				DD41281E1CF3427400227066 /* ActivityDetailViewController.m in Sources */,
+				16154FBC1EA2559E00FB46AA /* JMCourseViewController.m in Sources */,
 				DDBFD1DB1D2F7ADD00E15DCF /* ShufflingDetailViewController.m in Sources */,
 				DDB28DE01D2C8A7E004C8F70 /* EMAudioPlayerUtil.m in Sources */,
 				DDB28E3D1D2C8A7E004C8F70 /* EaseUsersListViewController.m in Sources */,

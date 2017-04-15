@@ -19,6 +19,8 @@
 #import "JMHomePageEndProjectDetailViewController.h"
 
 #import "JMTrainingProjectListViewController.h"
+#import "JMCuangkeHomePageViewController.h"
+#import "JMKongJianHomePageViewController.h"
 @interface JMHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,JMHomePageOneTypeCellTableViewCellDelegate,JMHomePageTwoTypeTableViewCellDelegate>
 {
     NSMutableArray *bannerTitleArray;
@@ -289,7 +291,9 @@
 - (void)tapDreamSpaceAction{
     
     [CommonUtils showToastWithStr:@"集梦空间"];
+    JMCuangkeHomePageViewController *trainingProjectListVC = [[JMCuangkeHomePageViewController alloc] init];
     
+    [self.navigationController pushViewController:trainingProjectListVC animated:YES];
 }
 
 
@@ -297,7 +301,9 @@
 - (void)tapDreamGuestAction{
     
     [CommonUtils showToastWithStr:@"集梦创客"];
-
+    JMKongJianHomePageViewController *trainingProjectListVC = [[JMKongJianHomePageViewController alloc] init];
+    
+    [self.navigationController pushViewController:trainingProjectListVC animated:YES];
 }
 
 

@@ -113,6 +113,103 @@
     }];
 }
 
+#pragma mark - 创业课程相关
+
+///获取实训项目列表
+- (void)getTrainCourseWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_COURSE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+///获取实训项目详情
+- (void)getTrainCourseDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_COURSE_DETAIL withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        
+        
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+- (void)whetherTrainCourseAlreadyAddFavouriteWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_COURSE_WHETHER_IS_LIKE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+///点赞
+- (void)trainCourseAddFavouriteWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_COURSE_LIKE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+#pragma mark - 创业沙龙相关
+///获取实训项目列表
+- (void)getTrainSalonWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_SALON withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+///获取实训项目详情
+- (void)getTrainSalonDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_SALON_DETAIL withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        
+        
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+- (void)whetherTrainSalonAlreadyAddFavouriteWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_SALON_WHETHER_IS_LIKE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+///点赞
+- (void)trainSalonAddFavouriteWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_SALON_LIKE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
 #pragma mark -个人中心-列表相关
 ////我的-获取实训项目列表
 - (void)getMineTrainProjectListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock

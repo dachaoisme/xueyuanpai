@@ -18,7 +18,7 @@
 @property(nonatomic,strong)NSString *update_time;
 @end
 
-
+/////////////////////实训项目列表item/////////////////////
 /*
  "id": "1",      //项目序号
  "title": "sww", //标题
@@ -60,7 +60,7 @@ is_online  1:线上 0线下
 @property(nonatomic,strong)NSString *is_online;
 @end
 
-/////////////////////实训项目详情
+/////////////////////实训项目详情/////////////////////
 /*
  
  "members": [   //项目成员

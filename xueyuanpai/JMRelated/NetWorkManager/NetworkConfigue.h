@@ -21,6 +21,7 @@
 
 
 /////////////////////////////////////////集梦盒子二期/////////////////////////////////////////
+////////实训项目相关相关////////
 ///轮播图
 #define METHOD_OF_BANNER    @"focus/index"
 ///获取实训项目
@@ -37,15 +38,35 @@
 #define METHOD_OF_JOB_LIST @"project/jobs"
 ///报名
 #define METHOD_OF_SIGN_UP @"user/partin"
+
+////////创业课程相关////////
+///创业课程列表
+#define METHOD_OF_TRAIN_COURSE  @"course/index"
+///创业课程详情
+#define METHOD_OF_TRAIN_COURSE_DETAIL  @"course/detail" 
+///对创业课程点赞接口 （第一次点赞 再次取消点赞）
+#define METHOD_OF_TRAIN_COURSE_LIKE  @"course/like"
+///检查对创业课程是否点赞过
+#define METHOD_OF_TRAIN_COURSE_WHETHER_IS_LIKE  @"course/isliked"
+
+////////创业沙龙相关////////
+///创业沙龙列表
+#define METHOD_OF_TRAIN_SALON  @"salon/index"
+///创业沙龙详情
+#define METHOD_OF_TRAIN_SALON_DETAIL  @"salon/detail"
+///对创业沙龙点赞接口 （第一次点赞 再次取消点赞）
+#define METHOD_OF_TRAIN_SALON_LIKE  @"salon/like"
+///检查对创业沙龙是否点赞过
+#define METHOD_OF_TRAIN_SALON_WHETHER_IS_LIKE  @"salon/isliked"
+
+
+
 ////我的
 ///我的实训项目列表
 #define METHOD_OF_TRAIN_PROJECT_LIST    @"user/project"
-
-
-///创业课程相关
+///我的创业课程相关
 #define METHOD_OF_TRAIN_COURSE_LIST  @"user/course"
-
-///创业沙龙相关
+///我的创业沙龙相关
 #define METHOD_OF_TRAIN_SALON_LIST  @"user/salon"
 
 
