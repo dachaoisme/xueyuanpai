@@ -37,6 +37,16 @@
 #define METHOD_OF_JOB_LIST @"project/jobs"
 ///报名
 #define METHOD_OF_SIGN_UP @"user/partin"
+////我的
+///我的实训项目列表
+#define METHOD_OF_TRAIN_PROJECT_LIST    @"user/project"
+
+
+///创业课程相关
+#define METHOD_OF_TRAIN_COURSE_LIST  @"user/course"
+
+///创业沙龙相关
+#define METHOD_OF_TRAIN_SALON_LIST  @"user/salon"
 
 
 ///登录
@@ -52,10 +62,9 @@
 
 
 
-
-
-
-
+#define ENTITY_TYPE_PROJECT         @"project"  ///创业项目
+#define ENTITY_TYPE_SALON           @"salon"    ///创业沙龙
+#define ENTITY_TYPE_COURSE          @"course"   ///创业课程
 
 
 

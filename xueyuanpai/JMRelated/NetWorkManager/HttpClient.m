@@ -112,6 +112,64 @@
         failBlock(error);
     }];
 }
+
+#pragma mark -个人中心-列表相关
+////我的-获取实训项目列表
+- (void)getMineTrainProjectListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_PROJECT_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+////我的-获取创业课程列表
+- (void)getMineTrainCourseListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_COURSE_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+////我的-获取创业沙龙列表
+- (void)getMineTrainSalonListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_SALON_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///登录
 - (void)loginWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {

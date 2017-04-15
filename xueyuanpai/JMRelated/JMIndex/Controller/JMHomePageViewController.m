@@ -218,17 +218,19 @@
         //未结束的项目的详情
         JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row-1];
         if ([model.status intValue]==1) {
-
+            ///正在招募
+            //未结束的项目的详情
             JMHomePageViewTrainingProjectDetailController *detailVC = [[JMHomePageViewTrainingProjectDetailController alloc] init];
             detailVC.title = model.title;
-            detailVC.model = model;
+            detailVC.trainProjectId = model.trainProjectId;
+            detailVC.count_like = model.count_like;
+            detailVC.recruitment_number = model.recruitment_number;
+            detailVC.count_comment = model.count_comment;
             [self.navigationController pushViewController:detailVC animated:YES];
-            
         }else{
-            
             //已结束的项目的详情
             JMHomePageEndProjectDetailViewController *endProject = [[JMHomePageEndProjectDetailViewController alloc] init];
-            
+            endProject.trainProjectId = model.trainProjectId;
             [self.navigationController pushViewController:endProject animated:YES];
         }
     }

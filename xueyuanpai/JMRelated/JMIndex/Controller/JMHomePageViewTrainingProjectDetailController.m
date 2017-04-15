@@ -116,7 +116,7 @@
     
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setValue:self.model.trainProjectId forKey:@"project_id"];
+    [dic setValue:self.trainProjectId forKey:@"project_id"];
     //[dic setObject:self.model.trainProjectId  forKey:@"project_id"];
     [[HttpClient sharedInstance] getTrainProjectDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
         detailModel = [JMTrainProjectDetailModel yy_modelWithDictionary:listDic];
@@ -346,7 +346,7 @@
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
+    [zanBtn setTitle:self.count_like forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -361,7 +361,7 @@
     //中间的报名按钮
     UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
-    [collectionBtn setTitle:self.model.recruitment_number forState:UIControlStateNormal];
+    [collectionBtn setTitle:self.recruitment_number forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
     collectionBtn.layer.masksToBounds = YES;
@@ -374,7 +374,7 @@
     //右侧评论按钮
     commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
-    [commentBtn setTitle:self.model.count_comment forState:UIControlStateNormal];
+    [commentBtn setTitle:self.count_comment forState:UIControlStateNormal];
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
@@ -392,7 +392,7 @@
 -(void)whetherAlreadyZan
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.model.trainProjectId forKey:@"project_id"];
+    [dic setObject:self.trainProjectId forKey:@"project_id"];
     if ([UserAccountManager sharedInstance].userId) {
         [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     }
@@ -417,7 +417,7 @@
 - (void)zanAction{
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.model.trainProjectId forKey:@"project_id"];
+    [dic setObject:self.trainProjectId forKey:@"project_id"];
     [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainProjectAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
@@ -445,7 +445,7 @@
 //    [CommonUtils showToastWithStr:@"报名"];
     
     JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
-    signUpAction.trainProjectId = self.model.trainProjectId;
+    signUpAction.trainProjectId = self.trainProjectId;
     [self.navigationController pushViewController:signUpAction animated:YES];
 }
 #pragma mark - 评论
@@ -477,7 +477,7 @@
      */
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.model.trainProjectId forKey:@"entity_id"];
+    [dic setObject:self.trainProjectId forKey:@"entity_id"];
     [dic setObject:@"project" forKey:@"entity_type"];
     if ([UserAccountManager sharedInstance].userId) {
         [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];

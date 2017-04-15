@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16154FAF1E9FBFD700FB46AA /* JMJobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */; };
+		16154FB31EA1BA0300FB46AA /* JMMineTrainCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FB21EA1BA0300FB46AA /* JMMineTrainCommonModel.m */; };
 		166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */; };
 		166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */; };
 		166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0901E9A099F00B2B002 /* JMMineViewController.m */; };
@@ -952,6 +953,8 @@
 /* Begin PBXFileReference section */
 		16154FAD1E9FBFD700FB46AA /* JMJobListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMJobListViewController.h; sourceTree = "<group>"; };
 		16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMJobListViewController.m; sourceTree = "<group>"; };
+		16154FB11EA1BA0300FB46AA /* JMMineTrainCommonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMineTrainCommonModel.h; sourceTree = "<group>"; };
+		16154FB21EA1BA0300FB46AA /* JMMineTrainCommonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMineTrainCommonModel.m; sourceTree = "<group>"; };
 		166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewController.h; sourceTree = "<group>"; };
 		166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewController.m; sourceTree = "<group>"; };
 		166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanViewController.h; sourceTree = "<group>"; };
@@ -2458,6 +2461,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16154FB01EA1B9F400FB46AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16154FB11EA1BA0300FB46AA /* JMMineTrainCommonModel.h */,
+				16154FB21EA1BA0300FB46AA /* JMMineTrainCommonModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		166DD07C1E9A08AE00B2B002 /* JMRelated */ = {
 			isa = PBXGroup;
 			children = (
@@ -2498,7 +2510,7 @@
 		166DD07F1E9A08ED00B2B002 /* JMMine */ = {
 			isa = PBXGroup;
 			children = (
-				DDD794B21EA09B3E0024C4E6 /* Model */,
+				16154FB01EA1B9F400FB46AA /* Model */,
 				DDD794B11EA09B300024C4E6 /* View */,
 				166DD0861E9A094D00B2B002 /* Controller */,
 			);
@@ -5182,13 +5194,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DDD794B21EA09B3E0024C4E6 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		DDEB257D1D1027CB00EF6CE3 /* XHRadarView */ = {
 			isa = PBXGroup;
 			children = (
@@ -6105,6 +6110,7 @@
 				DDB28E0A1D2C8A7E004C8F70 /* EMSDImageCache.m in Sources */,
 				DDB28E401D2C8A7E004C8F70 /* EaseBaseMessageCell.m in Sources */,
 				58F67C341CD9CF9500D55BE0 /* UIScrollView+MJExtension.m in Sources */,
+				16154FB31EA1BA0300FB46AA /* JMMineTrainCommonModel.m in Sources */,
 				DDB28E1E1D2C8A7E004C8F70 /* PSTCollectionViewData.m in Sources */,
 				DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */,
 				DDD794A71EA07B990024C4E6 /* MineIntegralViewController.m in Sources */,

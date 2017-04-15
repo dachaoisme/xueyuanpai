@@ -53,7 +53,7 @@
     
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setValue:self.model.trainProjectId forKey:@"project_id"];
+    [dic setValue:self.trainProjectId forKey:@"project_id"];
     //[dic setObject:self.model.trainProjectId  forKey:@"project_id"];
     [[HttpClient sharedInstance] getTrainProjectDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
         detailModel = [JMTrainProjectDetailModel yy_modelWithDictionary:listDic];

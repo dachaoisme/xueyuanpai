@@ -12,5 +12,6 @@
 
 /////////////////////正在招募报名的实训项目详情/////////////////////
 
-@property(nonatomic,strong)JMTrainProjectModel * model;
+@property(nonatomic,strong)NSString * trainProjectId;
+
 @end
