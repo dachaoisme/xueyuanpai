@@ -14,9 +14,8 @@
 #import "JMSignUpTrainingProjectViewController.h"
 #import "JMHomePageModel.h"
 
-#import "CommentInputView.h"
-
-@interface JMHomePageViewTrainingProjectDetailController ()<UITableViewDelegate,UITableViewDataSource,CommentInputViewDelegate>
+#import "JMCommentListViewController.h"
+@interface JMHomePageViewTrainingProjectDetailController ()<UITableViewDelegate,UITableViewDataSource>
 {
     JMTrainProjectDetailModel *detailModel;
     UIButton *zanBtn;
@@ -24,9 +23,6 @@
 }
 @property (nonatomic,strong)UITableView *tableView;
 
-
-///评论视图
-@property (strong, nonatomic) CommentInputView *commentInputView;
 
 @end
 
@@ -37,40 +33,8 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:YES];
-    
-    
-    //添加评论视图的监听
-    [_commentInputView addNotify];
-    
-    [_commentInputView addObserver];
-    
 
 }
-
--(void)viewDidDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-    //[self theTabBarHidden:YES];
-    
-    [_commentInputView removeNotify];
-    
-    [_commentInputView removeObserver];
-    
-}
-
-#pragma mark - 创建评论视图
--(void) initCommentInputView
-{
-    if (_commentInputView == nil) {
-        _commentInputView = [[CommentInputView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _commentInputView.hidden = YES;
-        _commentInputView.delegate = self;
-        [self.view addSubview:_commentInputView];
-    }
-    
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -85,10 +49,6 @@
     
     //创建当前列表视图
     [self createTableView];
-    
-    
-    [self initCommentInputView];
-   
     
     [self requestData];
 
@@ -457,49 +417,14 @@
 #pragma mark - 评论
 - (void)commentAction{
     
-    _commentInputView.hidden = NO;
-
-    [_commentInputView show];
+  //跳转评论详情界面
+    JMCommentListViewController *commentListVC = [[JMCommentListViewController alloc] init];
+    commentListVC.trainProjectId = self.trainProjectId;
+    [self.navigationController pushViewController:commentListVC animated:YES];
+    
 
 }
 
-#pragma mark - 点击发送请求的评论接口
--(void) onCommentCreate:(long long ) commentId text:(NSString *) text{
-    
-    //请求评论接口
-    [self requestCommentWithContentText:text];
-    
-}
-
-
--(void)requestCommentWithContentText:(NSString *)text
-{
-    /*
-     entity_id   string 序号      必需
-     entity_type string 类型     必需   可选项: project 创业项目  salon创业沙龙 course 创业课程
-     user_id      int   用户序号
-     content     string 评论内容
-     
-     */
-    
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.trainProjectId forKey:@"entity_id"];
-    [dic setObject:@"project" forKey:@"entity_type"];
-    if ([UserAccountManager sharedInstance].userId) {
-        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    }
-    
-    [dic setObject:text forKey:@"content"];
-    
-    
-    [[HttpClient sharedInstance]trainProjectAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        if (model.responseCode==ResponseCodeSuccess) {
-            [CommonUtils showToastWithStr:@"评论成功"];
-        }
-    } withFaileBlock:^(NSError *error) {
-        
-    }];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
