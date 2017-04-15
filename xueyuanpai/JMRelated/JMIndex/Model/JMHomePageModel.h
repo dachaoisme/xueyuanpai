@@ -37,7 +37,7 @@
  "create_time": "2017-03-19 11:29:17", //创建时间
  "update_time": "2017-03-19 11:29:17"， //更新时间
  "colllege_name": "化工学院"
-
+is_online  1:线上 0线下
  */
  @interface JMTrainProjectModel : NSObject
 
@@ -57,6 +57,7 @@
 @property(nonatomic,strong)NSString *create_time;
 @property(nonatomic,strong)NSString *update_time;
 @property(nonatomic,strong)NSString *colllege_name;
+@property(nonatomic,strong)NSString *is_online;
 @end
 
 /////////////////////实训项目详情
