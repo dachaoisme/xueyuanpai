@@ -16,6 +16,7 @@
 		16154FC21EA2594700FB46AA /* JMCuangkeHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FC11EA2594700FB46AA /* JMCuangkeHomePageViewController.m */; };
 		16154FC51EA2596900FB46AA /* JMKongJianHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FC41EA2596900FB46AA /* JMKongJianHomePageViewController.m */; };
 		16154FC81EA3210E00FB46AA /* JMCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FC71EA3210E00FB46AA /* JMCommentModel.m */; };
+		16154FCC1EA39EF200FB46AA /* JMKuaiDiYuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FCB1EA39EF200FB46AA /* JMKuaiDiYuanModel.m */; };
 		166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */; };
 		166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */; };
 		166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0901E9A099F00B2B002 /* JMMineViewController.m */; };
@@ -982,6 +983,8 @@
 		16154FC41EA2596900FB46AA /* JMKongJianHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMKongJianHomePageViewController.m; sourceTree = "<group>"; };
 		16154FC61EA3210E00FB46AA /* JMCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCommentModel.h; sourceTree = "<group>"; };
 		16154FC71EA3210E00FB46AA /* JMCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCommentModel.m; sourceTree = "<group>"; };
+		16154FCA1EA39EF200FB46AA /* JMKuaiDiYuanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanModel.h; sourceTree = "<group>"; };
+		16154FCB1EA39EF200FB46AA /* JMKuaiDiYuanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMKuaiDiYuanModel.m; sourceTree = "<group>"; };
 		166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewController.h; sourceTree = "<group>"; };
 		166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewController.m; sourceTree = "<group>"; };
 		166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanViewController.h; sourceTree = "<group>"; };
@@ -2507,6 +2510,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		16154FC91EA39EE700FB46AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				16154FCA1EA39EF200FB46AA /* JMKuaiDiYuanModel.h */,
+				16154FCB1EA39EF200FB46AA /* JMKuaiDiYuanModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		166DD07C1E9A08AE00B2B002 /* JMRelated */ = {
 			isa = PBXGroup;
 			children = (
@@ -2537,7 +2549,7 @@
 		166DD07E1E9A08ED00B2B002 /* JMKuaiDiYuan */ = {
 			isa = PBXGroup;
 			children = (
-				DDF519E41E9F4BDC00E72DEC /* Model */,
+				16154FC91EA39EE700FB46AA /* Model */,
 				DDF519E31E9F4BCF00E72DEC /* View */,
 				166DD0831E9A094300B2B002 /* Controller */,
 			);
@@ -5291,13 +5303,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DDF519E41E9F4BDC00E72DEC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		DDF51A211E9F918C00E72DEC /* CommentInputView */ = {
 			isa = PBXGroup;
 			children = (
@@ -6016,6 +6021,7 @@
 				587FF9DC1CF2F8F300AD2131 /* IQPreviousNextView.m in Sources */,
 				DDB28E4F1D2C8A7E004C8F70 /* EaseTextView.m in Sources */,
 				587FF9D51CF2F8F300AD2131 /* IQUIView+Hierarchy.m in Sources */,
+				16154FCC1EA39EF200FB46AA /* JMKuaiDiYuanModel.m in Sources */,
 				58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */,
 				DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,

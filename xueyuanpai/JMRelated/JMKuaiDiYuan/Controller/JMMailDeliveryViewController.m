@@ -10,10 +10,15 @@
 
 #import "JMMailDeliveryOneTypeTableViewCell.h"
 #import "JMMailDeliveryTwoTypeTableViewCell.h"
-
+#import "JMKuaiDiYuanModel.h"
 @interface JMMailDeliveryViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-
+{
+    NSMutableArray *dataArray;
+    int currentPage;
+    int nextPage;
+    int pageSize;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -25,12 +30,47 @@
     // Do any additional setup after loading the view.
     
     self.title = @"收取快递";
-    
-    //创建当前列表视图
+    nextPage=currentPage=0;
+    dataArray =[NSMutableArray array];
     [self createTableView];
+    ///
+    [self requestData];
     
 }
-
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        currentPage=nextPage;
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMKuaiDiYuanModel *model = [JMKuaiDiYuanModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            
+        }
+        
+        if (currentPage==[pageModel.responsePageTotalCount intValue]) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
+}
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
@@ -42,6 +82,7 @@
     [_tableView registerClass:[JMMailDeliveryOneTypeTableViewCell class] forCellReuseIdentifier:@"JMMailDeliveryOneTypeTableViewCell"];
     
     [_tableView registerClass:[JMMailDeliveryTwoTypeTableViewCell class] forCellReuseIdentifier:@"JMMailDeliveryTwoTypeTableViewCell"];
+     [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

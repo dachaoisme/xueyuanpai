@@ -22,7 +22,7 @@
 
 /////////////////////////////////////////集梦盒子二期/////////////////////////////////////////
 ////////实训项目相关相关////////
-///轮播图
+///首页轮播图
 #define METHOD_OF_BANNER    @"focus/index"
 ///获取实训项目
 #define METHOD_OF_TRAIN_PROJECT    @"project/index"
@@ -42,6 +42,8 @@
 #define METHOD_OF_SIGN_UP @"user/partin"
 
 ////////创业课程相关////////
+///集梦创客轮播图
+#define METHOD_OF_BANNER_OFCHUANGKE    @"banner/index"
 ///创业课程列表
 #define METHOD_OF_TRAIN_COURSE  @"course/index"
 ///创业课程详情
