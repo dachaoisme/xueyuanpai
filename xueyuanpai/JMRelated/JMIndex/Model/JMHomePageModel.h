@@ -7,13 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/*
+ "id": 1,
+ "title": "111",
+ "picUrl": "111",
+ "ord": 12,
+ "entity_id": "333", //实体序号
+ "entity_type": "link", //实体类型 link 链接地址 project 项目
+ "create_time": "2017-03-16 06:13:37",
+ "update_time": "2017-04-16 19:06:11"
+*/
 @interface JMHomePageModel : NSObject
 
 @property(nonatomic,strong)NSString *bannerId;
 @property(nonatomic,strong)NSString *title;
 @property(nonatomic,strong)NSString *picUrl;
 @property(nonatomic,strong)NSString *ord;
+@property(nonatomic,strong)NSString *entity_id;
+@property(nonatomic,strong)NSString *entity_type;
 @property(nonatomic,strong)NSString *create_time;
 @property(nonatomic,strong)NSString *update_time;
 @end
