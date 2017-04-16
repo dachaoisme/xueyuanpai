@@ -49,6 +49,11 @@
     bannerImageArray = [NSMutableArray array];
     bannerItemArray = [NSMutableArray array];
     [self createLeftBackNavBtn];
+    
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bannerHeight)];
+    headView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:headView];
+    
     [self setupScrollView];
     [self requestBanner];
 }
@@ -71,8 +76,7 @@
 -(void)setupBanner
 {
     //获取轮播图片数组
-    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, bannerHeight) animationDuration:0];
-    //NSURL *imageUrl = [NSURL URLWithString:@"http://114.215.111.210:999/backend/web/uploads/20170413/14920592674319.png"];
+    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bannerHeight) animationDuration:0];
     NSArray *imageUrlArray = bannerImageArray;
     bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
         return imageUrlArray[pageIndex];
