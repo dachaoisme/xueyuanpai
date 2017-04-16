@@ -12,6 +12,8 @@
 
 ///////////////////////////报名实训项目///////////////////////////
 
-@property(nonatomic,strong)NSString *trainProjectId;
+///当前项目的id
+@property (nonatomic,strong)NSString *entity_id;
+@property (nonatomic,strong)NSString *entity_type;
 
 @end

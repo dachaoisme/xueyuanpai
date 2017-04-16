@@ -11,10 +11,15 @@
 #import "JMCourseDetailTwoTableViewCell.h"
 #import "JMXianXiaCourseDetailsTableViewCell.h"
 #import "JMCourseDetailOneTableViewCell.h"
-
+#import "JMSignUpTrainingProjectViewController.h"
+#import "JMCommentListViewController.h"
 @interface JMSalonDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-
+{
+    JMSalonModel *detailModel;
+    UIButton *zanBtn;
+    UIButton *commentBtn;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 
@@ -34,13 +39,28 @@
     //创建当前列表视图
     [self createTableView];
     
-    //创建底部视图
-    [self createBottomView];
+    [self requestData];
     
     
 }
 
-
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.model.salonItemId forKey:@"salon_id"];
+    [[HttpClient sharedInstance] getTrainSalonDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        detailModel = [JMSalonModel  yy_modelWithDictionary:listDic];
+        //创建底部视图我要报名
+        [self createBottomView];
+        [self whetherAlreadyZan];
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
+}
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
@@ -90,6 +110,12 @@
         case 0:{
             JMCourseDetailTwoTableViewCell *detailCell = [tableView dequeueReusableCellWithIdentifier:@"JMCourseDetailTwoTableViewCell"];
             
+            [detailCell.locationBtn setTitle:detailModel.colllege_name forState:UIControlStateNormal];
+            detailCell.titleLabel.text = detailModel.title;
+            detailCell.contentLabel.text = detailModel.salonDescription;
+            detailCell.courseTimeLabel.text = detailModel.course_time;
+            detailCell.showLocationLabel.text = detailModel.course_addr;
+            
             return detailCell;
         }
             break;
@@ -107,6 +133,7 @@
             }else if (indexPath.row == 1){
                 JMCourseDetailOneTableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:@"JMCourseDetailOneTableViewCell"];
                 
+                [imageCell.showImageView sd_setImageWithURL:[NSURL URLWithString:detailModel.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
                 return imageCell;
                 
                 
@@ -116,7 +143,7 @@
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
-                cell.textLabel.text = @"CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明。selector {declaration1; declaration2; ... declarationN }选择器通常是您需要改变样式的 HTML 元素。每条声明由一个属性和一个值组成。属性（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开。selector {property: value}下面这行代码的作用是将 h1 元素内的文字颜色定义为红色，同时将字体大小设置为 14 像素。在这个例子中，h1 是选择器，color 和 font-size 是属性，red 和 14px 是值。h1 {color:red; font-size:14px;}";
+                cell.textLabel.text = detailModel.content;
                 cell.textLabel.font = [UIFont systemFontOfSize:14];
                 cell.textLabel.numberOfLines = 0;
                 return cell;
@@ -149,7 +176,7 @@
                 
             }else{
                 
-                NSString *text = @"CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明。selector {declaration1; declaration2; ... declarationN }选择器通常是您需要改变样式的 HTML 元素。每条声明由一个属性和一个值组成。属性（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开。selector {property: value}下面这行代码的作用是将 h1 元素内的文字颜色定义为红色，同时将字体大小设置为 14 像素。在这个例子中，h1 是选择器，color 和 font-size 是属性，red 和 14px 是值。h1 {color:red; font-size:14px;}";
+                NSString *text = detailModel.content;
                 
                 return [self textHeight:text] + 30;
                 
@@ -198,10 +225,10 @@
     
     
     //创建左侧点赞按钮
-    UIButton *zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:@"收藏 3" forState:UIControlStateNormal];
+    [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -219,6 +246,7 @@
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
     collectionBtn.layer.masksToBounds = YES;
+    [collectionBtn setTitle:[NSString stringWithFormat:@"我要参加 %@",self.model.count_partin] forState:UIControlStateNormal];
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
     [collectionBtn addTarget:self action:@selector(collectionAction) forControlEvents:UIControlEventTouchUpInside];
@@ -226,9 +254,9 @@
     
     
     //右侧评论按钮
-    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
-    [commentBtn setTitle:@"5" forState:UIControlStateNormal];
+    [commentBtn setTitle:self.model.count_comment forState:UIControlStateNormal];
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
@@ -244,26 +272,77 @@
 }
 
 #pragma mark - 点赞
+-(void)whetherAlreadyZan
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.model.salonItemId forKey:@"salon_id"];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [[HttpClient sharedInstance]whetherTrainSalonAlreadyAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSDictionary *dic = model.responseCommonDic;
+        NSString *isLiked =[dic objectForKey:@"is_liked"];
+        if (isLiked &&[isLiked integerValue]==1) {
+            ///1点赞过 0 没有
+            zanBtn.selected = YES;
+        }else{
+            zanBtn.selected = NO;
+        }
+        if ([dic valueForKey:@"count"]){
+            int zanCount = [[dic valueForKey:@"count"] intValue];
+            [zanBtn setTitle:[NSString stringWithFormat:@"%d",zanCount] forState:UIControlStateNormal];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+#pragma mark - 点赞事件
 - (void)zanAction{
     
-    [CommonUtils showToastWithStr:@"点赞"];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.model.salonItemId forKey:@"salon_id"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]trainSalonAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode ==ResponseCodeSuccess) {
+            if (zanBtn.isSelected==YES) {
+                zanBtn.selected =NO;
+                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]-1;
+                if (zanCount<0) {
+                    zanCount=0;
+                }
+                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+            }else{
+                zanBtn.selected = YES;
+                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]+1;
+                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+            }
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
     
 }
-
+#pragma mark - 报名
 - (void)collectionAction{
     
-    //线上：此功能就为收藏功能
-    [CommonUtils showToastWithStr:@"收藏"];
+    //    [CommonUtils showToastWithStr:@"报名"];
     
+    JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
+    signUpAction.entity_id = self.model.salonItemId;
+    signUpAction.entity_type = ENTITY_TYPE_SALON;
+    [self.navigationController pushViewController:signUpAction animated:YES];
 }
-
-
+#pragma mark - 评论
 - (void)commentAction{
     
-    [CommonUtils showToastWithStr:@"评论"];
+    //跳转评论详情界面
+    JMCommentListViewController *commentListVC = [[JMCommentListViewController alloc] init];
+    commentListVC.entity_id = self.model.salonItemId;
+    commentListVC.entity_type = ENTITY_TYPE_SALON;
+    [self.navigationController pushViewController:commentListVC animated:YES];
+    
+    
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

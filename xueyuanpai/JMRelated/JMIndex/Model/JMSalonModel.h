@@ -29,13 +29,13 @@
  "create_time": "2017-03-23 15:27:05",
  "update_time": "2017-03-23 16:32:49",
  "colllege_name": "化工学院"
- 
+ count_partin
  is_online  1:线上 0线下
  */
 
-@property(nonatomic,strong)NSString *courseItemId;
+@property(nonatomic,strong)NSString *salonItemId;
 @property(nonatomic,strong)NSString *title;
-@property(nonatomic,strong)NSString *trainProjectDescription;
+@property(nonatomic,strong)NSString *salonDescription;
 @property(nonatomic,strong)NSString *content;
 @property(nonatomic,strong)NSString *thumbUrl;
 @property(nonatomic,strong)NSString *bannerUrl;
@@ -43,7 +43,7 @@
 @property(nonatomic,strong)NSString *videoUrl;
 @property(nonatomic,strong)NSString *count_like;
 @property(nonatomic,strong)NSString *count_comment;
-@property(nonatomic,strong)NSString *count_mark;
+@property(nonatomic,strong)NSString *count_partin;
 @property(nonatomic,strong)NSString *college_id;
 @property(nonatomic,strong)NSString *course_time;
 @property(nonatomic,strong)NSString *course_addr;

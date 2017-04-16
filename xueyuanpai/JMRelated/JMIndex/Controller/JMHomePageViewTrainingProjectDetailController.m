@@ -411,7 +411,8 @@
 //    [CommonUtils showToastWithStr:@"报名"];
     
     JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
-    signUpAction.trainProjectId = self.trainProjectId;
+    signUpAction.entity_id = self.trainProjectId;
+    signUpAction.entity_type = ENTITY_TYPE_PROJECT;
     [self.navigationController pushViewController:signUpAction animated:YES];
 }
 #pragma mark - 评论
@@ -419,7 +420,8 @@
     
   //跳转评论详情界面
     JMCommentListViewController *commentListVC = [[JMCommentListViewController alloc] init];
-    commentListVC.trainProjectId = self.trainProjectId;
+    commentListVC.entity_id = self.trainProjectId;
+    commentListVC.entity_type = ENTITY_TYPE_PROJECT;
     [self.navigationController pushViewController:commentListVC animated:YES];
     
 

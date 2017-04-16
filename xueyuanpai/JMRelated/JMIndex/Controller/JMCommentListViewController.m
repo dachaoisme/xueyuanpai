@@ -104,7 +104,7 @@
      */
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.trainProjectId forKey:@"entity_id"];
+    [dic setObject:self.entity_id forKey:@"entity_id"];
     [dic setObject:ENTITY_TYPE_PROJECT forKey:@"entity_type"];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
@@ -212,8 +212,8 @@
      */
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.trainProjectId forKey:@"entity_id"];
-    [dic setObject:@"project" forKey:@"entity_type"];
+    [dic setObject:self.entity_id forKey:@"entity_id"];
+    [dic setObject:self.entity_type forKey:@"entity_type"];
     if ([UserAccountManager sharedInstance].userId) {
         [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     }

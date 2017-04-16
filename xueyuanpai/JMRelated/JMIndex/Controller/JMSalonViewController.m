@@ -112,7 +112,7 @@
     
     JMSalonModel * model = [dataArray objectAtIndex:indexPath.section];
     cell.titleLabel.text = model.title;
-    cell.subtitleLabel.text = model.trainProjectDescription;
+    cell.subtitleLabel.text = model.salonDescription;
     cell.dateLabel.text = model.create_time;
     [cell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
     

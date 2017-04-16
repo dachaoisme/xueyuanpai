@@ -41,7 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"报名实训项目";
+    self.title = @"报名";
     _dataArr = [NSMutableArray array];
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
@@ -201,7 +201,7 @@
     if (indexPath.section==0) {
         ///选择职位
         JMJobListViewController *listVC = [[JMJobListViewController alloc]init];
-        listVC.trainProjectId = self.trainProjectId;
+        listVC.trainProjectId = self.entity_id;
         listVC.returnBlock = ^(NSString *returnBlock) {
             job = returnBlock;
             [self.tableView reloadData];
@@ -249,8 +249,8 @@
     [CommonUtils showToastWithStr:@"确定"];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setValue:self.trainProjectId forKey:@"entity_id"];
-    [dic setValue:@"project" forKey:@"entity_type"];
+    [dic setValue:self.entity_id forKey:@"entity_id"];
+    [dic setValue:self.entity_type forKey:@"entity_type"];
     [dic setValue:job forKey:@"job"];
     [dic setValue:name forKey:@"name"];
     [dic setValue:telephone forKey:@"telphone"];

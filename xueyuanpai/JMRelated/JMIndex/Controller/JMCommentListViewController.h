@@ -11,6 +11,7 @@
 @interface JMCommentListViewController : BaseViewController
 
 ///当前项目的id
-@property (nonatomic,strong)NSString *trainProjectId;
+@property (nonatomic,strong)NSString *entity_id;
+@property (nonatomic,strong)NSString *entity_type;
 
 @end
