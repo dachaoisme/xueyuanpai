@@ -9,10 +9,15 @@
 #import "JMCommentListViewController.h"
 
 #import "JMCommentListTableViewCell.h"
-
+#import "JMCommentModel.h"
 @interface JMCommentListViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
-
+{
+    NSMutableArray *dataArray;
+    int currentPage;
+    int nextPage;
+    int pageSize;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 ///评论视图
@@ -75,7 +80,9 @@
     // Do any additional setup after loading the view.
     
     self.title = @"评论";
-    
+    currentPage=nextPage=1;
+    pageSize=10;
+    dataArray = [NSMutableArray array];
     
     
     [self createLeftBackNavBtn];
@@ -83,10 +90,56 @@
     [self createTableView];
     
     [self initCommentInputView];
-
+    [self requestData];
 
 }
-
+-(void)requestData
+{
+    /*
+     entity_id   string 序号      必需
+     entity_type string 类型     必需   可选项: project 创业项目  salon创业沙龙 course 创业课程
+     user_id      int   用户序号
+     content     string 评论内容
+     
+     */
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.trainProjectId forKey:@"entity_id"];
+    [dic setObject:ENTITY_TYPE_PROJECT forKey:@"entity_type"];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    
+    [[HttpClient sharedInstance]getCommentListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMCommentModel *model = [JMCommentModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            [self.tableView reloadData];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [self.tableView.footer endRefreshing];
+    }];
+}
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
+}
+-(void)refreshData
+{
+    nextPage=currentPage=1;
+    [self requestData];
+}
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
@@ -98,17 +151,23 @@
     
     //注册cell
     [_tableView registerClass:[JMCommentListTableViewCell class] forCellReuseIdentifier:@"JMCommentListTableViewCell"];
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     JMCommentListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMCommentListTableViewCell"];
-    
+    JMCommentModel *model = [dataArray objectAtIndex:indexPath.row];
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.user.icon] placeholderImage:[UIImage imageNamed: @"placeHoder"]];
+    cell.nickNameLabel.text = model.user.nickname;
+    cell.contentLabel.text = model.content;
+    cell.timeLabel.text = model.create_time;
+
     return cell;
 }
 
