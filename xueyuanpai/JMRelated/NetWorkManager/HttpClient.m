@@ -145,7 +145,7 @@
         failBlock(error);
     }];
 }
-///获取实训项目列表
+///获取创业课程列表列表
 - (void)getTrainCourseWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 
 {

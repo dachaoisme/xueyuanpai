@@ -13,8 +13,8 @@
 
 + (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
 {
-    return @{ @"trainProjectDetailId" : @"id",
-              @"trainProjectDescription":@"description"
+    return @{ @"courseItemId" : @"id",
+              @"courseDescription":@"description"
               };
 }
 

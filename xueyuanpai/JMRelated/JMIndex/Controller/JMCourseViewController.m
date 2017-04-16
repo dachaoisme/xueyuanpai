@@ -7,13 +7,18 @@
 //
 
 #import "JMCourseViewController.h"
-#import "JMHomePageThreeTypeTableViewCell.h"
-
 #import "JMCourseDetailsViewController.h"
 #import "JMXianXiaCourseDetailsViewController.h"
-@interface JMCourseViewController ()<UITableViewDataSource,UITableViewDelegate>
+#import "JMHomePageThreeTypeTableViewCell.h"
+#import "JMCourseModel.h"
 
-///列表
+@interface JMCourseViewController ()<UITableViewDataSource,UITableViewDelegate>
+{
+    int currentPage;
+    int nextPage;
+    int pageSize;
+    NSMutableArray *dataArray;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -25,18 +30,20 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:YES];
-    
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"集梦空间";
+    self.title = @"我的创业课程";
+    currentPage=nextPage=1;
+    pageSize=10;
+    dataArray = [NSMutableArray array];
     [self createLeftBackNavBtn];
-    //创建当前列表视图
     [self createTableView];
-    
+    [self requestData];
     
 }
 
@@ -44,32 +51,75 @@
 - (void)createTableView{
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
-    
-    //注册cell
     [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
     
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
 }
-
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]getTrainCourseWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMCourseModel *model = [JMCourseModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            
+        }
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        [self.tableView.footer endRefreshing];
+    }];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return 3;
+    return dataArray.count;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     JMHomePageThreeTypeTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+    
     threeCell.locationBtn.hidden = YES;
+    
     threeCell.peopleNumberLabel.hidden = YES;
+    JMCourseModel * model = [dataArray objectAtIndex:indexPath.row];
+    [threeCell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    threeCell.titleLabel.text = model.title;
+    threeCell.subtitleLabel.text = model.courseDescription ;
+    [threeCell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
+    if ([model.is_online integerValue]==1) {
+        ///正在招募
+        threeCell.peopleNumberLabel.text = @"";
+    }else{
+        ///一结束
+        threeCell.peopleNumberLabel.text = @"线下";
+    }
     
     return threeCell;
     
@@ -78,32 +128,31 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 100;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 160;
     
+    return 0.01;
 }
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0) {
-        
+    JMCourseModel * model = [dataArray objectAtIndex:indexPath.row];
+    if ([model.is_online integerValue]==1) {
+        ///线上
         //创业课程线上详情
         JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];
         
         [self.navigationController pushViewController:courseDetailVC animated:YES];
-        
     }else{
         //创业课程线下详情
         JMXianXiaCourseDetailsViewController *xianxiaDetailVC = [[JMXianXiaCourseDetailsViewController alloc] init];
-        
-        [self.navigationController pushViewController:xianxiaDetailVC animated:YES];
-    }
     
+        [self.navigationController pushViewController:xianxiaDetailVC animated:YES];
+        
+    }
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

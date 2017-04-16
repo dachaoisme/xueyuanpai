@@ -35,7 +35,7 @@
 
 @property(nonatomic,strong)NSString *courseItemId;
 @property(nonatomic,strong)NSString *title;
-@property(nonatomic,strong)NSString *trainProjectDescription;
+@property(nonatomic,strong)NSString *courseDescription;
 @property(nonatomic,strong)NSString *content;
 @property(nonatomic,strong)NSString *thumbUrl;
 @property(nonatomic,strong)NSString *bannerUrl;
