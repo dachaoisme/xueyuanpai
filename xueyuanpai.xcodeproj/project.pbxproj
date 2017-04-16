@@ -892,6 +892,8 @@
 		DDD794C21EA294C20024C4E6 /* v_i_p@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD794C11EA294C20024C4E6 /* v_i_p@3x.png */; };
 		DDD794C41EA298970024C4E6 /* timebank_detail_reply@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD794C31EA298970024C4E6 /* timebank_detail_reply@2x.png */; };
 		DDD794C61EA298A40024C4E6 /* timebank_detail_reply@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD794C51EA298A40024C4E6 /* timebank_detail_reply@3x.png */; };
+		DDD794CA1EA31DCF0024C4E6 /* JMCourseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794C91EA31DCF0024C4E6 /* JMCourseDetailsViewController.m */; };
+		DDD794CD1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794CC1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m */; };
 		DDE8C2321CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8C2301CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m */; };
 		DDE8C2331CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE8C2311CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib */; };
 		DDE8F62B1CFD8E8600680214 /* JobMarketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8F62A1CFD8E8600680214 /* JobMarketDetailViewController.m */; };
@@ -2363,6 +2365,10 @@
 		DDD794C11EA294C20024C4E6 /* v_i_p@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "v_i_p@3x.png"; sourceTree = "<group>"; };
 		DDD794C31EA298970024C4E6 /* timebank_detail_reply@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebank_detail_reply@2x.png"; sourceTree = "<group>"; };
 		DDD794C51EA298A40024C4E6 /* timebank_detail_reply@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebank_detail_reply@3x.png"; sourceTree = "<group>"; };
+		DDD794C81EA31DCF0024C4E6 /* JMCourseDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCourseDetailsViewController.h; sourceTree = "<group>"; };
+		DDD794C91EA31DCF0024C4E6 /* JMCourseDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCourseDetailsViewController.m; sourceTree = "<group>"; };
+		DDD794CB1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCourseDetailOneTableViewCell.h; sourceTree = "<group>"; };
+		DDD794CC1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCourseDetailOneTableViewCell.m; sourceTree = "<group>"; };
 		DDE8C22F1CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolRecruitmentTableViewCell.h; sourceTree = "<group>"; };
 		DDE8C2301CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolRecruitmentTableViewCell.m; sourceTree = "<group>"; };
 		DDE8C2311CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolRecruitmentTableViewCell.xib; sourceTree = "<group>"; };
@@ -3914,6 +3920,8 @@
 				DD4644581E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m */,
 				DDD794BC1EA292CD0024C4E6 /* JMCommentListTableViewCell.h */,
 				DDD794BD1EA292CD0024C4E6 /* JMCommentListTableViewCell.m */,
+				DDD794CB1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.h */,
+				DDD794CC1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m */,
 			);
 			path = HomePageDetailCell;
 			sourceTree = "<group>";
@@ -5244,6 +5252,8 @@
 		DDD794C71EA2FE680024C4E6 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				DDD794C81EA31DCF0024C4E6 /* JMCourseDetailsViewController.h */,
+				DDD794C91EA31DCF0024C4E6 /* JMCourseDetailsViewController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -6096,6 +6106,7 @@
 				58C27AB31CE20E7C0036D105 /* IndexMallCollectionViewCell.m in Sources */,
 				DDD794B01EA09AF70024C4E6 /* JMMineActivityListViewController.m in Sources */,
 				58F67BFA1CD990A200D55BE0 /* BaseViewController.m in Sources */,
+				DDD794CA1EA31DCF0024C4E6 /* JMCourseDetailsViewController.m in Sources */,
 				DDCD70CB1D06CA65009FBE9A /* SendCourierThreeTableViewCell.m in Sources */,
 				DDB28DE51D2C8A7E004C8F70 /* EMCDDeviceManager+Remind.m in Sources */,
 				DDB28E341D2C8A7E004C8F70 /* EaseEmoji.m in Sources */,
@@ -6192,6 +6203,7 @@
 				DD4644561E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m in Sources */,
 				58F67C351CD9CF9500D55BE0 /* UIScrollView+MJRefresh.m in Sources */,
 				58C688271D03A91600E8B4AA /* BusinessCenterModel.m in Sources */,
+				DDD794CD1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m in Sources */,
 				DDD0BDA61CFA53B100073290 /* ComponeyInforViewController.m in Sources */,
 				DD0F42471D226D0E00115B96 /* MessageViewController.m in Sources */,
 				DDE8F62E1CFD8EC000680214 /* JobMarketViewController.m in Sources */,

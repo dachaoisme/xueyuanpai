@@ -10,6 +10,8 @@
 
 #import "BulkGoodsLunBoView.h"
 #import "JMHomePageThreeTypeTableViewCell.h"
+
+#import "JMCourseDetailsViewController.h"
 @interface JMKongJianHomePageViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 ///列表
@@ -105,10 +107,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [CommonUtils showToastWithStr:@"跳转创业详情"];
-    
-    
     //创业课程线上详情
+    JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];
+    
+    [self.navigationController pushViewController:courseDetailVC animated:YES];
     
     //创业课程线下详情
 }
