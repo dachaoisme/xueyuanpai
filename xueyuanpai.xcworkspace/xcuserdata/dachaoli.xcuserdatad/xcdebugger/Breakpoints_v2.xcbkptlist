@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/JMIndex/Controller/JMCuangkeHomePageViewController.m"
-            timestampString = "514036869.169571"
+            timestampString = "514042295.201467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-SGSegmentedControlDefault:didSelectTitleAtIndex:"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-setupBanner"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,28 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/JMIndex/Controller/JMCuangkeHomePageViewController.m"
-            timestampString = "514036870.495907"
+            timestampString = "514042388.878487"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "-scrollViewDidEndDecelerating:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMThird/SGSegmentedControl/SGSegmentedControlBottomView.m"
-            timestampString = "514036915.691179"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-showChildVCViewWithIndex:outsideVC:"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-requestBanner"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

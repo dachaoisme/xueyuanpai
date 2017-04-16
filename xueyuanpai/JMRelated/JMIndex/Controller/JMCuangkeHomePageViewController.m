@@ -11,12 +11,16 @@
 #import "BulkGoodsLunBoView.h"
 #import "JMHomePageThreeTypeTableViewCell.h"
 #import "JMTrainingProjectListViewController.h"
-
+#import "JMHomePageModel.h"
 #define bannerHeight 200
 #define tabHeight 44
 @interface JMCuangkeHomePageViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
 {
     BulkGoodsLunBoView *bulkGoodsLunBoView;
+    NSMutableArray *bannerTitleArray;
+    NSMutableArray *bannerImageArray;
+    NSMutableArray *bannerItemArray;
+    NSMutableArray *dataArray;
 }
 @property(nonatomic,strong)SGSegmentedControlBottomView *bottomSView;
 @property(nonatomic,strong)SGSegmentedControlDefault*topDefaultSView;
@@ -41,19 +45,35 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     self.title = @"集梦创客";
+    bannerTitleArray = [NSMutableArray array];
+    bannerImageArray = [NSMutableArray array];
+    bannerItemArray = [NSMutableArray array];
     [self createLeftBackNavBtn];
-    
-
-    [self setupBanner];
     [self setupScrollView];
+    [self requestBanner];
+}
+-(void)requestBanner
+{
+    [[HttpClient sharedInstance]getBannerOfIndexWithParams:[NSDictionary dictionary] withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        NSArray *listArr =(NSArray *)listDic;
+        for (int i=0; i<listArr.count; i++) {
+            JMHomePageModel *model = [JMHomePageModel yy_modelWithDictionary:[listArr objectAtIndex:i]];
+            [bannerTitleArray addObject:model.title];
+            [bannerImageArray addObject:model.picUrl];
+            [bannerItemArray addObject:model];
+            [self setupBanner];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 #pragma mark - 配置顶部的轮播视图
 -(void)setupBanner
 {
     //获取轮播图片数组
-    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bannerHeight) animationDuration:0];
-    NSURL *imageUrl = [NSURL URLWithString:@"http://114.215.111.210:999/backend/web/uploads/20170413/14920592674319.png"];
-    NSArray *imageUrlArray = @[imageUrl,imageUrl];
+    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, bannerHeight) animationDuration:0];
+    //NSURL *imageUrl = [NSURL URLWithString:@"http://114.215.111.210:999/backend/web/uploads/20170413/14920592674319.png"];
+    NSArray *imageUrlArray = bannerImageArray;
     bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
         return imageUrlArray[pageIndex];
     };
@@ -105,10 +125,7 @@
     self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];
     self.topDefaultSView.indicatorColor = [CommonUtils colorWithHex:@"00c05c"];
     [self.view addSubview:self.topDefaultSView];
-    
-    
-    
-    
+
 }
 ///SGSegmentedControlDefault类型
 - (void)SGSegmentedControlDefault:(SGSegmentedControlDefault *)segmentedControlDefault didSelectTitleAtIndex:(NSInteger)index
