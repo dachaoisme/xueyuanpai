@@ -10,7 +10,6 @@
 
 @interface JMCourseDetailOneTableViewCell : UITableViewCell
 
-
 ///显示的图片
 @property (nonatomic,strong)UIImageView *showImageView;
 

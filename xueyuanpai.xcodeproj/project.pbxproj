@@ -895,6 +895,11 @@
 		DDD794C61EA298A40024C4E6 /* timebank_detail_reply@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD794C51EA298A40024C4E6 /* timebank_detail_reply@3x.png */; };
 		DDD794CA1EA31DCF0024C4E6 /* JMCourseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794C91EA31DCF0024C4E6 /* JMCourseDetailsViewController.m */; };
 		DDD794CD1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794CC1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m */; };
+		DDD794D01EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794CF1EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.m */; };
+		DDD794D31EA38DA30024C4E6 /* JMCourseDetailTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794D21EA38DA30024C4E6 /* JMCourseDetailTwoTableViewCell.m */; };
+		DDD794D51EA38E8D0024C4E6 /* lesson_offline_detail_banner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD794D41EA38E8D0024C4E6 /* lesson_offline_detail_banner@2x.png */; };
+		DDD794D71EA38E9B0024C4E6 /* lesson_offline_detail_banner@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDD794D61EA38E9B0024C4E6 /* lesson_offline_detail_banner@3x.png */; };
+		DDD794DA1EA39B570024C4E6 /* JMXianXiaCourseDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD794D91EA39B570024C4E6 /* JMXianXiaCourseDetailsTableViewCell.m */; };
 		DDE8C2321CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8C2301CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m */; };
 		DDE8C2331CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDE8C2311CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib */; };
 		DDE8F62B1CFD8E8600680214 /* JobMarketDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE8F62A1CFD8E8600680214 /* JobMarketDetailViewController.m */; };
@@ -2372,6 +2377,14 @@
 		DDD794C91EA31DCF0024C4E6 /* JMCourseDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCourseDetailsViewController.m; sourceTree = "<group>"; };
 		DDD794CB1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCourseDetailOneTableViewCell.h; sourceTree = "<group>"; };
 		DDD794CC1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCourseDetailOneTableViewCell.m; sourceTree = "<group>"; };
+		DDD794CE1EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMXianXiaCourseDetailsViewController.h; sourceTree = "<group>"; };
+		DDD794CF1EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMXianXiaCourseDetailsViewController.m; sourceTree = "<group>"; };
+		DDD794D11EA38DA30024C4E6 /* JMCourseDetailTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMCourseDetailTwoTableViewCell.h; sourceTree = "<group>"; };
+		DDD794D21EA38DA30024C4E6 /* JMCourseDetailTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCourseDetailTwoTableViewCell.m; sourceTree = "<group>"; };
+		DDD794D41EA38E8D0024C4E6 /* lesson_offline_detail_banner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lesson_offline_detail_banner@2x.png"; sourceTree = "<group>"; };
+		DDD794D61EA38E9B0024C4E6 /* lesson_offline_detail_banner@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lesson_offline_detail_banner@3x.png"; sourceTree = "<group>"; };
+		DDD794D81EA39B570024C4E6 /* JMXianXiaCourseDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMXianXiaCourseDetailsTableViewCell.h; sourceTree = "<group>"; };
+		DDD794D91EA39B570024C4E6 /* JMXianXiaCourseDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMXianXiaCourseDetailsTableViewCell.m; sourceTree = "<group>"; };
 		DDE8C22F1CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolRecruitmentTableViewCell.h; sourceTree = "<group>"; };
 		DDE8C2301CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolRecruitmentTableViewCell.m; sourceTree = "<group>"; };
 		DDE8C2311CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolRecruitmentTableViewCell.xib; sourceTree = "<group>"; };
@@ -3847,6 +3860,8 @@
 		DD09B7A71E9B6226001D1DB0 /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				DDD794D41EA38E8D0024C4E6 /* lesson_offline_detail_banner@2x.png */,
+				DDD794D61EA38E9B0024C4E6 /* lesson_offline_detail_banner@3x.png */,
 				DDD794C31EA298970024C4E6 /* timebank_detail_reply@2x.png */,
 				DDD794C51EA298A40024C4E6 /* timebank_detail_reply@3x.png */,
 				DDD794BF1EA294B80024C4E6 /* v_i_p@2x.png */,
@@ -3927,6 +3942,10 @@
 				DDD794BD1EA292CD0024C4E6 /* JMCommentListTableViewCell.m */,
 				DDD794CB1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.h */,
 				DDD794CC1EA32F250024C4E6 /* JMCourseDetailOneTableViewCell.m */,
+				DDD794D11EA38DA30024C4E6 /* JMCourseDetailTwoTableViewCell.h */,
+				DDD794D21EA38DA30024C4E6 /* JMCourseDetailTwoTableViewCell.m */,
+				DDD794D81EA39B570024C4E6 /* JMXianXiaCourseDetailsTableViewCell.h */,
+				DDD794D91EA39B570024C4E6 /* JMXianXiaCourseDetailsTableViewCell.m */,
 			);
 			path = HomePageDetailCell;
 			sourceTree = "<group>";
@@ -5259,6 +5278,8 @@
 			children = (
 				DDD794C81EA31DCF0024C4E6 /* JMCourseDetailsViewController.h */,
 				DDD794C91EA31DCF0024C4E6 /* JMCourseDetailsViewController.m */,
+				DDD794CE1EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.h */,
+				DDD794CF1EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -5434,6 +5455,7 @@
 				58070FAC1CF6E80200F03F6C /* timebank_filter_chair@2x.png in Resources */,
 				58070FA11CF6E80200F03F6C /* timebank_add_comment@3x.png in Resources */,
 				DD4127631CF0552F00227066 /* bigpie_order_minus_press@2x.png in Resources */,
+				DDD794D51EA38E8D0024C4E6 /* lesson_offline_detail_banner@2x.png in Resources */,
 				DD0F427E1D22702500115B96 /* msg_status_expire@3x.png in Resources */,
 				DD13CDCD1D00186D000A69FE /* startup_filter_industry@2x.png in Resources */,
 				DD41277F1CF0552F00227066 /* page_end_owl@2x.png in Resources */,
@@ -5876,6 +5898,7 @@
 				DDD794A11EA077E30024C4E6 /* detail_icon_time@3x.png in Resources */,
 				58070FE01CF6E80200F03F6C /* toast_fail@2x.png in Resources */,
 				DDAB43791D05531A00FADB3E /* about_logo@2x.png in Resources */,
+				DDD794D71EA38E9B0024C4E6 /* lesson_offline_detail_banner@3x.png in Resources */,
 				5874A3E11CF1249400CE9FC9 /* tab_icon_creativity@3x.png in Resources */,
 				DD0B1ECC1CFEE51000C4BAB2 /* market_filter_book@3x.png in Resources */,
 				DDCD70B21D06BA1D009FBE9A /* deliver_msg_dai@2x.png in Resources */,
@@ -6059,6 +6082,7 @@
 				DDB28E2C1D2C8A7E004C8F70 /* NSDate+Category.m in Sources */,
 				166DD1451E9A0F7C00B2B002 /* MineCollectionViewController.m in Sources */,
 				589DD4DF1D1ABDE4007B4311 /* NSTimer+Addition.m in Sources */,
+				DDD794D31EA38DA30024C4E6 /* JMCourseDetailTwoTableViewCell.m in Sources */,
 				DDB28E281D2C8A7E004C8F70 /* EaseSDKHelper.m in Sources */,
 				DD13CE1F1D003526000A69FE /* BusinessClassDetailTableViewCell.m in Sources */,
 				DDB28E0F1D2C8A7E004C8F70 /* EMSDWebImageManager.m in Sources */,
@@ -6082,6 +6106,7 @@
 				DD4127B31CF251C600227066 /* BigToSendViewController.m in Sources */,
 				DD4644591E9E44AD00EAE186 /* HomePageEndProjectTableViewCell.m in Sources */,
 				DD1957C71D18248E00FF01F0 /* UILabel+VerticalAlign.m in Sources */,
+				DDD794D01EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.m in Sources */,
 				166DD1561E9A0F7C00B2B002 /* EditProfileTwoTableViewCell.m in Sources */,
 				DDB28E121D2C8A7E004C8F70 /* NSData+EMImageContentType.m in Sources */,
 				DD1957DE1D19A7B500FF01F0 /* OTPageScrollView.m in Sources */,
@@ -6307,6 +6332,7 @@
 				DDB28E361D2C8A7E004C8F70 /* EaseEmotionEscape.m in Sources */,
 				DDCD713A1D0A8557009FBE9A /* SendCourierRecordTableViewCell.m in Sources */,
 				DD13CE0A1D00251D000A69FE /* BusinessCenterTableViewCell.m in Sources */,
+				DDD794DA1EA39B570024C4E6 /* JMXianXiaCourseDetailsTableViewCell.m in Sources */,
 				DD4127CF1CF2FB5400227066 /* GiftDetailStyleOneTableViewCell.m in Sources */,
 				DDB28E231D2C8A7E004C8F70 /* PSTGridLayoutInfo.m in Sources */,
 				166DD1481E9A0F7C00B2B002 /* MineJobMarketViewController.m in Sources */,
