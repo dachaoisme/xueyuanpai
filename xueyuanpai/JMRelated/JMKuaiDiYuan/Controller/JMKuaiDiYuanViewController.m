@@ -53,6 +53,11 @@
     // Do any additional setup after loading the view.
     self.title = @"我的快递";
     
+    UIView *whiteBackGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, self.view.frame.size.width, 45)];
+    whiteBackGroundView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:whiteBackGroundView];
+    
+
     
     //创建顶部
     [self setupScrollView];
@@ -87,7 +92,6 @@
 }
 - (void)initScrollViewTitleWithChildVCArray:(NSMutableArray *)childVCArray titleArray:(NSMutableArray *)titleArr
 {
-    
     self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, 50 ,self.view.frame.size.width, SCREEN_HEIGHT - TABBAR_HEIGHT - NAV_TOP_HEIGHT)];
     _bottomSView.childViewController = childVCArray;
     _bottomSView.backgroundColor = [UIColor clearColor];
@@ -95,9 +99,6 @@
     [self.view addSubview:_bottomSView];
     
     
-    UIView *whiteBackGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, self.view.frame.size.width, 45)];
-    whiteBackGroundView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:whiteBackGroundView];
     
     self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, 45) delegate:self childVcTitle:titleArr isScaleText:NO];
     self.topDefaultSView.backgroundColor = [UIColor clearColor];

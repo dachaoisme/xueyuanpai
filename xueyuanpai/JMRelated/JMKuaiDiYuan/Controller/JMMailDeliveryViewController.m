@@ -74,7 +74,7 @@
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,50, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,50, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
