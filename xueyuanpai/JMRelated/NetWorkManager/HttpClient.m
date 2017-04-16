@@ -94,6 +94,21 @@
         failBlock(error);
     }];
 }
+///获取评论列表
+- (void)getCommentListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_COMMENT_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 ///获取岗位列表
 - (void)jobListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {

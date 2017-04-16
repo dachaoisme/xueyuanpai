@@ -30,6 +30,8 @@
 #define METHOD_OF_TRAIN_PROJECT_DETAIL    @"project/detail"
 ///添加评论
 #define METHOD_OF_ADD_COMMENT @"comment/create"
+///获取评论列表
+#define METHOD_OF_COMMENT_LIST @"comment/index"
 ///创业项目点赞
 #define METHOD_OF_ADD_FAVOURITE @"project/like"
 ///创业项目是否已经点过赞
