@@ -37,8 +37,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    if (self.stateType==1) {
+        self.title = @"正在招募";
+    }else if (self.stateType==2){
+        self.title = @"已结束";
+    }else{
+        self.title = @"实训项目列表";
+    }
+        
     
-    self.title = @"实训项目列表";
     currentPage=nextPage=1;
     pageSize=10;
     dataArray = [NSMutableArray array];
@@ -53,6 +60,12 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    if (self.stateType==1) {
+        [dic setObject:@"1" forKey:@"status"];
+    }else if (self.stateType==2){
+        [dic setObject:@"0" forKey:@"status"];
+    }else{
+    }
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];

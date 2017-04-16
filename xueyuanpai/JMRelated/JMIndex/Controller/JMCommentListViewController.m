@@ -167,7 +167,7 @@
     cell.nickNameLabel.text = model.user.nickname;
     cell.contentLabel.text = model.content;
     cell.timeLabel.text = model.create_time;
-
+    cell.showCertificationImageView.hidden = YES;
     return cell;
 }
 
