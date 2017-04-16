@@ -12,6 +12,7 @@
 #import "JMHomePageThreeTypeTableViewCell.h"
 
 #import "JMCourseDetailsViewController.h"
+#import "JMXianXiaCourseDetailsViewController.h"
 @interface JMKongJianHomePageViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 ///列表
@@ -107,12 +108,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //创业课程线上详情
-    JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];
+    if (indexPath.row == 0) {
+        
+        //创业课程线上详情
+        JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];
+        
+        [self.navigationController pushViewController:courseDetailVC animated:YES];
+        
+    }else{
+        //创业课程线下详情
+        JMXianXiaCourseDetailsViewController *xianxiaDetailVC = [[JMXianXiaCourseDetailsViewController alloc] init];
+        
+        [self.navigationController pushViewController:xianxiaDetailVC animated:YES];
+    }
     
-    [self.navigationController pushViewController:courseDetailVC animated:YES];
-    
-    //创业课程线下详情
 }
 
 - (void)didReceiveMemoryWarning {
