@@ -7,22 +7,143 @@
 //
 
 #import "JMSalonViewController.h"
-
-@interface JMSalonViewController ()
+#import "JMMineActivityTableViewCell.h"
+#import "JMMineTrainCommonModel.h"
+#import "JMSalonModel.h"
+#import "JMSalonDetailViewController.h"
+@interface JMSalonViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    int currentPage;
+    int nextPage;
+    int pageSize;
+    NSMutableArray *dataArray;
+}
+@property (nonatomic,strong)UITableView *tableView;
 
 @end
 
 @implementation JMSalonViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self theTabBarHidden:YES];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    currentPage=nextPage=1;
+    pageSize=10;
+    dataArray = [NSMutableArray array];
+    [self createLeftBackNavBtn];
+    [self createTableView];
+    [self requestData];
+    
+}
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
+}
+-(void)requestData
+{
+    
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [[HttpClient sharedInstance]getTrainSalonWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMSalonModel *model = [JMSalonModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            
+        }
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        [self.tableView.footer endRefreshing];
+    }];
+}
+#pragma mark - 创建tableView列表视图
+- (void)createTableView{
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    [_tableView registerClass:[JMMineActivityTableViewCell class] forCellReuseIdentifier:@"JMMineActivityTableViewCell"];
+    
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    
+    return 1;
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    return dataArray.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    JMMineActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMMineActivityTableViewCell"];
+    
+    JMSalonModel * model = [dataArray objectAtIndex:indexPath.section];
+    cell.titleLabel.text = model.title;
+    cell.subtitleLabel.text = model.trainProjectDescription;
+    cell.dateLabel.text = model.create_time;
+    [cell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
+    
+    return cell;
+    
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 220;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    
+    return 0.01;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JMSalonModel *model = [dataArray objectAtIndex:indexPath.section];
+    JMSalonDetailViewController *vc = [[JMSalonDetailViewController alloc] init];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

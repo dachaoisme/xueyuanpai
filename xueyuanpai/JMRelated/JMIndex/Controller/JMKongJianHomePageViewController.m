@@ -7,17 +7,29 @@
 //
 
 #import "JMKongJianHomePageViewController.h"
-
 #import "BulkGoodsLunBoView.h"
 #import "JMHomePageThreeTypeTableViewCell.h"
-
 #import "JMCourseDetailsViewController.h"
 #import "JMXianXiaCourseDetailsViewController.h"
-@interface JMKongJianHomePageViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+#import "JMHomePageModel.h"
+#import "SGSegmentedControl.h"
+#import "JMCourseViewController.h"
+#import "JMSalonViewController.h"
+#define bannerHeight 160
+#define tabHeight 44
+@interface JMKongJianHomePageViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
+{
+    BulkGoodsLunBoView *bulkGoodsLunBoView;
+    NSMutableArray *bannerTitleArray;
+    NSMutableArray *bannerImageArray;
+    NSMutableArray *bannerItemArray;
+    NSMutableArray *dataArray;
+}
 ///列表
 @property (nonatomic,strong)UITableView *tableView;
-
+@property(nonatomic,strong)SGSegmentedControlBottomView *bottomSView;
+@property(nonatomic,strong)SGSegmentedControlDefault*topDefaultSView;
+@property(nonatomic,assign)NSInteger chooseIndex;
 @end
 
 @implementation JMKongJianHomePageViewController
@@ -36,98 +48,120 @@
     
     self.title = @"集梦空间";
     [self createLeftBackNavBtn];
-    //创建当前列表视图
-    [self createTableView];
-    
-    
+    bannerTitleArray = [NSMutableArray array];
+    bannerImageArray = [NSMutableArray array];
+    bannerItemArray = [NSMutableArray array];
+    [self createLeftBackNavBtn];
+    [self setupScrollView];
+    [self requestBanner];
 }
-
-#pragma mark - 创建tableView列表视图
-- (void)createTableView{
-    
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    [self.view addSubview:_tableView];
-    
-    
-    //注册cell
-    [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
-    
+-(void)requestBanner
+{
+    [[HttpClient sharedInstance]getBannerOfChuangYeKeChengWithParams:[NSDictionary dictionary] withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        NSArray *listArr =(NSArray *)listDic;
+        for (int i=0; i<listArr.count; i++) {
+            JMHomePageModel *model = [JMHomePageModel yy_modelWithDictionary:[listArr objectAtIndex:i]];
+            [bannerTitleArray addObject:model.title];
+            [bannerImageArray addObject:model.picUrl];
+            [bannerItemArray addObject:model];
+            [self setupBanner];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
-
 #pragma mark - 配置顶部的轮播视图
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+-(void)setupBanner
+{
     //获取轮播图片数组
-    BulkGoodsLunBoView *bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160) animationDuration:0];
-    NSURL *imageUrl = [NSURL URLWithString:@"http://114.215.111.210:999/backend/web/uploads/20170413/14920592674319.png"];
-    NSArray *imageUrlArray = @[imageUrl,imageUrl];
+    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, bannerHeight) animationDuration:0];
+    //NSURL *imageUrl = [NSURL URLWithString:@"http://114.215.111.210:999/backend/web/uploads/20170413/14920592674319.png"];
+    NSArray *imageUrlArray = bannerImageArray;
     bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
         return imageUrlArray[pageIndex];
     };
     bulkGoodsLunBoView.totalPagesCount = ^NSInteger(void){
         return imageUrlArray.count;
     };
+    [self.view addSubview:bulkGoodsLunBoView];
+}
+
+#pragma mark - 设置一级导航栏滚动标题以及滚动controller相关
+- (void)setupScrollView
+{
     
-    return bulkGoodsLunBoView;
+    NSMutableArray *titleArr = [NSMutableArray arrayWithObjects:@"创业课程", @"创业沙龙",nil];
+    
+    NSMutableArray *childVCArray = [NSMutableArray array];
+    
+    //正在招募
+    JMCourseViewController  *processingVC = [[JMCourseViewController alloc] init];
+    [self addChildViewController:processingVC];
+    
+    
+    //正在招募
+    JMSalonViewController  *endVC = [[JMSalonViewController alloc] init];
+    [self addChildViewController:endVC];
+    
+    
+    [childVCArray addObject:processingVC];
+    [childVCArray addObject:endVC];
+    
+    
+    [self initScrollViewTitleWithChildVCArray:childVCArray titleArray:titleArr];
+}
+- (void)initScrollViewTitleWithChildVCArray:(NSMutableArray *)childVCArray titleArray:(NSMutableArray *)titleArr
+{
+    
+    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+bannerHeight+NAVIGATIONBAR_HEIGHT ,self.view.frame.size.width, SCREEN_HEIGHT - TABBAR_HEIGHT - NAV_TOP_HEIGHT-bannerHeight)];
+    _bottomSView.childViewController = childVCArray;
+    _bottomSView.backgroundColor = [UIColor clearColor];
+    _bottomSView.delegate = self;
+    [self.view addSubview:_bottomSView];
+    
+    
+    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT+bannerHeight, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    self.topDefaultSView.backgroundColor = [UIColor clearColor];
+    self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
+    self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];
+    self.topDefaultSView.indicatorColor = [CommonUtils colorWithHex:@"00c05c"];
+    [self.view addSubview:self.topDefaultSView];
+    
+}
+///SGSegmentedControlDefault类型
+- (void)SGSegmentedControlDefault:(SGSegmentedControlDefault *)segmentedControlDefault didSelectTitleAtIndex:(NSInteger)index
+{
+    
+    
+    // 计算滚动的位置
+    CGFloat offsetX = index * self.view.frame.size.width;
+    
+    self.bottomSView.contentOffset = CGPointMake(offsetX, 0);
+    
+    [self.bottomSView showChildVCViewWithIndex:index outsideVC:self];
+    
+    self.chooseIndex = index;
+    
     
 }
 
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    JMHomePageThreeTypeTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
-    threeCell.locationBtn.hidden = YES;
-    threeCell.peopleNumberLabel.hidden = YES;
-    
-    return threeCell;
-    
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return 100;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 160;
-    
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.row == 0) {
-        
-        //创业课程线上详情
-        JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];
-        
-        [self.navigationController pushViewController:courseDetailVC animated:YES];
-        
-    }else{
-        //创业课程线下详情
-        JMXianXiaCourseDetailsViewController *xianxiaDetailVC = [[JMXianXiaCourseDetailsViewController alloc] init];
-        
-        [self.navigationController pushViewController:xianxiaDetailVC animated:YES];
-    }
-    
+#pragma mark - UIScrollViewDelegate  设置一级导航栏滚动标题以及滚动controller相关
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    // 计算滚动到哪一页
+    NSInteger index = scrollView.contentOffset.x / scrollView.frame.size.width;
+    // 1.添加子控制器view
+    [self.bottomSView showChildVCViewWithIndex:index outsideVC:self];
+    // 2.把对应的标题选中
+    [self.topDefaultSView changeThePositionOfTheSelectedBtnWithScrollView:scrollView];
+    self.chooseIndex = index;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

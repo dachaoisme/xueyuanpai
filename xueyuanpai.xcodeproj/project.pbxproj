@@ -17,6 +17,7 @@
 		16154FC51EA2596900FB46AA /* JMKongJianHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FC41EA2596900FB46AA /* JMKongJianHomePageViewController.m */; };
 		16154FC81EA3210E00FB46AA /* JMCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FC71EA3210E00FB46AA /* JMCommentModel.m */; };
 		16154FCC1EA39EF200FB46AA /* JMKuaiDiYuanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FCB1EA39EF200FB46AA /* JMKuaiDiYuanModel.m */; };
+		16154FCF1EA3B2C700FB46AA /* JMSalonDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FCE1EA3B2C700FB46AA /* JMSalonDetailViewController.m */; };
 		166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */; };
 		166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */; };
 		166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0901E9A099F00B2B002 /* JMMineViewController.m */; };
@@ -990,6 +991,8 @@
 		16154FC71EA3210E00FB46AA /* JMCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMCommentModel.m; sourceTree = "<group>"; };
 		16154FCA1EA39EF200FB46AA /* JMKuaiDiYuanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanModel.h; sourceTree = "<group>"; };
 		16154FCB1EA39EF200FB46AA /* JMKuaiDiYuanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMKuaiDiYuanModel.m; sourceTree = "<group>"; };
+		16154FCD1EA3B2C700FB46AA /* JMSalonDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSalonDetailViewController.h; sourceTree = "<group>"; };
+		16154FCE1EA3B2C700FB46AA /* JMSalonDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSalonDetailViewController.m; sourceTree = "<group>"; };
 		166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewController.h; sourceTree = "<group>"; };
 		166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewController.m; sourceTree = "<group>"; };
 		166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanViewController.h; sourceTree = "<group>"; };
@@ -5292,6 +5295,8 @@
 				DDD794C91EA31DCF0024C4E6 /* JMCourseDetailsViewController.m */,
 				DDD794CE1EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.h */,
 				DDD794CF1EA38D160024C4E6 /* JMXianXiaCourseDetailsViewController.m */,
+				16154FCD1EA3B2C700FB46AA /* JMSalonDetailViewController.h */,
+				16154FCE1EA3B2C700FB46AA /* JMSalonDetailViewController.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -6264,6 +6269,7 @@
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
 				166DD13C1E9A0F7C00B2B002 /* BindPhoneViewController.m in Sources */,
 				58F80A041D0931B30099DCCD /* UinversityHotActivityViewController.m in Sources */,
+				16154FCF1EA3B2C700FB46AA /* JMSalonDetailViewController.m in Sources */,
 				DDB28E1F1D2C8A7E004C8F70 /* PSTCollectionViewFlowLayout.m in Sources */,
 				DDB28E011D2C8A7E004C8F70 /* MWCaptionView.m in Sources */,
 				DD13CE171D002D12000A69FE /* BusinessNewsDetailTwoStyleTableViewCell.m in Sources */,

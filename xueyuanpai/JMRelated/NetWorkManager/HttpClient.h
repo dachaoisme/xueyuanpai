@@ -67,7 +67,8 @@
 - (void)updateStudentInfoWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 #pragma mark - 创业课程相关
-
+///获取集梦空间轮播图
+- (void)getBannerOfChuangYeKeChengWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 ///获取实训项目列表
 - (void)getTrainCourseWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 ///获取实训项目详情

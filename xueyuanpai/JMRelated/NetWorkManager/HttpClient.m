@@ -129,7 +129,22 @@
 }
 
 #pragma mark - 创业课程相关
-
+/*
+ *  @brief 获取集梦空间轮播图
+ */
+- (void)getBannerOfChuangYeKeChengWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_BANNER_OF_CHUANGKE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        
+        
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 ///获取实训项目列表
 - (void)getTrainCourseWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 
