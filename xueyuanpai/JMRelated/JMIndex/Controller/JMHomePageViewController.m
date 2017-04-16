@@ -287,23 +287,25 @@
 }
 
 
-#pragma mark - 集梦空间
+#pragma mark - 集梦创客
 - (void)tapDreamSpaceAction{
     
-    [CommonUtils showToastWithStr:@"集梦空间"];
-    JMCuangkeHomePageViewController *trainingProjectListVC = [[JMCuangkeHomePageViewController alloc] init];
     
-    [self.navigationController pushViewController:trainingProjectListVC animated:YES];
-}
-
-
-#pragma mark - 集梦创客
-- (void)tapDreamGuestAction{
-    
-    [CommonUtils showToastWithStr:@"集梦创客"];
     JMKongJianHomePageViewController *trainingProjectListVC = [[JMKongJianHomePageViewController alloc] init];
     
     [self.navigationController pushViewController:trainingProjectListVC animated:YES];
+
+    
+}
+
+
+#pragma mark - 集梦空间
+- (void)tapDreamGuestAction{
+    
+    JMCuangkeHomePageViewController *trainingProjectListVC = [[JMCuangkeHomePageViewController alloc] init];
+    
+    [self.navigationController pushViewController:trainingProjectListVC animated:YES];
+
 }
 
 

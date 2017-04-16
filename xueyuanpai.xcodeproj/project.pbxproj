@@ -2570,6 +2570,7 @@
 				16154FBB1EA2559E00FB46AA /* JMCourseViewController.m */,
 				16154FBD1EA255B500FB46AA /* JMSalonViewController.h */,
 				16154FBE1EA255B500FB46AA /* JMSalonViewController.m */,
+				DDD794C71EA2FE680024C4E6 /* Detail */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -5238,6 +5239,13 @@
 				DDD794B41EA09B7B0024C4E6 /* JMMineActivityTableViewCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DDD794C71EA2FE680024C4E6 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		DDEB257D1D1027CB00EF6CE3 /* XHRadarView */ = {

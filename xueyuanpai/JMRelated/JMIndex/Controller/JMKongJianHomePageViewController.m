@@ -8,15 +8,109 @@
 
 #import "JMKongJianHomePageViewController.h"
 
-@interface JMKongJianHomePageViewController ()
+#import "BulkGoodsLunBoView.h"
+#import "JMHomePageThreeTypeTableViewCell.h"
+@interface JMKongJianHomePageViewController ()<UITableViewDataSource,UITableViewDelegate>
+
+///列表
+@property (nonatomic,strong)UITableView *tableView;
 
 @end
 
 @implementation JMKongJianHomePageViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self theTabBarHidden:YES];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"集梦空间";
+    [self createLeftBackNavBtn];
+    //创建当前列表视图
+    [self createTableView];
+    
+    
+}
+
+#pragma mark - 创建tableView列表视图
+- (void)createTableView{
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    
+    //注册cell
+    [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+    
+}
+
+#pragma mark - 配置顶部的轮播视图
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    //获取轮播图片数组
+    BulkGoodsLunBoView *bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160) animationDuration:0];
+    NSURL *imageUrl = [NSURL URLWithString:@"http://114.215.111.210:999/backend/web/uploads/20170413/14920592674319.png"];
+    NSArray *imageUrlArray = @[imageUrl,imageUrl];
+    bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
+        return imageUrlArray[pageIndex];
+    };
+    bulkGoodsLunBoView.totalPagesCount = ^NSInteger(void){
+        return imageUrlArray.count;
+    };
+    
+    return bulkGoodsLunBoView;
+    
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    JMHomePageThreeTypeTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+    threeCell.locationBtn.hidden = YES;
+    threeCell.peopleNumberLabel.hidden = YES;
+    
+    return threeCell;
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 100;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 160;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [CommonUtils showToastWithStr:@"跳转创业详情"];
+    
+    
+    //创业课程线上详情
+    
+    //创业课程线下详情
 }
 
 - (void)didReceiveMemoryWarning {
