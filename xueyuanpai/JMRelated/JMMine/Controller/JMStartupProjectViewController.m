@@ -11,6 +11,8 @@
 #import "JMHomePageThreeTypeTableViewCell.h"
 #import "JMMineTrainCommonModel.h"
 
+#import "JMCourseDetailsViewController.h"
+#import "JMXianXiaCourseDetailsViewController.h"
 @interface JMStartupProjectViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     int currentPage;
@@ -123,6 +125,28 @@
     return threeCell;
     
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    /*
+    JMCourseModel * model = [dataArray objectAtIndex:indexPath.row];
+    if ([model.is_online integerValue]==1) {
+        ///线上
+        //创业课程线上详情
+        JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];
+        courseDetailVC.model = model;
+        [self.navigationController pushViewController:courseDetailVC animated:YES];
+    }else{
+        //创业课程线下详情
+        JMXianXiaCourseDetailsViewController *xianxiaDetailVC = [[JMXianXiaCourseDetailsViewController alloc] init];
+        xianxiaDetailVC.model = model;
+        [self.navigationController pushViewController:xianxiaDetailVC animated:YES];
+        
+    }
+     
+     */
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
