@@ -9,59 +9,43 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
-            timestampString = "514094870.296124"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+            timestampString = "514106565.541389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "-requestData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "514094874.630467"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-requestData"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-makeSureAction"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[JMXianXiaCourseDetailsViewController requestData]"
+                  symbolName = "-[JMAddOrEditViewController makeSureAction]"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-                  timestampString = "514100264.852694"
+                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+                  timestampString = "514106566.771365"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "211">
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "476">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__51-[JMXianXiaCourseDetailsViewController requestData]_block_invoke"
+                  symbolName = "__43-[JMAddOrEditViewController makeSureAction]_block_invoke"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-                  timestampString = "514100264.858267"
+                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+                  timestampString = "514106566.776348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
                   offsetFromSymbolStart = "16">
                </Location>
             </Locations>
@@ -73,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
-            timestampString = "514094988.543711"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+            timestampString = "514106565.541389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "-requestData"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "-makeSureAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,157 +73,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/JMCourseViewController.m"
-            timestampString = "514095027.164427"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+            timestampString = "514106565.541389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-makeSureAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/JMCourseViewController.m"
-            timestampString = "514095028.282822"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+            timestampString = "514106565.541389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-inputEndWithText:withRow:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "514095055.807267"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+            timestampString = "514106565.541389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-requestData"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-inputEndWithText:withRow:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "514095313.175042"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
+            timestampString = "514106565.541389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
-            landmarkName = "-whetherAlreadyZan"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "514095314.760656"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
-            landmarkName = "-whetherAlreadyZan"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "514095362.684829"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
-            landmarkName = "-whetherAlreadyZan"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[JMXianXiaCourseDetailsViewController whetherAlreadyZan]"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-                  timestampString = "514100264.894452"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "328"
-                  endingLineNumber = "328"
-                  offsetFromSymbolStart = "492">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__57-[JMXianXiaCourseDetailsViewController whetherAlreadyZan]_block_invoke"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-                  timestampString = "514100264.896154"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "329"
-                  endingLineNumber = "329"
-                  offsetFromSymbolStart = "47">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "514095437.642773"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
-            landmarkName = "-zanAction"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "514095438.796836"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
-            landmarkName = "-zanAction"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "-inputEndWithText:withRow:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

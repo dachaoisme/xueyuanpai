@@ -94,6 +94,8 @@
 		166DD1781E9BCF2D00B2B002 /* JMHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */; };
 		1687559F1E9E863000BDC9D9 /* zan_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559D1E9E863000BDC9D9 /* zan_hl@2x.png */; };
 		168755A01E9E863000BDC9D9 /* zan_hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */; };
+		16FF181E1EA4923900D06831 /* JMAreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF181D1EA4923900D06831 /* JMAreaListViewController.m */; };
+		16FF18211EA4947700D06831 /* JMAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF18201EA4947700D06831 /* JMAreaModel.m */; };
 		5802D5AD1D1A2DED00BBB7C4 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802D5AC1D1A2DED00BBB7C4 /* ZHPickView.m */; };
 		58070F941CF6E80200F03F6C /* disable_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F441CF6E80200F03F6C /* disable_tag@2x.png */; };
 		58070F951CF6E80200F03F6C /* disable_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F451CF6E80200F03F6C /* disable_tag@3x.png */; };
@@ -1137,6 +1139,10 @@
 		166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageModel.m; sourceTree = "<group>"; };
 		1687559D1E9E863000BDC9D9 /* zan_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zan_hl@2x.png"; sourceTree = "<group>"; };
 		1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zan_hl@3x.png"; sourceTree = "<group>"; };
+		16FF181C1EA4923900D06831 /* JMAreaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAreaListViewController.h; sourceTree = "<group>"; };
+		16FF181D1EA4923900D06831 /* JMAreaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAreaListViewController.m; sourceTree = "<group>"; };
+		16FF181F1EA4947700D06831 /* JMAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAreaModel.h; sourceTree = "<group>"; };
+		16FF18201EA4947700D06831 /* JMAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAreaModel.m; sourceTree = "<group>"; };
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5802D5AB1D1A2DED00BBB7C4 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
@@ -2531,6 +2537,8 @@
 			children = (
 				16154FCA1EA39EF200FB46AA /* JMKuaiDiYuanModel.h */,
 				16154FCB1EA39EF200FB46AA /* JMKuaiDiYuanModel.m */,
+				16FF181F1EA4947700D06831 /* JMAreaModel.h */,
+				16FF18201EA4947700D06831 /* JMAreaModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2627,6 +2635,8 @@
 				DDF51A0C1E9F6E8400E72DEC /* JMSelectAddressViewController.m */,
 				DDF51A191E9F772C00E72DEC /* JMAddOrEditViewController.h */,
 				DDF51A1A1E9F772C00E72DEC /* JMAddOrEditViewController.m */,
+				16FF181C1EA4923900D06831 /* JMAreaListViewController.h */,
+				16FF181D1EA4923900D06831 /* JMAreaListViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6268,6 +6278,7 @@
 				DDAB05CB1D03B24C007A6027 /* BusinessProjectDetailTwoTableViewCell.m in Sources */,
 				58F67C311CD9CF9500D55BE0 /* MJRefreshHeader.m in Sources */,
 				166DD13C1E9A0F7C00B2B002 /* BindPhoneViewController.m in Sources */,
+				16FF18211EA4947700D06831 /* JMAreaModel.m in Sources */,
 				58F80A041D0931B30099DCCD /* UinversityHotActivityViewController.m in Sources */,
 				16154FCF1EA3B2C700FB46AA /* JMSalonDetailViewController.m in Sources */,
 				DDB28E1F1D2C8A7E004C8F70 /* PSTCollectionViewFlowLayout.m in Sources */,
@@ -6369,6 +6380,7 @@
 				DDB28E3D1D2C8A7E004C8F70 /* EaseUsersListViewController.m in Sources */,
 				587FF9D91CF2F8F300AD2131 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				DD4644881E9E944900EAE186 /* SGImageButton_Horizontal.m in Sources */,
+				16FF181E1EA4923900D06831 /* JMAreaListViewController.m in Sources */,
 				DDCD71361D0A8497009FBE9A /* SendCourierReecordViewController.m in Sources */,
 				DD4644501E9E2DEB00EAE186 /* JMSignUpOneTypeTableViewCell.m in Sources */,
 				DD46445C1E9E497E00EAE186 /* JMTrainingProjectListViewController.m in Sources */,

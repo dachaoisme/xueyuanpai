@@ -50,11 +50,13 @@
         [self.contentView addSubview:_addressLabel];
         
     }
-
+    if (!_editBtn) {
+        _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_editBtn setImage:[UIImage imageNamed:@"bianji"] forState:UIControlStateNormal];
+        [_editBtn setFrame:CGRectMake(SCREEN_WIDTH - 15 - 22, 25, 22, 22)];
+        [self.contentView addSubview:_editBtn];
+    }
     
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 22, 25, 22, 22)];
-    imageView.image = [UIImage imageNamed:@"bianji"];
-    [self.contentView addSubview:imageView];
     
 }
 

@@ -9,5 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface JMAreaModel : NSObject
+/*
+ "id": 1,
+ "name": "北京市",
+ "ord": 99,
+ "parent_id": 0
+ */
+@property(nonatomic,strong)NSString *areaId;
+@property(nonatomic,strong)NSString *name;
+@property(nonatomic,strong)NSString *ord;
+@property(nonatomic,strong)NSString *parent_id;
 
 @end

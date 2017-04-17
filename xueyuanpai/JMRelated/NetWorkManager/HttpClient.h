@@ -89,36 +89,21 @@
 ///忘记密码-----校验验证码，验证手机号和验证码是否匹配
 - (void)validateTelephoneAndSecurityCodeWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
-/**
- *  @brief  登陆
- *
- *  @param
- *
- *  @return
- */
+///登陆
 
 - (void)loginWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  发送验证码
- *
- *  @param
- *
- *  @return
- */
+///发送验证码
 
 - (void)registerOfSendMessageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  提交并注册
- *
- *  @param
- *
- *  @return
- */
+///提交并注册
 
 - (void)registerAndSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
-
-
+#pragma mark - 我的快递相关
+///获取地区列表
+- (void)areaListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+///增加地址
+- (void)addAdressWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 
 

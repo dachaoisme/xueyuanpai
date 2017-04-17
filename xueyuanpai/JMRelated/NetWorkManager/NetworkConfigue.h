@@ -90,6 +90,18 @@
 ///校验验证码和手机号--->修改密码
 #define METHOD_OF_CHECKING_MESSAGE       @"feedback/create"
 
+
+
+////////快递员相关////////
+///创建地址--获取地区列表
+#define METHOD_OF_AREA_LIST       @"area/index"
+#define METHOD_OF_ADD_ADRESS       @"address/create"
+
+
+
+
+
+
 #define ENTITY_TYPE_PROJECT         @"project"  ///创业项目
 #define ENTITY_TYPE_SALON           @"salon"    ///创业沙龙
 #define ENTITY_TYPE_COURSE          @"course"   ///创业课程

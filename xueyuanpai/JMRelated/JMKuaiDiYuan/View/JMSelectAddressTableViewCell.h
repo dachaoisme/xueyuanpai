@@ -15,5 +15,5 @@
 
 ///地址信息的label
 @property (nonatomic,strong)UILabel *addressLabel;
-
+@property (nonatomic,strong)UIButton *editBtn;
 @end

@@ -10,4 +10,10 @@
 
 @implementation JMAreaModel
 
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{ @"areaId" : @"id",
+              };
+}
+
 @end

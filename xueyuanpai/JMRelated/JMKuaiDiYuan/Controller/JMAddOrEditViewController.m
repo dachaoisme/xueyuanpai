@@ -10,9 +10,15 @@
 
 #import "JMSignUpTwoTypeTableViewCell.h"
 #import "JMSignUpOneTypeTableViewCell.h"
-
-@interface JMAddOrEditViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+#import "JMAreaModel.h"
+#import "JMAreaListViewController.h"
+@interface JMAddOrEditViewController ()<UITableViewDelegate,UITableViewDataSource,JMSignUpTwoTypeTableViewCellDelegate>
+{
+    JMAreaModel *areaModel;
+    NSString *telephone;
+    NSString *detailedAddress;
+    NSString *name;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -65,14 +71,23 @@
     if (indexPath.section == 0) {
         
         JMSignUpTwoTypeTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"JMSignUpTwoTypeTableViewCell"];
+        cell.delegate = self;
         if (indexPath.row == 0) {
             
             cell.leftTitleLabel.text = @"姓名";
+            if (name.length>0) {
+                cell.rightTextFeild.text = name;
+            }
+            
+            cell.tag = 0;
             
         }else{
             
             cell.leftTitleLabel.text = @"手机号";
-
+            if (telephone.length>0) {
+                cell.rightTextFeild.text = telephone;
+            }
+            cell.tag = 1;
         }
         
         return cell;
@@ -85,16 +100,24 @@
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.leftTitleLabel.text = @"省市";
-            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            if (areaModel) {
+                [cell.rightContentBtn setTitle:areaModel.name forState:UIControlStateNormal];
+            }else{
+                [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            }
+            
             
             return cell;
             
         }else{
             
             JMSignUpTwoTypeTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"JMSignUpTwoTypeTableViewCell"];
-            
+            cell.delegate = self;
             cell.leftTitleLabel.text = @"详细地址";
-            
+            if (detailedAddress.length>0) {
+                cell.rightTextFeild.text = detailedAddress;
+            }
+            cell.tag = 2;
             return cell;
         }
         
@@ -121,7 +144,16 @@
     return 0.01;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    weakSelf(weakSelf);
+    JMAreaListViewController *areaListVC = [[JMAreaListViewController alloc]init];
+    areaListVC.returnBlock = ^(JMAreaModel *returnAreaModel) {
+        areaModel = returnAreaModel;
+        [weakSelf.tableView reloadData];
+    };
+    [self.navigationController pushViewController:areaListVC animated:YES];
+}
 
 #pragma mark - 创建底部视图
 - (void)createBottomView{
@@ -146,11 +178,40 @@
 #pragma mark - 确定按钮的响应事件
 - (void)makeSureAction{
     
-    [CommonUtils showToastWithStr:@"确定"];
-    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:telephone forKey:@"telphone"];
+    [dic setValue:@"0" forKey:@"province"];
+    [dic setValue:areaModel.ord forKey:@"city"];
+    [dic setValue:detailedAddress forKey:@"addr"];
+    [dic setValue:name forKey:@"user_name"];
+    [[HttpClient sharedInstance] addAdressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        if (responseModel.responseCode ==ResponseCodeSuccess) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [CommonUtils showToastWithStr:responseModel.responseMsg];
+        }
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 
-
+-(void)inputEndWithText:(NSString *)text withRow:(NSInteger)row
+{
+    if (row==0) {
+        //姓名
+        name=text;
+    }else if (row==1){
+        ///手机号
+        telephone = text;
+    }else if (row==2){
+        ///详细地址
+        detailedAddress = text;
+    }else{
+        
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

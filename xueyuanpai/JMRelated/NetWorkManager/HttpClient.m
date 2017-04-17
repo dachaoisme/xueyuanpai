@@ -365,6 +365,35 @@
     }];
 }
 
+#pragma mark - 用户端--快递--相关
+///获取地区列表
+- (void)areaListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_AREA_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+///增加地址
+- (void)addAdressWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_ADD_ADRESS withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        NSDictionary * listDic = model.responseCommonDic;
+        successBlock(model,listDic);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+
+
+
+
+
+
+
 
 
 

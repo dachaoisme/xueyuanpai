@@ -79,7 +79,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     JMSelectAddressTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"JMSelectAddressTableViewCell"];
-    
+    [cell.editBtn addTarget:self action:@selector(editAdress:) forControlEvents:UIControlEventTouchUpInside];
+    cell.editBtn.tag = indexPath.row;
     return cell;
     
 }
@@ -108,7 +109,10 @@
     return 0.01;
 }
 
-
+-(void)editAdress:(UIButton *)sender
+{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
