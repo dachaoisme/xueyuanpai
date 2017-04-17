@@ -57,6 +57,7 @@
 @property(nonatomic,strong)NSString *create_time;
 @property(nonatomic,strong)NSString *site_name;
 @property(nonatomic,strong)NSString *express_name;
+@property(nonatomic,strong)NSString *status;
 @property(nonatomic,strong)JMKuaiDiYuanSenderAdressModel *sender_addr;
 @property(nonatomic,strong)JMKuaiDiYuanReceiverAdressModel *receiver_addr;
 

@@ -105,7 +105,8 @@
 #define TWICE_METHOD_OF_EXPRESS_COMPANY  @"expresscompany/list"
 ///创建/寄快递
 #define TWICE_METHOD_OF_SEND_EXPRESS  @"express/create"
-
+///获取寄出的快递列表
+#define METHOD_OF_EXPRESS_LIST_ALREADY_SENT    @"express/list"
 
 #define ENTITY_TYPE_PROJECT         @"project"  ///创业项目
 #define ENTITY_TYPE_SALON           @"salon"    ///创业沙龙

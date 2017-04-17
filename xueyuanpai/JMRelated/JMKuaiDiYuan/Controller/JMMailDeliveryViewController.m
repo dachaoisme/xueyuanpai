@@ -29,8 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"收取快递";
-    nextPage=currentPage=0;
+    self.title = @"寄出快递";
+    nextPage=currentPage=1;
     dataArray =[NSMutableArray array];
     [self createTableView];
     ///
@@ -42,9 +42,10 @@
     
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
-    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
-    [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+    [dic setValue:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setValue:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]haveSentExpressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];
         currentPage=nextPage;
@@ -87,7 +88,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return dataArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -103,7 +104,20 @@
     if (indexPath.row == 0) {
         
         JMMailDeliveryOneTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMMailDeliveryOneTypeTableViewCell"];
-        
+        JMKuaiDiYuanModel *model = [dataArray objectAtIndex:indexPath.section];
+        cell.showOrderNumberLabel.text =model.order_id;
+        cell.showDateLabel.text = model.create_time;
+        cell.showWaitTimeLabel.text = @"24小时";
+        if ([model.status integerValue]==0) {
+            ///等待寄出
+            cell.showStatuesLabel.text = @"等待寄出";
+        }else if ([model.status integerValue]==1){
+            ///已寄出
+            cell.showStatuesLabel.text = @"已寄出";
+        }else{
+            ///未寄出失败
+            cell.showStatuesLabel.text = @"未寄出失败";
+        }
         
         return cell;
         
@@ -111,7 +125,25 @@
         
         
         JMMailDeliveryTwoTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMMailDeliveryTwoTypeTableViewCell"];
-        
+        JMKuaiDiYuanModel *model = [dataArray objectAtIndex:indexPath.section];
+        if ([model.status integerValue]==0) {
+            ///等待寄出
+            cell.jiImageView.image =[UIImage imageNamed:@"send_address_a"];
+            
+            cell.quImageView.image =[UIImage imageNamed:@"receive_address_b"];
+        }else if ([model.status integerValue]==1){
+            ///已寄出
+            cell.jiImageView.image =[UIImage imageNamed:@"send_address_a"];
+            
+            cell.quImageView.image =[UIImage imageNamed:@"receive_address_b"];
+        }else{
+            ///未寄出失败
+            cell.jiImageView.image =[UIImage imageNamed:@"send_address_a_grey"];
+            
+            cell.quImageView.image =[UIImage imageNamed:@"receive_address_b_grey"];
+        }
+        cell.jiAddressLabel.text = model.sender_addr.addr;
+        cell.quAddressLabel.text = model.receiver_addr.addr;
         return cell;
         
     }
