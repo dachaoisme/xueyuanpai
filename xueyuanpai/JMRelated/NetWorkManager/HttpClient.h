@@ -86,9 +86,36 @@
 ///点赞
 - (void)trainSalonAddFavouriteWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
+///忘记密码-----校验验证码，验证手机号和验证码是否匹配
+- (void)validateTelephoneAndSecurityCodeWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
+/**
+ *  @brief  登陆
+ *
+ *  @param
+ *
+ *  @return
+ */
 
+- (void)loginWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  发送验证码
+ *
+ *  @param
+ *
+ *  @return
+ */
 
+- (void)registerOfSendMessageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+/**
+ *  @brief  提交并注册
+ *
+ *  @param
+ *
+ *  @return
+ */
+
+- (void)registerAndSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 
 
@@ -127,42 +154,8 @@
 
 
 #pragma mark - 用户相关
-/**
- *  @brief  登陆
- *
- *  @param
- *
- *  @return
- */
 
-- (void)loginWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  发送验证码
- *
- *  @param
- *
- *  @return
- */
 
-- (void)registerOfSendMessageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  提交并注册
- *
- *  @param
- *
- *  @return
- */
-
-- (void)registerAndSubmitWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-/**
- *  @brief  忘记密码-----校验验证码，验证手机号和验证码是否匹配
- *
- *  @param
- *
- *  @return
- */
-
-- (void)validateTelephoneAndSecurityCodeWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 /**
  *  @brief  修改密码
  *

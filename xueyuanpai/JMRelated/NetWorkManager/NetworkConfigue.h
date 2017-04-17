@@ -83,11 +83,12 @@
 #define METHOD_OF_SEND_MESSAGE           @"student/sendsms"
 ///根据关键字查询学校
 #define METHOD_OF_COLLEGE_SEARCH         @"college/index"
-///时间银行:上传用户头像
+///上传用户头像
 #define METHOD_OF_ADD_ICON_UPLOAD           @"student/upload/"
 ///更新个人资料
 #define METHOD_OF_UPDATE_STUDENT_INFO    @"student/updateuserinfo/"
-
+///校验验证码和手机号--->修改密码
+#define METHOD_OF_CHECKING_MESSAGE       @"feedback/create"
 
 #define ENTITY_TYPE_PROJECT         @"project"  ///创业项目
 #define ENTITY_TYPE_SALON           @"salon"    ///创业沙龙
@@ -120,8 +121,7 @@
 
 
 
-///校验验证码和手机号--->修改密码
-#define METHOD_OF_CHECKING_MESSAGE       @"v1/user/validatecaptcha?"
+
 ///修改密码
 #define METHOD_OF_UPDATE_PASSWORD        @"v1/user/updatepasswd?"
 

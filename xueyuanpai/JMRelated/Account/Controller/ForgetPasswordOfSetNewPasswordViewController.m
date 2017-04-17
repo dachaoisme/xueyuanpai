@@ -83,7 +83,7 @@
     [[HttpClient sharedInstance]changePasswordWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             //若成功，应该是返回主页面，并且是已经登录状态
-            //[[UserAccountManager sharedInstance]loginWithUserPhoneNum:self.telephoneNum andPassWord:inputPasswordTextField.text withUserRole:self.registerRoleType];
+            [[UserAccountManager sharedInstance]loginWithUserPhoneNum:self.telephoneNum andPassWord:inputPasswordTextField.text withUserRole:RegisterRoleOfStudent];
             [self dismissViewControllerAnimated:YES completion:^{
                 
             }];
