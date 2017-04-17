@@ -10,6 +10,9 @@
 
 @interface JMMineActivityTableViewCell : UITableViewCell
 
+///整体的背景图
+@property (nonatomic,strong)UIImageView *backGroundView;
+
 //第几期的label
 @property (nonatomic,strong)UILabel *periodLabel;
 

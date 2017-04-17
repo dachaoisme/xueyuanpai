@@ -9,7 +9,8 @@
 #import "JMMineActivityListViewController.h"
 
 #import "JMMineActivityTableViewCell.h"
-#import "JMMineTrainCommonModel.h"
+#import "JMSalonModel.h"
+#import "JMSalonDetailViewController.h"
 @interface JMMineActivityListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     int currentPage;
@@ -70,7 +71,7 @@
         
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
-            JMMineTrainCommonModel *model = [JMMineTrainCommonModel yy_modelWithDictionary:tempDic];
+            JMSalonModel *model = [JMSalonModel yy_modelWithDictionary:tempDic];
             [dataArray addObject:model];
             
         }
@@ -111,14 +112,24 @@
     
     JMMineActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMMineActivityTableViewCell"];
     
-    JMMineTrainCommonModel * model = [dataArray objectAtIndex:indexPath.section];
-    cell.titleLabel.text = model.name;
-    cell.subtitleLabel.text = model.job;
+    JMSalonModel * model = [dataArray objectAtIndex:indexPath.section];
+    [cell.backGroundView sd_setImageWithURL:[NSURL URLWithString:model.bannerUrl]];
+    cell.titleLabel.text = model.title;
+    cell.subtitleLabel.text = model.salonDescription;
     cell.dateLabel.text = model.create_time;
     [cell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
     
     return cell;
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    JMSalonModel *model = [dataArray objectAtIndex:indexPath.section];
+    JMSalonDetailViewController *vc = [[JMSalonDetailViewController alloc] init];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 
