@@ -52,3 +52,26 @@
 @property(nonatomic,strong)NSString *colllege_name;
 @property(nonatomic,strong)NSString *is_online;
 @end
+
+
+/*
+ author = 1;
+ bannerUrl = "";
+ "college_id" = 1;
+ "colllege_name" = "\U5316\U5de5\U5b66\U9662";
+ content = 11;
+ "count_comment" = 0;
+ "count_like" = 0;
+ "count_mark" = 0;
+ "course_addr" = 11112;
+ "course_time" = 1;
+ "create_time" = "2017-03-23 15:27:05";
+ description = zhaiyao;
+ id = 1;
+ thumbUrl = 1;
+ title = title;
+ "update_time" = "2017-03-23 15:36:37";
+ videoUrl = 1;
+ 
+ 
+ */

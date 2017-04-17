@@ -143,12 +143,12 @@
         ///线上
         //创业课程线上详情
         JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];
-        
+        courseDetailVC.model = model;
         [self.navigationController pushViewController:courseDetailVC animated:YES];
     }else{
         //创业课程线下详情
         JMXianXiaCourseDetailsViewController *xianxiaDetailVC = [[JMXianXiaCourseDetailsViewController alloc] init];
-    
+        xianxiaDetailVC.model = model;
         [self.navigationController pushViewController:xianxiaDetailVC animated:YES];
         
     }

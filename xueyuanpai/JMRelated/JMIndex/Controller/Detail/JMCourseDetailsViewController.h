@@ -7,9 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JMCourseModel.h"
 @interface JMCourseDetailsViewController : BaseViewController
 
 
-
+@property(nonatomic,strong) JMCourseModel *model;
 @end

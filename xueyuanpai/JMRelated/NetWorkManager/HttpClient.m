@@ -160,7 +160,7 @@
         failBlock(error);
     }];
 }
-///获取实训项目详情
+///获取创业课程详情
 - (void)getTrainCourseDetailWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_OF_TRAIN_COURSE_DETAIL withParams:params withSuccess:^(HttpResponseCodeModel *model) {
@@ -193,7 +193,7 @@
 }
 
 #pragma mark - 创业沙龙相关
-///获取实训项目列表
+///获取创业沙龙列表
 - (void)getTrainSalonWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 
 {
