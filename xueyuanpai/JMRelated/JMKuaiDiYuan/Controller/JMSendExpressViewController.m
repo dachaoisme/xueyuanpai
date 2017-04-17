@@ -121,7 +121,9 @@
         case 0:{
             
             JMSelectAddressViewController *selectAddressVC = [[JMSelectAddressViewController alloc] init];
-            
+            selectAddressVC.returnBlock = ^(JMAdressListModel *returnAddressModel) {
+                
+            };
             [self.navigationController pushViewController:selectAddressVC animated:YES];
         }
             break;

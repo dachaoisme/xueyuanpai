@@ -13,19 +13,33 @@
 #import "JMAddOrEditViewController.h"
 
 @interface JMSelectAddressViewController ()<UITableViewDataSource,UITableViewDelegate>
-
+{
+    NSMutableArray *dataArray;
+    int currentPage;
+    int nextPage;
+    int pageSize;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
 
 @implementation JMSelectAddressViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (self.tableView) {
+        [self requestData];
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.title = @"选择地址";
-    
+    currentPage=nextPage=1;
+    pageSize=10;
+    dataArray = [NSMutableArray array];
     
     [self createLeftBackNavBtn];
     
@@ -33,10 +47,40 @@
     //创建收获地址静态界面
     [self createTableView];
     
-    
+    [self requestData];
 
 }
-
+-(void)requestData
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance] addressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [self.tableView.footer endRefreshing];
+        
+        NSArray * listArray = [model.responseCommonDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        [dataArray removeAllObjects];
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMAdressListModel *model = [JMAdressListModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            [self.tableView reloadData];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+-(void)requestMoreData
+{
+    nextPage=currentPage+1;
+    [self requestData];
+}
 #pragma mark - 创建tableView
 - (void)createTableView{
     
@@ -47,7 +91,7 @@
     self.tableView = tableView;
     
     [tableView registerClass:[JMSelectAddressTableViewCell class] forCellReuseIdentifier:@"JMSelectAddressTableViewCell"];
-    
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
     
     //在最底部添加增加收获地址
     UIButton *addAdressBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -73,7 +117,7 @@
 #pragma mark - UITableView代理方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -81,15 +125,18 @@
     JMSelectAddressTableViewCell  *cell = [tableView dequeueReusableCellWithIdentifier:@"JMSelectAddressTableViewCell"];
     [cell.editBtn addTarget:self action:@selector(editAdress:) forControlEvents:UIControlEventTouchUpInside];
     cell.editBtn.tag = indexPath.row;
+    JMAdressListModel *model = [dataArray objectAtIndex:indexPath.row];
+    cell.nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@   %@",model.user_name,model.telphone];
+    cell.addressLabel.text = model.addr;
     return cell;
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    JMAddOrEditViewController *editVC = [[JMAddOrEditViewController alloc] init];
-    editVC.title = @"编辑地址";
-    [self.navigationController pushViewController:editVC animated:YES];
+
+    self.returnBlock([dataArray objectAtIndex:indexPath.row]);
+    [self.navigationController popViewControllerAnimated:YES];
 
 }
 
@@ -111,7 +158,10 @@
 
 -(void)editAdress:(UIButton *)sender
 {
-    
+    JMAddOrEditViewController *editVC = [[JMAddOrEditViewController alloc] init];
+    editVC.title = @"编辑地址";
+    editVC.addressModel = [dataArray objectAtIndex:sender.tag];
+    [self.navigationController pushViewController:editVC animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

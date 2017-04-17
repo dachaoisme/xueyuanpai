@@ -96,6 +96,7 @@
 		168755A01E9E863000BDC9D9 /* zan_hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */; };
 		16FF181E1EA4923900D06831 /* JMAreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF181D1EA4923900D06831 /* JMAreaListViewController.m */; };
 		16FF18211EA4947700D06831 /* JMAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF18201EA4947700D06831 /* JMAreaModel.m */; };
+		16FF18241EA4B0D000D06831 /* JMAdressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF18231EA4B0D000D06831 /* JMAdressListModel.m */; };
 		5802D5AD1D1A2DED00BBB7C4 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802D5AC1D1A2DED00BBB7C4 /* ZHPickView.m */; };
 		58070F941CF6E80200F03F6C /* disable_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F441CF6E80200F03F6C /* disable_tag@2x.png */; };
 		58070F951CF6E80200F03F6C /* disable_tag@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 58070F451CF6E80200F03F6C /* disable_tag@3x.png */; };
@@ -1143,6 +1144,8 @@
 		16FF181D1EA4923900D06831 /* JMAreaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAreaListViewController.m; sourceTree = "<group>"; };
 		16FF181F1EA4947700D06831 /* JMAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAreaModel.h; sourceTree = "<group>"; };
 		16FF18201EA4947700D06831 /* JMAreaModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAreaModel.m; sourceTree = "<group>"; };
+		16FF18221EA4B0D000D06831 /* JMAdressListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAdressListModel.h; sourceTree = "<group>"; };
+		16FF18231EA4B0D000D06831 /* JMAdressListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAdressListModel.m; sourceTree = "<group>"; };
 		36407C657FF7263B21131FEB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4F5AFFB6492D594E49020A86 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5802D5AB1D1A2DED00BBB7C4 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
@@ -2539,6 +2542,8 @@
 				16154FCB1EA39EF200FB46AA /* JMKuaiDiYuanModel.m */,
 				16FF181F1EA4947700D06831 /* JMAreaModel.h */,
 				16FF18201EA4947700D06831 /* JMAreaModel.m */,
+				16FF18221EA4B0D000D06831 /* JMAdressListModel.h */,
+				16FF18231EA4B0D000D06831 /* JMAdressListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6165,6 +6170,7 @@
 				166DD14E1E9A0F7C00B2B002 /* TopUpViewController.m in Sources */,
 				DDD3E53A1CF49669001B579E /* SchoolColumnView.m in Sources */,
 				DDE8F62B1CFD8E8600680214 /* JobMarketDetailViewController.m in Sources */,
+				16FF18241EA4B0D000D06831 /* JMAdressListModel.m in Sources */,
 				DDB28DE31D2C8A7E004C8F70 /* EMCDDeviceManager+Microphone.m in Sources */,
 				DDAC26A51D26189D00B7EAB7 /* BusinessCenterMessageDetailViewController.m in Sources */,
 				581ABF1E1CE0DAEA00B933D7 /* IndexCollectionReusableView.m in Sources */,

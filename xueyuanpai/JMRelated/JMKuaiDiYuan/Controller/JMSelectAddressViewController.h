@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JMAdressListModel.h"
 @interface JMSelectAddressViewController : BaseViewController
+
+@property(nonatomic,copy)void(^returnBlock)(JMAdressListModel *returnAddressModel);
 
 @end

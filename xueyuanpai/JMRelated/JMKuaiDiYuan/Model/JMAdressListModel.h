@@ -10,4 +10,21 @@
 
 @interface JMAdressListModel : NSObject
 
+/*
+ "id": 1,
+ "user_name": "sss",
+ "telphone": "13718360863",
+ "province": "北京市",
+ "city": "济南市",
+ "addr": "ddddsee"
+ 
+ */
+
+@property(nonatomic,strong)NSString *adressId;
+@property(nonatomic,strong)NSString *user_name;
+@property(nonatomic,strong)NSString *telphone;
+@property(nonatomic,strong)NSString *province;
+@property(nonatomic,strong)NSString *city;
+@property(nonatomic,strong)NSString *addr;
+
 @end

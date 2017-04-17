@@ -30,7 +30,11 @@
     // Do any additional setup after loading the view.
     
     [self createLeftBackNavBtn];
-    
+    if (self.addressModel) {
+        telephone = self.addressModel.telphone;
+        detailedAddress = self.addressModel.addr;
+        name = self.addressModel.user_name;
+    }
     [self createTableView];
     
     [self createBottomView];

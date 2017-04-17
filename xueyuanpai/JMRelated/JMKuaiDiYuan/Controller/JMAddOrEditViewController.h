@@ -7,7 +7,9 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JMAdressListModel.h"
 @interface JMAddOrEditViewController : BaseViewController
+
+@property(nonatomic,strong)JMAdressListModel *addressModel;
 
 @end

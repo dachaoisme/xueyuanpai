@@ -95,8 +95,8 @@
 ////////快递员相关////////
 ///创建地址--获取地区列表
 #define METHOD_OF_AREA_LIST       @"area/index"
-#define METHOD_OF_ADD_ADRESS       @"address/create"
-
+#define METHOD_OF_ADD_ADRESS      @"address/create"
+#define METHOD_OF_ADDRESS_LIST     @"address/list"
 
 
 
