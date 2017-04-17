@@ -11,9 +11,17 @@
 #import "JMSignUpOneTypeTableViewCell.h"
 
 #import "JMSelectAddressViewController.h"
-
+#import "JMExpressSiteModel.h"
+#import "JMExpressSiteViewController.h"
+#import "JMExpressCompanyViewController.h"
 @interface JMSendExpressViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    JMAdressListModel *sendAddressModel;
+    JMAdressListModel *receiveAddressModel;
+    JMExpressSiteModel *expressSiteModel;
+    NSString *expressCompanyName;
+    NSString *expressCompanyId;
+}
 @property (nonatomic,strong)UITableView *tableView;
 
 @end
@@ -46,7 +54,8 @@
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    int sureBtnHeight = 50;
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-sureBtnHeight-10) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -55,7 +64,13 @@
     //注册cell
     [_tableView registerClass:[JMSignUpOneTypeTableViewCell class] forCellReuseIdentifier:@"JMSignUpOneTypeTableViewCell"];
     
-
+    UIButton *sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [sureBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
+    [sureBtn setFrame:CGRectMake(10, SCREEN_HEIGHT-sureBtnHeight-10, SCREEN_WIDTH-10*2, sureBtnHeight)];
+    [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [sureBtn addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sureBtn];
 }
 
 
@@ -87,28 +102,40 @@
         if (indexPath.row == 0) {
             
             cell.leftTitleLabel.text = @"寄件人地址";
-            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            if (sendAddressModel) {
+                [cell.rightContentBtn setTitle:sendAddressModel.addr forState:UIControlStateNormal];
+            }else{
+                [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            }
+            
             
         }else{
             
             cell.leftTitleLabel.text = @"收件人地址";
-            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
-
+            if (receiveAddressModel) {
+                [cell.rightContentBtn setTitle:sendAddressModel.addr forState:UIControlStateNormal];
+            }else{
+                [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+            }
         }
-        
     }else if (indexPath.section == 1){
         
         cell.leftTitleLabel.text = @"选择站点";
-        [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        if (expressSiteModel) {
+            [cell.rightContentBtn setTitle:expressSiteModel.site_name forState:UIControlStateNormal];
+        }else{
+            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        }
 
-        
     }else{
-        
         cell.leftTitleLabel.text = @"选择快递公司";
-        [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        if (expressCompanyName && expressCompanyName.length>0) {
+            [cell.rightContentBtn setTitle:expressCompanyName forState:UIControlStateNormal];
+        }else{
+            [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        }
         
     }
-    
     
     return cell;
 
@@ -116,27 +143,54 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    weakSelf(weakSelf);
     switch (indexPath.section) {
         case 0:{
-            
-            JMSelectAddressViewController *selectAddressVC = [[JMSelectAddressViewController alloc] init];
-            selectAddressVC.returnBlock = ^(JMAdressListModel *returnAddressModel) {
+            if (indexPath.row == 0) {
                 
-            };
-            [self.navigationController pushViewController:selectAddressVC animated:YES];
+                JMSelectAddressViewController *selectAddressVC = [[JMSelectAddressViewController alloc] init];
+                selectAddressVC.returnBlock = ^(JMAdressListModel *returnAddressModel) {
+                    sendAddressModel = returnAddressModel;
+                    [weakSelf.tableView reloadData];
+                };
+                [self.navigationController pushViewController:selectAddressVC animated:YES];
+                
+            }else{
+                
+                JMSelectAddressViewController *selectAddressVC = [[JMSelectAddressViewController alloc] init];
+                selectAddressVC.returnBlock = ^(JMAdressListModel *returnAddressModel) {
+                    receiveAddressModel = returnAddressModel;
+                    [weakSelf.tableView reloadData];
+                };
+                [self.navigationController pushViewController:selectAddressVC animated:YES];
+                
+            }
+            
+            
         }
             break;
         case 1:{
             
             [CommonUtils showToastWithStr:@"选择站点"];
+            JMExpressSiteViewController  *expressSiteVC = [[JMExpressSiteViewController alloc] init];
+            expressSiteVC.returnBlock = ^(JMExpressSiteModel*returnExpressSiteModel) {
+                expressSiteModel = returnExpressSiteModel;
+                [weakSelf.tableView reloadData];
+            };
+            [self.navigationController pushViewController:expressSiteVC animated:YES];
         }
             break;
 
         case 2:{
             
             [CommonUtils showToastWithStr:@"选择快递公司"];
-
+            JMExpressCompanyViewController  *expressSiteVC = [[JMExpressCompanyViewController alloc] init];
+            expressSiteVC.returnBlock = ^(NSString *companyName, NSString *companyId) {
+                expressCompanyName =companyName;
+                expressCompanyId = companyId;
+                [weakSelf.tableView reloadData];
+            };
+            [self.navigationController pushViewController:expressSiteVC animated:YES];
         }
             break;
 
@@ -157,6 +211,26 @@
     return 10;
 }
 
+-(void)sure:(UIButton *)sender
+{
+    [CommonUtils showToastWithStr:@"确定"];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:sendAddressModel.adressId forKey:@"sender_addr"];
+    [dic setValue:receiveAddressModel.adressId forKey:@"receive_addr"];
+    [dic setValue:expressSiteModel.expressSiteId forKey:@"expresssite_id"];
+    [dic setValue:expressCompanyId forKey:@"expresscompany_id"];
+    [[HttpClient sharedInstance] sendExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode==ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"寄件成功"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

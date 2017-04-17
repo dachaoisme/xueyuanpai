@@ -7,7 +7,12 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JMExpressSiteModel.h"
 @interface JMExpressSiteViewController : BaseViewController
+
+
+////////////////站点列表////////////////
+
+@property(nonatomic,copy)void(^returnBlock)(JMExpressSiteModel *returnExpressSiteModel);
 
 @end

@@ -94,12 +94,17 @@
 
 ////////快递员相关////////
 ///创建地址--获取地区列表
-#define METHOD_OF_AREA_LIST       @"area/index"
-#define METHOD_OF_ADD_ADRESS      @"address/create"
-#define METHOD_OF_ADDRESS_LIST     @"address/list"
-
-
-
+#define METHOD_OF_AREA_LIST             @"area/index"
+///创建地址
+#define METHOD_OF_ADD_ADRESS            @"address/create"
+///地址列表
+#define METHOD_OF_ADDRESS_LIST          @"address/list"
+///站点
+#define METHOD_OF_EXPRESS_SITE_LIST     @"expresssite/index"
+///快递公司列表
+#define TWICE_METHOD_OF_EXPRESS_COMPANY  @"expresscompany/list"
+///创建/寄快递
+#define TWICE_METHOD_OF_SEND_EXPRESS  @"express/create"
 
 
 #define ENTITY_TYPE_PROJECT         @"project"  ///创业项目

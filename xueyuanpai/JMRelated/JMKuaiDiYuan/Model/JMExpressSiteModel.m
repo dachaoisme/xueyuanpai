@@ -10,4 +10,11 @@
 
 @implementation JMExpressSiteModel
 
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{ @"expressSiteId" : @"id",
+              };
+}
+
+
 @end

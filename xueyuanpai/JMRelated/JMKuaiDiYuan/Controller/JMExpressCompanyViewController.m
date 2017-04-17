@@ -8,7 +8,13 @@
 
 #import "JMExpressCompanyViewController.h"
 
-@interface JMExpressCompanyViewController ()
+@interface JMExpressCompanyViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSMutableArray * dataArr;
+    NSMutableArray * expressIdArr;
+
+}
+@property (nonatomic,strong)UITableView *tableView;
 
 @end
 
@@ -17,8 +23,69 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"站点";
+
+    dataArr = [NSMutableArray array];
+    expressIdArr = [NSMutableArray array];
+    //创建左侧按钮
+    [self createLeftBackNavBtn];
+    [self createTableView];
+    [self requestData];
+}
+-(void)requestData
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    
+    [[HttpClient sharedInstance] expressCompanyListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSDictionary * tempDic = (NSDictionary *)model.responseCommonDic;
+        NSArray * keyArray = [tempDic.allKeys sortedArrayUsingSelector:@selector(compare:)];;
+        for (NSString * key in keyArray) {
+            [dataArr addObject:[tempDic objectForKey:key]];
+            [expressIdArr addObject:key];
+        }
+        
+        [self.tableView reloadData];
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 
+#pragma mark - 创建tableView列表视图
+- (void)createTableView{
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 44;
+    
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    
+    return dataArr.count;
+    
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+    cell.textLabel.text =[dataArr objectAtIndex:indexPath.row];
+    
+    return cell;
+    
+}
+//点击跳转详情视图
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.returnBlock([dataArr objectAtIndex:indexPath.row],[expressIdArr objectAtIndex:indexPath.row]);
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -10,4 +10,6 @@
 
 @interface JMExpressCompanyViewController : BaseViewController
 
+@property(nonatomic,copy)void(^returnBlock)(NSString *companyName,NSString *companyId);
+
 @end
