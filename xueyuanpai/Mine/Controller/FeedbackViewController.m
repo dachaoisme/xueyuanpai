@@ -86,7 +86,7 @@
     }
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:connectTextField.text forKey:@"contact"];
-    [dic setValue:textView1.text forKey:@"suggestions"];
+    [dic setValue:textView1.text forKey:@"content"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]feedBackWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {

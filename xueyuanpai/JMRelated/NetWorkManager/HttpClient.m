@@ -364,7 +364,25 @@
         failBlock(error);
     }];
 }
+///个人中心-意见反馈
+- (void)feedBackWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_FEED_BACK withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
+///修改手机号绑定
+- (void)changeBindPhoneNumberWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:BIND_PHONE_NUMBER withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 #pragma mark - 用户端--快递--相关
 ///获取地区列表
 - (void)areaListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
@@ -520,15 +538,6 @@
 }
 
 
-///修改手机号绑定
-- (void)changeBindPhoneNumberWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
-{
-    [[HttpServer sharedInstance]getWithMethod:BIND_PHONE_NUMBER withParams:params withSuccess:^(HttpResponseCodeModel *model) {
-        successBlock(model);
-    } withFailBlock:^(NSError *error) {
-        failBlock(error);
-    }];
-}
 
 
 
@@ -1015,15 +1024,7 @@
         failBlock(error);
     }];
 }
-///个人中心-意见反馈
-- (void)feedBackWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
-{
-    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_FEED_BACK withParams:params withSuccess:^(HttpResponseCodeModel *model) {
-        successBlock(model);
-    } withFailBlock:^(NSError *error) {
-        failBlock(error);
-    }];
-}
+
 
 ///个人中心-关于我们
 - (void)aboutUsWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{

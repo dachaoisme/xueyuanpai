@@ -88,9 +88,11 @@
 ///更新个人资料
 #define METHOD_OF_UPDATE_STUDENT_INFO    @"student/updateuserinfo/"
 ///校验验证码和手机号--->修改密码
-#define METHOD_OF_CHECKING_MESSAGE       @"feedback/create"
-
-
+#define METHOD_OF_CHECKING_MESSAGE       @"student/validatecaptcha"
+///个人中心：意见反馈
+#define METHOD_MINE_FEED_BACK             @"feedback/create"
+///修改手机号绑定
+#define BIND_PHONE_NUMBER                @"user/bindtel"
 
 ////////快递员相关////////
 ///创建地址--获取地区列表
@@ -148,8 +150,7 @@
 
 ///用户头像上传
 #define METHOD_OF_UPLOAD                 @"v1/user/upload/"
-///修改手机号绑定
-#define BIND_PHONE_NUMBER                @"v1/user/updatetelphone?"
+
 
 ///大学社团：热门活动
 #define METHOD_OF_UNIVERSITY_ACTIVITY    @"v1/association/hot?"
@@ -248,8 +249,7 @@
 #define METHOD_MINE_POINTS_LIST                               @"v1/my/integral?"
 ///个人中心：我的钱包记录列表接
 #define METHOD_MINE_WALLET_LIST                               @"v1/my/wallet?"
-///个人中心：意见反馈
-#define METHOD_MINE_FEED_BACK                               @"v1/feedback/add/?"
+
 ///个人中心：检查自动更新
 #define METHOD_MINE_CHECK_UPDATE                            @"v1/system/checkforupdate/?"
 ///个人中心：关于我们
