@@ -111,6 +111,8 @@
     JMMineActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMMineActivityTableViewCell"];
     
     JMSalonModel * model = [dataArray objectAtIndex:indexPath.section];
+    [cell.backGroundView sd_setImageWithURL:[NSURL URLWithString:model.bannerUrl]];
+
     cell.titleLabel.text = model.title;
     cell.subtitleLabel.text = model.salonDescription;
     cell.dateLabel.text = model.create_time;

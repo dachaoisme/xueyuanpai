@@ -31,19 +31,21 @@
 - (void)initContentCell{
     
     //创建整体背景视图
-    UIView *backGroundView = [[UIView alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 190)];
+    UIImageView *backGroundView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 190)];
     backGroundView.layer.cornerRadius = 4;
     backGroundView.layer.masksToBounds = YES;
     backGroundView.backgroundColor = [[CommonUtils colorWithHex:@"00beaf"] colorWithAlphaComponent:0.5];
     [self.contentView addSubview:backGroundView];
     
+    self.backGroundView = backGroundView;
+
     
     //第几期的label
     if (_periodLabel == nil) {
         
         _periodLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 100, 18)];
         _periodLabel.font = [UIFont systemFontOfSize:14];
-        _periodLabel.text = @"第三期";
+        _periodLabel.text = @"";
         _periodLabel.textColor = [CommonUtils colorWithHex:@"ffffff"];
         [backGroundView addSubview:_periodLabel];
     }
