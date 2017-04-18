@@ -67,8 +67,10 @@
 //    [_baseTabBarView addSubview:imageView];
     
     [_baseTabBarView setContentView];
-    [_baseTabBarView setSelected:0];
     
+    ///默认选中中间tab
+    [_baseTabBarView setSelected:1];
+    self.selectedIndex = 1;
    
     
     
