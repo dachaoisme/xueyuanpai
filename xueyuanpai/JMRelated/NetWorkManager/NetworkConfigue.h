@@ -42,7 +42,7 @@
 #define METHOD_OF_SIGN_UP @"user/partin"
 
 ////////创业课程相关////////
-#define METHOD_OF_BANNER_OF_CHUANGKE    @"focus/index"
+#define METHOD_OF_BANNER_OF_INDEX    @"focus/index"
 ///集梦创客轮播图
 #define METHOD_OF_BANNER_OFCHUANGKE    @"banner/index"
 ///创业课程列表

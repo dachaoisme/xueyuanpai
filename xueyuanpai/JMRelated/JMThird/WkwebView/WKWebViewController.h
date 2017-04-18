@@ -8,9 +8,9 @@
 //  github链接:https://github.com/XFIOSXiaoFeng/WKWebView
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-
-@interface WKWebViewController : UIViewController
+@interface WKWebViewController : BaseViewController
 
 /** 是否显示Nav */
 @property (nonatomic, assign) BOOL isNavHidden;

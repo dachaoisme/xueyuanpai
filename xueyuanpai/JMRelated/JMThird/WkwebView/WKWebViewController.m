@@ -74,7 +74,7 @@ static void *WkwebBrowserContext = &WkwebBrowserContext;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-
+    [self theTabBarHidden:YES];
     if (_isNavHidden == YES) {
         self.navigationController.navigationBarHidden = YES;
         //创建一个高20的假状态栏

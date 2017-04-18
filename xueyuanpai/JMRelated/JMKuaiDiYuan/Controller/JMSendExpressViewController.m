@@ -56,6 +56,7 @@
     
     int sureBtnHeight = 50;
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-sureBtnHeight-10) style:UITableViewStyleGrouped];
+    _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];

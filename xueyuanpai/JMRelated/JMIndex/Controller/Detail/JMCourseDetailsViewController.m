@@ -197,8 +197,7 @@
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
-    [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
+    [zanBtn setTitle:detailModel.count_like forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -215,7 +214,7 @@
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
-    [collectionBtn setTitle:[NSString stringWithFormat:@"我要参加 %@",self.model.count_mark] forState:UIControlStateNormal];
+    [collectionBtn setTitle:[NSString stringWithFormat:@"我要参加 %@",detailModel.count_mark] forState:UIControlStateNormal];
     collectionBtn.layer.masksToBounds = YES;
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
@@ -229,7 +228,7 @@
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
-    [commentBtn setTitle:self.model.count_comment forState:UIControlStateNormal];
+    [commentBtn setTitle:detailModel.count_comment forState:UIControlStateNormal];
     commentBtn.frame = CGRectMake(CGRectGetMaxX(collectionBtn.frame) + interval, 10, 75, 30);
     commentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [commentBtn setTitleColor:[CommonUtils colorWithHex:@"35373a"] forState:UIControlStateNormal];

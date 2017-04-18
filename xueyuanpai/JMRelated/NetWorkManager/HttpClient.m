@@ -28,7 +28,7 @@
  */
 - (void)getBannerOfIndexWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
-    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_BANNER withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_BANNER_OF_INDEX withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         
         
         //banner对象
@@ -134,7 +134,7 @@
  */
 - (void)getBannerOfChuangYeKeChengWithParams:(NSDictionary *)params withSuccessBlock:(XYPNoneListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
-    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_BANNER_OF_CHUANGKE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_BANNER_OFCHUANGKE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         
         
         //banner对象

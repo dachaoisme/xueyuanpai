@@ -306,7 +306,7 @@
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:self.count_like forState:UIControlStateNormal];
+    [zanBtn setTitle:detailModel.count_like forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -325,7 +325,7 @@
         ///已经报过名
         [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
     }else{
-        [collectionBtn setTitle:[NSString stringWithFormat:@"我要报名 %@",self.recruitment_number] forState:UIControlStateNormal];
+        [collectionBtn setTitle:[NSString stringWithFormat:@"我要报名 %@",detailModel.recruitment_number] forState:UIControlStateNormal];
     }
     
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
@@ -340,7 +340,7 @@
     //右侧评论按钮
     commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
-    [commentBtn setTitle:self.count_comment forState:UIControlStateNormal];
+    [commentBtn setTitle:detailModel.count_comment forState:UIControlStateNormal];
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;

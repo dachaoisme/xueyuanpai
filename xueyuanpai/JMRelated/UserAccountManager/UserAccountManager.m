@@ -98,9 +98,8 @@
 -(void)loginWithUserPhoneNum:(NSString *)phoneNum andPassWord:(NSString *)passWord withUserRole:(RegisterRoleType)role
 {
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setValue:phoneNum forKey:@"mobile"];
-    [dic setValue:passWord forKey:@"passwd"];
-    [dic setValue:[NSString stringWithFormat:@"%ld",(long)role] forKey:@"role"];
+    [dic setObject:phoneNum forKey:@"telphone"];
+    [dic setObject:passWord forKey:@"passwd"];
     [[HttpClient sharedInstance]loginWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
         
@@ -112,6 +111,7 @@
     } withFaileBlock:^(NSError *error) {
         
     }];
+
 }
 -(void)setJpushTags
 {
