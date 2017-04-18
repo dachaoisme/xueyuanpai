@@ -112,6 +112,8 @@
 #define TWICE_METHOD_OF_SEND_EXPRESS  @"express/create"
 ///获取寄出的快递列表
 #define METHOD_OF_EXPRESS_LIST_ALREADY_SENT    @"express/list"
+///个人中心：关于我们
+#define METHOD_MINE_ABOUT_US                                @"aboutus/index"
 
 #define ENTITY_TYPE_PROJECT         @"project"  ///创业项目
 #define ENTITY_TYPE_SALON           @"salon"    ///创业沙龙
@@ -254,8 +256,6 @@
 
 ///个人中心：检查自动更新
 #define METHOD_MINE_CHECK_UPDATE                            @"v1/system/checkforupdate/?"
-///个人中心：关于我们
-#define METHOD_MINE_ABOUT_US                                @"v1/aboutus/index?"
 ///个人中心：更新用户所属学校
 #define METHOD_MINE_USER_USCHOOL                            @"v1/user/updatecollege?"
 

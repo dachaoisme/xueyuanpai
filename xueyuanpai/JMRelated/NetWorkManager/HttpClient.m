@@ -476,6 +476,31 @@
     }];
 }
 
+///个人中心-关于我们
+- (void)aboutUsWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
+    
+    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_ABOUT_US withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1037,15 +1062,7 @@
 }
 
 
-///个人中心-关于我们
-- (void)aboutUsWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
-    
-    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_ABOUT_US withParams:params withSuccess:^(HttpResponseCodeModel *model) {
-        successBlock(model);
-    } withFailBlock:^(NSError *error) {
-        failBlock(error);
-    }];
-}
+
 
 ///个人中心-更新用户所属学校
 - (void)updateUserSchoolWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{

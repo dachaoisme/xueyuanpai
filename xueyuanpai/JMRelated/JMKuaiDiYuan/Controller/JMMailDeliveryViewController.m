@@ -31,6 +31,7 @@
     
     self.title = @"寄出快递";
     nextPage=currentPage=1;
+    pageSize  =10;
     dataArray =[NSMutableArray array];
     [self createTableView];
     ///
