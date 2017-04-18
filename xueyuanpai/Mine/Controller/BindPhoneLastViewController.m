@@ -101,7 +101,7 @@
         [CommonUtils showToastWithStr:@"请输入有效手机号"];
         return;
     }
-    [params setObject:[UserAccountManager sharedInstance].userId
+    [params setValue:[UserAccountManager sharedInstance].userId
                forKey:@"user_id"];
     [params setObject:phoneNum forKey:@"telphone"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
