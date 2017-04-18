@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
+
 
 
 @end

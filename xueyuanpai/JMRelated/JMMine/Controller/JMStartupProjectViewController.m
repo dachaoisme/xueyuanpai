@@ -86,7 +86,7 @@
         
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
-            JMMineTrainCommonModel *model = [JMMineTrainCommonModel yy_modelWithDictionary:tempDic];
+            JMCourseModel *model = [JMCourseModel yy_modelWithDictionary:tempDic];
             [dataArray addObject:model];
             
         }
@@ -109,12 +109,12 @@
     threeCell.locationBtn.hidden = YES;
     
     threeCell.peopleNumberLabel.hidden = YES;
-    JMMineTrainCommonModel * model = [dataArray objectAtIndex:indexPath.row];
-    [threeCell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
-    threeCell.titleLabel.text = model.name;
-    threeCell.subtitleLabel.text = model.job;
+    JMCourseModel * model = [dataArray objectAtIndex:indexPath.row];
+    [threeCell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+    threeCell.titleLabel.text = model.title;
+    threeCell.subtitleLabel.text = model.courseDescription;
     [threeCell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
-    if ([model.status integerValue]==1) {
+    if ([model.is_online integerValue]==1) {
         ///正在招募
         threeCell.peopleNumberLabel.text = [NSString stringWithFormat:@"已招募%@",model.count_mark];
     }else{
@@ -128,7 +128,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    /*
+    
     JMCourseModel * model = [dataArray objectAtIndex:indexPath.row];
     if ([model.is_online integerValue]==1) {
         ///线上
@@ -143,8 +143,6 @@
         [self.navigationController pushViewController:xianxiaDetailVC animated:YES];
         
     }
-     
-     */
 }
 
 

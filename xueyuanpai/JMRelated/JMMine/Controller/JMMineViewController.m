@@ -16,6 +16,8 @@
 #import "JMStartupProjectViewController.h"
 #import "JMMineActivityListViewController.h"
 #import "MineSettingViewController.h"
+
+#import "LoginViewController.h"
 @interface JMMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -24,10 +26,15 @@
     UIImageView *sexImageView;
     //工作职称
     UILabel *jobNameLabel;
+    
 }
 ///展示地理位置的lable
 @property (nonatomic,strong) UILabel *showLocationLable;
 @property (nonatomic,strong)UITableView *tableView;
+
+
+///展示积分
+@property (nonatomic,strong)NSString *jifenStr;
 
 @end
 
@@ -52,7 +59,7 @@
     [self creatRightNavWithTitle:@"编辑个人资料"];
     
     [self createTableView];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshInfo ) name:NOTI_UPDATE_BY_USER_ID object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshInfo) name:NOTI_UPDATE_BY_USER_ID object:nil];
 }
 -(void)refreshInfo
 {
@@ -66,6 +73,11 @@
         [sexImageView setImage:[UIImage imageNamed:@"gender_female"]];
     }
     jobNameLabel.text = [UserAccountManager sharedInstance].userCollegeName;
+    
+    
+    //显示积分的数值，并刷新列表界面
+    self.jifenStr =  [UserAccountManager sharedInstance].userPoint;
+    [self.tableView reloadData];
 }
 #pragma mark - 导航栏右侧按钮响应方法
 -(void)rightItemActionWithBtn:(UIButton *)sender
@@ -169,6 +181,8 @@
                 
                 cell.contentLabel.text = @"我的积分";
                 
+                cell.scoreLabel.text = self.jifenStr;
+                
                 break;
             }
             case 1:{
@@ -221,43 +235,76 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     
-    if (indexPath.row == 0) {
-        //跳转我的积分
-//        MineIntegralViewController *integralVC = [[MineIntegralViewController alloc] init];
-//        
-//        [self.navigationController pushViewController:integralVC animated:YES];
-        
-    }else if (indexPath.row == 1){
-        
-        //跳转我的实训项目
-        JMMineProjectListViewController *projectVC = [[JMMineProjectListViewController alloc] init];
-        
-        [self.navigationController pushViewController:projectVC animated:YES];
-        
-        
+   if (indexPath.row == 1){
+       
+       
+       if ([UserAccountManager sharedInstance].isLogin==YES) {
+           
+           //跳转我的实训项目
+           JMMineProjectListViewController *projectVC = [[JMMineProjectListViewController alloc] init];
+           
+           [self.navigationController pushViewController:projectVC animated:YES];
+           
+
+           
+       }else{
+           
+           [self judgeLoginStatus];
+
+       }
+
     }else if (indexPath.row == 2) {
         
-        //我的创业课程
-        JMStartupProjectViewController *startupProjectVC = [[JMStartupProjectViewController alloc] init];
-        
-        [self.navigationController pushViewController:startupProjectVC animated:YES];
+        if ([UserAccountManager sharedInstance].isLogin==YES) {
+            
+            //我的创业课程
+            JMStartupProjectViewController *startupProjectVC = [[JMStartupProjectViewController alloc] init];
+            
+            [self.navigationController pushViewController:startupProjectVC animated:YES];
+            
+        }else{
+            
+            [self judgeLoginStatus];
+
+            
+        }
         
         
 
     }else if (indexPath.row == 3) {
         
-        //我的沙龙活动
-        JMMineActivityListViewController *activityListVC = [[JMMineActivityListViewController alloc] init];
+        if ([UserAccountManager sharedInstance].isLogin==YES) {
+            
+            //我的沙龙活动
+            JMMineActivityListViewController *activityListVC = [[JMMineActivityListViewController alloc] init];
+            
+            [self.navigationController pushViewController:activityListVC animated:YES];
+            
+        }else{
+            
+            [self judgeLoginStatus];
 
-        [self.navigationController pushViewController:activityListVC animated:YES];
+            
+        }
         
         
     }else if (indexPath.row == 4) {
         
-        //设置
-        MineSettingViewController *settingVC = [[MineSettingViewController alloc] init];
-        [self.navigationController pushViewController:settingVC animated:YES];
-        
+        if ([UserAccountManager sharedInstance].isLogin==YES) {
+            
+            //设置
+            MineSettingViewController *settingVC = [[MineSettingViewController alloc] init];
+            [self.navigationController pushViewController:settingVC animated:YES];
+            
+ 
+            
+        }else{
+            
+            [self judgeLoginStatus];
+
+            
+        }
+
     }
 }
 
