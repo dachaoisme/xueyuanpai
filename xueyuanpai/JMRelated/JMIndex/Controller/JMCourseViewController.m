@@ -138,6 +138,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     JMCourseModel * model = [dataArray objectAtIndex:indexPath.row];
+    
     if ([model.is_online integerValue]==1) {
         ///线上
         //创业课程线上详情

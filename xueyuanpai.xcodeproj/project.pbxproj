@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1601FD851EA65B23008A48D5 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1601FD831EA65B23008A48D5 /* play@2x.png */; };
+		1601FD861EA65B23008A48D5 /* play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1601FD841EA65B23008A48D5 /* play@3x.png */; };
 		16154FAF1E9FBFD700FB46AA /* JMJobListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */; };
 		16154FB31EA1BA0300FB46AA /* JMMineTrainCommonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FB21EA1BA0300FB46AA /* JMMineTrainCommonModel.m */; };
 		16154FB61EA24ED400FB46AA /* JMCourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16154FB51EA24ED400FB46AA /* JMCourseModel.m */; };
@@ -991,6 +993,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1601FD831EA65B23008A48D5 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		1601FD841EA65B23008A48D5 /* play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@3x.png"; sourceTree = "<group>"; };
 		16154FAD1E9FBFD700FB46AA /* JMJobListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMJobListViewController.h; sourceTree = "<group>"; };
 		16154FAE1E9FBFD700FB46AA /* JMJobListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMJobListViewController.m; sourceTree = "<group>"; };
 		16154FB11EA1BA0300FB46AA /* JMMineTrainCommonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMineTrainCommonModel.h; sourceTree = "<group>"; };
@@ -3948,6 +3952,8 @@
 		DD09B7A71E9B6226001D1DB0 /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				1601FD831EA65B23008A48D5 /* play@2x.png */,
+				1601FD841EA65B23008A48D5 /* play@3x.png */,
 				16FF182E1EA51FD600D06831 /* receive_address_b_grey@2x.png */,
 				16FF182F1EA51FD600D06831 /* send_address_a_grey@3x.png */,
 				16FF18301EA51FD600D06831 /* receive_address_b@2x.png */,
@@ -5577,6 +5583,7 @@
 				DD13CDCA1D00186D000A69FE /* startup_filter_ecommerce@3x.png in Resources */,
 				58A9449C1CE277C600DAD398 /* nav_icon_back@2x.png in Resources */,
 				DD13CDE41D00186D000A69FE /* startup_icon_project@3x.png in Resources */,
+				1601FD861EA65B23008A48D5 /* play@3x.png in Resources */,
 				1687559F1E9E863000BDC9D9 /* zan_hl@2x.png in Resources */,
 				DD13CDF21D00186D000A69FE /* timebank_filter_hot_hl@3x.png in Resources */,
 				DDB28E851D2CF787004C8F70 /* icon_020.gif in Resources */,
@@ -5751,6 +5758,7 @@
 				DDAB437B1D05531A00FADB3E /* acount_icon_alipay@2x.png in Resources */,
 				DDCD71071D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib in Resources */,
 				DD0F42841D22702500115B96 /* timebank_bubble_arrow@3x.png in Resources */,
+				1601FD851EA65B23008A48D5 /* play@2x.png in Resources */,
 				DDB28E821D2CF787004C8F70 /* icon_018_cover.png in Resources */,
 				DD13CDDC1D00186D000A69FE /* startup_filter_media_hl@3x.png in Resources */,
 				DD0B1EDD1CFEE51000C4BAB2 /* market_post_add_pic@2x.png in Resources */,

@@ -12,5 +12,6 @@
 
 ///显示的图片
 @property (nonatomic,strong)UIImageView *showImageView;
+@property (nonatomic,strong)UIImageView *playImageView;
 
 @end

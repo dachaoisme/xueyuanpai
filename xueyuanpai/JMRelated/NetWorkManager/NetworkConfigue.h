@@ -53,7 +53,8 @@
 #define METHOD_OF_TRAIN_COURSE_LIKE  @"course/like"
 ///检查对创业课程是否点赞过
 #define METHOD_OF_TRAIN_COURSE_WHETHER_IS_LIKE  @"course/isliked"
-
+///对创业课程收藏接口
+#define METHOD_OF_TRAIN_COURSE_COLLECT  @"mark/create"
 ////////创业沙龙相关////////
 ///创业沙龙列表
 #define METHOD_OF_TRAIN_SALON  @"salon/index"

@@ -11,14 +11,16 @@
 #import "JMCourseDetailOneTableViewCell.h"
 #import "JMSignUpTrainingProjectViewController.h"
 #import "JMCommentListViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
 @interface JMCourseDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     JMCourseModel *detailModel;
     UIButton *zanBtn;
+    UIButton *collectionBtn;
 }
 
 @property (nonatomic,strong)UITableView *tableView;
-
+@property (nonatomic,strong)MPMoviePlayerViewController *playerVC;
 @end
 
 @implementation JMCourseDetailsViewController
@@ -111,6 +113,11 @@
             
             JMCourseDetailOneTableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:@"JMCourseDetailOneTableViewCell"];
             [imageCell.showImageView sd_setImageWithURL:[NSURL URLWithString:detailModel.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+            if (detailModel.videoUrl.length>0) {
+                imageCell.playImageView.hidden = NO;
+            }else{
+                imageCell.playImageView.hidden = YES;
+            }
             return imageCell;
             
         }
@@ -167,7 +174,16 @@
     
     return 0.01;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==2) {
+        ///播放视频的row
+        if (detailModel.videoUrl.length>0) {
+            ////进行视频播放
+            [self play];
+        }
+    }
+}
 
 //自适应撑高
 //计算字符串的frame
@@ -210,11 +226,11 @@
     CGFloat interval = (SCREEN_WIDTH - 20 - 75*2 - 108)/2;
     
     //中间的报名按钮
-    UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
-    [collectionBtn setTitle:[NSString stringWithFormat:@"我要参加 %@",detailModel.count_mark] forState:UIControlStateNormal];
+    [collectionBtn setTitle:[NSString stringWithFormat:@"收藏 %@",detailModel.count_mark] forState:UIControlStateNormal];
     collectionBtn.layer.masksToBounds = YES;
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
@@ -276,33 +292,33 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainCourseAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
-            if (zanBtn.isSelected==YES) {
-                zanBtn.selected =NO;
-                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]-1;
-                if (zanCount<0) {
-                    zanCount=0;
-                }
-                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
-            }else{
-                zanBtn.selected = YES;
-                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]+1;
-                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
-            }
+            [collectionBtn setTitle:[NSString stringWithFormat:@"收藏 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
         }
     } withFaileBlock:^(NSError *error) {
         
     }];
     
 }
-#pragma mark - 报名
+#pragma mark - 收藏
 - (void)collectionAction{
     
-    //    [CommonUtils showToastWithStr:@"报名"];
-    
-    JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
-    signUpAction.entity_id = self.model.courseItemId;
-    signUpAction.entity_type = ENTITY_TYPE_COURSE;
-    [self.navigationController pushViewController:signUpAction animated:YES];
+    if ([UserAccountManager sharedInstance].isLogin==NO) {
+        [self judgeLoginStatus];
+        return;
+    }
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.model.courseItemId forKey:@"entity_id"];
+    [dic setObject:ENTITY_TYPE_COURSE forKey:@"entity_type"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]collectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        if (model.responseCode ==ResponseCodeSuccess) {
+            [CommonUtils showToastWithStr:@"收藏成功"];
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 #pragma mark - 评论
 - (void)commentAction{
@@ -316,7 +332,19 @@
     
 }
 
+- (MPMoviePlayerViewController *)playerVC
+{
+    if (_playerVC == nil) {
+        NSURL *url = [NSURL URLWithString:detailModel.videoUrl];
+        
+        _playerVC = [[MPMoviePlayerViewController alloc] initWithContentURL:url];;
+    }
+    return _playerVC;
+}
 
+- (void)play {
+    [self presentMoviePlayerViewControllerAnimated:self.playerVC];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -34,7 +34,17 @@
         
         _showImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, 200)];
         _showImageView.image = [UIImage imageNamed:@"placeHoder"];
+        _showImageView.userInteractionEnabled = YES;
         [self.contentView addSubview:_showImageView];
+    }
+    
+    if (_playImageView == nil) {
+        UIImage *playImage = [UIImage imageNamed:@"play"];
+        _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, playImage.size.width, playImage.size.height)];
+        _playImageView.image =playImage;
+        _playImageView.userInteractionEnabled = YES;
+        _playImageView.center = _showImageView.center;
+        [self.contentView addSubview:_playImageView];
     }
 
 }

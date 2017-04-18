@@ -168,6 +168,7 @@
             }else if (indexPath.row == 1){
                 JMCourseDetailOneTableViewCell *imageCell = [tableView dequeueReusableCellWithIdentifier:@"JMCourseDetailOneTableViewCell"];
                 [imageCell.showImageView sd_setImageWithURL:[NSURL URLWithString:detailModel.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+                imageCell.playImageView.hidden = YES;
                 return imageCell;
                 
 

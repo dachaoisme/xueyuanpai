@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-            timestampString = "514217631.15683"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
+            timestampString = "514220582.42583"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-sendmessage:"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,44 +25,76 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-            timestampString = "514217636.68097"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
+            timestampString = "514219465.129801"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-makeSureAction"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
+            timestampString = "514220582.42583"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
+            timestampString = "514220613.73501"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
+            landmarkName = "-collectionAction"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[BindPhoneViewController makeSureAction]"
+                  symbolName = "-[JMCourseDetailsViewController collectionAction]"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-                  timestampString = "514217666.37336"
+                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
+                  timestampString = "514220843.20352"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "163"
-                  endingLineNumber = "163"
-                  offsetFromSymbolStart = "549">
+                  startingLineNumber = "313"
+                  endingLineNumber = "313"
+                  offsetFromSymbolStart = "470">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__41-[BindPhoneViewController makeSureAction]_block_invoke"
+                  symbolName = "__49-[JMCourseDetailsViewController collectionAction]_block_invoke"
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-                  timestampString = "514217666.37563"
+                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
+                  timestampString = "514220843.206241"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "163"
-                  endingLineNumber = "163"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "314"
+                  endingLineNumber = "314"
+                  offsetFromSymbolStart = "44">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -73,13 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-            timestampString = "514217639.455245"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
+            timestampString = "514220723.935935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "-makeSureAction"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "-collectionAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,93 +121,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneViewController.m"
-            timestampString = "514217640.65107"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
+            timestampString = "514220725.51367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "-makeSureAction"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneLastViewController.m"
-            timestampString = "514217651.064082"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-makeSureAction"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[BindPhoneLastViewController makeSureAction]"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/Mine/Controller/BindPhoneLastViewController.m"
-                  timestampString = "514217666.395847"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "534">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__45-[BindPhoneLastViewController makeSureAction]_block_invoke"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/Mine/Controller/BindPhoneLastViewController.m"
-                  timestampString = "514217666.398137"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneLastViewController.m"
-            timestampString = "514217652.088948"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-makeSureAction"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/Mine/Controller/BindPhoneLastViewController.m"
-            timestampString = "514217653.796973"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "-makeSureAction"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
+            landmarkName = "-collectionAction"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
