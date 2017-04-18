@@ -412,10 +412,7 @@
 - (void)collectionAction{
     
 //    [CommonUtils showToastWithStr:@"报名"];
-    if ([UserAccountManager sharedInstance].isLogin==NO) {
-        [self judgeLoginStatus];
-        return;
-    }
+    
     JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
     signUpAction.entity_id = self.trainProjectId;
     signUpAction.entity_type = ENTITY_TYPE_PROJECT;
@@ -423,10 +420,7 @@
 }
 #pragma mark - 评论
 - (void)commentAction{
-    if ([UserAccountManager sharedInstance].isLogin==NO) {
-        [self judgeLoginStatus];
-        return;
-    }
+    
   //跳转评论详情界面
     JMCommentListViewController *commentListVC = [[JMCommentListViewController alloc] init];
     commentListVC.entity_id = self.trainProjectId;

@@ -6675,10 +6675,10 @@
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/SDKExport",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.jialehuo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5970c068-050e-4659-9f80-5f71ba9b758e";
-				PROVISIONING_PROFILE_SPECIFIER = Develop_demo_test;
+				PROVISIONING_PROFILE = "ec8f5550-daee-4e1c-8385-46b0950bd0df";
+				PROVISIONING_PROFILE_SPECIFIER = XYP_develop;
 			};
 			name = Debug;
 		};
@@ -6726,7 +6726,7 @@
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/SDKExport",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.jialehuo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

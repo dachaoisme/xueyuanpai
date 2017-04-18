@@ -268,7 +268,10 @@
 }
 #pragma mark - 点赞事件
 - (void)zanAction{
-    
+    if ([UserAccountManager sharedInstance].isLogin==NO) {
+        [self judgeLoginStatus];
+        return;
+    }
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.model.courseItemId forKey:@"course_id"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
