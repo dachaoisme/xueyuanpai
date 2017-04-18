@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 #import "BaseTabBarViewController.h"
-
+#import "LoginViewController.h"
 @interface BaseViewController ()
 
 @end
@@ -213,7 +213,14 @@
 {
     
 }
-
+-(void)judgeLoginStatus
+{
+    LoginViewController * loginVC = [[LoginViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    [self presentViewController:nav animated:YES completion:^{
+        
+    }];
+}
 
 
 /*

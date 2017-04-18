@@ -246,6 +246,10 @@
 
      
      */
+    if ([UserAccountManager sharedInstance].isLogin==NO) {
+        [self judgeLoginStatus];
+        return;
+    }
     [CommonUtils showToastWithStr:@"确定"];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];

@@ -196,7 +196,10 @@
 
 #pragma mark - 点击发送请求的评论接口
 - (void)commentAction{
-    
+    if ([UserAccountManager sharedInstance].isLogin==NO) {
+        [self judgeLoginStatus];
+        return;
+    }
     //请求评论接口
     [self requestCommentWithContentText:self.commentTextField.text];
 }

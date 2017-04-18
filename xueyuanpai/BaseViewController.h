@@ -36,4 +36,6 @@
 -(void)creatRightNavWithTitle:(NSString *)title;
 -(void)creatRightNavWithImageName:(NSString *)imageName;
 -(void)rightItemActionWithBtn:(UIButton *)sender;
+///未登录弹出登录界面
+-(void)judgeLoginStatus;
 @end
