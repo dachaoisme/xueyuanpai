@@ -34,7 +34,7 @@
             
         }
     }
-    [[NSUserDefaults standardUserDefaults]setValue:dic forKey:userInfoKey];
+    [[NSUserDefaults standardUserDefaults]setObject:dic forKey:userInfoKey];
     [[NSUserDefaults standardUserDefaults]synchronize];
     [self getUserInfo];
 }
@@ -43,13 +43,14 @@
     
     /*
      "college_id" = 1;
-     "create_time" = "2017-04-11 01:29:22";
-     icon = "";
-     id = 5;
-     nickname = "";
-     sex = 0;
+     "create_time" = "2017-04-18 13:38:45";
+     icon = "http://114.215.111.210:999/frontend/web/uploads/20170418/14924971055920.png";
+     id = 8;
+     nickname = "\U8d85\U8d85";
+     point = 0;
+     sex = 1;
      telphone = 18511870285;
-     "update_time" = "2017-04-11 01:29:22";
+     "update_time" = "2017-04-18 13:38:45";
      */
     NSString * userInfoKey = @"userInfo";
     NSDictionary * userInfoDic = [[NSUserDefaults standardUserDefaults] objectForKey:userInfoKey];
@@ -58,6 +59,7 @@
     self.userIcon         = [userInfoDic stringForKey:@"icon"];
     self.userId           = [userInfoDic stringForKey:@"id"];
     self.userNickname     = [userInfoDic stringForKey:@"nickname"];
+    self.userPoint     = [userInfoDic stringForKey:@"point"];
     self.userSex          = [[userInfoDic stringForKey:@"sex"] integerValue];
     self.userTelphone     = [userInfoDic stringForKey:@"telphone"];
     self.updateTime     = [userInfoDic stringForKey:@"update_time"];
@@ -80,6 +82,8 @@
         
     }
     //环信登陆成功
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_UPDATE_BY_USER_ID object:nil];
 }
 
 -(void)exitLogin
@@ -143,7 +147,7 @@
         if (model.responseCode == ResponseCodeSuccess) {
             
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
-            [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_UPDATE_BY_USER_ID object:nil];
+            
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }

@@ -31,6 +31,8 @@
 @property (nonatomic, strong) NSString *userId;
 ///用户昵称
 @property (nonatomic, strong) NSString *userNickname;
+///用户积分
+@property (nonatomic, strong) NSString *userPoint;
 ///用户性别
 @property (nonatomic, assign) UserInfoSex userSex;
 ///用户联系电话

@@ -325,7 +325,7 @@
         NSMutableDictionary * dic = [NSMutableDictionary dictionary];
         NSMutableDictionary * imageDic = [NSMutableDictionary dictionary];
         NSData * imageData = UIImagePNGRepresentation(scaleImg);
-        [imageDic setObject:imageData forKey:@"Users[file]"];
+        [imageDic setObject:imageData forKey:@"JmStudent[file]"];
         [[HttpClient sharedInstance]uploadIconWithParams:dic withUploadDic:imageDic withSuccessBlock:^(HttpResponseCodeModel *model) {
             avatarImageUploaded = [model.responseCommonDic objectForKey:@"picUrl"];
             
@@ -386,6 +386,7 @@
     [dic setObject:theCollegeModel.collegeID?theCollegeModel.collegeID:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"用户资料修改成功"];
             [[UserAccountManager sharedInstance]getUserInfoWithUserId:[UserAccountManager sharedInstance].userId];
@@ -396,7 +397,7 @@
     } withFaileBlock:^(NSError *error) {
         
         [CommonUtils showToastWithStr:@"用户资料更新失败"];
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
