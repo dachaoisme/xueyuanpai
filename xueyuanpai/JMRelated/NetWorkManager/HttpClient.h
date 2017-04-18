@@ -102,6 +102,8 @@
 - (void)feedBackWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 ///修改手机号绑定
 - (void)changeBindPhoneNumberWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+///修改密码
+- (void)changePasswordWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 #pragma mark - 我的快递相关
 ///获取地区列表
@@ -151,15 +153,6 @@
 #pragma mark - 用户相关
 
 
-/**
- *  @brief  修改密码
- *
- *  @param
- *
- *  @return
- */
-
-- (void)changePasswordWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 
 

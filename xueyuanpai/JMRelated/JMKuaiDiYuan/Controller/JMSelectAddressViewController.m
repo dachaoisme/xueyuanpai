@@ -55,7 +55,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance] addressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [self.tableView.footer endRefreshing];
         

@@ -72,7 +72,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]getMineTrainCourseListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];

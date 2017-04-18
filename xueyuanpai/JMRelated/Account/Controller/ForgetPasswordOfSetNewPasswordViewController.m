@@ -78,7 +78,7 @@
      */
     //校验验证码
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.userId forKey:@"user_id"];
+    [dic setValue:self.userId forKey:@"user_id"];
     [dic setObject:inputPasswordTextField.text forKey:@"passwd"];
     [[HttpClient sharedInstance]changePasswordWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {

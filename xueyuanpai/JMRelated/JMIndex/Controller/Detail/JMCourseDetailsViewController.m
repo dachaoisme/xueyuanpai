@@ -271,7 +271,7 @@
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.model.courseItemId forKey:@"course_id"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainCourseAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
             if (zanBtn.isSelected==YES) {

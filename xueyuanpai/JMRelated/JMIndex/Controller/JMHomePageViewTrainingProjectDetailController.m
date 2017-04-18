@@ -360,7 +360,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.trainProjectId forKey:@"project_id"];
     if ([UserAccountManager sharedInstance].userId) {
-        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     }
     [[HttpClient sharedInstance]whetherAlreadyAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSDictionary *dic = model.responseCommonDic;
@@ -384,7 +384,7 @@
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.trainProjectId forKey:@"project_id"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainProjectAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
             if (zanBtn.isSelected==YES) {

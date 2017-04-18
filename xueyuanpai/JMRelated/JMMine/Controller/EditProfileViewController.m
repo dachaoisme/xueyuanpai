@@ -379,7 +379,7 @@
     
     NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
     
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setObject:self.nickName?self.nickName:[UserAccountManager sharedInstance].userNickname forKey:@"nickname"];
     [dic setObject:theCollegeModel.collegeID?theCollegeModel.collegeID:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
     [dic setObject:[_sexStr isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];

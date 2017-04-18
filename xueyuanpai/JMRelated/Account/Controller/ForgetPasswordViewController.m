@@ -146,8 +146,8 @@
      */
     //校验验证码
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
-    [dic setObject:phoneTextField.text forKey:@"telphone"];
-    [dic setObject:checkingMessageTextField.text forKey:@"captcha"];
+    [dic setValue:phoneTextField.text forKey:@"telphone"];
+    [dic setValue:checkingMessageTextField.text forKey:@"captcha"];
     [[HttpClient sharedInstance]validateTelephoneAndSecurityCodeWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             NSString * userId = [model.responseCommonDic objectForKey:@"user_id"];

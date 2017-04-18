@@ -93,6 +93,8 @@
 #define METHOD_MINE_FEED_BACK             @"feedback/create"
 ///修改手机号绑定
 #define BIND_PHONE_NUMBER                @"user/bindtel"
+///修改密码
+#define METHOD_OF_UPDATE_PASSWORD        @"student/setpasswd"
 
 ////////快递员相关////////
 ///创建地址--获取地区列表
@@ -142,8 +144,7 @@
 
 
 
-///修改密码
-#define METHOD_OF_UPDATE_PASSWORD        @"v1/user/updatepasswd?"
+
 
 ///更新导师资料
 #define METHOD_OF_UPDATE_TEACHER_INFO    @"v1/user/updateteacherinfo?"

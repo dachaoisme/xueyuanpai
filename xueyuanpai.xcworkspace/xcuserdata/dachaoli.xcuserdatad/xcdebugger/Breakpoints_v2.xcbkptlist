@@ -26,7 +26,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/ForgetPasswordViewController.m"
-                  timestampString = "514140083.710865"
+                  timestampString = "514172925.664664"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "151"
@@ -41,7 +41,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/ForgetPasswordViewController.m"
-                  timestampString = "514140083.717072"
+                  timestampString = "514172925.669425"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "152"
@@ -81,54 +81,6 @@
             endingLineNumber = "165"
             landmarkName = "-sure:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/Account/Controller/ForgetPasswordViewController.m"
-            timestampString = "514140466.935995"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-sendmessage:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ForgetPasswordViewController sendmessage:]"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/ForgetPasswordViewController.m"
-                  timestampString = "514140466.957175"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "278">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__44-[ForgetPasswordViewController sendmessage:]_block_invoke"
-                  moduleName = "xueyuanpai"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/Account/Controller/ForgetPasswordViewController.m"
-                  timestampString = "514140466.960121"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "115"
-                  endingLineNumber = "115"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

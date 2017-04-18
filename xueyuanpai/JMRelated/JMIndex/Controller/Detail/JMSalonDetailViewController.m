@@ -277,7 +277,7 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.model.salonItemId forKey:@"salon_id"];
     if ([UserAccountManager sharedInstance].userId) {
-        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     }
     [[HttpClient sharedInstance]whetherTrainSalonAlreadyAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         NSDictionary *dic = model.responseCommonDic;
@@ -301,7 +301,7 @@
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.model.salonItemId forKey:@"salon_id"];
-    [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainSalonAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
             if (zanBtn.isSelected==YES) {
