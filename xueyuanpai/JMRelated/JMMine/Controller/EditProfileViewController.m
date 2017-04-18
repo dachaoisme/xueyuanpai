@@ -380,16 +380,15 @@
     NSMutableDictionary  *dic = [NSMutableDictionary dictionary];
     
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setObject:self.nickName?self.nickName:[UserAccountManager sharedInstance].userNickname forKey:@"nickname"];
-    [dic setObject:theCollegeModel.collegeID?theCollegeModel.collegeID:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
-    [dic setObject:[_sexStr isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
     [dic setObject:avatarImageUploaded?avatarImageUploaded:@"" forKey:@"icon"];
-    
+    [dic setObject:self.nickName?self.nickName:[UserAccountManager sharedInstance].userNickname forKey:@"nickname"];
+    [dic setObject:[_sexStr isEqualToString:@"男"]?@"1":@"0" forKey:@"sex"];
+    [dic setObject:theCollegeModel.collegeID?theCollegeModel.collegeID:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[HttpClient sharedInstance]updateStudentInfoWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"用户资料修改成功"];
-            [[UserAccountManager sharedInstance]getUserInfoWithUserPhoneNum:[UserAccountManager sharedInstance].userMobile];
+            [[UserAccountManager sharedInstance]getUserInfoWithUserId:[UserAccountManager sharedInstance].userId];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];

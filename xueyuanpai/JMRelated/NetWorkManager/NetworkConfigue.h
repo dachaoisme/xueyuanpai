@@ -95,7 +95,8 @@
 #define BIND_PHONE_NUMBER                @"user/bindtel"
 ///修改密码
 #define METHOD_OF_UPDATE_PASSWORD        @"student/setpasswd"
-
+///个人中心：根据用户id，获取用户信息
+#define METHOD_OF_USERINFO_WITH_USERID            @"student/detail"
 ////////快递员相关////////
 ///创建地址--获取地区列表
 #define METHOD_OF_AREA_LIST             @"area/index"
@@ -261,8 +262,7 @@
 ///个人中心：微信支付
 #define WEIXIN_PAY_STYLE                                    @"test/weixin?"
 
-///个人中心：个人主页
-#define METHOD_MINE_HOME_PAGE                               @"v1/user/userinfo?"
+
 ///个人中心：个人主页通过手机号获取
 #define METHOD_MINE_HOME_PAGE_BY_MOBILE                     @"v1/user/getuserinfobymobile?"
 

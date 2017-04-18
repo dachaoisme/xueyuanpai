@@ -14,4 +14,6 @@
 #define NOTI_WXSUCCESS_PAY           @"wx_pay_result"
 ///支付宝支付成功
 #define NOTI_ALISUCCESS_PAY           @"aLi_pay_result"
+///根据用户id获取信息
+#define NOTI_UPDATE_BY_USER_ID           @"update_userinfo_with_userid"
 #endif /* NotificationDefine_h */

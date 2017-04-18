@@ -143,6 +143,7 @@
         if (model.responseCode == ResponseCodeSuccess) {
             
             [[UserAccountManager sharedInstance]saveUserAccountWithUserInfoDic:model.responseCommonDic];
+            [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_UPDATE_BY_USER_ID object:nil];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }

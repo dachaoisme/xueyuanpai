@@ -392,6 +392,15 @@
         failBlock(error);
     }];
 }
+///个人中心-根据用户id获取用户信息
+- (void)myHomePageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
+    
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_USERINFO_WITH_USERID withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 #pragma mark - 用户端--快递--相关
 ///获取地区列表
 - (void)areaListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
@@ -1062,15 +1071,7 @@
 
 
 
-///个人中心-个人主页
-- (void)myHomePageWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{
-    
-    [[HttpServer sharedInstance]getWithMethod:METHOD_MINE_HOME_PAGE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
-        successBlock(model);
-    } withFailBlock:^(NSError *error) {
-        failBlock(error);
-    }];
-}
+
 
 ///个人主页-通过手机号获取
 - (void)myHomePageByMobileWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock{

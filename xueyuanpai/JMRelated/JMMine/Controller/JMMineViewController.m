@@ -17,11 +17,17 @@
 #import "JMMineActivityListViewController.h"
 #import "MineSettingViewController.h"
 @interface JMMineViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic,strong)UITableView *tableView;
 
+{
+    UIImageView *headImageView;
+    UILabel *nameLabel;
+    UIImageView *sexImageView;
+    //工作职称
+    UILabel *jobNameLabel;
+}
 ///展示地理位置的lable
 @property (nonatomic,strong) UILabel *showLocationLable;
-
+@property (nonatomic,strong)UITableView *tableView;
 
 @end
 
@@ -34,6 +40,7 @@
     
     [self theTabBarHidden:NO];
     
+    
 }
 
 - (void)viewDidLoad {
@@ -45,9 +52,29 @@
     [self creatRightNavWithTitle:@"编辑个人资料"];
     
     [self createTableView];
-    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshInfo ) name:NOTI_UPDATE_BY_USER_ID object:nil];
 }
-
+-(void)refreshInfo
+{
+    [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"avatar"]];
+    nameLabel.text = [UserAccountManager sharedInstance].userNickname;
+    if ([UserAccountManager sharedInstance].userSex == SexOfManType) {
+        ///男
+        [sexImageView setImage:[UIImage imageNamed:@"gender_male"]];
+    }else{
+        ///女
+        [sexImageView setImage:[UIImage imageNamed:@"gender_female"]];
+    }
+    if ([UserAccountManager sharedInstance].userRole  == UserInfoRoleStudent) {
+        //学生
+        jobNameLabel.text = [UserAccountManager sharedInstance].userCollegeName;
+        
+    } else {
+        //老师
+        jobNameLabel.text = [UserAccountManager sharedInstance].userJob;
+        
+    }
+}
 #pragma mark - 导航栏右侧按钮响应方法
 -(void)rightItemActionWithBtn:(UIButton *)sender
 {
@@ -78,7 +105,7 @@
     
     
     //头像
-    UIImageView *headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 35, 20, 70, 70)];
+    headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 35, 20, 70, 70)];
     headImageView.layer.cornerRadius = 35;
     headImageView.layer.masksToBounds = YES;
     [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"avatar"]];
@@ -86,14 +113,14 @@
     
     
     //姓名
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2, CGRectGetMaxY(headImageView.frame), 180, 20)];
+    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2, CGRectGetMaxY(headImageView.frame), 180, 20)];
     nameLabel.font = [UIFont systemFontOfSize:14];
     nameLabel.textAlignment = NSTextAlignmentLeft;
     nameLabel.text = [UserAccountManager sharedInstance].userNickname;
     [headBackGroundView addSubview:nameLabel];
     
     //性别
-    UIImageView *sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame) - 20, CGRectGetMinY(nameLabel.frame), 12, 12)];
+    sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame) - 20, CGRectGetMinY(nameLabel.frame), 12, 12)];
     if ([UserAccountManager sharedInstance].userSex == SexOfManType) {
         ///男
         [sexImageView setImage:[UIImage imageNamed:@"gender_male"]];
@@ -105,7 +132,7 @@
     
     
     //工作职称
-    UILabel *jobNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame), SCREEN_WIDTH, 17)];
+    jobNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame), SCREEN_WIDTH, 17)];
     jobNameLabel.font = [UIFont systemFontOfSize:14];
     jobNameLabel.textAlignment = NSTextAlignmentCenter;
     
