@@ -65,15 +65,7 @@
         ///女
         [sexImageView setImage:[UIImage imageNamed:@"gender_female"]];
     }
-    if ([UserAccountManager sharedInstance].userRole  == UserInfoRoleStudent) {
-        //学生
-        jobNameLabel.text = [UserAccountManager sharedInstance].userCollegeName;
-        
-    } else {
-        //老师
-        jobNameLabel.text = [UserAccountManager sharedInstance].userJob;
-        
-    }
+    jobNameLabel.text = [UserAccountManager sharedInstance].userCollegeName;
 }
 #pragma mark - 导航栏右侧按钮响应方法
 -(void)rightItemActionWithBtn:(UIButton *)sender
@@ -136,15 +128,7 @@
     jobNameLabel.font = [UIFont systemFontOfSize:14];
     jobNameLabel.textAlignment = NSTextAlignmentCenter;
     
-    if ([UserAccountManager sharedInstance].userRole  == UserInfoRoleStudent) {
-        //学生
-        jobNameLabel.text = [UserAccountManager sharedInstance].userCollegeName;
-        
-    } else {
-        //老师
-        jobNameLabel.text = [UserAccountManager sharedInstance].userJob;
-        
-    }
+    jobNameLabel.text =  [NSString stringWithFormat:@"%@ %@",[UserAccountManager sharedInstance].userCollegeName,[UserAccountManager sharedInstance].userGrade];
     jobNameLabel.textColor = [UIColor lightGrayColor];
     
     [headBackGroundView addSubview:jobNameLabel];

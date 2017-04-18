@@ -155,7 +155,7 @@
         [datePicker setDate:_defaulDate];
     }
     _datePicker=datePicker;
-    datePicker.frame=CGRectMake(0, ZHToobarHeight, datePicker.frame.size.width, datePicker.frame.size.height);
+    datePicker.frame=CGRectMake(0, ZHToobarHeight, [UIScreen mainScreen].bounds.size.width, datePicker.frame.size.height);
     _pickeviewHeight=datePicker.frame.size.height;
     [self addSubview:datePicker];
 }

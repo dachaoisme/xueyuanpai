@@ -86,7 +86,7 @@
 ///上传用户头像
 #define METHOD_OF_ADD_ICON_UPLOAD           @"student/upload/"
 ///更新个人资料
-#define METHOD_OF_UPDATE_STUDENT_INFO    @"student/updateuserinfo/"
+#define METHOD_OF_UPDATE_STUDENT_INFO    @"student/updateuserinfo"
 ///校验验证码和手机号--->修改密码
 #define METHOD_OF_CHECKING_MESSAGE       @"student/validatecaptcha"
 ///个人中心：意见反馈

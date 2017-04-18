@@ -23,6 +23,8 @@
 */
 ///用户大学序号
 @property (nonatomic, strong) NSString *userCollegeId;
+///用户大学名称
+@property (nonatomic, strong) NSString *userCollegeName;
 ///激萌二期
 @property (nonatomic, strong) NSString *colledgeTime;
 ///用户头像
@@ -37,7 +39,12 @@
 @property (nonatomic, assign) UserInfoSex userSex;
 ///用户联系电话
 @property (nonatomic, strong) NSString *userTelphone;
-@property (nonatomic, strong) NSString *updateTime;;
+@property (nonatomic, strong) NSString *updateTime;
+///用户年级
+@property (nonatomic, strong) NSString *userGrade;
+
+
+
 
 
 
@@ -53,8 +60,7 @@
 ///用户手机号
 @property (nonatomic, strong) NSString *userMobile;
 
-///用户大学名称
-@property (nonatomic, strong) NSString *userCollegeName;
+
 
 ///用户真实姓名
 @property (nonatomic, strong) NSString *userRealName;
