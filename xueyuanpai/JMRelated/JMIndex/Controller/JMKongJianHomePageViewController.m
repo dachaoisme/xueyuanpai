@@ -15,6 +15,8 @@
 #import "SGSegmentedControl.h"
 #import "JMCourseViewController.h"
 #import "JMSalonViewController.h"
+#import "JMHomePageViewTrainingProjectDetailController.h"
+#import "WKWebViewController.h"
 #define bannerHeight 160
 #define tabHeight 44
 @interface JMKongJianHomePageViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
@@ -88,6 +90,28 @@
     };
     bulkGoodsLunBoView.totalPagesCount = ^NSInteger(void){
         return imageUrlArray.count;
+    };
+    bulkGoodsLunBoView.TapActionBlock = ^(NSInteger pageIndex) {
+        ///点击轮播图
+        JMHomePageModel *model = [bannerItemArray objectAtIndex:pageIndex];
+        if ([model.entity_type isEqualToString:@"link"]) {
+            ///说明是一个url
+            WKWebViewController *web = [[WKWebViewController alloc] init];
+            [web loadWebURLSring:model.entity_id];
+            self.parentViewController.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:web animated:YES];
+            self.parentViewController.hidesBottomBarWhenPushed = NO;
+        }else if ([model.entity_type isEqualToString:@"project"]){
+            ///说明是一个项目
+            //未结束的项目的详情
+            JMHomePageViewTrainingProjectDetailController *detailVC = [[JMHomePageViewTrainingProjectDetailController alloc] init];
+            detailVC.title = model.title;
+            detailVC.trainProjectId = model.entity_id;
+            [self.navigationController pushViewController:detailVC animated:YES];
+        }else{
+            
+        }
+        
     };
     [self.view addSubview:bulkGoodsLunBoView];
 }
