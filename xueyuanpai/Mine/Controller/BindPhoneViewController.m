@@ -128,6 +128,7 @@
     }];
     
     
+    
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -153,15 +154,13 @@
         return;
     }
 
-    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     NSString * phoneNum = [UserAccountManager sharedInstance].userTelphone;
-    
-    [params setObject:phoneNum forKey:@"telphone"];
-    [params setValue: phoneCoder forKey:@"code"];
-    
+    [dic setValue:phoneNum forKey:@"telphone"];
+    [dic setValue:phoneCoder forKey:@"captcha"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
-    [[HttpClient sharedInstance] checkSendMessageWithParams:params withSuccessBlock:^(HttpResponseCodeModel *model) {
+    [[HttpClient sharedInstance] validateTelephoneAndSecurityCodeWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
 
         
