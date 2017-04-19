@@ -114,7 +114,7 @@
             
             cell.leftTitleLabel.text = @"收件人地址";
             if (receiveAddressModel) {
-                [cell.rightContentBtn setTitle:sendAddressModel.addr forState:UIControlStateNormal];
+                [cell.rightContentBtn setTitle:receiveAddressModel.addr forState:UIControlStateNormal];
             }else{
                 [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
             }
