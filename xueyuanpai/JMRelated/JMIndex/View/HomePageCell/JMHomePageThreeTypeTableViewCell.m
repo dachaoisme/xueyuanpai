@@ -43,6 +43,7 @@
     if (_titleLabel == nil) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_showImageView.frame) + 15, CGRectGetMinY(_showImageView.frame), 200, 18)];
         _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.textColor = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
         _titleLabel.text = @"开发一个移动电商平台";
         [self.contentView addSubview:_titleLabel];
     }
@@ -51,7 +52,7 @@
     if (_subtitleLabel == nil) {
         _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_titleLabel.frame), CGRectGetMaxY(_titleLabel.frame) + 4, CGRectGetWidth(_titleLabel.frame), 14)];
         _subtitleLabel.font = [UIFont systemFontOfSize:13];
-        _subtitleLabel.textColor = [CommonUtils colorWithHex:@"999999"];
+        _subtitleLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
         _subtitleLabel.text = @"一句话项目简介";
         [self.contentView addSubview:_subtitleLabel];
     }
@@ -66,7 +67,7 @@
         _locationBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [_locationBtn setTitle:@"北京" forState:UIControlStateNormal];
         _locationBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-        [_locationBtn setTitleColor:[CommonUtils colorWithHex:@"999999"] forState:UIControlStateNormal];
+        [_locationBtn setTitleColor:[CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR] forState:UIControlStateNormal];
         [self.contentView addSubview:_locationBtn];
     }
     
@@ -74,7 +75,7 @@
     if (_peopleNumberLabel == nil) {
         _peopleNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 100, CGRectGetMinY(_locationBtn.frame), 100, 12)];
         _peopleNumberLabel.text = @"已招募3人";
-        _peopleNumberLabel.textColor = [CommonUtils colorWithHex:@"999999"];
+        _peopleNumberLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
         _peopleNumberLabel.font = [UIFont systemFontOfSize:11];
         _peopleNumberLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_peopleNumberLabel];

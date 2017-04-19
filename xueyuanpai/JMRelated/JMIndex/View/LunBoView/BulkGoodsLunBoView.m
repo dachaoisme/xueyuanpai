@@ -93,6 +93,7 @@
         CGRect rect = CGRectMake(self.bounds.size.width*i, 0, self.bounds.size.width, self.bounds.size.height);
         UIImageView * contentView = [[UIImageView alloc]init];
         contentView.userInteractionEnabled = YES;
+        contentView.contentMode = UIViewContentModeScaleAspectFill;
         contentView.frame = rect;
         [contentView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placeHoder"]];
         

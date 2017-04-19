@@ -50,6 +50,7 @@
     showDreamLabel.userInteractionEnabled = YES;
     showDreamLabel.font = [UIFont systemFontOfSize:13];
     showDreamLabel.textAlignment = NSTextAlignmentCenter;
+    showDreamLabel.textColor = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
     [leftSetDreamView addSubview:showDreamLabel];
     
     
@@ -71,6 +72,7 @@
     UILabel *showDreamSpaceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(setDreamImageView.frame) + 10, 60, 15)];
     showDreamSpaceLabel.text = @"集梦空间";
     showDreamSpaceLabel.userInteractionEnabled = YES;
+    showDreamSpaceLabel.textColor = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
     showDreamSpaceLabel.textAlignment = NSTextAlignmentCenter;
     showDreamSpaceLabel.font = [UIFont systemFontOfSize:13];
     [rightView addSubview:showDreamSpaceLabel];

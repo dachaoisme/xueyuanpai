@@ -40,7 +40,9 @@
 #define iOS7 [[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0
 #define iOS8 [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0
 #define iOS9 [[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0
-
+#define VMScreen_width [UIScreen mainScreen].bounds.size.width
+#define VMScreen_height [UIScreen mainScreen].bounds.size.height
+#define VMScaleOfCurrentDeviceAndModelDeviceWidth (VMScreen_width < VMScreen_height ? (VMScreen_width / 375) : (VMScreen_height / 375))
 
 // 调试状态, 打开Log功能
 #ifdef DEBUG
@@ -106,6 +108,12 @@
 ///NavigationBar主题颜色
 #define NAVIGATIONBAR_THEMECOLOR [UIColor blackColor]
 #define NAVIGATIONBAR_TITLECOLOR [UIColor whiteColor]
+///普通黑色 一级标题
+#define NORMAL_TITLE_BLACK_COLOR @"3f4446"
+///普通黑色二级标题
+#define NORMAL_SUBTITLE_BLACK_COLOR @"999999"
+
+
 
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1.0]
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]
