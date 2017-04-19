@@ -40,10 +40,12 @@
     
     if (_jiAddressLabel == nil) {
         _jiAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_jiImageView.frame) + 8, 10, SCREEN_WIDTH - 40 - 15, 40)];
-        _jiAddressLabel.text = @"李林(13822212221) 北京市海淀区惠新西街小区23号楼201";
+        _jiAddressLabel.text = @"";
         _jiAddressLabel.numberOfLines = 2;
         _jiAddressLabel.font = [UIFont systemFontOfSize:14];
         _jiAddressLabel.textColor = [CommonUtils colorWithHex:@"c7c6cb"];
+        
+        _jiImageView.center = CGPointMake(_jiImageView.center.x, _jiAddressLabel.center.y) ;
         [self.contentView addSubview:_jiAddressLabel];
         
     }
@@ -59,11 +61,13 @@
     
     if (_quAddressLabel == nil) {
         _quAddressLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_quImageView.frame) + 8, CGRectGetMaxY(_jiAddressLabel.frame) + 10, SCREEN_WIDTH - 40 - 15, 40)];
-        _quAddressLabel.text = @"李林(13822212221) 北京市海淀区惠新西街小区23号楼201";
+        _quAddressLabel.text = @"";
         _quAddressLabel.numberOfLines = 2;
         _quAddressLabel.font = [UIFont systemFontOfSize:14];
         _quAddressLabel.textColor = [CommonUtils colorWithHex:@"c7c6cb"];
         [self.contentView addSubview:_quAddressLabel];
+        
+        _quImageView.center = CGPointMake(_quImageView.center.x, _quAddressLabel.center.y) ;
         
     }
 

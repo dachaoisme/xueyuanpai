@@ -66,6 +66,7 @@
         _showWaitTimeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 100, CGRectGetMaxY(_showOrderNumberLabel.frame) + 10, 100, 12)];
         _showWaitTimeLabel.font = [UIFont systemFontOfSize:11];
         _showWaitTimeLabel.textColor = [CommonUtils colorWithHex:@"aaaaaa"];
+        _showWaitTimeLabel.textAlignment = NSTextAlignmentRight;
         [self.contentView addSubview:_showWaitTimeLabel];
     }
 

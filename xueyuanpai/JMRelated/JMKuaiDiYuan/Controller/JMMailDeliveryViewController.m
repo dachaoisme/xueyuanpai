@@ -111,13 +111,22 @@
         cell.showWaitTimeLabel.text = @"24小时";
         if ([model.status integerValue]==0) {
             ///等待寄出
+            cell.showOrderNumberLabel.textColor=[CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
+            
             cell.showStatuesLabel.text = @"等待寄出";
+            cell.showStatuesLabel.textColor = [CommonUtils colorWithHex:@"fb8c6e"];
         }else if ([model.status integerValue]==1){
             ///已寄出
+            cell.showOrderNumberLabel.textColor=[CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
+            
             cell.showStatuesLabel.text = @"已寄出";
+            cell.showStatuesLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
         }else{
             ///未寄出失败
+            cell.showOrderNumberLabel.textColor=[CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
+            
             cell.showStatuesLabel.text = @"未寄出失败";
+            cell.showStatuesLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
         }
         
         return cell;
@@ -132,19 +141,28 @@
             cell.jiImageView.image =[UIImage imageNamed:@"send_address_a"];
             
             cell.quImageView.image =[UIImage imageNamed:@"receive_address_b"];
+            
+            cell.jiAddressLabel.textColor = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
+            cell.quAddressLabel.textColor = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
         }else if ([model.status integerValue]==1){
             ///已寄出
             cell.jiImageView.image =[UIImage imageNamed:@"send_address_a"];
             
             cell.quImageView.image =[UIImage imageNamed:@"receive_address_b"];
+            
+            cell.jiAddressLabel.textColor = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
+            cell.quAddressLabel.textColor = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
         }else{
             ///未寄出失败
             cell.jiImageView.image =[UIImage imageNamed:@"send_address_a_grey"];
             
             cell.quImageView.image =[UIImage imageNamed:@"receive_address_b_grey"];
+            
+            cell.jiAddressLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
+            cell.quAddressLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
         }
-        cell.jiAddressLabel.text = model.sender_addr.addr;
-        cell.quAddressLabel.text = model.receiver_addr.addr;
+        cell.jiAddressLabel.text = [NSString stringWithFormat:@"%@(%@)%@",model.sender_addr.user_name,model.sender_addr.telphone,model.sender_addr.addr];
+        cell.quAddressLabel.text = [NSString stringWithFormat:@"%@(%@)%@",model.receiver_addr.user_name,model.receiver_addr.telphone,model.receiver_addr.addr];
         return cell;
         
     }
