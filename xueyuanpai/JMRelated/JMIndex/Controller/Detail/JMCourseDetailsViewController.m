@@ -232,6 +232,7 @@
     collectionBtn.layer.cornerRadius = 4;
     [collectionBtn setTitle:[NSString stringWithFormat:@"收藏 %@",detailModel.count_mark] forState:UIControlStateNormal];
     collectionBtn.layer.masksToBounds = YES;
+    collectionBtn.selected = NO;
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
     [collectionBtn addTarget:self action:@selector(collectionAction) forControlEvents:UIControlEventTouchUpInside];
@@ -312,6 +313,7 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]collectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
+            [collectionBtn setTitle:[NSString stringWithFormat:@"收藏 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
             [CommonUtils showToastWithStr:@"收藏成功"];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
