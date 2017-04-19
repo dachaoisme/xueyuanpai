@@ -32,7 +32,7 @@
     
     if (_leftTitleLabel == nil) {
         
-        _leftTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 100, 18)];
+        _leftTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, CGRectGetHeight(self.frame))];
         _leftTitleLabel.font = [UIFont systemFontOfSize:14];
         _leftTitleLabel.text = @"姓名";
         _leftTitleLabel.textColor = [CommonUtils colorWithHex:@"666666"];
@@ -43,7 +43,7 @@
     
     if (_rightTextFeild == nil) {
         
-        _rightTextFeild = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_leftTitleLabel.frame) + 6, 15, 100, 18)];
+        _rightTextFeild = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_leftTitleLabel.frame) + 6, 0,SCREEN_WIDTH-CGRectGetMaxX(_leftTitleLabel.frame)-30, CGRectGetHeight(self.frame))];
         _rightTextFeild.font = [UIFont systemFontOfSize:14];
         _rightTextFeild.placeholder = @"请输入";
         _rightTextFeild.returnKeyType = UIReturnKeyDone;

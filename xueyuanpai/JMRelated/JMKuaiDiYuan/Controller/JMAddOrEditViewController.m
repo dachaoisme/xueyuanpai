@@ -151,12 +151,15 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     weakSelf(weakSelf);
-    JMAreaListViewController *areaListVC = [[JMAreaListViewController alloc]init];
-    areaListVC.returnBlock = ^(JMAreaModel *returnAreaModel) {
-        areaModel = returnAreaModel;
-        [weakSelf.tableView reloadData];
-    };
-    [self.navigationController pushViewController:areaListVC animated:YES];
+    if (indexPath.section==1 &&indexPath.row==0) {
+        JMAreaListViewController *areaListVC = [[JMAreaListViewController alloc]init];
+        areaListVC.returnBlock = ^(JMAreaModel *returnAreaModel) {
+            areaModel = returnAreaModel;
+            [weakSelf.tableView reloadData];
+        };
+        [self.navigationController pushViewController:areaListVC animated:YES];
+    }
+    
 }
 
 #pragma mark - 创建底部视图
