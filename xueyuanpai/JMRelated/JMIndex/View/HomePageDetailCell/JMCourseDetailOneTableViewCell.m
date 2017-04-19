@@ -43,6 +43,7 @@
         _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 10, playImage.size.width, playImage.size.height)];
         _playImageView.image =playImage;
         _playImageView.userInteractionEnabled = YES;
+        _playImageView.hidden = YES;
         _playImageView.center = _showImageView.center;
         [self.contentView addSubview:_playImageView];
     }

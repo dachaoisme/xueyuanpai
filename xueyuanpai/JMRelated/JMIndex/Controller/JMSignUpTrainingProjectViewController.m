@@ -283,7 +283,6 @@
     }else{
         
     }
-    [self.tableView reloadData];
 }
 
 #pragma mark - textView的代理方法

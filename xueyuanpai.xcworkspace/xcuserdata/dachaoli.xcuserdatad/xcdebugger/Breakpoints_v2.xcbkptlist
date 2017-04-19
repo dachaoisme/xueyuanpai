@@ -74,7 +74,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
-                  timestampString = "514224638.288536"
+                  timestampString = "514259134.216834"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "313"
@@ -89,7 +89,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMCourseDetailsViewController.m"
-                  timestampString = "514224638.290603"
+                  timestampString = "514259134.218525"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "314"
@@ -128,6 +128,22 @@
             startingLineNumber = "320"
             endingLineNumber = "320"
             landmarkName = "-collectionAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/JMRelated/JMIndex/Controller/JMSignUpTrainingProjectViewController.m"
+            timestampString = "514259132.884683"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "-textView:shouldChangeTextInRange:replacementText:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
