@@ -47,7 +47,7 @@
     
     [self createLeftBackNavBtn];
     
-    
+    self.view.backgroundColor =[CommonUtils colorWithHex:@"e5e5e5"];
     [self createTableView];
 }
 
@@ -56,7 +56,7 @@
     
     int sureBtnHeight = 50;
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT-sureBtnHeight-10) style:UITableViewStyleGrouped];
-    _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.backgroundColor = [CommonUtils colorWithHex:@"e5e5e5"];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -69,6 +69,8 @@
     [sureBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
     [sureBtn setFrame:CGRectMake(10, SCREEN_HEIGHT-sureBtnHeight-10, SCREEN_WIDTH-10*2, sureBtnHeight)];
     [sureBtn setTitle:@"确定" forState:UIControlStateNormal];
+    sureBtn.layer.masksToBounds = YES;
+    sureBtn.layer.cornerRadius = 5;
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [sureBtn addTarget:self action:@selector(sure:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sureBtn];
