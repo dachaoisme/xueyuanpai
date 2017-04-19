@@ -108,25 +108,29 @@
         JMKuaiDiYuanModel *model = [dataArray objectAtIndex:indexPath.section];
         cell.showOrderNumberLabel.text =model.order_id;
         cell.showDateLabel.text = model.create_time;
-        cell.showWaitTimeLabel.text = @"24小时";
+        
         if ([model.status integerValue]==0) {
             ///等待寄出
             cell.showOrderNumberLabel.textColor=[CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
             
             cell.showStatuesLabel.text = @"等待寄出";
             cell.showStatuesLabel.textColor = [CommonUtils colorWithHex:@"fb8c6e"];
+            cell.showWaitTimeLabel.text = @"";
+            cell.showWaitTimeLabel.hidden = NO;
         }else if ([model.status integerValue]==1){
             ///已寄出
             cell.showOrderNumberLabel.textColor=[CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
             
             cell.showStatuesLabel.text = @"已寄出";
             cell.showStatuesLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
+            cell.showWaitTimeLabel.hidden = YES;
         }else{
             ///未寄出失败
             cell.showOrderNumberLabel.textColor=[CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
             
             cell.showStatuesLabel.text = @"未寄出失败";
             cell.showStatuesLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
+            cell.showWaitTimeLabel.hidden = YES;
         }
         
         return cell;

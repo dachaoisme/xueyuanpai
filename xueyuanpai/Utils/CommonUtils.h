@@ -392,7 +392,10 @@
  */
 +(NSString *)getEffectiveUrlWithUrl:(NSString *)url withType:(NSInteger)type;
 
-
+/**
+ * 开始到结束的时间差
+ */
++ (NSString *)dateTimeDifferenceWithStartTime:(NSString *)startTime endTime:(NSString *)endTime;
 
 
 
