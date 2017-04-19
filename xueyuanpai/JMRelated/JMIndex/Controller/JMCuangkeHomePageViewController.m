@@ -14,7 +14,7 @@
 #import "JMHomePageModel.h"
 #import "JMHomePageViewTrainingProjectDetailController.h"
 #import "WKWebViewController.h"
-#define bannerHeight 200
+#define bannerHeight 160
 #define tabHeight 44
 @interface JMCuangkeHomePageViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
 {
@@ -78,7 +78,7 @@
 -(void)setupBanner
 {
     //获取轮播图片数组
-    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bannerHeight) animationDuration:0];
+    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, bannerHeight) animationDuration:0];
     NSArray *imageUrlArray = bannerImageArray;
     bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
         return imageUrlArray[pageIndex];
@@ -140,14 +140,14 @@
 - (void)initScrollViewTitleWithChildVCArray:(NSMutableArray *)childVCArray titleArray:(NSMutableArray *)titleArr
 {
     
-    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, bannerHeight+NAVIGATIONBAR_HEIGHT ,self.view.frame.size.width, SCREEN_HEIGHT - TABBAR_HEIGHT-bannerHeight)];
+    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+bannerHeight+NAVIGATIONBAR_HEIGHT ,self.view.frame.size.width, SCREEN_HEIGHT - TABBAR_HEIGHT-bannerHeight-NAV_TOP_HEIGHT)];
     _bottomSView.childViewController = childVCArray;
     _bottomSView.backgroundColor = [UIColor whiteColor];
     _bottomSView.delegate = self;
     [self.view addSubview:_bottomSView];
     
     
-    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, bannerHeight, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90,NAV_TOP_HEIGHT+ bannerHeight, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     self.topDefaultSView.backgroundColor = [UIColor clearColor];
     self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
     self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];
