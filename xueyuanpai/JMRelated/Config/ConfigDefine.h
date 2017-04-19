@@ -112,6 +112,8 @@
 #define NORMAL_TITLE_BLACK_COLOR @"3f4446"
 ///普通黑色二级标题
 #define NORMAL_SUBTITLE_BLACK_COLOR @"999999"
+///蓝色线条选中颜色
+#define NORMAL_HEIGHTLIGHT_COLOR @"00c05c"
 
 
 

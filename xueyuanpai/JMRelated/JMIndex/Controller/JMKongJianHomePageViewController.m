@@ -152,9 +152,9 @@
     
     self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT+bannerHeight, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     self.topDefaultSView.backgroundColor = [UIColor clearColor];
-    self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
-    self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];
-    self.topDefaultSView.indicatorColor = [CommonUtils colorWithHex:@"00c05c"];
+    self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:NORMAL_TITLE_BLACK_COLOR];
+    self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:NORMAL_HEIGHTLIGHT_COLOR];
+    self.topDefaultSView.indicatorColor = [CommonUtils colorWithHex:NORMAL_HEIGHTLIGHT_COLOR];
     [self.view addSubview:self.topDefaultSView];
     
 }
