@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -74,7 +74,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>113</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>mqqwpa</string>
@@ -113,6 +113,8 @@
 	<string>应用需要使用您的相机</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>是否允许学院派获取您的位置</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>是否允许访问录音功能</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>应用需要使用您的相册</string>
 	<key>UIBackgroundModes</key>

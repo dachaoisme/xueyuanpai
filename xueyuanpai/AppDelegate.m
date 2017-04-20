@@ -49,7 +49,7 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     //极光推送方法
-    [self jpushAction:launchOptions];
+//    [self jpushAction:launchOptions];
     
     //环信SDK
     [self huanXinAction];
@@ -61,7 +61,7 @@
     
     
     //注册好友回调
-    [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
+//    [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
     
     
     //微信支付
@@ -151,6 +151,7 @@
 }
 
 #pragma mark - 极光推送
+/*
 - (void)jpushAction:(NSDictionary *)launchOptions{
     
     
@@ -214,7 +215,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     }
 
 }
-
+*/
 #pragma mark - 提交小票成功提醒框的内容
 - (UIView* )createView
 {
