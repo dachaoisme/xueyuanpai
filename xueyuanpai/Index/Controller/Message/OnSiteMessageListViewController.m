@@ -9,7 +9,7 @@
 #import "OnSiteMessageListViewController.h"
 #import "CourierNoticeTableViewCell.h"
 #import "InboxModel.h"
-
+#import "JMMessageModel.h"
 @interface OnSiteMessageListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     int pageSize;
@@ -72,10 +72,10 @@
     
     CourierNoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    InboxInsideMessageModel *model = [modelArray objectAtIndex:indexPath.row];
+    JMMessageModel *model = [modelArray objectAtIndex:indexPath.row];
     cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_xueyuanpai"];
-    cell.contentLable.text = model.inboxInsideMessageMsg;
-    cell.timeLabel.text = model.inboxInsideMessageCreateTime;
+    cell.contentLable.text = model.message;
+    cell.timeLabel.text = model.time;
     
     return cell;
 }
@@ -162,7 +162,7 @@
     [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [paramsDic setValue:[NSString stringWithFormat:@"%d",pageNum] forKey:@"page"];
     [paramsDic setValue:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
-    
+    [paramsDic setValue:@"3" forKey:@"type"];
     
     [[HttpClient sharedInstance] getInboxInsideMessageListWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -173,7 +173,7 @@
             
             for (NSDictionary * dic in [ListDic objectForKey:@"lists"] ) {
                 
-                InboxInsideMessageModel * model = [[InboxInsideMessageModel alloc]initWithDic:dic];
+                JMMessageModel * model = [JMMessageModel yy_modelWithJSON:dic];
                 [modelArray addObject:model];
             }
             ///处理上拉加载更多逻辑

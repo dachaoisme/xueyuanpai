@@ -94,6 +94,7 @@
 		166DD1781E9BCF2D00B2B002 /* JMHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */; };
 		1687559F1E9E863000BDC9D9 /* zan_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559D1E9E863000BDC9D9 /* zan_hl@2x.png */; };
 		168755A01E9E863000BDC9D9 /* zan_hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */; };
+		16EFAF401EAA05E1009742CA /* JMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */; };
 		16FF181E1EA4923900D06831 /* JMAreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF181D1EA4923900D06831 /* JMAreaListViewController.m */; };
 		16FF18211EA4947700D06831 /* JMAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF18201EA4947700D06831 /* JMAreaModel.m */; };
 		16FF18241EA4B0D000D06831 /* JMAdressListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF18231EA4B0D000D06831 /* JMAdressListModel.m */; };
@@ -1153,6 +1154,8 @@
 		166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageModel.m; sourceTree = "<group>"; };
 		1687559D1E9E863000BDC9D9 /* zan_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zan_hl@2x.png"; sourceTree = "<group>"; };
 		1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zan_hl@3x.png"; sourceTree = "<group>"; };
+		16EFAF3E1EAA05E1009742CA /* JMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMessageModel.h; sourceTree = "<group>"; };
+		16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMessageModel.m; sourceTree = "<group>"; };
 		16FF181C1EA4923900D06831 /* JMAreaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAreaListViewController.h; sourceTree = "<group>"; };
 		16FF181D1EA4923900D06831 /* JMAreaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAreaListViewController.m; sourceTree = "<group>"; };
 		16FF181F1EA4947700D06831 /* JMAreaModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAreaModel.h; sourceTree = "<group>"; };
@@ -2955,6 +2958,8 @@
 				16154FB81EA2537300FB46AA /* JMSalonModel.m */,
 				16154FC61EA3210E00FB46AA /* JMCommentModel.h */,
 				16154FC71EA3210E00FB46AA /* JMCommentModel.m */,
+				16EFAF3E1EAA05E1009742CA /* JMMessageModel.h */,
+				16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6159,6 +6164,7 @@
 				166DD1671E9A0F7C00B2B002 /* TopUpTableViewCell.m in Sources */,
 				DDF519E71E9F4C1A00E72DEC /* JMCollectCourierListViewController.m in Sources */,
 				DDB28E501D2C8A7E004C8F70 /* EaseFaceView.m in Sources */,
+				16EFAF401EAA05E1009742CA /* JMMessageModel.m in Sources */,
 				DDB28E141D2C8A7E004C8F70 /* UIImage+EMGIF.m in Sources */,
 				DDBFD1D81D2F6BAD00E15DCF /* MyHomePageByPhoneNumberViewController.m in Sources */,
 				166DD1401E9A0F7C00B2B002 /* ExchangeGiftsViewController.m in Sources */,

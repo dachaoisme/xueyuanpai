@@ -22,6 +22,7 @@
 #import "JMCuangkeHomePageViewController.h"
 #import "JMKongJianHomePageViewController.h"
 #import "WKWebViewController.h"
+#import "MessageViewController.h"
 @interface JMHomePageViewController ()<UITableViewDelegate,UITableViewDataSource,JMHomePageOneTypeCellTableViewCellDelegate,JMHomePageTwoTypeTableViewCellDelegate>
 {
     NSMutableArray *bannerTitleArray;
@@ -50,6 +51,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"首页";
+    [self creatRightNavWithImageName:@"nav_icon_msg"];
     currentPage=nextPage=1;
     pageSize=10;
     bannerTitleArray = [NSMutableArray array];
@@ -337,6 +339,20 @@
     [self.navigationController pushViewController:trainingProjectListVC animated:YES];
 }
 
+#pragma mark - 收件箱
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    ////需要先判断是否已经登陆
+    if ([UserAccountManager sharedInstance].isLogin==NO) {
+        [self judgeLoginStatus];
+        return;
+    }
+    
+    MessageViewController *messageVC = [[MessageViewController alloc] init];
+    [self.navigationController pushViewController:messageVC animated:YES];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

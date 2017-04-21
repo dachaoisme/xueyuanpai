@@ -118,6 +118,12 @@
 ///个人中心：关于我们
 #define METHOD_MINE_ABOUT_US                                @"aboutus/index"
 
+#pragma mark - 消息
+///消息：系统未读消息数目   必需  1 系统消息 2 快递消息 3 站内消息
+#define METHOD_UNREAD_COUNT                               @"user/unreadmsg"
+#define METHOD_MESSAGE_LIST     @"user/messages"
+
+
 #define ENTITY_TYPE_PROJECT         @"project"  ///创业项目
 #define ENTITY_TYPE_SALON           @"salon"    ///创业沙龙
 #define ENTITY_TYPE_COURSE          @"course"   ///创业课程

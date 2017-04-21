@@ -176,8 +176,9 @@
 #pragma mark - 右侧自定义按钮
 -(void)creatRightNavWithImageName:(NSString *)imageName
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 10, 25, 25)];
-    imageView.image        = [UIImage imageNamed:imageName];
+    UIImage *image = [UIImage imageNamed:imageName];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(30, 10, image.size.width, image.size.height)];
+    imageView.image        = image;//[UIImage imageNamed:imageName];
     imageView.contentMode  = UIViewContentModeScaleToFill;
     
     UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];

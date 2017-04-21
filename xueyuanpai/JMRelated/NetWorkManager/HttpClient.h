@@ -128,7 +128,27 @@
 ///获取收到的快递列表
 - (void)getExpressReceiveListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
+#pragma mark - 消息相关
+///系统未读消息数目
+- (void)getSystemUnReadMessageCountWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
+///快递消息或者消息通知记录
+- (void)receivedNotificationAndExpressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+
+///站内消息列表数据
+- (void)getInboxInsideMessageListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
+
+
+
+
+
+
+
+
+
+#pragma mark-学院派一期
 ///// /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////学院派一期/////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
@@ -408,12 +428,9 @@
 - (void)expressCenterCancelExpressWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 ///我的发送快递记录
 - (void)expressCenterExpressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-///快递消息或者消息通知记录
-- (void)receivedNotificationAndExpressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
 
 #pragma mark - 消息
-///系统未读消息数目
-- (void)getSystemUnReadMessageCountWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 ///设置系统消息为已读
 - (void)setSystemMessageStatusWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
@@ -426,8 +443,7 @@
 
 ///创业项目消息列表数据
 - (void)getProgectMessageListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-///站内消息列表数据
-- (void)getInboxInsideMessageListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
+
 
 ///时间银行消息
 - (void)getTimeBankMessageListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;

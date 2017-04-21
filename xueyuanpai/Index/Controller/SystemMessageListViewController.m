@@ -12,7 +12,7 @@
 #import "SystemMessageListModel.h"
 
 #import "SystemMessageDetailViewController.h"
-
+#import "JMMessageModel.h"
 
 @interface SystemMessageListViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -62,6 +62,7 @@
     [paramsDic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [paramsDic setValue:[NSString stringWithFormat:@"%d",pageNum] forKey:@"page"];
     [paramsDic setValue:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [paramsDic setValue:@"1" forKey:@"type"];
 
     
     [[HttpClient sharedInstance] getSystemMessageListWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
@@ -73,7 +74,7 @@
             
             for (NSDictionary * dic in [ListDic objectForKey:@"lists"] ) {
                 
-                SystemMessageListModel * model = [[SystemMessageListModel alloc]initWithDic:dic];
+                JMMessageModel * model = [JMMessageModel yy_modelWithJSON:dic];
                 [_messageListArray addObject:model];
             }
             
@@ -164,13 +165,13 @@
     
     CourierNoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    SystemMessageListModel *model = [_messageListArray objectAtIndex:indexPath.row];
+    JMMessageModel *model = [_messageListArray objectAtIndex:indexPath.row];
     
     cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_xueyuanpai"];
     
-    cell.contentLable.text = model.messageContent;
+    cell.contentLable.text = model.message;
     
-    cell.timeLabel.text = model.messageCreateTime;
+    cell.timeLabel.text = model.time;
     
     return cell;
     

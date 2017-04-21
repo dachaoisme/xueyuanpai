@@ -10,6 +10,7 @@
 
 #import "CourierNoticeTableViewCell.h"
 #import "ExpressCenterModel.h"
+#import "JMMessageModel.h"
 @interface CourierNoticeViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     ExpressCenterReceiveMessageModel *expressInforModel;
@@ -69,9 +70,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     CourierNoticeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    ExpressCenterReceiveMessageModel * model = [modelArray objectAtIndex:indexPath.row];
-    cell.contentLable.text = model.ExpressCenterReceiveMessageMsg;
-    cell.timeLabel.text = model.ExpressCenterReceiveMessageTime;
+    JMMessageModel * model = [modelArray objectAtIndex:indexPath.row];
+    cell.contentLable.text = model.message;
+    cell.timeLabel.text = model.time;
     return cell;
     
 }
@@ -147,7 +148,7 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:[NSString stringWithFormat:@"%ld",pageNum] forKey:@"page"];
     [dic setValue:[NSString stringWithFormat:@"%ld",pageSize] forKey:@"size"];
-    
+    [dic setValue:@"2" forKey:@"type"];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [[HttpClient sharedInstance]receivedNotificationAndExpressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
@@ -155,9 +156,9 @@
         if (responseModel.responseCode == ResponseCodeSuccess) {
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
-                expressInforModel = [[ExpressCenterReceiveMessageModel alloc]initWithDic:smallDic];
+                JMMessageModel * messageModel = [JMMessageModel yy_modelWithJSON:smallDic];
                 
-                [modelArray addObject:expressInforModel];
+                [modelArray addObject:messageModel ];
             }
             
             totalMessageCount = [responseModel.responseCommonDic stringForKey:@"cnt"];

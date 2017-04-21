@@ -28,8 +28,6 @@
 ///快递消息数量
 @property (nonatomic,strong)NSString *courierMessageCount;
 
-///创业消息数量
-@property (nonatomic,strong)NSString *businessMessageCount;
 
 ///站内未读消息数量
 @property (nonatomic,strong)NSString *onSiteMessageCount;
@@ -55,9 +53,6 @@
     
     //请求快递消息未读数量
     [self requestUnReadCourierMessage];
-    
-    //请求创业消息未读消息数量
-    [self requestUnReadBusinessMessage];
     
     //请求站内消息未读消息数量
     [self requestUnReadOnSiteMessage];
@@ -88,7 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -126,21 +121,6 @@
 
         
     }else if (indexPath.row == 2) {
-        cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_startup"];
-        cell.contentLabel.text = @"创业消息";
-        
-        if ([self.businessMessageCount intValue] > 0) {
-            //设置消息数目的
-            cell.badgeView.text = [NSString stringWithFormat:@"%@", self.businessMessageCount];
-            
-        }else{
-            
-            cell.badgeView.hidden = YES;
-        }
-
-
-        
-    }else if (indexPath.row == 3) {
         cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_mail"];
         cell.contentLabel.text = @"站内消息";
         
@@ -152,28 +132,7 @@
             
             cell.badgeView.hidden = YES;
         }
-        
-
-
-        
-    }else if (indexPath.row == 4) {
-        cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_mail"];
-        cell.contentLabel.text = @"时间银行消息";
-        
-        if ([self.onSiteMessageCount intValue] > 0) {
-            //设置消息数目的
-            cell.badgeView.text = [NSString stringWithFormat:@"%@", self.onSiteMessageCount];
-            
-        }else{
-            
-            cell.badgeView.hidden = YES;
-        }
-        
-        
-        
-        
     }
-
 
     return cell;
 }
@@ -208,19 +167,6 @@
         
         
     }else if (indexPath.row == 2){
-        //跳转创业消息
-        BusinessCenterMessageListViewController *businessCenterMessageVC = [[BusinessCenterMessageListViewController alloc] init];
-        businessCenterMessageVC.callback = ^(){
-            self.businessMessageCount = @"0";
-            [tableView reloadData];
-
-            
-        };
-        [self.navigationController pushViewController:businessCenterMessageVC animated:YES];
-        
-        
-        
-    }else if (indexPath.row == 3){
         //站内消息
         OnSiteMessageListViewController *onsiteMessageVC = [[OnSiteMessageListViewController alloc] init];
         onsiteMessageVC.callback = ^(){
@@ -233,18 +179,6 @@
         [self.navigationController pushViewController:onsiteMessageVC animated:YES];
         
         
-    }else if (indexPath.row == 4){
-        
-        //跳转时间银行消息
-        TimeBankMessageListViewController *timeBankMessageVC = [[TimeBankMessageListViewController alloc] init];
-        timeBankMessageVC.callback = ^(){
-            self.onSiteMessageCount = @"0";
-            [tableView reloadData];
-            
-            
-        };
-        [self.navigationController pushViewController:timeBankMessageVC animated:YES];
-        
     }
 }
 
@@ -255,6 +189,7 @@
 
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [paramsDic setObject:@"1" forKey:@"type"];
     [[HttpClient sharedInstance] getSystemUnReadMessageCountWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         
@@ -284,8 +219,7 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     ///发快递序号
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setValue:@"1" forKey:@"page"];
-    [dic setValue:@"10" forKey:@"size"];
+    [dic setObject:@"2" forKey:@"type"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -309,47 +243,12 @@
 }
 
 
-#pragma mark - 请求创业消息未读消息数目
-- (void)requestUnReadBusinessMessage{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
-    [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [paramsDic setValue:@"1" forKey:@"page"];
-    [paramsDic setValue:@"10" forKey:@"size"];
-    
-    
-    [[HttpClient sharedInstance] getProgectMessageListWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        [self.tableView.footer endRefreshing];
-        
-        
-        if (responseModel.responseCode == ResponseCodeSuccess) {
-            
-            _businessMessageCount = [responseModel.responseCommonDic stringForKey:@"unreadcnt"];
-            
-            [self.tableView reloadData];
- 
-            
-        }else{
-            [CommonUtils showToastWithStr:responseModel.responseMsg];
-        }
-        
-    } withFaileBlock:^(NSError *error) {
-        [self.tableView.footer endRefreshing];
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        
-    }];
-
-    
-}
-
 #pragma mark - 请求站内消息未读消息数目
 - (void)requestUnReadOnSiteMessage{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
     [paramsDic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [paramsDic setValue:@"1" forKey:@"page"];
-    [paramsDic setValue:@"10" forKey:@"size"];
+    [paramsDic setObject:@"3" forKey:@"type"];
     
     
     [[HttpClient sharedInstance] getInboxInsideMessageListWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
