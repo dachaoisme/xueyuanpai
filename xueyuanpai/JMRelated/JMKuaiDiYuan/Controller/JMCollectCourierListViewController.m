@@ -45,18 +45,31 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
-    [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [[HttpClient sharedInstance]getExpressReceiveListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];
         currentPage=nextPage;
         NSArray * listArray = [ListDic objectForKey:@"lists"];
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
-            JMKuaiDiYuanModel *model = [JMKuaiDiYuanModel yy_modelWithDictionary:tempDic];
+            JMKuaiDiYuanReceiveModel *model = [JMKuaiDiYuanReceiveModel yy_modelWithDictionary:tempDic];
             [dataArray addObject:model];
             
         }
-        
+        /*
+        JMKuaiDiYuanReceiveLogModel *logModel =[[JMKuaiDiYuanReceiveLogModel alloc] init];
+        logModel.msg = @"已经到了入库的地方";
+        logModel.order_sn = @"123432123";
+        logModel.create_time = @"2017-4-21";
+        NSArray *array = [NSArray arrayWithObject:logModel];
+        JMKuaiDiYuanReceiveModel *model = [[JMKuaiDiYuanReceiveModel alloc]init];
+        model.order_sn = @"123432123";
+        model.express_compay = @"圆通快递";
+        model.status = @"等待收件";
+        model.logs = array;
+        [dataArray addObject:model];
+         */
         if (currentPage==[pageModel.responsePageTotalCount intValue]) {
             //说明是最后一张
             self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
@@ -88,7 +101,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     
-    return 3;
+    return dataArray.count;
 }
 
 
@@ -96,22 +109,31 @@
     
     
     JMCollectCourierListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMCollectCourierListTableViewCell"];
+    JMKuaiDiYuanReceiveModel *model = [dataArray objectAtIndex:indexPath.row];
+    JMKuaiDiYuanReceiveLogModel *logModel;
+    if (model.logs &&model.logs.count>0) {
+        logModel= [model.logs firstObject];
+    }
     
-    if (indexPath.row == 2) {
+    cell.showCourierNumberLabel.text = model.order_sn;
+    cell.showStatuesLabel.text = model.status;
+    cell.showExpressArkLabel.text = model.express_compay;
+    if (logModel) {
+        cell.showSiteLabel.text =logModel.msg;
+    }
+    
+    if ([model.status isEqualToString:@"等待取件"]) {
+        //等待取件状态的设置
+        cell.showHaveTakeLabel.hidden = YES;
+        cell.showExpressArkLabel.hidden = NO;
+
+    }else{
         
         ///已取件状态的设置
         cell.showHaveTakeLabel.hidden = NO;
         cell.showExpressArkLabel.hidden = YES;
         
-    }else{
-        
-        //等待取件状态的设置
-        cell.showHaveTakeLabel.hidden = YES;
-        cell.showExpressArkLabel.hidden = NO;
-        
-
     }
-    
     
     return cell;
     

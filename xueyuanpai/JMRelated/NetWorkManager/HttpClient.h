@@ -125,7 +125,8 @@
 
 ///个人中心-关于我们
 - (void)aboutUsWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
-
+///获取收到的快递列表
+- (void)getExpressReceiveListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock;
 
 
 ///// /////////////////////////////////////////////////////////////////////////////

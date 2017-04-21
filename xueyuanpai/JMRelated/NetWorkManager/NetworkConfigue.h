@@ -113,6 +113,8 @@
 #define TWICE_METHOD_OF_SEND_EXPRESS  @"express/create"
 ///获取寄出的快递列表
 #define METHOD_OF_EXPRESS_LIST_ALREADY_SENT    @"express/list"
+///获取收取到的快递列表
+#define METHOD_OF_EXPRESS_ORDER_LIST_RECEIVE    @"user/orders"
 ///个人中心：关于我们
 #define METHOD_MINE_ABOUT_US                                @"aboutus/index"
 

@@ -9,7 +9,41 @@
 #import <Foundation/Foundation.h>
 
 
-/////////////////////快递员/////////////////////
+
+
+
+/////////////////////收到的快递/////////////////////
+
+@interface JMKuaiDiYuanReceiveLogModel : NSObject
+
+@property(nonatomic,strong)NSString *msg;
+@property(nonatomic,strong)NSString *order_sn;
+@property(nonatomic,strong)NSString *create_time;
+
+
+@end
+
+@interface JMKuaiDiYuanReceiveModel : NSObject
+
+@property(nonatomic,strong)NSString *order_sn;
+@property(nonatomic,strong)NSString *express_compay;
+@property(nonatomic,strong)NSString *status;
+@property(nonatomic,strong)NSArray <JMKuaiDiYuanReceiveLogModel *> *logs;
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////寄出的快递/////////////////////
 @interface JMKuaiDiYuanReceiverAdressModel : NSObject
 
 @property(nonatomic,strong)NSString *user_name;

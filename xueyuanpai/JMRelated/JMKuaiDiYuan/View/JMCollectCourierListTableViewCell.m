@@ -52,37 +52,43 @@
     
     //站点信息展示
     if (_showSiteLabel == nil) {
-        _showSiteLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_showCourierNumberLabel.frame) + 10, 200, 16)];
+        //创建入库站点左边的灰色圆点
+        UIView *circleView = [[UIView alloc] initWithFrame:CGRectMake(20, 5, 6, 6)];
+        circleView.backgroundColor = [CommonUtils colorWithHex:@"d8d8d8"];
+        circleView.layer.cornerRadius = 3;
+        circleView.layer.masksToBounds = YES;
+        [self.contentView addSubview:circleView];
+        
+        _showSiteLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, CGRectGetMaxY(_showCourierNumberLabel.frame) + 10, 200, 16)];
         _showSiteLabel.font = [UIFont systemFontOfSize:14];
-        _showSiteLabel.text = @"    已入库站点A";
+        _showSiteLabel.text = @"      已入库站点A";
         _showSiteLabel.textColor = [CommonUtils colorWithHex:@"b4b4b4"];
         [self.contentView addSubview:_showSiteLabel];
+        
+        circleView.center = CGPointMake(circleView.center.x,_showSiteLabel.center.y);
     }
     
-    //创建入库站点左边的灰色圆点
-    UIView *circleView = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 6, 6)];
-    circleView.backgroundColor = [CommonUtils colorWithHex:@"d8d8d8"];
-    circleView.layer.cornerRadius = 3;
-    circleView.layer.masksToBounds = YES;
-    [_showSiteLabel addSubview:circleView];
+    
     
     
     //快递柜信息展示
     if (_showExpressArkLabel == nil) {
-        _showExpressArkLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, CGRectGetMaxY(_showSiteLabel.frame) + 10, SCREEN_WIDTH - 20 - 15, 16)];
+        //快递柜圆点
+        UIView *circleView1 = [[UIView alloc] initWithFrame:CGRectMake(20, 5, 6, 6)];
+        circleView1.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
+        circleView1.layer.cornerRadius = 3;
+        circleView1.layer.masksToBounds = YES;
+        [self.contentView addSubview:circleView1];
+        
+        _showExpressArkLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, CGRectGetMaxY(_showSiteLabel.frame) + 10, SCREEN_WIDTH - 26 - 15, 16)];
         _showExpressArkLabel.font = [UIFont systemFontOfSize:14];
-        _showExpressArkLabel.text = @"    已放入A区1号柜，取货码32345";
+        _showExpressArkLabel.text = @"      已放入A区1号柜，取货码32345";
         _showExpressArkLabel.textColor = [CommonUtils colorWithHex:@"00c05c"];
         [self.contentView addSubview:_showExpressArkLabel];
     }
 
 
-    //快递柜圆点
-    UIView *circleView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 5, 6, 6)];
-    circleView1.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
-    circleView1.layer.cornerRadius = 3;
-    circleView1.layer.masksToBounds = YES;
-    [_showExpressArkLabel addSubview:circleView1];
+    
     
     
     

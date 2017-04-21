@@ -495,7 +495,21 @@
     }];
 }
 
+///获取收到的快递列表
+- (void)getExpressReceiveListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_EXPRESS_ORDER_LIST_RECEIVE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
 
 
