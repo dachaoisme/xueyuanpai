@@ -7,10 +7,11 @@
 //
 
 #import "BaseViewController.h"
-
+#import "JMMessageModel.h"
 @interface SystemMessageDetailViewController : BaseViewController
 
 
 @property (nonatomic,strong)NSString *messageID;
+@property (nonatomic,strong)JMMessageModel *messageModel;
 
 @end

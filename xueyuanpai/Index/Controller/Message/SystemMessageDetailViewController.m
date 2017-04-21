@@ -32,8 +32,12 @@
     
     
     //请求数据
-    [self requestDetailData];
+    //[self requestDetailData];
+    self.detailView.titleLabel.text = self.messageModel.message;
+    self.detailView.authorLable.text = self.messageModel.time;
     
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.messageModel.linkUrl]];
+    [self.detailView.webView loadRequest:request];
     
 }
 

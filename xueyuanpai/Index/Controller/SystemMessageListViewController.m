@@ -179,11 +179,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    SystemMessageListModel * model = [_messageListArray objectAtIndex:indexPath.row];
-    [self requestReadMessage:model.messageID];
+    JMMessageModel * model = [_messageListArray objectAtIndex:indexPath.row];
+    //[self requestReadMessage:model.messageID];
     
     SystemMessageDetailViewController *detailVC = [[SystemMessageDetailViewController alloc] init];
-    detailVC.messageID = model.messageID;
+    detailVC.messageID = model.messageId;
+    detailVC.messageModel = model;
     [self.navigationController pushViewController:detailVC animated:YES];
     
 }
