@@ -229,10 +229,11 @@
     
     [[HttpClient sharedInstance]checkUpdateWithParams:params withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
         if (responseModel.responseCode==ResponseCodeSuccess) {
-            NSString * netNewVersion = [responseModel.responseCommonDic objectForKey:@"ios_version"];
+            
+            NSString * netNewVersion = [NSString stringWithFormat:@"%@",[responseModel.responseCommonDic objectForKey:@"ios_version"]];
             netDownloadUrl = [responseModel.responseCommonDic objectForKey:@"ios_download_url"];
             NSString *currentAppVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-            if ([netNewVersion floatValue]>[currentAppVersion floatValue]) {
+            if ([[self removeDotWithString:netNewVersion] floatValue]>[[self removeDotWithString:currentAppVersion] floatValue]) {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"更新" message:[NSString stringWithFormat:@"发现新的app版本%@",netNewVersion] delegate:self cancelButtonTitle:@"暂不更新" otherButtonTitles:@"立即更新", nil];
                 [alertView show];
             }else{
@@ -283,6 +284,11 @@
         }
     }
     [[SDImageCache sharedImageCache] cleanDisk];
+}
+-(NSString *)removeDotWithString:(NSString *)string
+{
+    NSString *finalStr = [string stringByReplacingOccurrencesOfString:@"." withString:@""];
+    return finalStr;
 }
 
 - (void)didReceiveMemoryWarning {

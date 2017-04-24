@@ -117,6 +117,8 @@
 #define METHOD_OF_EXPRESS_ORDER_LIST_RECEIVE    @"user/orders"
 ///个人中心：关于我们
 #define METHOD_MINE_ABOUT_US                                @"aboutus/index"
+///个人中心：检查自动更新
+#define METHOD_MINE_CHECK_UPDATE                            @"system/checkforupdate"
 
 #pragma mark - 消息
 ///消息：系统未读消息数目   必需  1 系统消息 2 快递消息 3 站内消息
@@ -263,8 +265,7 @@
 ///个人中心：我的钱包记录列表接
 #define METHOD_MINE_WALLET_LIST                               @"v1/my/wallet?"
 
-///个人中心：检查自动更新
-#define METHOD_MINE_CHECK_UPDATE                            @"v1/system/checkforupdate/?"
+
 ///个人中心：更新用户所属学校
 #define METHOD_MINE_USER_USCHOOL                            @"v1/user/updatecollege?"
 
