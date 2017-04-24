@@ -66,11 +66,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-
-    
-    
     self.title = @"编辑个人资料";
     
+    _nickName = [UserAccountManager sharedInstance].userNickname;
+    _grade = [UserAccountManager sharedInstance].userGrade;
     [self createLeftBackNavBtn];
     
     [self setInitNickName];
@@ -198,7 +197,7 @@
         cell.inputTextField.delegate = self;
         cell.inputTextField.tag = 10000;
         
-        cell.inputTextField.text = [UserAccountManager sharedInstance].userNickname;
+        cell.inputTextField.text = _nickName;
                 
         return cell;
         
@@ -210,7 +209,7 @@
 
         cell.titleLabel.text = @"年级";
         cell.inputTextField.placeholder = @"请输入";
-        
+        cell.inputTextField.text =_grade;
         return cell;
     }else{
         
