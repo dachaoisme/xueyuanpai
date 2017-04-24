@@ -106,6 +106,7 @@
             cell.leftTitleLabel.text = @"省市";
             if (areaModel) {
                 [cell.rightContentBtn setTitle:areaModel.name forState:UIControlStateNormal];
+                [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else{
                 [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
             }
@@ -192,6 +193,9 @@
     [dic setValue:areaModel.ord forKey:@"city"];
     [dic setValue:detailedAddress forKey:@"addr"];
     [dic setValue:name forKey:@"user_name"];
+    if (self.addressModel && self.addressModel.address_id.length>0) {
+        [dic setValue:self.addressModel.address_id forKey:@"address_id"];
+    }
     [[HttpClient sharedInstance] addAdressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
         if (responseModel.responseCode ==ResponseCodeSuccess) {
             [self.navigationController popViewControllerAnimated:YES];

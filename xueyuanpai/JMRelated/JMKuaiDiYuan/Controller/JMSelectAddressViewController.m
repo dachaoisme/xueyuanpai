@@ -70,8 +70,9 @@
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMAdressListModel *model = [JMAdressListModel yy_modelWithDictionary:tempDic];
             [dataArray addObject:model];
-            [self.tableView reloadData];
+            
         }
+        [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         
     }];

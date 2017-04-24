@@ -219,8 +219,8 @@
     [CommonUtils showToastWithStr:@"确定"];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [dic setValue:sendAddressModel.adressId forKey:@"sender_addr"];
-    [dic setValue:receiveAddressModel.adressId forKey:@"receive_addr"];
+    [dic setValue:sendAddressModel.address_id forKey:@"sender_addr"];
+    [dic setValue:receiveAddressModel.address_id forKey:@"receive_addr"];
     [dic setValue:expressSiteModel.expressSiteId forKey:@"expresssite_id"];
     [dic setValue:expressCompanyId forKey:@"expresscompany_id"];
     [[HttpClient sharedInstance] sendExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {

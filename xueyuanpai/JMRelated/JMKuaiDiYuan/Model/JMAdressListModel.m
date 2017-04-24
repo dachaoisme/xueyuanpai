@@ -10,10 +10,10 @@
 
 @implementation JMAdressListModel
 
-+ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
-{
-    return @{ @"adressId" : @"id",
-              };
-}
+//+ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+//{
+//    return @{ @"adressId" : @"id",
+//              };
+//}
 
 @end

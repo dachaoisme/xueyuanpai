@@ -11,16 +11,16 @@
 @interface JMAdressListModel : NSObject
 
 /*
- "id": 1,
- "user_name": "sss",
- "telphone": "13718360863",
- "province": "北京市",
- "city": "济南市",
- "addr": "ddddsee"
+ addr = 12345;
+ "address_id" = 9;
+ city = "";
+ province = "";
+ telphone = 13718360863;
+ "user_name" = sss;
  
  */
 
-@property(nonatomic,strong)NSString *adressId;
+@property(nonatomic,strong)NSString *address_id;
 @property(nonatomic,strong)NSString *user_name;
 @property(nonatomic,strong)NSString *telphone;
 @property(nonatomic,strong)NSString *province;
