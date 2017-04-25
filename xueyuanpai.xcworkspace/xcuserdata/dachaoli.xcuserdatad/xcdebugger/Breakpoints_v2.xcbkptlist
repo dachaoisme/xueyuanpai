@@ -25,22 +25,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "xueyuanpai/JMRelated/UserAccountManager/UserAccountManager.m"
-            timestampString = "514717372.089112"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-getUserInfo"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMSelectAddressViewController.m"
             timestampString = "514721180.89772"
             startingColumnNumber = "9223372036854775807"
@@ -74,7 +58,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
-                  timestampString = "514721463.04821"
+                  timestampString = "514778943.068057"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "199"
@@ -89,7 +73,7 @@
                   moduleName = "xueyuanpai"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMAddOrEditViewController.m"
-                  timestampString = "514721463.050832"
+                  timestampString = "514778943.071413"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "200"
@@ -145,6 +129,86 @@
             endingLineNumber = "207"
             landmarkName = "-makeSureAction"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMSelectAddressViewController.m"
+            timestampString = "514778905.00884"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "-requestDeleteAddressWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMSelectAddressViewController.m"
+            timestampString = "514778906.333404"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "-requestDeleteAddressWithModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMSelectAddressViewController.m"
+            timestampString = "514779056.00125"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-requestDeleteAddressWithModel:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[JMSelectAddressViewController requestDeleteAddressWithModel:]"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMSelectAddressViewController.m"
+                  timestampString = "514779056.217235"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "321">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__63-[JMSelectAddressViewController requestDeleteAddressWithModel:]_block_invoke"
+                  moduleName = "xueyuanpai"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dachaoli/Desktop/xueyuanpai_next/jimenghezi/xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMSelectAddressViewController.m"
+                  timestampString = "514779056.222442"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "192"
+                  endingLineNumber = "192"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

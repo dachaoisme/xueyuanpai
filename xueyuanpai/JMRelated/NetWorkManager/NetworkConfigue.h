@@ -119,7 +119,8 @@
 #define METHOD_MINE_ABOUT_US                                @"aboutus/index"
 ///个人中心：检查自动更新
 #define METHOD_MINE_CHECK_UPDATE                            @"system/checkforupdate"
-
+///地址：删除地址
+#define SYSTEM_ADDRESS_DELETE                                     @"address/delete"
 #pragma mark - 消息
 ///消息：系统未读消息数目   必需  1 系统消息 2 快递消息 3 站内消息
 #define METHOD_UNREAD_COUNT                               @"user/unreadmsg"

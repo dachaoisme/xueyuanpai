@@ -156,7 +156,61 @@
     
     return 0.01;
 }
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    
+    [super setEditing:editing animated:animated];
+    
+    [self.tableView setEditing:editing animated:animated];
+}
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        if (indexPath.row < dataArray.count) {
+            
+            JMAdressListModel * model = [dataArray objectAtIndex:indexPath.row];
+            
+            [self requestDeleteAddressWithModel:model];
+            
+            [dataArray removeObjectAtIndex:indexPath.row];
+            
+            
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
+}
+
+
+#pragma mark - 删除消息接口
+- (void)requestDeleteAddressWithModel:(JMAdressListModel *)model{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    NSMutableDictionary *paramsDic = [NSMutableDictionary dictionary];
+    [paramsDic setValue:model.address_id forKey:@"address_id"];
+    [[HttpClient sharedInstance] deleteAddressWithParams:paramsDic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+        if (model.responseCode == ResponseCodeSuccess) {
+            
+            [CommonUtils showToastWithStr:@"删除成功"];
+            
+        }else{
+            [CommonUtils showToastWithStr:model.responseMsg];
+        }
+        
+        
+    } withFaileBlock:^(NSError *error) {
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        
+    }];
+    
+    
+}
 -(void)editAdress:(UIButton *)sender
 {
     JMAddOrEditViewController *editVC = [[JMAddOrEditViewController alloc] init];

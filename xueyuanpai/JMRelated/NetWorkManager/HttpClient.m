@@ -521,7 +521,15 @@
         failBlock(error);
     }];
 }
-
+///删除地址
+- (void)deleteAddressWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:SYSTEM_ADDRESS_DELETE withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
 #pragma mark - 消息相关
 ///系统未读消息数
