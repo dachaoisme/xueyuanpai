@@ -119,7 +119,7 @@
             //说明是最后一张
             self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
         }
-        
+        [dataArray removeAllObjects];
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMCommentModel *model = [JMCommentModel yy_modelWithDictionary:tempDic];
@@ -223,7 +223,7 @@
     
     [dic setObject:text forKey:@"content"];
     
-    
+    weakSelf(wself);
     [[HttpClient sharedInstance]trainProjectAddCommentWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode==ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"评论成功"];
@@ -231,6 +231,8 @@
             self.commentTextField.text = @"";
             
             [self.commentTextField resignFirstResponder];
+            //[wself.tableView reloadData];
+            [wself refreshData];
         }
     } withFaileBlock:^(NSError *error) {
         
