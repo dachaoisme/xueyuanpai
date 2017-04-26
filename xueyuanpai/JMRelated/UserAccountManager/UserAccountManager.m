@@ -55,18 +55,18 @@
      */
     NSString * userInfoKey = @"userInfo";
     NSDictionary * userInfoDic = [[NSUserDefaults standardUserDefaults] objectForKey:userInfoKey];
-    self.userCollegeId    = [userInfoDic stringForKey:@"college_id"];
+    self.userCollegeId      = [userInfoDic stringForKey:@"college_id"];
     self.userCollegeName    = [userInfoDic stringForKey:@"college"];
-    self.colledgeTime = [userInfoDic stringForKey:@"create_time"];
-    self.userIcon         = [userInfoDic stringForKey:@"icon"];
-    self.userId           = [userInfoDic stringForKey:@"user_id"];
-    self.userNickname     = [userInfoDic stringForKey:@"nickname"];
-    self.userPoint     = [userInfoDic stringForKey:@"point"];
-    self.userSex          = [[userInfoDic stringForKey:@"sex"] integerValue];
-    self.userTelphone     = [userInfoDic stringForKey:@"telphone"];
-    self.updateTime     = [userInfoDic stringForKey:@"update_time"];
-    self.userGrade     = [userInfoDic stringForKey:@"grade"];
-    
+    self.colledgeTime       = [userInfoDic stringForKey:@"create_time"];
+    self.userIcon           = [userInfoDic stringForKey:@"icon"];
+    self.userId             = [userInfoDic stringForKey:@"user_id"];
+    self.userNickname       = [userInfoDic stringForKey:@"nickname"];
+    self.userPoint          = [userInfoDic stringForKey:@"point"];
+    self.userSex            = [[userInfoDic stringForKey:@"sex"] integerValue];
+    self.userTelphone       = [userInfoDic stringForKey:@"telphone"];
+    self.updateTime         = [userInfoDic stringForKey:@"update_time"];
+    self.userGrade          = [userInfoDic stringForKey:@"grade"];
+    self.birthday           = [userInfoDic stringForKey:@"birth"];
     
     
     if (self.userId && self.userId.length>0) {

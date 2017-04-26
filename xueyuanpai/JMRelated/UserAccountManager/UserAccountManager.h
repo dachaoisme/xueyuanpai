@@ -42,6 +42,8 @@
 @property (nonatomic, strong) NSString *updateTime;
 ///用户年级
 @property (nonatomic, strong) NSString *userGrade;
+///出生年月
+@property (nonatomic, strong) NSString *birthday;
 
 
 

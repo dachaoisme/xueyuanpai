@@ -70,6 +70,7 @@
     
     _nickName = [UserAccountManager sharedInstance].userNickname;
     _grade = [UserAccountManager sharedInstance].userGrade;
+    _birthdayStr =[UserAccountManager sharedInstance].birthday;
     [self createLeftBackNavBtn];
     
     [self setInitNickName];
