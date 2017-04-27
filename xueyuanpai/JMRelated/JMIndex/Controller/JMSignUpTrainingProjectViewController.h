@@ -15,5 +15,5 @@
 ///当前项目的id
 @property (nonatomic,strong)NSString *entity_id;
 @property (nonatomic,strong)NSString *entity_type;
-
+@property(nonatomic,copy)void(^returnBlock)();
 @end

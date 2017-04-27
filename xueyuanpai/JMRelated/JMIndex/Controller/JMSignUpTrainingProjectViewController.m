@@ -263,6 +263,7 @@
     [[HttpClient sharedInstance] signUpWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"成功"];
+            self.returnBlock();
             [self.navigationController popViewControllerAnimated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];

@@ -20,6 +20,7 @@
     JMTrainProjectDetailModel *detailModel;
     UIButton *zanBtn;
     UIButton *commentBtn;
+    UIButton *collectionBtn;
 }
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -319,13 +320,14 @@
     CGFloat interval = (SCREEN_WIDTH - 20 - 75*2 - 108)/2;
     
     //中间的报名按钮
-    UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
     if ([detailModel.is_signed integerValue]==1) {
         ///已经报过名
         [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
     }else{
         [collectionBtn setTitle:[NSString stringWithFormat:@"我要报名 %@",detailModel.recruitment_number] forState:UIControlStateNormal];
+        [collectionBtn addTarget:self action:@selector(collectionAction) forControlEvents:UIControlEventTouchUpInside];
     }
     
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
@@ -333,7 +335,6 @@
     collectionBtn.layer.masksToBounds = YES;
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
-    [collectionBtn addTarget:self action:@selector(collectionAction) forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:collectionBtn];
     
     
@@ -416,6 +417,10 @@
     JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
     signUpAction.entity_id = self.trainProjectId;
     signUpAction.entity_type = ENTITY_TYPE_PROJECT;
+    signUpAction.returnBlock = ^{
+        [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
+        collectionBtn.enabled = NO;
+    };
     [self.navigationController pushViewController:signUpAction animated:YES];
 }
 #pragma mark - 评论
