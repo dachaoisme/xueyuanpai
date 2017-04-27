@@ -15,6 +15,7 @@
 @interface JMAddOrEditViewController ()<UITableViewDelegate,UITableViewDataSource,JMSignUpTwoTypeTableViewCellDelegate>
 {
     JMAreaModel *areaModel;
+    JMSubAreaModel *subAreaModel;
     NSString *telephone;
     NSString *detailedAddress;
     NSString *name;
@@ -105,8 +106,14 @@
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.leftTitleLabel.text = @"省市";
             if (areaModel) {
-                [cell.rightContentBtn setTitle:areaModel.name forState:UIControlStateNormal];
-                [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                if (subAreaModel) {
+                    [cell.rightContentBtn setTitle:[NSString stringWithFormat:@"%@ %@",areaModel.name,subAreaModel.name] forState:UIControlStateNormal];
+                    [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                }else{
+                    [cell.rightContentBtn setTitle:areaModel.name forState:UIControlStateNormal];
+                    [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                }
+               
             }else{
                 [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
             }
@@ -154,8 +161,9 @@
     weakSelf(weakSelf);
     if (indexPath.section==1 &&indexPath.row==0) {
         JMAreaListViewController *areaListVC = [[JMAreaListViewController alloc]init];
-        areaListVC.returnBlock = ^(JMAreaModel *returnAreaModel) {
+        areaListVC.returnBlock = ^(JMAreaModel *returnAreaModel,NSInteger childrenIndex ) {
             areaModel = returnAreaModel;
+            subAreaModel = [returnAreaModel.children objectAtIndex:childrenIndex];
             [weakSelf.tableView reloadData];
         };
         [self.navigationController pushViewController:areaListVC animated:YES];
@@ -189,8 +197,8 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [dic setValue:telephone forKey:@"telphone"];
-    [dic setValue:@"0" forKey:@"province"];
-    [dic setValue:areaModel.ord forKey:@"city"];
+    [dic setValue:areaModel.areaId forKey:@"province"];
+    [dic setValue:subAreaModel.areaId forKey:@"city"];
     [dic setValue:detailedAddress forKey:@"addr"];
     [dic setValue:name forKey:@"user_name"];
     if (self.addressModel && self.addressModel.address_id.length>0) {

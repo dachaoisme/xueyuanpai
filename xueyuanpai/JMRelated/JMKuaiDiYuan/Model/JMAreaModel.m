@@ -8,7 +8,8 @@
 
 #import "JMAreaModel.h"
 
-@implementation JMAreaModel
+
+@implementation JMSubAreaModel
 
 + (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
 {
@@ -16,4 +17,19 @@
               };
 }
 
+@end
+
+
+@implementation JMAreaModel
+
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{ @"areaId" : @"id",
+              };
+}
++ (NSDictionary *)modelContainerPropertyGenericClass
+{
+    return @{ @"children" : [JMSubAreaModel class],
+              };
+}
 @end

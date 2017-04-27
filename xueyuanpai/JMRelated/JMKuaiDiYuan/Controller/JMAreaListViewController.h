@@ -12,5 +12,5 @@
 
 ////////////////--创建地址---地区列表////////////////
 
-@property(nonatomic,copy)void(^returnBlock)(JMAreaModel *returnAreaModel);
+@property(nonatomic,copy)void(^returnBlock)(JMAreaModel *returnAreaModel,NSInteger childrenIndex );
 @end

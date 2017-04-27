@@ -51,6 +51,7 @@
 @property(nonatomic,strong)NSString *messageId;
 @property(nonatomic,strong)NSString *message;
 @property(nonatomic,strong)NSString *linkUrl;
+@property(nonatomic,strong)NSString *is_readed;////1表示已读 0表示未读
 @property(nonatomic,strong)JMMessageUserModel *user;
 @property(nonatomic,strong)NSString *time;
 

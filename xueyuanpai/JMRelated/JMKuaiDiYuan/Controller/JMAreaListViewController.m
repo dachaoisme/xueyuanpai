@@ -48,7 +48,7 @@
             //说明是最后一张
             self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
         }
-        
+        currentPage = nextPage;
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMAreaModel *model = [JMAreaModel yy_modelWithDictionary:tempDic];
@@ -81,25 +81,40 @@
     return 44;
     
 }
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return dataArray.count;
+}
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    JMAreaModel *areaModel = [dataArray objectAtIndex:section];
+    return areaModel.name;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    
-    return dataArray.count;
+    JMAreaModel *areaModel = [dataArray objectAtIndex:section];
+    return areaModel.children.count;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    JMAreaModel *model = [dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text =model.name;
+    JMAreaModel *areaModel = [dataArray objectAtIndex:indexPath.section];
+    JMSubAreaModel *subAreaModel = [areaModel.children objectAtIndex:indexPath.row];
+    cell.textLabel.text =subAreaModel.name;
     
     return cell;
     
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.01;
+}
 //点击跳转详情视图
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    self.returnBlock([dataArray objectAtIndex:indexPath.row]);
+    self.returnBlock([dataArray objectAtIndex:indexPath.section],indexPath.row);
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
