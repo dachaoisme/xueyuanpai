@@ -189,6 +189,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    JMCommentModel *model = [dataArray objectAtIndex:indexPath.row];
+
+    self.commentTextField.text = [NSString stringWithFormat:@"回复@:%@",model.user.nickname];
+
     
     [self.commentTextField becomeFirstResponder];
 }
