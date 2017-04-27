@@ -54,7 +54,6 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:|-(%f)-[contentView]|",navHt] options:0 metrics:nil views:NSDictionaryOfVariableBindings(contentView)]];
      */
     
-    
     self.view.backgroundColor = [CommonUtils colorWithHex:@"fafafa"];
 }
 -(UIView*)createContentView //创建背景视图
@@ -222,6 +221,8 @@
         
     }];
 }
+
+
 
 
 /*

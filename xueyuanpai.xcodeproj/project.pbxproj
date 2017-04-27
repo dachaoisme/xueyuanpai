@@ -95,6 +95,9 @@
 		1687559F1E9E863000BDC9D9 /* zan_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559D1E9E863000BDC9D9 /* zan_hl@2x.png */; };
 		168755A01E9E863000BDC9D9 /* zan_hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */; };
 		16DB4B761EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB4B751EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m */; };
+		16DB4B791EB1D02700015EF7 /* public_empty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB4B771EB1D02700015EF7 /* public_empty@3x.png */; };
+		16DB4B7A1EB1D02700015EF7 /* public_empty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB4B781EB1D02700015EF7 /* public_empty@2x.png */; };
+		16DB4B7D1EB1D82700015EF7 /* CommonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB4B7C1EB1D82700015EF7 /* CommonView.m */; };
 		16EFAF401EAA05E1009742CA /* JMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */; };
 		16FF181E1EA4923900D06831 /* JMAreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF181D1EA4923900D06831 /* JMAreaListViewController.m */; };
 		16FF18211EA4947700D06831 /* JMAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF18201EA4947700D06831 /* JMAreaModel.m */; };
@@ -1157,6 +1160,10 @@
 		1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zan_hl@3x.png"; sourceTree = "<group>"; };
 		16DB4B741EB19FBE00015EF7 /* JMSuccessSendExpressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSuccessSendExpressViewController.h; sourceTree = "<group>"; };
 		16DB4B751EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSuccessSendExpressViewController.m; sourceTree = "<group>"; };
+		16DB4B771EB1D02700015EF7 /* public_empty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "public_empty@3x.png"; sourceTree = "<group>"; };
+		16DB4B781EB1D02700015EF7 /* public_empty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "public_empty@2x.png"; sourceTree = "<group>"; };
+		16DB4B7B1EB1D82700015EF7 /* CommonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonView.h; sourceTree = "<group>"; };
+		16DB4B7C1EB1D82700015EF7 /* CommonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonView.m; sourceTree = "<group>"; };
 		16EFAF3E1EAA05E1009742CA /* JMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMessageModel.h; sourceTree = "<group>"; };
 		16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMessageModel.m; sourceTree = "<group>"; };
 		16FF181C1EA4923900D06831 /* JMAreaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAreaListViewController.h; sourceTree = "<group>"; };
@@ -3591,6 +3598,8 @@
 				DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */,
 				DDBFD1D91D2F7ADD00E15DCF /* ShufflingDetailViewController.h */,
 				DDBFD1DA1D2F7ADD00E15DCF /* ShufflingDetailViewController.m */,
+				16DB4B7B1EB1D82700015EF7 /* CommonView.h */,
+				16DB4B7C1EB1D82700015EF7 /* CommonView.m */,
 				166DD0DD1E9A0F7C00B2B002 /* Mine */,
 				58D9B2B71D39E62500C4D6FA /* PayManager */,
 				DDBFD1CC1D2F361B00E15DCF /* MyHomePage */,
@@ -3949,6 +3958,8 @@
 		DD09B7A71E9B6226001D1DB0 /* ImageResource */ = {
 			isa = PBXGroup;
 			children = (
+				16DB4B771EB1D02700015EF7 /* public_empty@3x.png */,
+				16DB4B781EB1D02700015EF7 /* public_empty@2x.png */,
 				1601FD831EA65B23008A48D5 /* play@2x.png */,
 				1601FD841EA65B23008A48D5 /* play@3x.png */,
 				16FF182E1EA51FD600D06831 /* receive_address_b_grey@2x.png */,
@@ -5778,6 +5789,7 @@
 				DD0F42751D22702500115B96 /* msg_icon_startup@2x.png in Resources */,
 				DDAB43861D05531A00FADB3E /* profile_icon_fav@3x.png in Resources */,
 				DD4644491E9E0E2100EAE186 /* detail_icon_like@3x.png in Resources */,
+				16DB4B791EB1D02700015EF7 /* public_empty@3x.png in Resources */,
 				5874A3E91CF1249400CE9FC9 /* tab_icon_package_hl@3x.png in Resources */,
 				58D9B31C1D39F21800C4D6FA /* AlipaySDK.bundle in Resources */,
 				DDF0D76F1E9DFED0007B4667 /* list_arrow@3x.png in Resources */,
@@ -5878,6 +5890,7 @@
 				58070FDD1CF6E80200F03F6C /* timebank_status_done@3x.png in Resources */,
 				DDF51A051E9F5E1300E72DEC /* package_address_a@3x.png in Resources */,
 				58070FC11CF6E80200F03F6C /* timebank_filter_male@3x.png in Resources */,
+				16DB4B7A1EB1D02700015EF7 /* public_empty@2x.png in Resources */,
 				583B87B31D4CF8A100D888A6 /* 立即进入@2x.png in Resources */,
 				DDF0D76B1E9DFED0007B4667 /* detail_icon_chat@3x.png in Resources */,
 				DD13CDD91D00186D000A69FE /* startup_filter_media@2x.png in Resources */,
@@ -6320,6 +6333,7 @@
 				DDB28E401D2C8A7E004C8F70 /* EaseBaseMessageCell.m in Sources */,
 				58F67C341CD9CF9500D55BE0 /* UIScrollView+MJExtension.m in Sources */,
 				16154FB31EA1BA0300FB46AA /* JMMineTrainCommonModel.m in Sources */,
+				16DB4B7D1EB1D82700015EF7 /* CommonView.m in Sources */,
 				DDB28E1E1D2C8A7E004C8F70 /* PSTCollectionViewData.m in Sources */,
 				DDD0BDB91CFA7A8700073290 /* PositionInforFourTableViewCell.m in Sources */,
 				DDD794A71EA07B990024C4E6 /* MineIntegralViewController.m in Sources */,

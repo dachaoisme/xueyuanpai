@@ -38,7 +38,7 @@
 #import "NotificationDefine.h"
 #import "NSDictionary+SafeExpectations.h"
 #import "UserDefaultsDataDeal.h"
-
+#import "CommonView.h"
 //第三方相关
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <AFNetworking/AFNetworking.h>

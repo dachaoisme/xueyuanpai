@@ -38,6 +38,11 @@
     [self requestData];
 
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
 -(void)requestData
 {
     
@@ -76,8 +81,16 @@
         }
         
         [self.tableView reloadData];
+        ///如果没有数据，则加载空数据页面
+        if (dataArray.count==0) {
+            self.tableView.hidden = YES;
+            [CommonView emptyViewWithView:self.view];
+        }
     } withFaileBlock:^(NSError *error) {
-        
+        if (dataArray.count==0) {
+            self.tableView.hidden = YES;
+            [CommonView emptyViewWithView:self.view];
+        }
     }];
 }
 -(void)requestMoreData

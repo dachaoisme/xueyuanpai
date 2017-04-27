@@ -10,4 +10,6 @@
 
 @interface CommonView : NSObject
 
++(void)emptyViewWithView:(UIView *)backGroundView;
+
 @end

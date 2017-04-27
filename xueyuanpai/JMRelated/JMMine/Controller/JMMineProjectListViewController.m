@@ -77,8 +77,18 @@
             
         }
         [self.tableView reloadData];
+        ///如果没有数据，则加载空数据页面
+        if (dataArray.count==0) {
+            self.tableView.hidden = YES;
+            [CommonView emptyViewWithView:self.view];
+        }
     } withFaileBlock:^(NSError *error) {
         [self.tableView.footer endRefreshing];
+        ///如果没有数据，则加载空数据页面
+        if (dataArray.count==0) {
+            self.tableView.hidden = YES;
+            [CommonView emptyViewWithView:self.view];
+        }
     }];
 }
 #pragma mark - 创建tableView列表视图
