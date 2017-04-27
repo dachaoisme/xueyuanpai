@@ -14,6 +14,7 @@
 #import "JMExpressSiteModel.h"
 #import "JMExpressSiteViewController.h"
 #import "JMExpressCompanyViewController.h"
+#import "JMSuccessSendExpressViewController.h"
 @interface JMSendExpressViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     JMAdressListModel *sendAddressModel;
@@ -226,7 +227,10 @@
     [[HttpClient sharedInstance] sendExpressWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode==ResponseCodeSuccess) {
             [CommonUtils showToastWithStr:@"寄件成功"];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            NSString *orderId = [model.responseCommonDic objectForKey:@"order_id"];
+            JMSuccessSendExpressViewController *successSendExpressVC = [[JMSuccessSendExpressViewController alloc] init];
+            successSendExpressVC.orderId = orderId;
+            [self.navigationController pushViewController:successSendExpressVC animated:YES];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];
         }

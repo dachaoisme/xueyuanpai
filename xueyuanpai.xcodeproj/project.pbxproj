@@ -94,6 +94,7 @@
 		166DD1781E9BCF2D00B2B002 /* JMHomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */; };
 		1687559F1E9E863000BDC9D9 /* zan_hl@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559D1E9E863000BDC9D9 /* zan_hl@2x.png */; };
 		168755A01E9E863000BDC9D9 /* zan_hl@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */; };
+		16DB4B761EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB4B751EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m */; };
 		16EFAF401EAA05E1009742CA /* JMMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */; };
 		16FF181E1EA4923900D06831 /* JMAreaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF181D1EA4923900D06831 /* JMAreaListViewController.m */; };
 		16FF18211EA4947700D06831 /* JMAreaModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16FF18201EA4947700D06831 /* JMAreaModel.m */; };
@@ -1154,6 +1155,8 @@
 		166DD1771E9BCF2D00B2B002 /* JMHomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageModel.m; sourceTree = "<group>"; };
 		1687559D1E9E863000BDC9D9 /* zan_hl@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zan_hl@2x.png"; sourceTree = "<group>"; };
 		1687559E1E9E863000BDC9D9 /* zan_hl@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zan_hl@3x.png"; sourceTree = "<group>"; };
+		16DB4B741EB19FBE00015EF7 /* JMSuccessSendExpressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSuccessSendExpressViewController.h; sourceTree = "<group>"; };
+		16DB4B751EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSuccessSendExpressViewController.m; sourceTree = "<group>"; };
 		16EFAF3E1EAA05E1009742CA /* JMMessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMessageModel.h; sourceTree = "<group>"; };
 		16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMessageModel.m; sourceTree = "<group>"; };
 		16FF181C1EA4923900D06831 /* JMAreaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAreaListViewController.h; sourceTree = "<group>"; };
@@ -2683,6 +2686,8 @@
 				16FF18261EA4EB7A00D06831 /* JMExpressSiteViewController.m */,
 				16FF182B1EA4F70A00D06831 /* JMExpressCompanyViewController.h */,
 				16FF182C1EA4F70A00D06831 /* JMExpressCompanyViewController.m */,
+				16DB4B741EB19FBE00015EF7 /* JMSuccessSendExpressViewController.h */,
+				16DB4B751EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -6386,6 +6391,7 @@
 				DDB28E1D1D2C8A7E004C8F70 /* PSTCollectionViewController.m in Sources */,
 				DDB28E221D2C8A7E004C8F70 /* PSTCollectionViewUpdateItem.m in Sources */,
 				587FF9D61CF2F8F300AD2131 /* IQUIViewController+Additions.m in Sources */,
+				16DB4B761EB19FBE00015EF7 /* JMSuccessSendExpressViewController.m in Sources */,
 				DD1957D61D19A6C300FF01F0 /* BusinessCenterTeacherView.m in Sources */,
 				DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */,
 				16FF184B1EA5FC4500D06831 /* WKWebViewController.m in Sources */,

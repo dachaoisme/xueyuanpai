@@ -10,4 +10,6 @@
 
 @interface JMSuccessSendExpressViewController : BaseViewController
 
+@property(nonatomic,strong)NSString *orderId;
+
 @end
