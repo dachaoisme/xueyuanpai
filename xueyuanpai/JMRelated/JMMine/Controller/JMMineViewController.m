@@ -54,7 +54,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //[self setUserDefineLeftReturnBtn];
-    [self setTitle:@"我的"];
+    [self setTitle:@"个人中心"];
     
     [self creatRightNavWithTitle:@"编辑个人资料"];
     
