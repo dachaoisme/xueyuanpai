@@ -230,7 +230,7 @@
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
+    [zanBtn setTitle:[NSString stringWithFormat:@" %@",self.model.count_like] forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -248,7 +248,7 @@
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
     collectionBtn.layer.masksToBounds = YES;
-    [collectionBtn setTitle:[NSString stringWithFormat:@"我要参加 %@",self.model.count_partin] forState:UIControlStateNormal];
+    [collectionBtn setTitle:[NSString stringWithFormat:@" 我要参加 %@",self.model.count_partin] forState:UIControlStateNormal];
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
     [collectionBtn addTarget:self action:@selector(collectionAction) forControlEvents:UIControlEventTouchUpInside];
@@ -258,7 +258,7 @@
     //右侧评论按钮
     commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
-    [commentBtn setTitle:self.model.count_comment forState:UIControlStateNormal];
+    [commentBtn setTitle:[NSString stringWithFormat:@" %@",self.model.count_comment] forState:UIControlStateNormal];
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
@@ -292,7 +292,7 @@
         }
         if ([dic valueForKey:@"count"]){
             int zanCount = [[dic valueForKey:@"count"] intValue];
-            [zanBtn setTitle:[NSString stringWithFormat:@"%d",zanCount] forState:UIControlStateNormal];
+            [zanBtn setTitle:[NSString stringWithFormat:@" %d",zanCount] forState:UIControlStateNormal];
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -315,11 +315,11 @@
                 if (zanCount<0) {
                     zanCount=0;
                 }
-                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+                [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
             }else{
                 zanBtn.selected = YES;
                 NSInteger zanCount = [zanBtn.titleLabel.text integerValue]+1;
-                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+                [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
             }
         }
     } withFaileBlock:^(NSError *error) {
@@ -339,7 +339,7 @@
     [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode==ResponseCodeSuccess) {
-            [collectionBtn setTitle:[NSString stringWithFormat:@"已参加 %@",self.model.count_partin] forState:UIControlStateNormal];
+            [collectionBtn setTitle:[NSString stringWithFormat:@" 已参加 %@",self.model.count_partin] forState:UIControlStateNormal];
             collectionBtn.enabled = NO;
         }
     } withFaileBlock:^(NSError *error) {
@@ -354,7 +354,7 @@
     signUpAction.entity_id = self.model.salonItemId;
     signUpAction.entity_type = ENTITY_TYPE_SALON;
     signUpAction.returnBlock = ^{
-        [collectionBtn setTitle:[NSString stringWithFormat:@"已参加 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
+        [collectionBtn setTitle:[NSString stringWithFormat:@" 已参加 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
         collectionBtn.enabled = NO;
     };
     [self.navigationController pushViewController:signUpAction animated:YES];

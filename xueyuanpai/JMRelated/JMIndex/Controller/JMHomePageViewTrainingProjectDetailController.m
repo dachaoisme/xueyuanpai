@@ -309,7 +309,7 @@
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:detailModel.count_like forState:UIControlStateNormal];
+    [zanBtn setTitle:[NSString stringWithFormat:@" %@",detailModel.count_like] forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -326,9 +326,9 @@
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
     if ([detailModel.is_signed integerValue]==1) {
         ///已经报过名
-        [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
+        [collectionBtn setTitle:@" 已报名" forState:UIControlStateNormal];
     }else{
-        [collectionBtn setTitle:[NSString stringWithFormat:@"我要报名 %@",detailModel.recruitment_number] forState:UIControlStateNormal];
+        [collectionBtn setTitle:[NSString stringWithFormat:@" 我要报名 %@",detailModel.recruitment_number] forState:UIControlStateNormal];
         [collectionBtn addTarget:self action:@selector(collectionAction) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -343,7 +343,7 @@
     //右侧评论按钮
     commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
-    [commentBtn setTitle:detailModel.count_comment forState:UIControlStateNormal];
+    [commentBtn setTitle:[NSString stringWithFormat:@" %@",detailModel.count_comment] forState:UIControlStateNormal];
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
@@ -376,7 +376,7 @@
         }
         if ([dic valueForKey:@"count"]){
             int zanCount = [[dic valueForKey:@"count"] intValue];
-            [zanBtn setTitle:[NSString stringWithFormat:@"%d",zanCount] forState:UIControlStateNormal];
+            [zanBtn setTitle:[NSString stringWithFormat:@" %d",zanCount] forState:UIControlStateNormal];
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -399,11 +399,11 @@
                 if (zanCount<0) {
                     zanCount=0;
                 }
-                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+                [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
             }else{
                 zanBtn.selected = YES;
                 NSInteger zanCount = [zanBtn.titleLabel.text integerValue]+1;
-                [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+                [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
             }
         }
     } withFaileBlock:^(NSError *error) {
@@ -423,7 +423,7 @@
     [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode==ResponseCodeSuccess) {
-            [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
+            [collectionBtn setTitle:@" 已报名" forState:UIControlStateNormal];
             collectionBtn.enabled = NO;
         }
     } withFaileBlock:^(NSError *error) {
@@ -438,7 +438,7 @@
     signUpAction.entity_id = self.trainProjectId;
     signUpAction.entity_type = ENTITY_TYPE_PROJECT;
     signUpAction.returnBlock = ^{
-        [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
+        [collectionBtn setTitle:@" 已报名" forState:UIControlStateNormal];
         collectionBtn.enabled = NO;
     };
     [self.navigationController pushViewController:signUpAction animated:YES];

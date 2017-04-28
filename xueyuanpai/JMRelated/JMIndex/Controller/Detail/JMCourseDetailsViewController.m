@@ -214,7 +214,7 @@
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:detailModel.count_like forState:UIControlStateNormal];
+    [zanBtn setTitle:[NSString stringWithFormat:@" %@",detailModel.count_like] forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -231,7 +231,7 @@
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
-    [collectionBtn setTitle:[NSString stringWithFormat:@"收藏 %@",detailModel.count_mark] forState:UIControlStateNormal];
+    [collectionBtn setTitle:[NSString stringWithFormat:@" 收藏 %@",detailModel.count_mark] forState:UIControlStateNormal];
     collectionBtn.layer.masksToBounds = YES;
     collectionBtn.selected = NO;
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
@@ -246,7 +246,7 @@
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
-    [commentBtn setTitle:detailModel.count_comment forState:UIControlStateNormal];
+    [commentBtn setTitle:[NSString stringWithFormat:@" %@",detailModel.count_comment] forState:UIControlStateNormal];
     commentBtn.frame = CGRectMake(CGRectGetMaxX(collectionBtn.frame) + interval, 10, 75, 30);
     commentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [commentBtn setTitleColor:[CommonUtils colorWithHex:@"35373a"] forState:UIControlStateNormal];
@@ -277,7 +277,7 @@
         }
         if ([dic valueForKey:@"count"]){
             int zanCount = [[dic valueForKey:@"count"] intValue];
-            [zanBtn setTitle:[NSString stringWithFormat:@"%d",zanCount] forState:UIControlStateNormal];
+            [zanBtn setTitle:[NSString stringWithFormat:@" %d",zanCount] forState:UIControlStateNormal];
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -294,7 +294,7 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainCourseAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
-            [collectionBtn setTitle:[NSString stringWithFormat:@"收藏 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
+            [collectionBtn setTitle:[NSString stringWithFormat:@" 收藏 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -314,7 +314,7 @@
     [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode==ResponseCodeSuccess) {
-            [collectionBtn setTitle:[NSString stringWithFormat:@"已收藏 %@",detailModel.count_mark] forState:UIControlStateNormal];
+            [collectionBtn setTitle:[NSString stringWithFormat:@" 已收藏 %@",detailModel.count_mark] forState:UIControlStateNormal];
             collectionBtn.enabled = NO;
         }
     } withFaileBlock:^(NSError *error) {
@@ -333,7 +333,7 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]collectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
-            [collectionBtn setTitle:[NSString stringWithFormat:@"收藏 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
+            [collectionBtn setTitle:[NSString stringWithFormat:@" 收藏 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
             [CommonUtils showToastWithStr:@"收藏成功"];
         }else{
             [CommonUtils showToastWithStr:model.responseMsg];

@@ -44,7 +44,7 @@
     if (_nickNameLabel == nil) {
         
         _nickNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame) + 10, 15, SCREEN_WIDTH - CGRectGetMaxX(_headImageView.frame) - 35, 16)];
-        _nickNameLabel.font = [UIFont systemFontOfSize:12];
+        _nickNameLabel.font = [UIFont systemFontOfSize:14];
         _nickNameLabel.textColor = [CommonUtils colorWithHex:@"666666"];
         _nickNameLabel.text = @"张丽";
         [self.contentView addSubview:_nickNameLabel];
@@ -60,7 +60,7 @@
 
     if (_degreeLabel == nil) {
         _degreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 20 - 100, 15, 100, 16)];
-        _degreeLabel.font = [UIFont systemFontOfSize:12];
+        _degreeLabel.font = [UIFont systemFontOfSize:14];
         _degreeLabel.textColor = [CommonUtils colorWithHex:@"999999"];
         _degreeLabel.text = @"管理学教授";
         [self.contentView addSubview:_degreeLabel];

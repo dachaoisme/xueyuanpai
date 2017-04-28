@@ -66,7 +66,8 @@
 - (void)createTableView{
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStyleGrouped];
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    _tableView.separatorColor = [CommonUtils colorWithHex:@"e5e5e5"];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -129,6 +130,7 @@
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"999999"];
+                cell.textLabel.font = [UIFont systemFontOfSize:14];
                 cell.textLabel.text = @"主讲人";
                 return cell;
                 
@@ -164,6 +166,7 @@
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"999999"];
+                cell.textLabel.font = [UIFont systemFontOfSize:14];
                 cell.textLabel.text = @"课程描述";
                 return cell;
                 
@@ -277,7 +280,7 @@
     zanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [zanBtn setImage:[UIImage imageNamed:@"detail_icon_like"] forState:UIControlStateNormal];
     [zanBtn setImage:[UIImage imageNamed:@"zan_hl"] forState:UIControlStateSelected];
-    [zanBtn setTitle:self.model.count_like forState:UIControlStateNormal];
+    [zanBtn setTitle:[NSString stringWithFormat:@" %@",self.model.count_like] forState:UIControlStateNormal];
     zanBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     zanBtn.layer.cornerRadius = 4;
     zanBtn.layer.masksToBounds = YES;
@@ -294,7 +297,7 @@
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
-    [collectionBtn setTitle:[NSString stringWithFormat:@"我要参加 %@",self.model.count_mark] forState:UIControlStateNormal];
+    [collectionBtn setTitle:[NSString stringWithFormat:@" 我要参加 %@",self.model.count_mark] forState:UIControlStateNormal];
     collectionBtn.layer.masksToBounds = YES;
     collectionBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     collectionBtn.frame = CGRectMake(CGRectGetMaxX(zanBtn.frame) + interval, 10, 108, 30);
@@ -308,7 +311,7 @@
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
     commentBtn.layer.masksToBounds = YES;
-    [commentBtn setTitle:self.model.count_comment forState:UIControlStateNormal];
+    [commentBtn setTitle:[NSString stringWithFormat:@" %@",self.model.count_comment] forState:UIControlStateNormal];
     commentBtn.frame = CGRectMake(CGRectGetMaxX(collectionBtn.frame) + interval, 10, 75, 30);
     commentBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [commentBtn setTitleColor:[CommonUtils colorWithHex:@"35373a"] forState:UIControlStateNormal];
@@ -339,7 +342,7 @@
         }
         if ([dic valueForKey:@"count"]){
             int zanCount = [[dic valueForKey:@"count"] intValue];
-            [zanBtn setTitle:[NSString stringWithFormat:@"%d",zanCount] forState:UIControlStateNormal];
+            [zanBtn setTitle:[NSString stringWithFormat:@" %d",zanCount] forState:UIControlStateNormal];
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -362,11 +365,11 @@
                  if (zanCount<0) {
                      zanCount=0;
                  }
-                 [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+                 [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
              }else{
                  zanBtn.selected = YES;
                  NSInteger zanCount = [zanBtn.titleLabel.text integerValue]+1;
-                 [zanBtn setTitle:[NSString stringWithFormat:@"%ld",zanCount] forState:UIControlStateNormal];
+                 [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
              }
          }
      } withFaileBlock:^(NSError *error) {
@@ -387,7 +390,7 @@
     [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode==ResponseCodeSuccess) {
-            [collectionBtn setTitle:[NSString stringWithFormat:@"已参加 %@",detailModel.count_mark] forState:UIControlStateNormal];
+            [collectionBtn setTitle:[NSString stringWithFormat:@" 已参加 %@",detailModel.count_mark] forState:UIControlStateNormal];
             collectionBtn.enabled = NO;
         }
     } withFaileBlock:^(NSError *error) {
@@ -402,7 +405,7 @@
      signUpAction.entity_id = self.model.courseItemId;
      signUpAction.entity_type = ENTITY_TYPE_COURSE;
      signUpAction.returnBlock = ^{
-         [collectionBtn setTitle:[NSString stringWithFormat:@"已参加 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
+         [collectionBtn setTitle:[NSString stringWithFormat:@" 已参加 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
          collectionBtn.enabled = NO;
      };
      [self.navigationController pushViewController:signUpAction animated:YES];
