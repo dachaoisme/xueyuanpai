@@ -38,6 +38,8 @@
 #define METHOD_OF_WHETHER_FAVOURITE @"project/isliked"
 ///获得岗位列表
 #define METHOD_OF_JOB_LIST @"project/jobs"
+///是否报名或者收藏过项目或者课程等
+#define METHOD_OF_COLLECTION @"user/checkpartin"
 ///报名
 #define METHOD_OF_SIGN_UP @"user/partin"
 

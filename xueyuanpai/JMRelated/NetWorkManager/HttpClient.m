@@ -118,6 +118,15 @@
         failBlock(error);
     }];
 }
+///是否已经报名参加过或者收藏过
+- (void)whetherAlreadyCollectionWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_COLLECTION withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 ///报名
 - (void)signUpWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {

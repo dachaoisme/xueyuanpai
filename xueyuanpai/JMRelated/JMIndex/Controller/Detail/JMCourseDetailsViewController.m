@@ -52,6 +52,7 @@
         //创建底部视图我要报名
         [self createBottomView];
         [self whetherAlreadyZan];
+        [self whetherAlreadyCollection];
         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         
@@ -301,6 +302,25 @@
     
 }
 #pragma mark - 收藏
+#pragma mark - 是否已经报名过或者收藏过
+-(void)whetherAlreadyCollection
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.model.courseItemId forKey:@"entity_id"];
+    [dic setObject:ENTITY_TYPE_PROJECT forKey:@"entity_type"];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        if (model.responseCode==ResponseCodeSuccess) {
+            [collectionBtn setTitle:[NSString stringWithFormat:@"已收藏 %@",detailModel.count_mark] forState:UIControlStateNormal];
+            collectionBtn.enabled = NO;
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 - (void)collectionAction{
     
     if ([UserAccountManager sharedInstance].isLogin==NO) {

@@ -84,6 +84,7 @@
         //创建底部视图我要报名
         [self createBottomView];
         [self whetherAlreadyZan];
+        [self whetherAlreadyCollection];
         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         
@@ -409,7 +410,25 @@
     }];
     
 }
-#pragma mark - 报名
+#pragma mark - 是否已经报名过
+-(void)whetherAlreadyCollection
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.trainProjectId forKey:@"entity_id"];
+    [dic setObject:ENTITY_TYPE_PROJECT forKey:@"entity_type"];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        if (model.responseCode==ResponseCodeSuccess) {
+            [collectionBtn setTitle:@"已报名" forState:UIControlStateNormal];
+            collectionBtn.enabled = NO;
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
 - (void)collectionAction{
     
 //    [CommonUtils showToastWithStr:@"报名"];

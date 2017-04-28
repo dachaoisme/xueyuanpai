@@ -17,6 +17,7 @@
 {
     JMCourseModel *detailModel;
     UIButton *zanBtn;
+    UIButton *collectionBtn;
 }
 
 @property (nonatomic,strong)UITableView *tableView;
@@ -55,6 +56,7 @@
         //创建底部视图我要报名
         [self createBottomView];
         [self whetherAlreadyZan];
+        [self whetherAlreadyCollection];
         [self.tableView reloadData];
     } withFaileBlock:^(NSError *error) {
         
@@ -288,7 +290,7 @@
     CGFloat interval = (SCREEN_WIDTH - 20 - 75*2 - 108)/2;
     
     //中间的报名按钮
-    UIButton *collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    collectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [collectionBtn setImage:[UIImage imageNamed:@"detail_icon_join"] forState:UIControlStateNormal];
     collectionBtn.backgroundColor = [CommonUtils colorWithHex:@"00c05c"];
     collectionBtn.layer.cornerRadius = 4;
@@ -373,6 +375,25 @@
      
  }
 #pragma mark - 报名
+
+-(void)whetherAlreadyCollection
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.model.courseItemId forKey:@"entity_id"];
+    [dic setObject:ENTITY_TYPE_COURSE forKey:@"entity_type"];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        
+        if (model.responseCode==ResponseCodeSuccess) {
+            [collectionBtn setTitle:[NSString stringWithFormat:@"已参加 %@",detailModel.count_mark] forState:UIControlStateNormal];
+            collectionBtn.enabled = NO;
+        }
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
  - (void)collectionAction{
      
      //    [CommonUtils showToastWithStr:@"报名"];
@@ -380,6 +401,10 @@
      JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
      signUpAction.entity_id = self.model.courseItemId;
      signUpAction.entity_type = ENTITY_TYPE_COURSE;
+     signUpAction.returnBlock = ^{
+         [collectionBtn setTitle:[NSString stringWithFormat:@"已参加 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
+         collectionBtn.enabled = NO;
+     };
      [self.navigationController pushViewController:signUpAction animated:YES];
  }
 #pragma mark - 评论

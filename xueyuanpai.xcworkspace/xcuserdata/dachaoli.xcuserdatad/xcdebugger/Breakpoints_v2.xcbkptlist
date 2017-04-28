@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "515029112.966255"
+            timestampString = "515031650.217814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/JMIndex/Controller/Detail/JMXianXiaCourseDetailsViewController.m"
-            timestampString = "515029135.179431"
+            timestampString = "515031650.217814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-requestData"
             landmarkType = "7">
          </BreakpointContent>
