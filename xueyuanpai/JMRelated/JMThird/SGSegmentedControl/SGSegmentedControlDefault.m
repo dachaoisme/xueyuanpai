@@ -16,7 +16,7 @@
 #import "SGSegmentedControlDefault.h"
 #import "SGSegmentedControlHelper.h"
 
-#define indicatorViewColorDefualt [CommonUtils colorWithHex:@"1a1a1a"]
+#define indicatorViewColorDefualt [CommonUtils colorWithHex:@"00c05c"]
 #define indicatorViewWidth 30
 #define indicatorViewDistanceToBottom 0
 

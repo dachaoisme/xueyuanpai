@@ -62,7 +62,7 @@
     
     if (_subtitleLabel == nil) {
         
-        _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_titleLabel.frame) + 5, CGRectGetWidth(_titleLabel.frame), 18)];
+        _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(_titleLabel.frame) + 8, CGRectGetWidth(_titleLabel.frame), 18)];
         _subtitleLabel.font = [UIFont systemFontOfSize:15];
         _subtitleLabel.text = @"沙龙活动副标题";
         _subtitleLabel.textColor = [CommonUtils colorWithHex:@"ffffff"];

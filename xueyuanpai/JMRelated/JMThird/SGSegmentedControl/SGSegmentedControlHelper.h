@@ -18,18 +18,18 @@
 
 #import "UIView+SGExtension.h"
 /** 指示器默认颜色 */
-#define SG_indicatorColor [CommonUtils colorWithHex:@"1a1a1a"]
+#define SG_indicatorColor [CommonUtils colorWithHex:@"00c05c"]
 /** 指示器默认标题颜色 */
-#define SG_titleColor [CommonUtils colorWithHex:@"1a1a1a"]
+#define SG_titleColor [CommonUtils colorWithHex:@"00c05c"]
 /** 指示器默认标题选中时的颜色 */
-#define SG_selectedTitleColor [CommonUtils colorWithHex:@"1a1a1a"]
+#define SG_selectedTitleColor [CommonUtils colorWithHex:@"00c05c"]
 
 /** 指示器的高度 */
 static CGFloat SG_indicatorHeight = 3;
 /** 指示器的动画移动时间 */
 static CGFloat SG_indicatorAnimationTime = 0.1;
 /** 默认标题字体大小 */
-static CGFloat SG_defaultTitleFont = 17;
+static CGFloat SG_defaultTitleFont = 15;
 /** 按钮之间的间距(滚动时按钮之间的间距) */
 static CGFloat SG_btnMargin = 15;
 /** 标题按钮文字的缩放倍数 */
