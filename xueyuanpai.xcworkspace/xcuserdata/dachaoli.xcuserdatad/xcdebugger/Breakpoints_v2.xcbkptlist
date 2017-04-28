@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "xueyuanpai/JMRelated/JMKuaiDiYuan/Controller/JMSendExpressViewController.m"
-            timestampString = "514967080.271086"
+            timestampString = "515042558.447086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
             landmarkName = "-sure:"
             landmarkType = "7">
          </BreakpointContent>

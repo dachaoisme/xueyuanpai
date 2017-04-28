@@ -114,6 +114,8 @@
 #define NORMAL_SUBTITLE_BLACK_COLOR @"999999"
 ///蓝色线条选中颜色
 #define NORMAL_HEIGHTLIGHT_COLOR @"00c05c"
+///页面背景颜色
+#define NORMAL_BACKGROUND_COLOR @"f5f5f5"
 
 
 

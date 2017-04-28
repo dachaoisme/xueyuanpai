@@ -96,6 +96,7 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     //注册cell
@@ -105,11 +106,11 @@
     //设置头部视图
     UIView *headBackGroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 150)];
     
-    headBackGroundView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    headBackGroundView.backgroundColor = [CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
     
     
     //头像
-    headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 35, 20, 70, 70)];
+    headImageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 45, 20, 70, 70)];
     headImageView.layer.cornerRadius = 35;
     headImageView.layer.masksToBounds = YES;
     [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"avatar"]];
@@ -117,14 +118,15 @@
     
     
     //姓名
-    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2, CGRectGetMaxY(headImageView.frame), 180, 20)];
+    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-35, CGRectGetMaxY(headImageView.frame), 50, 20)];
     nameLabel.font = [UIFont systemFontOfSize:14];
     nameLabel.textAlignment = NSTextAlignmentLeft;
     nameLabel.text = [UserAccountManager sharedInstance].userNickname;
     [headBackGroundView addSubview:nameLabel];
     
     //性别
-    sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMinX(nameLabel.frame) - 20, CGRectGetMinY(nameLabel.frame), 12, 12)];
+    sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nameLabel.frame)+2, CGRectGetMinY(nameLabel.frame), 12, 12)];
+    sexImageView.center = CGPointMake(sexImageView.center.x, nameLabel.center.y);
     if ([UserAccountManager sharedInstance].userSex == SexOfManType) {
         ///男
         [sexImageView setImage:[UIImage imageNamed:@"gender_male"]];

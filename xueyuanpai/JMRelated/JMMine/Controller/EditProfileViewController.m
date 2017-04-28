@@ -119,6 +119,7 @@
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 250) style:UITableViewStyleGrouped];
     tableView.delegate = self;
     tableView.dataSource = self;
+    _tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     //注册cell
