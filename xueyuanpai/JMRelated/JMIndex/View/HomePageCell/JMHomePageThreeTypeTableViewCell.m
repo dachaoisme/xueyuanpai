@@ -50,7 +50,7 @@
     
     //创建副标题
     if (_subtitleLabel == nil) {
-        _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_titleLabel.frame), CGRectGetMaxY(_titleLabel.frame) + 4, CGRectGetWidth(_titleLabel.frame), 14)];
+        _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(_titleLabel.frame), CGRectGetMaxY(_titleLabel.frame) + 6, CGRectGetWidth(_titleLabel.frame), 14)];
         _subtitleLabel.font = [UIFont systemFontOfSize:13];
         _subtitleLabel.textColor = [CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
         _subtitleLabel.text = @"一句话项目简介";

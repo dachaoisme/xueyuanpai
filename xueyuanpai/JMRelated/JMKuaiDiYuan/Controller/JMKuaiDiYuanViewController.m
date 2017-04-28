@@ -92,15 +92,15 @@
 }
 - (void)initScrollViewTitleWithChildVCArray:(NSMutableArray *)childVCArray titleArray:(NSMutableArray *)titleArr
 {
-    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, 50 ,self.view.frame.size.width, SCREEN_HEIGHT - TABBAR_HEIGHT - NAV_TOP_HEIGHT)];
+    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, 0 ,self.view.frame.size.width, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT)];
     _bottomSView.childViewController = childVCArray;
-    _bottomSView.backgroundColor = [UIColor clearColor];
+    _bottomSView.backgroundColor = [UIColor yellowColor];
     _bottomSView.delegate = self;
     [self.view addSubview:_bottomSView];
     
     
     
-    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, 45) delegate:self childVcTitle:titleArr isScaleText:NO];
+    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     self.topDefaultSView.backgroundColor = [UIColor clearColor];
     self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
     self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];

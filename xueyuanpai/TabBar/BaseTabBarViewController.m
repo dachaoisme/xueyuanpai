@@ -41,7 +41,7 @@
                               nil]];
     
     _baseTabBarView=[[BaseTabBarView alloc] init];
-    _baseTabBarView.frame =CGRectMake(0, SCREEN_HEIGHT-49-21, SCREEN_WIDTH, 49+21);
+    _baseTabBarView.frame =CGRectMake(0, SCREEN_HEIGHT-49, SCREEN_WIDTH, 49);
     _baseTabBarView.backgroundColor = [CommonUtils colorWithHex:@"fafafa"];
     _baseTabBarView.delegate=self;
     _baseTabBarView.titleArr=[[NSArray alloc] initWithObjects:
@@ -87,20 +87,20 @@
 -(void)tabBarShow
 {
     _baseTabBarView.hidden=NO;
-    if (_baseTabBarView.frame.origin.x!=0 || _baseTabBarView.frame.origin.y!=self.view.bounds.size.height-49-21) {
+    if (_baseTabBarView.frame.origin.x!=0 || _baseTabBarView.frame.origin.y!=self.view.bounds.size.height-49) {
         [UIView animateWithDuration:0 animations:^{
-            _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height-49-21, SCREEN_WIDTH, 49+21);
+            _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height-49, SCREEN_WIDTH, 49);
         }];
     }
 }
 -(void)tabBarHiddenToBottom:(BOOL)toBottom
 {
-    if (_baseTabBarView.frame.origin.x==0 && _baseTabBarView.frame.origin.y==self.view.bounds.size.height-49-21) {
+    if (_baseTabBarView.frame.origin.x==0 && _baseTabBarView.frame.origin.y==self.view.bounds.size.height-49) {
         [UIView animateWithDuration:0 animations:^{
             if (toBottom) {
-                _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 49+21);
+                _baseTabBarView.frame=CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 49);
             }else
-                _baseTabBarView.frame=CGRectMake(-SCREEN_WIDTH, self.view.bounds.size.height-49-21, SCREEN_WIDTH, 49+21);
+                _baseTabBarView.frame=CGRectMake(-SCREEN_WIDTH, self.view.bounds.size.height-49, SCREEN_WIDTH, 49);
         }completion:^(BOOL finished){
             if (finished) {
                 _baseTabBarView.hidden=YES;

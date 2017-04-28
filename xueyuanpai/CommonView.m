@@ -15,7 +15,7 @@
 {
     ///@3x
     UIImage *image = [UIImage imageNamed:@"public_empty"];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT,image.size.width , image.size.height)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,image.size.width , image.size.height)];
     imageView.image = image;
     imageView.center = backGroundView.center;
     [backGroundView addSubview:imageView];
