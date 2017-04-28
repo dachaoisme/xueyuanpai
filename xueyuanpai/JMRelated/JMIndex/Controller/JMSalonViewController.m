@@ -118,7 +118,7 @@
     cell.subtitleLabel.text = model.salonDescription;
     cell.dateLabel.text = model.create_time;
     [cell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
-    
+    [cell.locationBtn setImage:[UIImage imageNamed:@"list_icon_weizhi_white"] forState:UIControlStateNormal];
     return cell;
     
 }
