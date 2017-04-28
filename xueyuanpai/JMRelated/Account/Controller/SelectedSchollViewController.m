@@ -54,7 +54,7 @@
     
     UITableView * tableView    = [[UITableView alloc]initWithFrame:rc style:UITableViewStylePlain];
     tableView.separatorColor  = [CommonUtils colorWithHex:@"eeeeee"];
-    //tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     tableView.dataSource       = self;
     tableView.delegate         = self;
     [self.view addSubview:tableView];
@@ -126,7 +126,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 40;
+    return 50;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -144,6 +144,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     CollegeModel  *model = [dataArr objectAtIndex:indexPath.row];
+    cell.textLabel.font =[UIFont systemFontOfSize:14];
     cell.textLabel.text = model.collegeName;
     return cell;
     

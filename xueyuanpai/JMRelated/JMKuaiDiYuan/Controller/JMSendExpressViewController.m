@@ -109,6 +109,7 @@
             cell.leftTitleLabel.text = @"寄件人地址";
             if (sendAddressModel) {
                 [cell.rightContentBtn setTitle:sendAddressModel.addr forState:UIControlStateNormal];
+                [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else{
                 [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
             }
@@ -119,6 +120,7 @@
             cell.leftTitleLabel.text = @"收件人地址";
             if (receiveAddressModel) {
                 [cell.rightContentBtn setTitle:receiveAddressModel.addr forState:UIControlStateNormal];
+                [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             }else{
                 [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
             }
@@ -128,6 +130,7 @@
         cell.leftTitleLabel.text = @"选择站点";
         if (expressSiteModel) {
             [cell.rightContentBtn setTitle:expressSiteModel.site_name forState:UIControlStateNormal];
+            [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }else{
             [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
         }
@@ -136,6 +139,7 @@
         cell.leftTitleLabel.text = @"选择快递公司";
         if (expressCompanyName && expressCompanyName.length>0) {
             [cell.rightContentBtn setTitle:expressCompanyName forState:UIControlStateNormal];
+            [cell.rightContentBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }else{
             [cell.rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
         }
