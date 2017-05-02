@@ -47,6 +47,7 @@
         _rightContentBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         _rightContentBtn.userInteractionEnabled = NO;
         [_rightContentBtn setTitle:@"请选择" forState:UIControlStateNormal];
+        _rightContentBtn.imageView.contentMode = UIViewContentModeScaleAspectFit;
         [_rightContentBtn setTitleColor:[CommonUtils colorWithHex:@"c7c6cb"] forState:UIControlStateNormal];
         [self.contentView addSubview:_rightContentBtn];
         
