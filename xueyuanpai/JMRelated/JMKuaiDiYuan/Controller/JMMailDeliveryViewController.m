@@ -85,7 +85,7 @@
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT - NAV_TOP_HEIGHT) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
@@ -116,7 +116,7 @@
         
         JMMailDeliveryOneTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMMailDeliveryOneTypeTableViewCell"];
         JMKuaiDiYuanModel *model = [dataArray objectAtIndex:indexPath.section];
-        cell.showOrderNumberLabel.text =model.order_id;
+        cell.showOrderNumberLabel.text = [NSString stringWithFormat:@"订单编号%@",model.order_id];
         cell.showDateLabel.text = model.create_time;
         
         if ([model.status integerValue]==0) {

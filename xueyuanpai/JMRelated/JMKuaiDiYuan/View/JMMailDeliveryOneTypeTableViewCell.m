@@ -32,7 +32,7 @@
     
     ///订单号
     if (_showOrderNumberLabel == nil) {
-        _showOrderNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 18, 200, 16)];
+        _showOrderNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 18, 280, 16)];
         _showOrderNumberLabel.font = [UIFont systemFontOfSize:14];
         _showOrderNumberLabel.text = @"订单编号123456";
         _showOrderNumberLabel.textColor = [CommonUtils colorWithHex:@"999999"];
