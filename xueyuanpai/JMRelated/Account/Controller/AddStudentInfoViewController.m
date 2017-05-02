@@ -61,6 +61,8 @@
     [_headImageSelectedBtn setImage:[UIImage imageNamed:@"avatar_upload"] forState:UIControlStateNormal];
     [_headImageSelectedBtn setContentVerticalAlignment:UIControlContentVerticalAlignmentBottom];
     [_headImageSelectedBtn setFrame:CGRectMake((SCREEN_WIDTH-headImageWidth)/2, space+NAV_TOP_HEIGHT, headImageWidth,headImageheight)];
+    _headImageSelectedBtn.layer.masksToBounds = YES;
+    _headImageSelectedBtn.layer.cornerRadius = headImageWidth/2;
     [_headImageSelectedBtn addTarget:self action:@selector(selectedImageFromPhotoAlbum:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_headImageSelectedBtn];
     ///输入昵称
@@ -106,6 +108,8 @@
     submitBtn = [UIFactory button:nil sel:nil titleColor:@"f5f5f5" title:@"提交" fontSize:16 frame:CGRectMake(space, CGRectGetMaxY(schoolView.frame)+space, width, height)];
     [submitBtn addTarget:self action:@selector(submit:) forControlEvents:UIControlEventTouchUpInside];
     [submitBtn setBackgroundColor:[CommonUtils colorWithHex:@"00c05c"]];
+    submitBtn.layer.masksToBounds = YES;
+    submitBtn.layer.cornerRadius = 5;
     [self.view addSubview:submitBtn];
     ///稍后完善
     unperfectBtn = [UIFactory button:nil sel:nil titleColor:@"00c05c" title:@"稍后完善" fontSize:16 frame:CGRectMake(space, CGRectGetMaxY(submitBtn.frame)+space, width, height)];
@@ -113,6 +117,8 @@
     [unperfectBtn setBackgroundColor:[CommonUtils colorWithHex:@"f5f5f5"]];
     unperfectBtn.layer.borderColor = [CommonUtils colorWithHex:@"00c05c"].CGColor;
     unperfectBtn.layer.borderWidth = 0.5;
+    unperfectBtn.layer.masksToBounds = YES;
+    unperfectBtn.layer.cornerRadius = 5;
     [self.view addSubview:unperfectBtn];
     
     float linHeight = 0.5;
