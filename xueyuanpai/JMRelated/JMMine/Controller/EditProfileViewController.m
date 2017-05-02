@@ -179,6 +179,14 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     
+    if (textField.tag == 10000) {
+        
+        self.nickName = textField.text;
+        
+    }else{
+        
+        self.grade = textField.text;
+    }
     [textField resignFirstResponder];
     
     return YES;
