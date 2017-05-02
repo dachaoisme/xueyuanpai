@@ -92,7 +92,7 @@
 }
 - (void)initScrollViewTitleWithChildVCArray:(NSMutableArray *)childVCArray titleArray:(NSMutableArray *)titleArr
 {
-    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, 0 ,self.view.frame.size.width, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT)];
+    self.bottomSView = [[SGSegmentedControlBottomView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT+NAVIGATIONBAR_HEIGHT ,self.view.frame.size.width, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT)];
     _bottomSView.childViewController = childVCArray;
     _bottomSView.backgroundColor = [UIColor yellowColor];
     _bottomSView.delegate = self;
