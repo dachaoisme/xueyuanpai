@@ -22,10 +22,10 @@
 
 {
     UIImageView *headImageView;
-    UILabel *nameLabel;
-    UIImageView *sexImageView;
     //工作职称
     UILabel *jobNameLabel;
+    
+    UIButton *headBtn;
     
 }
 ///展示地理位置的lable
@@ -64,13 +64,14 @@
 -(void)refreshInfo
 {
     [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"avatar"]];
-    nameLabel.text = [UserAccountManager sharedInstance].userNickname;
+    [headBtn setTitle:[UserAccountManager sharedInstance].userNickname forState:UIControlStateNormal];
     if ([UserAccountManager sharedInstance].userSex == SexOfManType) {
         ///男
-        [sexImageView setImage:[UIImage imageNamed:@"gender_male"]];
+        [headBtn setImage:[UIImage imageNamed:@"gender_male"] forState:UIControlStateNormal];
+        
     }else{
         ///女
-        [sexImageView setImage:[UIImage imageNamed:@"gender_female"]];
+        [headBtn setImage:[UIImage imageNamed:@"gender_female"] forState:UIControlStateNormal];
     }
     jobNameLabel.text = [UserAccountManager sharedInstance].userCollegeName;
     
@@ -115,35 +116,30 @@
     headImageView.layer.masksToBounds = YES;
     [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"avatar"]];
     [headBackGroundView addSubview:headImageView];
-    
-    
-    //姓名
-    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-35, CGRectGetMaxY(headImageView.frame), 50, 20)];
-    nameLabel.font = [UIFont systemFontOfSize:14];
-    nameLabel.textAlignment = NSTextAlignmentLeft;
-    nameLabel.text = [UserAccountManager sharedInstance].userNickname;
-    [headBackGroundView addSubview:nameLabel];
-    
-    //性别
-    sexImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nameLabel.frame)+2, CGRectGetMinY(nameLabel.frame), 12, 12)];
-    sexImageView.center = CGPointMake(sexImageView.center.x, nameLabel.center.y);
+   
+    headBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+    [headBtn setTitle:[UserAccountManager sharedInstance].userNickname forState:UIControlStateNormal];
+    [headBtn setTitleColor:[CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR] forState:UIControlStateNormal];
+    headBtn.titleLabel.font =[UIFont systemFontOfSize:14];
+    [headBtn setFrame:CGRectMake(0, CGRectGetMaxY(headImageView.frame), SCREEN_WIDTH, 20)];
+    [headBackGroundView addSubview:headBtn];
+    [headBtn setTitle:[UserAccountManager sharedInstance].userNickname forState:UIControlStateNormal];
     if ([UserAccountManager sharedInstance].userSex == SexOfManType) {
         ///男
-        [sexImageView setImage:[UIImage imageNamed:@"gender_male"]];
+        [headBtn setImage:[UIImage imageNamed:@"gender_male"] forState:UIControlStateNormal];
+        
     }else{
         ///女
-        [sexImageView setImage:[UIImage imageNamed:@"gender_female"]];
+        [headBtn setImage:[UIImage imageNamed:@"gender_female"] forState:UIControlStateNormal];
     }
-    [headBackGroundView addSubview:sexImageView];
-    
-    
+
     //工作职称
-    jobNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLabel.frame), SCREEN_WIDTH, 17)];
+    jobNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(headBtn.frame), SCREEN_WIDTH, 17)];
     jobNameLabel.font = [UIFont systemFontOfSize:14];
     jobNameLabel.textAlignment = NSTextAlignmentCenter;
     
     jobNameLabel.text =  [NSString stringWithFormat:@"%@ %@",[UserAccountManager sharedInstance].userCollegeName,[UserAccountManager sharedInstance].userGrade];
-    jobNameLabel.textColor = [UIColor lightGrayColor];
+    jobNameLabel.textColor =[CommonUtils colorWithHex:NORMAL_SUBTITLE_BLACK_COLOR];
     
     [headBackGroundView addSubview:jobNameLabel];
     
