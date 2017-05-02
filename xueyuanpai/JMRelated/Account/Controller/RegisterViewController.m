@@ -58,7 +58,7 @@
     [self.view addSubview:backGroundView];
     
     //请输入手机号
-    phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, 15, width, height-30)];
+    phoneTextField = [[UITextField alloc]initWithFrame:CGRectMake(leftSpace, 15, width-leftSpace, height-30)];
     phoneTextField.tag = 2;
     phoneTextField.delegate = self;
 //    [phoneTextField setBackgroundColor:[CommonUtils colorWithHex:@"ffffff"]];
@@ -69,7 +69,7 @@
     phoneTextField.returnKeyType = UIReturnKeyDone;
     //myTextField.clearsOnBeginEditing = YES;//设置为YES当用点触文本字段时，字段内容会被清除
     phoneTextField.adjustsFontSizeToFitWidth = YES;
-    phoneTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    phoneTextField.clearButtonMode = UITextFieldViewModeNever;
     phoneTextField.leftViewMode    = UITextFieldViewModeAlways;
     phoneTextField.rightViewMode   = UITextFieldViewModeAlways;
     [backGroundView addSubview:phoneTextField];
@@ -124,7 +124,7 @@
     [backGroundView addSubview:inputPasswordTextField];
     
     ///选择学校
-    float arrowWidth = 20;
+    float arrowWidth = 25;
     schoolView = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(inputPasswordTextField.frame)+15, SCREEN_WIDTH, height-30)];
     [schoolView setBackgroundColor:[UIColor whiteColor]];
     [backGroundView addSubview:schoolView];
