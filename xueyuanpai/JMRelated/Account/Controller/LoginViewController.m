@@ -60,8 +60,10 @@
     float boardHeight = 0.5;
     
     UIView *textFieldbackgroundView = [[UIView alloc]initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(logoImageView.frame)+60 , width, height *2)];
-    textFieldbackgroundView.layer.borderColor = [CommonUtils colorWithHex:@"c2c3c4"].CGColor;
+    textFieldbackgroundView.layer.borderColor = [CommonUtils colorWithHex:@"e5e5e5"].CGColor;
     textFieldbackgroundView.layer.borderWidth = boardHeight;
+    textFieldbackgroundView.backgroundColor =[UIColor whiteColor];
+    textFieldbackgroundView.layer.cornerRadius =5;
     [self.view addSubview:textFieldbackgroundView];
     
     //手机号输入框
@@ -98,7 +100,7 @@
     passwordTextField.rightViewMode = UITextFieldViewModeAlways;
     [textFieldbackgroundView addSubview:passwordTextField];
     
-    [UIFactory showLineInView:textFieldbackgroundView color:@"c2c3c4" rect:CGRectMake(0, CGRectGetMaxY(phoneTextField.frame), CGRectGetWidth(textFieldbackgroundView.frame), 0.5)];
+    [UIFactory showLineInView:textFieldbackgroundView color:@"e5e5e5" rect:CGRectMake(0, CGRectGetMaxY(phoneTextField.frame), CGRectGetWidth(textFieldbackgroundView.frame), 0.5)];
     
     UIButton * forgetPasswordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [forgetPasswordBtn setTitleColor:[CommonUtils colorWithHex:@"00c05c"] forState:UIControlStateNormal];
@@ -118,7 +120,7 @@
     [loginBtn setTitleColor:[CommonUtils colorWithHex:@"ffffff"] forState:UIControlStateNormal];
     [loginBtn setFrame:CGRectMake(leftSpace, CGRectGetMaxY(textFieldbackgroundView.frame)+smallSpace, width, height)];
     [loginBtn addTarget:self action:@selector(loginAccount:) forControlEvents:UIControlEventTouchUpInside];
-    [loginBtn setTitle:@"登陆" forState:UIControlStateNormal];
+    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     loginBtn.layer.masksToBounds = YES;
 
     loginBtn.titleLabel.font = [UIFont systemFontOfSize:16];
