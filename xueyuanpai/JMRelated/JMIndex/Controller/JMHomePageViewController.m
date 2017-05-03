@@ -110,7 +110,7 @@
 }
 -(void)requestMoreData
 {
-    nextPage=currentPage+1;
+    currentPage=currentPage+1;
     [self requestData];
 }
 #pragma mark - 创建tableView列表视图

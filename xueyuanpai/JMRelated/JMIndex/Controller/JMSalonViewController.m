@@ -46,7 +46,7 @@
 }
 -(void)requestMoreData
 {
-    nextPage=currentPage+1;
+    currentPage=currentPage+1;
     [self requestData];
 }
 -(void)requestData

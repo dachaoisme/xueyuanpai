@@ -65,12 +65,20 @@
     }else if (self.stateType==2){
         [dic setObject:@"0" forKey:@"status"];
     }else{
+        
+        
     }
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];
         currentPage=nextPage;
         NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMTrainProjectModel *model = [JMTrainProjectModel yy_modelWithDictionary:tempDic];
@@ -78,10 +86,7 @@
             
         }
         
-        if (currentPage==[pageModel.responsePageTotalCount intValue]) {
-            //说明是最后一张
-            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
-        }
+       
         
         [self.tableView reloadData];
         ///如果没有数据，则加载空数据页面
@@ -99,7 +104,7 @@
 }
 -(void)requestMoreData
 {
-    nextPage=currentPage+1;
+    currentPage=currentPage+1;
     [self requestData];
 }
 #pragma mark - 创建tableView列表视图

@@ -45,8 +45,6 @@
 }
 -(void)requestData
 {
-    
-    
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
@@ -95,7 +93,7 @@
 }
 -(void)requestMoreData
 {
-    nextPage=currentPage+1;
+    currentPage=currentPage+1;
     [self requestData];
 }
 #pragma mark - 创建tableView列表视图
