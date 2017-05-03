@@ -119,7 +119,6 @@
             //说明是最后一张
             self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
         }
-        [dataArray removeAllObjects];
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMCommentModel *model = [JMCommentModel yy_modelWithDictionary:tempDic];
@@ -137,6 +136,8 @@
 }
 -(void)refreshData
 {
+    [dataArray removeAllObjects];
+    [self.tableView reloadData];
     nextPage=currentPage=1;
     [self requestData];
 }
@@ -192,7 +193,7 @@
     
     JMCommentModel *model = [dataArray objectAtIndex:indexPath.row];
 
-    self.commentTextField.text = [NSString stringWithFormat:@"回复@:%@",model.user.nickname];
+    self.commentTextField.text = [NSString stringWithFormat:@"回复@%@:",model.user.nickname];
 
     
     [self.commentTextField becomeFirstResponder];
@@ -205,6 +206,7 @@
         [self judgeLoginStatus];
         return;
     }
+    
     //请求评论接口
     [self requestCommentWithContentText:self.commentTextField.text];
 }
@@ -236,7 +238,7 @@
             self.commentTextField.text = @"";
             
             [self.commentTextField resignFirstResponder];
-            //[wself.tableView reloadData];
+            //
             [wself refreshData];
         }
     } withFaileBlock:^(NSError *error) {
