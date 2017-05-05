@@ -62,15 +62,10 @@
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    
-}
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
     _rightTextFeild.tag = self.tag;
     if ([self.delegate respondsToSelector:@selector(inputEndWithText:withRow:)]) {
         [self.delegate inputEndWithText:textField.text withRow:self.tag];
     }
-    return YES;
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

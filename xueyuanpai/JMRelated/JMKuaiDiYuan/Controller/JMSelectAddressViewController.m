@@ -16,7 +16,6 @@
 {
     NSMutableArray *dataArray;
     int currentPage;
-    int nextPage;
     int pageSize;
 }
 @property (nonatomic,strong)UITableView *tableView;
@@ -28,27 +27,22 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (self.tableView) {
-        [self requestData];
-    }
+    
+    currentPage=1;
+    pageSize=10;
+    dataArray = [NSMutableArray array];
+    [self requestData];
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.title = @"选择地址";
-    currentPage=nextPage=1;
-    pageSize=10;
-    dataArray = [NSMutableArray array];
-    
+ 
     [self createLeftBackNavBtn];
-    
-    
     //创建收获地址静态界面
     [self createTableView];
-    
-    [self requestData];
-
 }
 -(void)requestData
 {
@@ -56,10 +50,11 @@
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
-    [[HttpClient sharedInstance] addressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+    [[HttpClient sharedInstance] addressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [self.tableView.footer endRefreshing];
         
-        NSArray * listArray = [model.responseCommonDic objectForKey:@"lists"];
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
         
         if (listArray.count == 0) {
             //说明是最后一张
@@ -70,9 +65,11 @@
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMAdressListModel *model = [JMAdressListModel yy_modelWithDictionary:tempDic];
             [dataArray addObject:model];
-            
+            [self.tableView reloadData];
+
         }
-        [self.tableView reloadData];
+        
+
     } withFaileBlock:^(NSError *error) {
         
     }];
@@ -85,14 +82,16 @@
 #pragma mark - 创建tableView
 - (void)createTableView{
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStyleGrouped];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
+        [self.view addSubview:_tableView];
+    }
     
-    [tableView registerClass:[JMSelectAddressTableViewCell class] forCellReuseIdentifier:@"JMSelectAddressTableViewCell"];
+    
+    [_tableView registerClass:[JMSelectAddressTableViewCell class] forCellReuseIdentifier:@"JMSelectAddressTableViewCell"];
     [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
     
     //在最底部添加增加收获地址

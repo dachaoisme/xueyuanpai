@@ -61,7 +61,7 @@
 }
 -(void)requestBanner
 {
-    [[HttpClient sharedInstance]getBannerOfIndexWithParams:[NSDictionary dictionary] withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+    [[HttpClient sharedInstance]getBannerOfChuangYeKeChengWithParams:[NSDictionary dictionary] withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
         NSArray *listArr =(NSArray *)listDic;
         for (int i=0; i<listArr.count; i++) {
             JMHomePageModel *model = [JMHomePageModel yy_modelWithDictionary:[listArr objectAtIndex:i]];

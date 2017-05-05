@@ -179,7 +179,7 @@
                 
                 cell.contentLabel.text = @"我的积分";
                 
-                cell.scoreLabel.text = self.jifenStr;
+                cell.scoreLabel.text = [UserAccountManager sharedInstance].userPoint;
                 
                 break;
             }

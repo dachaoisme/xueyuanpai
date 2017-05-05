@@ -451,15 +451,20 @@
 
 
 ///获取地址列表
-- (void)addressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+- (void)addressListWithParams:(NSDictionary *)params withSuccessBlock:(XYPCommonListBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_OF_ADDRESS_LIST withParams:params withSuccess:^(HttpResponseCodeModel *model) {
-        successBlock(model);
+        //Pages
+        HttpResponsePageModel * pageModel = [[HttpResponsePageModel alloc]initWithDic:model.responseCommonDic];
+        //banner对象
+        NSDictionary * listDic = model.responseCommonDic ;
+        successBlock(model,pageModel,listDic);
+        
     } withFailBlock:^(NSError *error) {
         failBlock(error);
     }];
 }
-
 ///快递公司列表
 - (void)expressCompanyListWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
 {
