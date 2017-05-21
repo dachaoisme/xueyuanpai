@@ -180,7 +180,7 @@
             break;
         case 1:{
             
-            [CommonUtils showToastWithStr:@"选择站点"];
+//            [CommonUtils showToastWithStr:@"选择站点"];
             JMExpressSiteViewController  *expressSiteVC = [[JMExpressSiteViewController alloc] init];
             expressSiteVC.returnBlock = ^(JMExpressSiteModel*returnExpressSiteModel) {
                 expressSiteModel = returnExpressSiteModel;

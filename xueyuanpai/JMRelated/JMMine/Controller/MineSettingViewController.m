@@ -14,6 +14,8 @@
 #import "FeedbackViewController.h"
 #import "AboutUsViewController.h"
 
+
+#import "LoginViewController.h"
 @interface MineSettingViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     NSString * netDownloadUrl;
@@ -78,7 +80,15 @@
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
         [[UserAccountManager sharedInstance]exitLogin];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        LoginViewController * loginVC = [[LoginViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:nav animated:YES completion:^{
+            
+            [self.navigationController popToRootViewControllerAnimated:NO];
+
+        }];
+
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

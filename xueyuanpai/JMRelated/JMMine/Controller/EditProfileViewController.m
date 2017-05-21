@@ -116,17 +116,28 @@
 #pragma mark - 创建tableView
 - (void)createTableView{
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 250) style:UITableViewStyleGrouped];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
-    [self.view addSubview:tableView];
-    self.tableView = tableView;
+    
+    if (_tableView == nil) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, SCREEN_WIDTH, 250) style:UITableViewStyleGrouped];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = [CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
+        [self.view addSubview:_tableView];
+    }
     //注册cell
-    [tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"cell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
+    
+    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell2"];
+    
+    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell3"];
+
+
+    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
     
     
-    [tableView registerNib:[UINib nibWithNibName:@"EditProfileTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
+
+
 }
 
 #pragma mark - 设置修改头像视图
@@ -200,54 +211,89 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row == 0) {
-        
-        EditProfileTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
-        cell.inputTextField.delegate = self;
-        cell.inputTextField.tag = 10000;
-        
-        cell.inputTextField.text = _nickName;
-                
-        return cell;
-        
-    }else if (indexPath.row == 4){
-        EditProfileTwoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
-        cell.selectionStyle  = UITableViewCellSelectionStyleNone;
-        cell.inputTextField.delegate = self;
-        cell.inputTextField.tag = 10001;
+    switch (indexPath.row) {
+        case 0:{
+            
+            EditProfileTwoTableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+            twoCell.selectionStyle  = UITableViewCellSelectionStyleNone;
+            
+            twoCell.inputTextField.delegate = self;
+            twoCell.inputTextField.tag = 10000;
+            
+            twoCell.titleLabel.text = @"昵称";
+            twoCell.inputTextField.text = _nickName;
+            
+            return twoCell;
 
-        cell.titleLabel.text = @"年级";
-        cell.inputTextField.placeholder = @"请输入";
-        cell.inputTextField.text =_grade;
-        return cell;
-    }else{
-        
-        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        if (indexPath.row == 1) {
+        }
+            break;
+        case 1:{
             
-            cell.titleLabel.text = @"性别";
-            cell.contentLabel.text = self.sexStr;
+            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
+
+            oneCell.titleLabel.text = @"性别";
+            oneCell.contentLabel.text = self.sexStr;
             
-        }else if (indexPath.row == 2) {
+
             
-            cell.titleLabel.text = @"生日";
-            cell.contentLabel.text = self.birthdayStr;
-            
-        }else if (indexPath.row == 3) {
-            
-            cell.titleLabel.text = @"学校";
-            cell.contentLabel.text = theCollegeModel.collegeName.length>0?theCollegeModel.collegeName: [UserAccountManager sharedInstance].userCollegeName;
+            return oneCell;
             
         }
-        return cell;
-        
+            break;
+        case 2:{
+            
+            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell2" forIndexPath:indexPath];
+            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
 
+            oneCell.titleLabel.text = @"生日";
+            oneCell.contentLabel.text = self.birthdayStr;
+
+            
+            return oneCell;
+
+        }
+            break;
+        case 3:{
+            
+            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell3" forIndexPath:indexPath];
+            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            oneCell.titleLabel.text = @"学校";
+            oneCell.contentLabel.text = theCollegeModel.collegeName.length>0?theCollegeModel.collegeName: [UserAccountManager sharedInstance].userCollegeName;
+            
+            return oneCell;
+            
+
+        }
+            break;
+        case 4:{
+            
+            EditProfileTwoTableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
+            twoCell.selectionStyle  = UITableViewCellSelectionStyleNone;
+
+            twoCell.inputTextField.delegate = self;
+            twoCell.inputTextField.tag = 10001;
+            
+            twoCell.titleLabel.text = @"年级";
+            twoCell.inputTextField.placeholder = @"请输入";
+            twoCell.inputTextField.text =_grade;
+            return twoCell;
+
+        }
+            break;
+        default:
+            
+            return nil;
+            
+            break;
     }
+    
     
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -256,7 +302,7 @@
     
     if (indexPath.row == 1) {
         
-        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
         //选择性别
         float height = 200;
         
@@ -281,7 +327,7 @@
         [pickview show];
     }else if (indexPath.row == 3){
         
-        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell3" forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
         //选择学校
@@ -296,6 +342,7 @@
             weakSelf.school = collegeModel.collegeName;
             
             theCollegeModel = collegeModel;
+            [tableView reloadData];
             
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -348,32 +395,6 @@
 }
 #pragma mark - 提交按钮
 - (void)commitAction{
-    
-    
-//    UIImage  *oldImage = [UIImage imageNamed:@"avatar"];
-//    NSData   *oldImageData = UIImagePNGRepresentation(oldImage);
-//    UIImage  *newImage = [_headImageSelectedBtn imageForState:UIControlStateNormal];
-//    NSData   *newImageData = UIImagePNGRepresentation(newImage);
-//    if ([oldImageData isEqualToData:newImageData]) {
-//        [CommonUtils showToastWithStr:@"请选择头像"];
-//        return;
-//    }
-//    if (avatarImageUploaded.length<=0) {
-//        [CommonUtils showToastWithStr:@"请选择头像"];
-//        return;
-//    }
-//    if (_nickName.length>10 || _nickName.length<4) {
-//        [CommonUtils showToastWithStr:@"请输入4-10个字符"];
-//        return;
-//    }
-//    if (_sexStr.length<=0 ) {
-//        [CommonUtils showToastWithStr:@"请选择性别"];
-//        return;
-//    }
-//    if (_school.length<=0) {
-//        [CommonUtils showToastWithStr:@"请选择大学"];
-//        return;
-//    }
     if (![UserAccountManager sharedInstance].userId) {
         [CommonUtils showToastWithStr:@"用户注册未成功"];
         return;

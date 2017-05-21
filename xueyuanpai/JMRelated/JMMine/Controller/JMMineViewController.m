@@ -83,9 +83,26 @@
 #pragma mark - 导航栏右侧按钮响应方法
 -(void)rightItemActionWithBtn:(UIButton *)sender
 {
-    //编辑认证个人资料
-    EditProfileViewController *editProfileVC = [[EditProfileViewController alloc] init];
-    [self.navigationController pushViewController:editProfileVC animated:YES];
+
+    [self editProfileAction];
+}
+
+- (void)editProfileAction{
+    
+    if ([UserAccountManager sharedInstance].isLogin==YES) {
+        
+        //编辑认证个人资料
+        EditProfileViewController *editProfileVC = [[EditProfileViewController alloc] init];
+        [self.navigationController pushViewController:editProfileVC animated:YES];
+        
+        
+    }else{
+        
+        [self judgeLoginStatus];
+        
+    }
+
+    
 }
 
 
@@ -115,7 +132,13 @@
     headImageView.layer.cornerRadius = 35;
     headImageView.layer.masksToBounds = YES;
     [headImageView sd_setImageWithURL:[NSURL URLWithString:[UserAccountManager sharedInstance].userIcon] placeholderImage:[UIImage imageNamed:@"avatar"]];
+    headImageView.userInteractionEnabled = YES;
     [headBackGroundView addSubview:headImageView];
+    
+    
+    UITapGestureRecognizer *tapHeadImageRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editProfileAction)];
+    [headBackGroundView addGestureRecognizer:tapHeadImageRecognizer];
+
    
     headBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     [headBtn setTitle:[UserAccountManager sharedInstance].userNickname forState:UIControlStateNormal];

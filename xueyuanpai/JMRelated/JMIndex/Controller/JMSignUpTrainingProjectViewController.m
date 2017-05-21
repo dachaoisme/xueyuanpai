@@ -251,6 +251,12 @@
         [self judgeLoginStatus];
         return;
     }
+    if (reason.length < 50 || reason.length > 500) {
+        
+        [CommonUtils showToastWithStr:@"陈诉理由在50-500字之内哦"];
+        
+        return;
+    }
     [CommonUtils showToastWithStr:@"确定"];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];

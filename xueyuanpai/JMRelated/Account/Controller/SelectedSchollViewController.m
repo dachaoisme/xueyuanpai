@@ -100,7 +100,7 @@
 
 -(void)requestDataWithText:(NSString *)searchText
 {
-//    [dataArr removeAllObjects];
+    [dataArr removeAllObjects];
     searchContent = searchText;
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setObject:searchText forKey:@"name"];

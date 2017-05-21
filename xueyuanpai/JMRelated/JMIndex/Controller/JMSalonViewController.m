@@ -11,6 +11,9 @@
 #import "JMMineTrainCommonModel.h"
 #import "JMSalonModel.h"
 #import "JMSalonDetailViewController.h"
+
+#define bannerHeight 160
+
 @interface JMSalonViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     int currentPage;
@@ -35,6 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"集梦空间-创业沙龙";
     
     currentPage=nextPage=1;
     pageSize=10;
@@ -81,7 +86,7 @@
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT-bannerHeight-NAV_TOP_HEIGHT) style:UITableViewStylePlain];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.delegate = self;
     _tableView.dataSource = self;

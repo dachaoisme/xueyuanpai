@@ -55,12 +55,10 @@
         
         NSArray * listArray = [ListDic objectForKey:@"lists"];
         
-        
         if (listArray.count == 0) {
             //说明是最后一张
             self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
         }
-        [dataArray removeAllObjects];
         for (int i=0; i<listArray.count; i++) {
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMAdressListModel *model = [JMAdressListModel yy_modelWithDictionary:tempDic];

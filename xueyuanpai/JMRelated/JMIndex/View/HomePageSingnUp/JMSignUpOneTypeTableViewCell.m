@@ -51,7 +51,6 @@
         [_rightContentBtn setTitleColor:[CommonUtils colorWithHex:@"c7c6cb"] forState:UIControlStateNormal];
         [self.contentView addSubview:_rightContentBtn];
         
-
     }
 
 

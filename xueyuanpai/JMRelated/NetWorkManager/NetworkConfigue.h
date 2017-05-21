@@ -11,13 +11,13 @@
 
 #pragma mark - 服务器地址相关
 ///api的地址
-#define baseApiUrl @"http://114.215.111.210:999/frontend/web/index.php?r="
+#define baseApiUrl @"http://123.56.202.190:999/frontend/web/index.php?r="
 ///后台管理系统图片的地址
-#define baseBackgroundUrlType1 @"http://114.215.111.210/"
-#define baseBackgroundUrlType2 @"http://114.215.111.210/backend/web/"
+#define baseBackgroundUrlType1 @"http://123.56.202.190/"
+#define baseBackgroundUrlType2 @"http://123.56.202.190/backend/web/"
 
 ///支付地址
-#define WeiXinPayStyleUrl   @"http://114.215.111.210/api/web/v1/pay/weixin/"
+#define WeiXinPayStyleUrl   @"http://123.56.202.190/api/web/v1/pay/weixin/"
 
 
 /////////////////////////////////////////集梦盒子二期/////////////////////////////////////////

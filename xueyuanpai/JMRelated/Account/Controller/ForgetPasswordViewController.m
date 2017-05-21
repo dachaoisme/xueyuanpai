@@ -103,7 +103,7 @@
 {
     
     NSString * phoneNum = phoneTextField.text;
-    if (!(phoneNum.length==11 && [CommonUtils checkPhoneNumIsAvailableWithPhoneNumString:phoneNum])) {
+    if (!(phoneNum.length==11)) {
         [CommonUtils showToastWithStr:@"请输入有效手机号"];
         return;
     }
@@ -131,7 +131,7 @@
 -(void)sure:(UIButton *)sender
 {
     //验证码和手机号验证成功
-    if (phoneTextField.text.length<=0 || [CommonUtils checkPhoneNumIsAvailableWithPhoneNumString:phoneTextField.text]!=true) {
+    if (phoneTextField.text.length<=0 || phoneTextField.text.length > 11) {
         [CommonUtils showToastWithStr:@"请输入有效手机号"];
         return;
     }

@@ -12,6 +12,8 @@
 #import "JMHomePageThreeTypeTableViewCell.h"
 #import "JMCourseModel.h"
 
+#define bannerHeight 160
+
 @interface JMCourseViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     int currentPage;
@@ -37,7 +39,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"我的创业课程";
+    self.title = @"集梦空间-创业课程";
     currentPage=nextPage=1;
     pageSize=10;
     dataArray = [NSMutableArray array];
@@ -50,7 +52,7 @@
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT-bannerHeight-NAV_TOP_HEIGHT) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
