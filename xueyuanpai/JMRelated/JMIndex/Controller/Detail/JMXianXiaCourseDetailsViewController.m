@@ -89,7 +89,12 @@
 
             break;
         case 1:
-            return 3;
+            if (detailModel.presenter.count>0) {
+                return detailModel.presenter.count+1;
+            }else{
+                return 1;
+            }
+            
             
             break;
 
@@ -152,6 +157,11 @@
                  @property (nonatomic,strong)UILabel *degreeLabel;
                  
                  */
+                JMPresenter *model = [detailModel.presenter objectAtIndex:indexPath.row-1];
+                [xianXiaCell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.iconUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
+                xianXiaCell.nickNameLabel.text = model.name;
+                xianXiaCell.degreeLabel.text = model.title;
+                
                 return xianXiaCell;
                 
             }

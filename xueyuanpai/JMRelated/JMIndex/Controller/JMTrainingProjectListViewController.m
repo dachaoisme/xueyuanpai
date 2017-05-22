@@ -12,6 +12,9 @@
 #import "JMHomePageModel.h"
 #import "JMHomePageViewTrainingProjectDetailController.h"
 #import "JMHomePageEndProjectDetailViewController.h"
+
+#define bannerHeight 160
+
 @interface JMTrainingProjectListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *dataArray;
@@ -109,8 +112,15 @@
 }
 #pragma mark - 创建tableView列表视图
 - (void)createTableView{
-    
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, CGRectGetHeight(self.view.frame)) style:UITableViewStyleGrouped];
+    if (self.stateType==1) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,  SCREEN_HEIGHT - TABBAR_HEIGHT-bannerHeight-NAV_TOP_HEIGHT) style:UITableViewStyleGrouped];
+    }else if (self.stateType==2){
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,  SCREEN_HEIGHT - TABBAR_HEIGHT-bannerHeight-NAV_TOP_HEIGHT) style:UITableViewStyleGrouped];
+    }else{
+        
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,  SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+
+    }
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];

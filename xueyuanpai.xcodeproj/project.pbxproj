@@ -519,6 +519,8 @@
 		DD1957E01D19A7B500FF01F0 /* OTPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD1957DD1D19A7B500FF01F0 /* OTPageCell.m */; };
 		DD27DB611D2BDF74007F5917 /* SystemMessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD27DB601D2BDF74007F5917 /* SystemMessageDetailViewController.m */; };
 		DD27DB641D2BE011007F5917 /* SystemMessageDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD27DB631D2BE011007F5917 /* SystemMessageDetailView.m */; };
+		DD343C911ED1D1B2001E9B40 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD343C901ED1D1B2001E9B40 /* PushConfig.plist */; };
+		DD343C951ED1D373001E9B40 /* jpush-ios-2.1.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD343C931ED1D373001E9B40 /* jpush-ios-2.1.9.a */; };
 		DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */; };
 		DD4127571CF0552F00227066 /* bigpi_icon_coin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127271CF0552E00227066 /* bigpi_icon_coin@2x.png */; };
 		DD4127581CF0552F00227066 /* bigpi_icon_coin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD4127281CF0552E00227066 /* bigpi_icon_coin@3x.png */; };
@@ -590,7 +592,6 @@
 		DD46448C1E9E944900EAE186 /* SGSegmentedControlDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644821E9E944900EAE186 /* SGSegmentedControlDefault.m */; };
 		DD46448D1E9E944900EAE186 /* SGSegmentedControlStatic.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644851E9E944900EAE186 /* SGSegmentedControlStatic.m */; };
 		DD46448E1E9E944900EAE186 /* UIView+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4644871E9E944900EAE186 /* UIView+SGExtension.m */; };
-		DD48B74B1D10F7C800E012E4 /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B7491D10F7C800E012E4 /* jpush-ios-2.1.7.a */; };
 		DD48B74D1D10F8BA00E012E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B74C1D10F8BA00E012E4 /* CFNetwork.framework */; };
 		DD48B74F1D10F8C800E012E4 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B74E1D10F8C800E012E4 /* CoreFoundation.framework */; };
 		DD48B7511D10F8FC00E012E4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B7501D10F8FC00E012E4 /* CoreTelephony.framework */; };
@@ -617,6 +618,7 @@
 		DD8F59BB1D2DB2AB004C0827 /* TimeBankMessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8F59BA1D2DB2AB004C0827 /* TimeBankMessageListViewController.m */; };
 		DD931AF11EA7A62500AED30B /* EditTeacherTwoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD931AEF1EA7A62500AED30B /* EditTeacherTwoTableViewCell.m */; };
 		DD931AF21EA7A62600AED30B /* EditTeacherTwoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD931AF01EA7A62500AED30B /* EditTeacherTwoTableViewCell.xib */; };
+		DD95F5AB1ED2A032008222A9 /* QFDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD95F5AA1ED2A032008222A9 /* QFDatePickerView.m */; };
 		DDAB058E1D01AF18007A6027 /* BusinessProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */; };
 		DDAB05911D01BF6A007A6027 /* BusinessCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB05901D01BF6A007A6027 /* BusinessCenterViewController.m */; };
 		DDAB059F1D01D252007A6027 /* BusinessTeacherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDAB059E1D01D252007A6027 /* BusinessTeacherDetailViewController.m */; };
@@ -1805,6 +1807,10 @@
 		DD27DB601D2BDF74007F5917 /* SystemMessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMessageDetailViewController.m; sourceTree = "<group>"; };
 		DD27DB621D2BE011007F5917 /* SystemMessageDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemMessageDetailView.h; sourceTree = "<group>"; };
 		DD27DB631D2BE011007F5917 /* SystemMessageDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemMessageDetailView.m; sourceTree = "<group>"; };
+		DD343C8F1ED1D0C2001E9B40 /* xueyuanpai.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueyuanpai.entitlements; sourceTree = "<group>"; };
+		DD343C901ED1D1B2001E9B40 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
+		DD343C931ED1D373001E9B40 /* jpush-ios-2.1.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.9.a"; sourceTree = "<group>"; };
+		DD343C941ED1D373001E9B40 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		DD4127211CF043DF00227066 /* UniversityAssnHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniversityAssnHeaderView.h; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.h; sourceTree = SOURCE_ROOT; };
 		DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UniversityAssnHeaderView.m; path = xueyuanpai/UniversityAssn/UniversityAssnHeaderView.m; sourceTree = SOURCE_ROOT; };
 		DD4127271CF0552E00227066 /* bigpi_icon_coin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bigpi_icon_coin@2x.png"; sourceTree = "<group>"; };
@@ -1902,8 +1908,6 @@
 		DD4644851E9E944900EAE186 /* SGSegmentedControlStatic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSegmentedControlStatic.m; sourceTree = "<group>"; };
 		DD4644861E9E944900EAE186 /* UIView+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGExtension.h"; sourceTree = "<group>"; };
 		DD4644871E9E944900EAE186 /* UIView+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGExtension.m"; sourceTree = "<group>"; };
-		DD48B7491D10F7C800E012E4 /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
-		DD48B74A1D10F7C800E012E4 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		DD48B74C1D10F8BA00E012E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DD48B74E1D10F8C800E012E4 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		DD48B7501D10F8FC00E012E4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -1935,6 +1939,8 @@
 		DD931AEE1EA7A62500AED30B /* EditTeacherTwoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTeacherTwoTableViewCell.h; sourceTree = "<group>"; };
 		DD931AEF1EA7A62500AED30B /* EditTeacherTwoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTeacherTwoTableViewCell.m; sourceTree = "<group>"; };
 		DD931AF01EA7A62500AED30B /* EditTeacherTwoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTeacherTwoTableViewCell.xib; sourceTree = "<group>"; };
+		DD95F5A91ED2A032008222A9 /* QFDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QFDatePickerView.h; sourceTree = "<group>"; };
+		DD95F5AA1ED2A032008222A9 /* QFDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QFDatePickerView.m; sourceTree = "<group>"; };
 		DDAB058C1D01AF18007A6027 /* BusinessProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessProjectViewController.h; sourceTree = "<group>"; };
 		DDAB058D1D01AF18007A6027 /* BusinessProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessProjectViewController.m; sourceTree = "<group>"; };
 		DDAB058F1D01BF6A007A6027 /* BusinessCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCenterViewController.h; sourceTree = "<group>"; };
@@ -2530,6 +2536,7 @@
 				DDAC26D91D2664C700B7EAB7 /* MOBFoundation.framework in Frameworks */,
 				DD8B99DA1D2148EF00A0C862 /* libsqlite3.tbd in Frameworks */,
 				DDAC26D51D2664C700B7EAB7 /* libWeiboSDK.a in Frameworks */,
+				DD343C951ED1D373001E9B40 /* jpush-ios-2.1.9.a in Frameworks */,
 				DD8B99D81D2148DD00A0C862 /* libstdc++.6.0.9.tbd in Frameworks */,
 				DD8B99D61D2148C200A0C862 /* libc++.tbd in Frameworks */,
 				DDAC26D01D2664C700B7EAB7 /* ShareSDKExtension.framework in Frameworks */,
@@ -2554,7 +2561,6 @@
 				E993E0049F3F51C845C25B59 /* libPods.a in Frameworks */,
 				DDAC26DB1D2664C700B7EAB7 /* ShareSDKConnector.framework in Frameworks */,
 				DDAC26D31D2664C700B7EAB7 /* TencentOpenAPI.framework in Frameworks */,
-				DD48B74B1D10F7C800E012E4 /* jpush-ios-2.1.7.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3586,6 +3592,7 @@
 		58F67BA11CD9863400D55BE0 /* xueyuanpai */ = {
 			isa = PBXGroup;
 			children = (
+				DD343C8F1ED1D0C2001E9B40 /* xueyuanpai.entitlements */,
 				166DD07C1E9A08AE00B2B002 /* JMRelated */,
 				DD48B7631D11019000E012E4 /* sound.caf */,
 				DDB67ACF1D266FC6009049A8 /* share.png */,
@@ -3629,6 +3636,7 @@
 		58F67BA21CD9863400D55BE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD343C901ED1D1B2001E9B40 /* PushConfig.plist */,
 				58F67BA31CD9863400D55BE0 /* main.m */,
 				58F67C061CD9AA7600D55BE0 /* XYP-PrefixHeader.pch */,
 			);
@@ -3824,14 +3832,15 @@
 		58F67C071CD9CF9500D55BE0 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				DD343C921ED1D373001E9B40 /* JPush */,
 				166DD16D1E9A22E200B2B002 /* YYModel */,
 				DDB28F6A1D2E259B004C8F70 /* SDKExport */,
 				DDB28CB91D2C8A7E004C8F70 /* EaseUI */,
 				DDAC26AC1D26649100B7EAB7 /* ShareSDK */,
 				589DD4D61D1AB957007B4311 /* BannerLunBoView */,
+				DD95F5A81ED2A032008222A9 /* QFDatePickerView */,
 				5802D5AA1D1A2DED00BBB7C4 /* ZHpickView */,
 				DD1957D71D19A79100FF01F0 /* TeacherScrollView */,
-				DD48B7481D10F7C800E012E4 /* lib */,
 				DDAB05ED1D04576F007A6027 /* PlaceholderTextView */,
 				58898E421CFA89C90007D9B3 /* LTPickerView */,
 				58F996411CF5871500D67C63 /* LDCPullDownMenu */,
@@ -4300,6 +4309,15 @@
 			path = TeacherScrollView;
 			sourceTree = "<group>";
 		};
+		DD343C921ED1D373001E9B40 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				DD343C931ED1D373001E9B40 /* jpush-ios-2.1.9.a */,
+				DD343C941ED1D373001E9B40 /* JPUSHService.h */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
 		DD4127241CF0552E00227066 /* University */ = {
 			isa = PBXGroup;
 			children = (
@@ -4393,13 +4411,13 @@
 			path = SGSegmentedControl;
 			sourceTree = "<group>";
 		};
-		DD48B7481D10F7C800E012E4 /* lib */ = {
+		DD95F5A81ED2A032008222A9 /* QFDatePickerView */ = {
 			isa = PBXGroup;
 			children = (
-				DD48B7491D10F7C800E012E4 /* jpush-ios-2.1.7.a */,
-				DD48B74A1D10F7C800E012E4 /* JPUSHService.h */,
+				DD95F5A91ED2A032008222A9 /* QFDatePickerView.h */,
+				DD95F5AA1ED2A032008222A9 /* QFDatePickerView.m */,
 			);
-			path = lib;
+			path = QFDatePickerView;
 			sourceTree = "<group>";
 		};
 		DDAB05921D01C43D007A6027 /* BusinessCenterCell */ = {
@@ -5514,6 +5532,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					58F67BB71CD9863400D55BE0 = {
@@ -5807,6 +5828,7 @@
 				DD4644471E9E0E1500EAE186 /* detail_icon_like@2x.png in Resources */,
 				DD4127611CF0552F00227066 /* bigpie_order_minus_disable@2x.png in Resources */,
 				DD4127821CF0552F00227066 /* shetuan_icon_location@3x.png in Resources */,
+				DD343C911ED1D1B2001E9B40 /* PushConfig.plist in Resources */,
 				166DD1571E9A0F7C00B2B002 /* EditProfileTwoTableViewCell.xib in Resources */,
 				58F2116C1CF9AB7C00926FB9 /* RequirementTableViewCell.xib in Resources */,
 				58070FC31CF6E80200F03F6C /* timebank_filter_movie_hl@3x.png in Resources */,
@@ -6368,6 +6390,7 @@
 				DD0F42471D226D0E00115B96 /* MessageViewController.m in Sources */,
 				DDE8F62E1CFD8EC000680214 /* JobMarketViewController.m in Sources */,
 				DDB28E331D2C8A7E004C8F70 /* EaseMessageReadManager.m in Sources */,
+				DD95F5AB1ED2A032008222A9 /* QFDatePickerView.m in Sources */,
 				DDB28E2E1D2C8A7E004C8F70 /* NSString+Valid.m in Sources */,
 				DDB28E3B1D2C8A7E004C8F70 /* EaseMessageViewController.m in Sources */,
 				166DD0B91E9A0E5000B2B002 /* LoginViewController.m in Sources */,
@@ -6693,6 +6716,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = xueyuanpai/xueyuanpai.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: LingYun Hao (3SKA4LX7BP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LingYun Hao (3SKA4LX7BP)";
 				DEVELOPMENT_TEAM = YNPUN7RMLF;
@@ -6730,6 +6754,7 @@
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/SDKExport",
+					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/JPush",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
@@ -6745,6 +6770,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = xueyuanpai/xueyuanpai.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: LingYun Hao (3SKA4LX7BP)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = YNPUN7RMLF;
@@ -6782,6 +6808,7 @@
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/SDKExport",
+					"$(PROJECT_DIR)/xueyuanpai/ThirdPart/JPush",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.college;
 				PRODUCT_NAME = "$(TARGET_NAME)";

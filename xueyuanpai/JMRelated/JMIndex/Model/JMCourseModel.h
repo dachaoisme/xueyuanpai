@@ -8,6 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ presenter =     (
+ {
+ iconUrl = "http://114.215.111.210:999/backend/web/uploads/20170511/14944921203353.png";
+ name = "\U6d4b\U8bd5\U4e3b\U8bb2\U4eba";
+ title = test;
+ }
+ );
+ 
+ */
+///主讲人
+@interface JMPresenter : NSObject
+
+@property(nonatomic,strong)NSString *iconUrl;
+@property(nonatomic,strong)NSString *name;
+@property(nonatomic,strong)NSString *title;
+
+@end
+
 @interface JMCourseModel : NSObject
 /////////////////////实训项目列表item/////////////////////
 /*
@@ -50,7 +69,8 @@
 @property(nonatomic,strong)NSString *create_time;
 @property(nonatomic,strong)NSString *update_time;
 @property(nonatomic,strong)NSString *colllege_name;
-@property(nonatomic,strong)NSString *is_online;
+@property(nonatomic,strong)NSString *online;
+@property(nonatomic,strong)NSArray<JMPresenter *> *presenter;
 @end
 
 

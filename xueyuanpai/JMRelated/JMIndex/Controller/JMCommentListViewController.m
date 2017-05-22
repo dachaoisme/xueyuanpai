@@ -105,7 +105,7 @@
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:self.entity_id forKey:@"entity_id"];
-    [dic setObject:ENTITY_TYPE_PROJECT forKey:@"entity_type"];
+    [dic setObject:self.entity_type forKey:@"entity_type"];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     

@@ -8,6 +8,12 @@
 
 #import "JMCourseModel.h"
 
+@implementation JMPresenter
+
+
+
+@end
+
 @implementation JMCourseModel
 
 
@@ -17,5 +23,9 @@
               @"courseDescription":@"description"
               };
 }
-
++ (NSDictionary *)modelContainerPropertyGenericClass
+{
+    return @{ @"presenter" : [JMPresenter class]
+              };
+}
 @end

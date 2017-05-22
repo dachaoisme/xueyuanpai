@@ -30,8 +30,16 @@
 
 //#import "EaseUI.h"
 
+
+//极光推送
+#import "JPUSHService.h"
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+
+
 #import "MFWelcomPageController.h"
-@interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate,WXApiDelegate>
+@interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate,WXApiDelegate,JPUSHRegisterDelegate>
 
 ///推送消息
 @property (nonatomic,strong)NSString *message;
@@ -49,7 +57,7 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     //极光推送方法
-//    [self jpushAction:launchOptions];
+    [self jpushAction:launchOptions];
     
     //环信SDK
     [self huanXinAction];
@@ -59,9 +67,6 @@
     
     [[UserAccountManager sharedInstance]getUserInfo];
     
-    
-    //注册好友回调
-//    [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
     
     
     //微信支付
@@ -151,13 +156,19 @@
 }
 
 #pragma mark - 极光推送
-/*
+
 - (void)jpushAction:(NSDictionary *)launchOptions{
     
     
     NSString *advertisingId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10.0) {
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+        JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+        entity.types = UNAuthorizationOptionAlert|UNAuthorizationOptionBadge|UNAuthorizationOptionSound;
+        [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+#endif
+    }else if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
         //可以添加自定义categories
         [JPUSHService registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
                                                           UIUserNotificationTypeSound |
@@ -203,19 +214,64 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     if (application.applicationState == UIApplicationStateActive) {
         
         
-        CustomIOS7AlertView *alertView = [[CustomIOS7AlertView alloc] init];
-        //自定义AlertView
-        [alertView setContainerView:[self createView]];
-        [alertView setButtonTitles:[NSMutableArray arrayWithObjects:@"关闭", nil]];
-        [alertView setBackgroundColor:[UIColor clearColor]];
-        [alertView setDelegate:self];
-        [alertView setUseMotionEffects:true];
+        //当应用处于活跃状态可以给用户一个弹框
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"推送消息"
+                                                            message:@"测试一下"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
         [alertView show];
-        
     }
 
 }
-*/
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:
+(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    // IOS 7 Support Required
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    //    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#pragma mark- JPUSHRegisterDelegate
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+    // Required
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    
+    
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+        
+        
+    }
+    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+}
+
+// iOS 10 Support
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+    // Required
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        [JPUSHService handleRemoteNotification:userInfo];
+    }
+    completionHandler();  // 系统要求执行这个方法
+}
+#endif
+
+
++ (void)setupWithOption:(NSDictionary *)launchingOption
+                 appKey:(NSString *)appKey
+                channel:(NSString *)channel
+       apsForProduction:(BOOL)isProduction{
+    
+    
+}
+
 #pragma mark - 提交小票成功提醒框的内容
 - (UIView* )createView
 {
@@ -248,26 +304,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
 }
 
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:
-(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    // IOS 7 Support Required
-    [JPUSHService handleRemoteNotification:userInfo];
-    completionHandler(UIBackgroundFetchResultNewData);
-}
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //Optional
-    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error
-          );
-}
-
-+ (void)setupWithOption:(NSDictionary *)launchingOption
-                 appKey:(NSString *)appKey
-                channel:(NSString *)channel
-       apsForProduction:(BOOL)isProduction{
-    
-    
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -125,7 +125,7 @@
     threeCell.titleLabel.text = model.title;
     threeCell.subtitleLabel.text = model.courseDescription;
     [threeCell.locationBtn setTitle:model.colllege_name forState:UIControlStateNormal];
-    if ([model.is_online integerValue]==1) {
+    if ([model.online integerValue]==1) {
         ///正在招募
         threeCell.peopleNumberLabel.text = [NSString stringWithFormat:@"已招募%@",model.count_mark];
     }else{
@@ -141,7 +141,7 @@
     
     
     JMCourseModel * model = [dataArray objectAtIndex:indexPath.row];
-    if ([model.is_online integerValue]==1) {
+    if ([model.online integerValue]==1) {
         ///线上
         //创业课程线上详情
         JMCourseDetailsViewController *courseDetailVC = [[JMCourseDetailsViewController alloc] init];

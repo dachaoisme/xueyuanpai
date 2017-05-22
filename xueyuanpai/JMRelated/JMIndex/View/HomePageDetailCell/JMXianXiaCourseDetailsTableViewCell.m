@@ -43,26 +43,26 @@
     //昵称
     if (_nickNameLabel == nil) {
         
-        _nickNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame) + 10, 15, SCREEN_WIDTH - CGRectGetMaxX(_headImageView.frame) - 35, 16)];
+        _nickNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame) + 10, 15, 100, 16)];
         _nickNameLabel.font = [UIFont systemFontOfSize:14];
         _nickNameLabel.textColor = [CommonUtils colorWithHex:@"666666"];
-        _nickNameLabel.text = @"张丽";
+        _nickNameLabel.text = @"";
         [self.contentView addSubview:_nickNameLabel];
         
     }
     
     if (_showCertificationImageView == nil) {
-        _showCertificationImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_headImageView.frame) + 50, CGRectGetMinY(_nickNameLabel.frame), 12, 12)];
+        _showCertificationImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_nickNameLabel.frame) + 50, CGRectGetMinY(_nickNameLabel.frame), 12, 12)];
         _showCertificationImageView.image = [UIImage imageNamed:@"v_i_p"];
         [self.contentView addSubview:_showCertificationImageView];
         
     }
 
     if (_degreeLabel == nil) {
-        _degreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 20 - 100, 15, 100, 16)];
+        _degreeLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_showCertificationImageView.frame)+ 20, 15, SCREEN_WIDTH - CGRectGetMaxX(_showCertificationImageView.frame)- 20 - 20, 16)];
         _degreeLabel.font = [UIFont systemFontOfSize:14];
-        _degreeLabel.textColor = [CommonUtils colorWithHex:@"999999"];
-        _degreeLabel.text = @"管理学教授";
+        _degreeLabel.textAlignment = NSTextAlignmentRight;
+        _degreeLabel.text = @"";
         [self.contentView addSubview:_degreeLabel];
     }
 

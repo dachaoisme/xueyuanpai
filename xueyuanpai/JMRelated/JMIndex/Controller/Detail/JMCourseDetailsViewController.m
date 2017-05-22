@@ -295,7 +295,18 @@
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]trainCourseAddFavouriteWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode ==ResponseCodeSuccess) {
-            [collectionBtn setTitle:[NSString stringWithFormat:@" 收藏 %d",[detailModel.count_mark intValue]+1] forState:UIControlStateNormal];
+            if (zanBtn.isSelected==YES) {
+                zanBtn.selected =NO;
+                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]-1;
+                if (zanCount<0) {
+                    zanCount=0;
+                }
+                [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
+            }else{
+                zanBtn.selected = YES;
+                NSInteger zanCount = [zanBtn.titleLabel.text integerValue]+1;
+                [zanBtn setTitle:[NSString stringWithFormat:@" %ld",zanCount] forState:UIControlStateNormal];
+            }
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -357,11 +368,11 @@
 
 - (MPMoviePlayerViewController *)playerVC
 {
-    if (_playerVC == nil) {
-        NSURL *url = [NSURL URLWithString:detailModel.videoUrl];
-        
-        _playerVC = [[MPMoviePlayerViewController alloc] initWithContentURL:url];;
-    }
+    
+    NSURL *url = [NSURL URLWithString:detailModel.videoUrl];
+    
+    _playerVC = [[MPMoviePlayerViewController alloc] initWithContentURL:url];;
+    
     return _playerVC;
 }
 

@@ -16,6 +16,8 @@
 
 #import "SelectedSchollViewController.h"
 #import "ZHPickView.h"
+
+#import "QFDatePickerView.h"
 @interface EditProfileViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ZHPickViewDelegate>
 
 {
@@ -24,7 +26,6 @@
     
     CollegeModel *theCollegeModel;
     ZHPickView *pickview;
-    
 }
 
 ///选择头像的按钮
@@ -130,13 +131,12 @@
     [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell2"];
     
     [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell3"];
+    
+    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell4"];
+
 
 
     [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
-    
-    
-    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"threeCell"];
-
 
 }
 
@@ -274,16 +274,14 @@
             break;
         case 4:{
             
-            EditProfileTwoTableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:@"threeCell" forIndexPath:indexPath];
-            twoCell.selectionStyle  = UITableViewCellSelectionStyleNone;
-
-            twoCell.inputTextField.delegate = self;
-            twoCell.inputTextField.tag = 10001;
+            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell4" forIndexPath:indexPath];
+            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-            twoCell.titleLabel.text = @"年级";
-            twoCell.inputTextField.placeholder = @"请输入";
-            twoCell.inputTextField.text =_grade;
-            return twoCell;
+            oneCell.titleLabel.text = @"年级";
+            oneCell.contentLabel.text = _grade;
+
+            return oneCell;
 
         }
             break;
@@ -329,7 +327,7 @@
         
         EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell3" forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
+        
         //选择学校
         SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
         schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
@@ -342,14 +340,30 @@
             weakSelf.school = collegeModel.collegeName;
             
             theCollegeModel = collegeModel;
-            [tableView reloadData];
             
+            
+
+            [weakSelf.tableView reloadData];
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         
         [self.navigationController pushViewController:schollVC animated:YES];
         
+    }else if (indexPath.row == 4){
+        
+        [CommonUtils showToastWithStr:@"选择年级"];
+    
+
+        QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
+            NSString *string = str;
+            
+            weakSelf.grade = string;
+            
+            [weakSelf.tableView reloadData];
+        }];
+        [datePickerView show];
+
     }
     
 }
@@ -361,6 +375,7 @@
     self.birthdayStr=resultString;
     [self.tableView reloadData];
 }
+
 
 #pragma mark - 从相册中选择图片
 
