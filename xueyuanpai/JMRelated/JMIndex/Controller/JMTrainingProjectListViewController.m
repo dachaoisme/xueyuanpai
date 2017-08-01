@@ -71,6 +71,9 @@
         
         
     }
+    if ([UserAccountManager sharedInstance].isLogin) {
+        [dic setObject:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
+    }
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];

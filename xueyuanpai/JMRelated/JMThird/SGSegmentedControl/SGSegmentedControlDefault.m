@@ -128,7 +128,7 @@
         [_title_btn setTitle:_title_Arr[i] forState:(UIControlStateNormal)];
         [_title_btn setTitleColor:[UIColor blackColor] forState:(UIControlStateNormal)];
         [_title_btn setTitleColor:indicatorViewColorDefualt forState:(UIControlStateSelected)];
-
+        _title_btn.contentHorizontalAlignment =  UIControlContentHorizontalAlignmentCenter;
         // 计算每个button的X值
         button_X = button_X + button_W;
 

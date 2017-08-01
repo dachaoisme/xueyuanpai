@@ -100,7 +100,17 @@
     
     
     
-    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    //self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    if (IS_IPHONE_5) {
+        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(75, NAV_TOP_HEIGHT, self.view.frame.size.width-150, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    }else if (IS_IPHONE_6){
+        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(100, NAV_TOP_HEIGHT, self.view.frame.size.width-200, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    }else if (IS_IPHONE_6_PLUS){
+        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(115, NAV_TOP_HEIGHT, self.view.frame.size.width-230, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    }
+    else{
+        
+    }
     self.topDefaultSView.backgroundColor = [UIColor clearColor];
     self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
     self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];

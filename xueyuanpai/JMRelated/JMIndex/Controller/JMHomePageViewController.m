@@ -87,6 +87,9 @@
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     [dic setObject:@"1" forKey:@"status"];
+    if ([UserAccountManager sharedInstance].isLogin) {
+        [dic setObject:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
+    }
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];
