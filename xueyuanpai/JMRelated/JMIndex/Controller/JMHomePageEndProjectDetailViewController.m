@@ -86,9 +86,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (section == 2) {
-        return detailModel.members.count;
+    
+    if (section == 3 || section == 4) {
+        return 2;
         
+    }else if (section == 2){
+        return detailModel.members.count + 1;
+
     }else{
         
         return 1;
@@ -98,7 +102,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 3;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -124,6 +128,7 @@
             
         }
             break;
+            
         case 2:{
             
             if (indexPath.row == 0) {
@@ -133,22 +138,86 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"999999"];
                 cell.textLabel.text = @"项目成员";
-
+                
                 return cell;
-
+                
             }else{
                 
                 HomePageEndProjectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomePageEndProjectTableViewCell"];
-
-                JMTrainProjectPeopleModel *model = [detailModel.members objectAtIndex:indexPath.row];
+                
+                JMTrainProjectPeopleModel *model = [detailModel.members objectAtIndex:indexPath.row - 1];
                 [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.icon] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
                 cell.nickNameLabel.text = model.name;
                 cell.inforLabel.text = model.job;
                 
                 return cell;
-
+                
             }
             
+        }
+            break;
+
+            
+        case 3:{
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.textColor = [CommonUtils colorWithHex:@"999999"];
+                
+                cell.textLabel.text = @"招募岗位";
+                
+                
+            }else{
+                
+                cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
+                NSString *showText = detailModel.job_name;
+                cell.textLabel.text =  showText;
+                cell.textLabel.numberOfLines = 0;
+                
+                cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:showText]);
+            }
+            
+            
+            
+            return cell;
+            
+            
+            
+        }
+            break;
+            
+        case 4:{
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+            cell.textLabel.font = [UIFont systemFontOfSize:14];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            
+            
+            if (indexPath.row == 0) {
+                
+                cell.textLabel.textColor = [CommonUtils colorWithHex:@"999999"];
+                
+                cell.textLabel.text = @"项目描述";
+                
+                
+            }else{
+                
+                cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
+                NSString *showText = detailModel.trainProjectDescription;
+                cell.textLabel.text =  showText;
+                cell.textLabel.numberOfLines = 0;
+                cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:showText]);
+            }
+            return cell;
         }
             break;
 
@@ -167,19 +236,67 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section == 2) {
-        if (indexPath.row == 0) {
+    switch (indexPath.section) {
+        case 2:{
             
-            return 45;
+            if (indexPath.row == 0) {
+                
+                return 45;
+                
+            }else{
+                
+                return 80;
+                
+            }
             
-        }else{
-           
-            return 76;
+            
         }
-    }else{
-        
-        return 80;
-
+            break;
+   
+            
+        case 3:{
+            
+            if (indexPath.row == 0) {
+                
+                return 45;
+                
+            }else{
+                
+                //根据文本信息多少调整cell的高度
+                NSString * string = detailModel.job_name;
+                return [self textHeight:string] + 30;
+                
+            }
+            
+            
+        }
+            break;
+        case 4:{
+            
+            if (indexPath.row == 0) {
+                
+                return 45;
+                
+            }else{
+                
+                //根据文本信息多少调整cell的高度
+                NSString * string = detailModel.trainProjectDescription;
+                return [self textHeight:string] + 30;
+                
+            }
+            
+            
+        }
+            break;
+            
+            
+        default:{
+            
+            return 80;
+            
+            
+        }
+            break;
     }
 }
 
@@ -193,6 +310,16 @@
     return 10;
 }
 
+
+
+//自适应撑高
+//计算字符串的frame
+- (CGFloat)textHeight:(NSString *)string{
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(SCREEN_WIDTH - 10, 10000) options:(NSStringDrawingUsesLineFragmentOrigin) attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil];
+    //返回计算好的高度
+    return rect.size.height;
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

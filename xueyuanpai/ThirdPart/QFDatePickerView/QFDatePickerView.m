@@ -45,7 +45,7 @@
     //获取当前时间 （时间格式支持自定义）
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy"];//自定义时间格式
-    NSString *currentDateStr = @"2020";
+    NSString *currentDateStr = @"2100";
     currentYear = [currentDateStr integerValue];
 
     selectedYear = [NSString stringWithFormat:@"%ld",(long)currentYear];

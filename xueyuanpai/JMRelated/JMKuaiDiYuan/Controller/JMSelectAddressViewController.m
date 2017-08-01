@@ -126,7 +126,7 @@
     cell.editBtn.tag = indexPath.row;
     JMAdressListModel *model = [dataArray objectAtIndex:indexPath.row];
     cell.nameAndPhoneLabel.text = [NSString stringWithFormat:@"%@   %@",model.user_name,model.telphone];
-    cell.addressLabel.text = model.addr;
+    cell.addressLabel.text = [NSString stringWithFormat:@"%@%@ %@",model.province,model.city,model.addr];
     return cell;
     
 }

@@ -93,7 +93,7 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (model.responseCode ==ResponseCodeSuccess) {
             ///反馈成功
-            [CommonUtils showToastWithStr:@"反馈成功"];
+            [CommonUtils showToastWithStr:@"感谢您的意见宝贵意见，我们会逐步完善。"];
             
             
             [self.navigationController popViewControllerAnimated:YES];

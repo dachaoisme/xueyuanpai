@@ -185,8 +185,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
 
         MineTwoStyleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
         
@@ -257,7 +255,6 @@
     
     
    if (indexPath.row == 1){
-       
        
        if ([UserAccountManager sharedInstance].isLogin==YES) {
            
