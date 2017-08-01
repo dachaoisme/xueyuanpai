@@ -603,6 +603,7 @@
 		DD48B75D1D10F95300E012E4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DD48B75C1D10F95300E012E4 /* libz.tbd */; };
 		DD48B7641D11019000E012E4 /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = DD48B7631D11019000E012E4 /* sound.caf */; };
 		DD48B7811D117EC700E012E4 /* CustomIOS7AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */; };
+		DD58A8591ED4960500CC845F /* JMChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD58A8581ED4960500CC845F /* JMChangePasswordViewController.m */; };
 		DD721A341E9A6F990006117D /* deliver_msg_box@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD721A331E9A6F990006117D /* deliver_msg_box@3x.png */; };
 		DD82A8551D04E715009E3671 /* BusinessTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */; };
 		DD8387D01D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8387CE1D0C60C00009B558 /* BusinessPublishProjectTheeTableViewCell.m */; };
@@ -1920,6 +1921,8 @@
 		DD48B7631D11019000E012E4 /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.caf; sourceTree = "<group>"; };
 		DD48B77F1D117EC700E012E4 /* CustomIOS7AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomIOS7AlertView.h; sourceTree = "<group>"; };
 		DD48B7801D117EC700E012E4 /* CustomIOS7AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomIOS7AlertView.m; sourceTree = "<group>"; };
+		DD58A8571ED4960500CC845F /* JMChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMChangePasswordViewController.h; sourceTree = "<group>"; };
+		DD58A8581ED4960500CC845F /* JMChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMChangePasswordViewController.m; sourceTree = "<group>"; };
 		DD721A331E9A6F990006117D /* deliver_msg_box@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "deliver_msg_box@3x.png"; sourceTree = "<group>"; };
 		DD82A8531D04E715009E3671 /* BusinessTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTeacherViewController.h; sourceTree = "<group>"; };
 		DD82A8541D04E715009E3671 /* BusinessTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTeacherViewController.m; sourceTree = "<group>"; };
@@ -2714,6 +2717,8 @@
 			children = (
 				166DD08F1E9A099F00B2B002 /* JMMineViewController.h */,
 				166DD0901E9A099F00B2B002 /* JMMineViewController.m */,
+				DD58A8571ED4960500CC845F /* JMChangePasswordViewController.h */,
+				DD58A8581ED4960500CC845F /* JMChangePasswordViewController.m */,
 				DDD794A21EA079670024C4E6 /* EditProfileViewController.h */,
 				DDD794A31EA079670024C4E6 /* EditProfileViewController.m */,
 				DDD794A81EA07DF90024C4E6 /* JMMineProjectListViewController.h */,
@@ -6192,6 +6197,7 @@
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
 				DDB28DE61D2C8A7E004C8F70 /* EMCDDeviceManagerBase.m in Sources */,
 				DDB28E1A1D2C8A7E004C8F70 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
+				DD58A8591ED4960500CC845F /* JMChangePasswordViewController.m in Sources */,
 				DD4127CC1CF2F98F00227066 /* ParallaxHeaderView.m in Sources */,
 				DDB28E0C1D2C8A7E004C8F70 /* EMSDWebImageDecoder.m in Sources */,
 				166DD0DC1E9A0F4100B2B002 /* HttpServer.m in Sources */,

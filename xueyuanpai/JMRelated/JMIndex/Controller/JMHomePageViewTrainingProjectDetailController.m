@@ -43,7 +43,6 @@
     
     ///未结束报名的实训项目详情
     
-    
     //创建左侧按钮
     [self createLeftBackNavBtn];
     

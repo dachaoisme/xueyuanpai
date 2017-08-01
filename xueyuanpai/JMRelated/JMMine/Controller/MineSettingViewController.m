@@ -13,6 +13,7 @@
 #import "BindPhoneViewController.h"
 #import "FeedbackViewController.h"
 #import "AboutUsViewController.h"
+#import "JMChangePasswordViewController.h"
 
 
 #import "LoginViewController.h"
@@ -106,13 +107,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 0) {
         return 1;
+    }else if (section == 1){
+        
+        return 1;
+        
     }else{
         return 4;
     }
@@ -134,8 +139,12 @@
         
         cell.contentLabel.text = [UserAccountManager sharedInstance].userMobile;
         
-    }else{
+    }else if (indexPath.section == 1){
         
+        cell.titleLabel.text = @"修改密码";
+        cell.contentLabel.hidden = YES;
+        
+    }else{
         
         switch (indexPath.row) {
             case 0:{
@@ -184,6 +193,11 @@
         
         
     }else if (indexPath.section == 1) {
+        
+        JMChangePasswordViewController * changePasswordVC = [[JMChangePasswordViewController alloc] init];
+        [self.navigationController pushViewController:changePasswordVC animated:YES];
+        
+    }else if (indexPath.section == 2) {
         
         MineSettingTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
