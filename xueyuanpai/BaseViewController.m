@@ -193,6 +193,23 @@
     
 }
 
+-(void)creatRightNavWithNormalImageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName
+{
+    
+    UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    userDefineLeftBtn.frame     = CGRectMake(-10, 0, 30, 30);
+    [userDefineLeftBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+    [userDefineLeftBtn setImage:[UIImage imageNamed:selectedImageName] forState:UIControlStateSelected];
+    [userDefineLeftBtn setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [userDefineLeftBtn addTarget:self action:@selector(rightItemActionWithBtn:) forControlEvents:UIControlEventTouchUpInside];
+    self.userDefineLeftBtn = userDefineLeftBtn;
+    UIBarButtonItem *rightItem1 = [[UIBarButtonItem alloc] initWithCustomView:userDefineLeftBtn];
+    //    UIBarButtonItem *rightItem2 = [[UIBarButtonItem alloc] initWithCustomView:self.message];
+    //NSArray *arr = @[rightItem1,rightItem2];
+    self.navigationItem.rightBarButtonItem = rightItem1;
+    
+}
+
 -(void)creatRightNavWithTitle:(NSString *)title
 {
     UIButton *userDefineLeftBtn = [UIButton buttonWithType:UIButtonTypeCustom];

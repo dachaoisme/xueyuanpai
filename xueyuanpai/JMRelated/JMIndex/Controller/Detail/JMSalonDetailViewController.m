@@ -42,6 +42,7 @@
     
     [self requestData];
     
+    [self getStarsStaus];
     
 }
 
@@ -370,6 +371,76 @@
     [self.navigationController pushViewController:commentListVC animated:YES];
     
     
+}
+
+#pragma mark - 是否已经收藏
+-(void)getStarsStaus
+{
+    ///网络请求获取是否已经收藏的状态
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [dic setObject:ENTITY_TYPE_SALON forKey:@"entity_type"];
+    [dic setObject:self.model.salonItemId forKey:@"entity_id"];
+    
+    [[HttpClient sharedInstance]whetherAlreadyAddCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSDictionary *dic = model.responseCommonDic;
+        NSString *isLiked =[dic objectForKey:@"ismarked"];
+        [self judgeWhtherHaveAddStarWithStatus:[isLiked integerValue]];
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
+}
+-(void)judgeWhtherHaveAddStarWithStatus:(BOOL)yesHaveAddStar
+{
+    [self creatRightNavWithNormalImageName:@"detail_icon_star" selectedImageName:@"detail_icon_star_hl"];
+    self.userDefineLeftBtn.selected = yesHaveAddStar;
+}
+-(void)rightItemActionWithBtn:(UIButton *)sender
+{
+    if (sender.selected==YES) {
+        [self cancelCollection];
+    }else{
+        [self addCollection];
+    }
+    self.userDefineLeftBtn.selected=!sender.isSelected;
+    
+}
+-(void)addCollection
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [dic setObject:ENTITY_TYPE_SALON forKey:@"entity_type"];
+    [dic setObject:self.model.salonItemId forKey:@"entity_id"];
+    
+    [[HttpClient sharedInstance]collectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSDictionary *dic = model.responseCommonDic;
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+
+-(void)cancelCollection
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [dic setObject:ENTITY_TYPE_SALON forKey:@"entity_type"];
+    [dic setObject:self.model.salonItemId forKey:@"entity_id"];
+    
+    [[HttpClient sharedInstance]deleteCollectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSDictionary *dic = model.responseCommonDic;
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
