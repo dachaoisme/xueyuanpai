@@ -44,6 +44,10 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:NO];
+    
+    
+    [self requestRefreshData];
+   
 }
 
 
@@ -52,28 +56,28 @@
     // Do any additional setup after loading the view.
     self.title = @"首页";
     [self creatRightNavWithImageName:@"nav_icon_msg"];
-    currentPage=nextPage=1;
-    pageSize=10;
-    bannerTitleArray = [NSMutableArray array];
-    bannerImageArray = [NSMutableArray array];
-    bannerItemArray = [NSMutableArray array];
-    dataArray = [NSMutableArray array];
+    
+
+    
     //创建当前列表视图
     [self createTableView];
     
-    [self requestBanner];
-    [self requestData];
 }
 -(void)requestBanner
 {
+
+    
     [[HttpClient sharedInstance]getBannerOfIndexWithParams:[NSDictionary dictionary] withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        [self.tableView.header endRefreshing];
+
+        
         NSArray *listArr =(NSArray *)listDic;
         for (int i=0; i<listArr.count; i++) {
             JMHomePageModel *model = [JMHomePageModel yy_modelWithDictionary:[listArr objectAtIndex:i]];
             [bannerTitleArray addObject:model.title];
             [bannerImageArray addObject:model.picUrl];
             [bannerItemArray addObject:model];
-            [_tableView reloadData];
+            [self.tableView reloadData];
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -81,7 +85,6 @@
 }
 -(void)requestData
 {
-    
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
@@ -91,7 +94,8 @@
         [dic setObject:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
     }
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
-        
+        [self.tableView.header endRefreshing];
+
         [self.tableView.footer endRefreshing];
         
         NSArray * listArray = [ListDic objectForKey:@"lists"];
@@ -135,6 +139,10 @@
     [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
     
     [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    
+    
+    [_tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(requestRefreshData)];
+
 }
 
 
@@ -356,6 +364,23 @@
     [self.navigationController pushViewController:messageVC animated:YES];
     
     
+}
+
+
+#pragma mark - 请求刷新数据
+- (void)requestRefreshData{
+    
+    //请求相关数据
+    currentPage=nextPage=1;
+    pageSize=10;
+    bannerTitleArray = [NSMutableArray array];
+    bannerImageArray = [NSMutableArray array];
+    bannerItemArray = [NSMutableArray array];
+    dataArray = [NSMutableArray array];
+    
+    [self requestBanner];
+    [self requestData];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
