@@ -36,6 +36,9 @@
 -(void)creatRightNavWithTitle:(NSString *)title;
 -(void)creatRightNavWithImageName:(NSString *)imageName;
 -(void)rightItemActionWithBtn:(UIButton *)sender;
+-(void)creatRightNavWithNormalImageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName;
 ///未登录弹出登录界面
 -(void)judgeLoginStatus;
+
+@property(nonatomic,strong)UIButton * userDefineLeftBtn;
 @end

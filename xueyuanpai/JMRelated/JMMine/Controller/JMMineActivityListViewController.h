@@ -10,4 +10,5 @@
 
 @interface JMMineActivityListViewController : BaseViewController
 
+@property(nonatomic,assign)NSInteger stateType;//类型是收藏还是报名-----0表示：signUp、 1表示：collection
 @end

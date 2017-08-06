@@ -30,26 +30,39 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:YES];
+    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.title = @"我的实训项目";
     currentPage=nextPage=1;
     pageSize=10;
     dataArray = [NSMutableArray array];
     [self createLeftBackNavBtn];
     [self createTableView];
-    [self requestData];
+    
+    if (self.stateType==0) {
+        ///报名
+        [self requestData];
+    }else{
+        //收藏
+        [self requestCollectionList];
+    }
+    
     
 }
 -(void)requestMoreData
 {
     currentPage=currentPage+1;
-    [self requestData];
+    if (self.stateType==0) {
+        ///报名
+        [self requestData];
+    }else{
+        //收藏
+        [self requestCollectionList];
+    }
 }
 -(void)requestData
 {
@@ -60,6 +73,45 @@
     [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
     [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     [[HttpClient sharedInstance]getMineTrainProjectListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
+        
+        [self.tableView.footer endRefreshing];
+        
+        NSArray * listArray = [ListDic objectForKey:@"lists"];
+        
+        if (listArray.count == 0) {
+            //说明是最后一张
+            self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
+        }
+        
+        for (int i=0; i<listArray.count; i++) {
+            NSDictionary *tempDic = [listArray objectAtIndex:i];
+            JMTrainProjectModel *model = [JMTrainProjectModel yy_modelWithDictionary:tempDic];
+            [dataArray addObject:model];
+            
+        }
+        [self.tableView reloadData];
+        ///如果没有数据，则加载空数据页面
+        if (dataArray.count==0) {
+            self.tableView.hidden = YES;
+            [CommonView emptyViewWithView:self.view];
+        }
+    } withFaileBlock:^(NSError *error) {
+        [self.tableView.footer endRefreshing];
+        ///如果没有数据，则加载空数据页面
+        if (dataArray.count==0) {
+            self.tableView.hidden = YES;
+            [CommonView emptyViewWithView:self.view];
+        }
+    }];
+}
+-(void)requestCollectionList
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    [dic setObject:ENTITY_TYPE_PROJECT forKey:@"entity_type"];
+    [[HttpClient sharedInstance]getMineCollectionProjectListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         
         [self.tableView.footer endRefreshing];
         

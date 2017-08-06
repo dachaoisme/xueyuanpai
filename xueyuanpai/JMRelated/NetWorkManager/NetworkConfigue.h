@@ -59,8 +59,12 @@
 #define METHOD_OF_TRAIN_COURSE_LIKE  @"course/like"
 ///检查对创业课程是否点赞过
 #define METHOD_OF_TRAIN_COURSE_WHETHER_IS_LIKE  @"course/isliked"
-///对创业课程收藏接口
+///判断是否已经收藏
+#define METHOD_OF_WHETHER_COLLECTION  @"mark/ismarked"
+///对创业课程等添加收藏接口
 #define METHOD_OF_TRAIN_COURSE_COLLECT  @"mark/create"
+///取消收藏接口
+#define METHOD_OF_CANCEL_COLLECT  @"mark/delete"
 ////////创业沙龙相关////////
 ///创业沙龙列表
 #define METHOD_OF_TRAIN_SALON  @"salon/index"
@@ -80,6 +84,8 @@
 #define METHOD_OF_TRAIN_COURSE_LIST  @"user/course"
 ///我的创业沙龙相关
 #define METHOD_OF_TRAIN_SALON_LIST  @"user/salon"
+///收藏的列表
+#define METHOD_OF_COLLECTION_LIST    @"user/marklist"
 
 
 ///登录
