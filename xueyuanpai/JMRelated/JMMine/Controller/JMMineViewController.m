@@ -9,15 +9,16 @@
 #import "JMMineViewController.h"
 #import "EditProfileViewController.h"
 #import "MineTwoStyleTableViewCell.h"
-
+#import "LoginViewController.h"
 
 #import "MineIntegralViewController.h"
-#import "JMMineProjectListViewController.h"
-#import "JMStartupProjectViewController.h"
-#import "JMMineActivityListViewController.h"
 #import "MineSettingViewController.h"
 
-#import "LoginViewController.h"
+#import "JMMIneProjectRootViewController.h"
+#import "JMStartupProjectRootViewController.h"
+#import "JMMIneSalonRootViewController.h"
+
+
 @interface JMMineViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -259,7 +260,7 @@
        if ([UserAccountManager sharedInstance].isLogin==YES) {
            
            //跳转我的实训项目
-           JMMineProjectListViewController *projectVC = [[JMMineProjectListViewController alloc] init];
+           JMMIneProjectRootViewController *projectVC = [[JMMIneProjectRootViewController alloc] init];
            
            [self.navigationController pushViewController:projectVC animated:YES];
            
@@ -276,7 +277,7 @@
         if ([UserAccountManager sharedInstance].isLogin==YES) {
             
             //我的创业课程
-            JMStartupProjectViewController *startupProjectVC = [[JMStartupProjectViewController alloc] init];
+            JMStartupProjectRootViewController *startupProjectVC = [[JMStartupProjectRootViewController alloc] init];
             
             [self.navigationController pushViewController:startupProjectVC animated:YES];
             
@@ -294,7 +295,7 @@
         if ([UserAccountManager sharedInstance].isLogin==YES) {
             
             //我的沙龙活动
-            JMMineActivityListViewController *activityListVC = [[JMMineActivityListViewController alloc] init];
+            JMMIneSalonRootViewController *activityListVC = [[JMMIneSalonRootViewController alloc] init];
             
             [self.navigationController pushViewController:activityListVC animated:YES];
             

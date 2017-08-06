@@ -84,6 +84,8 @@
 #define METHOD_OF_TRAIN_COURSE_LIST  @"user/course"
 ///我的创业沙龙相关
 #define METHOD_OF_TRAIN_SALON_LIST  @"user/salon"
+///收藏的列表
+#define METHOD_OF_COLLECTION_LIST    @"user/marklist"
 
 
 ///登录
