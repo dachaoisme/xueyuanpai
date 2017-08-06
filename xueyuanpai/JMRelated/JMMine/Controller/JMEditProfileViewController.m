@@ -1,15 +1,16 @@
 //
-//  EditProfileViewController.m
+//  JMEditProfileViewController.m
 //  xueyuanpai
 //
-//  Created by 王园园 on 16/6/6.
-//  Copyright © 2016年 lidachao. All rights reserved.
+//  Created by 王园园 on 2017/8/6.
+//  Copyright © 2017年 lidachao. All rights reserved.
 //
 
-#import "EditProfileViewController.h"
+#import "JMEditProfileViewController.h"
 
-#import "EditProfileTableViewCell.h"
-#import "EditProfileTwoTableViewCell.h"
+
+#import "JMEditProfileTableViewCell.h"
+#import "JMEditNickNameTableViewCell.h"
 
 #import "SelectedImageView.h"
 #import "SelectedSexView.h"
@@ -18,7 +19,11 @@
 #import "ZHPickView.h"
 
 #import "QFDatePickerView.h"
-@interface EditProfileViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ZHPickViewDelegate>
+
+
+#import <UIButton+WebCache.h>
+
+@interface JMEditProfileViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ZHPickViewDelegate>
 
 {
     SelectedImageView *selectedImageView;
@@ -49,10 +54,10 @@
 ///年级
 @property (nonatomic,strong)NSString *grade;
 
+
 @end
 
-@implementation EditProfileViewController
-
+@implementation JMEditProfileViewController
 
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -69,17 +74,17 @@
     self.view.backgroundColor = [CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
     self.title = @"编辑个人资料";
     
+    [self createLeftBackNavBtn];
+    
     _nickName = [UserAccountManager sharedInstance].userNickname;
     _grade = [UserAccountManager sharedInstance].userGrade;
     _birthdayStr =[UserAccountManager sharedInstance].birthday;
-    [self createLeftBackNavBtn];
+
     
     [self setInitNickName];
-    
     [self setContentView];
-    
     [self createTableView];
-    
+
     //创建提交按钮
     [self createCommitButton];
 }
@@ -96,7 +101,7 @@
         
         self.sexStr = @"未知";
     }
-
+    
 }
 #pragma mark - 创建提交按钮
 - (void)createCommitButton{
@@ -110,7 +115,7 @@
     button.layer.cornerRadius = 10.0;
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:button];
-
+    
     
 }
 
@@ -126,18 +131,10 @@
         [self.view addSubview:_tableView];
     }
     //注册cell
-    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell"];
+    [_tableView registerClass:[JMEditProfileTableViewCell class] forCellReuseIdentifier:@"JMEditProfileTableViewCell"];
     
-    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell2"];
+    [_tableView registerClass:[JMEditNickNameTableViewCell class] forCellReuseIdentifier:@"JMEditNickNameTableViewCell"];
     
-    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell3"];
-    
-    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"oneCell4"];
-
-
-
-    [_tableView registerNib:[UINib nibWithNibName:@"EditProfileTwoTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"twoCell"];
-
 }
 
 #pragma mark - 设置修改头像视图
@@ -157,18 +154,18 @@
     _headImageSelectedBtn.layer.masksToBounds = YES;
     
     [_headImageSelectedBtn addTarget:self action:@selector(selectedImageFromPhotoAlbum:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.view addSubview:_headImageSelectedBtn];
     
     
     if ([UserAccountManager sharedInstance].userIcon.length > 0) {
         NSURL *imageUrl = [NSURL URLWithString:[UserAccountManager sharedInstance].userIcon];
         
-        [_headImageSelectedBtn setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]] forState:UIControlStateNormal];
+        [_headImageSelectedBtn sd_setImageWithURL:imageUrl forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"avatar"]];
+        
         avatarImageUploaded =[UserAccountManager sharedInstance].userIcon;
     }
     
-
+    
     
 }
 
@@ -178,7 +175,7 @@
     if (textField.tag == 10000) {
         
         self.nickName = textField.text;
-
+        
     }else{
         
         self.grade = textField.text;
@@ -211,10 +208,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    JMEditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMEditProfileTableViewCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     switch (indexPath.row) {
         case 0:{
             
-            EditProfileTwoTableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:@"twoCell" forIndexPath:indexPath];
+            JMEditNickNameTableViewCell *twoCell = [tableView dequeueReusableCellWithIdentifier:@"JMEditNickNameTableViewCell"];
             twoCell.selectionStyle  = UITableViewCellSelectionStyleNone;
             
             twoCell.inputTextField.delegate = self;
@@ -224,71 +225,54 @@
             twoCell.inputTextField.text = _nickName;
             
             return twoCell;
-
+            
         }
             break;
         case 1:{
-            
-            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
-            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            
+            cell.titleLabel.text = @"性别";
+            cell.contentLabel.text = self.sexStr;
 
-            oneCell.titleLabel.text = @"性别";
-            oneCell.contentLabel.text = self.sexStr;
-            
-
-            
-            return oneCell;
+            return cell;
             
         }
             break;
         case 2:{
             
-            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell2" forIndexPath:indexPath];
-            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
-
-            oneCell.titleLabel.text = @"生日";
-            oneCell.contentLabel.text = self.birthdayStr;
-
+            cell.titleLabel.text = @"生日";
+            cell.contentLabel.text = self.birthdayStr;
             
-            return oneCell;
-
+            
+            return cell;
+            
         }
             break;
         case 3:{
             
-            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell3" forIndexPath:indexPath];
-            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.titleLabel.text = @"学校";
+            cell.contentLabel.text = theCollegeModel.collegeName.length>0?theCollegeModel.collegeName: [UserAccountManager sharedInstance].userCollegeName;
             
-            oneCell.titleLabel.text = @"学校";
-            oneCell.contentLabel.text = theCollegeModel.collegeName.length>0?theCollegeModel.collegeName: [UserAccountManager sharedInstance].userCollegeName;
+            return cell;
             
-            return oneCell;
             
-
         }
             break;
         case 4:{
             
-            EditProfileTableViewCell *oneCell = [tableView dequeueReusableCellWithIdentifier:@"oneCell4" forIndexPath:indexPath];
-            oneCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            oneCell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            cell.titleLabel.text = @"年级";
+            cell.contentLabel.text = _grade;
             
-            oneCell.titleLabel.text = @"年级";
-            oneCell.contentLabel.text = _grade;
-
-            return oneCell;
-
+            return cell;
+            
         }
             break;
         default:
+        {
             
-            return nil;
+            UITableViewCell *cell = nil;
             
+            return cell;
+        }
             break;
     }
     
@@ -300,7 +284,7 @@
     
     if (indexPath.row == 1) {
         
-        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell" forIndexPath:indexPath];
+        JMEditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMEditProfileTableViewCell"];
         //选择性别
         float height = 200;
         
@@ -317,7 +301,6 @@
     }else if (indexPath.row == 2){
         
         //选择生日
-        [CommonUtils showToastWithStr:@"选择生日"];
         NSDate *date=[NSDate dateWithTimeIntervalSinceNow:9000000];
         pickview=[[ZHPickView alloc] initDatePickWithDate:date datePickerMode:UIDatePickerModeDate isHaveNavControler:NO];
         pickview.delegate=self;
@@ -325,14 +308,14 @@
         [pickview show];
     }else if (indexPath.row == 3){
         
-        EditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"oneCell3" forIndexPath:indexPath];
+        JMEditProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMEditProfileTableViewCell" forIndexPath:indexPath];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         //选择学校
         SelectedSchollViewController * schollVC = [[SelectedSchollViewController alloc]init];
         schollVC.callBackBlock = ^(CollegeModel *collegeModel) {
             cell.titleLabel.text = @"学校";
-
+            
             
             cell.contentLabel.text = collegeModel.collegeName;
             
@@ -342,7 +325,7 @@
             theCollegeModel = collegeModel;
             
             
-
+            
             [weakSelf.tableView reloadData];
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -351,10 +334,8 @@
         [self.navigationController pushViewController:schollVC animated:YES];
         
     }else if (indexPath.row == 4){
+                
         
-        [CommonUtils showToastWithStr:@"选择年级"];
-    
-
         QFDatePickerView *datePickerView = [[QFDatePickerView alloc]initDatePackerWithResponse:^(NSString *str) {
             NSString *string = str;
             
@@ -363,7 +344,7 @@
             [weakSelf.tableView reloadData];
         }];
         [datePickerView show];
-
+        
     }
     
 }
@@ -381,7 +362,7 @@
 
 -(void)selectedImageFromPhotoAlbum:(UIButton *)sender
 {
-
+    
     float height = 200;
     
     selectedImageView = [[SelectedImageView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT-height, SCREEN_WIDTH, height) withSuperController:self];
@@ -446,10 +427,6 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
-
-
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

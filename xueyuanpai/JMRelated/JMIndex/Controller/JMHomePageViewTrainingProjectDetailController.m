@@ -21,6 +21,9 @@
     UIButton *zanBtn;
     UIButton *commentBtn;
     UIButton *collectionBtn;
+    
+    
+    UIView *bottomView;
 }
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -34,6 +37,8 @@
     [super viewWillAppear:animated];
     
     [self theTabBarHidden:YES];
+    
+    [self changeCommentNumber];
 
 }
 - (void)viewDidLoad {
@@ -295,13 +300,13 @@
 #pragma mark - 创建底部视图
 - (void)createBottomView{
     
-    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)];
+    bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50)];
     [self.view addSubview:bottomView];
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
     lineView.backgroundColor = [CommonUtils colorWithHex:@"cccccc"];
     [bottomView addSubview:lineView];
-
+    
     
     
     //创建左侧点赞按钮
@@ -451,6 +456,24 @@
     commentListVC.entity_type = ENTITY_TYPE_PROJECT;
     [self.navigationController pushViewController:commentListVC animated:YES];
     
+
+}
+
+#pragma mark -- 修改评论数目
+- (void)changeCommentNumber{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.trainProjectId forKey:@"project_id"];
+    //[dic setObject:self.model.trainProjectId  forKey:@"project_id"];
+    [[HttpClient sharedInstance] getTrainProjectDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        detailModel = [JMTrainProjectDetailModel yy_modelWithDictionary:listDic];
+        
+        //修改评论数目
+        [commentBtn setTitle:[NSString stringWithFormat:@" %@",detailModel.count_comment] forState:UIControlStateNormal];
+
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
 
 }
 

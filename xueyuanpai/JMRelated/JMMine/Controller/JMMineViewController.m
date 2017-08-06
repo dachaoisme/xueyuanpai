@@ -7,7 +7,6 @@
 //
 
 #import "JMMineViewController.h"
-#import "EditProfileViewController.h"
 #import "MineTwoStyleTableViewCell.h"
 
 
@@ -16,6 +15,8 @@
 #import "JMStartupProjectViewController.h"
 #import "JMMineActivityListViewController.h"
 #import "MineSettingViewController.h"
+
+#import "JMEditProfileViewController.h"
 
 #import "LoginViewController.h"
 @interface JMMineViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -55,8 +56,9 @@
     // Do any additional setup after loading the view.
     //[self setUserDefineLeftReturnBtn];
     [self setTitle:@"个人中心"];
-    
+
     [self creatRightNavWithTitle:@"编辑个人资料"];
+
     
     [self createTableView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshInfo) name:NOTI_UPDATE_BY_USER_ID object:nil];
@@ -92,8 +94,9 @@
     if ([UserAccountManager sharedInstance].isLogin==YES) {
         
         //编辑认证个人资料
-        EditProfileViewController *editProfileVC = [[EditProfileViewController alloc] init];
+        JMEditProfileViewController *editProfileVC = [[JMEditProfileViewController alloc] init];
         [self.navigationController pushViewController:editProfileVC animated:YES];
+
         
         
     }else{
@@ -169,6 +172,10 @@
     
     tableView.tableHeaderView = headBackGroundView;
     
+    
+    
+    
+
 }
 
 
