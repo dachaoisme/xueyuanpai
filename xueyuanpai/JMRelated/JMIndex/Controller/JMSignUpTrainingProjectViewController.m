@@ -80,6 +80,12 @@
     if (section == 1) {
         return 2;
         
+    }else if (section==0){
+        if ([self.entity_type isEqualToString:ENTITY_TYPE_PROJECT]) {
+            return 1;
+        }else{
+            return 0;
+        }
     }else{
         
         return 1;
