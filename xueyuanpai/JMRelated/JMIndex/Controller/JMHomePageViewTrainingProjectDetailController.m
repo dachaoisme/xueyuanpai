@@ -474,6 +474,11 @@
         JMSignUpProcessingViewController *signUpProcessingVC =[[JMSignUpProcessingViewController alloc] init];
         signUpProcessingVC.entity_type = ENTITY_TYPE_PROJECT;
         signUpProcessingVC.entity_id =self.trainProjectId;
+        signUpProcessingVC.image = detailModel.thumbUrl;
+        signUpProcessingVC.theTitle = detailModel.title;
+        signUpProcessingVC.subTitle = detailModel.trainProjectDescription;
+        signUpProcessingVC.colledge_name = detailModel.colllege_name;
+        signUpProcessingVC.status = signupType;
         [self.navigationController pushViewController:signUpProcessingVC animated:YES];
     }
     

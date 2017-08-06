@@ -373,8 +373,13 @@
         [self.navigationController pushViewController:signUpAction animated:YES];
     }else{
         JMSignUpProcessingViewController *signUpProcessingVC =[[JMSignUpProcessingViewController alloc] init];
-        signUpProcessingVC.entity_type = ENTITY_TYPE_PROJECT;
+        signUpProcessingVC.entity_type = ENTITY_TYPE_SALON;
         signUpProcessingVC.entity_id =self.model.salonItemId;
+        signUpProcessingVC.image = detailModel.thumbUrl;
+        signUpProcessingVC.theTitle = detailModel.title;
+        signUpProcessingVC.subTitle = detailModel.salonDescription;
+        signUpProcessingVC.colledge_name = detailModel.colllege_name;
+        signUpProcessingVC.status = signupType;
         [self.navigationController pushViewController:signUpProcessingVC animated:YES];
     }
 }

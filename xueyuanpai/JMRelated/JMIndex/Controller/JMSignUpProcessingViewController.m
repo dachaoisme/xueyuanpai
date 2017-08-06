@@ -55,7 +55,7 @@
     
     
     [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
-    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    //[_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -82,10 +82,19 @@
     if (indexPath.section == 0) {
         JMHomePageThreeTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+
+        [cell.showImageView sd_setImageWithURL:[NSURL URLWithString:self.image]];
+        cell.titleLabel.text = self.title;
+        cell.subtitleLabel.text = self.subTitle;
+        [cell.locationBtn setTitle:self.colledge_name forState:UIControlStateNormal];
+        if (self.status==Processing){
+            cell.peopleNumberLabel.text = @"审核中";
+        }else if (self.status==Pass){
+            cell.peopleNumberLabel.text = @"已报名";
+        }else if (self.status==Reject) {
+            cell.peopleNumberLabel.text = @"已驳回";
+        }
         return cell;
-        
-        
         
     }else{
         JMSignUpProcessingLogModel *model = [dataArray objectAtIndex:indexPath.row];
@@ -97,7 +106,6 @@
         return cell;
         
     }
-    
     
 }
 

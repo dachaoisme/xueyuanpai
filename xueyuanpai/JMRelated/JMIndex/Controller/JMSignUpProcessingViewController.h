@@ -12,4 +12,10 @@
 
 @property(nonatomic,strong)NSString *entity_type;
 @property(nonatomic,strong)NSString *entity_id;
+
+@property(nonatomic,strong)NSString *image;
+@property(nonatomic,strong)NSString *theTitle;
+@property(nonatomic,strong)NSString *subTitle;
+@property(nonatomic,strong)NSString *colledge_name;
+@property(nonatomic,assign)SignupType status;
 @end
