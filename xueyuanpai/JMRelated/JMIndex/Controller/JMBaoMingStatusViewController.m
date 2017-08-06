@@ -10,6 +10,8 @@
 
 #import "JMBaoMingStatusTableViewCell.h"
 
+#import "JMHomePageThreeTypeTableViewCell.h"
+
 @interface JMBaoMingStatusViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -50,25 +52,65 @@
     //注册cell
     [_tableView registerClass:[JMBaoMingStatusTableViewCell class] forCellReuseIdentifier:@"JMBaoMingStatusTableViewCell"];
     
+    
+    [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    if (section == 0) {
+        
+        return 1;
+        
+    }else{
+        return 5;
+
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    JMBaoMingStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMBaoMingStatusTableViewCell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (indexPath.section == 0) {
+        JMHomePageThreeTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+        
+        
+        
+    }else{
+        
+        JMBaoMingStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMBaoMingStatusTableViewCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+
+    }
     
-    return cell;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 70;
+    if (indexPath.section == 0) {
+        
+        return 100;
+
+        
+    }else{
+        
+        return 70;
+
+    }
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
