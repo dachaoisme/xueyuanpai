@@ -9,13 +9,18 @@
 #import "JMSignUpProcessingViewController.h"
 #import "YYModel.h"
 #import "JMSignUpProcessingLogModel.h"
+#import "JMBaoMingStatusTableViewCell.h"
+#import "JMHomePageThreeTypeTableViewCell.h"
 @interface JMSignUpProcessingViewController ()
+<UITableViewDelegate,UITableViewDataSource>
+
 {
     NSMutableArray *dataArray;
     int currentPage;
     int nextPage;
     int pageSize;
 }
+@property (nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation JMSignUpProcessingViewController
@@ -23,7 +28,96 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"报名日志";
+    
+    [self createLeftBackNavBtn];
+    
+    pageSize =10;
+    currentPage = 1;
+    dataArray = [NSMutableArray array];
+    //创建当前列表视图
+    [self createTableView];
     [self requestData];
+}
+#pragma mark - 创建tableView列表视图
+- (void)createTableView{
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
+    _tableView.backgroundColor=[CommonUtils colorWithHex:NORMAL_BACKGROUND_COLOR];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [self.view addSubview:_tableView];
+    
+    
+    //注册cell
+    [_tableView registerClass:[JMBaoMingStatusTableViewCell class] forCellReuseIdentifier:@"JMBaoMingStatusTableViewCell"];
+    
+    
+    [_tableView registerClass:[JMHomePageThreeTypeTableViewCell class] forCellReuseIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+    [_tableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    if (section == 0) {
+        
+        return 1;
+        
+    }else{
+        return dataArray.count;
+        
+    }
+    
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        JMHomePageThreeTypeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+        
+        
+        
+    }else{
+        JMSignUpProcessingLogModel *model = [dataArray objectAtIndex:indexPath.row];
+        JMBaoMingStatusTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JMBaoMingStatusTableViewCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        ///日期
+        cell.dateLabel.text = model.time;
+        cell.statusLabel.text = model.msg;
+        return cell;
+        
+    }
+    
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section == 0) {
+        
+        return 100;
+        
+        
+    }else{
+        
+        return 70;
+        
+    }
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    
+    return 0.01;
 }
 -(void)requestData
 {
@@ -42,9 +136,9 @@
         [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     }
     [dic setObject:[NSString stringWithFormat:@"%d",currentPage] forKey:@"page"];
-    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"size"];
+    [dic setObject:[NSString stringWithFormat:@"%d",pageSize] forKey:@"limit"];
     [[HttpClient sharedInstance]signUpProcessingWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
-        //[self.tableView.footer endRefreshing];
+        [self.tableView.footer endRefreshing];
         
         NSArray * listArray = [model.responseCommonDic objectForKey:@"lists"];
         
@@ -56,11 +150,11 @@
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMSignUpProcessingLogModel *model = [JMSignUpProcessingLogModel yy_modelWithDictionary:tempDic];
             [dataArray addObject:model];
-            //[self.tableView reloadData];
+            [self.tableView reloadData];
         }
         
     } withFaileBlock:^(NSError *error) {
-        //[self.tableView.footer endRefreshing];
+        [self.tableView.footer endRefreshing];
     }];
     
 }
@@ -72,7 +166,7 @@
 -(void)refreshData
 {
     [dataArray removeAllObjects];
-    //[self.tableView reloadData];
+    [self.tableView reloadData];
     nextPage=currentPage=1;
     [self requestData];
 }
