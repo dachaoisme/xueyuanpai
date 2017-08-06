@@ -10,4 +10,6 @@
 
 @interface JMSignUpProcessingViewController : BaseViewController
 
+@property(nonatomic,strong)NSString *entity_type;
+@property(nonatomic,strong)NSString *entity_id;
 @end

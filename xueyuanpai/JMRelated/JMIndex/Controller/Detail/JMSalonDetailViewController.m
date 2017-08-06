@@ -13,6 +13,8 @@
 #import "JMCourseDetailOneTableViewCell.h"
 #import "JMSignUpTrainingProjectViewController.h"
 #import "JMCommentListViewController.h"
+
+#import "JMSignUpProcessingViewController.h"
 @interface JMSalonDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -20,6 +22,7 @@
     UIButton *zanBtn;
     UIButton *commentBtn;
     UIButton *collectionBtn;
+    SignupType signupType;
 }
 @property (nonatomic,strong)UITableView *tableView;
 
@@ -35,7 +38,7 @@
     
     ///创业课程详情【线下】
     self.title = @"沙龙详情";
-    
+    signupType = UnSignup;
     [self createLeftBackNavBtn];
     //创建当前列表视图
     [self createTableView];
@@ -341,8 +344,17 @@
     [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         
         if (model.responseCode==ResponseCodeSuccess) {
-            [collectionBtn setTitle:[NSString stringWithFormat:@" 已参加 %@",self.model.count_partin] forState:UIControlStateNormal];
-            collectionBtn.enabled = NO;
+            int status =[[model.responseCommonDic objectForKey:@"status"] intValue];
+            signupType = status;
+            if (status==UnSignup) {
+                [collectionBtn setTitle:[NSString stringWithFormat:@" 我要报名 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
+            }else if (status==Processing){
+                [collectionBtn setTitle:[NSString stringWithFormat:@" 审核中 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
+            }else if (status==Pass){
+                [collectionBtn setTitle:[NSString stringWithFormat:@" 已报名 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
+            }else{
+                [collectionBtn setTitle:[NSString stringWithFormat:@" 已驳回 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
+            }
         }
     } withFaileBlock:^(NSError *error) {
         
@@ -350,16 +362,22 @@
 }
 - (void)collectionAction{
     
-    //    [CommonUtils showToastWithStr:@"报名"];
+    if (signupType ==UnSignup) {
+        JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
+        signUpAction.entity_id = self.model.salonItemId;
+        signUpAction.entity_type = ENTITY_TYPE_SALON;
+        signUpAction.returnBlock = ^{
+            signupType = Processing;
+            [collectionBtn setTitle:[NSString stringWithFormat:@" 审核中 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
+        };
+        [self.navigationController pushViewController:signUpAction animated:YES];
+    }else{
+        JMSignUpProcessingViewController *signUpProcessingVC =[[JMSignUpProcessingViewController alloc] init];
+        signUpProcessingVC.entity_type = ENTITY_TYPE_PROJECT;
+        signUpProcessingVC.entity_id =self.model.salonItemId;
+        [self.navigationController pushViewController:signUpProcessingVC animated:YES];
+    }
     
-    JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
-    signUpAction.entity_id = self.model.salonItemId;
-    signUpAction.entity_type = ENTITY_TYPE_SALON;
-    signUpAction.returnBlock = ^{
-        [collectionBtn setTitle:[NSString stringWithFormat:@" 已参加 %d",[detailModel.count_partin intValue]+1] forState:UIControlStateNormal];
-        collectionBtn.enabled = NO;
-    };
-    [self.navigationController pushViewController:signUpAction animated:YES];
 }
 #pragma mark - 评论
 - (void)commentAction{

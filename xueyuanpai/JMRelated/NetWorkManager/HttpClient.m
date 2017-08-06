@@ -136,6 +136,15 @@
         failBlock(error);
     }];
 }
+///报名进度
+- (void)signUpProcessingWithParams:(NSDictionary *)params withSuccessBlock:(XYPBaseBlock)successBlock withFaileBlock:(XYPHttpErrorBlock)failBlock
+{
+    [[HttpServer sharedInstance]getWithMethod:METHOD_OF_SIGN_UP_PROCESSING withParams:params withSuccess:^(HttpResponseCodeModel *model) {
+        successBlock(model);
+    } withFailBlock:^(NSError *error) {
+        failBlock(error);
+    }];
+}
 
 #pragma mark - 创业课程相关
 /*

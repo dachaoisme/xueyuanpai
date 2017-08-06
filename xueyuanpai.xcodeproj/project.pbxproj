@@ -27,6 +27,8 @@
 		1640F8A31F36E48F008EBC7B /* JMMIneProjectRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640F8A21F36E48F008EBC7B /* JMMIneProjectRootViewController.m */; };
 		1640F8A71F36EF34008EBC7B /* JMStartupProjectRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640F8A61F36EF34008EBC7B /* JMStartupProjectRootViewController.m */; };
 		1640F8AB1F36F3C7008EBC7B /* JMMIneSalonRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640F8AA1F36F3C7008EBC7B /* JMMIneSalonRootViewController.m */; };
+		1640F8AE1F370A98008EBC7B /* JMSignUpProcessingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640F8AD1F370A98008EBC7B /* JMSignUpProcessingViewController.m */; };
+		1640F8B11F3718F1008EBC7B /* JMSignUpProcessingLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1640F8B01F3718F1008EBC7B /* JMSignUpProcessingLogModel.m */; };
 		166DD08B1E9A097D00B2B002 /* JMHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */; };
 		166DD08E1E9A099500B2B002 /* JMKuaiDiYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD08D1E9A099500B2B002 /* JMKuaiDiYuanViewController.m */; };
 		166DD0911E9A099F00B2B002 /* JMMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 166DD0901E9A099F00B2B002 /* JMMineViewController.m */; };
@@ -1037,6 +1039,10 @@
 		1640F8A61F36EF34008EBC7B /* JMStartupProjectRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMStartupProjectRootViewController.m; sourceTree = "<group>"; };
 		1640F8A91F36F3C7008EBC7B /* JMMIneSalonRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMMIneSalonRootViewController.h; sourceTree = "<group>"; };
 		1640F8AA1F36F3C7008EBC7B /* JMMIneSalonRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMMIneSalonRootViewController.m; sourceTree = "<group>"; };
+		1640F8AC1F370A98008EBC7B /* JMSignUpProcessingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSignUpProcessingViewController.h; sourceTree = "<group>"; };
+		1640F8AD1F370A98008EBC7B /* JMSignUpProcessingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSignUpProcessingViewController.m; sourceTree = "<group>"; };
+		1640F8AF1F3718F1008EBC7B /* JMSignUpProcessingLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMSignUpProcessingLogModel.h; sourceTree = "<group>"; };
+		1640F8B01F3718F1008EBC7B /* JMSignUpProcessingLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMSignUpProcessingLogModel.m; sourceTree = "<group>"; };
 		166DD0891E9A097D00B2B002 /* JMHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMHomePageViewController.h; sourceTree = "<group>"; };
 		166DD08A1E9A097D00B2B002 /* JMHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMHomePageViewController.m; sourceTree = "<group>"; };
 		166DD08C1E9A099500B2B002 /* JMKuaiDiYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMKuaiDiYuanViewController.h; sourceTree = "<group>"; };
@@ -2624,8 +2630,6 @@
 		1640F8A01F36E286008EBC7B /* JMMineProject */ = {
 			isa = PBXGroup;
 			children = (
-				DDD794A81EA07DF90024C4E6 /* JMMineProjectListViewController.h */,
-				DDD794A91EA07DF90024C4E6 /* JMMineProjectListViewController.m */,
 				1640F8A11F36E48F008EBC7B /* JMMIneProjectRootViewController.h */,
 				1640F8A21F36E48F008EBC7B /* JMMIneProjectRootViewController.m */,
 			);
@@ -2635,8 +2639,6 @@
 		1640F8A41F36EEED008EBC7B /* JMStartupProject */ = {
 			isa = PBXGroup;
 			children = (
-				DDD794AB1EA082A10024C4E6 /* JMStartupProjectViewController.h */,
-				DDD794AC1EA082A10024C4E6 /* JMStartupProjectViewController.m */,
 				1640F8A51F36EF34008EBC7B /* JMStartupProjectRootViewController.h */,
 				1640F8A61F36EF34008EBC7B /* JMStartupProjectRootViewController.m */,
 			);
@@ -2646,8 +2648,6 @@
 		1640F8A81F36F39E008EBC7B /* JMMIneSalon */ = {
 			isa = PBXGroup;
 			children = (
-				DDD794AE1EA09AF70024C4E6 /* JMMineActivityListViewController.h */,
-				DDD794AF1EA09AF70024C4E6 /* JMMineActivityListViewController.m */,
 				1640F8A91F36F3C7008EBC7B /* JMMIneSalonRootViewController.h */,
 				1640F8AA1F36F3C7008EBC7B /* JMMIneSalonRootViewController.m */,
 			);
@@ -2718,6 +2718,8 @@
 				DDD794BA1EA291480024C4E6 /* JMCommentListViewController.m */,
 				DD46444A1E9E2C0500EAE186 /* JMSignUpTrainingProjectViewController.h */,
 				DD46444B1E9E2C0500EAE186 /* JMSignUpTrainingProjectViewController.m */,
+				1640F8AC1F370A98008EBC7B /* JMSignUpProcessingViewController.h */,
+				1640F8AD1F370A98008EBC7B /* JMSignUpProcessingViewController.m */,
 				DD46445A1E9E497E00EAE186 /* JMTrainingProjectListViewController.h */,
 				DD46445B1E9E497E00EAE186 /* JMTrainingProjectListViewController.m */,
 				16154FAD1E9FBFD700FB46AA /* JMJobListViewController.h */,
@@ -3030,6 +3032,8 @@
 				16154FC71EA3210E00FB46AA /* JMCommentModel.m */,
 				16EFAF3E1EAA05E1009742CA /* JMMessageModel.h */,
 				16EFAF3F1EAA05E1009742CA /* JMMessageModel.m */,
+				1640F8AF1F3718F1008EBC7B /* JMSignUpProcessingLogModel.h */,
+				1640F8B01F3718F1008EBC7B /* JMSignUpProcessingLogModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6248,6 +6252,7 @@
 				58F996471CF598A700D67C63 /* TimeBankModel.m in Sources */,
 				DD4127971CF19DC300227066 /* ActivityDetailView.m in Sources */,
 				58F67C381CD9CF9500D55BE0 /* UIView+Toast.m in Sources */,
+				1640F8B11F3718F1008EBC7B /* JMSignUpProcessingLogModel.m in Sources */,
 				DDB28DE61D2C8A7E004C8F70 /* EMCDDeviceManagerBase.m in Sources */,
 				DDB28E1A1D2C8A7E004C8F70 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				DD58A8591ED4960500CC845F /* JMChangePasswordViewController.m in Sources */,
@@ -6438,6 +6443,7 @@
 				166DD16B1E9A0F7C00B2B002 /* WithdrawaTableViewCell.m in Sources */,
 				166DD0BF1E9A0E5000B2B002 /* RegisterRoleView.m in Sources */,
 				DDCD713E1D0A98F2009FBE9A /* CourierNoticeViewController.m in Sources */,
+				1640F8AE1F370A98008EBC7B /* JMSignUpProcessingViewController.m in Sources */,
 				DDB28E131D2C8A7E004C8F70 /* UIButton+EMWebCache.m in Sources */,
 				58D9B31F1D39F21800C4D6FA /* DataSigner.m in Sources */,
 				1640F8A71F36EF34008EBC7B /* JMStartupProjectRootViewController.m in Sources */,

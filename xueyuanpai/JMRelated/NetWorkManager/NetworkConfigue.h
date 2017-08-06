@@ -46,7 +46,8 @@
 #define METHOD_OF_COLLECTION @"user/checkpartin"
 ///报名
 #define METHOD_OF_SIGN_UP @"user/partin"
-
+//获取报名列表
+#define METHOD_OF_SIGN_UP_PROCESSING @"user/partinloglist"
 ////////创业课程相关////////
 #define METHOD_OF_BANNER_OF_INDEX    @"focus/index"
 ///集梦创客轮播图

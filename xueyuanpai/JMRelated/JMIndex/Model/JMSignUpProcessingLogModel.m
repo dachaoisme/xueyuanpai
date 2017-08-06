@@ -10,4 +10,10 @@
 
 @implementation JMSignUpProcessingLogModel
 
++ (NSDictionary<NSString *, id> *)modelCustomPropertyMapper
+{
+    return @{ @"logId" : @"id",
+              };
+}
+
 @end

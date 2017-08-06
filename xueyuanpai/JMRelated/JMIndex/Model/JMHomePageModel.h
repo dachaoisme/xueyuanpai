@@ -115,7 +115,7 @@ is_online  1:线上 0线下
      "create_time": "2017-03-19 11:29:17",
      "update_time": "2017-03-19 11:29:17",
      "colllege_name": "化工学院",
-    "is_signed": 1, //是否报名过  1报名过 0 未报名
+    "is_signed": 1, //是否报名过  (修改为 -1 未报名 0 待审核 1 审核通过 2 驳回 )
  "is_online" = 1;
      "members": [   //项目成员
      {

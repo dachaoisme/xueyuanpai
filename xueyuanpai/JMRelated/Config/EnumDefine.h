@@ -9,6 +9,8 @@
 #ifndef EnumDefine_h
 #define EnumDefine_h
 
+#pragma mark - 学院派一期
+
 typedef NS_ENUM(NSInteger, ReturnCode){
     Success                   = 10000,
     ParamMistake              = 10001,
@@ -21,6 +23,21 @@ typedef NS_ENUM(NSInteger, ReturnCode){
     SignMistake               = 10008
 };
 
+//-1 未报名 0 审核中 1 已通过 2已驳回
+typedef NS_ENUM(NSInteger, SignupType){
+    UnSignup                = -1,
+    Processing              = 0,
+    Pass                    = 1,
+    Reject                  = 2
+};
+
+
+
+
+
+
+
+#pragma mark - 学院派二期
 typedef NS_ENUM(NSInteger, BannerLinkToType){
     BannerLinkToWebView              = 0, //0 url地址
     BannerLinkToNewStudentStrategy   = 1, //1 大学生新生攻略
