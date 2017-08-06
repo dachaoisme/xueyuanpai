@@ -32,6 +32,15 @@
 
 @implementation JMSalonDetailViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    //修改评论数目
+    [self changeCommentCount];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -464,6 +473,23 @@
         
     }];
 }
+
+- (void)changeCommentCount{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.model.salonItemId forKey:@"salon_id"];
+    [[HttpClient sharedInstance] getTrainSalonDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        detailModel = [JMSalonModel  yy_modelWithDictionary:listDic];
+        
+        
+        [commentBtn setTitle:[NSString stringWithFormat:@" %@",detailModel.count_comment] forState:UIControlStateNormal];
+
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

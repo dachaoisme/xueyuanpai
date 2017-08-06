@@ -18,6 +18,9 @@
     JMCourseModel *detailModel;
     UIButton *zanBtn;
     UIButton *collectionBtn;
+    
+    //右侧评论按钮
+    UIButton *commentBtn;
 }
 
 @property (nonatomic,strong)UITableView *tableView;
@@ -25,6 +28,14 @@
 @end
 
 @implementation JMCourseDetailsViewController
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    //修改评论数目
+    [self changeCommentCount];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -245,7 +256,7 @@
     
     
     //右侧评论按钮
-    UIButton *commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [commentBtn setImage:[UIImage imageNamed:@"detail_icon_chat"] forState:UIControlStateNormal];
     commentBtn.backgroundColor = [CommonUtils colorWithHex:@"f5f5f5"];
     commentBtn.layer.cornerRadius = 4;
@@ -451,6 +462,23 @@
     } withFaileBlock:^(NSError *error) {
         
     }];
+}
+
+
+- (void)changeCommentCount{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:self.model.courseItemId forKey:@"course_id"];
+    [[HttpClient sharedInstance] getTrainCourseDetailWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, NSDictionary *listDic) {
+        detailModel = [JMCourseModel   yy_modelWithDictionary:listDic];
+        //创建底部视图我要报名
+        [commentBtn setTitle:[NSString stringWithFormat:@" %@",detailModel.count_comment] forState:UIControlStateNormal];
+
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
