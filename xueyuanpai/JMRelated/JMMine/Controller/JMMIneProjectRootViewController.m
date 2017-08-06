@@ -38,6 +38,12 @@
     // Do any additional setup after loading the view.
     self.title = @"我的实训项目";
     [self createLeftBackNavBtn];
+    
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0.01)];
+    headView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:headView];
+
+    
     [self setupScrollView];
 }
 #pragma mark - 设置一级导航栏滚动标题以及滚动controller相关
