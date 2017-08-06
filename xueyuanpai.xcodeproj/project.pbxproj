@@ -2649,6 +2649,8 @@
 		1640F8A41F36EEED008EBC7B /* JMStartupProject */ = {
 			isa = PBXGroup;
 			children = (
+				DDD794AB1EA082A10024C4E6 /* JMStartupProjectViewController.h */,
+				DDD794AC1EA082A10024C4E6 /* JMStartupProjectViewController.m */,
 				1640F8A51F36EF34008EBC7B /* JMStartupProjectRootViewController.h */,
 				1640F8A61F36EF34008EBC7B /* JMStartupProjectRootViewController.m */,
 			);
@@ -2658,6 +2660,8 @@
 		1640F8A81F36F39E008EBC7B /* JMMIneSalon */ = {
 			isa = PBXGroup;
 			children = (
+				DDD794AE1EA09AF70024C4E6 /* JMMineActivityListViewController.h */,
+				DDD794AF1EA09AF70024C4E6 /* JMMineActivityListViewController.m */,
 				1640F8A91F36F3C7008EBC7B /* JMMIneSalonRootViewController.h */,
 				1640F8AA1F36F3C7008EBC7B /* JMMIneSalonRootViewController.m */,
 			);
@@ -2786,10 +2790,6 @@
 				DD58A8581ED4960500CC845F /* JMChangePasswordViewController.m */,
 				DDD794A81EA07DF90024C4E6 /* JMMineProjectListViewController.h */,
 				DDD794A91EA07DF90024C4E6 /* JMMineProjectListViewController.m */,
-				DDD794AB1EA082A10024C4E6 /* JMStartupProjectViewController.h */,
-				DDD794AC1EA082A10024C4E6 /* JMStartupProjectViewController.m */,
-				DDD794AE1EA09AF70024C4E6 /* JMMineActivityListViewController.h */,
-				DDD794AF1EA09AF70024C4E6 /* JMMineActivityListViewController.m */,
 				DDD794B61EA116900024C4E6 /* MineSettingViewController.h */,
 				DDD794B71EA116900024C4E6 /* MineSettingViewController.m */,
 				DDD794A51EA07B990024C4E6 /* MineIntegralViewController.h */,

@@ -39,7 +39,7 @@
     currentPage=nextPage=1;
     pageSize=10;
     dataArray = [NSMutableArray array];
-    self.title = @"我的沙龙活动";
+    //self.title = @"我的沙龙活动";
     [self createLeftBackNavBtn];
     [self createTableView];
     if (self.stateType==0) {
@@ -209,12 +209,63 @@
     
     return 0.01;
 }
+#pragma mark - 编辑模式相关
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.stateType==0) {
+        ///报名
+        return NO;
+    }else{
+        //收藏
+        return YES;
+    }
+    
+}
+/**
+ *  修改Delete按钮文字为“删除”
+ */
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
+
+//IOS9前自定义左滑多个按钮需实现此方法
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    JMSalonModel *model = [dataArray objectAtIndex:indexPath.row];
+    [self cancelCollectionWithModel:model];
+    // 删除模型
+    [dataArray removeObjectAtIndex:indexPath.row];
+    
+    // 刷新
+    if (![dataArray count]) { //删除此行后数据源为空
+        [self.tableView deleteSections: [NSIndexSet indexSetWithIndex: indexPath.section] withRowAnimation:UITableViewRowAnimationBottom];
+    } else {
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+}
+-(void)cancelCollectionWithModel:(JMSalonModel *)model
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    if ([UserAccountManager sharedInstance].userId) {
+        [dic setValue:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
+    }
+    [dic setObject:ENTITY_TYPE_SALON forKey:@"entity_type"];
+    [dic setObject:model.salonItemId forKey:@"entity_id"];
+    
+    [[HttpClient sharedInstance]deleteCollectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+        NSDictionary *dic = model.responseCommonDic;
+        
+    } withFaileBlock:^(NSError *error) {
+        
+    }];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 /*
 #pragma mark - Navigation
 
