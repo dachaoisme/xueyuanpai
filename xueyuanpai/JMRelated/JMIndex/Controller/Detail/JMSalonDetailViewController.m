@@ -377,7 +377,6 @@
         signUpProcessingVC.entity_id =self.model.salonItemId;
         [self.navigationController pushViewController:signUpProcessingVC animated:YES];
     }
-    
 }
 #pragma mark - 评论
 - (void)commentAction{

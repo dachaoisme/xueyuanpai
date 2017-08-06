@@ -527,6 +527,10 @@
 		DD330B961F36EA4B005765D4 /* JMEditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD330B951F36EA4B005765D4 /* JMEditProfileViewController.m */; };
 		DD330B9E1F36EB77005765D4 /* JMEditProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD330B9D1F36EB77005765D4 /* JMEditProfileTableViewCell.m */; };
 		DD330BA11F36EEAB005765D4 /* JMEditNickNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD330BA01F36EEAB005765D4 /* JMEditNickNameTableViewCell.m */; };
+		DD330BA91F371024005765D4 /* JMBaoMingStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD330BA81F371024005765D4 /* JMBaoMingStatusViewController.m */; };
+		DD330BAC1F371496005765D4 /* JMBaoMingStatusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD330BAB1F371496005765D4 /* JMBaoMingStatusTableViewCell.m */; };
+		DD330BAF1F371681005765D4 /* profile_dot_highlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD330BAD1F371681005765D4 /* profile_dot_highlight@2x.png */; };
+		DD330BB01F371681005765D4 /* profile_dot_highlight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD330BAE1F371681005765D4 /* profile_dot_highlight@3x.png */; };
 		DD343C911ED1D1B2001E9B40 /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD343C901ED1D1B2001E9B40 /* PushConfig.plist */; };
 		DD343C951ED1D373001E9B40 /* jpush-ios-2.1.9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD343C931ED1D373001E9B40 /* jpush-ios-2.1.9.a */; };
 		DD4127231CF043DF00227066 /* UniversityAssnHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4127221CF043DF00227066 /* UniversityAssnHeaderView.m */; };
@@ -1829,6 +1833,12 @@
 		DD330B9D1F36EB77005765D4 /* JMEditProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMEditProfileTableViewCell.m; sourceTree = "<group>"; };
 		DD330B9F1F36EEAA005765D4 /* JMEditNickNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMEditNickNameTableViewCell.h; sourceTree = "<group>"; };
 		DD330BA01F36EEAB005765D4 /* JMEditNickNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMEditNickNameTableViewCell.m; sourceTree = "<group>"; };
+		DD330BA71F371024005765D4 /* JMBaoMingStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMBaoMingStatusViewController.h; sourceTree = "<group>"; };
+		DD330BA81F371024005765D4 /* JMBaoMingStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBaoMingStatusViewController.m; sourceTree = "<group>"; };
+		DD330BAA1F371496005765D4 /* JMBaoMingStatusTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMBaoMingStatusTableViewCell.h; sourceTree = "<group>"; };
+		DD330BAB1F371496005765D4 /* JMBaoMingStatusTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMBaoMingStatusTableViewCell.m; sourceTree = "<group>"; };
+		DD330BAD1F371681005765D4 /* profile_dot_highlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_dot_highlight@2x.png"; sourceTree = "<group>"; };
+		DD330BAE1F371681005765D4 /* profile_dot_highlight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_dot_highlight@3x.png"; sourceTree = "<group>"; };
 		DD343C8F1ED1D0C2001E9B40 /* xueyuanpai.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = xueyuanpai.entitlements; sourceTree = "<group>"; };
 		DD343C901ED1D1B2001E9B40 /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		DD343C931ED1D373001E9B40 /* jpush-ios-2.1.9.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.9.a"; sourceTree = "<group>"; };
@@ -2714,6 +2724,8 @@
 				DD4644551E9E3E8800EAE186 /* JMHomePageEndProjectDetailViewController.m */,
 				DD09B7B61E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.h */,
 				DD09B7B71E9CDBCF001D1DB0 /* JMHomePageViewTrainingProjectDetailController.m */,
+				DD330BA71F371024005765D4 /* JMBaoMingStatusViewController.h */,
+				DD330BA81F371024005765D4 /* JMBaoMingStatusViewController.m */,
 				DDD794B91EA291480024C4E6 /* JMCommentListViewController.h */,
 				DDD794BA1EA291480024C4E6 /* JMCommentListViewController.m */,
 				DD46444A1E9E2C0500EAE186 /* JMSignUpTrainingProjectViewController.h */,
@@ -3156,6 +3168,8 @@
 		582998691CDB29CF004A05FB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				DD330BAD1F371681005765D4 /* profile_dot_highlight@2x.png */,
+				DD330BAE1F371681005765D4 /* profile_dot_highlight@3x.png */,
 				DD0F42481D22702500115B96 /* Message */,
 				DDCD70931D06BA1D009FBE9A /* Courier */,
 				DDAB43601D05531A00FADB3E /* Mine */,
@@ -4430,6 +4444,8 @@
 				DD4644521E9E2E1000EAE186 /* JMSignUpTwoTypeTableViewCell.m */,
 				DDCD70D11D0808ED009FBE9A /* CommonTableViewCell.h */,
 				DDCD70D21D0808ED009FBE9A /* CommonTableViewCell.m */,
+				DD330BAA1F371496005765D4 /* JMBaoMingStatusTableViewCell.h */,
+				DD330BAB1F371496005765D4 /* JMBaoMingStatusTableViewCell.m */,
 			);
 			path = HomePageSingnUp;
 			sourceTree = "<group>";
@@ -5708,6 +5724,7 @@
 				DD0B1F001CFEFB6200C4BAB2 /* PublishInformationOneStyleTableViewCell.xib in Resources */,
 				58070FDC1CF6E80200F03F6C /* timebank_status_done@2x.png in Resources */,
 				58070FDE1CF6E80200F03F6C /* timebank_status_time@2x.png in Resources */,
+				DD330BB01F371681005765D4 /* profile_dot_highlight@3x.png in Resources */,
 				DDB28E8C1D2CF787004C8F70 /* icon_024_cover.png in Resources */,
 				DDAB43871D05531A00FADB3E /* profile_icon_friends@2x.png in Resources */,
 				58070FAF1CF6E80200F03F6C /* timebank_filter_chat_hl@3x.png in Resources */,
@@ -5859,6 +5876,7 @@
 				DDE8C2331CF71E8800AB36A2 /* SchoolRecruitmentTableViewCell.xib in Resources */,
 				DDAB43811D05531A00FADB3E /* pay_checkbox@2x.png in Resources */,
 				DDD0BDB01CFA75E800073290 /* PositionTwoTableViewCell.xib in Resources */,
+				DD330BAF1F371681005765D4 /* profile_dot_highlight@2x.png in Resources */,
 				58F67C2B1CD9CF9500D55BE0 /* MJRefresh.bundle in Resources */,
 				5874A3D31CF1249400CE9FC9 /* home_icon_recruit@3x.png in Resources */,
 				DDCD70CC1D06CA65009FBE9A /* SendCourierThreeTableViewCell.xib in Resources */,
@@ -6334,6 +6352,7 @@
 				DDB28E301D2C8A7E004C8F70 /* UIViewController+HUD.m in Sources */,
 				DD46448C1E9E944900EAE186 /* SGSegmentedControlDefault.m in Sources */,
 				5874A3671CF03B5700CE9FC9 /* UniversityAssnViewController.m in Sources */,
+				DD330BA91F371024005765D4 /* JMBaoMingStatusViewController.m in Sources */,
 				DDB28E4A1D2C8A7E004C8F70 /* EaseBubbleView+Voice.m in Sources */,
 				DDB28DE81D2C8A7E004C8F70 /* wav.mm in Sources */,
 				166DD1511E9A0F7C00B2B002 /* MineModel.m in Sources */,
@@ -6538,6 +6557,7 @@
 				DDCD70C61D06C944009FBE9A /* SendCourierTwoTableViewCell.m in Sources */,
 				166DD1521E9A0F7C00B2B002 /* AboutUsTableViewCell.m in Sources */,
 				DDB28E0B1D2C8A7E004C8F70 /* EMSDWebImageCompat.m in Sources */,
+				DD330BAC1F371496005765D4 /* JMBaoMingStatusTableViewCell.m in Sources */,
 				58F67C041CD9A39200D55BE0 /* CommonUtils.m in Sources */,
 				583D65D11CDA7D4B00830BBE /* ResLoader.m in Sources */,
 				DDB28E211D2C8A7E004C8F70 /* PSTCollectionViewLayout.m in Sources */,
