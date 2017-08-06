@@ -13,6 +13,8 @@
 #import "JMCourseDetailOneTableViewCell.h"
 #import "JMSignUpTrainingProjectViewController.h"
 #import "JMCommentListViewController.h"
+
+#import "JMBaoMingStatusViewController.h"
 @interface JMSalonDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 {
@@ -360,6 +362,7 @@
         collectionBtn.enabled = NO;
     };
     [self.navigationController pushViewController:signUpAction animated:YES];
+    
 }
 #pragma mark - 评论
 - (void)commentAction{

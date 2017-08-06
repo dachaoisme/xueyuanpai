@@ -10,6 +10,7 @@
 
 #import "JMCourseDetailOneTableViewCell.h"
 #import "JMSignUpTrainingProjectViewController.h"
+#import "JMBaoMingStatusViewController.h"
 #import "JMCommentListViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
 @interface JMCourseDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>

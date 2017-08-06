@@ -13,6 +13,7 @@
 
 #import "JMSignUpTrainingProjectViewController.h"
 #import "JMHomePageModel.h"
+#import "JMBaoMingStatusViewController.h"
 
 #import "JMCommentListViewController.h"
 @interface JMHomePageViewTrainingProjectDetailController ()<UITableViewDelegate,UITableViewDataSource>
@@ -439,14 +440,19 @@
     
 //    [CommonUtils showToastWithStr:@"报名"];
     
-    JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
-    signUpAction.entity_id = self.trainProjectId;
-    signUpAction.entity_type = ENTITY_TYPE_PROJECT;
-    signUpAction.returnBlock = ^{
-        [collectionBtn setTitle:@" 已报名" forState:UIControlStateNormal];
-        collectionBtn.enabled = NO;
-    };
-    [self.navigationController pushViewController:signUpAction animated:YES];
+//    JMSignUpTrainingProjectViewController *signUpAction = [[JMSignUpTrainingProjectViewController alloc] init];
+//    signUpAction.entity_id = self.trainProjectId;
+//    signUpAction.entity_type = ENTITY_TYPE_PROJECT;
+//    signUpAction.returnBlock = ^{
+//        [collectionBtn setTitle:@" 已报名" forState:UIControlStateNormal];
+//        collectionBtn.enabled = NO;
+//    };
+//    [self.navigationController pushViewController:signUpAction animated:YES];
+    
+    
+    //报名日志
+    JMBaoMingStatusViewController *baomingStatusVC = [[JMBaoMingStatusViewController alloc] init];
+    [self.navigationController pushViewController:baomingStatusVC animated:YES];
 }
 #pragma mark - 评论
 - (void)commentAction{
