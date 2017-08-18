@@ -12,5 +12,5 @@
 
 @property(nonatomic,copy)void (^callback)();
 
-
+@property(nonatomic,assign)BOOL yesIsFromKuaiDiIndex;
 @end

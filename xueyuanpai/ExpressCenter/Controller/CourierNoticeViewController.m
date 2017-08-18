@@ -26,7 +26,10 @@
 @implementation CourierNoticeViewController
 - (void)viewWillAppear:(BOOL)animated{
     
-    [self theTabBarHidden:YES];
+    if (!_yesIsFromKuaiDiIndex) {
+        [self theTabBarHidden:YES];
+    }
+    
     self.callback();
 
 }
@@ -49,6 +52,10 @@
 - (void)createTableView{
     
     UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStylePlain];
+    if (_yesIsFromKuaiDiIndex) {
+        tableView.frame=CGRectMake(CGRectGetMinX(tableView.frame), CGRectGetMinY(tableView.frame), CGRectGetWidth(tableView.frame), CGRectGetHeight(tableView.frame)-NAVIGATIONBAR_HEIGHT-NAV_TOP_HEIGHT);
+        
+    }
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
@@ -164,7 +171,7 @@
             totalMessageCount = [responseModel.responseCommonDic stringForKey:@"cnt"];
             unReadyMessageCount = [responseModel.responseCommonDic stringForKey:@"unreadcnt"];
             ///处理上拉加载更多逻辑
-            if (pageNum>=[pageModel.responsePageTotalCount integerValue]) {
+            if (pageNum>=[pageModel.responsePageTotalCount integerValue]||arr.count<pageSize) {
                 //说明是最后一张
                 self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
             }

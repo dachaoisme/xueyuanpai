@@ -12,7 +12,7 @@
 
 #import "JMCollectCourierListViewController.h"
 #import "JMMailDeliveryViewController.h"
-
+#import "CourierNoticeViewController.h"
 #import "JMSendExpressViewController.h"
 
 static int ceshi = 1;
@@ -73,7 +73,7 @@ static int ceshi = 1;
 - (void)setupScrollView
 {
     
-    NSMutableArray *titleArr = [NSMutableArray arrayWithObjects:@"收取快递", @"寄出快递",nil];
+    NSMutableArray *titleArr = [NSMutableArray arrayWithObjects:@"收取快递", @"寄出快递",@"快递通知",nil];
     
     NSMutableArray *childVCArray = [NSMutableArray array];
     
@@ -85,9 +85,17 @@ static int ceshi = 1;
     JMMailDeliveryViewController  *mailDeliveryVC = [[JMMailDeliveryViewController alloc] init];
     [self addChildViewController:mailDeliveryVC];
     
+    //跳转快递消息
+    CourierNoticeViewController *courierNoticeVC = [[CourierNoticeViewController alloc] init];
+    courierNoticeVC.yesIsFromKuaiDiIndex=YES;
+    courierNoticeVC.callback = ^(){
+        
+    };
+    [self addChildViewController:courierNoticeVC];
     
     [childVCArray addObject:collectCourierVC];
     [childVCArray addObject:mailDeliveryVC];
+    [childVCArray addObject:courierNoticeVC];
     
     
     [self initScrollViewTitleWithChildVCArray:childVCArray titleArray:titleArr];
@@ -104,11 +112,11 @@ static int ceshi = 1;
     
     //self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     if (IS_IPHONE_5) {
-        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(75, NAV_TOP_HEIGHT, self.view.frame.size.width-150, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(25, NAV_TOP_HEIGHT, self.view.frame.size.width-45, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     }else if (IS_IPHONE_6){
-        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(100, NAV_TOP_HEIGHT, self.view.frame.size.width-200, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(50, NAV_TOP_HEIGHT, self.view.frame.size.width-95, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     }else if (IS_IPHONE_6_PLUS){
-        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(115, NAV_TOP_HEIGHT, self.view.frame.size.width-230, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+        self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(70, NAV_TOP_HEIGHT, self.view.frame.size.width-125, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     }
     else{
         
