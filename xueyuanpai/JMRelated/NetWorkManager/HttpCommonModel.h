@@ -22,6 +22,9 @@
 
 @property(nonatomic,assign)ResponseCode         responseCode;           //类型
 @property(nonatomic,strong)NSString            *responseMsg;            //返回的message
+
+///报名状态
+@property (nonatomic,strong)NSString *status;
 @property(nonatomic,strong)NSDictionary        *responseCommonDic;      //data里面的数据
 
 -(id)initWithDic:(NSDictionary *)dic;

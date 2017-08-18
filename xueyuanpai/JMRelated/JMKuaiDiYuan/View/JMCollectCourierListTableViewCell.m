@@ -59,9 +59,10 @@
         circleView.layer.masksToBounds = YES;
         [self.contentView addSubview:circleView];
         
-        _showSiteLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, CGRectGetMaxY(_showCourierNumberLabel.frame) + 10, 200, 16)];
+        _showSiteLabel = [[UILabel alloc] initWithFrame:CGRectMake(26, CGRectGetMaxY(_showCourierNumberLabel.frame) + 10, SCREEN_WIDTH - 26 - 15, 40)];
         _showSiteLabel.font = [UIFont systemFontOfSize:14];
         _showSiteLabel.text = @"      已入库站点A";
+        _showSiteLabel.numberOfLines = 2;
         _showSiteLabel.textColor = [CommonUtils colorWithHex:@"b4b4b4"];
         [self.contentView addSubview:_showSiteLabel];
         

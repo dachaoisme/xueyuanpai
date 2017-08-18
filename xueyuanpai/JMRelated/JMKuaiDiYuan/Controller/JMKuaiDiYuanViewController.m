@@ -15,6 +15,8 @@
 
 #import "JMSendExpressViewController.h"
 
+static int ceshi = 1;
+
 @interface JMKuaiDiYuanViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
 
 @property(nonatomic,strong)SGSegmentedControlBottomView *bottomSView;
@@ -136,6 +138,23 @@
     self.chooseIndex = index;
     
     
+    ceshi += 1;
+    
+    if (ceshi == 2  || ceshi == 3) {
+        
+        return;
+    }
+    
+    //通知界面刷新
+    NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%ld",(long)index] forKey:@"index"];
+
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kRefrshMyKuaidi" object:self userInfo:dic];
+    
+    
+    
+    
+    
 }
 
 #pragma mark - UIScrollViewDelegate  设置一级导航栏滚动标题以及滚动controller相关
@@ -182,6 +201,10 @@
     
 }
 
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

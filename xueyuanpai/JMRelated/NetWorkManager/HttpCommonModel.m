@@ -16,6 +16,7 @@
     if (self) {
         
         self.responseCode           =[[dic stringForKey:@"stat"] integerValue];
+        self.status                 =[dic stringForKey:@"status"];
         self.responseMsg            = [dic stringForKey:@"msg"];
         self.responseCommonDic      = [dic objectForKey:@"data"];
     }
@@ -23,7 +24,6 @@
     return self;
     
 }
-
 @end
 
 

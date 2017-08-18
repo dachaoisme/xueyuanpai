@@ -22,27 +22,56 @@
 @end
 
 @implementation JMCollectCourierListViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //接收通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCurrentPage:) name:@"kRefrshMyKuaidi" object:nil];
+    
     
     self.title = @"收取快递";
-    nextPage=currentPage=0;
-    dataArray =[NSMutableArray array];
     //创建当前列表视图
     [self createTableView];
+    
+    
+    ///请求数据
+    nextPage=currentPage=1;
+    pageSize  =10;
+    dataArray =[NSMutableArray array];
     
     ///
     [self requestData];
 
+
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+
+- (void)refreshCurrentPage:(NSNotification *)notification{
+    
+    NSDictionary  *dict=[notification userInfo];
+    
+    NSString *index = [dict valueForKey:@"index"];
+    
+    
+    if ([index isEqualToString:@"0"]) {
+        
+        //刷新当前界面
+        ///请求数据
+        nextPage=currentPage=1;
+        pageSize  =10;
+        dataArray =[NSMutableArray array];
+        
+        [self.tableView reloadData];
+        ///
+        [self requestData];
+
+    }
+    
+  
+    
     
 }
+
 -(void)requestData
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -73,7 +102,7 @@
         model.logs = array;
         [dataArray addObject:model];
          */
-        if (currentPage==[pageModel.responsePageTotalCount intValue]) {
+        if (listArray.count == 0) {
             //说明是最后一张
             self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
         }
@@ -134,7 +163,7 @@
         cell.showSiteLabel.text =logModel.msg;
     }
     
-    if ([model.status isEqualToString:@"等待取件"]) {
+    if ([model.status isEqualToString:@"待领取"]) {
         //等待取件状态的设置
         cell.showHaveTakeLabel.hidden = YES;
         cell.showExpressArkLabel.hidden = NO;
@@ -155,7 +184,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    return 100;
+    return 120;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

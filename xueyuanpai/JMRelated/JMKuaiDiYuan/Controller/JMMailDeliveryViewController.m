@@ -25,19 +25,65 @@
 
 @implementation JMMailDeliveryViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    
+   
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //接收通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCurrentPage:) name:@"kRefrshMyKuaidi" object:nil];
+    
     self.title = @"寄出快递";
+    [self createTableView];
+    
+    
     nextPage=currentPage=1;
     pageSize  =10;
     dataArray =[NSMutableArray array];
-    [self createTableView];
+    
     ///
     [self requestData];
+}
+
+
+- (void)refreshCurrentPage:(NSNotification *)notification{
+    
+    NSDictionary  *dict=[notification userInfo];
+    
+    NSString *index = [dict valueForKey:@"index"];
+    
+    
+    if ([index isEqualToString:@"1"]) {
+        
+        //刷新当前界面
+        ///请求数据
+        nextPage=currentPage=1;
+        pageSize  =10;
+        dataArray =[NSMutableArray array];
+        
+        [self.tableView reloadData];
+
+        
+        ///
+        [self requestData];
+        
+    }
+    
+    
+    
     
 }
+
+
+
 -(void)requestData
 {
     
@@ -58,7 +104,7 @@
             
         }
         
-        if (currentPage==[pageModel.responsePageTotalCount intValue]) {
+        if (listArray.count == 0) {
             //说明是最后一张
             self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
         }

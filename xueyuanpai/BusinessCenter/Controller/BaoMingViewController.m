@@ -201,7 +201,7 @@
         ///获取查询条件
         if (model.responseCode == ResponseCodeSuccess) {
             //报名成功
-//            [CommonUtils showToastWithStr:model.responseMsg];
+            [CommonUtils showToastWithStr:model.responseMsg];
             
         
             //跳转成功界面

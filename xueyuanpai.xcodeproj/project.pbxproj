@@ -436,8 +436,6 @@
 		DD0F42801D22702500115B96 /* msg_status_refuse@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42621D22702500115B96 /* msg_status_refuse@3x.png */; };
 		DD0F42811D22702500115B96 /* msg_status_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42631D22702500115B96 /* msg_status_success@2x.png */; };
 		DD0F42821D22702500115B96 /* msg_status_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42641D22702500115B96 /* msg_status_success@3x.png */; };
-		DD0F42831D22702500115B96 /* timebank_bubble_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42651D22702500115B96 /* timebank_bubble_arrow@2x.png */; };
-		DD0F42841D22702500115B96 /* timebank_bubble_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42661D22702500115B96 /* timebank_bubble_arrow@3x.png */; };
 		DD0F42871D22705D00115B96 /* MessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F42861D22705D00115B96 /* MessageTableViewCell.m */; };
 		DD0F42911D239D5800115B96 /* PPDragDropBadgeView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD0F42891D239D5800115B96 /* PPDragDropBadgeView.bundle */; };
 		DD0F42921D239D5800115B96 /* PPDragDropBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD0F428B1D239D5800115B96 /* PPDragDropBadgeView.m */; };
@@ -1714,8 +1712,6 @@
 		DD0F42621D22702500115B96 /* msg_status_refuse@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_status_refuse@3x.png"; sourceTree = "<group>"; };
 		DD0F42631D22702500115B96 /* msg_status_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_status_success@2x.png"; sourceTree = "<group>"; };
 		DD0F42641D22702500115B96 /* msg_status_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_status_success@3x.png"; sourceTree = "<group>"; };
-		DD0F42651D22702500115B96 /* timebank_bubble_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebank_bubble_arrow@2x.png"; sourceTree = "<group>"; };
-		DD0F42661D22702500115B96 /* timebank_bubble_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timebank_bubble_arrow@3x.png"; sourceTree = "<group>"; };
 		DD0F42851D22705D00115B96 /* MessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageTableViewCell.h; sourceTree = "<group>"; };
 		DD0F42861D22705D00115B96 /* MessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageTableViewCell.m; sourceTree = "<group>"; };
 		DD0F42891D239D5800115B96 /* PPDragDropBadgeView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PPDragDropBadgeView.bundle; sourceTree = "<group>"; };
@@ -4232,8 +4228,6 @@
 				DD0F42621D22702500115B96 /* msg_status_refuse@3x.png */,
 				DD0F42631D22702500115B96 /* msg_status_success@2x.png */,
 				DD0F42641D22702500115B96 /* msg_status_success@3x.png */,
-				DD0F42651D22702500115B96 /* timebank_bubble_arrow@2x.png */,
-				DD0F42661D22702500115B96 /* timebank_bubble_arrow@3x.png */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -5866,7 +5860,6 @@
 				583B87B01D4CF72600D888A6 /* 6sp3.png in Resources */,
 				DDAB437B1D05531A00FADB3E /* acount_icon_alipay@2x.png in Resources */,
 				DDCD71071D092F1D009FBE9A /* AddProjectLeaderOneTableViewCell.xib in Resources */,
-				DD0F42841D22702500115B96 /* timebank_bubble_arrow@3x.png in Resources */,
 				1601FD851EA65B23008A48D5 /* play@2x.png in Resources */,
 				DDB28E821D2CF787004C8F70 /* icon_018_cover.png in Resources */,
 				DD13CDDC1D00186D000A69FE /* startup_filter_media_hl@3x.png in Resources */,
@@ -5927,7 +5920,6 @@
 				58A9448C1CE277C600DAD398 /* avatar@3x.png in Resources */,
 				DDB28E8B1D2CF787004C8F70 /* icon_024.gif in Resources */,
 				58070FC41CF6E80200F03F6C /* timebank_filter_movie@2x.png in Resources */,
-				DD0F42831D22702500115B96 /* timebank_bubble_arrow@2x.png in Resources */,
 				DDB28E8A1D2CF787004C8F70 /* icon_022_cover.png in Resources */,
 				DDF519FE1E9F5DEB00E72DEC /* package_address_b_grey@2x.png in Resources */,
 				58070F9E1CF6E80200F03F6C /* success_add_score@2x.png in Resources */,

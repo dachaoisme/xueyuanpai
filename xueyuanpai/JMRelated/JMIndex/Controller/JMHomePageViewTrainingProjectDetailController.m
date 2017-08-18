@@ -442,7 +442,7 @@
     [[HttpClient sharedInstance]whetherAlreadyCollectionWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode==ResponseCodeSuccess) {
             
-            int status =[[model.responseCommonDic objectForKey:@"status"] intValue];
+            int status =[model.status intValue];
             signupType = status;
             if (status==UnSignup) {
                 [collectionBtn setTitle:@" 我要报名" forState:UIControlStateNormal];

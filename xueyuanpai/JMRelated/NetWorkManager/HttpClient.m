@@ -416,6 +416,8 @@
 {
     [[HttpServer sharedInstance]getWithMethod:METHOD_OF_REGISTER withParams:params withSuccess:^(HttpResponseCodeModel *model) {
         NSDictionary * listDic = model.responseCommonDic;
+        
+        
         successBlock(model,listDic);
     } withFailBlock:^(NSError *error) {
         failBlock(error);
