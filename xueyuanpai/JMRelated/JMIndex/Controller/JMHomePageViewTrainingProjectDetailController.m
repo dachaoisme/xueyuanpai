@@ -195,25 +195,16 @@
                 
                 
             }else{
-                
-                cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
-                NSString *showText = detailModel.trainProjectDescription;
-                cell.textLabel.text =  showText;
-                cell.textLabel.numberOfLines = 0;
-                cell.textLabel.frame =  CGRectMake(5, 5, SCREEN_WIDTH - 10, [self textHeight:showText]);
+                if (detailModel.content) {
+                    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cell.contentView.bounds.size.height)];
+                    webView.scrollView.userInteractionEnabled = NO;
+                    [cell.contentView addSubview:webView];
+                    [webView loadHTMLString:detailModel.content baseURL:nil];
+                }
             }
-            
-            
-            
             return cell;
-            
-            
-            
         }
             break;
-
-   
-            
         default:
         {
             
@@ -258,8 +249,11 @@
             }else{
                 
                 //根据文本信息多少调整cell的高度
-                NSString * string = detailModel.trainProjectDescription;
-                return [self textHeight:string] + 30;
+                NSString * showText = detailModel.content;
+                float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
+                
+                return textHeight+ 60;
+                
                 
             }
 
@@ -291,7 +285,20 @@
     return 10;
 }
 
-
+- (NSInteger)hideLabelLayoutHeight:(NSString *)content withTextFontSize:(CGFloat)mFontSize
+{
+    if (!content) {
+        content = @"";
+    }
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 10;  // 段落高度
+    //    NSDictionary *attributes = @{NSParagraphStyleAttributeName:paragraphStyle};
+    NSMutableAttributedString *attributes = [[NSMutableAttributedString alloc] initWithString:content];
+    [attributes addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:mFontSize] range:NSMakeRange(0, content.length)];
+    [attributes addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, content.length)];
+    CGSize attSize = [attributes boundingRectWithSize:CGSizeMake(SCREEN_WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    return attSize.height;
+}
 //自适应撑高
 //计算字符串的frame
 - (CGFloat)textHeight:(NSString *)string{
