@@ -92,6 +92,7 @@
     [dic setObject:@"1" forKey:@"status"];
     if ([UserAccountManager sharedInstance].isLogin) {
         [dic setObject:[UserAccountManager sharedInstance].userCollegeId forKey:@"college_id"];
+        [dic setObject:[UserAccountManager sharedInstance].userId forKey:@"user_id"];
     }
     [[HttpClient sharedInstance]getTrainProjectWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [self.tableView.header endRefreshing];
