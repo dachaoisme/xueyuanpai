@@ -163,18 +163,18 @@
         cell.showSiteLabel.text =logModel.msg;
     }
     
-    if ([model.status isEqualToString:@"待领取"]) {
+//    if ([model.status isEqualToString:@"待领取"]) {
         //等待取件状态的设置
         cell.showHaveTakeLabel.hidden = YES;
         cell.showExpressArkLabel.hidden = NO;
 
-    }else{
-        
-        ///已取件状态的设置
-        cell.showHaveTakeLabel.hidden = NO;
-        cell.showExpressArkLabel.hidden = YES;
-        
-    }
+//    }else{
+//        
+//        ///已取件状态的设置
+//        cell.showHaveTakeLabel.hidden = NO;
+//        cell.showExpressArkLabel.hidden = YES;
+//        
+//    }
     
     return cell;
     
