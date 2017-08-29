@@ -209,10 +209,22 @@
                 
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                
+                if (detailModel.content) {
+                    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cell.contentView.bounds.size.height)];
+                    webView.scrollView.userInteractionEnabled = NO;
+                    [cell.contentView addSubview:webView];
+                    [webView loadHTMLString:detailModel.content baseURL:nil];
+                }
+                
+                
+                
+                /*
                 cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
                 cell.textLabel.text = detailModel.content;
                 cell.textLabel.font = [UIFont systemFontOfSize:14];
                 cell.textLabel.numberOfLines = 0;
+                 */
                 return cell;
                 
             }
@@ -255,9 +267,13 @@
                 
             }else{
                 
-                NSString *text = detailModel.content;
-                
-                return [self textHeight:text] + 30;
+                UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
+                [webView loadHTMLString:detailModel.content baseURL:nil];
+                //根据文本信息多少调整cell的高度
+                //NSString * showText = detailModel.content;
+                //float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
+                NSLog(@"webView.frame.size.height=%ld",webView.frame.size.height);
+                return webView.frame.size.height+ 250;
 
                 
             }
@@ -287,7 +303,20 @@
     return rect.size.height;
     
 }
-
+- (NSInteger)hideLabelLayoutHeight:(NSString *)content withTextFontSize:(CGFloat)mFontSize
+{
+    if (!content) {
+        content = @"";
+    }
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 10;  // 段落高度
+    //    NSDictionary *attributes = @{NSParagraphStyleAttributeName:paragraphStyle};
+    NSMutableAttributedString *attributes = [[NSMutableAttributedString alloc] initWithString:content];
+    [attributes addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:mFontSize] range:NSMakeRange(0, content.length)];
+    [attributes addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, content.length)];
+    CGSize attSize = [attributes boundingRectWithSize:CGSizeMake(SCREEN_WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
+    return attSize.height;
+}
 
 
 

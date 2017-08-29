@@ -249,12 +249,17 @@
             }else{
                 
                 //根据文本信息多少调整cell的高度
-                NSString * showText = detailModel.content;
-                float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
+//                NSString * showText = detailModel.content;
+//                float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
+//                return textHeight+ 60;
                 
-                return textHeight+ 60;
-                
-                
+                UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
+                [webView loadHTMLString:detailModel.content baseURL:nil];
+                //根据文本信息多少调整cell的高度
+                //NSString * showText = detailModel.content;
+                //float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
+                NSLog(@"webView.frame.size.height=%ld",webView.frame.size.height);
+                return webView.frame.size.height+ 250;
             }
 
             

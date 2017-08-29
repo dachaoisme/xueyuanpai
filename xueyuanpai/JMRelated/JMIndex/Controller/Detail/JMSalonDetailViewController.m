@@ -158,10 +158,16 @@
                 
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
-                cell.textLabel.text = detailModel.content;
-                cell.textLabel.font = [UIFont systemFontOfSize:14];
-                cell.textLabel.numberOfLines = 0;
+                //cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
+                //cell.textLabel.text = detailModel.content;
+                //cell.textLabel.font = [UIFont systemFontOfSize:14];
+                //cell.textLabel.numberOfLines = 0;
+                if (detailModel.content) {
+                    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cell.contentView.bounds.size.height)];
+                    webView.scrollView.userInteractionEnabled = NO;
+                    [cell.contentView addSubview:webView];
+                    [webView loadHTMLString:detailModel.content baseURL:nil];
+                }
                 return cell;
                 
             }
@@ -192,11 +198,13 @@
                 
             }else{
                 
-                NSString *text = detailModel.content;
-                
-                return [self textHeight:text] + 30;
-                
-                
+                UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
+                [webView loadHTMLString:detailModel.content baseURL:nil];
+                //根据文本信息多少调整cell的高度
+                //NSString * showText = detailModel.content;
+                //float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
+                NSLog(@"webView.frame.size.height=%ld",webView.frame.size.height);
+                return webView.frame.size.height+ 250;
             }
         }
             
