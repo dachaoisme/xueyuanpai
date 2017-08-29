@@ -43,6 +43,7 @@
 #define VMScreen_width [UIScreen mainScreen].bounds.size.width
 #define VMScreen_height [UIScreen mainScreen].bounds.size.height
 #define VMScaleOfCurrentDeviceAndModelDeviceWidth (VMScreen_width < VMScreen_height ? (VMScreen_width / 375) : (VMScreen_height / 375))
+#define VMScaleOfWidthAndHeight 5/9
 
 // 调试状态, 打开Log功能
 #ifdef DEBUG

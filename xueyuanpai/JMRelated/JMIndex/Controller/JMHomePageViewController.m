@@ -153,7 +153,7 @@
     if (section == 0) {
         //获取轮播图片数组
         
-        BulkGoodsLunBoView *bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 160*VMScaleOfCurrentDeviceAndModelDeviceWidth) animationDuration:0];
+        BulkGoodsLunBoView *bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*VMScaleOfWidthAndHeight) animationDuration:0];
         bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
             return bannerImageArray[pageIndex];
         };
@@ -310,7 +310,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
     if (section == 0) {
-        return 160*VMScaleOfCurrentDeviceAndModelDeviceWidth;
+        return SCREEN_WIDTH*VMScaleOfWidthAndHeight;
 
     }else{
         

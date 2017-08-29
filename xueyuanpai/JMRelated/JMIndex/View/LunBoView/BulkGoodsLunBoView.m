@@ -94,6 +94,7 @@
         UIImageView * contentView = [[UIImageView alloc]init];
         contentView.userInteractionEnabled = YES;
         contentView.contentMode = UIViewContentModeScaleAspectFill;
+        contentView.layer.masksToBounds = YES;
         contentView.frame = rect;
         [contentView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"placeHoder"]];
         

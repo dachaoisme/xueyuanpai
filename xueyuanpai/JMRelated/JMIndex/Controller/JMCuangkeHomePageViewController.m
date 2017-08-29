@@ -78,7 +78,7 @@
 -(void)setupBanner
 {
     //获取轮播图片数组
-    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, bannerHeight) animationDuration:0];
+    bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, NAV_TOP_HEIGHT, SCREEN_WIDTH, SCREEN_WIDTH*VMScaleOfWidthAndHeight) animationDuration:0];
     NSArray *imageUrlArray = bannerImageArray;
     bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
         return imageUrlArray[pageIndex];
