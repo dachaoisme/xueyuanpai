@@ -12,7 +12,7 @@
 #import "JMSalonModel.h"
 #import "JMSalonDetailViewController.h"
 
-#define bannerHeight 160
+#define bannerHeight SCREEN_WIDTH*VMScaleOfWidthAndHeight
 
 @interface JMSalonViewController ()<UITableViewDelegate,UITableViewDataSource>
 {

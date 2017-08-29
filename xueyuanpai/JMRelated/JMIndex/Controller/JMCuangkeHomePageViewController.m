@@ -14,7 +14,7 @@
 #import "JMHomePageModel.h"
 #import "JMHomePageViewTrainingProjectDetailController.h"
 #import "WKWebViewController.h"
-#define bannerHeight 160
+#define bannerHeight SCREEN_WIDTH*VMScaleOfWidthAndHeight
 #define tabHeight 44
 @interface JMCuangkeHomePageViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
 {
@@ -52,7 +52,7 @@
     bannerItemArray = [NSMutableArray array];
     [self createLeftBackNavBtn];
     
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bannerHeight)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*VMScaleOfWidthAndHeight)];
     headView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:headView];
     
@@ -147,7 +147,7 @@
     [self.view addSubview:_bottomSView];
     
     
-    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90,NAV_TOP_HEIGHT+ bannerHeight, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90,NAV_TOP_HEIGHT+ SCREEN_WIDTH*VMScaleOfWidthAndHeight, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     self.topDefaultSView.backgroundColor = [UIColor clearColor];
     self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
     self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];

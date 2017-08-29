@@ -17,7 +17,7 @@
 #import "JMSalonViewController.h"
 #import "JMHomePageViewTrainingProjectDetailController.h"
 #import "WKWebViewController.h"
-#define bannerHeight 160
+#define bannerHeight SCREEN_WIDTH*VMScaleOfWidthAndHeight
 #define tabHeight 44
 @interface JMKongJianHomePageViewController ()<SGSegmentedControlDefaultDelegate,UIScrollViewDelegate>
 {
@@ -56,7 +56,7 @@
     [self createLeftBackNavBtn];
     
     
-    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, bannerHeight)];
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*VMScaleOfWidthAndHeight)];
     headView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:headView];
 

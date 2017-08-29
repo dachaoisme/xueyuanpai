@@ -12,7 +12,7 @@
 #import "JMHomePageThreeTypeTableViewCell.h"
 #import "JMCourseModel.h"
 
-#define bannerHeight 160
+#define bannerHeight SCREEN_WIDTH*VMScaleOfWidthAndHeight
 
 @interface JMCourseViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
