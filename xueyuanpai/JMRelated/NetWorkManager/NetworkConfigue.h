@@ -109,6 +109,9 @@
 #define BIND_PHONE_NUMBER                @"user/bindtel"
 ///修改密码
 #define METHOD_OF_UPDATE_PASSWORD        @"student/changepasswd"
+///忘记密码：修改
+#define METHOD_OF_FORGET_PASSWORD        @"student/setpasswd"
+
 ///个人中心：根据用户id，获取用户信息
 #define METHOD_OF_USERINFO_WITH_USERID            @"student/detail"
 ////////快递员相关////////

@@ -138,8 +138,10 @@
     NSMutableDictionary * dic = [NSMutableDictionary dictionary];
     [dic setValue:self.telephoneNum forKey:@"telphone"];
     [dic setObject:inputPasswordTextField.text forKey:@"passwd"];
-    [[HttpClient sharedInstance]changePasswordWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
+    [[HttpClient sharedInstance]forgetPasswordWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *model) {
         if (model.responseCode == ResponseCodeSuccess) {
+            
+            [CommonUtils showToastWithStr:@"密码修改成功"];
             //若成功，应该是返回主页面，并且是已经登录状态
             [[UserAccountManager sharedInstance]loginWithUserPhoneNum:self.telephoneNum andPassWord:inputPasswordTextField.text withUserRole:RegisterRoleOfStudent];
             [self dismissViewControllerAnimated:YES completion:^{
