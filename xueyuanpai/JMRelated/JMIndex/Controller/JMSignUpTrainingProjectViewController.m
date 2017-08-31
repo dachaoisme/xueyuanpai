@@ -253,6 +253,18 @@
 
      
      */
+    if (job.length<=0) {
+        [CommonUtils showToastWithStr:@"请选择岗位"];
+        return;
+    }
+    if (name.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入姓名"];
+        return;
+    }
+    if (telephone.length<=0) {
+        [CommonUtils showToastWithStr:@"请输入手机号"];
+        return;
+    }
     if ([UserAccountManager sharedInstance].isLogin==NO) {
         [self judgeLoginStatus];
         return;
