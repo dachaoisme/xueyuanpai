@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '95A2825FE7868ECF4EA70C5F'
-               BlueprintName = 'libqrencode'
+               BlueprintIdentifier = 'A82C134DDB9104378BB4AB1E0D6CF241'
+               BlueprintName = 'Pods-xueyuanpai'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'liblibqrencode.a'>
+               BuildableName = 'libPods-xueyuanpai.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
