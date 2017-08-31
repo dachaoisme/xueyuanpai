@@ -168,6 +168,7 @@
                 if (detailModel.content) {
                     if (!_webView) {
                         _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-10, cell.contentView.bounds.size.height)];
+                        _webView.backgroundColor = [UIColor redColor];
                         _webView.scrollView.userInteractionEnabled = NO;
                         _webView.delegate = self;
                         [cell.contentView addSubview:_webView];
@@ -249,7 +250,7 @@
     //获取高度：
     CGFloat height = [[_webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"] floatValue];
     NSLog(@"height:%f",height);
-    webViewHeight  =height;
+    webViewHeight  =height+60;
     NSLog(@"webViewHeight:%f",webViewHeight);
     //刷新界面：
     [self.tableView reloadData];

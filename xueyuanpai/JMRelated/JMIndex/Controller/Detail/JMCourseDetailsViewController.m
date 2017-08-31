@@ -13,7 +13,7 @@
 #import "JMBaoMingStatusViewController.h"
 #import "JMCommentListViewController.h"
 #import <MediaPlayer/MediaPlayer.h>
-@interface JMCourseDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JMCourseDetailsViewController ()<UITableViewDelegate,UITableViewDataSource,UIWebViewDelegate>
 {
     JMCourseModel *detailModel;
     UIButton *zanBtn;
@@ -21,10 +21,13 @@
     
     //右侧评论按钮
     UIButton *commentBtn;
+    
+    float webViewHeight;
 }
 
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)MPMoviePlayerViewController *playerVC;
+@property (nonatomic,strong)UIWebView *webView;
 @end
 
 @implementation JMCourseDetailsViewController
@@ -142,10 +145,18 @@
         default:{
             
             if (detailModel.content) {
-                UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cell.contentView.bounds.size.height)];
-                webView.scrollView.userInteractionEnabled = NO;
-                [cell.contentView addSubview:webView];
-                [webView loadHTMLString:detailModel.content baseURL:nil];
+                if (!_webView) {
+                    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-10, cell.contentView.bounds.size.height)];
+                    _webView.backgroundColor = [UIColor redColor];
+                    _webView.scrollView.userInteractionEnabled = NO;
+                    _webView.delegate = self;
+                    [cell.contentView addSubview:_webView];
+                    NSString *content =[NSString stringWithFormat:@"%@%@",@" <style>img{max-width: 300px;height: auto;}</style>",detailModel.content];
+                    [_webView loadHTMLString:content baseURL:nil];
+                }else{
+                    _webView.frame =  CGRectMake(0, 0, SCREEN_WIDTH, webViewHeight);
+                }
+                
             }
 
         }
@@ -173,18 +184,7 @@
 
             
         default:{
-            //根据文本信息多少调整cell的高度
-            //NSString * showText = detailModel.content;
-            //float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
-            //return textHeight+ 60;
-            
-            UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
-            [webView loadHTMLString:detailModel.content baseURL:nil];
-            //根据文本信息多少调整cell的高度
-            //NSString * showText = detailModel.content;
-            //float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
-            NSLog(@"webView.frame.size.height=%ld",webView.frame.size.height);
-            return webView.frame.size.height+ 250;
+            return webViewHeight;
 
             
         }
@@ -236,7 +236,16 @@
     CGSize attSize = [attributes boundingRectWithSize:CGSizeMake(SCREEN_WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil].size;
     return attSize.height;
 }
-
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //获取高度：
+    CGFloat height = [[_webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"] floatValue];
+    NSLog(@"height:%f",height);
+    webViewHeight  =height+60;
+    NSLog(@"webViewHeight:%f",webViewHeight);
+    //刷新界面：
+    [self.tableView reloadData];
+}
 
 
 #pragma mark - 创建底部视图

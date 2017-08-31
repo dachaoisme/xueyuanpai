@@ -15,7 +15,7 @@
 #import "JMCommentListViewController.h"
 
 #import "JMSignUpProcessingViewController.h"
-@interface JMXianXiaCourseDetailsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface JMXianXiaCourseDetailsViewController ()<UITableViewDelegate,UITableViewDataSource,UIWebViewDelegate>
 {
     JMCourseModel *detailModel;
     UIButton *zanBtn;
@@ -24,10 +24,12 @@
     
     //右侧评论按钮
     UIButton *commentBtn;
+    
+    float webViewHeight;
 }
 
 @property (nonatomic,strong)UITableView *tableView;
-
+@property (nonatomic,strong)UIWebView *webView;
 
 
 @end
@@ -211,20 +213,19 @@
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
                 
                 if (detailModel.content) {
-                    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, cell.contentView.bounds.size.height)];
-                    webView.scrollView.userInteractionEnabled = NO;
-                    [cell.contentView addSubview:webView];
-                    [webView loadHTMLString:detailModel.content baseURL:nil];
+                    if (!_webView) {
+                        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-10, cell.contentView.bounds.size.height)];
+                        _webView.backgroundColor = [UIColor redColor];
+                        _webView.scrollView.userInteractionEnabled = NO;
+                        _webView.delegate = self;
+                        [cell.contentView addSubview:_webView];
+                        NSString *content =[NSString stringWithFormat:@"%@%@",@" <style>img{max-width: 300px;height: auto;}</style>",detailModel.content];
+                        [_webView loadHTMLString:content baseURL:nil];
+                    }else{
+                        _webView.frame =  CGRectMake(0, 0, SCREEN_WIDTH, webViewHeight);
+                    }
+                    
                 }
-                
-                
-                
-                /*
-                cell.textLabel.textColor = [CommonUtils colorWithHex:@"333333"];
-                cell.textLabel.text = detailModel.content;
-                cell.textLabel.font = [UIFont systemFontOfSize:14];
-                cell.textLabel.numberOfLines = 0;
-                 */
                 return cell;
                 
             }
@@ -266,16 +267,7 @@
                 return 220;
                 
             }else{
-                
-                UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0)];
-                [webView loadHTMLString:detailModel.content baseURL:nil];
-                //根据文本信息多少调整cell的高度
-                //NSString * showText = detailModel.content;
-                //float textHeight = [self hideLabelLayoutHeight:showText withTextFontSize:14];
-                NSLog(@"webView.frame.size.height=%ld",webView.frame.size.height);
-                return webView.frame.size.height+ 250;
-
-                
+               return  webViewHeight;
             }
         }
             
@@ -318,6 +310,16 @@
     return attSize.height;
 }
 
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //获取高度：
+    CGFloat height = [[_webView stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight"] floatValue];
+    NSLog(@"height:%f",height);
+    webViewHeight  =height+60;
+    NSLog(@"webViewHeight:%f",webViewHeight);
+    //刷新界面：
+    [self.tableView reloadData];
+}
 
 
 #pragma mark - 创建底部视图
