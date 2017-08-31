@@ -52,7 +52,7 @@
     [self requestUnReadSystemMessage];
     
     //请求快递消息未读数量
-    [self requestUnReadCourierMessage];
+    //[self requestUnReadCourierMessage];
     
     //请求站内消息未读消息数量
     [self requestUnReadOnSiteMessage];
@@ -83,7 +83,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -105,22 +105,24 @@
             cell.badgeView.hidden = YES;
         }
         
-    }else if (indexPath.row == 1) {
-        
-        cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_deliver"];
-        cell.contentLabel.text = @"快递消息";
-        
-        if ([self.courierMessageCount intValue] > 0) {
-            //设置消息数目的
-            cell.badgeView.text = [NSString stringWithFormat:@"%@", self.courierMessageCount];
-            
-        }else{
-            
-            cell.badgeView.hidden = YES;
-        }
-
-        
-    }else if (indexPath.row == 2) {
+    }
+//    else if (indexPath.row == 1) {
+//        
+//        cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_deliver"];
+//        cell.contentLabel.text = @"快递消息";
+//        
+//        if ([self.courierMessageCount intValue] > 0) {
+//            //设置消息数目的
+//            cell.badgeView.text = [NSString stringWithFormat:@"%@", self.courierMessageCount];
+//            
+//        }else{
+//            
+//            cell.badgeView.hidden = YES;
+//        }
+//
+//        
+//    }
+    else if (indexPath.row == 1) {
         cell.leftImageView.image = [UIImage imageNamed:@"msg_icon_mail"];
         cell.contentLabel.text = @"站内消息";
         
@@ -152,21 +154,23 @@
             [tableView reloadData];
         };
         [self.navigationController pushViewController:systemMessageListVC animated:YES];
-    }else if (indexPath.row == 1){
-        
-        //跳转快递消息
-        CourierNoticeViewController *courierNoticeVC = [[CourierNoticeViewController alloc] init];
-        courierNoticeVC.callback = ^(){
-            self.courierMessageCount = @"0";
-            [tableView reloadData];
-            
-            
-        };
-
-        [self.navigationController pushViewController:courierNoticeVC animated:YES];
-        
-        
-    }else if (indexPath.row == 2){
+    }
+//    else if (indexPath.row == 1){
+//        
+//        //跳转快递消息
+//        CourierNoticeViewController *courierNoticeVC = [[CourierNoticeViewController alloc] init];
+//        courierNoticeVC.callback = ^(){
+//            self.courierMessageCount = @"0";
+//            [tableView reloadData];
+//            
+//            
+//        };
+//
+//        [self.navigationController pushViewController:courierNoticeVC animated:YES];
+//        
+//        
+//    }
+    else if (indexPath.row == 1){
         //站内消息
         OnSiteMessageListViewController *onsiteMessageVC = [[OnSiteMessageListViewController alloc] init];
         onsiteMessageVC.callback = ^(){
