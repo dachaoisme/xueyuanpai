@@ -77,14 +77,6 @@
         self.isLogin = NO;
     }
 
-//    //登陆的时候,先进行环信登陆判断,然后再进行密码判断
-//    EMError *error = [[EMClient sharedClient] loginWithUsername:self.userTelphone password:@"1"];
-//    if (!error) {
-//        
-//        NSLog(@"环信登陆成功");
-//        
-//    }
-    //环信登陆成功
     
     [[NSNotificationCenter defaultCenter]postNotificationName:NOTI_UPDATE_BY_USER_ID object:nil];
 }

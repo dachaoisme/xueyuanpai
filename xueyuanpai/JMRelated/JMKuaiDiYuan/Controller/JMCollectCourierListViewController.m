@@ -27,7 +27,7 @@
     // Do any additional setup after loading the view.
     
     //接收通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCurrentPage:) name:@"kRefrshMyKuaidi" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCurrentPage:) name:@"kRefrshMyKuaidi" object:nil];
     
     
     self.title = @"收取快递";

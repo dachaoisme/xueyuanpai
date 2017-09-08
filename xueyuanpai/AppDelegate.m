@@ -12,7 +12,6 @@
 #import <AdSupport/AdSupport.h>
 
 #import "CustomIOS7AlertView.h"
-#import "EMSDK.h"
 
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDKConnector/ShareSDKConnector.h>
@@ -23,12 +22,8 @@
 
 //微信SDK头文件
 #import "WXApi.h"
-///支付宝
-#import <AlipaySDK/AlipaySDK.h>
 //新浪微博SDK头文件
 #import "WeiboSDK.h"
-
-//#import "EaseUI.h"
 
 
 //极光推送
@@ -39,7 +34,7 @@
 
 
 #import "MFWelcomPageController.h"
-@interface AppDelegate ()<CustomIOS7AlertViewDelegate,EMContactManagerDelegate,WXApiDelegate,JPUSHRegisterDelegate>
+@interface AppDelegate ()<CustomIOS7AlertViewDelegate,WXApiDelegate,JPUSHRegisterDelegate>
 
 ///推送消息
 @property (nonatomic,strong)NSString *message;
@@ -59,20 +54,10 @@
     //极光推送方法
     [self jpushAction:launchOptions];
     
-    //环信SDK
-    [self huanXinAction];
-    
-    //shareSDK分享
-    [self shareContent ];
-    
     [[UserAccountManager sharedInstance]getUserInfo];
     
     
     
-    //微信支付
-    [WXApi registerApp:@"wx31cb0dc3d4e9d04f" withDescription:@"学院派"];
-    
-
     [self setRootViewController:YES];
 
     return YES;
@@ -96,63 +81,6 @@
 }
 #pragma mark - 分享
 - (void)shareContent{
-    [ShareSDK registerApp:@"147b23b109e2a"
-     
-          activePlatforms:@[@(SSDKPlatformTypeSinaWeibo),
-                            @(SSDKPlatformTypeWechat),
-                            @(SSDKPlatformTypeQQ),]
-                 onImport:^(SSDKPlatformType platformType)
-     {
-         switch (platformType)
-         {
-             case SSDKPlatformTypeWechat:
-                 [ShareSDKConnector connectWeChat:[WXApi class]];
-                 break;
-             case SSDKPlatformTypeQQ:
-                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
-                 break;
-             case SSDKPlatformTypeSinaWeibo:
-                 [ShareSDKConnector connectWeibo:[WeiboSDK class]];
-                 break;
-             default:
-                 break;
-         }
-     }
-          onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo)
-     {
-         
-         switch (platformType)
-         {
-             case SSDKPlatformTypeSinaWeibo:
-                 //设置新浪微博应用信息,其中authType设置为使用SSO＋Web形式授权
-                 [appInfo SSDKSetupSinaWeiboByAppKey:@"3921700954"
-                                           appSecret:@"04b48b094faeb16683c32669824ebdad"
-                                         redirectUri:@"http://www.sharesdk.cn"
-                                            authType:SSDKAuthTypeBoth];
-                 break;
-             case SSDKPlatformTypeWechat:
-                 [appInfo SSDKSetupWeChatByAppId:@"wxdc1e388c3822c80b"
-                                       appSecret:@"a393c1527aaccb95f3a4c88d6d1455f6"];
-                 break;
-             case SSDKPlatformTypeQQ:
-                 [appInfo SSDKSetupQQByAppId:@"100424468"
-                                      appKey:@"c7394704798a158208a74ab60104f0ba"
-                                    authType:SSDKAuthTypeBoth];
-                 break;
-             default:
-                 break;
-         }
-     }];
-
-}
-
-#pragma mark - 环信
-- (void)huanXinAction{
-    //AppKey:注册的AppKey，详细见下面注释。
-    //apnsCertName:推送证书名（不需要加后缀），详细见下面注释。
-    EMOptions *options = [EMOptions optionsWithAppkey:@"xueyuanpai2016#xueyuanpai"];
-    options.apnsCertName = @"XueYuanPai_Push_Develop";
-    [[EMClient sharedClient] initializeSDKWithOptions:options];
 }
 
 #pragma mark - 极光推送
@@ -315,15 +243,11 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    [[EMClient sharedClient] applicationDidEnterBackground:application];
-
 }
 
 // APP将要从后台返回
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    [[EMClient sharedClient] applicationWillEnterForeground:application];
-
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -338,45 +262,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-#pragma mark - 环信相关内容
-
-/*!
- *  用户A发送加用户B为好友的申请，用户B会收到这个回调
- *
- *  @param aUsername   用户名
- *  @param aMessage    附属信息
- */
-- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername
-                                       message:(NSString *)aMessage{
-    
-    
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"收到来自%@的请求", aUsername] message:aMessage preferredStyle:(UIAlertControllerStyleAlert)];
-    
-    UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"好" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
-        
-        // 同意好友请求的方法
-        EMError *error = [[EMClient sharedClient].contactManager acceptInvitationForUsername:aUsername];
-        if (!error) {
-            NSLog(@"发送同意成功");
-        }
-    }];
-    
-    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"滚" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-        // 拒绝好友请求的方法
-        EMError *error = [[EMClient sharedClient].contactManager declineInvitationForUsername:aUsername];
-        if (!error) {
-            NSLog(@"发送拒绝成功");
-        }
-    }];
-    
-    [alertController addAction:acceptAction];
-    [alertController addAction:rejectAction];
-    
-    [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
-    
-}
-
 //获取当前屏幕显示的viewcontroller
 - (UIViewController *)getCurrentVC
 {
@@ -407,40 +292,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     return result;
 }
 
-/*!
- @method
- @brief 用户A发送加用户B为好友的申请，用户B同意后，用户A会收到这个回调
- */
-- (void)didReceiveAgreedFromUsername:(NSString *)aUsername{
-    
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@同意你添加好友", aUsername] message:nil preferredStyle:(UIAlertControllerStyleAlert)];
-    
-    UIAlertAction * acceptAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction *  action) {
-        
-        [[self getCurrentVC] dismissViewControllerAnimated:alertController completion:nil];
-    }];
-    
-    [alertController addAction:acceptAction];
-    [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
-
-}
-
-/*!
- @method
- @brief 用户A发送加用户B为好友的申请，用户B拒绝后，用户A会收到这个回调
- */
-- (void)didReceiveDeclinedFromUsername:(NSString *)aUsername{
-    
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:@"%@拒绝了你添加好友", aUsername] message:nil preferredStyle:(UIAlertControllerStyleAlert)];
-    
-    UIAlertAction * rejectAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
-    }];
-    
-    [alertController addAction:rejectAction];
-    [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
-
-    
-}
 
 
 #pragma mark - 支付相关内容
@@ -466,13 +317,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 {
     if([url.host isEqualToString:@"safepay"]) {
         //跳转支付宝钱包进行支付，需要将支付宝钱包的支付结果回传给SDK
-        [[AlipaySDK defaultService]
-         processOrderWithPaymentResult:url
-         standbyCallback:^(NSDictionary *resultDic) {
-             MFLog(@"result = %@", resultDic);
-             [self sendAliPayResultNotificationWithErrorCode:resultDic];
-             
-         }];
     }else if ([url.host isEqualToString:@"pay"]){
         [WXApi handleOpenURL:url delegate:self];
         

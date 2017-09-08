@@ -161,20 +161,23 @@
     [[HttpClient sharedInstance]receivedNotificationAndExpressListWithParams:dic withSuccessBlock:^(HttpResponseCodeModel *responseModel, HttpResponsePageModel *pageModel, NSDictionary *ListDic) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (responseModel.responseCode == ResponseCodeSuccess) {
+            [self.tableView.footer endRefreshing];
+
+            
             NSArray * arr = [responseModel.responseCommonDic objectForKey:@"lists"];
             for (NSDictionary * smallDic in arr) {
                 JMMessageModel * messageModel = [JMMessageModel yy_modelWithJSON:smallDic];
                 
-                [modelArray addObject:messageModel ];
+                [modelArray addObject:messageModel];
             }
-            
-            totalMessageCount = [responseModel.responseCommonDic stringForKey:@"cnt"];
-            unReadyMessageCount = [responseModel.responseCommonDic stringForKey:@"unreadcnt"];
             ///处理上拉加载更多逻辑
-            if (pageNum>=[pageModel.responsePageTotalCount integerValue]||arr.count<pageSize) {
+            if (arr.count == 0) {
                 //说明是最后一张
                 self.tableView.footer.state= MJRefreshFooterStateNoMoreData;
             }
+
+            totalMessageCount = [responseModel.responseCommonDic stringForKey:@"cnt"];
+            unReadyMessageCount = [responseModel.responseCommonDic stringForKey:@"unreadcnt"];
             [self.tableView reloadData];
         }else{
             [CommonUtils showToastWithStr:responseModel.responseMsg];

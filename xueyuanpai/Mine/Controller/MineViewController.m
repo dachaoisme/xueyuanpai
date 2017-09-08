@@ -413,8 +413,7 @@
 //        
 //        [self.navigationController pushViewController:friendsVC animated:YES];
         
-        EaseUsersListViewController *listViewController = [[EaseUsersListViewController alloc] init];
-        [self.navigationController pushViewController:listViewController animated:YES];
+
         
     }else if (indexPath.row == 5) {
         

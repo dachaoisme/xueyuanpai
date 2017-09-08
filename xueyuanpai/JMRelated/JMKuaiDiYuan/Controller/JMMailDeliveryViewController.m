@@ -39,7 +39,7 @@
     // Do any additional setup after loading the view.
     
     //接收通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCurrentPage:) name:@"kRefrshMyKuaidi" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCurrentPage:) name:@"kRefrshMyKuaidi" object:nil];
     
     self.title = @"寄出快递";
     [self createTableView];
@@ -61,7 +61,7 @@
     NSString *index = [dict valueForKey:@"index"];
     
     
-    if ([index isEqualToString:@"1"]) {
+    if ([index isEqualToString:@"0"]) {
         
         //刷新当前界面
         ///请求数据

@@ -46,8 +46,6 @@
 #import "MJRefresh.h"
 #import "IQKeyboardManager.h"
 #import "YYModel.h"
-///环信
-#import <EMSDK.h>
 
 //分享
 #import <ShareSDK/ShareSDK.h>
@@ -57,9 +55,5 @@
 //微信支付相关
 #import "WXApi.h"
 
-
-
-
-#import "EaseUI.h"
 
 #endif /* XYP_PrefixHeader_pch */

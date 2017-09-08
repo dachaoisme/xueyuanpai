@@ -202,7 +202,7 @@
         if (indexPath.section == 0) {
             if (!headReusableView) {
                 headReusableView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-                self.bannerView = [[BannerLunBoView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 174) animationDuration:2.5];
+                self.bannerView = [[BannerLunBoView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 174) animationDuration:0.5];
                 self.bannerView.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.1];
                 [headReusableView addSubview:self.bannerView];
             }

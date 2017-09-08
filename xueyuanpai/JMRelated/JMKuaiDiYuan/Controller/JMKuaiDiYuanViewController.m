@@ -73,15 +73,16 @@ static int ceshi = 1;
 - (void)setupScrollView
 {
     
-    NSMutableArray *titleArr = [NSMutableArray arrayWithObjects:@"收取快递", @"寄出快递",@"快递通知",nil];
+    NSMutableArray *titleArr = [NSMutableArray arrayWithObjects:@"寄出快递",@"快递通知",nil];
     
     NSMutableArray *childVCArray = [NSMutableArray array];
     
     //收取快递
-    JMCollectCourierListViewController  *collectCourierVC = [[JMCollectCourierListViewController alloc] init];
-    [self addChildViewController:collectCourierVC];
+//    JMCollectCourierListViewController  *collectCourierVC = [[JMCollectCourierListViewController alloc] init];
+//    [self addChildViewController:collectCourierVC];
     
     
+    //寄出快递
     JMMailDeliveryViewController  *mailDeliveryVC = [[JMMailDeliveryViewController alloc] init];
     [self addChildViewController:mailDeliveryVC];
     
@@ -93,7 +94,7 @@ static int ceshi = 1;
     };
     [self addChildViewController:courierNoticeVC];
     
-    [childVCArray addObject:collectCourierVC];
+//    [childVCArray addObject:collectCourierVC];
     [childVCArray addObject:mailDeliveryVC];
     [childVCArray addObject:courierNoticeVC];
     
@@ -111,6 +112,8 @@ static int ceshi = 1;
     
     
     //self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
+    
+    /*
     if (IS_IPHONE_5) {
         self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(25, NAV_TOP_HEIGHT, self.view.frame.size.width-45, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     }else if (IS_IPHONE_6){
@@ -121,6 +124,9 @@ static int ceshi = 1;
     else{
         
     }
+     */
+    
+    self.topDefaultSView = [SGSegmentedControlDefault segmentedControlWithFrame:CGRectMake(90, NAV_TOP_HEIGHT, self.view.frame.size.width-180, NAVIGATIONBAR_HEIGHT) delegate:self childVcTitle:titleArr isScaleText:NO];
     self.topDefaultSView.backgroundColor = [UIColor clearColor];
     self.topDefaultSView.titleColorStateNormal = [CommonUtils colorWithHex:@"3f4446"];
     self.topDefaultSView.titleColorStateSelected = [CommonUtils colorWithHex:@"00c05c"];
@@ -146,19 +152,19 @@ static int ceshi = 1;
     self.chooseIndex = index;
     
     
-    ceshi += 1;
-    
-    if (ceshi == 2  || ceshi == 3) {
-        
-        return;
-    }
+//    ceshi += 1;
+//    
+//    if (ceshi == 2  || ceshi == 3) {
+//        
+//        return;
+//    }
     
     //通知界面刷新
-    NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%ld",(long)index] forKey:@"index"];
-
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kRefrshMyKuaidi" object:self userInfo:dic];
-    
+//    NSDictionary *dic = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%ld",(long)index] forKey:@"index"];
+//
+//    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"kRefrshMyKuaidi" object:self userInfo:dic];
+//    
     
     
     

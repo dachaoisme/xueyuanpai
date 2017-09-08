@@ -62,11 +62,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    EMError *error = nil;
-    _userlist = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
-    if (!error) {
-        NSLog(@"获取成功 -- %@",_userlist);
-    }
 }
 
 #pragma mark - 设置分享按钮
@@ -612,20 +607,9 @@
     if ([_userlist containsObject:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone]) {
         
         NSLog(@"跳转聊天视图页面");
-        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:[UserAccountManager sharedInstance].userMobile conversationType:EMConversationTypeChat];
-        
-        [self.navigationController pushViewController:chatController animated:YES];
+
         
     }else{
-        EMError *error = [[EMClient sharedClient].contactManager addContact:businessCenterProgectDetailModel.businessCenterProgectDetailChiefModel.businessCenterProgectDetailChiefTelephone message:@"我想加您为好友"];
-        if (!error) {
-            NSLog(@"添加成功");
-            
-            [CommonUtils showToastWithStr:@"好友申请已发出，请耐心等候回复" WithTime:2];
-        }else{
-            [CommonUtils showToastWithStr:error.description WithTime:2];
-
-        }
 
     }
 }

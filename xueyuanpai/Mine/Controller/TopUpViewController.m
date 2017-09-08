@@ -9,9 +9,7 @@
 #import "TopUpViewController.h"
 #import "TopUpTableViewCell.h"
 #import "TopUpTwoTableViewCell.h"
-#import "PayOrder.h"
-#import <AlipaySDK/AlipaySDK.h>
-#import "DataSigner.h"
+//#import "DataSigner.h"
 //#import "APAuthV2Info.h"
 
 @interface TopUpViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,TopUpTwoTableViewCellDelegate>
@@ -381,6 +379,7 @@
      *生成订单信息及签名
      */
     //将商品信息赋予AlixPayOrder的成员变量
+    /*
     PayOrder  *order = [[PayOrder alloc] init];
     order.partner = partner;
     order.sellerID = seller;
@@ -403,6 +402,7 @@
     NSString *orderSpec = [order description];
     NSLog(@"orderSpec = %@",orderSpec);
     
+     
     //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
     id<DataSigner> signer = CreateRSADataSigner(privateKey);
     NSString *signedString = [signer signString:orderSpec];
@@ -422,6 +422,7 @@
                                         
                                     }];
     }
+     */
 }
 
 #pragma mark - 微信支付成功以后，需要手动调取后台，把订单状态改成已支付状态

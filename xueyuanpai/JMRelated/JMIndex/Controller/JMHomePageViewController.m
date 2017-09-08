@@ -29,11 +29,14 @@
     NSMutableArray *bannerImageArray;
     NSMutableArray *bannerItemArray;
     NSMutableArray *dataArray;
+    
     int currentPage;
     int nextPage;
     int pageSize;
 }
 @property (nonatomic,strong)UITableView *tableView;
+
+
 
 @end
 
@@ -45,9 +48,6 @@
     
     [self theTabBarHidden:NO];
     
-    
-    [self requestRefreshData];
-   
 }
 
 
@@ -57,6 +57,8 @@
     self.title = @"首页";
     [self creatRightNavWithImageName:@"nav_icon_msg"];
     
+
+    [self requestRefreshData];
 
     
     //创建当前列表视图
@@ -110,8 +112,10 @@
             NSDictionary *tempDic = [listArray objectAtIndex:i];
             JMTrainProjectModel *model = [JMTrainProjectModel yy_modelWithDictionary:tempDic];
             [dataArray addObject:model];
-            [self.tableView reloadData];
         }
+        
+        [self.tableView reloadData];
+
     } withFaileBlock:^(NSError *error) {
         
     }];
@@ -153,13 +157,31 @@
     if (section == 0) {
         //获取轮播图片数组
         
-        BulkGoodsLunBoView *bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*VMScaleOfWidthAndHeight) animationDuration:0];
+        BulkGoodsLunBoView *bulkGoodsLunBoView = [[BulkGoodsLunBoView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH*VMScaleOfWidthAndHeight) animationDuration:1.5];
+        
         bulkGoodsLunBoView.fetchContentViewAtIndex = ^NSURL *(NSInteger pageIndex){
-            return bannerImageArray[pageIndex];
+            
+            if (bannerImageArray.count == 0) {
+                
+                return 0;
+            }else{
+                
+                return bannerImageArray[pageIndex];
+
+            }
+
         };
         
         bulkGoodsLunBoView.totalPagesCount = ^NSInteger(void){
-            return bannerImageArray.count;
+            
+            if (bannerImageArray.count == 0) {
+                
+                return 0;
+            }else{
+                
+                return bannerImageArray.count;
+
+            }
         };
         bulkGoodsLunBoView.TapActionBlock = ^(NSInteger pageIndex) {
             ///点击轮播图
@@ -226,6 +248,12 @@
         }else{
 
             JMHomePageThreeTypeTableViewCell *threeCell = [tableView dequeueReusableCellWithIdentifier:@"JMHomePageThreeTypeTableViewCell"];
+            
+            if (dataArray.count == 0) {
+                
+                return threeCell;
+            }
+            
             JMTrainProjectModel * model = [dataArray objectAtIndex:indexPath.row-1];
             [threeCell.showImageView sd_setImageWithURL:[NSURL URLWithString:model.thumbUrl] placeholderImage:[UIImage imageNamed:@"placeHoder"]];
             threeCell.titleLabel.text = model.title;

@@ -119,7 +119,7 @@
         return 1;
         
     }else{
-        return 4;
+        return 3;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -159,19 +159,12 @@
                 break;
             }
             case 2:{
-                cell.titleLabel.text = @"检查更新";
-                cell.contentLabel.hidden = YES;
-
-                break;
-            }
-            case 3:{
                 cell.titleLabel.text = @"关于我们";
                 cell.contentLabel.hidden = YES;
-
+                
 
                 break;
             }
-
                 
             default:
                 break;
@@ -236,9 +229,6 @@
 
             
         }else if (indexPath.row == 2) {
-            //检查更新
-            [self appstoreUpDate];
-        }else if (indexPath.row == 3) {
             //跳转关于我们界面
             AboutUsViewController *aboutUsVC = [[AboutUsViewController alloc] init];
             

@@ -33,12 +33,6 @@
     [super viewWillAppear:animated];
     [self theTabBarHidden:YES];
     
-    EMError *error = nil;
-    _userlist = [[EMClient sharedClient].contactManager getContactsFromServerWithError:&error];
-    if (!error) {
-        NSLog(@"获取成功 -- %@",_userlist);
-    }
-
 }
 
 
@@ -415,17 +409,7 @@
     if ([_userlist containsObject:tutorDetailModel.businessCenterTutorDetailTelephone]) {
         
         NSLog(@"跳转聊天视图页面");
-        EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:[UserAccountManager sharedInstance].userMobile conversationType:EMConversationTypeChat];
-        
-        [self.navigationController pushViewController:chatController animated:YES];
-        
     }else{
-        EMError *error = [[EMClient sharedClient].contactManager addContact:tutorDetailModel.businessCenterTutorDetailTelephone message:@"我想加您为好友"];
-        if (!error) {
-            NSLog(@"添加成功");
-            
-            [CommonUtils showToastWithStr:@"好友申请已发出，请耐心等候回复" WithTime:2];
-        }
         
     }
 }
